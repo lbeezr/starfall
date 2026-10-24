@@ -211,6 +211,7 @@ import StarfallCore
                                             SkyMasterySnapshot.entry(request: $0, retainedRound: store.game, bestRecords: store.mastery.records)
                                         } ?? SkyMasterySnapshot.current(game: store.game, bestRecords: store.mastery.records, context: .result),
                                         finalLight: endingReady ? store.finalLight : nil,
+                                        scoreExplanation: endingReady ? store.finalScoreExplanation : nil,
                                         active: scenePhase == .active && flow.handoff == nil && !settings, quiet: quietMotion, modal: settings,
                                         restoredSceneryBounds: anchors[.restorationScenery].map { geometry[$0] },
                                         action: { handleFlowAction($0, entryID: entryID) })

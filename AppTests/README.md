@@ -1,5 +1,7 @@
 # Hosted app tests
 
+`SkyScoreExplanationTests`, `SkyScoreGuideTests` and `SkyScorePresentationTests` cover committed components, overlap union, grown versus ordinary light, unscaled Open Sky/history, bounded guide copy, phase prefixes and terminal capture/cancellation. The explicit presenter harness holds callbacks rather than assuming the default recorder is asynchronous. [Decision goal6 evidence](../docs/evidence/decision-goal-06-earned-score-2026-10-24/README.md).
+
 `SkyHeadroomFeedbackTests` and `SkyHeadroomGuideTests` cover current Kite choices/recovery, zero-light history, named-column gains versus a negative global net, FullBoard6/retained5 replacements and real Store timing/save/feedback boundaries. Exact dialogue oracles retain full-column recovery and terminal priority. [Source-bound execution](../docs/evidence/decision-goal-05-committed-headroom-2026-10-24/README.md).
 
 `SkyShowerInspectionTests` compares one copied production shower with actual transactions: current Frostfruit growth/occupancy/recovery, repeated arrivals, first-block/unreached suffix, retained growth-plus-recipe and pre-arrival histories. Real Store tests preserve exact archive/world/mastery bytes, deadline, generation and the actual following RNG continuation; stale/Arriving sources reject simulation. [Source-bound execution](../docs/evidence/decision-goal-04-shower-inspection-2026-10-24/README.md).

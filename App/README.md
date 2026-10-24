@@ -1,5 +1,7 @@
 # iOS application
 
+`SkyScoreExplanation` copies committed award components without recalculating scoring. The existing clear guide separates actual stars/light from base points, size and causal bonuses; the live receipt fits a bounded equation when space permits. `SkyLightReceiptSession` keeps the latest genuine clear in memory for static result reading, including honest Last clear context after a later loss. Cold restore omits unavailable detail. [Decision goal6 evidence](../docs/evidence/decision-goal-06-earned-score-2026-10-24/README.md).
+
 `SkyHeadroomFeedback` compares committed column tops after a real clear and appends factual room to the existing result guide. Positive gains are attributed only to the named columns; Full Board reports actual replacement arrivals rather than temporary vacancies. It has no Store, clock or save capability. [Decision goal5 evidence](../docs/evidence/decision-goal-05-committed-headroom-2026-10-24/README.md).
 
 `SkyShowerInspection` evaluates only the displayed Next shower using one authoritative Core value copy. Its optional native reading sheet lists ordered growth, placement, first block and unreached arrivals plus actual pattern phases. `FallingSkyView` binds it to the full exact forecast/game/generation and withdraws stale content without entering the menu, pausing or holding a live shower. Full Board and Arriving omit prediction. [Decision goal4 evidence](../docs/evidence/decision-goal-04-shower-inspection-2026-10-24/README.md).

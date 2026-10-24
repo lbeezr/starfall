@@ -17,6 +17,7 @@ struct SkyFinalLightReceipt: Equatable, Identifiable {
 /// Interruptions retire live art; only a real replacement retires the earned record.
 @MainActor @Observable final class SkyLightReceiptSession {
     private(set) var current: StarlightCelebration?
+    private(set) var lastScore: SkyScoreExplanation?
     private(set) var lastEarned: SkyFinalLightReceipt?
     private(set) var roundGeneration: UInt64 = 0
     @ObservationIgnored private var sequence: UInt64 = 0
@@ -51,11 +52,13 @@ struct SkyFinalLightReceipt: Equatable, Identifiable {
         cancel()
         roundGeneration &+= 1
         lastEarned = nil
+        lastScore = nil
     }
 
     /// Capture from the already committed transaction, before a presenter can
     /// skip callbacks or a terminal handoff can discard its board anchors.
     func capture(_ turn: FallingSkyTurn, from old: FallingSky, path: [Cell], recipe: StarRecipe?) {
+        if let explanation = SkyScoreExplanation(turn: turn, from: old) { lastScore = explanation }
         guard turn.collected > 0 else { return }
         earnedSequence &+= 1
         // An earned ordinary tap has no shape; do not mislabel an older drawing

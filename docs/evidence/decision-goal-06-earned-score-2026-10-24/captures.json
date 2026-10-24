@@ -1,0 +1,75 @@
+[
+  {
+    "file": "dev-b3d8e2d36a__chain-phase-two-fourteen-thousand__iphone17e__normal.jpg",
+    "attachment": "score-phone-chain-phase-two-fourteen-thousand",
+    "run": "phone-native",
+    "source": "8be7672e45821a74f45faa9aac802145c4b59a28",
+    "runtime": "dev.b3d8e2d36a",
+    "width": 1170,
+    "height": 2532,
+    "sha256": "194399dbebfb3b84718d9358a06f332564fec74364bcb30cbf7479a85a4bf62b",
+    "status": "accepted: root and independent original-resolution inspection"
+  },
+  {
+    "file": "dev-b3d8e2d36a__independent-seven-thousand-end__iphone17e__normal.jpg",
+    "attachment": "score-phone-independent-seven-thousand-end",
+    "run": "phone-native",
+    "source": "8be7672e45821a74f45faa9aac802145c4b59a28",
+    "runtime": "dev.b3d8e2d36a",
+    "width": 1170,
+    "height": 2532,
+    "sha256": "1cfe3087115e7c3d673eb57d6f8e0b409588f6d9461d6298920d225ff7cf4116",
+    "status": "accepted: root and independent original-resolution inspection"
+  },
+  {
+    "file": "dev-b3d8e2d36a__latest-independent-clear__iphone17e__normal.jpg",
+    "attachment": "score-phone-latest-independent-clear",
+    "run": "phone-native",
+    "source": "8be7672e45821a74f45faa9aac802145c4b59a28",
+    "runtime": "dev.b3d8e2d36a",
+    "width": 1170,
+    "height": 2532,
+    "sha256": "f3bae7771e33159071089028d28a0cc5d13552b0294a670a7a938d424b6eaccf",
+    "status": "accepted: root and independent original-resolution inspection"
+  },
+  {
+    "file": "dev-b3d8e2d36a__four-stars-five-light-grown-award-end__ipad-pro11-m5__ax3xl-calm.jpg",
+    "attachment": "score-tablet-four-stars-five-light-grown-award-end",
+    "run": "tablet",
+    "source": "8be7672e45821a74f45faa9aac802145c4b59a28",
+    "runtime": "dev.b3d8e2d36a",
+    "width": 1668,
+    "height": 2420,
+    "sha256": "3255e1e225f8b5f0523dcf172959e9d9bfb9137fb32a49ee9a8fb00275e7c4a3",
+    "status": "accepted: root and independent original-resolution inspection"
+  },
+  {
+    "file": "dev-b3d8e2d36a__open-sky-unscaled-five-points-end__ipad-pro11-m5__ax3xl-calm.jpg",
+    "attachment": "score-tablet-open-sky-unscaled-five-points-end",
+    "run": "tablet",
+    "source": "8be7672e45821a74f45faa9aac802145c4b59a28",
+    "runtime": "dev.b3d8e2d36a",
+    "width": 1668,
+    "height": 2420,
+    "sha256": "dd9c75a15b0fc725dbc1020ddbde3c572685db662b711686ee8602db90c8ee72",
+    "status": "accepted: root and independent original-resolution inspection"
+  },
+  {
+    "file": "dev-b3d8e2d36a__score-complete-committed-components__hosted-component.png",
+    "attachment": "score-complete-committed-components",
+    "run": "hosted-test",
+    "source": "6099df445d5f086dd2cd86c48c1056f1f2cb4317",
+    "runtime": "dev.b3d8e2d36a",
+    "sha256": "8a726a2db845839394b5221ad273346c5ea4a1b7e78affb402165acc23a065c6",
+    "status": "accepted: root and independent original-resolution inspection; hosted component, not a native screen"
+  },
+  {
+    "file": "dev-b3d8e2d36a__score-live-cumulative-components__hosted-component.png",
+    "attachment": "score-live-cumulative-components",
+    "run": "hosted-test",
+    "source": "6099df445d5f086dd2cd86c48c1056f1f2cb4317",
+    "runtime": "dev.b3d8e2d36a",
+    "sha256": "cc39bc52a497ca53f39032abeea16cc116b9e1793e535cb6c3b7f7bf39ff461e",
+    "status": "accepted: root and independent original-resolution inspection; hosted component, not a native screen"
+  }
+]

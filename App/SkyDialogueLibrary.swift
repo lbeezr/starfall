@@ -136,6 +136,11 @@ extension SkyDialogueLibrary {
         } else if !game.isOver, turn.presentationPhases.contains(where: { $0.event == .release }) {
             result = line("guide.release")
         }
+        if !game.isOver, let explanation = SkyScoreExplanation(turn: turn, from: old) {
+            result = SkyDialogueLine(id: result.id, speaker: result.speaker,
+                text: SkyCopy.text(.pressureResult, values: ["detail": result.text, "recovery": explanation.guideText]),
+                priority: result.priority, seconds: result.seconds)
+        }
         if let headroom = SkyHeadroomFeedback(turn: turn, from: old, to: game) {
             let detail: String
             switch headroom.kind {
