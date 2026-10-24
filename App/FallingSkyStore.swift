@@ -147,6 +147,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     var finalLight: SkyFinalLightReceipt? { lightReceipts.lastEarned }
     var finalSurvivorCount: Int { lightReceipts.lastSurvivorCount ?? 0 }
     var finalScoreExplanation: SkyScoreExplanation? { lightReceipts.lastScore }
+    var lastClear: SkyLastClearSnapshot? { lightReceipts.lastClear }
     private(set) var techniqueResult = ""
     private var techniqueRelay = SkyTechniqueRelay()
     #if DEBUG
@@ -806,7 +807,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let selected = path.isEmpty ? turn.cleared.filter { old.gem(at: $0)?.isDark == false } : Set(path)
         let resolvedRecipe = recipe ?? (old.canArrangeStars
             ? old.recipe(matching: selected) : nil)
-        lightReceipts.capture(turn, from: old, path: path, recipe: resolvedRecipe)
+        lightReceipts.capture(turn, from: old, to: game, path: path, recipe: resolvedRecipe)
         invalidateInput(isShower ? (announcesResult ? "manualShower" : "automaticShower") : "clear")
         if turn.exchange != nil {
             techniqueRelay.reset()

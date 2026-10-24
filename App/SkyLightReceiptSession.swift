@@ -17,12 +17,14 @@ struct SkyFinalLightReceipt: Equatable, Identifiable {
 /// Interruptions retire live art; only a real replacement retires the earned record.
 @MainActor @Observable final class SkyLightReceiptSession {
     private(set) var current: StarlightCelebration?
-    private(set) var lastSurvivorCount: Int?
-    private(set) var lastScore: SkyScoreExplanation?
+    private(set) var lastClear: SkyLastClearSnapshot?
+    var lastSurvivorCount: Int? { lastClear?.survivorCount }
+    var lastScore: SkyScoreExplanation? { lastClear?.score }
     private(set) var lastEarned: SkyFinalLightReceipt?
     private(set) var roundGeneration: UInt64 = 0
     @ObservationIgnored private var sequence: UInt64 = 0
     @ObservationIgnored private var earnedSequence: UInt64 = 0
+    @ObservationIgnored private var clearSequence: UInt64 = 0
     @ObservationIgnored private var expiry: Task<Void, Never>?
 
     func nextSequence() -> UInt64 {
@@ -53,16 +55,16 @@ struct SkyFinalLightReceipt: Equatable, Identifiable {
         cancel()
         roundGeneration &+= 1
         lastEarned = nil
-        lastScore = nil
-        lastSurvivorCount = nil
+        lastClear = nil
     }
 
     /// Capture from the already committed transaction, before a presenter can
     /// skip callbacks or a terminal handoff can discard its board anchors.
-    func capture(_ turn: FallingSkyTurn, from old: FallingSky, path: [Cell], recipe: StarRecipe?) {
-        if let explanation = SkyScoreExplanation(turn: turn, from: old) {
-            lastScore = explanation
-            lastSurvivorCount = SkySurvivorCopy.count(in: turn.resolutionPhases)
+    func capture(_ turn: FallingSkyTurn, from old: FallingSky, to game: FallingSky, path: [Cell], recipe: StarRecipe?) {
+        if let snapshot = SkyLastClearSnapshot(turn: turn, from: old, to: game, path: path, recipe: recipe,
+                                              roundGeneration: roundGeneration, sequence: clearSequence &+ 1) {
+            clearSequence &+= 1
+            lastClear = snapshot
         }
         guard turn.collected > 0 else { return }
         earnedSequence &+= 1

@@ -1,5 +1,7 @@
 # Documentation map
 
+[Optional Last clear reading](evidence/decision-goal-08-last-clear-2026-10-24/README.md) keeps one actual committed clear in session memory, with exact ingredient diagrams, score components, survivors and room/refills. Native phone/tablet journeys preserve rewards, Map/Entry return and exact Replay; result decisions precede optional detail. Cold restore omits unavailable history.
+
 [Actual carried ingredients](evidence/decision-goal-07-survivor-ingredients-2026-10-24/README.md) connect committed phases through exact original-action star identities. Current-return diamonds, complete score/room guides and terminal fact-only reading retain native evidence and explicit recognition limits.
 
 [Successive cascade returns](evidence/identity-goal-06-cascade-returns-2026-10-24/README.md) retain a bounded causal strip of exact phase figures, cancel superseded flights and acknowledge only the active receipt's actual arrival, preserving gameplay timing and separate manual drawing.

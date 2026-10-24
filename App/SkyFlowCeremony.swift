@@ -32,6 +32,7 @@ enum SkyFlowAction: Equatable {
     var finalLight: SkyFinalLightReceipt? = nil
     var scoreExplanation: SkyScoreExplanation? = nil
     var survivorCount: Int = 0
+    var inspectLastClear: (() -> Void)? = nil
     let active: Bool
     let quiet: Bool
     let modal: Bool
@@ -49,6 +50,7 @@ enum SkyFlowAction: Equatable {
     @State private var revealed = false
     @State private var burst: CGFloat = 0
     @State private var celebrating = true
+    @State private var resultReadingHeight: CGFloat = 0
     private var terminal: Bool { screen == .won || screen == .full }
     var visibleFinalLight: SkyFinalLightReceipt? { terminal ? finalLight : nil }
     private var motionKey: String { "\(active)-\(quiet)" }
@@ -119,35 +121,36 @@ enum SkyFlowAction: Equatable {
         }
     }
 
-    /// Preserve the restored vista when it fits, then yield decorative space
-    /// before asking the player to scroll any full-sized result actions.
+    /// A result has one native reading/action subtree. Only passive vista space
+    /// and portraits yield when the measured reading no longer fits; fitting
+    /// candidates must never create duplicate interactive representations.
     private func resultPresentation(layout: SkyCeremonyLayout) -> some View {
-        ViewThatFits(in: .vertical) {
-            resultContent(layout: layout, compact: false)
-                .fixedSize(horizontal: false, vertical: true)
-            resultContent(layout: layout, compact: true)
-                .fixedSize(horizontal: false, vertical: true)
+        GeometryReader { geometry in
+            let topSpace = layout.isRestoredResult ? layout.minimumTopSpace + layout.spacing : 0
+            let castSpace = visibleFinalLight == nil ? SkyCastFormation.height(terminal: true) + layout.spacing : 0
+            let expanded = resultReadingHeight > 0
+                && resultReadingHeight + 2 * StarfallTheme.Spacing.section + topSpace + castSpace <= geometry.size.height
             ScrollView {
-                resultContent(layout: layout, compact: true)
+                VStack(spacing: layout.spacing) {
+                    if expanded && layout.isRestoredResult {
+                        Color.clear.frame(height: layout.minimumTopSpace).accessibilityHidden(true)
+                    }
+                    VStack(spacing: layout.spacing) {
+                        heading().accessibilityHidden(!active)
+                        revealedActions
+                    }
+                    .fixedSize(horizontal: false, vertical: true)
+                    .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { resultReadingHeight = $0 }
+                    if expanded && visibleFinalLight == nil { decorativeCast }
+                }
+                .padding(StarfallTheme.Spacing.section)
+                .frame(maxWidth: StarfallTheme.Layout.menuWidth)
+                .frame(minHeight: geometry.size.height, alignment: .bottom)
+                .frame(maxWidth: .infinity)
             }
             .scrollBounceBehavior(.basedOnSize)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         .safeAreaPadding(.bottom, StarfallTheme.Spacing.section)
-    }
-
-    private func resultContent(layout: SkyCeremonyLayout, compact: Bool) -> some View {
-        VStack(spacing: layout.spacing) {
-            if layout.isRestoredResult && !compact {
-                Color.clear.frame(height: layout.minimumTopSpace).accessibilityHidden(true)
-            }
-            heading().accessibilityHidden(!active)
-            revealedActions
-            if !compact && visibleFinalLight == nil { decorativeCast }
-        }
-        .padding(StarfallTheme.Spacing.section)
-        .frame(maxWidth: StarfallTheme.Layout.menuWidth)
-        .frame(maxWidth: .infinity)
     }
 
     /// Home is navigation in the world, not a character's dialogue bubble.
@@ -290,6 +293,12 @@ enum SkyFlowAction: Equatable {
                     .fixedSize(horizontal: false, vertical: true)
                     .accessibilityLabel(dialogueLine.spokenText)
                     .accessibilityIdentifier(terminal ? "experiment.score" : "sky.subtitle")
+                // Result decisions precede optional accounting, which can span
+                // several viewports at accessibility text sizes.
+                if terminal { actions }
+                if terminal, let inspectLastClear {
+                    ceremonyButton(SkyCopy.text(.lastClearReview), id: "sky.lastClear.result.open", run: inspectLastClear)
+                }
                 if let mastery, screen == .entry || screen == .won {
                     SkyMasteryView(snapshot: mastery)
                 }
@@ -299,7 +308,7 @@ enum SkyFlowAction: Equatable {
                 if let visibleFinalLight {
                     SkyFinalLightView(receipt: visibleFinalLight, active: active, quiet: quiet)
                 }
-                actions
+                if !terminal { actions }
             }
         }
             .padding(.horizontal, StarfallTheme.Spacing.small)
@@ -477,7 +486,14 @@ enum SkyFlowAction: Equatable {
         .accessibilityIdentifier(id)
     }
     private func flowButton(_ label: String, action choice: SkyFlowAction, id: String, primary: Bool = false) -> some View {
-        Button(label) { action(choice) }
+        ceremonyButton(label, id: id, primary: primary) { action(choice) }
+    }
+
+    /// Every ceremony action attaches its native identity to the same styled
+    /// Button. Extra wrapper frames must not create a different hit boundary.
+    private func ceremonyButton(_ label: String, id: String, primary: Bool = false,
+                                run: @escaping () -> Void) -> some View {
+        Button(label, action: run)
             .buttonStyle(StarfallButtonStyle(role: primary ? .ceremonyPrimary : .quiet, expands: true))
             .accessibilityIdentifier(id)
     }
