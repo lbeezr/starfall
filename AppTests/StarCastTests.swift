@@ -608,17 +608,24 @@ final class StarCastTests: XCTestCase {
             XCTFail("Seed must offer a clear with neighboring survivors"); return
         }
         var clearComplete = false
+        let removedIDs = Set(clear.cleared.compactMap { beforeClear.gem(at: $0)?.id })
+        let rippleWindow = ContinuousClock.now + .seconds(StarfallMotion.gravityStart)
         scene.animate(clear, from: beforeClear, to: game) { clearComplete = true }
-        let origins = Dictionary(uniqueKeysWithValues: scene.children[1].children.map { (ObjectIdentifier($0), $0.position) })
+        let survivors = scene.children[1].children.compactMap { $0 as? FallingSkyCharacter }
+            .filter { !removedIDs.contains($0.gem.id) }
+        let origins = Dictionary(uniqueKeysWithValues: survivors.map { (ObjectIdentifier($0), $0.position) })
         var observedRipple = false
-        // Inspect only the wave phase, before gravity starts at 320 ms.
-        for _ in 0..<11 {
+        // Cleared helpers now depart while opaque; only survivors own committed
+        // parent positions. Measure the pre-gravity window, not nominal sleep sums.
+        while ContinuousClock.now < rippleWindow {
             try? await Task.sleep(for: .milliseconds(20))
-            for node in scene.children[1].children where node.alpha == 1 {
+            guard ContinuousClock.now < rippleWindow else { break }
+            for node in survivors {
                 if let origin = origins[ObjectIdentifier(node)] {
                     XCTAssertEqual(node.position, origin, "Contact response cannot move the committed parent before gravity")
                 }
-                if let art = (node as? FallingSkyCharacter)?.character, hypot(art.position.x, art.position.y) > 0.3 {
+                let art = node.character
+                if hypot(art.position.x, art.position.y) > 0.3 {
                     observedRipple = true
                 }
             }

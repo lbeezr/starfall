@@ -1,0 +1,163 @@
+{
+  "goal": 338,
+  "base_main": "0ed13e52f49dcd449a94dc5c094925246c5b7a42",
+  "runtime_checkpoint": "1eaf7d9f8d18daa312ba9591ce05bb86be544828",
+  "accepted_checkpoint": "0e92c49b7f1e6ff9d899871347729801b8dfc76c",
+  "accepted_tree": "260aa40024de34f91ac56a72827e670eae7272c4",
+  "checkpoint_delta": "Only AppTests/StarCastTests.swift; App/Core/native inputs identical. Subsequent changes documentation/evidence only.",
+  "dirty_compiled_inputs_at_tests": [],
+  "bundle": "dev.local",
+  "source_sha256": {
+    "App/FallingSkyMotion.swift": "193c2ffd325e773229b096fc985d714356df98bc100898e5bfda3b5352ff94b2",
+    "App/FallingSkyScene.swift": "23193d9a1510cd1fd0f747e1d2b0bf853b830fc658e0f8c687894f5ecf034e66",
+    "AppTests/HelperDepartureTests.swift": "84039bfc5cddf8471f3378da748fdac53a37d11953b687e9211e07f91482f665",
+    "AppTests/StarCastTests.swift": "960db2aa24d8476f5a868dd3e6efbfa34eea37752e1f539dd711713aa206be94",
+    "UITests/SkyTechniqueInteractionTests.swift": "f608f37aef2d686c24b978b7418f0316b823dac6065d4f65421a7f7db5e71b82",
+    "Starfall.xcodeproj/project.pbxproj": "c2491b743f7afad4907941414d73ac0feef787ef345f02d6d191c9eb7a9d01dd"
+  },
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "macos": "27.0.1",
+    "simulator_os": "iOS27.0",
+    "phone": "iPhone17e / 64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+    "tablet": "iPad Pro11 M5 / 255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+    "owned_use": "Sequential, both confirmed Shutdown afterward; no unrelated devices/processes stopped"
+  },
+  "checks": {
+    "core": {
+      "passed": 348,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 24.119,
+      "command": "swift test --scratch-path /private/tmp/starfall-identity-03-20261024/CoreBuild"
+    },
+    "hosted": {
+      "passed": 174,
+      "failed": 0,
+      "skipped": 0,
+      "classes": {
+        "FallingSkyStoreTests": 51,
+        "HelperDepartureTests": 5,
+        "NativeInputWindowTests": 4,
+        "SkyTechniqueStoreTests": 30,
+        "StarCastTests": 25,
+        "StarlightCelebrationTests": 27,
+        "TraceInputPolishTests": 32
+      },
+      "raw": "/private/tmp/starfall-identity-03-20261024/hosted-corrected.xcresult",
+      "test_seconds": 73.077,
+      "runner_elapsed_seconds": 91.392,
+      "mcp_wall_seconds": 95.085
+    },
+    "phone": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 279.286
+    },
+    "tablet": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 126.753
+    },
+    "native_unique_methods": 7,
+    "debug": "arm64 build-for-testing passed; final clean checkpoint 2.572s, no warnings",
+    "release": "Generic simulator Release passed with CODE_SIGNING_ALLOWED=NO",
+    "membership": {
+      "HelperDepartureTests.swift": [
+        "StarfallAppTests"
+      ],
+      "StarCastTests.swift": [
+        "StarfallAppTests"
+      ],
+      "SkyTechniqueInteractionTests.swift": [
+        "StarfallUITests"
+      ],
+      "FallingSkyMotion.swift": [
+        "Starfall"
+      ],
+      "FallingSkyScene.swift": [
+        "Starfall"
+      ]
+    },
+    "hygiene": "passed",
+    "diff_check": "passed",
+    "local_targets": {
+      "checked": 761,
+      "missing": []
+    }
+  },
+  "initial_failures": [
+    {
+      "check": "Sandbox Core invocation",
+      "result": "Manifest/cache access failed before tests. Same command with authorized cache access passed348; no product workaround."
+    },
+    {
+      "check": "First hosted selection",
+      "result": "173passed/1failed/0skipped of174. Existing contact test admitted moving cleared bodies into survivor-parent invariant and measured nominal sleeps past actual gravity boundary. Use Core-derived surviving identities and an actual ContinuousClock pre-gravity deadline; same exact position/geometry/material/scale/ripple/completion assertions remain. All174 passed."
+    },
+    {
+      "check": "Intermediate test build warning",
+      "result": "Redundant cast in now typed survivor loop removed before final clean build; no suppression."
+    }
+  ],
+  "logs": {
+    "core.log": {
+      "path": "/private/tmp/starfall-identity-03-20261024/core.log",
+      "sha256": "3377524b15615dc5be5d8dc782179b5f013e3109d0a54ca55609dc4012eebf5f"
+    },
+    "core-accepted.log": {
+      "path": "/private/tmp/starfall-identity-03-20261024/core-accepted.log",
+      "sha256": "3fe2d7969ff114e16e89b187250db4133bcd26dfd6fcc7db5e2bbff638556eef"
+    },
+    "release-final.log": {
+      "path": "/private/tmp/starfall-identity-03-20261024/release-final.log",
+      "sha256": "deda4b88b890ece71b71e5b23b3b5a1e49ced5a8c1124ef417a8375354835725"
+    },
+    "phone.log": {
+      "path": "/private/tmp/starfall-identity-03-20261024/phone.log",
+      "sha256": "b8da3f8d68e866e62476342119ab31bf5fe0c2d40510869efb70a6d92414ab45"
+    },
+    "tablet.log": {
+      "path": "/private/tmp/starfall-identity-03-20261024/tablet.log",
+      "sha256": "e6b7e54cdded588febd56726c86114355301c81c5fc113d40dd2eadf9ed1f351"
+    },
+    "test_sim_2026-10-24T02-22-16-800Z_pid51923_aed9832b.log": {
+      "path": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/logs/test_sim_2026-10-24T02-22-16-800Z_pid51923_aed9832b.log",
+      "sha256": "2851063728aa03382e2bb7a3913d9115d8320cc610fd836bccae65d3889ff1f8"
+    },
+    "test_sim_2026-10-24T02-26-41-044Z_pid51923_ab6da977.log": {
+      "path": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/logs/test_sim_2026-10-24T02-26-41-044Z_pid51923_ab6da977.log",
+      "sha256": "a71316aba6bce73891f936dd9468df6aa3a6b8a99664db232c1ed7e0643b7f64"
+    },
+    "build_sim_2026-10-24T02-26-26-573Z_pid51923_8b2a1d11.log": {
+      "path": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/logs/build_sim_2026-10-24T02-26-26-573Z_pid51923_8b2a1d11.log",
+      "sha256": "2db23188a0d448b90fa792c29e36e8eb1fb882970fb9599f4fc2c559d070936e"
+    }
+  },
+  "limits": [
+    "Some very short departure intervals fall between recorded native frames; no complete native trajectory or sustained/physical frame-rate claim. Real SKView tests directly assert lift/drift/turn/late-fade, same material/grown size, exact cleared identities and lifetime.",
+    "Native next inputs occur after receipt expiry; rapid replacement/cancellation are hosted checks, not a sub1.4s native latency claim.",
+    "Native branch/revisit multipoint gesture not executed; existing real Store/scene/geometry coverage retains that boundary.",
+    "No actual VoiceOver, physical device, minimum-iOS17 run, uncoached recognition or enjoyment. Selected scope is not full Apple matrix."
+  ],
+  "commands": {
+    "phone": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -testProductsPath /Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T02-26-26-573Z_pid51923_0f16b56e.xctestproducts -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -collect-test-diagnostics never \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testPartialFullAndCancelledNativeTracesKeepExactSelections\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testTracedSelectionAllowsNextClearAndSurvivesLifecycle\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testCurrentLanternSkyCascadeKeepsSurvivorsAndNextInput\" \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testCurrentLanternFullBoardCascadeKeepsRefillAndNextInput\" \"-only-testing:StarfallUITests/LanternLandingInteractionTests/testNativeWinningClearPersistsRestorationAndReplayStartsAtZero\" -parallel-testing-enabled NO -resultBundlePath /private/tmp/starfall-identity-03-20261024/phone.xcresult test-without-building",
+    "tablet": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -testProductsPath /Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T02-26-26-573Z_pid51923_0f16b56e.xctestproducts -destination \"platform=iOS Simulator,id=255E141F-D4D6-45DA-89FF-51436BF1BBA7\" -collect-test-diagnostics never \"-only-testing:StarfallUITests/SkyTechniqueInteractionTests/testCurrentLanternFullBoardCascadeKeepsRefillAndNextInput\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testDenseNativeTraceSelectsFiveAndRetainsUnselectedMatchingStar\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testLargestTextCalmTraceKeepsCommittedSelectionAndNextInput\" -parallel-testing-enabled NO -resultBundlePath /private/tmp/starfall-identity-03-20261024/tablet.xcresult test-without-building",
+    "release": "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination generic/platform=iOS Simulator -derivedDataPath /private/tmp/starfall-identity-03-20261024/Release -jobs 4 CODE_SIGNING_ALLOWED=NO build",
+    "recording": "xcrun simctl io <owned-UDID> recordVideo --codec=h264 --force <explicit-output.mp4>; stop verified owned recording with SIGINT"
+  },
+  "hosted_selectors": [
+    "FallingSkyStoreTests",
+    "HelperDepartureTests",
+    "SkyTechniqueStoreTests",
+    "StarCastTests",
+    "StarlightCelebrationTests",
+    "TraceInputPolishTests",
+    "NativeInputWindowTests/testQuietPresentationReleasesInputAsSoonAsFinalBoardIsRendered",
+    "NativeInputWindowTests/testOverlapReplacementCancelsOldCompletionAndQuietPresentationMatches",
+    "NativeInputWindowTests/testRecipeCascadeShowsPopThenFallThenNextPop",
+    "NativeInputWindowTests/testRecipeCascadeReplacementAndQuietModeDiscardRemainingCallbacks"
+  ]
+}

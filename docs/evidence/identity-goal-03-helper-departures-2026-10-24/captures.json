@@ -1,0 +1,175 @@
+{
+  "goal": 338,
+  "images": [
+    {
+      "file": "dev-0e92c49__rose-departure-crop__hosted-spritekit__normal.png",
+      "source": "0e92c49b7f1e6ff9d899871347729801b8dfc76c",
+      "bundle": "dev.local",
+      "kind": "real SKView hosted attachment, not full native play",
+      "raw": "/private/tmp/starfall-identity-03-20261024/hosted-attachments/8642218A-6F2B-4DF4-A4A9-9252E78BFC89.png",
+      "raw_sha256": "794fcf71e68875c63d7dfa008ddba8294d4ce4c1afe2516bc368c062e55aae0c",
+      "dimensions": [
+        480,
+        480
+      ],
+      "raw_dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "sips pixel crop 480x480, no scaling or repainting",
+      "sha256": "c86285879ab99e111fe47ece5ab999d28bf084557a8242346a9525986de3f0b9",
+      "inspected": true,
+      "crop_top_left_xy": {
+        "x": 345,
+        "y": 1404
+      }
+    },
+    {
+      "file": "dev-0e92c49__grown-aqua-departure-crop__hosted-spritekit__normal.png",
+      "source": "0e92c49b7f1e6ff9d899871347729801b8dfc76c",
+      "bundle": "dev.local",
+      "kind": "real SKView hosted attachment, not full native play",
+      "raw": "/private/tmp/starfall-identity-03-20261024/hosted-attachments/670BB01B-D775-41EF-8AA7-6E4D05C4DDC4.png",
+      "raw_sha256": "f93ae6cd594f7a28f8b0b40be937f607329387b39a0b43d6a05c9349176101d4",
+      "dimensions": [
+        480,
+        480
+      ],
+      "raw_dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "sips pixel crop 480x480, no scaling or repainting",
+      "sha256": "b096ef41c2af594d8bb1e361ac3fbbec42f01a0a08fd3fa210a4062f11cfc077",
+      "inspected": true,
+      "crop_top_left_xy": {
+        "x": 345,
+        "y": 1404
+      }
+    },
+    {
+      "file": "dev-0e92c49__opal-departure-crop__hosted-spritekit__normal.png",
+      "source": "0e92c49b7f1e6ff9d899871347729801b8dfc76c",
+      "bundle": "dev.local",
+      "kind": "real SKView hosted attachment, not full native play",
+      "raw": "/private/tmp/starfall-identity-03-20261024/hosted-attachments/919674CD-17CC-4CE0-840F-D6310E43FFCA.png",
+      "raw_sha256": "be8d4d5f789c29eb69dd93855b335e4af18ab1f6ad0a07170bd4cc89079207dd",
+      "dimensions": [
+        480,
+        480
+      ],
+      "raw_dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "sips pixel crop 480x480, no scaling or repainting",
+      "sha256": "ed1af32f6e7bf3d52fd1fdd6d50b02db9a805dd5deb7e18b4b86eebcbe047b04",
+      "inspected": true,
+      "crop_top_left_xy": {
+        "x": 345,
+        "y": 1404
+      }
+    },
+    {
+      "file": "dev-0e92c49__manual-return__iphone-17e__normal.jpg",
+      "source": "0e92c49b7f1e6ff9d899871347729801b8dfc76c",
+      "bundle": "dev.local",
+      "kind": "native Simulator recording frame",
+      "simulator_os": "iOS27.0",
+      "variant": "normal",
+      "raw_video": "/private/tmp/starfall-identity-03-20261024/phone.mp4",
+      "video_sha256": "b2b56e89b52553025b5406557b7a57c6c816de90f6b818c027be83e19df02fdc",
+      "decoded_frame": {
+        "actual": 56.14833333333333,
+        "index": 0,
+        "requested": 56.15,
+        "sheet": 0
+      },
+      "raw_decoded_png_sha256": "993459f2ad5d563c52c95e996b345dc8039f1f4878cf0034f62a21593751d08b",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "AVFoundation exact-time decode, original resolution/no crop; sips JPEG85",
+      "sha256": "a7d6355df71551bdb2fc0b1e0d88b8e63be95b93766a38a8af63d577510f5cbd",
+      "inspected": true
+    },
+    {
+      "file": "dev-0e92c49__first-clear__iphone-17e__normal.jpg",
+      "source": "0e92c49b7f1e6ff9d899871347729801b8dfc76c",
+      "bundle": "dev.local",
+      "kind": "native Simulator recording frame",
+      "simulator_os": "iOS27.0",
+      "variant": "normal",
+      "raw_video": "/private/tmp/starfall-identity-03-20261024/phone.mp4",
+      "video_sha256": "b2b56e89b52553025b5406557b7a57c6c816de90f6b818c027be83e19df02fdc",
+      "decoded_frame": {
+        "actual": 189.94833333333332,
+        "index": 0,
+        "requested": 189.95,
+        "sheet": 0
+      },
+      "raw_decoded_png_sha256": "eec066239a0314ec6e0fec9686ff018e1ff095fc1f7cdbed95328927d185c3be",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "AVFoundation exact-time decode, original resolution/no crop; sips JPEG85",
+      "sha256": "15be43970511bfd3c561cb25796d54c791f42571e06ca0d30ef25426fc61d686",
+      "inspected": true
+    },
+    {
+      "file": "dev-0e92c49__survivor-refill__iphone-17e__normal.jpg",
+      "source": "0e92c49b7f1e6ff9d899871347729801b8dfc76c",
+      "bundle": "dev.local",
+      "kind": "native Simulator recording frame",
+      "simulator_os": "iOS27.0",
+      "variant": "normal",
+      "raw_video": "/private/tmp/starfall-identity-03-20261024/phone.mp4",
+      "video_sha256": "b2b56e89b52553025b5406557b7a57c6c816de90f6b818c027be83e19df02fdc",
+      "decoded_frame": {
+        "actual": 190.49666666666667,
+        "index": 0,
+        "requested": 190.5,
+        "sheet": 0
+      },
+      "raw_decoded_png_sha256": "1e60279bd3cc4e921b246fcb1784ae5ad2e716d2dba444126dbc8e8e6fbaff88",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "AVFoundation exact-time decode, original resolution/no crop; sips JPEG85",
+      "sha256": "a0f323dead4cd6cb2fb28cd7b08c4bf98997fbc70ce1b881602850a0a419128b",
+      "inspected": true
+    },
+    {
+      "file": "dev-0e92c49__partial-return__ipad-pro11-m5__ax3xl-calm.jpg",
+      "source": "0e92c49b7f1e6ff9d899871347729801b8dfc76c",
+      "bundle": "dev.local",
+      "kind": "native Simulator recording frame",
+      "simulator_os": "iOS27.0",
+      "variant": "ax3xl-calm",
+      "raw_video": "/private/tmp/starfall-identity-03-20261024/tablet.mp4",
+      "video_sha256": "a1ff3289402c4d154bcf191d5c9eaca82eae19e42c672311ec143cae0e817af0",
+      "decoded_frame": {
+        "actual": 60.49166666666667,
+        "index": 0,
+        "requested": 60.5,
+        "sheet": 0
+      },
+      "raw_decoded_png_sha256": "30f948bd3d0dc914971a3b72c6a9e3da2f78f86950ac2649f8feb89eacedd6f6",
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "conversion": "AVFoundation exact-time decode, original resolution/no crop; sips JPEG85",
+      "sha256": "a67e65e8f88c512ddc343b6604e5536b6d9e0bb096317d1ca01aba2651b36fb6",
+      "inspected": true
+    }
+  ],
+  "limits": [
+    "Hosted crops prove material appearance in a real SKView; movement assertions live in HelperDepartureTests.",
+    "Native recordings show release, separate light/return, survivor fall/refill and subsequent decisions. Some 0.18s departure intervals fall between recorded frames; no complete native body trajectory or frame-rate/smoothness claim.",
+    "Calm frame is the scrolled AX3XL board reading position; all controls remain separately exercised by native interaction."
+  ]
+}
