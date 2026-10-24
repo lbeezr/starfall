@@ -1,0 +1,159 @@
+{
+  "goal": 342,
+  "base": "9a651e2990b50a97fb17dabf8bba792180f4d420",
+  "accepted_checkpoint": "092ca6e3efc29fdb102bde7dbf17faf336fd685e",
+  "tested_tree": "21123dce6a489d98fdc3a90f54b2b029a0b731e0",
+  "runtime_checkpoint": "67f78c0611c63ab8d977b21ee9b4f7de93197ee9",
+  "runtime_fingerprint": "dev.7dad281bab",
+  "actual_bundle": {
+    "StarfallBuildID": "dev.local",
+    "CFBundleIdentifier": "com.starfall.prototype",
+    "CFBundleShortVersionString": "0.1.0",
+    "CFBundleVersion": "1"
+  },
+  "source_hashes": {
+    "App/FallingSkyView.swift": "8b4832437de7657499ca56b26d03c2b109a1913c2c2987744a102b64ceb7c6fb",
+    "App/RestorationEnvironment.swift": "1c8c477f69409d504e0f876ecdbb8b4c5132921a17ef29d2117953a3173e9b62",
+    "App/StarlightCelebration.swift": "80a131b3ae4715e853a4a68b6e030232255dca03b44a59c60c737d0723679109",
+    "AppTests/LanternAwardResponseTests.swift": "bac1294c025fe26fa14f54a7d1d6cce287a7f14ae798c611eecd801b78961084",
+    "UITests/LanternAwardResponseInteractionTests.swift": "bb6a5df253804fddb6d0891172f381ad6fd9dce77ce4324892ac12656ce1564b",
+    "Starfall.xcodeproj/project.pbxproj": "0ef1c92d231e621a4f77767de65b317c636a964593f76e16bbcd88f68e6caa43",
+    "scripts/native_test_plan.py": "538f3f47d976cdc0fe6c022a7bd2f52845eb05f8f5bee87cc01593adc2897725",
+    "Package.swift": "3d0eff92cb330f4053958fb53a03e5dbf1d786ae8f33f287d58d2902ba7293d5",
+    "Config/Starfall-Info.plist": "3cc86a35a113daca7543ff84cd26e40601acec33a509ea5ee20f325f4c9afcd4"
+  },
+  "runtime_inputs_match_corrected_checkpoint": true,
+  "changed_since_runtime_checkpoint": [
+    "AppTests/LanternAwardResponseTests.swift"
+  ],
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 21.191,
+    "command": "swift test --scratch-path /private/tmp/starfall-identity-07-20261024/CoreBuild",
+    "input_count": 68,
+    "all_inputs_unchanged": true
+  },
+  "executions": [
+    {
+      "name": "hosted-accepted",
+      "source": "092ca6e",
+      "raw": "/private/tmp/starfall-identity-07-20261024/hosted-accepted-summary.json",
+      "sha256": "6649727c8e3e21f58074c3f18a4cb47b5cc41b6557e08e1321e69f4dcaf03ada",
+      "passedTests": 162,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 162,
+      "startTime": 1792822958.36,
+      "finishTime": 1792822999.64
+    },
+    {
+      "name": "hosted-live",
+      "source": "092ca6e",
+      "raw": "/private/tmp/starfall-identity-07-20261024/hosted-live-summary.json",
+      "sha256": "f2796be3cc62b74b602bc71407a9e66acd10608d9d12eba0b57cfb0ebff4fceb",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792822902.112,
+      "finishTime": 1792822906.174
+    },
+    {
+      "name": "phone-corrected",
+      "source": "67f78c0",
+      "raw": "/private/tmp/starfall-identity-07-20261024/phone-corrected-summary.json",
+      "sha256": "cf555c245bdeb2fc09984505929f69addc0f8caa1acb8d3f85b23eff71f57565",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792821505.173,
+      "finishTime": 1792821647.252
+    },
+    {
+      "name": "phone-win-corrected",
+      "source": "67f78c0",
+      "raw": "/private/tmp/starfall-identity-07-20261024/phone-win-corrected-summary.json",
+      "sha256": "da6475ede64a369352f514ff5eb05ff4fe0bcd4a683ef41c3b685b03ae67ff9b",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792821698.617,
+      "finishTime": 1792821883.09
+    },
+    {
+      "name": "tablet-corrected",
+      "source": "912a897",
+      "raw": "/private/tmp/starfall-identity-07-20261024/tablet-corrected-summary.json",
+      "sha256": "ef91ddcae239ef2ac9ce97d3076750ae2593047346af275cbef5a3f898554971",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792822224.894,
+      "finishTime": 1792822498.872
+    }
+  ],
+  "hosted_suites": {
+    "LanternAwardResponseTests": 11,
+    "CascadeReturnTests": 15,
+    "AutomaticPatternReturnTests": 14,
+    "StarlightCelebrationTests": 27,
+    "RestorationPresentationTests": 12,
+    "FallingSkyStoreTests": 51,
+    "TraceInputPolishTests": 32
+  },
+  "native_distinct_methods": 3,
+  "tablet_method_seconds": 267.547,
+  "live_normal": {
+    "before_samples": 24,
+    "delivered_window_samples": 18,
+    "warm_samples": 15,
+    "arrival_seconds": 0.425,
+    "response_seconds": 0.32,
+    "evidence": "live-normal-samples.txt",
+    "component_only": true
+  },
+  "builds": {
+    "Debug": "arm64 build-for-testing passed; final test-only extension17.280s",
+    "Release": "generic iOS Simulator BUILD SUCCEEDED at67f78c0, unchanged runtime/config inputs"
+  },
+  "commands": {
+    "build": "XcodeBuildMCP build_sim(buildForTesting:true,extraArgs:[ONLY_ACTIVE_ARCH=YES]); shared Starfall Debug scheme",
+    "hosted": "test_sim prepared products; seven -only-testing:StarfallAppTests/<class> selectors, -parallel-testing-enabled NO, explicit -resultBundlePath",
+    "native": "test_sim prepared products; one explicit -only-testing:StarfallUITests/<method> per corrected call, serial owned devices",
+    "Release": "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -sdk iphonesimulator -destination generic/platform=iOS Simulator CODE_SIGNING_ALLOWED=NO -jobs4 build",
+    "recording": "simctl io <owned UUID> recordVideo --codec=h264 --force <explicit path>; readiness and file existence checked",
+    "media": "Existing Swift AVFoundation/AppKit extraction, actual timestamps retained; sips JPEG85 original resolution",
+    "planner": "python3 scripts/test_native_test_plan.py; native_test_plan dev inventory"
+  },
+  "environment": {
+    "macOS": "27.0.1",
+    "Xcode": "27.1 (27A9275)",
+    "simulatorOS": "iOS27.0",
+    "phone": "iPhone17e 64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+    "tablet": "AX3XL, actual Settings Calm OFF\u2192ON, launch override omitted, preference restored",
+    "phone_motion": "Normal, CalmNO; actual system Reduce Motion disabled/restored"
+  },
+  "failures_and_limits": [
+    "7f40344 first compile failed2 hosted escaping closures; test-only81d025d qualified self.",
+    "81d025d mechanical159hosted/3native passes were visually rejected: root full-header clip erased Lantern aperture.",
+    "67f78c0 corrects scenery compositing; no gameplay timing changed.",
+    "First phone MCP300s response timeout; owned XCTest finalized2/0/0 at318.432s, no same-source retry.",
+    "One incorrectly named selector field started an unintended broader UI case; coordinator interrupted only verified owned xcodebuild51508. Reported canceled1/0pass and result-save timeout. Intended live hosted check then used explicit Xcode extraArgs and passed1/0/0.",
+    "Normal native video has repeated timestamps/gaps around short response; live UIWindow rendered-frame sampling proves normal arrival response, not full native pulse trajectory.",
+    "Earlier source counts/captures certify only recorded inputs.",
+    "Selected Apple scope, no full-current-matrix, human recognition, physical, minimumOS17, actualVoiceOver or sustained-performance claim."
+  ],
+  "owned_devices_final": "Both confirmed Shutdown; no physical operations",
+  "discoveries": "None beyond existing #345 observation after worker deduplication",
+  "raw_root": "/private/tmp/starfall-identity-07-20261024",
+  "promoted_images": 7,
+  "local_link_targets": 893,
+  "hygiene_diff_membership": "pass",
+  "all_accepted_runtime_test_inputs_unchanged": true,
+  "accepted_input_count": 681
+}
