@@ -38,6 +38,7 @@ final class ConstellationTraceNativeTests: XCTestCase {
         score(5,app)
         let rose=app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'"))
         XCTAssertEqual(rose.count,1)
+        XCTAssertTrue(app.buttons["experiment.cell.5.5"].label.contains("Twinkle"), "The untraced sixth star stays in its original column")
         let screenshot=XCTAttachment(screenshot:app.screenshot());screenshot.name="trace-five-from-six";screenshot.lifetime = .keepAlways;add(screenshot)
         app.terminate();app.launchArguments=[];app.launch();
         XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout:10));app.buttons["sky.resume"].tap();score(5,app)
@@ -77,7 +78,70 @@ final class ConstellationTraceNativeTests: XCTestCase {
         let app=launch("singleGap");defer {app.terminate()}
         drag(app,from:(0,0),to:(0,2));score(0,app)
         drag(app,from:(0,0),to:(0,5));score(5,app)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'")).count,0)
+        for column in 0...5 { XCTAssertTrue(app.buttons["experiment.cell.0.\(column)"].label.hasPrefix("Empty")) }
         let image=XCTAttachment(screenshot:app.screenshot());image.name="one-gap-clear";image.lifetime = .keepAlways;add(image)
+    }
+
+    @MainActor func testHorizontalTraceAndOrdinaryTapKeepDistinctCommittedSelections() {
+        let horizontal = launch("horizontalFive")
+        defer { horizontal.terminate() }
+        let before = XCTAttachment(screenshot: horizontal.screenshot())
+        before.name = "constellation-horizontal-before-held-stroke"; before.lifetime = .keepAlways; add(before)
+        drag(horizontal, from: (0,0), to: (0,4)); score(5, horizontal)
+        XCTAssertEqual(horizontal.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'")).count, 0)
+        for column in 0..<5 { XCTAssertTrue(horizontal.buttons["experiment.cell.0.\(column)"].label.hasPrefix("Empty")) }
+        // These captures are committed-state checkpoints. External motion review
+        // must establish the actual drawing, its duration and its disappearance.
+        let traced = XCTAttachment(screenshot: horizontal.screenshot())
+        traced.name = "constellation-horizontal-committed"; traced.lifetime = .keepAlways; add(traced)
+        horizontal.terminate()
+
+        let ordinary = launch("overlap"); defer { ordinary.terminate() }
+        ordinary.buttons["experiment.cell.0.5"].tap(); score(5, ordinary)
+        XCTAssertEqual(ordinary.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'")).count, 2)
+        XCTAssertTrue(ordinary.buttons["experiment.cell.1.3"].label.contains("Twinkle"))
+        XCTAssertTrue(ordinary.buttons["experiment.cell.1.4"].label.contains("Twinkle"))
+        let tapped = XCTAttachment(screenshot: ordinary.screenshot())
+        tapped.name = "constellation-ordinary-tap-committed"; tapped.lifetime = .keepAlways; add(tapped)
+    }
+
+    @MainActor func testTracedSelectionAllowsNextClearAndSurvivesLifecycle() {
+        let app = launch(); defer { app.terminate() }
+        drag(app, from: (0,0), to: (4,4)); score(5, app)
+        XCTAssertTrue(app.buttons["experiment.cell.5.5"].label.contains("Twinkle"))
+        // No receipt-expiry wait precedes this following ordinary clear. Native
+        // command latency is not proof that it occurred within the 1.4s receipt.
+        let next = app.buttons["experiment.cell.0.1"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: next).wait(timeout: 5))
+        next.tap(); score(20, app)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Spark'")).count, 0)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'")).count, 1)
+        let survivor = app.buttons["experiment.cell.0.5"].label
+        XCTAssertTrue(survivor.contains("Twinkle"), "The sixth star falls after its Aqua supports clear")
+        let board = app.otherElements["experiment.board"].value as? String
+        XCTAssertNotNil(board)
+        app.buttons["experiment.settings"].tap()
+        let done = app.buttons["experiment.done"]
+        XCTAssertTrue(done.waitForExistence(timeout: 5))
+        XCUIDevice.shared.press(.home); app.activate()
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            app.state == .runningForeground && done.isHittable && done.isEnabled
+        }, object: nil).wait(timeout: 8))
+        done.tap(); score(20, app)
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, board)
+        XCTAssertEqual(app.buttons["experiment.cell.0.5"].label, survivor)
+        app.terminate(); app.launchArguments = []; app.launch()
+        XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout: 10))
+        app.buttons["sky.resume"].tap(); score(20, app)
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, board)
+        XCTAssertEqual(app.buttons["experiment.cell.0.5"].label, survivor)
+        let restored = XCTAttachment(screenshot: app.screenshot())
+        restored.name = "constellation-follow-up-restored"; restored.lifetime = .keepAlways; add(restored)
+        app.buttons["experiment.settings"].tap()
+        app.skyMenuControl("experiment.replay").tap()
+        XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+        app.buttons["sky.begin"].tap(); score(0, app)
     }
     @MainActor func testNativeOffCenterStrokeAcquiresFive() {
         let app=launch("horizontalFive");defer {app.terminate()}
@@ -85,6 +149,47 @@ final class ConstellationTraceNativeTests: XCTestCase {
         let end=app.buttons["experiment.cell.0.4"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.88))
         start.press(forDuration:0.4,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.1)
         score(5,app)
+    }
+
+    @MainActor func testLargestTextCalmTraceKeepsCommittedSelectionAndNextInput() {
+        let app = launch(large: true); defer { app.terminate() }
+        app.buttons["experiment.settings"].tap()
+        app.skyMenuControl("experiment.preferences").tap()
+        let calm = app.switches["experiment.calm"]
+        XCTAssertTrue(calm.waitForExistence(timeout: 5))
+        app.revealSkyMenuElement(calm)
+        app.revealSkyControls([calm])
+        let originalCalm = calm.value as? String == "1"
+        NativeSystemMotionSettings.set(true, on: calm)
+        XCTAssertEqual(calm.value as? String, "1")
+        let preference = XCTAttachment(screenshot: app.screenshot())
+        preference.name = "constellation-largest-text-calm-selected"; preference.lifetime = .keepAlways; add(preference)
+        app.buttons["experiment.done"].tap()
+        defer {
+            app.buttons["experiment.settings"].tap()
+            app.skyMenuControl("experiment.preferences").tap()
+            XCTAssertTrue(calm.waitForExistence(timeout: 5))
+            app.revealSkyMenuElement(calm)
+            app.revealSkyControls([calm])
+            NativeSystemMotionSettings.set(originalCalm, on: calm)
+            app.buttons["experiment.done"].tap()
+        }
+        drag(app, from: (0,0), to: (4,4)); score(5, app)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'")).count, 1)
+        XCTAssertTrue(app.buttons["experiment.cell.5.5"].label.contains("Twinkle"))
+        // The checkpoint preserves the actual AX3XL viewport for review. It
+        // does not assert that a static figure rendered or outlasted capture IO.
+        let traced = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        traced.name = "constellation-largest-text-calm-selected-five"; traced.lifetime = .keepAlways; add(traced)
+        let next = app.buttons["experiment.cell.0.1"]
+        app.revealSkyControls([next])
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: next).wait(timeout: 5))
+        next.tap(); score(20, app)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Spark'")).count, 0)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'")).count, 1)
+        XCTAssertTrue(app.buttons["experiment.cell.0.5"].label.contains("Twinkle"))
+        let followUp = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        followUp.name = "constellation-largest-text-calm-next-input"; followUp.lifetime = .keepAlways; add(followUp)
     }
 
     @MainActor func testBuildIDMenuAndLargestTextTrace() {

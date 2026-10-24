@@ -80,7 +80,8 @@ import StarfallCore
                    let board = anchors[.board], let score = anchors[.score], let header = anchors[.header] {
                     StarlightCelebrationOverlay(event: receipt, board: proxy[board], score: proxy[score], header: proxy[header], quiet: quietMotion,
                                                lightDestination: anchors[.restorationLight].map { proxy[$0] },
-                                               awardBounds: anchors[.award].map { proxy[$0] })
+                                               awardBounds: anchors[.award].map { proxy[$0] },
+                                               constellationBounds: anchors[.constellationReturn].map { proxy[$0] })
                         .id(receipt.id)
                 }
             }.allowsHitTesting(false)
@@ -147,6 +148,14 @@ import StarfallCore
                                 edgeHeader(island: false)
                                     .padding(.horizontal, StarfallTheme.Spacing.medium)
                                     .padding(.top, StarfallTheme.Spacing.compact)
+                                if store.game.supportsManualClears {
+                                    // Fixed outside scrolling play: a returning figure
+                                    // never needs to cover the HUD or a visible star.
+                                    Color.clear.frame(height: 80)
+                                        .starlightAnchor(.constellationReturn)
+                                        .padding(.vertical, 8)
+                                        .allowsHitTesting(false).accessibilityHidden(true)
+                                }
                             }
                             GeometryReader { readingViewport in
                                 ScrollView {
@@ -236,6 +245,7 @@ import StarfallCore
                 .padding(.horizontal, StarfallTheme.Spacing.medium)
             Color.clear.frame(height: awardHeight)
                 .starlightAnchor(.award)
+                .starlightAnchor(.constellationReturn)
                 .allowsHitTesting(false).accessibilityHidden(true)
             ScrollView {
                 board(expanded: true, landscape: false)
