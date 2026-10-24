@@ -1,0 +1,195 @@
+{
+  "goal": 337,
+  "images": [
+    {
+      "file": "dev-bfa3914__partial-held__iphone-17e__normal.jpg",
+      "source": "bfa39140",
+      "bundle": "dev.local",
+      "variant": "normal/default",
+      "simulator_os": "iOS27.0",
+      "raw_video": "/private/tmp/starfall-identity-02-20261024/phone.mp4",
+      "video_sha256": "f983da23ac34e1d8963632638ba76cd200fc230cf4812b23a61fef0c746fc75c",
+      "raw_decoded_png_sha256": "dec8829416a775a70f136c3d5eed83a87c4b382d87c23f2159511174500fab12",
+      "decoded_frame": {
+        "actual": 88.5,
+        "index": 0,
+        "requested": 88.5,
+        "sheet": 0
+      },
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "sha256": "e37744f100f5a9313f4f0d190efa4e4fc9674d4368ca7e19dae2c7368ee5d425",
+      "conversion": "AVFoundation exact-time decode, no crop or resize; sips JPEG85; inspect encoded export",
+      "status": "Current for recorded inputs"
+    },
+    {
+      "file": "dev-bfa3914__full-held__iphone-17e__normal.jpg",
+      "source": "bfa39140",
+      "bundle": "dev.local",
+      "variant": "normal/default",
+      "simulator_os": "iOS27.0",
+      "raw_video": "/private/tmp/starfall-identity-02-20261024/phone.mp4",
+      "video_sha256": "f983da23ac34e1d8963632638ba76cd200fc230cf4812b23a61fef0c746fc75c",
+      "raw_decoded_png_sha256": "8507a1825ef7b7f9050728409e6ee72c39e22fadbb74ce5405fe6295e0e74396",
+      "decoded_frame": {
+        "actual": 101.58666666666667,
+        "index": 0,
+        "requested": 101.587,
+        "sheet": 0
+      },
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "sha256": "804071587d43144963f5298ffc6a00b6135267d370529817fef59c71be2ad4b7",
+      "conversion": "AVFoundation exact-time decode, no crop or resize; sips JPEG85; inspect encoded export",
+      "status": "Current for recorded inputs"
+    },
+    {
+      "file": "dev-bfa3914__dense-held__iphone-17e__normal.jpg",
+      "source": "bfa39140",
+      "bundle": "dev.local",
+      "variant": "normal/default/49occupied",
+      "simulator_os": "iOS27.0",
+      "raw_video": "/private/tmp/starfall-identity-02-20261024/phone.mp4",
+      "video_sha256": "f983da23ac34e1d8963632638ba76cd200fc230cf4812b23a61fef0c746fc75c",
+      "raw_decoded_png_sha256": "8822424e2bdf4a82715ef720fb6530910eb6f10b77c10427ac8ec61c4780600c",
+      "decoded_frame": {
+        "actual": 40.28666666666667,
+        "index": 0,
+        "requested": 40.287,
+        "sheet": 0
+      },
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "sha256": "eec660751de79c23262df0ee96765277249e6c4aa358c734949d5ec04623c31a",
+      "conversion": "AVFoundation exact-time decode, no crop or resize; sips JPEG85; inspect encoded export",
+      "status": "Current for recorded inputs"
+    },
+    {
+      "file": "dev-bfa3914__partial-return__iphone-17e__normal.jpg",
+      "source": "bfa39140",
+      "bundle": "dev.local",
+      "variant": "normal/default",
+      "simulator_os": "iOS27.0",
+      "raw_video": "/private/tmp/starfall-identity-02-20261024/phone.mp4",
+      "video_sha256": "f983da23ac34e1d8963632638ba76cd200fc230cf4812b23a61fef0c746fc75c",
+      "raw_decoded_png_sha256": "33dd1ec538f283adb6899333398fa2596cb8f743e4d01832be153ec76a443b41",
+      "decoded_frame": {
+        "actual": 89.56166666666667,
+        "index": 0,
+        "requested": 89.6,
+        "sheet": 0
+      },
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "sha256": "e5b4acda1f6893a609ea0df7a17c8c35480b162b179de687af5160ff1906b5ed",
+      "conversion": "AVFoundation exact-time decode, no crop or resize; sips JPEG85; inspect encoded export",
+      "status": "Current for recorded inputs"
+    },
+    {
+      "file": "dev-07aec73__partial-held__ipad-pro11-m5__ax3xl-calm.jpg",
+      "source": "07aec73",
+      "bundle": "dev.local",
+      "variant": "AX3XL/Calm",
+      "simulator_os": "iOS27.0",
+      "raw_video": "/private/tmp/starfall-identity-02-20261024/tablet.mp4",
+      "video_sha256": "5e0ade299c2f4f4c2c231cebb26e75986ada414e0d817d94c064d135c6a35f76",
+      "raw_decoded_png_sha256": "e203abc72b1abf88da04de88789129772d666f75c534ea7be0a0fba02c6dd5ae",
+      "decoded_frame": {
+        "actual": 61.19166666666667,
+        "index": 0,
+        "requested": 61.191667,
+        "sheet": 0
+      },
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "sha256": "cd1895ec3ad92a8e6ce85b1ab1e8903f4f44e7613f5b11c65a23c59de152d7fd",
+      "conversion": "AVFoundation exact-time decode, no crop or resize; sips JPEG85; inspect encoded export",
+      "status": "Current for recorded inputs"
+    },
+    {
+      "file": "dev-07aec73__dense-held__ipad-pro11-m5__normal.jpg",
+      "source": "07aec73",
+      "bundle": "dev.local",
+      "variant": "normal/default/49occupied",
+      "simulator_os": "iOS27.0",
+      "raw_video": "/private/tmp/starfall-identity-02-20261024/tablet.mp4",
+      "video_sha256": "5e0ade299c2f4f4c2c231cebb26e75986ada414e0d817d94c064d135c6a35f76",
+      "raw_decoded_png_sha256": "b48ea88579cccfe79f0f200cfe5d685d4aa0465b561467c8f33d368af320d91c",
+      "decoded_frame": {
+        "actual": 39.48166666666667,
+        "index": 0,
+        "requested": 39.498333,
+        "sheet": 0
+      },
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "sha256": "ba974fff61e7d9644e3e94a08614856dcf230eb02aa9c5fbb1ea703c9d98d804",
+      "conversion": "AVFoundation exact-time decode, no crop or resize; sips JPEG85; inspect encoded export",
+      "status": "Current for recorded inputs"
+    }
+  ],
+  "motion_review": "Held selection/release/return/cleanup sequences inspected separately in raw recordings via decoded frame sequences. Not physical smoothness or human recognition.",
+  "phone_source": "bfa39140",
+  "tablet_source": "07aec73; App/native test bytes equal bfa39140",
+  "native_branching": "Not executed",
+  "motion_windows": {
+    "phone": {
+      "dense_held": [
+        40.19,
+        40.668
+      ],
+      "dense_return_samples": [
+        40.997,
+        41.888
+      ],
+      "dense_absent_by": 42.0,
+      "partial_held": [
+        88.5,
+        89.003
+      ],
+      "partial_return_samples": [
+        89.198,
+        90.3
+      ],
+      "partial_absent_by": 90.4,
+      "full_held": [
+        101.485,
+        101.637
+      ],
+      "full_return_samples": [
+        101.9,
+        102.89
+      ],
+      "full_absent_by": 103.0,
+      "following_ordinary_clear_first_sample": 105.74
+    },
+    "tablet": {
+      "dense_held_samples": [
+        39.498333,
+        39.648333
+      ],
+      "dense_return_by": 40.096667,
+      "dense_absent_by": 41.098333,
+      "calm_held_sample": 61.191667,
+      "calm_static_return_samples": [
+        61.79,
+        62.788333
+      ],
+      "calm_absent_by": 63.19,
+      "following_ordinary_clear_first_sample": 65.59
+    },
+    "scope": "Decoded sample bounds, not exact onset/duration or continuous/physical smoothness. Following input occurs after cleanup. Derived contact sheets are disposable, separately from these six original-resolution exports."
+  }
+}

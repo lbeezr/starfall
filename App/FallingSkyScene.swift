@@ -31,6 +31,7 @@ import StarfallCore
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     override func didChangeSize(_ oldSize: CGSize) {
         guard oldSize != size else { return }
+        clearConstellationTrace()
         onLayout?()
         reportReadiness()
     }
@@ -42,6 +43,7 @@ import StarfallCore
         reportReadiness()
     }
     override func willMove(from view: SKView) {
+        clearConstellationTrace()
         for node in nodes.values { node.setGrowthMotion(false); node.setPieceMotion(false) }
         cancelFlightPoses()
         onReadinessChanged?(false); onLayout?()
@@ -679,9 +681,23 @@ extension FallingSkyScene {
 
     func clearConstellationTrace() { constellationTrail.removeAllActions(); constellationTrail.removeAllChildren() }
 
-    func showConstellationTrace(_ path: [Cell], ready: Bool) {
+    func showConstellationTrace(_ path: [Cell], ready: Bool, source: FallingSky? = nil) {
         clearConstellationTrace()
-        guard path.count <= 196, !path.isEmpty else { return }
+        guard let source = source ?? rendered, source == rendered, !source.isOver,
+              source.isValidConstellationPrefix(path), let first = path.first else { return }
+        // Core's complete component owns membership. Retained revision2 can
+        // consume unselected stars in automatic follow-ups, so it gets no promise
+        // that a matching star will stay.
+        if !source.supportsAutomaticRecipes {
+            var family = source.constellationGroup(at: first)
+            if family.isEmpty, source.supportsArrangingStars {
+                // The existing square exception permits a four-star-only family.
+                // Ask Core to identify it; don't recreate square geometry here.
+                let ordinary = source.group(at: first)
+                if source.recipe(matching: ordinary)?.shape == .square { family = ordinary }
+            }
+            showRetainedConstellation(family.subtracting(Set(path)), source: source)
+        }
         constellationTrail.addChild(contactOutline(path[0], ready:true, armed:true))
         let route = CGMutablePath()
         route.move(to: point(path[0]))
@@ -712,6 +728,41 @@ extension FallingSkyScene {
         lead.strokeColor = UIColor(StarfallTheme.Observatory.lanternGlow).withAlphaComponent(0.65)
         lead.lineWidth = 1.4; lead.glowWidth = reduceMotion ? 0 : 3
         constellationTrail.addChild(lead)
+    }
+
+    /// Static open supports distinguish the matching bodies left out of this
+    /// walk. No route between them, body changes, or future-value suggestion.
+    private func showRetainedConstellation(_ cells: Set<Cell>, source: FallingSky) {
+        let supports = CGMutablePath()
+        var identities: [Int] = []
+        for cell in cells.sorted(by: { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }) {
+            guard !animatingColumns.contains(cell.column), let gem = source.gem(at: cell),
+                  cellsByID[gem.id] == cell, nodes[gem.id]?.gem == gem else { continue }
+            let center = point(cell), cue = StarfallTheme.SelectionCue.self
+            let halfWidth = step * cue.retainedHalfWidth
+            let bodyRadius = StarfallMotion.pieceRadius * FallingSkyCharacter.bodyScale(for: gem)
+            let baseline = center.y - step * max(cue.retainedBaseline, bodyRadius + cue.retainedBodyClearance)
+            let lip = step * cue.retainedLipHeight
+            supports.move(to: CGPoint(x: center.x - halfWidth, y: baseline + lip))
+            supports.addLine(to: CGPoint(x: center.x - halfWidth, y: baseline))
+            supports.addLine(to: CGPoint(x: center.x + halfWidth, y: baseline))
+            supports.addLine(to: CGPoint(x: center.x + halfWidth, y: baseline + lip))
+            identities.append(gem.id)
+        }
+        guard !identities.isEmpty else { return }
+        let contrast = SKShapeNode(path: supports)
+        contrast.name = "constellation.trace.retained.contrast"
+        contrast.strokeColor = UIColor.black.withAlphaComponent(0.85)
+        contrast.lineWidth = StarfallTheme.SelectionCue.contactWidth + 2
+        contrast.lineCap = .round; contrast.lineJoin = .round; contrast.fillColor = .clear
+        constellationTrail.addChild(contrast)
+        let marks = SKShapeNode(path: supports)
+        marks.name = "constellation.trace.retained"
+        marks.userData = ["identities": identities]
+        marks.strokeColor = UIColor(StarfallTheme.Colors.textPrimary)
+        marks.lineWidth = StarfallTheme.SelectionCue.contactWidth
+        marks.lineCap = .round; marks.lineJoin = .round; marks.fillColor = .clear
+        constellationTrail.addChild(marks)
     }
 
     func moveConstellationTip(_ location: CGPoint) {
