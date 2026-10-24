@@ -1,6 +1,6 @@
 # Accept the next move while the cascade continues
 
-**Status:** Isolated nonvisual correction; focused verification in progress · **Date:** October 24, 2026
+**Status:** Verified nonvisual correction, PR #398 · **Date:** October 24, 2026
 
 The existing 650 ms single-request buffer could expire a valid swipe during a real five-phase Ribbon cascade. A later contact also replaced an earlier accepted request. This slice keeps up to four independent plans in FIFO order through physical presentation; combo and collection announcements continue. Only actual commits award points or save.
 
@@ -14,7 +14,7 @@ This is a source-exact extraction from the already tested first-loop candidate i
 
 ## Verification boundary
 
-[Source snapshot](source.json) records every build-affecting dirty input at Debug build and test dispatch. Subsequent changes to this branch are evidence/docs only; final committed source must match those hashes. The unchanged Core suite passes 352 tests. Debug build-for-testing passes. Focused native/hosted and Release results are pending; this report does not treat pending execution as acceptance.
+[Source snapshot](source.json) records every build-affecting dirty input at Debug build and test dispatch. Subsequent changes to this branch are evidence/docs only; final committed source must match those hashes. The unchanged Core suite passes 352 tests. Debug build-for-testing passes. Release, all 88 selected hosted checks and the native five-phase journey pass with zero failures/skips. [Verification summary](verification.json) records exact source, commands, environment and result. Hygiene and whitespace pass. These establish execution, not physical feel or new visual adoption.
 
 The hosted selection covers36 SkyTechniqueStore,17 ResponsiveInput,29 SkyDialogue and6 SkyPhasePresentation checks. Queue regressions verify FIFO, four-admission bound, held-tap order, stationary/settle-back identity, moving manual-group member rejection, terminal/lifecycle cancellation, committed-only saves and exact clock remainder. The native method uses the real Ribbon revision 7 opening and 11 production exchanges, then submits three rapid inputs through the actual five-phase action with no settling/readiness wait. Acceptance requires exactly 15 committed exchanges,179,000 points and49 actual stars. It does not depend on a proposed visual queue counter.
 
