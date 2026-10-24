@@ -1,5 +1,7 @@
 # iOS application
 
+Successive recipe phases keep at most two preceding exact figures beside the active return in `CascadeReturnLayout`. Only the current receipt emits packets and acknowledges its actual destination after arrival; receipt replacement cancels the superseded flight. Separate actions start a new strip, and quiet presentation shows the same bounded causal prefix directly. The Store rejects invalid, duplicate and backward phase callbacks without delaying gameplay. [Identity goal6 evidence](../docs/evidence/identity-goal-06-cascade-returns-2026-10-24/README.md).
+
 Committed automatic recipe phases now return every actual square/cross/line as separate geometry, including simultaneous overlaps. `StarlightCelebration.Pattern` and `PatternReturnLayout` reuse the existing affine return, easing, Canvas and cancellation; manual walks keep their exact topology. Story reading layouts share the protected return band. [Identity goal5 acceptance](../docs/evidence/identity-goal-05-story-patterns-2026-10-24/README.md).
 
 Replay/New Entry Back restores the originating round or earned result; explicit Home still opens the Observatory, and Map previews return to Map. Saved Map/Places progress names the retained Falling Sky/Full Board mode. [Goal10 source-bound acceptance](../docs/evidence/depth-goal-10-repeat-journey-2026-10-23/README.md).

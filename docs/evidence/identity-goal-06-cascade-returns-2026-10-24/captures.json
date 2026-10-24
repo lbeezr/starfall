@@ -1,0 +1,162 @@
+{
+  "images": [
+    {
+      "file": "dev-b0fbbb3__three-phase-ribbon__iphone-17e__normal.jpg",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "bundle": "dev.local",
+      "kind": "Native recording frame",
+      "raw": "/private/tmp/starfall-identity-06-20261024/phone-ribbon-selected/frame-00000.png",
+      "raw_sha256": "74aa98685c4abe09317a2cfde81d69c9ba9ad651840f19f787243dd5c1b01e28",
+      "sha256": "de176e7d55b5d1dfea4091039e012e5c3a0aa4675cea7059528ca1a98fd70816",
+      "conversion": "sips JPEG85 at original resolution; no crop or repaint",
+      "dimensions_text": [
+        "  pixelWidth: 1170",
+        "  pixelHeight: 2532"
+      ],
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "frame": {
+        "actual": 139.395,
+        "index": 0,
+        "requested": 139.4,
+        "sheet": 0
+      },
+      "video_sha256": "6982d1bb4ee74192b68254837d5ac08b6d2d717d4b7704eccb7a35c72189504d"
+    },
+    {
+      "file": "dev-b0fbbb3__two-phase-lantern__iphone-17e__normal.jpg",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "bundle": "dev.local",
+      "kind": "Native recording frame",
+      "raw": "/private/tmp/starfall-identity-06-20261024/phone-lantern-selected-final/frame-00000.png",
+      "raw_sha256": "4bf88042674ac4e4d93d497106013d6ce23884f3ba9fd66cc4e8009f0a410867",
+      "sha256": "cf698e967a217a28f0fde03200bf2c4a56f0596ab907c11374fbc1013282f2e7",
+      "conversion": "sips JPEG85 at original resolution; no crop or repaint",
+      "dimensions_text": [
+        "  pixelWidth: 1170",
+        "  pixelHeight: 2532"
+      ],
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "frame": {
+        "actual": 256.2966666666667,
+        "index": 0,
+        "requested": 256.3,
+        "sheet": 0
+      },
+      "video_sha256": "6982d1bb4ee74192b68254837d5ac08b6d2d717d4b7704eccb7a35c72189504d"
+    },
+    {
+      "file": "dev-b0fbbb3__three-figures__hosted__normal.jpg",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "bundle": "dev.local",
+      "kind": "Hosted fixed-age Canvas",
+      "raw": "/private/tmp/starfall-identity-06-20261024/hosted-attachments/0B71BEEC-1F6A-4DE7-B2B4-BBD7F6EABB4E.png",
+      "raw_sha256": "58c3c2d88d8a9a16ded2865148284d20e15b390f4fa6c58dd5a8b4b4b975d54c",
+      "sha256": "a91b042d3b1ea479960e2ca123c6c8b033eeb9582622c8b7a1ae4203fa8c37a6",
+      "conversion": "sips JPEG85 at original resolution; no crop or repaint",
+      "dimensions_text": [
+        "  pixelWidth: 1170",
+        "  pixelHeight: 2532"
+      ],
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+        "deviceName": "Starfall Factory Goals iPhone",
+        "exportedFileName": "0B71BEEC-1F6A-4DE7-B2B4-BBD7F6EABB4E.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "cascade-return-arrived-three-figures_0_8602C665-9347-491D-AD9F-571B62405706.png",
+        "timestamp": 1792818161.026
+      }
+    },
+    {
+      "file": "dev-b0fbbb3__full-board-two-figures__ipad-pro11-m5__ax3xl-calm.jpg",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "bundle": "dev.local",
+      "kind": "Native XCTest attachment",
+      "raw": "/private/tmp/starfall-identity-06-20261024/tablet-attachments/4C4E7D8C-85C1-4FAB-9D90-6C897DC608E3.png",
+      "raw_sha256": "e2cb973c8f6169c8de8eb3187fe6af93f5903c74c510f2287c78dbc369cb3eb6",
+      "sha256": "b5482588c9b550587e5db854a3693bdc07053f17f9cbe53e68aef7362ca54f22",
+      "conversion": "sips JPEG85 at original resolution; no crop or repaint",
+      "dimensions_text": [
+        "  pixelWidth: 1668",
+        "  pixelHeight: 2420"
+      ],
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+        "deviceName": "Starfall Factory Goals iPad",
+        "exportedFileName": "4C4E7D8C-85C1-4FAB-9D90-6C897DC608E3.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "identity06-tablet-full-board-two-phase-returns_0_3EB46DF0-7A96-4E22-AE43-64AFEB934ACE.png",
+        "timestamp": 1792818736.237
+      }
+    },
+    {
+      "file": "dev-b0fbbb3__square-then-line__ipad-pro11-m5__ax3xl-calm.jpg",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "bundle": "dev.local",
+      "kind": "Native XCTest attachment",
+      "raw": "/private/tmp/starfall-identity-06-20261024/tablet-attachments/AB980D41-983F-43EC-A4D4-AF02FD5F9A29.png",
+      "raw_sha256": "65b10fad03d1b4bd4fc71b73820ff65f5de098ee6405a58bd00fcf75d0980bb6",
+      "sha256": "5fd3fd4c390c2a3f5f5155f26e0505222641dd8238c9f6e01d0f7fee14ced770",
+      "conversion": "sips JPEG85 at original resolution; no crop or repaint",
+      "dimensions_text": [
+        "  pixelWidth: 1668",
+        "  pixelHeight: 2420"
+      ],
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+        "deviceName": "Starfall Factory Goals iPad",
+        "exportedFileName": "AB980D41-983F-43EC-A4D4-AF02FD5F9A29.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "identity06-tablet-square-then-survivor-line_0_5E0E75BD-319D-4377-9877-58F94AFE31CE.png",
+        "timestamp": 1792818764.695
+      }
+    },
+    {
+      "file": "dev-b0fbbb3__simultaneous-squares__ipad-pro11-m5__ax3xl-calm.jpg",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "bundle": "dev.local",
+      "kind": "Native XCTest attachment",
+      "raw": "/private/tmp/starfall-identity-06-20261024/tablet-attachments/4C05C61D-3425-49EE-AF5B-92AF1697E56E.png",
+      "raw_sha256": "b568484e986192486268408999ad7cb721b5289f995070c24b71c4668d1628a1",
+      "sha256": "110b4de401a85fd7e6b453f0530d0891d21a268cc06f12ff0ab37f59605c341a",
+      "conversion": "sips JPEG85 at original resolution; no crop or repaint",
+      "dimensions_text": [
+        "  pixelWidth: 1668",
+        "  pixelHeight: 2420"
+      ],
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+        "deviceName": "Starfall Factory Goals iPad",
+        "exportedFileName": "4C05C61D-3425-49EE-AF5B-92AF1697E56E.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "identity06-tablet-one-phase-two-simultaneous-squares_0_17CAFC5D-79FB-4F38-8278-023B89B15EDC.png",
+        "timestamp": 1792818794.043
+      }
+    }
+  ],
+  "limits": [
+    "Normal phone selected frames come from inspected sampled sequences, not every rendered interval.",
+    "Ribbon frame includes active refill flights; separate native settled assertion establishes 49 occupied cells.",
+    "Tablet views use actual AX3XL Calm and deliberate guide scrolling."
+  ],
+  "supplementary_inspected": [
+    {
+      "raw": "/private/tmp/starfall-identity-06-20261024/tablet-attachments/A7C3425F-529F-4CCC-9D94-EC01F5D34B29.png",
+      "sha256": "7fe868994fc4154d5cb284c666cee3d19ff266c8b26fc694958234005bdcab82",
+      "context": "Complete comparison instruction and Retry/Hint/Finish after deliberate scroll; no shape remains after receipt expiry."
+    }
+  ]
+}

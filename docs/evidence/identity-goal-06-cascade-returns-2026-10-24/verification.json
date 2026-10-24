@@ -1,0 +1,127 @@
+{
+  "goal": 341,
+  "base": "ee1ec76302ce0df2aaa10ab30138457832cb4025",
+  "runtime_test_checkpoint": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+  "tested_tree": "baa66c093fd7919c86d7a631c95e3fdf81df49c2",
+  "runtime_fingerprint": "dev.5c713aa44d",
+  "actual_bundle": {
+    "StarfallBuildID": "dev.local",
+    "CFBundleIdentifier": "com.starfall.prototype",
+    "CFBundleShortVersionString": "0.1.0",
+    "CFBundleVersion": "1"
+  },
+  "source_hashes": {
+    "App/StarlightCelebration.swift": "05e3bddb839ba3d6ec866524492736c9e881a5aeaf0e8c3bb5f69bcac1d40e07",
+    "App/FallingSkyView.swift": "12a43c2c4a750321e81a90e2e962374c0565c3969de87fb3ad565f808a1cfe1f",
+    "App/FallingSkyStore.swift": "af4bb1bdea87d85bf10fe593bb43b026de17dfba062f4fba3782c33000090203",
+    "AppTests/CascadeReturnTests.swift": "c9c82e6baa122559b445a2791b2c04cc2527f5b4d7d6a028317f3e9d718585d4",
+    "UITests/CascadeReturnInteractionTests.swift": "6d27251a3bfa9c87c55daf119f6fb02b3fd8bd6b3e47836d9bb7ec51bce53fa8",
+    "Config/Starfall-Info.plist": "3cc86a35a113daca7543ff84cd26e40601acec33a509ea5ee20f325f4c9afcd4",
+    "Config/Clean.xcconfig": "4650ec2003b522e5f57696746d755b382349e97b5acb0085e4c0224322b4fa0e",
+    "Starfall.xcodeproj/project.pbxproj": "6884b5f8e4731e6e16695d34aafeddbece35a6a14022eaad4d6a7f9ac621298b",
+    "Package.swift": "3d0eff92cb330f4053958fb53a03e5dbf1d786ae8f33f287d58d2902ba7293d5"
+  },
+  "all_checkpoint_runtime_and_test_inputs_unchanged": true,
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 21.007,
+    "command": "swift test --scratch-path /private/tmp/starfall-identity-06-20261024/CoreBuild",
+    "inputs": "/private/tmp/starfall-identity-06-20261024/core-inputs.json",
+    "inputs_sha256": "7d5d5b021bf407c7396617c685ba158f22f02903dbc094adb3ba71eab496c524",
+    "all_inputs_unchanged": true
+  },
+  "executions": [
+    {
+      "name": "hosted",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "raw": "/private/tmp/starfall-identity-06-20261024/hosted-summary.json",
+      "sha256": "2b22a63aac1c059b91c2847178919305310c310766f18c64f12a1c1eadfe8523",
+      "passedTests": 189,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 189,
+      "startTime": 1792818134.856,
+      "finishTime": 1792818207.921
+    },
+    {
+      "name": "phone",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "raw": "/private/tmp/starfall-identity-06-20261024/phone-summary.json",
+      "sha256": "bd00ed3103606b01a75c53c6e52dcef1d0568470e784e877322372b37a9de1a0",
+      "passedTests": 4,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 4,
+      "startTime": 1792818257.521,
+      "finishTime": 1792818607.882
+    },
+    {
+      "name": "tablet",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "raw": "/private/tmp/starfall-identity-06-20261024/tablet-summary.json",
+      "sha256": "9b7e3a3a339fdc85296a398d6706144f1a58e2c4e6126a52cfe11568330c4c8f",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792818662.291,
+      "finishTime": 1792818877.771
+    }
+  ],
+  "hosted_suites": {
+    "AutomaticPatternReturnTests": 14,
+    "CascadeReturnTests": 15,
+    "FallingSkyStoreTests": 51,
+    "FullBoardCascadePracticePresentationTests": 5,
+    "HelperDepartureTests": 5,
+    "OpenSkyPracticePresentationTests": 4,
+    "SkyPhasePresentationTests": 6,
+    "SkyTechniqueStoreTests": 30,
+    "StarlightCelebrationTests": 27,
+    "TraceInputPolishTests": 32
+  },
+  "native_tablet_method_seconds": 203.58,
+  "builds": {
+    "Debug": {
+      "status": "SUCCEEDED",
+      "durationMs": 23164,
+      "target": "simulator"
+    },
+    "Release": "generic/platform=iOS Simulator; CODE_SIGNING_ALLOWED=NO; -jobs4; BUILD SUCCEEDED",
+    "executable_sha256": "eb8a7654ab063248a4e6cc813d6098331e7208a815de4611a8b8f4194b3f61e9"
+  },
+  "commands": {
+    "build": "XcodeBuildMCP build_sim(buildForTesting:true,extraArgs:[ONLY_ACTIVE_ARCH=YES,-jobs,4,CODE_SIGNING_ALLOWED=NO])",
+    "hosted": "test_sim prepared products, ten selected StarfallAppTests classes; -parallel-testing-enabled NO; explicit resultBundlePath",
+    "phone": "test_sim prepared products, four explicit StarfallUITests methods; existing owned xcodebuild continued after300-second MCP timeout and finalized all4 passing at350.331seconds; no rerun",
+    "tablet": "test_sim same products, one explicit tablet-only method; actual method203.580seconds",
+    "recording": "simctl io <one owned simulator> recordVideo --codec=h264 --force <explicit path>; readiness/file existence verified",
+    "media": "Existing Swift AVFoundation/AppKit frame extractor; actual sampled timestamps retained; sips JPEG85 original resolution",
+    "planner": "python3 scripts/test_native_test_plan.py; python3 scripts/native_test_plan.py --stage dev"
+  },
+  "environment": {
+    "macOS": "27.0.1",
+    "Xcode": "Xcode 27.1\nBuild version 27A9275",
+    "simulatorOS": "iOS27.0",
+    "phone": "iPhone17e 64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+    "tablet": "iPadPro11 M5 255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+    "phone_motion": "Normal; actual system Reduce Motion disabled and restored; Calm NO argument",
+    "tablet_variant": "AX3XL; no Calm launch override; actual Settings OFF\u2192ON and restored"
+  },
+  "failures_and_limits": [
+    "One MCP response timed out at300seconds while owned XCTest kept running; final native result4/0/0 and TEST EXECUTE SUCCEEDED, no rerun.",
+    "A phone shutdown request found it already Shutdown (405); shutdown owner unisolated. Tablet then used serially; final owned states verified Shutdown.",
+    "Some immediate XCTest captures were later than receipt expiry; inspected already recorded intervals and exported matching frames without rerunning tests.",
+    "Selected Apple scope, not full current matrix.",
+    "No physical device, minimum-OS, actual VoiceOver, human recognition or sustained-performance evidence."
+  ],
+  "owned_devices_final": "Both confirmed Shutdown; no physical device operations",
+  "discoveries": "None after worker/review deduplication",
+  "raw_root": "/private/tmp/starfall-identity-06-20261024",
+  "promoted_images": 6,
+  "inspected_sample_requests": 201,
+  "hygiene_diff_membership": "pass",
+  "local_link_targets": 931
+}

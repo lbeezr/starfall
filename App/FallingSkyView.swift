@@ -400,20 +400,12 @@ import StarfallCore
     private func updateMotion() { store.setReducedMotion(reduceMotion || calmEffects || voiceOver) }
 
     private var scoreLabel: some View {
-        let quiet = quietMotion
-        let celebrating = store.celebration != nil
-        return
-            SkyScoreInstrument(score: store.game.displayScore, target: store.game.displayTarget,
+        // Committed values update immediately. The displayed receipt's packet
+        // arrival owns the decorative acknowledgement, including cancellation.
+        SkyScoreInstrument(score: store.game.displayScore, target: store.game.displayTarget,
                                restorationLabel: restoration.map { $0.challenge.restorationLabel(progress: $0.progress) },
                                restorationIdentifier: restoration?.challenge.restorationIdentifier,
                                hint: SkyCopy.text(.a11yBoardHint, values: ["summary": boardSummary]))
-            .keyframeAnimator(initialValue: CGFloat(1), trigger: store.game.displayScore) { content, scale in
-                content.scaleEffect(quiet || !celebrating ? 1 : scale, anchor: .leading)
-            } keyframes: { _ in
-                LinearKeyframe(1, duration: 0.58)
-                SpringKeyframe(1.1 + 0.12 * (store.celebration?.energy ?? 0), duration: 0.12)
-                CubicKeyframe(1, duration: 0.2)
-            }
             .foregroundStyle(StarfallTheme.Colors.textPrimary)
             .shadow(color: StarfallTheme.Colors.skyTop, radius: 3)
             .frame(minHeight: StarfallTheme.Layout.minimumTarget).allowsHitTesting(false)
