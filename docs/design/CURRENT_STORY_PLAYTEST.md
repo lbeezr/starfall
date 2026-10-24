@@ -1,6 +1,6 @@
 # Observe Lantern and Ribbon before tuning again
 
-**Status:** Ready preparation; no people observed or results collected · **Owner:** Current coordinator · **Updated:** October 22, 2026
+**Status:** Ready preparation; no people observed or results collected · **Owner:** Current coordinator · **Updated:** October 24, 2026
 
 Use this blank moderator packet for [issue #206](https://github.com/lbeezr/starfall/issues/206). Observe whether people understand current Story controls, build useful patterns and recover from mistakes on **physical iPhone and iPad**. Keep the first play uncoached. This packet can merge independently; #206 remains open until actual observations and a source-bound decision report exist. The remaining dependency is a willing player, a moderator and identified builds on both devices. No human sign-off is added to ordinary development.
 
@@ -33,11 +33,15 @@ Prepare one record per visit. Use anonymous person IDs and unique visit IDs; reu
 | Text size / system Reduce Motion / calm effects / sound / haptics / VoiceOver | __________ |
 | Setting changes, help, interruption or missing context during this visit | __________ |
 
-Repository HEAD is not installed-build evidence. New Lantern/Ribbon visits select revision 4 in the four-line trial; **Continue and Replay preserve the saved definition**, including revision 3 seven-star lines. Revisions 2–4 use the same large targets, so the target alone does not identify the rule. Verify the installed source and explicit new-visit path plus automatic-pattern guidance; record uncertainty rather than assigning a revision. Keep identified revision-3 and revision-4 visits in separate cohorts; exclude unidentified visits from current-rule conclusions and retain their notes separately. Do not inspect private saves or add instrumentation just to fill a blank.
+Repository HEAD is not installed-build evidence. New Falling Sky Lantern/Ribbon visits select revision 4 in the four-line trial; **Continue and Replay preserve the saved definition**, including revision 3 seven-star lines. Revisions 2–4 use the same large targets, so the target alone does not identify the rule. Verify the installed source and explicit new-visit path plus automatic-pattern guidance; record uncertainty rather than assigning a revision. Keep identified revision-3 and revision-4 visits in separate cohorts; exclude unidentified visits from current-rule conclusions and retain their notes separately. Explicit Full Board visits use Lantern6 or Ribbon7 with refill and no timed showers; record that mode/revision separately and do not pool them with the Falling Sky pilot. Retained Full Board5/6 rounds keep their exact definition. Do not inspect private saves or add instrumentation just to fill a blank.
 
 Let the player choose a new visit through the ordinary app and explain that Begin replaces the retained round; browsing/canceling preserves it. Never reset progress or bypass unavailable content to obtain a sample. Follow [canonical delivery](../../scripts/README.md#one-app-iphone-updates) if a separately authorized phone update is needed. Record access/build limitations rather than treating them as player failures.
 
 **Moderator rule reference; do not read before the baseline:** Lantern targets **150,000**, Ribbon **220,000**. Current new visits use automatic showers at the authored six-/four-second cadence. Four-direction neighboring exchanges arrange matching **2×2 squares of four, crosses of five, or straight runs of four or more** in revision 4; retained revision 3 requires full seven-star rows/columns. Each grown star occupies one cell for a pattern. Patterns clear automatically after a swap or shower; falling survivors can trigger another causal phase. Separate moves start new chains. Taps and held traces cannot spend stars or score. Pause/manual shower controls remain available. These locations have no Opal, Dusk or storm supply. Use the actual identified build's wording and rules if they differ; stop pooling its observations with this baseline.
+
+## Mode and return observation
+
+After the first uncoached exposure, ask: “What were you trying to do, what happened to the stars you chose or arranged, and what would you choose next?” If the player visits Home, Help, Continue or Replay, ask what they expect that action to keep or replace before they use it. Record their words and actual result separately, including the installed build, selected mode, assistance and whether the round was new, retained or replayed. Do not introduce drawing to Story or call an unfinished visit a replay. Leave this blank until observed; simulator journeys do not answer it.
 
 ## Watch before teaching
 

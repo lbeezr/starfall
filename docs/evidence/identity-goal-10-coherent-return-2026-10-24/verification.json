@@ -1,0 +1,257 @@
+{
+  "goal": 345,
+  "parent": 335,
+  "base": "bb0303213e1239ae8ff19b0debc303ef02c28bb6",
+  "runtime_checkpoint": "92f37ab627594b2e02a5791f5b5a1d25d8ceac14",
+  "accepted_native_checkpoint": "ea5d27505e81125b263d5bb79c4cd82cd62ad416",
+  "accepted_tree": "bb75e6edb2c435c23042d8fc307351639cf4be0c",
+  "computed_runtime_fingerprint": "dev.ea32539b25",
+  "actual_bundle": {
+    "path": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T10-00-28-261Z_pid51923_2b5780c7.xctestproducts/Binaries/0/Debug-iphonesimulator/Starfall.app/Info.plist",
+    "bundleID": "com.starfall.prototype",
+    "version": "0.1.0",
+    "build": "1",
+    "developmentBuild": "dev.local"
+  },
+  "runtime_inputs_unchanged_after_runtime_checkpoint": true,
+  "recorded_input_count": 662,
+  "noncompiled_input_delta": [],
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 21.18,
+    "command": "swift test --scratch-path /private/tmp/starfall-identity-10-20261024/CoreBuild",
+    "inputs_unchanged": true
+  },
+  "executions": [
+    {
+      "name": "hosted",
+      "source": "ae419ab34d590601b29bccdd051e5ce10aa853eb",
+      "raw": "/private/tmp/starfall-identity-10-20261024/hosted.xcresult",
+      "summary_sha256": "b0562bac52e0e7ace018e482fd938df1576a65dd20ff260e7a3f68cebbeaf49e",
+      "passedTests": 87,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 87,
+      "startTime": 1792831935.55,
+      "finishTime": 1792831958.974
+    },
+    {
+      "name": "hosted-final",
+      "source": "4ad679938759896e8969e22caa9a492c95c6858f",
+      "raw": "/private/tmp/starfall-identity-10-20261024/hosted-final.xcresult",
+      "summary_sha256": "19ae215dce140d1659cf3767846613d4dec291323c6b50777a8fe7dbb032d072",
+      "passedTests": 87,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 87,
+      "startTime": 1792833363.663,
+      "finishTime": 1792833367.3
+    },
+    {
+      "name": "phone-silver",
+      "source": "ae419ab34d590601b29bccdd051e5ce10aa853eb",
+      "raw": "/private/tmp/starfall-identity-10-20261024/phone-silver.xcresult",
+      "summary_sha256": "3f61a0af2c82aa41bf7e41fcf81d88b10eebc72d584e66174b070e7b43493e66",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792832001.197,
+      "finishTime": 1792832057.604
+    },
+    {
+      "name": "phone-silver-corrected",
+      "source": "92f37ab627594b2e02a5791f5b5a1d25d8ceac14",
+      "raw": "/private/tmp/starfall-identity-10-20261024/phone-silver-corrected.xcresult",
+      "summary_sha256": "1205736f3f5cebceba03175a71dc0f9bf5af616f25076757842e3a132ba6b69f",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792832133.11,
+      "finishTime": 1792832256.914
+    },
+    {
+      "name": "phone-open-sky",
+      "source": "92f37ab627594b2e02a5791f5b5a1d25d8ceac14",
+      "raw": "/private/tmp/starfall-identity-10-20261024/phone-open-sky.xcresult",
+      "summary_sha256": "7dc54610d27c208d64113ecce7ca9f5ca921cff587051aa2d3d5b2f2bad59b1d",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792832934.042,
+      "finishTime": 1792832980.697
+    },
+    {
+      "name": "phone-silver-reading",
+      "source": "4ad679938759896e8969e22caa9a492c95c6858f",
+      "raw": "/private/tmp/starfall-identity-10-20261024/phone-silver-reading.xcresult",
+      "summary_sha256": "72997364e18f6c7d836b14a3ca2240d4d53b2c01c9bb9ee7b77286b41074bc3c",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792833387.349,
+      "finishTime": 1792833446.373
+    },
+    {
+      "name": "phone-silver-final",
+      "source": "138a3d4a4ef6b09f803e14a8d957897d50a9a54c",
+      "raw": "/private/tmp/starfall-identity-10-20261024/phone-silver-final.xcresult",
+      "summary_sha256": "0dfd2ed51eab4690a2fb46b2641f5157ff4efa3fd244a97e18f7da8077796a42",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792833621.267,
+      "finishTime": 1792833760.097
+    },
+    {
+      "name": "phone-open-sky-corrected",
+      "source": "138a3d4a4ef6b09f803e14a8d957897d50a9a54c",
+      "raw": "/private/tmp/starfall-identity-10-20261024/phone-open-sky-corrected.xcresult",
+      "summary_sha256": "b692022080eff2acaeaa75487cf2ebd70997ed38d35e16af5fa628a17895d8d9",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792833794.857,
+      "finishTime": 1792833870.945
+    },
+    {
+      "name": "phone-open-sky-final",
+      "source": "1109d9cea5f0d9a554cf57915d22b516c69abc9a",
+      "raw": "/private/tmp/starfall-identity-10-20261024/phone-open-sky-final.xcresult",
+      "summary_sha256": "2ca2208c6d7220ee65c290b238afce42b9e234055d37544440acb77e86bdba70",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792834151.745,
+      "finishTime": 1792834404.225
+    },
+    {
+      "name": "phone-open-sky-accepted",
+      "source": "cd751b880b08d7296978b476ef25f3797d1b22e5",
+      "raw": "/private/tmp/starfall-identity-10-20261024/phone-open-sky-accepted.xcresult",
+      "summary_sha256": "4731312f35471142ee326388586b5109150edc97e01f6b27a1db9bf1a6f289f7",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792834513.55,
+      "finishTime": 1792834781.872
+    },
+    {
+      "name": "tablet",
+      "source": "cd751b880b08d7296978b476ef25f3797d1b22e5",
+      "raw": "/private/tmp/starfall-identity-10-20261024/tablet.xcresult",
+      "summary_sha256": "af88b3f581c6b3448f46dfeebfa68808cdb995deff4ca32d4033560a56d78bd3",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792834838.836,
+      "finishTime": 1792834981.737
+    },
+    {
+      "name": "tablet-corrected",
+      "source": "1653931fdbb1f208dba32d3c05e977ae32df908c",
+      "raw": "/private/tmp/starfall-identity-10-20261024/tablet-corrected.xcresult",
+      "summary_sha256": "2cfa45d2c1eb0dcbeb05366de08bd9d79220ea622338e2a112c7f40a10b34246",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792835696.864,
+      "finishTime": 1792835925.06
+    },
+    {
+      "name": "tablet-accepted",
+      "source": "ea5d27505e81125b263d5bb79c4cd82cd62ad416",
+      "raw": "/private/tmp/starfall-identity-10-20261024/tablet-accepted.xcresult",
+      "summary_sha256": "271d366ec4b8b6f56ee2df6f450bcc50323b60500bd245b993e7bb3fe87e9508",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792836046.789,
+      "finishTime": 1792836400.044
+    }
+  ],
+  "temporary_cleanup": [
+    {
+      "name": "preference-cleanup",
+      "raw": "/private/tmp/starfall-identity-10-20261024/preference-cleanup.xcresult",
+      "temporary_test_source": "/private/tmp/starfall-identity-10-20261024/factory-cleanup-test.swift",
+      "sha256": "86046da28fe3845c011d94ec675f99ebebf7b74648129ad0b7b6c928651ec6aa",
+      "passed": 1,
+      "failed": 0,
+      "scope": "Preference cleanup only; not product acceptance. Temporary methods removed."
+    },
+    {
+      "name": "preference-restoration",
+      "raw": "/private/tmp/starfall-identity-10-20261024/preference-restoration.xcresult",
+      "temporary_test_source": "/private/tmp/starfall-identity-10-20261024/factory-preference-restoration.swift",
+      "sha256": "d9dab3226223e1f3c5dda9fdce83bf9d8800106de3337c0637cb42d9b661bf6e",
+      "passed": 1,
+      "failed": 0,
+      "scope": "Preference cleanup only; not product acceptance. Temporary methods removed."
+    }
+  ],
+  "catalogue_keys": 544,
+  "membership": {
+    "IdentityJourneyTests.swift": [
+      "StarfallAppTests"
+    ],
+    "IdentityJourneyInteractionTests.swift": [
+      "StarfallUITests"
+    ]
+  },
+  "planner_tests": 3,
+  "release_command": "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination 'generic/platform=iOS Simulator' -derivedDataPath /private/tmp/starfall-identity-10-20261024/Release -jobs 4 build",
+  "limits": [
+    "Selected development checks, not a full Apple matrix.",
+    "Historical horizontalFive input uses retained Dusk supply; ordinary Begin/Replay arrivals are recorded, not assumed absent.",
+    "Silver existing-install admission is not proof of earning the earlier campaign.",
+    "Earlier mechanically passing Silver reading was visually rejected; source-specific failures and accepted corrections remain separate.",
+    "Original tablet Calm was ON, established by the first activity log; a mistaken cleanup OFF was corrected by actual UI before the accepted journey.",
+    "Ordinary admitted Settings/Pause paths do not prove rapid Begin latency or establish the earlier observation cause.",
+    "No human recognition, physical-device, minimum-iOS17, actual VoiceOver or sustained-performance acceptance."
+  ],
+  "local_link_targets": 776,
+  "exports": 8,
+  "accepted_native_methods": 3,
+  "native_product_executions": {
+    "passed": 4,
+    "failed": 7,
+    "accepted_distinct": 3
+  },
+  "tablet_method_seconds": 350.083,
+  "tablet_result_interval_seconds": 353.227,
+  "recorded_motion_samples": {
+    "requested": 68,
+    "intervals": [
+      [
+        69,
+        73,
+        0.2
+      ],
+      [
+        77,
+        82,
+        0.2
+      ],
+      [
+        82,
+        90,
+        0.4
+      ]
+    ],
+    "actual_timestamps_retained_in": "/private/tmp/starfall-identity-10-20261024/accepted-open-{motion,trace,release}/frames.json",
+    "scope": "Sampled normal Entry, selection, release, exact return, expiry and remaining board; no complete short trajectory."
+  }
+}
