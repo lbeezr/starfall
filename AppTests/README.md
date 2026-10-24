@@ -1,5 +1,7 @@
 # Hosted app tests
 
+`SkyHeadroomFeedbackTests` and `SkyHeadroomGuideTests` cover current Kite choices/recovery, zero-light history, named-column gains versus a negative global net, FullBoard6/retained5 replacements and real Store timing/save/feedback boundaries. Exact dialogue oracles retain full-column recovery and terminal priority. [Source-bound execution](../docs/evidence/decision-goal-05-committed-headroom-2026-10-24/README.md).
+
 `SkyShowerInspectionTests` compares one copied production shower with actual transactions: current Frostfruit growth/occupancy/recovery, repeated arrivals, first-block/unreached suffix, retained growth-plus-recipe and pre-arrival histories. Real Store tests preserve exact archive/world/mastery bytes, deadline, generation and the actual following RNG continuation; stale/Arriving sources reject simulation. [Source-bound execution](../docs/evidence/decision-goal-04-shower-inspection-2026-10-24/README.md).
 
 `SkyForecastInspectionTests` covers source identity, repeated destinations, exact native-cell geometry, real exchange/lifecycle/Replay, deadline/save/world/mastery preservation and pending-versus-next forecast refresh. Strict hosted rasters prove one unfilled cue and unsupported-state absence. Actual SwiftUI target exposure/44-point size/reading containment live in native XCTest, rather than in-process UIKit AX traversal. [Decision goal3](../docs/evidence/decision-goal-03-forecast-columns-2026-10-24/README.md) records131 final selected passes and the earlier measurement failures.

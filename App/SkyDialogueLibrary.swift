@@ -136,6 +136,22 @@ extension SkyDialogueLibrary {
         } else if !game.isOver, turn.presentationPhases.contains(where: { $0.event == .release }) {
             result = line("guide.release")
         }
+        if let headroom = SkyHeadroomFeedback(turn: turn, from: old, to: game) {
+            let detail: String
+            switch headroom.kind {
+            case .opened(let columns, let spaces):
+                let key: SkyCopy.Key = spaces == 1 ? .headroomOpenedCell
+                    : columns.count == 1 ? .headroomOpenedColumn : .headroomOpenedColumns
+                var values = ["columns": columns.map { String($0 + 1) }.joined(separator: ", ")]
+                if spaces != 1 { values["count"] = String(spaces) }
+                detail = SkyCopy.text(key, values: values)
+            case .refilled(let stars):
+                detail = SkyCopy.text(.headroomRefilled, values: ["count": String(stars)])
+            }
+            result = SkyDialogueLine(id: result.id, speaker: result.speaker,
+                text: SkyCopy.text(.pressureResult, values: ["detail": result.text, "recovery": detail]),
+                priority: result.priority, seconds: result.seconds)
+        }
         if !game.usesFullBoardRefill, turn.collected > 0, !turn.resolutionPhases.isEmpty,
            let recovery = SkyPressureCue.recovery(from: old, to: game) {
             result = SkyDialogueLine(id: result.id, speaker: result.speaker,

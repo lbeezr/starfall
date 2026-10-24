@@ -1,5 +1,7 @@
 # Evidence index
 
+[Committed headroom — Decision goal5](decision-goal-05-committed-headroom-2026-10-24/README.md) records exact Kite room/points contrasts, real full-column recovery, Full Board replacements, 352 Core/114 hosted checks and two complete native phone/tablet journeys. Original test-oracle failures, source boundaries and eight inspected exports remain explicit; actual human/physical/minimum-OS/VoiceOver acceptance is separate.
+
 [One announced shower against this sky](decision-goal-04-shower-inspection-2026-10-24/README.md) records authoritative value-copy growth/placement/block facts, exact live deadline/save/RNG preservation, ordinary running-shower dismissal and AX3XL Calm reading. The real form-sheet failure, product page-sizing correction and unchanged assertions remain separate.
 
 [Actual forecast column inspection](decision-goal-03-forecast-columns-2026-10-24/README.md) links ordered announced stars to a passive column bracket, with exact source/deadline/save checks, normal Seed4 and AX3XL Calm Lantern/Full Board journeys, preserved test corrections and the final tablet-video capture limit.

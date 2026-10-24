@@ -1,0 +1,98 @@
+[
+  {
+    "file": "dev-c2dcf294b6__high-column-four-spaces-end__iphone-17e__default-text.jpg",
+    "attachment": "headroom-phone-high-column-four-spaces-end",
+    "run": "phone-native",
+    "source": "dae8ec16cc3752796114a073eff84acc0e80992f",
+    "runtime": "dev.c2dcf294b6",
+    "bundle": "dev.local",
+    "width": 1170,
+    "height": 2532,
+    "sha256": "50eec2a3acdf18932bb9ec0e5549a04ff43389b7acb85bc82418e1de6129cd06",
+    "status": "accepted; original-resolution independent visual review"
+  },
+  {
+    "file": "dev-c2dcf294b6__low-five-spaces-end__iphone-17e__default-text.jpg",
+    "attachment": "headroom-phone-low-five-spaces-end",
+    "run": "phone-native",
+    "source": "dae8ec16cc3752796114a073eff84acc0e80992f",
+    "runtime": "dev.c2dcf294b6",
+    "bundle": "dev.local",
+    "width": 1170,
+    "height": 2532,
+    "sha256": "3bb2b25158600bd1398ac09c67fec50638c7abc2470815cb623546c6634025f9",
+    "status": "accepted; original-resolution independent visual review"
+  },
+  {
+    "file": "dev-c2dcf294b6__real-full-column-recovery-end__iphone-17e__default-text.jpg",
+    "attachment": "headroom-phone-real-full-column-recovery-end",
+    "run": "phone-native",
+    "source": "dae8ec16cc3752796114a073eff84acc0e80992f",
+    "runtime": "dev.c2dcf294b6",
+    "bundle": "dev.local",
+    "width": 1170,
+    "height": 2532,
+    "sha256": "2dc3088dbbe578c0210bee532f4b2e37031833f8bbfcb03a4ad20eb298e462db",
+    "status": "accepted; original-resolution independent visual review"
+  },
+  {
+    "file": "dev-c2dcf294b6__following-setup-without-stale-claim__iphone-17e__default-text.jpg",
+    "attachment": "headroom-phone-following-setup-without-stale-claim",
+    "run": "phone-native",
+    "source": "dae8ec16cc3752796114a073eff84acc0e80992f",
+    "runtime": "dev.c2dcf294b6",
+    "bundle": "dev.local",
+    "width": 1170,
+    "height": 2532,
+    "sha256": "0f8b845665e43f1fd58cf3eb78c2021aa2bd1a451c7e65e188f8f9a9dab0d854",
+    "status": "accepted; original-resolution independent visual review"
+  },
+  {
+    "file": "dev-c2dcf294b6__immediate-earned-result__iphone-17e__default-text.jpg",
+    "attachment": "headroom-phone-immediate-earned-result",
+    "run": "phone-native",
+    "source": "dae8ec16cc3752796114a073eff84acc0e80992f",
+    "runtime": "dev.c2dcf294b6",
+    "bundle": "dev.local",
+    "width": 1170,
+    "height": 2532,
+    "sha256": "eced6c7c91d68135f2b88b23ba6ba0280d63e43681112a734b246cef2b93fa56",
+    "status": "accepted; original-resolution independent visual review"
+  },
+  {
+    "file": "dev-c2dcf294b6__low-clear-full-guide-end__ipad-pro11-m5__ax3xl-calm.jpg",
+    "attachment": "headroom-tablet-low-clear-full-guide-end",
+    "run": "tablet",
+    "source": "dae8ec16cc3752796114a073eff84acc0e80992f",
+    "runtime": "dev.c2dcf294b6",
+    "bundle": "dev.local",
+    "width": 1668,
+    "height": 2420,
+    "sha256": "ab9c0c50f181640bb02fd12ca02e8e02879cfe87333cd76dc18dd8221660cfd2",
+    "status": "accepted; original-resolution coordinator visual review"
+  },
+  {
+    "file": "dev-c2dcf294b6__full-board-refilled-eight-stars-end__ipad-pro11-m5__ax3xl-calm.jpg",
+    "attachment": "headroom-tablet-full-board-refilled-eight-stars-end",
+    "run": "tablet",
+    "source": "dae8ec16cc3752796114a073eff84acc0e80992f",
+    "runtime": "dev.c2dcf294b6",
+    "bundle": "dev.local",
+    "width": 1668,
+    "height": 2420,
+    "sha256": "8872bce77e634b318229afe223e6a98eaa09384a8675804c254116539ca882d6",
+    "status": "accepted; original-resolution coordinator visual review"
+  },
+  {
+    "file": "dev-c2dcf294b6__following-real-full-board-clear__ipad-pro11-m5__ax3xl-calm.jpg",
+    "attachment": "headroom-tablet-following-real-full-board-clear",
+    "run": "tablet",
+    "source": "dae8ec16cc3752796114a073eff84acc0e80992f",
+    "runtime": "dev.c2dcf294b6",
+    "bundle": "dev.local",
+    "width": 1668,
+    "height": 2420,
+    "sha256": "2d8f807a549121a96ddd854b68d53443a1d885edefc754616f2074bebff011a3",
+    "status": "accepted; original-resolution coordinator visual review"
+  }
+]
