@@ -1,10 +1,10 @@
 # Queue the next deliberate moves
 
-**Status:** Implemented and development verified locally · **Owner:** Current coordinator · **Updated:** October 24, 2026
+**Status:** Merged in PR #398; development verified · **Owner:** Current coordinator · **Updated:** October 24, 2026
 
-The user wants to keep planning moves while Starfall calls out combos and presents earned light. Announcements never own input. A bounded FIFO retains up to four accepted tap/swap commands through physical presentation, with immediate static direction/count feedback and no wall-clock expiry. The [player-momentum plan](PLAYER_MOMENTUM_PLAN.md) owns the current priorities.
+The user wants to keep planning moves while Starfall calls out combos and presents earned light. Announcements never own input. A bounded FIFO retains up to four accepted tap/swap commands through physical presentation, with no wall-clock expiry. The existing static arrow presents the current head; proposed multi-plan count/markers remain held in [PR #395](https://github.com/lbeezr/starfall/pull/395). [Player momentum #393](https://github.com/lbeezr/starfall/issues/393) owns the current priorities.
 
-[Development evidence](../evidence/player-momentum-2026-10-24/README.md) covers exact FIFO/save/clock/lifecycle behavior and a native normal-motion five-phase sequence. Physical thumb comfort and actual VoiceOver remain unperformed.
+[Development evidence](../evidence/player-momentum-input-2026-10-24/README.md) covers exact FIFO/save/clock/lifecycle behavior and a native normal-motion five-phase sequence. Physical thumb comfort and actual VoiceOver remain unperformed.
 
 ## Input and lifecycle contract
 
@@ -18,7 +18,7 @@ The user wants to keep planning moves while Starfall calls out combos and presen
 
 ## Verification and limits
 
-Use deterministic presenter/clock regressions for FIFO order, distinct contacts, long/five-phase presentation, capacity, exact projected state, moving/replaced/settle-back identities, whole tap groups, contact-release ordering, terminal winners, committed-only saves, due rain and interruption. Exercise native rapid swipes during the production Ribbon five-phase transaction without waiting for settling between queued contacts; compare normal/quiet outcomes and inspect the passive cues. First-play guidance uses the same input boundary.
+Use deterministic presenter/clock regressions for FIFO order, distinct contacts, long/five-phase presentation, capacity, exact projected state, moving/replaced/settle-back identities, whole tap groups, contact-release ordering, terminal winners, committed-only saves, due rain and interruption. Exercise native rapid swipes during the production Ribbon five-phase transaction without waiting for settling between queued contacts; compare normal/quiet outcomes and inspect the passive cues. Candidate first-play guidance in PR #395 uses the same input boundary and retains its separate visual acceptance.
 
 Independent stationary moves are supported; planning through future moving/refilled positions is rejected until those stars are actually available. Four admissions per burst is a conservative initial limit, not an observed optimal capacity. Revisit these constraints with the next [uncoached player session](CURRENT_STORY_PLAYTEST.md), preserving safe identities and usable shower opportunities. Simulator interaction does not establish physical comfort, sustained performance or enjoyment.
 
