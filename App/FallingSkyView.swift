@@ -81,7 +81,8 @@ import StarfallCore
                     StarlightCelebrationOverlay(event: receipt, board: proxy[board], score: proxy[score], header: proxy[header], quiet: quietMotion,
                                                lightDestination: anchors[.restorationLight].map { proxy[$0] },
                                                awardBounds: anchors[.award].map { proxy[$0] },
-                                               constellationBounds: anchors[.constellationReturn].map { proxy[$0] })
+                                               constellationBounds: anchors[.constellationReturn].map { proxy[$0] },
+                                               restorationChallenge: restoration?.challenge)
                         .id(receipt.id)
                 }
             }.allowsHitTesting(false)
@@ -449,7 +450,9 @@ import StarfallCore
                                            active: scenePhase == .active && !settings && store.persistenceNotice == nil,
                                            ambientActive: !showingCeremony && !store.isPaused,
                                            quiet: quietMotion || reduceTransparency, isTablet: UIDevice.current.userInterfaceIdiom == .pad,
-                                           isLandscape: landscape)
+                                           isLandscape: landscape,
+                                           award: !settings && !showingCeremony && restoration?.challenge == .firstLight ? store.celebration : nil,
+                                           awardQuiet: quietMotion)
                         .id("\(scenery.challenge.rawValue).\(environmentGeneration)")
                     if environmentContrast == .increased || reduceTransparency {
                         Color.black.opacity(0.28).allowsHitTesting(false).accessibilityHidden(true)

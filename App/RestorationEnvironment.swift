@@ -10,8 +10,11 @@ import StarfallCore
     let quiet: Bool
     var isTablet = false
     var isLandscape = false
+    var award: StarlightCelebration? = nil
+    var awardQuiet: Bool? = nil
     @State private var clock = LandingAmbientClock()
     private var running: Bool { active && ambientActive && !quiet }
+    private var responseQuiet: Bool { awardQuiet ?? quiet }
 
     var body: some View {
         GeometryReader { geometry in
@@ -31,13 +34,33 @@ import StarfallCore
                         .animation(active && !quiet ? .easeInOut(duration: StarfallTheme.Restoration.restorationDuration) : nil,
                                    value: presentation.progress.milestone)
                 }
-                TimelineView(.animation(minimumInterval: 1 / 24, paused: !running)) { _ in
+                // A pending award may tick this existing subtree even when
+                // ambient scenery rests (paused play or Full Board). Quiet
+                // validation admits the receipt before arrival without painting
+                // an early normal response; drawAward uses its real motion mode.
+                let currentAward = active && award.map {
+                    LanternAwardResponse(event: $0, challenge: presentation.challenge,
+                                         receiver: layout.light, age: Date.now.timeIntervalSince($0.started), quiet: true) != nil
+                } == true
+                TimelineView(.animation(minimumInterval: 1 / 24, paused: !running && (responseQuiet || !currentAward))) { timeline in
                     let phase = quiet ? 0 : clock.phase(at: ProcessInfo.processInfo.systemUptime)
-                    Circle().fill(StarfallTheme.Observatory.lanternGlow)
-                        .blur(radius: 13)
-                        .frame(width: layout.light.width * 3, height: layout.light.height * 3)
-                        .opacity(presentation.progress.fraction * (0.10 + 0.025 * sin(phase / 2)))
-                        .position(x: layout.light.midX, y: layout.light.midY)
+                    ZStack {
+                        Circle().fill(StarfallTheme.Observatory.lanternGlow)
+                            .blur(radius: 13)
+                            .frame(width: layout.light.width * 3, height: layout.light.height * 3)
+                            .opacity(presentation.progress.fraction * (0.10 + 0.025 * sin(phase / 2)))
+                            .position(x: layout.light.midX, y: layout.light.midY)
+                        if currentAward, let award {
+                            Canvas { context, size in
+                                // A paused Timeline's date can precede a newly
+                                // supplied quiet receipt. Snapshot its actual age
+                                // once; normal delivery samples the same timeline.
+                                let date = responseQuiet ? Date.now : timeline.date
+                                drawAward(in: &context, age: date.timeIntervalSince(award.started),
+                                          canvasSize: size, receiver: layout.light)
+                            }
+                        }
+                    }
                 }
                 Color.clear.frame(width: layout.light.width, height: layout.light.height)
                     .starlightAnchor(.restorationLight)
@@ -53,6 +76,79 @@ import StarfallCore
         .onDisappear { clock.setRunning(false, at: ProcessInfo.processInfo.systemUptime) }
         // No queued milestones: interruption displays the latest committed state.
         .transaction { if !active || quiet { $0.animation = nil; $0.disablesAnimations = true } }
+    }
+
+    /// The current receipt paints behind native chrome in the scenery's existing
+    /// timeline. Its registered light remains authoritative through layout changes.
+    func drawAward(in context: inout GraphicsContext, age: TimeInterval, canvasSize: CGSize, receiver: CGRect) {
+        guard active, let award,
+              let response = LanternAwardResponse(event: award, challenge: presentation.challenge,
+                                                   receiver: receiver, age: age, quiet: responseQuiet) else { return }
+        LanternAwardResponse.draw(in: &context, response: response, canvasSize: canvasSize)
+    }
+}
+
+/// A passive answer from Lantern's registered aperture to this delivered award.
+/// The existing receipt supplies timing and cancellation; scenery owns only the
+/// local material and bounded geometry, never score, milestones or completion.
+struct LanternAwardResponse {
+    let receiver: CGRect
+    let aperture: CGRect
+    let halo: CGRect
+    let progress: Double
+    let apertureOpacity: Double
+    let haloOpacity: Double
+    let quiet: Bool
+
+    init?(event: StarlightCelebration, challenge: StarfallChallenge?, receiver: CGRect,
+          age: TimeInterval, quiet: Bool) {
+        guard challenge == .firstLight, event.displayAward > 0, event.collected > 0,
+              !event.packets.isEmpty, !receiver.isNull, !receiver.isInfinite,
+              receiver.minX.isFinite, receiver.maxX.isFinite,
+              receiver.minY.isFinite, receiver.maxY.isFinite,
+              receiver.width.isFinite, receiver.height.isFinite,
+              receiver.width > 0, receiver.height > 0,
+              let progress = event.receiverProgress(at: age, toRestoration: true, quiet: quiet) else { return nil }
+        self.receiver = receiver
+        // Registration is the actual painting's light aperture, without another
+        // screen-size estimate or a destination inferred from animated pieces.
+        aperture = receiver
+        let expansion = min(18, max(receiver.width, receiver.height) * 0.75)
+        halo = receiver.insetBy(dx: -expansion, dy: -expansion)
+        self.progress = progress
+        self.quiet = quiet
+        let strength = quiet ? 1 : sin(progress * .pi)
+        apertureOpacity = 0.65 * strength
+        haloOpacity = 0.35 * strength
+    }
+
+    /// Exactly one aperture and one halo, painted by the existing receipt Canvas.
+    /// Gradients end inside their own shapes; there is no unbounded blur/filter.
+    static func draw(in context: inout GraphicsContext, response: Self,
+                     canvasSize: CGSize, exclusions: [CGRect] = []) {
+        guard canvasSize.width.isFinite, canvasSize.height.isFinite,
+              canvasSize.width > 0, canvasSize.height > 0 else { return }
+        var light = context
+        light.clip(to: Path(CGRect(origin: .zero, size: canvasSize)))
+        for exclusion in exclusions where !exclusion.isEmpty && !exclusion.isNull && !exclusion.isInfinite {
+            var visible = Path(CGRect(origin: .zero, size: canvasSize))
+            visible.addRect(exclusion)
+            light.clip(to: visible, style: FillStyle(eoFill: true))
+        }
+        let center = CGPoint(x: response.receiver.midX, y: response.receiver.midY)
+        var halo = light
+        halo.opacity = response.haloOpacity
+        halo.fill(Path(ellipseIn: response.halo), with: .radialGradient(
+            Gradient(colors: [StarfallTheme.Observatory.lanternGlow,
+                              StarfallTheme.Observatory.lanternGlow.opacity(0)]),
+            center: center, startRadius: 0,
+            endRadius: max(response.halo.width, response.halo.height) / 2))
+        var aperture = light
+        aperture.opacity = response.apertureOpacity
+        aperture.fill(Path(ellipseIn: response.aperture), with: .radialGradient(
+            Gradient(colors: [StarfallTheme.Colors.textPrimary, StarfallTheme.Observatory.lanternGlow]),
+            center: center, startRadius: 0,
+            endRadius: max(response.aperture.width, response.aperture.height) / 2))
     }
 }
 

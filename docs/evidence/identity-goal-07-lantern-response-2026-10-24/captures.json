@@ -1,0 +1,86 @@
+[
+  {
+    "file": "dev-67f78c0__phone-no-award__iphone-17e__normal-setup.jpg",
+    "source": "/private/tmp/starfall-identity-07-20261024/phone-corrected-attachments/9E36B669-84E6-4843-A5FA-9D74A3691381.png",
+    "source_sha256": "b63a5e05b312003a88fb9967ca10ee1560b0865ece354154787877dc00938cf4",
+    "sha256": "dc8631ff1af0b41e065a8f673fa28ef71451a6b38a9c20d7f943b29ee39b3ffb",
+    "source_commit": "67f78c0",
+    "runtime": "dev.7dad281bab",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Native no-award reversed setup; zero points and unchanged painting.",
+    "inspected": true
+  },
+  {
+    "file": "dev-912a897__tablet-below-quarter__ipad-pro11-m5__ax3xl-calm.jpg",
+    "source": "/private/tmp/starfall-identity-07-20261024/tablet-corrected-attachments/DB2F2093-1DA1-44FE-9D5C-A6BC36D503E1.png",
+    "source_sha256": "3493c3141e520a7751356cffd42c95f25d49b09388341ada8c91baf971d4ea61",
+    "sha256": "207df0569c2b5813993173777c9e9e70c986045400f8de6ae32ffa26eac83087",
+    "source_commit": "912a897",
+    "runtime": "dev.7dad281bab",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Native Full Board 15,000 points, below quarter painting; visible warm aperture.",
+    "inspected": true
+  },
+  {
+    "file": "dev-912a897__tablet-quarter__ipad-pro11-m5__ax3xl-calm.jpg",
+    "source": "/private/tmp/starfall-identity-07-20261024/tablet-corrected-attachments/D03934CF-505C-49B0-8267-04CC584C598F.png",
+    "source_sha256": "f0bbd29726dd5379de7a376c7b635c5938ed34b7f459fcacea94db39faf66c7d",
+    "sha256": "68f0ca7d4d0ece421deaa93f8eed8cbdad24dc29901d9b326b8e2f218ac4a2c2",
+    "source_commit": "912a897",
+    "runtime": "dev.7dad281bab",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Native 42,000 points with the cumulative quarter painting and delivered aperture.",
+    "inspected": true
+  },
+  {
+    "file": "dev-912a897__tablet-result__ipad-pro11-m5__ax3xl-calm-scrolled.jpg",
+    "source": "/private/tmp/starfall-identity-07-20261024/tablet-corrected-attachments/E752DD44-990B-4085-BC60-492BCA78A057.png",
+    "source_sha256": "d5c72d6b5d7b58d933f41d0c88190272c84be3178684cb9ef5331a796d51d54f",
+    "sha256": "7179a630e62e4848176d7e7333198d765c9f6ca0edf668f06a3bbe0ec51b5e2f",
+    "source_commit": "912a897",
+    "runtime": "dev.7dad281bab",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Native earned repair; scrolled result exposes onward, New Sky and exact Replay controls.",
+    "inspected": true
+  },
+  {
+    "file": "dev-092ca6e__component-before__hosted-tablet-window__normal-before.jpg",
+    "source": "/private/tmp/starfall-identity-07-20261024/hosted-live-attachments/3530B738-BDCD-46AB-8F10-8DA50A86F695.png",
+    "source_sha256": "742a1ba47a88ae843f386467fb4f507b545d67eb47bbb9bc68bf6aab22dcd8e5",
+    "sha256": "8508679f7c377d051a9aa60d22fb752b144a5878e71ba0dbfdc072ff2930f652",
+    "source_commit": "092ca6e",
+    "runtime": "dev.7dad281bab",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Live UIWindow composition before supplying the award; component only, no game HUD.",
+    "inspected": true
+  },
+  {
+    "file": "dev-092ca6e__component-answer__hosted-tablet-window__normal-after-arrival.jpg",
+    "source": "/private/tmp/starfall-identity-07-20261024/hosted-live-attachments/F8D6096C-7515-4589-AFCC-0E22DE617114.png",
+    "source_sha256": "f14a76ccd754d4d7f963520a0833cceebdeb66d6e13119e750e27c0422772429",
+    "sha256": "531ec5075d0bc744342ebc74b5ff0205c593036528b75d4a967c5e1c90004746",
+    "source_commit": "092ca6e",
+    "runtime": "dev.7dad281bab",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Same live UIWindow/Environment identity after actual arrival; first warm sample, component only.",
+    "inspected": true
+  },
+  {
+    "file": "dev-81d025d__rejected-header-clip__iphone-17e__normal-rejected.jpg",
+    "source": "/private/tmp/starfall-identity-07-20261024/phone-selected/frame-00000.png",
+    "source_sha256": "28a43e2761fbf41bdb4252269093e8786913806df20572df03335a6ad51fab6b",
+    "sha256": "05604e129817330383770bf56cbd501931923d101b94a0b8abb4fa4fb26589fc",
+    "source_commit": "81d025d",
+    "runtime": "dev.32d7e2484a",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Historical rejected full-header clipping implementation at movie request266.7s; not current acceptance.",
+    "inspected": true
+  }
+]
