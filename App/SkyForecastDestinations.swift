@@ -30,11 +30,13 @@ struct SkyForecastSnapshot: Equatable, Sendable {
     }
 }
 
-/// A passive native companion to the shower trail. It exposes destinations
-/// without predicting whether a landing will grow, clear a pattern or block.
-struct SkyForecastDestinations: View {
+/// The shower trail's native destinations can identify an actual column without
+/// predicting whether a landing will grow, clear a pattern or block.
+@MainActor struct SkyForecastDestinations: View {
     let forecast: [IncomingStar]
     let arriving: Bool
+    var selectedID: Int? = nil
+    var select: (Int) -> Void = { _ in }
     @ScaledMetric(relativeTo: .caption) private var minimumChipWidth: CGFloat = 32
 
     var stateLabel: String {
@@ -52,7 +54,7 @@ struct SkyForecastDestinations: View {
                 .fixedSize(horizontal: true, vertical: false)
                 VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
                     title
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: minimumChipWidth),
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: max(44, minimumChipWidth)),
                                                   spacing: StarfallTheme.Spacing.small,
                                                   alignment: .leading)],
                               alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
@@ -62,12 +64,11 @@ struct SkyForecastDestinations: View {
             }
             .font(StarfallTheme.Typography.skyCaption)
             .foregroundStyle(StarfallTheme.Colors.textSecondary)
-            .accessibilityElement(children: .ignore)
+            .accessibilityElement(children: .contain)
             .accessibilityLabel(stateLabel)
             .accessibilityValue(snapshot.accessibilityValue)
             .accessibilityHint(SkyCopy.text(.forecastColumnsHint))
             .accessibilityIdentifier("sky.forecast.destinations")
-            .allowsHitTesting(false)
         }
     }
 
@@ -78,15 +79,32 @@ struct SkyForecastDestinations: View {
 
     private func chips(_ snapshot: SkyForecastSnapshot) -> some View {
         ForEach(snapshot.entries) { entry in
-            HStack(spacing: StarfallTheme.Spacing.compact) {
-                Image(uiImage: SkyPiece.image(for: .init(entry.family)))
-                    .resizable().scaledToFit().frame(width: 18, height: 18)
-                    .accessibilityHidden(true)
-                Text(String(entry.column))
-                    .monospacedDigit()
-                    .fixedSize(horizontal: true, vertical: false)
+            Button { select(entry.id) } label: {
+                HStack(spacing: StarfallTheme.Spacing.compact) {
+                    Image(uiImage: SkyPiece.image(for: .init(entry.family)))
+                        .resizable().scaledToFit().frame(width: 18, height: 18)
+                        .accessibilityHidden(true)
+                    Text(String(entry.column))
+                        .monospacedDigit()
+                        .fixedSize(horizontal: true, vertical: false)
+                }
+                .frame(minWidth: 44, minHeight: 44)
+                .contentShape(Rectangle())
+                .overlay {
+                    if selectedID == entry.id {
+                        RoundedRectangle(cornerRadius: StarfallTheme.Spacing.small)
+                            .stroke(StarfallTheme.Colors.textPrimary, lineWidth: 2)
+                    }
+                }
             }
+            .buttonStyle(.plain)
             .fixedSize(horizontal: true, vertical: false)
+            .accessibilityLabel(SkyCopy.text(.forecastDestination, values: [
+                "star": SkyPiece.description(for: .init(entry.family)), "column": String(entry.column)
+            ]))
+            .accessibilityHint(SkyCopy.text(.forecastInspectHint))
+            .accessibilityAddTraits(selectedID == entry.id ? .isSelected : [])
+            .accessibilityIdentifier("sky.forecast.star.\(entry.id)")
         }
     }
 }

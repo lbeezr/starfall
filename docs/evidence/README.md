@@ -1,5 +1,7 @@
 # Evidence index
 
+[Actual forecast column inspection](decision-goal-03-forecast-columns-2026-10-24/README.md) links ordered announced stars to a passive column bracket, with exact source/deadline/save checks, normal Seed4 and AX3XL Calm Lantern/Full Board journeys, preserved test corrections and the final tablet-video capture limit.
+
 [Optional Full Board choice diagrams](decision-goal-02-choice-diagrams-2026-10-24/README.md) pair exact source/setup/final arrangements with existing coordinate instructions, including native pan-through and real next-clear contrasts without changing the round.
 
 [Actual Story ingredient inspection](decision-goal-01-ingredient-inspection-2026-10-24/README.md) adds factual small/grown/light-unit guidance, with exact state/deadline checks, normal phone/AX3XL Calm native journeys and the initial inline-Close test correction retained.

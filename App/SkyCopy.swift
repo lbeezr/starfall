@@ -110,6 +110,8 @@ enum SkyCopy {
         case forecastDestination = "forecast.destination"
         case forecastDestinationList = "forecast.destinationList"
         case forecastColumnsHint = "forecast.columnsHint"
+        case forecastInspectHint = "forecast.inspectHint"
+        case forecastSelectedColumn = "forecast.selectedColumn"
         case balanceGentleShort = "balance.gentleShort"
         case balanceSteadyShort = "balance.steadyShort"
         case balanceBriskShort = "balance.briskShort"
