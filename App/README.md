@@ -1,5 +1,7 @@
 # iOS application
 
+`SkyHeadroomFeedback` compares committed column tops after a real clear and appends factual room to the existing result guide. Positive gains are attributed only to the named columns; Full Board reports actual replacement arrivals rather than temporary vacancies. It has no Store, clock or save capability. [Decision goal5 evidence](../docs/evidence/decision-goal-05-committed-headroom-2026-10-24/README.md).
+
 `SkyShowerInspection` evaluates only the displayed Next shower using one authoritative Core value copy. Its optional native reading sheet lists ordered growth, placement, first block and unreached arrivals plus actual pattern phases. `FallingSkyView` binds it to the full exact forecast/game/generation and withdraws stale content without entering the menu, pausing or holding a live shower. Full Board and Arriving omit prediction. [Decision goal4 evidence](../docs/evidence/decision-goal-04-shower-inspection-2026-10-24/README.md).
 
 `SkyForecastInspection` binds an optional column locator to the exact displayed forecast, game and input generation, including Next/Arriving. `SkyForecastDestinations` retains native ordered descriptions and44-point selectable chips; `SkyForecastColumnOverlay` uses the existing columnPolygon with a static unfilled bracket. FallingSkyView captures/revalidates callback sources and clears transient state at existing boundaries without Store/clock/save changes. [Decision goal3 evidence](../docs/evidence/decision-goal-03-forecast-columns-2026-10-24/README.md).
