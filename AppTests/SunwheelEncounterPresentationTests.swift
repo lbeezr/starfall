@@ -109,7 +109,7 @@ final class SunwheelEncounterPresentationTests: XCTestCase {
             XCTAssertEqual(goal.newVisitLabel, "New visit objective: 24,000 starlight.")
             XCTAssertEqual(goal.retainedProgress, retained.restoration)
             XCTAssertEqual(goal.retainedLabel,
-                "Saved round: \(SkyCopy.score(retained.displayScore)) of \(SkyCopy.score(try XCTUnwrap(retained.displayTarget))) starlight.")
+                "Saved Falling Sky progress: \(SkyCopy.score(retained.displayScore)) of \(SkyCopy.score(try XCTUnwrap(retained.displayTarget))) starlight.")
             XCTAssertEqual(RestorationPresentation.selected(game: retained, entry: .sunwheelMill)?.progress,
                            StarlightRestoration(score: 0, target: 24_000))
             XCTAssertEqual(RestorationPresentation.selected(game: retained, entry: .replay)?.progress,

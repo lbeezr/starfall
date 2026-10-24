@@ -1,5 +1,7 @@
 # iOS application
 
+Replay/New Entry Back restores the originating round or earned result; explicit Home still opens the Observatory, and Map previews return to Map. Saved Map/Places progress names the retained Falling Sky/Full Board mode. [Goal10 source-bound acceptance](../docs/evidence/depth-goal-10-repeat-journey-2026-10-23/README.md).
+
 [Native implementation and test instructions](AGENTS.md) give the local working contract.
 
 SwiftUI screens, main-actor stores and SpriteKit presentation for the native game.

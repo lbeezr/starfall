@@ -1,5 +1,7 @@
 # Starfall
 
+[Repeat-visit continuity](docs/evidence/depth-goal-10-repeat-journey-2026-10-23/README.md) returns preview Back to its original round/result and names the saved mode beside Map/Places progress. The ten gameplay-depth goals retain both modes and exact historical Replay.
+
 [Optional Lantern mastery](docs/evidence/depth-goal-09-optional-mastery-2026-10-23/README.md) adds two accomplishments per mode and a best from one completed run. Every repair still unlocks the journey; old unenrolled Replay remains completion-only.
 
 [Sunwheel’s first capstone](docs/evidence/depth-goal-08-sunwheel-capstone-2026-10-23/README.md) combines room, a grown ingredient and visible-survivor sequencing through contrasting complete plans.

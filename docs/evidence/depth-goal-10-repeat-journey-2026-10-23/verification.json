@@ -1,0 +1,157 @@
+{
+  "goal": 10,
+  "issue": 313,
+  "parent": 303,
+  "source": "083005c57a7ef522e6eb73cf4dcbb4b8658bf66f",
+  "base": "57598b10608c3b9b3525540ec92e686970f33206",
+  "sourceBoundary": "Clean committed runtime/tests at 083005c. Native reading correction at 0bf3fe0 changes only UITests/StoryMasteryInteractionTests.swift; App/Core/resources/project sources are identical. Phone 5, Map/Places 2 and hosted 207 retain their original valid source boundary. Remaining changes are documentation/evidence. No Core/rules/RNG/supply/schema change.",
+  "rawRoot": "/private/tmp/starfall-depth-10-20261023",
+  "environment": {
+    "host": "macOS27.0.1 (26A434) arm64",
+    "xcode": "27.1 (27A9275)",
+    "swift": "6.4 (6.4.0.34.1)",
+    "sdk": "iPhoneSimulator27.1",
+    "runtime": "iOS27.0 (24A434)",
+    "phone": "iPhone17e A84C81F5-AE41-496A-97AE-E17C63E18D29",
+    "tablet": "iPad mini (A17 Pro) EDE6B5F3-53C9-4703-B3D8-E654BEFA22A0",
+    "bundleLabel": "dev.local",
+    "configuration": "Debug; Release build separately"
+  },
+  "checks": {
+    "core": {
+      "result": "passed",
+      "executed": 348,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 23.274,
+      "log": "core.log"
+    },
+    "hosted": {
+      "result": "Passed",
+      "totalTestCount": 207,
+      "passedTests": 207,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "hostedScope": "18 source-counted classes, 207 cases: 14 new origin/mode tests, retained goal 9 save/mastery/old-save checks and affected Frostfruit/Sunwheel copy.",
+    "builds": [
+      {
+        "stage": "release",
+        "startedUTC": "2026-10-23T23:31:24.305105+00:00",
+        "elapsedSeconds": 8.923,
+        "limitSeconds": 600.0,
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "stage": "debug-tests",
+        "startedUTC": "2026-10-23T23:31:58.530036+00:00",
+        "elapsedSeconds": 7.36,
+        "limitSeconds": 600.0,
+        "exitCode": 0,
+        "error": null
+      },
+      {
+        "stage": "debug-native-reading",
+        "startedUTC": "2026-10-23T23:49:39.583640+00:00",
+        "elapsedSeconds": 21.397,
+        "limitSeconds": 600.0,
+        "exitCode": 0,
+        "error": null
+      }
+    ],
+    "phone": {
+      "result": "Passed",
+      "totalTestCount": 5,
+      "passedTests": 5,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "tablet": {
+      "result": "Passed",
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "source": "0bf3fe0f98c65299ea9a79cb31f13e276c40cf30",
+      "bundle": "tablet-reading.xcresult",
+      "elapsedCaseSeconds": 945.81,
+      "elapsedWrapperSeconds": 971.387,
+      "scope": "AX3XL Calm complete Sky 75-exchange/22-shower 151k repair, exact restore/Replay, result/paused Back, Map mode cancellation, actual Full Board Begin and Home/Continue."
+    },
+    "mapCopyNative": {
+      "result": "Passed",
+      "totalTestCount": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "inventory": "Native dev228; hosted586. Selected acceptance only, not the full development matrix.",
+    "hygiene": "passed after final documentation/evidence staging",
+    "whitespace": "passed after final documentation/evidence staging",
+    "inspectedVisuals": {
+      "count": 8,
+      "phone": 5,
+      "tablet": 3,
+      "manifest": "captures.json",
+      "result": "Exact selected JPEG exports inspected; mode/progress/best labels agree. AX3XL reading positions deliberately scroll; title, score or lower actions can lie outside a selected viewport."
+    },
+    "actualVoiceOver": "not run",
+    "physicalInstallation": "not run",
+    "minimumIOS17Runtime": "not run",
+    "continuousAnimationCertification": "not established by stills",
+    "humanModePreferenceAndMasteryMotivation": "unmeasured",
+    "nativeTotal": {
+      "passedTests": 8,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "scope": "Five phone + two Map/Places + one corrected complete tablet case; the initial failed tablet attempt is retained separately below."
+    }
+  },
+  "initialFailures": [
+    {
+      "stage": "tablet initial",
+      "source": "083005c57a7ef522e6eb73cf4dcbb4b8658bf66f",
+      "executed": 1,
+      "failedCases": 1,
+      "skipped": 0,
+      "bundle": "tablet.xcresult",
+      "log": "tablet.log",
+      "failure": "StoryMasteryInteractionTests.swift:63: Requested sky targets cannot fit together at t853.60s, after completing real151k win, result/paused/Map cancellation and switching to Full Board0.",
+      "cause": "Test helper required both long Full Board goal blocks to be simultaneously contained by the AX3XL menu viewport; content is intentionally scrollable.",
+      "correction": "Reveal each complete goal block before the same value/label assertions, preserving all goal/state/input assertions. No production layout, quiet policy, skip or retry changes.",
+      "scopeBound": "Expanded goal10 adds return/switch/Home checks beyond goal9. First attempt measured917.315s including setup/teardown; specific corrected case gets1100s execution allowance and1200s owned wrapper, retaining bounded waits and no blanket retry.",
+      "rawPreservation": "Original tablet.xcresult retained; duplicate1GB attachment export removed after saving named images, manifest and an inspected video frame at852.026667s."
+    }
+  ],
+  "review": "Independent review found no concrete origin/cancellation/persistence regression. Running-clock cancellation is hosted state/Store evidence; native extension samples paused rounds/results. No dropped assertions or broadened skip/retry policy.",
+  "commands": {
+    "core": "CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-depth02-clang SWIFTPM_MODULECACHE_OVERRIDE=/private/tmp/starfall-depth02-module swift test --scratch-path /private/tmp/starfall-depth02-core",
+    "xcode": "python3 scripts/simulator-command.py --receipt RAW/stages.jsonl <stage> <600..1200> xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination platform=iOS\\ Simulator,id=<owned simulator> -derivedDataPath /private/tmp/starfall-depth-06-20261023/DerivedData CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -parallel-testing-enabled NO -collect-test-diagnostics never -resultBundlePath RAW/<stage>.xcresult -only-testing:<selected identifiers> test-without-building",
+    "release": "Bounded wrapper; Release generic/platform=iOS Simulator; /private/tmp/starfall-depth-05-20261023/ReleaseData; build",
+    "static": [
+      "python3 scripts/ci-hygiene.py",
+      "git diff --check",
+      "python3 scripts/native_test_plan.py --stage dev"
+    ],
+    "note": "Command forms below; stages.jsonl records bounded executions. Selected identifiers are retained separately here and in native-plan.txt.",
+    "nativeSelection": {
+      "phone": [
+        "StoryMasteryInteractionTests/testNormalFullBoardGoalsWinRestoreAndReplay",
+        "SkyFlowInteractionTests/testRibbonIdentityExplainsTempoAndSupportsDeliberateOpeningChoices",
+        "SkyFlowInteractionTests/testLargestTextRibbonIdentityKeepsChoiceAndReplayReadable",
+        "SkyFlowInteractionTests/testLargestEndingReplayRetainsResultAcrossBackgroundAndCancel",
+        "SkyFlowInteractionTests/testEntryCancellationAndTerminationRetainThePlayedSky"
+      ],
+      "mapCopy": [
+        "WorldJourneyInteractionTests/testMapAndPlacesGoalsPreserveCurrentStoryOnCancelAndContinue",
+        "WorldJourneyInteractionTests/testLargestTextPlacesGoalsKeepHistoricalObjectiveOnContinue"
+      ],
+      "tablet": [
+        "StoryMasteryInteractionTests/testLargestCalmFallingSkyGoalsWinRestoreAndReplay"
+      ]
+    },
+    "xcresultRead": "Sequential xcresulttool export attachments and get test-results summary. An initial concurrent summary read collided with bundle database initialization; after export completed the sequential read passed with 1/0/0. This was result inspection, not a test rerun."
+  },
+  "nativeReadingCheckpoint": "0bf3fe0f98c65299ea9a79cb31f13e276c40cf30"
+}

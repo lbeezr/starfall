@@ -98,7 +98,8 @@ final class SkyFlowStateTests: XCTestCase {
                 XCTAssertEqual(flow.screen, .entry)
                 clock.advance(100)
                 XCTAssertNil(clock.deadline)
-                XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: true, entryID: flow.entryID), .home)
+                XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: true, entryID: flow.entryID),
+                               action == .replay || action == .another ? .continued : .home)
                 XCTAssertNil(flow.entry)
                 XCTAssertEqual(store.game, original)
                 XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), core)
@@ -130,7 +131,7 @@ final class SkyFlowStateTests: XCTestCase {
         let core = try XCTUnwrap(defaults.data(forKey: FallingSkyStore.saveKey))
         var flow = SkyFlowState(arguments: ["--starfalls-reset"])
         XCTAssertEqual(flow.handle(.replay, hasSavedSky: true), .staged)
-        XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: true, entryID: flow.entryID), .home)
+        XCTAssertEqual(flow.handle(.entryBack, hasSavedSky: true, entryID: flow.entryID), .continued)
         XCTAssertEqual(store.game, original)
         XCTAssertEqual(defaults.data(forKey: FallingSkyStore.saveKey), core)
     }
@@ -522,7 +523,7 @@ final class SkyFlowStateTests: XCTestCase {
             XCTAssertEqual(goal.retainedProgress, StarlightRestoration(score: score, target: retainedTarget))
             XCTAssertEqual(goal.newVisitTarget, newTarget)
             XCTAssertEqual(goal.retainedLabel,
-                           "Saved round: \(SkyCopy.score(score)) of \(SkyCopy.score(retainedTarget)) starlight.")
+                           "Saved Falling Sky progress: \(SkyCopy.score(score)) of \(SkyCopy.score(retainedTarget)) starlight.")
             let restored = try JSONDecoder().decode(FallingSky.self, from: JSONEncoder().encode(game))
             XCTAssertEqual(WorldMapGoalSnapshot(journey: journey, retainedRound: restored), goal,
                            "Reading a restored round cannot substitute today's objective")

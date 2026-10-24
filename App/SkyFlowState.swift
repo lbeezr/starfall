@@ -131,7 +131,11 @@ struct SkyFlowState: Equatable {
             guard screen == .entry, let entryID, expectedID == entryID else { return nil }
             screen = entryOrigin ?? .welcome
             entry = nil; self.entryID = nil; entryOrigin = nil
-            return screen == .worldMap ? .worldMap : .home
+            switch screen {
+            case .worldMap: return .worldMap
+            case .playing, .won, .full: return .continued
+            default: return .home
+            }
         case .resume:
             guard screen == .welcome || screen == .worldMap, hasSavedSky else { return nil }
             let source = screen; mapOrigin = nil
@@ -199,8 +203,8 @@ struct SkyFlowState: Equatable {
 
     private mutating func stage(_ request: SkyEntryRequest) -> SkyFlowEffect {
         // A destination inspection returns to its map; that map still owns its
-        // original Home/play destination. Direct new/replay choices cancel Home.
-        entryOrigin = screen == .worldMap ? .worldMap : .welcome
+        // original Home/play destination. Direct choices return to their round.
+        entryOrigin = screen
         if screen != .worldMap { mapOrigin = nil }
         generation &+= 1; entryID = generation
         entry = request; screen = .entry

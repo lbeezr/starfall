@@ -1,5 +1,7 @@
 # Hosted app tests
 
+`SkyEntryReturnTests` covers actual preview origin, stale IDs, frozen pause/deadline, save/mastery preservation and failed Begin rollback. `SavedRoundModeTests` distinguishes current and historical mode labels without writing/upgrading saves. [Goal10 evidence](../docs/evidence/depth-goal-10-repeat-journey-2026-10-23/README.md).
+
 Native tests for stores, presentation and materials that require Apple frameworks.
 
 `StoryPatternPlan` and `FallingSkyTestSupport` reconstruct revision-4 Lantern/Ribbon wins through production actions. Core retains separate revision-3 witnesses. Archive tests cover v19 writes, retained unenrolled v3–v18 readers, seven-star/manual Continue/Replay and each historical envelope limit.

@@ -197,7 +197,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertTrue(subtitle.label.contains("closer showers"))
         XCTAssertTrue(subtitle.label.contains("220,000"))
         XCTAssertTrue(subtitle.label.contains("same Ribbon Crossing opening"))
-        tap("sky.home", app); tap("sky.resume", app)
+        tap("sky.home", app)
         settled()
         XCTAssertEqual(cells(), retained)
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "30,000 of 220,000 starlight collected")
@@ -525,7 +525,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCUIDevice.shared.press(.home); app.activate()
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
         capture(app, "flow-replay-largest-background")
-        tap("sky.home", app); tap("sky.resume", app)
+        tap("sky.home", app)
         XCTAssertTrue(outcome.waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["experiment.score"].label, score)
         tap("experiment.new", app)
@@ -560,8 +560,6 @@ final class SkyFlowInteractionTests: XCTestCase {
                 XCTAssertTrue(app.staticTexts["world.selection"].waitForExistence(timeout: 5))
                 XCTAssertEqual(app.staticTexts["world.selection"].label, "Lantern Landing")
                 tap("world.done", app)
-            } else {
-                tap("sky.resume", app)
             }
             assertRetained()
         }
