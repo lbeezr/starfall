@@ -12,7 +12,7 @@ The concrete defect was the unconditional final Help section: an Open Sky contex
 
 The normal phone contrast uses a real Silver4 swap/repair and an authored historical Open Sky trace/overflow/Replay. The tablet uses actual Settings Calm at AX3XL, FullBoard6 Help and a real 42,000-point clear, canceled previews, exact Continue and explicit Sky4 replacement. The historical drawing fixture does not prove modern shower supply; Silver's existing-install admission does not prove earning earlier campaign access.
 
-Raw commands, logs, products, results, recordings and source manifests are disposable under `/private/tmp/starfall-identity-10-20261024/`. [Verification](verification.json) records exact sources, selected counts, failures and limits. The final delta after `ea5d275` is documentation/evidence only. The recorded 662 runtime/test inputs remain identical; no older count certifies future changed inputs.
+Raw commands, logs, products, results, recordings and source manifests are disposable under `/private/tmp/starfall-identity-10-20261024/`. [Verification](verification.json) records exact sources, selected counts, failures and limits. The final delta after `ea5d275` is documentation/evidence only. Of 662 recorded inputs, 660 remain byte-identical; the two changed inputs are noncompiled `AppTests/README.md` and `UITests/README.md`. All compiled app/test/configuration inputs remain identical. No older count certifies future changed inputs.
 
 ## Executed checks
 
