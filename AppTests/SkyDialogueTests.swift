@@ -832,7 +832,7 @@ extension SkyDialogueTests {
         XCTAssertEqual(result.speaker, original.speaker)
         XCTAssertEqual(result.priority, original.priority)
         XCTAssertEqual(result.seconds, original.seconds)
-        XCTAssertEqual(result.text, original.text + " Column 2 has room again.")
+        XCTAssertEqual(result.text, original.text + " 4 more spaces above the stars in column 2. Column 2 has room again.")
         XCTAssertTrue(result.isValid)
 
         _ = try XCTUnwrap(game.letStarsFall())
@@ -847,7 +847,9 @@ extension SkyDialogueTests {
         XCTAssertEqual(SkyPressureCue(game: ribbon)?.columns, [0, 1, 3])
         XCTAssertEqual(SkyPressureCue(game: ribbon)?.text, "Columns 1, 2, 4 are full.")
         let old = ribbon
+        XCTAssertEqual((0..<7).map { SkyBoardSettling.height(old.board, column: $0) }, [7, 7, 6, 7, 5, 6, 5])
         let turn = try XCTUnwrap(ribbon.nudge(from: Cell(1, 1), to: Cell(1, 2)))
+        XCTAssertEqual((0..<7).map { SkyBoardSettling.height(ribbon.board, column: $0) }, [5, 2, 1, 4, 4, 6, 5])
         XCTAssertNil(SkyPressureCue(game: ribbon))
         XCTAssertEqual(ribbon.displayAward(for: turn), 50_000)
         let result = SkyDialogueLibrary.result(for: turn, from: old, to: ribbon,
@@ -855,7 +857,7 @@ extension SkyDialogueTests {
         let original = SkyDialogueLibrary.line(turn.resolutionPhases.count > 1 ? "guide.cascade" : "guide.automatic-recipe",
             values: turn.resolutionPhases.count > 1
                 ? ["depth": String(turn.resolutionPhases.count), "score": "50,000"] : ["score": "50,000"])
-        XCTAssertEqual(result.text, original.text + " Columns 1, 2, 4 have room again.")
+        XCTAssertEqual(result.text, original.text + " 16 more spaces above the stars in columns 1, 2, 3, 4, 5. Columns 1, 2, 4 have room again.")
         XCTAssertEqual(result.id, original.id)
         XCTAssertEqual(result.speaker, original.speaker)
         XCTAssertEqual(result.priority, original.priority)
@@ -1001,7 +1003,11 @@ extension SkyDialogueTests {
         store.clear(cell)
         XCTAssertEqual(store.game.score, value, "Core reward commits before the result animation")
         let clear = SkyDialogueLibrary.line("guide.clear", values: ["score": String(value)])
-        XCTAssertEqual(store.pausedGuideLine, SkyDialogueLibrary.contextual(clear, game: store.game, cadence: store.nextShowerCadence))
+        XCTAssertEqual(value, 3, "This retained manual fixture removes three actual bodies")
+        let clearWithRoom = SkyDialogueLine(id: clear.id, speaker: clear.speaker,
+            text: clear.text + " 3 more spaces above the stars in columns 1, 2, 3.",
+            priority: clear.priority, seconds: clear.seconds)
+        XCTAssertEqual(store.pausedGuideLine, SkyDialogueLibrary.contextual(clearWithRoom, game: store.game, cadence: store.nextShowerCadence))
         let revision = store.dialogue.revision
         presenter.finish()
         XCTAssertEqual(store.dialogue.revision, revision, "Presentation completion must not repeat committed feedback")
