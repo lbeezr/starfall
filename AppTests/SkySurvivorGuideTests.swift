@@ -7,7 +7,7 @@ final class SkySurvivorGuideTests: XCTestCase {
         try XCTUnwrap(game.nudge(from:Cell(from/7,from%7),to:Cell(to/7,to%7)))
     }
 
-    func testWholeCommittedChainHasAnExactReadableFactBeforeRefillWithoutChangingMetadata() throws {
+    func testWholeCommittedChainKeepsOneLiveReactionAndExactOptionalSurvivors() throws {
         let old = FallingSky.fullBoardRibbon()
         var game = old
         let turn = try exchange(8,9,in:&game)
@@ -15,8 +15,14 @@ final class SkySurvivorGuideTests: XCTestCase {
         XCTAssertEqual(SkySurvivorCopy.count(in:turn.resolutionPhases),4)
         let result = SkyDialogueLibrary.result(for:turn,from:old,to:game,tracedCount:0,recipe:nil,
                                                relayDepth:0,techniqueResult:"")
-        let original = SkyDialogueLibrary.line("guide.cascade",values:["depth":"3","score":"30,000"])
-        XCTAssertEqual(result.text,original.text + " 12 stars · 12 light. 12,000 base + 3,000 size + 15,000 chain = 30,000 points. Diamond marks: 4 survivors fell into later patterns. Refill added 12 stars; the board is full.")
+        let original = SkyDialogueLibrary.line("guide.live-cascade",values:["depth":"3","score":"30,000"])
+        XCTAssertEqual(result.text,"3-clear chain · +30,000 points")
+        let recap = try XCTUnwrap(SkyLastClearSnapshot(turn:turn,from:old,to:game,path:[],recipe:nil,
+                                                     roundGeneration:0,sequence:1))
+        XCTAssertEqual(recap.score.guideText,"12 stars · 12 light. 12,000 base + 3,000 size + 15,000 chain = 30,000 points.")
+        XCTAssertEqual(recap.survivorCount,4)
+        XCTAssertEqual(SkySurvivorCopy.fact(recap.survivorCount),"4 survivors fell into later patterns.")
+        XCTAssertEqual(SkyLastClearCopy.room(recap),"Refill added 12 stars. 49 stars on the board after this clear.")
         XCTAssertEqual(result.id,original.id);XCTAssertEqual(result.speaker,original.speaker)
         XCTAssertEqual(result.priority,original.priority);XCTAssertEqual(result.seconds,original.seconds)
         XCTAssertTrue(result.isValid)

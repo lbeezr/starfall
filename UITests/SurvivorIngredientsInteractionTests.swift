@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 
 /// Actual committed chains supply the survivor facts. Native captures and the
 /// coordinator's continuous recording inspect the passive diamonds separately
@@ -10,9 +11,9 @@ final class SurvivorIngredientsInteractionTests: XCTestCase {
         let cells: [String]
     }
 
-    private let ribbonGuide = "Spark. A 3-clear chain! +30,000 starlight. Falling stars kept it going. 12 stars · 12 light. 12,000 base + 3,000 size + 15,000 chain = 30,000 points. Diamond marks: 4 survivors fell into later patterns. Refill added 12 stars; the board is full."
-    private let independentGuide = "Pip. Recipe popped! +5,000 starlight. That made room. 4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points. Refill added 4 stars; the board is full."
-    private let lanternGuide = "Spark. A 2-clear chain! +15,000 starlight. Falling stars kept it going. 8 stars · 8 light. 8,000 base + 2,000 size + 5,000 chain = 15,000 points. Diamond marks: 2 survivors fell into later patterns. Refill added 8 stars; the board is full."
+    private let ribbonGuide = "Spark. 3-clear chain · +30,000 points"
+    private let independentGuide = "Pip. Pattern clear · +5,000 points"
+    private let lanternGuide = "Spark. 2-clear chain · +15,000 points"
     private let silverFact = "1 survivor fell into a later pattern."
 
     @MainActor private func element(_ id: String, in app: XCUIApplication) -> XCUIElement {
@@ -70,15 +71,26 @@ final class SurvivorIngredientsInteractionTests: XCTestCase {
     }
 
     @MainActor private func pauseNewSky(in app: XCUIApplication) {
-        tap("experiment.settings", in: app)
+        // Freeze the live clock as soon as the fixed HUD menu is admitted.
+        // Generic scroll discovery can consume this opening's six-second sky.
+        let menu = app.buttons["experiment.settings"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
+            format: "enabled == true AND hittable == true"), object: menu).wait(timeout: 5))
+        XCTAssertTrue(app.frame.contains(menu.frame))
+        menu.tap()
         let pause = app.buttons["experiment.pause"]
         app.revealSkyControls([pause])
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
             format: "label == %@ AND enabled == true AND hittable == true", "Pause sky"),
             object: pause).wait(timeout: 5))
         pause.tap()
+        // Pause dismisses the production menu; inspect its retained choice
+        // through a new menu visit before returning to the paused board.
+        tap("experiment.settings", in: app)
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Start sky"),
-                                                object: app.buttons["experiment.pause"]).wait(timeout: 5))
+                                                object: app.buttons["experiment.pause"]).wait(timeout: 5),
+            "Expected untouched opening: board=\(app.otherElements["experiment.board"].value as? String ?? "unavailable"), pause=\(app.buttons["experiment.pause"].label)")
+        tap("experiment.done", in: app)
         let next = app.buttons["experiment.next"]
         app.revealSkyControls([next])
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
@@ -179,6 +191,32 @@ final class SurvivorIngredientsInteractionTests: XCTestCase {
         close.tap(); XCTAssertEqual(try round(in: app), retained)
     }
 
+    @MainActor private func reviewLastClear(scores: [String], total: String, survivors: String?,
+                                          refills: Int, capture name: String,
+                                          in app: XCUIApplication) throws {
+        let retained = try round(in: app)
+        tap("experiment.settings", in: app); tap("sky.lastClear.menu.open", in: app)
+        let title = app.staticTexts.matching(NSPredicate(
+            format: "identifier == %@ AND label == %@", "sky.menu.title", "Last clear")).firstMatch
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
+            format: "exists == true AND hittable == true"), object: title).wait(timeout: 5))
+        var facts = scores.enumerated().map { ("sky.lastClear.score.\($0.offset + 1)", $0.element) }
+        facts.append(("sky.lastClear.total", total))
+        if let survivors { facts.append(("sky.lastClear.survivors", survivors)) }
+        else { XCTAssertFalse(app.staticTexts["sky.lastClear.survivors"].exists) }
+        facts.append(("sky.lastClear.room", "Refill added \(refills) stars. 49 stars on the board after this clear."))
+        for (id, expected) in facts {
+            let fact = app.staticTexts[id]
+            app.revealSkyMenuElement(fact); app.revealSkyControls([fact])
+            XCTAssertEqual(fact.label, expected)
+            XCTAssertTrue(app.frame.contains(fact.frame) && fact.isHittable)
+            capture(name + "-" + id, in: app)
+        }
+        XCTAssertFalse(app.staticTexts["sky.lastClear.phase.\(scores.count + 1)"].exists)
+        tap("experiment.done", in: app)
+        XCTAssertEqual(try round(in: app), retained, "Reading exact survivors and accounting cannot replay the chain")
+    }
+
     @MainActor private func readTerminalFact(in app: XCUIApplication) {
         let fact = app.staticTexts["score.survivors"]
         XCTAssertTrue(fact.waitForExistence(timeout: 5))
@@ -234,13 +272,15 @@ final class SurvivorIngredientsInteractionTests: XCTestCase {
     @MainActor func testNormalRibbonSurvivorsSeparateActionAndSilverTerminalCancellation() throws {
         continueAfterFailure = false
         executionTimeAllowance = 300
-        let (settings, reduce) = NativeSystemMotionSettings.open()
-        let originalMotion = reduce.value as? String == "1"
-        NativeSystemMotionSettings.set(false, on: reduce); settings.terminate()
-        addTeardownBlock { @MainActor in
+        if UIAccessibility.isReduceMotionEnabled {
             let (settings, reduce) = NativeSystemMotionSettings.open()
-            NativeSystemMotionSettings.set(originalMotion, on: reduce); settings.terminate()
+            NativeSystemMotionSettings.set(false, on: reduce); settings.terminate()
+            addTeardownBlock { @MainActor in
+                let (settings, reduce) = NativeSystemMotionSettings.open()
+                NativeSystemMotionSettings.set(true, on: reduce); settings.terminate()
+            }
         }
+        XCTAssertFalse(UIAccessibility.isReduceMotionEnabled, "This journey requires actual normal system motion")
         let app = XCUIApplication(); defer { app.terminate() }
         let retainedArguments = ["--sky-flow-review", "--dialogue-review", "-calmEffects", "NO"]
         app.launchArguments = retainedArguments + ["--starfalls-reset", "--world-legacy-review"]
@@ -258,9 +298,17 @@ final class SurvivorIngredientsInteractionTests: XCTestCase {
         XCTAssertEqual(app.buttons.matching(NSPredicate(format:
             "identifier BEGINSWITH %@ AND NOT label BEGINSWITH %@", "experiment.cell.", "Empty,")).count, 49)
         try guide(ribbonGuide, capture: "survivor-phone-ribbon-four-causal-movers", in: app)
+        try reviewLastClear(scores: ["4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points.",
+            "4 stars · 4 light. 4,000 base + 1,000 size + 5,000 chain = 10,000 points.",
+            "4 stars · 4 light. 4,000 base + 1,000 size + 10,000 chain = 15,000 points."],
+            total: "30,000 points this clear.", survivors: "4 survivors fell into later patterns.",
+            refills: 12, capture: "survivor-phone-optional-ribbon-exact", in: app)
         exchange(11, 12, capture: "survivor-phone-independent-following-clear", in: app)
         settled(35_000, target: 220_000, exchanges: 2, in: app)
         try guide(independentGuide, capture: "survivor-phone-independent-action-no-old-causal-claim", in: app)
+        try reviewLastClear(scores: ["4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points."],
+            total: "5,000 points this clear.", survivors: nil, refills: 4,
+            capture: "survivor-phone-optional-independent-exact", in: app)
         let retained = try round(in: app)
         tap("experiment.settings", in: app); XCUIDevice.shared.press(.home); app.activate(); tap("experiment.done", in: app)
         settled(35_000, target: 220_000, exchanges: 2, in: app)
@@ -325,6 +373,10 @@ final class SurvivorIngredientsInteractionTests: XCTestCase {
         exchange(8, 9, capture: "survivor-tablet-two-phase-current-lantern-diamonds", in: app)
         settled(15_000, target: 150_000, exchanges: 1, in: app)
         try guide(lanternGuide, capture: "survivor-tablet-two-causal-movers-full-guide", in: app)
+        try reviewLastClear(scores: ["4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points.",
+            "4 stars · 4 light. 4,000 base + 1,000 size + 5,000 chain = 10,000 points."],
+            total: "15,000 points this clear.", survivors: "2 survivors fell into later patterns.",
+            refills: 8, capture: "survivor-tablet-optional-lantern-exact", in: app)
         let retained = try round(in: app)
         tap("experiment.settings", in: app); tap("fullBoard.choices.open", in: app); tap("fullBoard.choices.practice", in: app)
         let title = app.staticTexts["tutorial.title"]

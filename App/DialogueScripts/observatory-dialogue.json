@@ -617,6 +617,30 @@
       ]
     },
     {
+      "id": "guide.live-automatic-recipe",
+      "lines": [
+        {
+          "id": "guide.live-automatic-recipe.1",
+          "speaker": "pip",
+          "text": "Pattern clear · +{score} points",
+          "priority": "routine",
+          "seconds": 6
+        }
+      ]
+    },
+    {
+      "id": "guide.live-cascade",
+      "lines": [
+        {
+          "id": "guide.live-cascade.1",
+          "speaker": "spark",
+          "text": "{depth}-clear chain · +{score} points",
+          "priority": "routine",
+          "seconds": 6
+        }
+      ]
+    },
+    {
       "id": "guide.cascade",
       "lines": [
         {

@@ -39,27 +39,9 @@ struct SkyScoreReceiptLabel: View {
     let quiet: Bool
     @Environment(\.dynamicTypeSize) private var textSize
 
-    private var showsComponents: Bool { !textSize.isAccessibilitySize && event.scoreComponentText != nil }
-
     var body: some View {
-        ViewThatFits(in: .vertical) {
-            if showsComponents, width >= 180, height >= 64, let components = event.scoreComponentText {
-                VStack(spacing: 2) {
-                    primary(height: height - 32)
-                    Text(components)
-                        .font(.caption2).monospacedDigit()
-                        .foregroundStyle(StarfallTheme.Colors.textPrimary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                .fixedSize(horizontal: false, vertical: true)
-            }
-            primary(height: height)
-        }
-        .frame(width: max(0,width),height:max(0,height))
-    }
-
-    private func primary(height: CGFloat) -> some View {
         CrystalCelebrationLabel(event: event, tint: tint, width: width, height: max(0,height),
                                 showsTitle: !textSize.isAccessibilitySize, age: age, quiet: quiet)
+            .frame(width: max(0,width),height:max(0,height))
     }
 }

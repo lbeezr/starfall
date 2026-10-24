@@ -431,16 +431,15 @@ final class SkyDialogueTests: XCTestCase {
             XCTAssertTrue(store.performTechnique(.nudge(Cell(1, 1), Cell(1, 2)),
                 snapshot: store.game, generation: store.constellationInputGeneration))
             XCTAssertEqual(store.game.displayScore, points)
-            XCTAssertEqual(store.guideLine.id, "guide.cascade.1")
-            XCTAssertTrue(store.guideLine.text.contains("\(depth)-clear chain"))
-            XCTAssertTrue(store.guideLine.text.contains("+\(points.formatted()) starlight"))
+            XCTAssertEqual(store.guideLine.id, "guide.live-cascade.1")
+            XCTAssertEqual(store.guideLine.text, "\(depth)-clear chain · +\(points.formatted()) points")
             XCTAssertFalse(store.guideLine.text.contains(SkyCopy.text(.techniqueMoved)))
             XCTAssertEqual(feedback.announcements.last, store.guideLine.spokenText)
             let announcements = feedback.announcements
             presenter.finish()
             XCTAssertEqual(feedback.announcements, announcements,
                            "Settling must not repeat the aggregate spoken result")
-            XCTAssertEqual(store.guideLine.id, "guide.cascade.1")
+            XCTAssertEqual(store.guideLine.id, "guide.live-cascade.1")
             store.setSuspended(true)
         }
     }
@@ -827,12 +826,16 @@ extension SkyDialogueTests {
         XCTAssertNil(SkyPressureCue(game: game))
         let result = SkyDialogueLibrary.result(for: turn, from: old, to: game,
             tracedCount: 0, recipe: nil, relayDepth: 0, techniqueResult: "")
-        let original = SkyDialogueLibrary.line("guide.automatic-recipe", values: ["score": "5,000"])
+        let original = SkyDialogueLibrary.line("guide.live-automatic-recipe", values: ["score": "5,000"])
         XCTAssertEqual(result.id, original.id)
         XCTAssertEqual(result.speaker, original.speaker)
         XCTAssertEqual(result.priority, original.priority)
         XCTAssertEqual(result.seconds, original.seconds)
-        XCTAssertEqual(result.text, original.text + " 4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points. 4 more spaces above the stars in column 2. Column 2 has room again.")
+        XCTAssertEqual(result.text, "Pattern clear · +5,000 points")
+        let recap = try XCTUnwrap(SkyLastClearSnapshot(turn: turn, from: old, to: game,
+            path: [], recipe: nil, roundGeneration: 0, sequence: 1))
+        XCTAssertEqual(recap.score.guideText, "4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points.")
+        XCTAssertEqual(SkyLastClearCopy.room(recap), "4 more spaces above the stars in column 2. \(game.occupiedCount) stars on the board after this clear.")
         XCTAssertTrue(result.isValid)
 
         _ = try XCTUnwrap(game.letStarsFall())
@@ -854,10 +857,15 @@ extension SkyDialogueTests {
         XCTAssertEqual(ribbon.displayAward(for: turn), 50_000)
         let result = SkyDialogueLibrary.result(for: turn, from: old, to: ribbon,
             tracedCount: 0, recipe: nil, relayDepth: 0, techniqueResult: "")
-        let original = SkyDialogueLibrary.line(turn.resolutionPhases.count > 1 ? "guide.cascade" : "guide.automatic-recipe",
+        let original = SkyDialogueLibrary.line(turn.resolutionPhases.count > 1 ? "guide.live-cascade" : "guide.live-automatic-recipe",
             values: turn.resolutionPhases.count > 1
                 ? ["depth": String(turn.resolutionPhases.count), "score": "50,000"] : ["score": "50,000"])
-        XCTAssertEqual(result.text, original.text + " 16 stars · 16 light. 16,000 base + 4,000 size + 30,000 chain = 50,000 points. Diamond marks: 6 survivors fell into later patterns. 16 more spaces above the stars in columns 1, 2, 3, 4, 5. Columns 1, 2, 4 have room again.")
+        XCTAssertEqual(result.text, original.text)
+        let recap = try XCTUnwrap(SkyLastClearSnapshot(turn: turn, from: old, to: ribbon,
+            path: [], recipe: nil, roundGeneration: 0, sequence: 1))
+        XCTAssertEqual(recap.score.guideText, "16 stars · 16 light. 16,000 base + 4,000 size + 30,000 chain = 50,000 points.")
+        XCTAssertEqual(recap.survivorCount, 6)
+        XCTAssertEqual(SkyLastClearCopy.room(recap), "16 more spaces above the stars in columns 1, 2, 3, 4, 5. \(ribbon.occupiedCount) stars on the board after this clear.")
         XCTAssertEqual(result.id, original.id)
         XCTAssertEqual(result.speaker, original.speaker)
         XCTAssertEqual(result.priority, original.priority)
@@ -928,7 +936,8 @@ extension SkyDialogueTests {
                 snapshot: store.game, generation: store.constellationInputGeneration))
             XCTAssertEqual(store.game.displayScore, 5_000)
             XCTAssertNil(store.pressureCue)
-            XCTAssertTrue(store.guideLine.text.hasSuffix("Column 2 has room again."))
+            XCTAssertEqual(store.guideLine.text, "Pattern clear · +5,000 points")
+            XCTAssertEqual(store.lastClear?.headroom?.kind, .opened(columns: [1], spaces: 4))
             XCTAssertEqual(feedback.announcements.last, store.guideLine.spokenText)
             let saved = try XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))
             XCTAssertEqual(try SkySaveArchive.decode(saved), store.game, "The recovered board commits before presentation finishes")
