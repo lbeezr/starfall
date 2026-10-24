@@ -1,0 +1,36 @@
+{
+  "sourceRuntime": "dev.72a01d9bb7",
+  "actualBuild": "dev.local",
+  "captures": [
+    {
+      "file": "dev-72a01d9bb7-goal01-phone-selected.jpg",
+      "sha256": "eec8a42f3287ad07359653ef1c6eb48dd03027ff28f76b543598389bc77ae1d5",
+      "sourcePNG": "5A79270E-1E6A-4D80-98DC-2AB5412F28D9.png",
+      "sourcePNGSHA256": "826b9931953708f85c2012ce987fbd0c0743444d7c5e47a12d31e04d46ded346",
+      "size": [
+        1170,
+        2532
+      ],
+      "export": "sips JPEG78; original dimensions",
+      "state": "normal motion, paused current Lantern4, selected announced Aqua0/column6",
+      "test": "testNormalLanternSupportingRowKeepsForecastInspectionRound",
+      "status": "Current for goal1 row/selection composition only",
+      "inspected": "Original PNG and retained original-dimension JPEG inspected"
+    },
+    {
+      "file": "dev-72a01d9bb7-goal01-tablet-stacked.jpg",
+      "sha256": "2d2c046b512671dd1ade5a2837ddfba77bbd0fc4448193e15ac5c607db6caee0",
+      "sourcePNG": "2CA810C7-F189-47B6-BA58-3C7EBA0A7CDB.png",
+      "sourcePNGSHA256": "d32b8654f6b10b8994e1159ea6e2f9e0373e51f334fb1a04409cc34d2632793b",
+      "size": [
+        2064,
+        2752
+      ],
+      "export": "sips JPEG78; original dimensions",
+      "state": "AX3XL actual Calm, paused current Lantern4, complete stacked mode/inspection support",
+      "test": "testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+      "status": "Current for goal1 support layout; board continues below scroll viewport",
+      "inspected": "Original PNG and retained original-dimension JPEG inspected"
+    }
+  ]
+}

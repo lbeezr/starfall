@@ -1,0 +1,218 @@
+{
+  "status": "Verified development slice",
+  "goal": 1,
+  "issue": 382,
+  "source": {
+    "base": "0d71f18cf8d41277bc3ae1a5b8c6536cde7cb9ca",
+    "dirtyBuildInputs": [
+      "App/FallingSkyView.swift",
+      "UITests/ForecastColumnInspectionInteractionTests.swift"
+    ],
+    "sha256": {
+      "App/FallingSkyView.swift": "d65b26125321e2999bbb2c616d50ce07849eab445a6860d0fd14d8e739ef334a",
+      "UITests/ForecastColumnInspectionInteractionTests.swift": "0162ff08d31f6d14310c3a17acdab9180ae38b010faf75fb7450f6524ad79603"
+    },
+    "originalCombinedTestSHA256": "f4a15ee6bc9f77f2d668a9609dfc8df1101bf6f1238ab26144f072b563abe32d",
+    "runtimeFingerprint": "dev.72a01d9bb7",
+    "actualBundleBuildID": "dev.local"
+  },
+  "environment": {
+    "host": "macOS27.0.1/26A434",
+    "Xcode": "27.1/27A9275",
+    "SDK": "iPhoneSimulator27.1",
+    "minimumDeployment": "iOS17",
+    "stage": "development"
+  },
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 78.318
+  },
+  "runs": [
+    {
+      "run": "hosted-01",
+      "total": 26,
+      "passed": 26,
+      "failed": 0,
+      "skipped": 0,
+      "devices": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+            "deviceName": "Starfall HUD Stack dcf3 Tablet",
+            "modelName": "iPad Pro 13-inch (M5)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 26,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ]
+    },
+    {
+      "run": "phone-01-inspection",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "devices": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "modelName": "iPhone 17e",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 1,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ]
+    },
+    {
+      "run": "phone-01-background",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "devices": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "modelName": "iPhone 17e",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 1,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ]
+    },
+    {
+      "run": "tablet-01",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "devices": [
+        {
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+            "deviceName": "Starfall HUD Stack dcf3 Tablet",
+            "modelName": "iPad Pro 13-inch (M5)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "expectedFailures": 0,
+          "failedTests": 0,
+          "passedTests": 1,
+          "skippedTests": 0,
+          "testPlanConfiguration": {
+            "configurationId": "1",
+            "configurationName": "Test Scheme Action"
+          }
+        }
+      ]
+    }
+  ],
+  "failures": {
+    "initialCombined": {
+      "result": "incomplete",
+      "commandSeconds": 360.044,
+      "lastMethodSeconds": 260.19,
+      "bundleExport": "missing Info.plist"
+    },
+    "splitSource": {
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "failures": [
+        {
+          "failureText": "XCTAssertTrue failed",
+          "targetName": "StarfallUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+          "testName": "testNormalLanternSupportingRowKeepsForecastInspectionRound()"
+        },
+        {
+          "failureText": "Failed to launch com.apple.Preferences: Timed out attempting to launch app.",
+          "targetName": "StarfallUITests",
+          "testIdentifier": 2,
+          "testIdentifierString": "ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound",
+          "testName": "testNormalLanternSupportingRowPreservesBackgroundAndWorldRound()"
+        }
+      ]
+    },
+    "diagnosticCleanup": {
+      "onlyPID": 43406,
+      "parentPID": 41036,
+      "reason": "completed failures delayed finalization",
+      "unrelatedProcesses": "untouched"
+    }
+  },
+  "build": "Debug build-for-testing passed; final test-only menu helper rebuild42.363s",
+  "rawOutputRoot": "/private/tmp/starfall-hud-stack-20261024",
+  "unperformed": [
+    "actual VoiceOver",
+    "physical device delivery/play",
+    "minimum-iOS17 runtime",
+    "human comprehension",
+    "sustained performance",
+    "continuous animation review"
+  ],
+  "nativeStageBudget": "300s per method retained; outer420s single-method stage includes measured launch/finalization overhead; no assertion or gameplay clock changes",
+  "commands": {
+    "core": "swift test",
+    "build": "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination generic/platform=iOS Simulator -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+    "nativeBase": "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -destination platform=iOS Simulator,id=<recorded deviceId> -only-testing:<selection> -resultBundlePath /private/tmp/starfall-hud-stack-20261024/<run>.xcresult test-without-building",
+    "hostedSelections": [
+      "StarfallAppTests/SkyForecastDestinationsTests",
+      "StarfallAppTests/SkyForecastInspectionTests",
+      "StarfallAppTests/SkyShowerInspectionTests",
+      "StarfallAppTests/StarlightCelebrationTests/testHeaderRegistrationPreservesNestedScoreBoardAndRestorationLight",
+      "StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking"
+    ],
+    "nativeSelections": [
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound",
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard"
+    ],
+    "always": [
+      "python3 scripts/ci-hygiene.py",
+      "git diff --check"
+    ],
+    "bounds": "scripts/simulator-command.py stage receipts;300s UI method bounds;420s outer single-case stages"
+  },
+  "hygiene": "passed before and after explicit staging; staged whitespace and changed-document local links pass",
+  "releaseAndMembership": "not applicable: existing source/test memberships, no routing/resource/build/Debug fixture changes"
+}
