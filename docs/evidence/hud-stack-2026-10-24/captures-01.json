@@ -1,6 +1,13 @@
 {
   "sourceRuntime": "dev.72a01d9bb7",
   "actualBuild": "dev.local",
+  "visualVerdict": {
+    "date": "2026-10-24",
+    "status": "Historical, user-rejected appearance; initial adoption superseded",
+    "reasons": "Oversized optional action in the wrong menu component role and disconnected tablet scenery",
+    "provenance": "Capture bytes, hashes, dimensions, source identities and original inspection statements are preserved",
+    "nextAction": "Goal 1 issue 382 reopened for correction; goal 2 issue 383 held. Replacement visual evidence is required before acceptance"
+  },
   "captures": [
     {
       "file": "dev-72a01d9bb7-goal01-phone-selected.jpg",
@@ -14,7 +21,8 @@
       "export": "sips JPEG78; original dimensions",
       "state": "normal motion, paused current Lantern4, selected announced Aqua0/column6",
       "test": "testNormalLanternSupportingRowKeepsForecastInspectionRound",
-      "status": "Current for goal1 row/selection composition only",
+      "status": "Historical: user-rejected visual composition, October 24, 2026",
+      "initialStatus": "Current for goal1 row/selection composition only",
       "inspected": "Original PNG and retained original-dimension JPEG inspected"
     },
     {
@@ -29,7 +37,8 @@
       "export": "sips JPEG78; original dimensions",
       "state": "AX3XL actual Calm, paused current Lantern4, complete stacked mode/inspection support",
       "test": "testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
-      "status": "Current for goal1 support layout; board continues below scroll viewport",
+      "status": "Historical: user-rejected visual composition; board continues below scroll viewport",
+      "initialStatus": "Current for goal1 support layout; board continues below scroll viewport",
       "inspected": "Original PNG and retained original-dimension JPEG inspected"
     }
   ]

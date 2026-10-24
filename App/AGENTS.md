@@ -12,12 +12,16 @@ Read the [App map](README.md). The root contract also routes `AppTests` and `UIT
 ## UI contracts
 
 - Own reusable typography, spacing, colors and control roles in `StarfallTheme`. Reuse the bounded jewel material/asset factory. Keep the board dominant, secondary actions/instructions outside the playfield, jewel proportions intact and visible square cell backgrounds absent unless requested.
+- Use only the official [UI system](../docs/design/GAME_UI_SYSTEM.md) and registered component roles. Reusing an official component in the wrong context does not satisfy this rule. If a needed role or state is missing, design it, add it to the shared owner and system roster, and prove it in a native slice before expanding its use; do not add a screen-local substitute.
+- Before HUD work, read the [HUD guide](../docs/design/hud/README.md) for the approved reference, source owners and current visual acceptance. HUD source is currently in this folder; a documentation subfolder does not change its instruction scope.
 - Rendering, native hit cells and accessibility cells share one coordinate mapping, including resize and row direction. Geometry changes need real native taps. Preserve stable cell/gem identities, native button semantics, non-color cues, full touch targets and readable Dynamic Type; reflow controls instead of shrinking text.
 - Keep full animations in normal play. Calm effects, VoiceOver and system Reduce Motion must preserve committed outcomes and usable input. Still screenshots and animation-suppressed tests cannot establish falling-animation behavior.
 
 ## Native evidence
 
 Use the [verification matrix](../docs/ENGINEERING.md#verification-by-change). Exercise relevant normal play, rapid input, win/loss, restart, background/resume, Reduce Motion and settings dismissal. Inspect screenshots as well as assertions: hittable controls can still wrap or crowd the board. Follow [screenshot practice](../docs/SCREENSHOTS.md), starting from the selected capture index and updating affected entries.
+
+For visual changes, apply the [visual acceptance review](../docs/design/UI_PRODUCTION.md#decide-visual-acceptance-separately) to the complete native screen against the approved reference, including default and largest text. Record mechanical and visual verdicts separately. An independent reviewer inspects the actual captures before merge; a known visual failure keeps the current goal open rather than becoming work for a later goal. This is internal verification and requires no routine user sign-off.
 
 Use lightweight development accessibility checks; full actual VoiceOver acceptance belongs at RC, including the first release, under the [stage policy](../docs/DEVELOPMENT_BUILDS.md#accessibility-checks-by-build-stage). Do not run full sessions for routine iteration. A targeted VoiceOver defect still needs its actual reproduction.
 

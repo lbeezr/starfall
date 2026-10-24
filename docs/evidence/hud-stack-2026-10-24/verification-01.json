@@ -1,5 +1,18 @@
 {
-  "status": "Verified development slice",
+  "status": "Mechanically verified; visual acceptance rejected October 24, 2026",
+  "initialStatus": "Verified development slice",
+  "visualVerdict": {
+    "date": "2026-10-24",
+    "status": "User-rejected; initial development adoption superseded",
+    "reasons": [
+      "Optional Inspect next shower uses the wrong menu component role and dominates active play",
+      "Tablet HUD composition disconnects the instruments from the scenery"
+    ],
+    "mechanicalResults": "Original source/hash identities, pass counts, failures, commands and environments below remain unchanged",
+    "goal1Issue": "382 reopened; correction active",
+    "goal2Issue": "383 held pending goal 1 correction and acceptance",
+    "nextAction": "Correct and independently review the complete composition against the approved reference and official component roles; later goals cannot postpone known failures"
+  },
   "goal": 1,
   "issue": 382,
   "source": {

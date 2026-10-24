@@ -1,6 +1,8 @@
 # iOS application
 
-The [ordered HUD stack](../docs/evidence/hud-stack-2026-10-24/README.md) begins with adaptive supporting rows: Lantern/Ribbon mode and optional shower inspection share natural-width space, while large text stacks completely. Ordered forecast targets, source validation, Full Board absence and the existing clocks remain unchanged.
+For HUD changes, start with the [native HUD guide](../docs/design/hud/README.md), the official component roster and the UI production skill. [App instructions](AGENTS.md) apply to the current flat HUD source files.
+
+The [ordered HUD stack's October 24 erratum](../docs/evidence/hud-stack-2026-10-24/README.md#october-24-visual-rejection-erratum) records user-rejected goal 1: its menu-role inspection action is oversized, and tablet instruments disconnect from the scenery. Mechanical forecast/target/state checks remain factual, but initial visual adoption is superseded. Issue #382 is reopened for correction through the official HUD component system; goal 2 is held. Correct this composition before continuing rather than deferring it to later goals. Ordered forecast facts, source validation, Full Board absence and existing clocks remain authoritative.
 
 `SkyLastClearSnapshot` copies one genuine committed clear, including zero-light history, into the existing `SkyLightReceiptSession`. Its score/survivor readers now share that value; the separately labeled Last earned light keeps its positive-geometry meaning. `SkyLastClearView` reuses the menu reader for optional static phase diagrams, exact ingredient positions, accounting and actual room/refills. No-clear actions may retain Last clear, real round replacement clears it, and cold restore omits it. Historical drained cells use an explicitly static gray convention, not the living shader. [Decision goal8 evidence](../docs/evidence/decision-goal-08-last-clear-2026-10-24/README.md).
 

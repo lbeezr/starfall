@@ -1,6 +1,6 @@
 # Documentation map
 
-[The ordered HUD stack](evidence/hud-stack-2026-10-24/README.md) begins with native-verified mode/inspection grouping, exact forecast targets and large-text stacking. Each of ten goals is tested and merged before its successor starts.
+[The ordered HUD stack](evidence/hud-stack-2026-10-24/README.md#october-24-visual-rejection-erratum) is correcting user-rejected goal 1. Passing mechanical checks remain factual, but the oversized menu-role inspection action and disconnected tablet scenery failed the visual brief. Issue #382 is reopened; goal 2 is held until the official component and full composition are corrected and independently reviewed. Later goals must not postpone this known failure.
 
 [Optional Last clear reading](evidence/decision-goal-08-last-clear-2026-10-24/README.md) keeps one actual committed clear in session memory, with exact ingredient diagrams, score components, survivors and room/refills. Native phone/tablet journeys preserve rewards, Map/Entry return and exact Replay; result decisions precede optional detail. Cold restore omits unavailable history.
 
