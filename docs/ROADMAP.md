@@ -1,5 +1,7 @@
 # Starfall roadmap
 
+**Bounded HUD stack — October 24:** [#381](https://github.com/lbeezr/starfall/issues/381) records the user-authorized ten sequential HUD/design-system refinements, distinct from the continuing decision-stack coordinator. [Goal 1 evidence](evidence/hud-stack-2026-10-24/README.md) verifies adaptive mode/inspection grouping with complete forecast/native targets and large-text fallback. Implement, test and merge each leaf before its successor; carry earlier outcomes forward. This bounded queue adds no refill scheduler, gameplay rules or delivery authority.
+
 **Status:** Prioritized product plan; current implementation and future proposals distinguished below · **Owner:** Factory coordinator (lbeezr) · **Updated:** October 23, 2026
 
 Build a satisfying restoration adventure for **iPhone and iPad**: make a thoughtful arrangement, earn a readable cascade, bring a place back to life, then discover a different puzzle at the next stop. Pokémon Puzzle League is the primary gameplay inspiration. The OpenAI showcases inform authored journeys, sensory coherence and small integrated slices.

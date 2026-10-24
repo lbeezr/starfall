@@ -325,6 +325,8 @@ import StarfallCore
 
     private func edgeHeader(island: Bool, stacked: Bool = false) -> some View {
         let renderedForecastSource = forecastSource
+        let inspectionSource = headerInspectionSource(renderedForecastSource)
+        let showsMode = store.game.challenge == .firstLight || store.game.challenge == .ribbonCrossing
         return VStack(spacing: StarfallTheme.Spacing.compact) {
             if largeText || stacked {
                 stackedHeader(island: island)
@@ -339,26 +341,16 @@ import StarfallCore
                     stackedHeader(island: island)
                 }
             }
-            if store.game.challenge == .firstLight || store.game.challenge == .ribbonCrossing {
-                StarfallStatusText(text: SkyCopy.text(store.game.usesFullBoardRefill ? .fullBoardRefill : .fallingSkyMode))
-                    .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
-                    .accessibilityIdentifier(store.game.challenge == .ribbonCrossing ? "ribbon.mode" : "lantern.mode")
-                    .allowsHitTesting(false)
+            if showsMode {
+                modeSupport(source: inspectionSource)
             }
             if !store.game.isOver && !store.game.usesFullBoardRefill && !store.forecast.isEmpty {
                 SkyForecastDestinations(forecast: store.forecast, arriving: store.showerCountdown.arriving,
                                         selectedID: forecastInspection?.entry(in: forecastSource)?.id,
                                         select: { inspectForecast($0, source: renderedForecastSource) })
                     .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
-                if let source = renderedForecastSource, !source.arriving,
-                   source.forecast == source.game.incoming, store.tutorial == nil {
-                    Button(SkyCopy.text(.showerInspectionAction)) {
-                        inspectShower(source: source)
-                    }
-                    .buttonStyle(StarfallButtonStyle(role: .compact))
-                    .frame(minHeight: StarfallTheme.Layout.preferenceTarget)
-                    .disabled(store.busy)
-                    .accessibilityIdentifier("sky.showerInspection.open")
+                if !showsMode, let source = inspectionSource {
+                    showerInspectionButton(source: source)
                 }
             }
             if let pressure = store.pressureCue {
@@ -373,6 +365,52 @@ import StarfallCore
         .starlightAnchor(.header)
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("sky.header")
+    }
+
+    private func headerInspectionSource(_ source: SkyForecastInspection.Source?) -> SkyForecastInspection.Source? {
+        guard !store.game.isOver, !store.game.usesFullBoardRefill, !store.forecast.isEmpty,
+              let source, !source.arriving, source.forecast == source.game.incoming,
+              store.tutorial == nil else { return nil }
+        return source
+    }
+
+    @ViewBuilder private func modeSupport(source: SkyForecastInspection.Source?) -> some View {
+        if let source {
+            if largeText {
+                VStack(spacing: StarfallTheme.Spacing.compact) {
+                    modeLabel
+                    showerInspectionButton(source: source)
+                }
+            } else {
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: StarfallTheme.Spacing.small) {
+                        modeLabel.fixedSize(horizontal: true, vertical: false)
+                        showerInspectionButton(source: source).fixedSize(horizontal: true, vertical: false)
+                    }
+                    VStack(spacing: StarfallTheme.Spacing.compact) {
+                        modeLabel
+                        showerInspectionButton(source: source)
+                    }
+                }
+            }
+        } else {
+            modeLabel
+        }
+    }
+
+    private var modeLabel: some View {
+        StarfallStatusText(text: SkyCopy.text(store.game.usesFullBoardRefill ? .fullBoardRefill : .fallingSkyMode))
+            .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+            .accessibilityIdentifier(store.game.challenge == .ribbonCrossing ? "ribbon.mode" : "lantern.mode")
+            .allowsHitTesting(false)
+    }
+
+    private func showerInspectionButton(source: SkyForecastInspection.Source) -> some View {
+        Button(SkyCopy.text(.showerInspectionAction)) { inspectShower(source: source) }
+            .buttonStyle(StarfallButtonStyle(role: .compact))
+            .frame(minHeight: StarfallTheme.Layout.preferenceTarget)
+            .disabled(store.busy)
+            .accessibilityIdentifier("sky.showerInspection.open")
     }
 
     private func stackedHeader(island: Bool) -> some View {

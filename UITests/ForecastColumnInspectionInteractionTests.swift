@@ -76,7 +76,17 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
     }
 
     @MainActor private func pauseNewSky(in app: XCUIApplication) {
-        tap("experiment.settings", in: app)
+        // The menu is pinned to the viewport. Traversing scroll/reveal helpers
+        // here can consume the first real shower before suspension is admitted.
+        let menu = app.buttons["experiment.settings"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
+            format: "exists == true AND enabled == true AND hittable == true"),
+            object: menu).wait(timeout: 5))
+        let target = menu.frame
+        XCTAssertGreaterThanOrEqual(target.width, 48)
+        XCTAssertGreaterThanOrEqual(target.height, 48)
+        XCTAssertTrue(app.frame.contains(target))
+        menu.tap()
         let pause = app.buttons["experiment.pause"]
         app.revealSkyControls([pause])
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
@@ -97,8 +107,9 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         let forecast = element("sky.forecast.destinations", in: app)
         XCTAssertTrue(forecast.waitForExistence(timeout: 5))
         XCTAssertEqual(forecast.label, "Next columns")
-        XCTAssertGreaterThanOrEqual(forecast.frame.height, 44)
-        XCTAssertLessThan(forecast.frame.height, 400, "Forecast targets reflow within a bounded header")
+        let forecastFrame = forecast.frame, viewport = app.frame
+        XCTAssertGreaterThanOrEqual(forecastFrame.height, 44)
+        XCTAssertLessThan(forecastFrame.height, 400, "Forecast targets reflow within a bounded header")
         let value = forecast.value as? String ?? ""
         let descriptions = value.components(separatedBy: ", then ")
         XCTAssertEqual(descriptions.count, ids.count)
@@ -106,10 +117,11 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         for (index, id) in ids.enumerated() {
             let chip = app.buttons["sky.forecast.star.\(id)"]
             XCTAssertTrue(chip.exists && chip.isEnabled)
-            XCTAssertGreaterThanOrEqual(chip.frame.width, 44)
-            XCTAssertGreaterThanOrEqual(chip.frame.height, 44)
-            XCTAssertTrue(app.frame.contains(chip.frame), "Every complete target must fit the screen")
-            XCTAssertTrue(forecast.frame.contains(chip.frame), "Every complete target must fit its actual reading surface")
+            let chipFrame = chip.frame
+            XCTAssertGreaterThanOrEqual(chipFrame.width, 44)
+            XCTAssertGreaterThanOrEqual(chipFrame.height, 44)
+            XCTAssertTrue(viewport.contains(chipFrame), "Every complete target must fit the screen")
+            XCTAssertTrue(forecastFrame.contains(chipFrame), "Every complete target must fit its actual reading surface")
             if index < descriptions.count { XCTAssertEqual(chip.label, descriptions[index]) }
             if let columns, index < columns.count, index < descriptions.count {
                 XCTAssertTrue(descriptions[index].hasSuffix("column \(columns[index])"), descriptions[index])
@@ -125,6 +137,34 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         for chip in app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "sky.forecast.star.")).allElementsBoundByIndex {
             XCTAssertFalse(chip.isSelected)
         }
+    }
+
+    @MainActor private func assertLanternSupport(stacked: Bool, in app: XCUIApplication) {
+        let mode = app.staticTexts["lantern.mode"]
+        let inspect = app.buttons["sky.showerInspection.open"]
+        let header = element("sky.header", in: app)
+        let forecast = element("sky.forecast.destinations", in: app)
+        XCTAssertEqual(mode.label, "Falling Sky")
+        XCTAssertEqual(inspect.label, "Inspect next shower")
+        XCTAssertTrue(inspect.isEnabled && inspect.isHittable)
+        let modeFrame = mode.frame, inspectionFrame = inspect.frame
+        let headerFrame = header.frame, forecastFrame = forecast.frame, viewport = app.frame
+        XCTAssertGreaterThanOrEqual(inspectionFrame.width, 48)
+        XCTAssertGreaterThanOrEqual(inspectionFrame.height, 48)
+        for frame in [modeFrame, inspectionFrame, forecastFrame] {
+            XCTAssertTrue(viewport.contains(frame), "Supporting facts and actions must fit the actual viewport")
+            XCTAssertTrue(headerFrame.contains(frame), "Supporting facts and actions must fit the pinned header")
+        }
+        if stacked {
+            XCTAssertLessThanOrEqual(modeFrame.maxY, inspectionFrame.minY,
+                                     "Largest text keeps the complete mode above the inspection action")
+        } else {
+            XCTAssertEqual(modeFrame.midY, inspectionFrame.midY, accuracy: 1,
+                           "Default text shares one supporting row")
+            XCTAssertLessThanOrEqual(modeFrame.maxX, inspectionFrame.minX)
+        }
+        XCTAssertLessThanOrEqual(max(modeFrame.maxY, inspectionFrame.maxY), forecastFrame.minY,
+                                 "The ordered forecast keeps its own complete reading row")
     }
 
     @MainActor private func focus(_ id: Int, column: Int, capture name: String,
@@ -277,6 +317,76 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         _ = assertForecast(ids: Array(5..<10), in: app)
     }
 
+    @MainActor private func launchNormalLantern() -> XCUIApplication {
+        let (settings, reduce) = NativeSystemMotionSettings.open()
+        let original = reduce.value as? String == "1"
+        NativeSystemMotionSettings.set(false, on: reduce); settings.terminate()
+        addTeardownBlock { @MainActor in
+            let (settings, reduce) = NativeSystemMotionSettings.open()
+            NativeSystemMotionSettings.set(original, on: reduce); settings.terminate()
+        }
+        XCUIDevice.shared.orientation = .portrait
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--sky-flow-review", "--dialogue-review", "-calmEffects", "NO"]
+        app.launch()
+        return app
+    }
+
+    @MainActor func testNormalLanternSupportingRowKeepsForecastInspectionRound() throws {
+        continueAfterFailure = false
+        executionTimeAllowance = 300
+        let app = launchNormalLantern(); defer { app.terminate() }
+        app.worldVisitControl("firstLight").tap()
+        tap("sky.begin", in: app); pauseNewSky(in: app)
+        settled(0, target: 150_000, showers: 0, in: app)
+        let opening = try round(in: app)
+        let preview = assertForecast(ids: Array(0..<5), columns: [6, 1, 2, 4, 5], in: app)
+        assertLanternSupport(stacked: false, in: app)
+        focus(0, column: 6, capture: "hud-goal-one-phone-native-forecast-selection", in: app)
+        XCTAssertEqual(try round(in: app), opening)
+        tap("sky.showerInspection.open", in: app)
+        let title = element("sky.menu.title", in: app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
+            format: "label == %@", "This announced shower"), object: title).wait(timeout: 5))
+        XCTAssertEqual(element("sky.showerInspection.warning", in: app).label,
+                       "For this sky now. A move or shower closes this view.")
+        XCTAssertEqual(element("sky.showerInspection.status", in: app).label, "Your sky is already paused.")
+        capture("hud-goal-one-phone-inspection-reading", in: app)
+        tap("experiment.done", in: app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"),
+            object: element("sky.showerInspection.warning", in: app)).wait(timeout: 5))
+        settled(0, target: 150_000, showers: 0, in: app)
+        XCTAssertEqual(try round(in: app), opening)
+        XCTAssertEqual(assertForecast(ids: Array(0..<5), in: app), preview)
+        assertLanternSupport(stacked: false, in: app)
+    }
+
+    @MainActor func testNormalLanternSupportingRowPreservesBackgroundAndWorldRound() throws {
+        continueAfterFailure = false
+        executionTimeAllowance = 300
+        let app = launchNormalLantern(); defer { app.terminate() }
+        let visit = app.worldVisitControl("firstLight")
+        let initialWorld = try identities(app, prefix: "world.place.")
+        XCTAssertEqual(initialWorld.count, 12)
+        visit.tap()
+        tap("sky.begin", in: app); pauseNewSky(in: app)
+        settled(0, target: 150_000, showers: 0, in: app)
+        let opening = try round(in: app)
+        let preview = assertForecast(ids: Array(0..<5), columns: [6, 1, 2, 4, 5], in: app)
+        assertLanternSupport(stacked: false, in: app)
+        focus(0, column: 6, capture: "hud-goal-one-phone-native-selection-before-background", in: app)
+        XCTAssertEqual(try round(in: app), opening)
+        XCUIDevice.shared.press(.home); app.activate()
+        settled(0, target: 150_000, showers: 0, in: app); assertNoFocus(in: app)
+        XCTAssertEqual(try round(in: app), opening)
+        XCTAssertEqual(assertForecast(ids: Array(0..<5), in: app), preview)
+        assertLanternSupport(stacked: false, in: app)
+        capture("hud-goal-one-phone-supporting-row-after-background", in: app)
+        try assertWorld(initialWorld, in: app)
+        settled(0, target: 150_000, showers: 0, in: app)
+        XCTAssertEqual(try round(in: app), opening)
+    }
+
     @MainActor func testLargestCalmLanternForecastFocusRetiresBeforeFullBoard() throws {
         continueAfterFailure = false
         executionTimeAllowance = 300
@@ -293,6 +403,8 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         let originalCalm = setCalm(true, verifyOffToOn: true, in: app)
         let opening = try round(in: app)
         let preview = assertForecast(ids: Array(0..<5), columns: [6, 1, 2, 4, 5], in: app)
+        assertLanternSupport(stacked: true, in: app)
+        capture("hud-goal-one-tablet-largest-stacked-support", in: app)
         focus(0, column: 6, capture: "forecast-inspection-tablet-column-six", in: app)
         XCTAssertEqual(try round(in: app), opening)
         focus(1, column: 1, capture: "forecast-inspection-tablet-column-one", in: app)
