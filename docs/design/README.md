@@ -2,6 +2,8 @@
 
 [Player momentum](PLAYER_MOMENTUM_PLAN.md) prioritizes responsive queued moves, a direct first real Lantern clear, actual voluntary-return observations, concise live feedback, campaign pacing, repeat value and a separately scoped commercial proposition. The [first two slices are development verified locally](../evidence/player-momentum-2026-10-24/README.md); human retention remains unmeasured.
 
+[Native HUD guide](hud/README.md) is the starting point for HUD work: approved visual direction, official component/source owners and separate mechanical/visual acceptance. App instructions and the UI production skill route HUD changes through it; the October 24 rejected composition remains an explicit counterexample.
+
 [Seven-place decision curriculum](STORY_ENCOUNTER_CURRICULUM.md) connects adopted Kite/Seed encounters and the adopted Silver sequencing slice with the remaining Frostfruit/Sunwheel questions. Its original Kite carrier remains authoring history; current native/save acceptance is recorded separately for each adopted encounter. Human comprehension, comfort and balance remain unmeasured.
 
 [Optional Story mastery contract](STORY_MASTERY_CONTRACT.md) defines current-pattern accomplishments, winning-action credit, versioned enrollment, best single-run records and interruption/rejection behavior. It is proposed semantics. [A real joint win](../evidence/story-mastery-feasibility-2026-10-22/README.md) and [later-chain win after declining the opening](../evidence/story-mastery-recovery-2026-10-23/README.md) are verified. Missed-first-grown recovery, remaining qualification/ledger cases, persistence and native presentation stay unproved.

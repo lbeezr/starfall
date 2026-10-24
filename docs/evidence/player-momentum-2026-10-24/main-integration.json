@@ -1,5 +1,5 @@
 {
-  "status": "development integration verified",
+  "status": "mechanical integration verified; independent visual rejection holds adoption",
   "main_base": "5a4988fc3263130f446bc508606280320875b435",
   "tested_local_commit": "ea075f97b9dbbe663ba1c4e237b1df1fc18f42b5",
   "tested_tree": "7df08f550d26bad3ffb1c22917e601a4288d38de",
@@ -74,5 +74,16 @@
     "No human observations, hardware latency, physical install, minimum-iOS or actual VoiceOver acceptance",
     "Separate concise-feedback commit requires its own App/native verification",
     "Additional leaf issue creation rejected by automatic approval review; coordination remains local under approved parent #393"
-  ]
+  ],
+  "visual_acceptance": {
+    "reviewer": "independent first_session_study agent",
+    "source": "ea075f97",
+    "verdict": "reject whole play journey",
+    "reasons": [
+      "queue status in reader-panel role",
+      "unregistered passive marker/guidance role",
+      "detached AX3XL header and oversized optional inspection"
+    ],
+    "correction": "registered shared status/marker role in progress; active HUD382 composition dependency; new native review required"
+  }
 }

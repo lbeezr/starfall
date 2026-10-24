@@ -347,12 +347,8 @@ import StarfallCore
                 }
             }
             if let hint = firstClearHint {
-                Text(hint.text)
-                    .font(StarfallTheme.Typography.body)
-                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
-                    .fixedSize(horizontal: false, vertical: true)
+                SkyPlayStatus(text: hint.text, guidance: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
                     .accessibilityLabel(hint.accessibilityText)
                     .accessibilityIdentifier("sky.firstClear.hint")
             } else if showsMode {
@@ -463,11 +459,8 @@ import StarfallCore
                 }
             }
         } else if store.queuedInputCount > 0 {
-            Text(SkyCopy.queuedInputCount(store.queuedInputCount))
-                .font(StarfallTheme.Typography.body)
-                .foregroundStyle(StarfallTheme.Colors.textPrimary)
-                .padding(StarfallTheme.Spacing.medium)
-                .starfallPanel()
+            SkyPlayStatus(text: SkyCopy.queuedInputCount(store.queuedInputCount))
+                .padding(.vertical, StarfallTheme.Spacing.small)
                 .accessibilityIdentifier("sky.inputQueue")
         } else if firstClearHint != nil {
             // The first action belongs beside the score, before the playfield,
@@ -643,43 +636,18 @@ import StarfallCore
     private var boardAccessible: Bool { !settings && !showingCeremony }
 
     private func firstClearMarker(_ hint: SkyFirstClearHint, mapping: LandingGeometry) -> some View {
-        moveMarker(from: hint.source, to: hint.destination, mapping: mapping, number: nil)
-            .allowsHitTesting(false).accessibilityHidden(true)
+        SkyMoveMarker(source: hint.source, destination: hint.destination, mapping: mapping)
     }
 
     private func queuedMoveMarkers(mapping: LandingGeometry) -> some View {
         ZStack {
             ForEach(Array(store.queuedInputs.enumerated()), id: \.offset) { index, action in
                 if let destination = action.destination {
-                    moveMarker(from: action.source, to: destination, mapping: mapping, number: index + 1)
+                    SkyMoveMarker(source: action.source, destination: destination, mapping: mapping, number: index + 1)
                 }
             }
         }
         .allowsHitTesting(false).accessibilityHidden(true)
-    }
-
-    /// Static, passive directions share the board's native input projection.
-    private func moveMarker(from source: Cell, to destination: Cell, mapping: LandingGeometry, number: Int?) -> some View {
-        let start = mapping.viewPoint(source), end = mapping.viewPoint(destination)
-        let radius = min(mapping.frame(source).width, mapping.frame(source).height) * 0.34
-        let angle = atan2(end.y - start.y, end.x - start.x)
-        return ZStack {
-            Path { path in
-                path.addEllipse(in: CGRect(x: start.x - radius, y: start.y - radius, width: radius * 2, height: radius * 2))
-                path.move(to: start); path.addLine(to: end)
-                path.move(to: CGPoint(x: end.x - 10 * cos(angle - .pi / 6), y: end.y - 10 * sin(angle - .pi / 6)))
-                path.addLine(to: end)
-                path.addLine(to: CGPoint(x: end.x - 10 * cos(angle + .pi / 6), y: end.y - 10 * sin(angle + .pi / 6)))
-            }
-            .stroke(StarfallTheme.Ceremony.gold, style: StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
-            .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
-            if let number {
-                Text(String(number)).font(StarfallTheme.Typography.supporting)
-                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
-                    .padding(4).background(StarfallTheme.Colors.skyTop, in: Circle())
-                    .position(x: start.x, y: start.y - radius)
-            }
-        }
     }
 
     private var boardSummary: String {

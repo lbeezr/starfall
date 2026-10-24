@@ -2,6 +2,56 @@ import SwiftUI
 import StarfallCore
 import Darwin
 
+/// Brief active-play guidance/status, without a menu or reading panel. Native
+/// text reflows at the player's size; this passive component owns no deadline.
+struct SkyPlayStatus: View {
+    let text: String
+    var guidance = false
+
+    var body: some View {
+        Text(text)
+            .font(StarfallTheme.Typography.status)
+            .foregroundStyle(guidance ? StarfallTheme.Colors.textPrimary : StarfallTheme.Colors.textSecondary)
+            .fixedSize(horizontal: false, vertical: true)
+            .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+            .allowsHitTesting(false)
+    }
+}
+
+/// Static directions for an exact visible star or an accepted queued exchange.
+/// All endpoints use the same projection as native input. No predicted bodies,
+/// hit targets, animation callbacks or game state belong to this component.
+struct SkyMoveMarker: View {
+    let source: Cell
+    let destination: Cell
+    let mapping: LandingGeometry
+    var number: Int? = nil
+
+    var body: some View {
+        let start = mapping.viewPoint(source), end = mapping.viewPoint(destination)
+        let radius = min(mapping.frame(source).width, mapping.frame(source).height) * 0.34
+        let angle = atan2(end.y - start.y, end.x - start.x)
+        ZStack {
+            Path { path in
+                path.addEllipse(in: CGRect(x: start.x - radius, y: start.y - radius, width: radius * 2, height: radius * 2))
+                path.move(to: start); path.addLine(to: end)
+                path.move(to: CGPoint(x: end.x - 10 * cos(angle - .pi / 6), y: end.y - 10 * sin(angle - .pi / 6)))
+                path.addLine(to: end)
+                path.addLine(to: CGPoint(x: end.x - 10 * cos(angle + .pi / 6), y: end.y - 10 * sin(angle + .pi / 6)))
+            }
+            .stroke(StarfallTheme.Ceremony.gold, style: StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
+            .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+            if let number {
+                Text(String(number)).font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                    .padding(4).background(StarfallTheme.Colors.skyTop, in: Circle())
+                    .position(x: start.x, y: start.y - radius)
+            }
+        }
+        .allowsHitTesting(false).accessibilityHidden(true)
+    }
+}
+
 /// The displayed forecast follows committed presentation; Core owns the cycle.
 struct SkyPhaseCue: Equatable {
     let shower: Int

@@ -1,6 +1,6 @@
 # Keep playing while the sky celebrates
 
-**Status:** Local implementation; development checks pass · **Date:** October 24, 2026
+**Status:** PR prepared; mechanical checks pass, visual acceptance held · **Date:** October 24, 2026
 
 The [prioritized action plan](../../design/PLAYER_MOMENTUM_PLAN.md) starts with responsive input and a faster first real clear. Full physical presentations and celebration effects continue while the player queues independent moves. Genuinely new players can begin Lantern Landing from Home in one tap and follow one visible cue to its actual opening square. Rules, supply, targets and scoring are unchanged.
 
@@ -15,6 +15,12 @@ The next product decision requires the [uncoached pilot](../../design/CURRENT_ST
 - Fresh Home eligibility requires missing archive and no rejected/world/mastery/accumulation history. **Play Lantern Landing** uses the ordinary guarded Begin and persistence owners. Returning players keep Continue; Tutorial and other choices remain available.
 - A passive first-action header and board marker describe the exact Lantern4 Aqua-left square. The actual exchange earns 15,000 through two phases; any board/supply change withdraws the cue. No forced move, granted repair or delayed shower is added. Detailed forecast reading returns after that board change.
 - Reset-only native tooling requires an explicit Debug flag triple and clears only `Starfall.SkyFlowReview`. Cold relaunch removes reset and restores the same archive. Release excludes this fixture; ordinary defaults remain untouched.
+
+## Independent visual review — adoption held
+
+The independent reviewer compared the approved October 19 concept with seven complete native captures at source `ea075f97`, without seeing an implementer verdict. Home passed its scoped composition review. The whole play journey was rejected: queue status borrowed an oversized reading panel, first-action/queue markers lacked a registered shared role, and AX3XL guidance contributed to a detached dark header. Post-clear inspection also retains the separate, already-reopened [HUD correction #382](https://github.com/lbeezr/starfall/issues/382). Passing interactions do not override this verdict.
+
+The current correction registers `SkyPlayStatus` and `SkyMoveMarker` in the official component roster and removes the queue reading panel. A proposed first-round-only scrolling header was removed after source review found it could scroll Pause away and crowd the post-clear board. The existing HUD owner is actively correcting the common scenic reading layout and optional inspection hierarchy; integrate that accepted correction before new complete-screen review. This PR remains held, with current work open; the known failure is not deferred to a later product goal. No whole-screen visual adoption is claimed below. Original test counts and capture bytes retain their historical source boundaries.
 
 ## Current-main integration
 
@@ -60,4 +66,4 @@ Initial command failures used a protected Swift cache and a dual-architecture si
 
 ## Delivery and remaining acceptance
 
-The implementation remains local. Earlier GitHub issue publication attempts were rejected by automatic approval review because external posting was not authorized. After explicit user approval, the prioritized plan was published through the GitHub plugin as [issue #393](https://github.com/lbeezr/starfall/issues/393), verified open on October 24. No PR or installation was created. The [plan](../../design/PLAYER_MOMENTUM_PLAN.md) records the ordered follow-ups. [Engineering](../../ENGINEERING.md) retains physical input/recognition acceptance and the concrete queue-policy extraction follow-up for the Store's size.
+The implementation is published for review in [PR #395](https://github.com/lbeezr/starfall/pull/395), targeting main, and remains unmerged pending corrected visual acceptance. Earlier GitHub issue publication attempts were rejected by automatic approval review because external posting was not authorized. After explicit user approval, the prioritized plan was published through the GitHub plugin as [issue #393](https://github.com/lbeezr/starfall/issues/393), verified open on October 24. No installation was performed. The [plan](../../design/PLAYER_MOMENTUM_PLAN.md) records the ordered follow-ups. [Engineering](../../ENGINEERING.md) retains physical input/recognition acceptance and the concrete queue-policy extraction follow-up for the Store's size.
