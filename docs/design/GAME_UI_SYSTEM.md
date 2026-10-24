@@ -125,6 +125,8 @@ Fixed corners prevent long labels from stretching a lantern or bevel. SwiftUI's 
 | Instrument panel | Menu/reading surfaces; half-scale compact fitting and full reading panel; fixed header/footer, scrolling body, large-text reflow | `StarfallTheme`, `ObservatorySurface`, `SkyMenuSurface` |
 | Preference toggle | Preferences; on/off, pressed, disabled, focused; native label/value semantics | `ObservatoryToggleStyle`, `SkyPreferenceToggle`, `SkyFeelSection` |
 | Gameplay instruments | Active-play exact score/goal, committed forecast and pause action; compact visual emphasis with complete native reading | `FallingSkyHUD`, `SkyShowerTrail` |
+| Active-play status/guidance | Passive native callout text over scenery, supporting queue count or primary first-action cue; complete Dynamic Type wrapping, no menu panel or input/clock ownership | `SkyPlayStatus` in `FallingSkyHUD` |
+| Exact move marker | Passive unfilled source ring and direction; optional FIFO number; shared board projection, withdrawn with its source/queue, identical normal/quiet appearance, no hit target | `SkyMoveMarker` in `FallingSkyHUD` |
 | Feedback surface | Brief active message, retained/reopened message, player-paced script, important outcome | `SkyDialogueOverlay`, `SkyDialogueBubble` |
 
 The menu `compact` variant describes its menu size, not permission to use its serif panel as a gameplay instrument. The [HUD guide](hud/README.md) maps the native owners; known missing component contracts remain correction work until registered and proved.

@@ -56,6 +56,9 @@ import StarfallCore
         return store.game.challenge
     }
     private var quietMotion: Bool { reduceMotion || calmEffects || voiceOver }
+    private var firstClearHint: SkyFirstClearHint? {
+        SkyFirstClearHint(game: store.game, firstPlay: flow.firstPlay)
+    }
     private var forecastSource: SkyForecastInspection.Source? {
         guard scenePhase == .active, !settings, !showingCeremony, !store.suspended else { return nil }
         return .init(game: store.game, generation: store.constellationInputGeneration,
@@ -208,6 +211,7 @@ import StarfallCore
                                         onward: endingReady && store.hasSavedSky
                                             ? SkyOnwardSnapshot(game: store.game, journey: store.journey.journey) : nil,
                                         welcome: SkyWelcomeSnapshot(game: store.game, hasSavedSky: store.hasSavedSky, paused: store.isPaused),
+                                        offersFirstPlay: store.offersFirstPlay,
                                         mastery: flow.entry.map {
                                             SkyMasterySnapshot.entry(request: $0, retainedRound: store.game, bestRecords: store.mastery.records)
                                         } ?? SkyMasterySnapshot.current(game: store.game, bestRecords: store.mastery.records, context: .result),
@@ -342,10 +346,15 @@ import StarfallCore
                     stackedHeader(island: island)
                 }
             }
-            if showsMode {
+            if let hint = firstClearHint {
+                SkyPlayStatus(text: hint.text, guidance: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .accessibilityLabel(hint.accessibilityText)
+                    .accessibilityIdentifier("sky.firstClear.hint")
+            } else if showsMode {
                 modeSupport(source: inspectionSource)
             }
-            if !store.game.isOver && !store.game.usesFullBoardRefill && !store.forecast.isEmpty {
+            if firstClearHint == nil && !store.game.isOver && !store.game.usesFullBoardRefill && !store.forecast.isEmpty {
                 SkyForecastDestinations(forecast: store.forecast, arriving: store.showerCountdown.arriving,
                                         selectedID: forecastInspection?.entry(in: forecastSource)?.id,
                                         select: { inspectForecast($0, source: renderedForecastSource) })
@@ -449,6 +458,14 @@ import StarfallCore
                     }.buttonStyle(StarfallButtonStyle(role: .compact))
                 }
             }
+        } else if store.queuedInputCount > 0 {
+            SkyPlayStatus(text: SkyCopy.queuedInputCount(store.queuedInputCount))
+                .padding(.vertical, StarfallTheme.Spacing.small)
+                .accessibilityIdentifier("sky.inputQueue")
+        } else if firstClearHint != nil {
+            // The first action belongs beside the score, before the playfield,
+            // so large-text players need not find a footer to learn the swipe.
+            EmptyView()
         } else if !store.game.isOver {
             SkyDialogueOverlay(session: store.dialogue,
                                pausedLine: store.isPaused ? store.pausedGuideLine : nil,
@@ -552,6 +569,10 @@ import StarfallCore
                     if boardVisible && !endingReady {
                         SkyCeilingOverlay(game: store.game, mapping: mapping)
                             .accessibilityHidden(settings || showingCeremony)
+                        if !store.busy, let hint = firstClearHint {
+                            firstClearMarker(hint, mapping: mapping)
+                        }
+                        queuedMoveMarkers(mapping: mapping)
                         if let entry = forecastInspection?.entry(in: forecastSource) {
                             SkyForecastColumnOverlay(entry: entry, mapping: mapping)
                         }
@@ -614,11 +635,27 @@ import StarfallCore
 
     private var boardAccessible: Bool { !settings && !showingCeremony }
 
+    private func firstClearMarker(_ hint: SkyFirstClearHint, mapping: LandingGeometry) -> some View {
+        SkyMoveMarker(source: hint.source, destination: hint.destination, mapping: mapping)
+    }
+
+    private func queuedMoveMarkers(mapping: LandingGeometry) -> some View {
+        ZStack {
+            ForEach(Array(store.queuedInputs.enumerated()), id: \.offset) { index, action in
+                if let destination = action.destination {
+                    SkyMoveMarker(source: action.source, destination: destination, mapping: mapping, number: index + 1)
+                }
+            }
+        }
+        .allowsHitTesting(false).accessibilityHidden(true)
+    }
+
     private var boardSummary: String {
         let summary = SkyCopy.boardSummary(showers: store.game.turns, groups: store.game.legalGroups.count,
                              manualClears: store.game.supportsManualClears, automaticLineLength: store.game.automaticLineLength,
                              fullBoard: store.game.usesFullBoardRefill)
-        return store.busy ? summary + " " + SkyCopy.text(.statusSettling) : summary
+        let state = store.busy ? summary + " " + SkyCopy.text(.statusSettling) : summary
+        return store.queuedInputCount > 0 ? state + " " + SkyCopy.queuedInputCount(store.queuedInputCount) : state
     }
 
     private func cellButton(_ cell: Cell) -> some View {
@@ -746,7 +783,8 @@ import StarfallCore
         }
         let previousFlow = flow
         guard scenePhase == .active,
-              let effect = flow.handle(action, hasSavedSky: store.hasSavedSky, entryID: entryID) else { return }
+              let effect = flow.handle(action, hasSavedSky: store.hasSavedSky,
+                                       offersFirstPlay: store.offersFirstPlay, entryID: entryID) else { return }
         switch effect {
         case .worldMap:
             store.setSuspended(true)

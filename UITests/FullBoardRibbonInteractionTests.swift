@@ -9,10 +9,12 @@ final class FullBoardRibbonInteractionTests: XCTestCase {
         let original = reduce.value as? String == "1"
         NativeSystemMotionSettings.set(false, on: reduce)
         preferences.terminate()
-        addTeardownBlock { @MainActor in
-            let (settings, toggle) = NativeSystemMotionSettings.open()
-            NativeSystemMotionSettings.set(original, on: toggle)
-            settings.terminate()
+        if original {
+            addTeardownBlock { @MainActor in
+                let (settings, toggle) = NativeSystemMotionSettings.open()
+                NativeSystemMotionSettings.set(original, on: toggle)
+                settings.terminate()
+            }
         }
     }
 
@@ -138,6 +140,36 @@ final class FullBoardRibbonInteractionTests: XCTestCase {
     private let survivorMoves = [(8,9),(11,12),(31,38),(17,24),(9,16),(9,10),(1,8),(1,2),(1,8),(9,10),(10,11),(22,29),(2,3),(2,9),(1,8),(37,38),(2,3),(16,17)]
     private let survivorScores = [30,35,40,45,50,65,80,80,85,85,90,179,179,184,199,214,214,229]
 
+    @MainActor func testThreeRapidPlansSurviveFivePhaseCascadeWithoutSettlingWaits() throws {
+        executionTimeAllowance = 240
+        requireNormalMotion()
+        let app = launch()
+        defer { app.terminate() }
+        chooseFullBoard(app, captureName: "momentum-ribbon-mode")
+        for index in 0..<11 {
+            let move = survivorMoves[index]
+            exchange(move.0, move.1, score: survivorScores[index] * 1_000, count: index + 1, in: app)
+        }
+        // Cache real cell coordinates before motion. The following distinct
+        // contacts deliberately contain no settling/readiness wait between them.
+        func coordinate(_ index: Int) -> XCUICoordinate {
+            app.buttons["experiment.cell.\(index / 7).\(index % 7)"].coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5))
+        }
+        let trigger = (coordinate(22), coordinate(29))
+        let plans = [(coordinate(0), coordinate(1)), (coordinate(2), coordinate(3)), (coordinate(4), coordinate(5))]
+        trigger.0.press(forDuration: 0.05, thenDragTo: trigger.1, withVelocity: .fast, thenHoldForDuration: 0)
+        plans[0].0.press(forDuration: 0.05, thenDragTo: plans[0].1, withVelocity: .fast, thenHoldForDuration: 0)
+        let queued = app.staticTexts["sky.inputQueue"]
+        XCTAssertTrue(queued.waitForExistence(timeout: 2), "A next move must be accepted during the five-phase presentation")
+        capture(app, "momentum-ribbon-plan-during-five-phases")
+        for plan in plans.dropFirst() {
+            plan.0.press(forDuration: 0.05, thenDragTo: plan.1, withVelocity: .fast, thenHoldForDuration: 0)
+        }
+        waitForRound(app, exchanges: 15, score: 179_000)
+        XCTAssertFalse(queued.exists)
+        XCTAssertEqual(try cells(app).count, 49)
+        capture(app, "momentum-ribbon-three-plans-committed")
+    }
     @MainActor func testThreeRapidInputsSurviveFivePhaseCascadeWithoutSettlingWaits() throws {
         executionTimeAllowance = 240
         if UIAccessibility.isReduceMotionEnabled { requireNormalMotion() }

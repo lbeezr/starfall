@@ -1,6 +1,8 @@
 # iOS application
 
-The [nonvisual responsiveness correction](../docs/evidence/player-momentum-input-2026-10-24/README.md) keeps four independent FIFO plans through physical cascades, validating visible stationary identities and preserving committed-only saves and the existing shower remainder. Existing HUD/arrow artwork remains; first-play and multi-plan visual guidance are separate held work in PR #395.
+`FallingSkyStore` now admits a four-plan FIFO through physical presentations using sequential Core previews and stable visible star identities. Contacts append; dependent/moving endpoints reject; lifecycle boundaries cancel. Only executed actions save, and draining resumes the existing shower remainder. `FallingSkyView` captures contact snapshots and shows passive numbered directions while celebrations continue. [Input contract](../docs/design/FOLLOW_UP_INPUT.md).
+
+Genuinely missing-history Home offers **Play Lantern Landing** through the normal guarded Begin path. `SkyFirstClearHint` names only the exact production Lantern4 opening; an Aqua-left exchange earns the unchanged 15,000-point clear. Its visible header cue disappears on any board/supply change. The Debug reset triple isolates native fresh-player tests from ordinary defaults; Release excludes this fixture. [Prioritized plan](../docs/design/PLAYER_MOMENTUM_PLAN.md).
 
 For HUD changes, start with the [native HUD guide](../docs/design/hud/README.md), the official component roster and the UI production skill. [App instructions](AGENTS.md) apply to the current flat HUD source files.
 
@@ -45,6 +47,8 @@ Lantern Entry and mode-aware Help offer optional **Try this mode** practice. Fal
 An unfinished Full Board round offers **Find a move** in its menu. `SkyFullBoardChoicesView` analyzes an immutable snapshot away from the main actor, showing Core’s distinct immediate patterns or a two-exchange setup with optional top-down swipe instructions. Predictions cover the first visible pattern; later falls and refills remain part of ordinary play. Navigation cancellation reaches the scan and discards its result. The page has no move, save, score or supply capability, and both modes retain their current rules. [Goal 2 evidence](../docs/evidence/depth-goal-02-visible-choices-2026-10-23/README.md).
 
 **Compare clears** opens two disposable practice chapters from that advice page. Both explicitly reconstruct revision-5 history: the same real Full Board position lets the player try a smaller square whose visible survivors form a later line, then compare two larger simultaneous squares. Optional hints, Retry, Next and Finish use the existing tutorial owner; return preserves the live round and repairs. [Goal 3 evidence](../docs/evidence/depth-goal-03-survivor-cascades-2026-10-23/README.md) distinguishes the committed consequences from unmeasured learning.
+
+The [nonvisual input correction #398](https://github.com/lbeezr/starfall/pull/398) is merged and has its own [exact-source acceptance](../docs/evidence/player-momentum-input-2026-10-24/README.md). First-play and multi-plan visual guidance remain held in PR #395 pending complete-screen acceptance.
 
 ## Start here
 

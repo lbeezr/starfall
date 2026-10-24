@@ -1,0 +1,113 @@
+{
+  "status": "mechanical integration verified; independent visual rejection holds adoption",
+  "main_base": "5a4988fc3263130f446bc508606280320875b435",
+  "tested_local_commit": "ea075f97b9dbbe663ba1c4e237b1df1fc18f42b5",
+  "tested_tree": "7df08f550d26bad3ffb1c22917e601a4288d38de",
+  "source_difference": "Main HUD support row retained; first-play cue uses its dedicated opening branch; shared docs retain both outcomes. Later changes to this branch are documentation only.",
+  "checks": {
+    "core": {
+      "passed": 352,
+      "failed": 0,
+      "log": "/private/tmp/starfall-mission-core.log"
+    },
+    "hosted": {
+      "passed": 135,
+      "failed": 0,
+      "skipped": 0
+    },
+    "native": {
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    "debug_build_for_testing": {
+      "passed": true,
+      "log": "/private/tmp/starfall-mission-main-build.log"
+    },
+    "release_build": {
+      "passed": true,
+      "log": "/private/tmp/starfall-mission-main-release.log"
+    }
+  },
+  "native_selection": [
+    "SkyFlowInteractionTests/testFreshPlayerOneTapToRealSquareAndSavedReturn",
+    "FullBoardRibbonInteractionTests/testThreeRapidPlansSurviveFivePhaseCascadeWithoutSettlingWaits",
+    "ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+    "ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound",
+    "SkyFlowInteractionTests/testLargestCalmFreshPlayerOneTapToRealSquareAndSavedReturn",
+    "ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard"
+  ],
+  "hosted_selection": [
+    "SkyTechniqueStoreTests",
+    "ResponsiveInputTests",
+    "SkyFlowStateTests",
+    "SkyDialogueTests",
+    "SkyPhasePresentationTests"
+  ],
+  "environment": "Xcode27.1(27A9275), SDK27.1, iOS Simulator27.0(24A434), arm64, same dedicated phone/tablet as verification.json; normal system motion, actual-Calm only named tablet variants",
+  "runs": [
+    {
+      "device": "phone",
+      "result": "Passed",
+      "tests": 4,
+      "failures": 0,
+      "skips": 0,
+      "start_unix": 1792878026.709,
+      "finish_unix": 1792878469.276,
+      "raw_bundle": "/private/tmp/starfall-mission-main-phone.xcresult",
+      "raw_log": "/private/tmp/starfall-mission-main-phone.log"
+    },
+    {
+      "device": "tablet",
+      "result": "Passed",
+      "tests": 137,
+      "failures": 0,
+      "skips": 0,
+      "start_unix": 1792878027.685,
+      "finish_unix": 1792878401.664,
+      "raw_bundle": "/private/tmp/starfall-mission-main-tablet.xcresult",
+      "raw_log": "/private/tmp/starfall-mission-main-tablet.log"
+    }
+  ],
+  "evidence_transport": "Five original game-only PNGs authorized for GitHub upload; each uploaded blob must match its frozen local Git SHA before any tree references it. One failed transport hash was rejected and never referenced.",
+  "limits": [
+    "No human observations, hardware latency, physical install, minimum-iOS or actual VoiceOver acceptance",
+    "Separate concise-feedback commit requires its own App/native verification",
+    "Additional leaf issue creation rejected by automatic approval review; coordination remains local under approved parent #393"
+  ],
+  "visual_acceptance": {
+    "reviewer": "independent first_session_study agent",
+    "source": "ea075f97",
+    "verdict": "reject whole play journey",
+    "reasons": [
+      "queue status in reader-panel role",
+      "unregistered passive marker/guidance role",
+      "detached AX3XL header and oversized optional inspection"
+    ],
+    "correction": "registered shared status/marker role in progress; active HUD382 composition dependency; new native review required"
+  },
+  "shared_role_correction": {
+    "tested_commit": "4be4874f8ec93aca07e1f8091ceec8eabb43f8fe",
+    "core_passes": 352,
+    "hosted_passes": 135,
+    "native_passes": 3,
+    "failures": 0,
+    "skips": 0,
+    "debug_build": "passed",
+    "release_build": "passed",
+    "native_bundles": [
+      "/private/tmp/starfall-momentum-status-phone.xcresult",
+      "/private/tmp/starfall-momentum-status-tablet.xcresult"
+    ],
+    "visual_verdict": "registered roles and sampled phone status accepted; wholejourney still rejected for detached AX3XL header/oversized inspector; AX3XL queue not assessed"
+  },
+  "shipped_input": {
+    "pr": 398,
+    "main": "6dcda31a5268002c21c07b97cf8285e6c2df92d3",
+    "evidence": "../player-momentum-input-2026-10-24/README.md"
+  },
+  "held_firstplay_reconciliation": {
+    "local": "432e28a",
+    "production_difference_from_4be4874": "none; App README and additional native test differ"
+  }
+}

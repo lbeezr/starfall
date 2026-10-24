@@ -3,6 +3,167 @@ import StarfallCore
 @testable import Starfall
 
 final class SkyFlowStateTests: XCTestCase {
+    #if DEBUG
+    @MainActor private func preserveFirstPlayReviewDomain() -> UserDefaults {
+        let suite = "Starfall.SkyFlowReview"
+        let defaults = UserDefaults(suiteName: suite)!
+        let previous = defaults.persistentDomain(forName: suite)
+        addTeardownBlock {
+            defaults.removePersistentDomain(forName: suite)
+            if let previous { defaults.setPersistentDomain(previous, forName: suite) }
+        }
+        return defaults
+    }
+
+    @MainActor func testFirstPlayReviewTripleBeginsARealRoundAndColdRelaunchRestoresIt() throws {
+        let defaults = preserveFirstPlayReviewDomain()
+        let suite = "Starfall.SkyFlowReview"
+        defaults.set("discard only review history", forKey: "fixture.firstPlay")
+        try SkySaveArchive.save(.freshSurvival(seed: 91), to: defaults)
+        let ordinaryBefore = UserDefaults.standard.dictionaryRepresentation() as NSDictionary
+        let arguments = ["--starfalls-reset", "--sky-flow-review", "--first-play-review"]
+        let store = FallingSkyStore.forSkyFlowApp(arguments: arguments)
+        XCTAssertNil(defaults.object(forKey: "fixture.firstPlay"))
+        XCTAssertNil(defaults.object(forKey: SkySaveArchive.key))
+        XCTAssertTrue(store.offersFirstPlay)
+        XCTAssertFalse(store.hasSavedSky)
+        var flow = SkyFlowState(arguments: arguments)
+        XCTAssertEqual(flow.screen, .welcome)
+        XCTAssertEqual(flow.handle(.firstPlay, hasSavedSky: store.hasSavedSky,
+                                   offersFirstPlay: store.offersFirstPlay), .began(.firstLight))
+        XCTAssertTrue(store.beginEntry(.firstLight))
+        let saved = try XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))
+        XCTAssertEqual(try SkySaveArchive.decode(saved), store.game)
+        XCTAssertNotNil(store.game.masteryEnrollment)
+        XCTAssertFalse(store.offersFirstPlay)
+
+        let returning = FallingSkyStore.forSkyFlowApp(arguments: ["--sky-flow-review", "--first-play-review"])
+        XCTAssertTrue(returning.hasSavedSky)
+        XCTAssertEqual(returning.game, store.game)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), saved)
+        XCTAssertFalse(returning.offersFirstPlay)
+        XCTAssertEqual(UserDefaults.standard.dictionaryRepresentation() as NSDictionary, ordinaryBefore)
+        XCTAssertNotNil(defaults.persistentDomain(forName: suite))
+    }
+
+    @MainActor func testIncompleteFirstPlayReviewFlagsNeverClearAnyDomain() throws {
+        let defaults = preserveFirstPlayReviewDomain()
+        defaults.set("preserve review history", forKey: "fixture.firstPlay")
+        try SkySaveArchive.save(.freshSurvival(seed: 92), to: defaults)
+        let reviewBefore = try XCTUnwrap(defaults.persistentDomain(forName: "Starfall.SkyFlowReview")) as NSDictionary
+        let ordinaryBefore = UserDefaults.standard.dictionaryRepresentation() as NSDictionary
+        for arguments in [["--first-play-review"], ["--starfalls-reset", "--first-play-review"],
+                          ["--sky-flow-review", "--first-play-review"], ["--starfalls-reset", "--sky-flow-review"]] {
+            let store = FallingSkyStore.forSkyFlowApp(arguments: arguments)
+            XCTAssertFalse(store.offersFirstPlay, "Incomplete tooling flags cannot expose normal first play: \(arguments)")
+            XCTAssertEqual(defaults.persistentDomain(forName: "Starfall.SkyFlowReview")! as NSDictionary, reviewBefore)
+            XCTAssertEqual(UserDefaults.standard.dictionaryRepresentation() as NSDictionary, ordinaryBefore)
+        }
+    }
+
+    @MainActor func testFirstPlayReviewRetainsConflictingToolingGuards() {
+        _ = preserveFirstPlayReviewDomain()
+        let dialogue = UserDefaults(suiteName: "Starfall.DialogueReview")!
+        let dialogueBefore = dialogue.persistentDomain(forName: "Starfall.DialogueReview")
+        let store = FallingSkyStore.forSkyFlowApp(arguments: ["--starfalls-reset", "--sky-flow-review",
+                                                             "--first-play-review", "--dialogue-review"])
+        XCTAssertFalse(store.offersFirstPlay)
+        XCTAssertFalse(store.hasSavedSky)
+        XCTAssertEqual(dialogue.persistentDomain(forName: "Starfall.DialogueReview") as NSDictionary?, dialogueBefore as NSDictionary?)
+    }
+    #endif
+
+    func testFirstPlayRequiresFreshEligibilityAndWelcomeWithoutASavedRound() throws {
+        for (saved, offered) in [(false, false), (true, false), (true, true)] {
+            var flow = SkyFlowState(arguments: [])
+            let original = flow
+            XCTAssertNil(flow.handle(.firstPlay, hasSavedSky: saved, offersFirstPlay: offered))
+            XCTAssertEqual(flow, original)
+        }
+
+        var flow = SkyFlowState(arguments: [])
+        XCTAssertEqual(flow.handle(.firstPlay, hasSavedSky: false, offersFirstPlay: true), .began(.firstLight))
+        XCTAssertEqual(flow.screen, .playing)
+        XCTAssertTrue(flow.firstPlay)
+        XCTAssertNil(flow.entry); XCTAssertNil(flow.entryID)
+        let handoff = try XCTUnwrap(flow.handoff)
+        XCTAssertEqual(handoff.source, .welcome)
+        XCTAssertTrue(handoff.startsClock)
+        let beginning = flow
+        XCTAssertNil(flow.handle(.firstPlay, hasSavedSky: false, offersFirstPlay: true))
+        XCTAssertEqual(flow, beginning, "A repeated Home tap cannot replace the round during admission")
+        flow.settleHandoff(handoff.id)
+        XCTAssertEqual(flow.completeHandoff(handoff.id, ready: true, active: true, modal: false), true)
+        let playing = flow
+        XCTAssertNil(flow.handle(.firstPlay, hasSavedSky: false, offersFirstPlay: true))
+        XCTAssertEqual(flow, playing, "A stale Home action cannot replace an admitted round")
+    }
+
+    func testFirstPlayCannotBypassMapOrEntryAndReturningHomeKeepsContinue() throws {
+        for action in [SkyFlowAction.worldMap, .firstLight, .start] {
+            var flow = SkyFlowState(arguments: [])
+            _ = flow.handle(action, hasSavedSky: false)
+            let original = flow
+            XCTAssertNil(flow.handle(.firstPlay, hasSavedSky: false, offersFirstPlay: true))
+            XCTAssertEqual(flow, original)
+        }
+        var flow = SkyFlowState(arguments: [])
+        _ = flow.handle(.firstPlay, hasSavedSky: false, offersFirstPlay: true)
+        XCTAssertEqual(flow.handle(.home, hasSavedSky: true), .home)
+        let home = flow
+        XCTAssertNil(flow.handle(.firstPlay, hasSavedSky: true, offersFirstPlay: true))
+        XCTAssertEqual(flow, home)
+        XCTAssertEqual(flow.handle(.resume, hasSavedSky: true), .continued)
+        XCTAssertEqual(flow.handoff?.startsClock, false, "Continue preserves the existing pause choice")
+        XCTAssertEqual(flow.handle(.home, hasSavedSky: true), .home)
+        XCTAssertEqual(flow.handle(.start, hasSavedSky: true), .staged)
+        XCTAssertEqual(flow.entry, .fresh)
+        XCTAssertEqual(flow.handle(.begin, hasSavedSky: true, entryID: flow.entryID), .began(.fresh))
+        XCTAssertFalse(flow.firstPlay, "An explicit replacement leaves first-play guidance behind")
+    }
+
+    @MainActor func testFirstPlayUsesTheSavedProductionOpeningAndEarnsOnlyTheRealFirstClear() throws {
+        let (store, _, _, defaults) = make()
+        var flow = SkyFlowState(arguments: [])
+        XCTAssertNil(defaults.object(forKey: SkySaveArchive.key))
+        XCTAssertEqual(flow.handle(.firstPlay, hasSavedSky: false, offersFirstPlay: true), .began(.firstLight))
+        XCTAssertTrue(store.beginEntry(.firstLight))
+        XCTAssertTrue(store.hasSavedSky)
+        XCTAssertFalse(store.offersFirstPlay)
+        XCTAssertNotNil(store.game.masteryEnrollment)
+        XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), store.game)
+
+        let hint = try XCTUnwrap(SkyFirstClearHint(game: store.game, firstPlay: flow.firstPlay))
+        XCTAssertEqual(hint.from, Cell(1, 2)); XCTAssertEqual(hint.to, Cell(1, 1))
+        XCTAssertEqual(store.game.gem(at: hint.from)?.kind, .aqua)
+        XCTAssertEqual(hint.text, "Swipe Aqua left to complete a square.")
+        XCTAssertEqual(hint.accessibilityText, "Swipe Aqua left from row 6, column 3 to complete a square.")
+        var played = store.game
+        let turn = try XCTUnwrap(played.nudge(from: hint.from, to: hint.to))
+        XCTAssertEqual(turn.resolutionPhases.count, 2)
+        XCTAssertEqual(turn.displayAward, 15_000)
+        XCTAssertEqual(played.displayScore, 15_000)
+        XCTAssertFalse(played.isOver)
+        XCTAssertTrue(store.journey.journey.completed.isEmpty, "A first clear is not a completed repair")
+        XCTAssertNil(SkyFirstClearHint(game: played, firstPlay: flow.firstPlay))
+    }
+
+    func testFirstClearHintExcludesOtherRoundsAndWithdrawsForChangedIngredientsOrSupply() throws {
+        let opening = FallingSky.freshChallenge(.firstLight)
+        XCTAssertNil(SkyFirstClearHint(game: opening, firstPlay: false))
+        for game in [FallingSky.freshSurvival(seed: 5), FallingSky.fullBoardLantern(),
+                     FallingSky.freshChallenge(.ribbonCrossing), FallingSky(challenge: .firstLight)] {
+            XCTAssertNil(SkyFirstClearHint(game: game, firstPlay: true))
+        }
+        var exchanged = opening
+        let setup = try XCTUnwrap(exchanged.nudge(from: Cell(0, 0), to: Cell(0, 1)))
+        XCTAssertEqual(setup.displayAward, 0)
+        XCTAssertNil(SkyFirstClearHint(game: exchanged, firstPlay: true), "Even same-family identity changes withdraw the exact-opening cue")
+        var showered = opening
+        _ = showered.letStarsFall()
+        XCTAssertNil(SkyFirstClearHint(game: showered, firstPlay: true))
+    }
+
     func testWorldMapIsAPageAndReturnsToItsOriginWithoutBeginningARound() {
         for arguments in [[], ["--starfalls-reset"]] {
             var flow = SkyFlowState(arguments: arguments)

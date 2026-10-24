@@ -96,6 +96,12 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     static let saveKey = SkySaveArchive.key
     private(set) var game: FallingSky
     private(set) var hasSavedSky = false
+    private let firstPlayInitiallyEligible: Bool
+    /// Captured before initialization can adopt a retained round; activation and
+    /// any durable history permanently exclude this first-launch suggestion.
+    var offersFirstPlay: Bool {
+        firstPlayInitiallyEligible && !hasSavedSky && rejectedSaveKey == nil && tutorial == nil
+    }
     private let archiveWriter: @MainActor (FallingSky, UserDefaults) throws -> Void
     private(set) var persistenceNotice: SkyPersistenceNotice?
     private(set) var saveFailed = false
@@ -366,6 +372,15 @@ enum SkyTerminalSpeech { case feedback, ceremony }
          archiveWriter: @escaping @MainActor (FallingSky, UserDefaults) throws -> Void = SkySaveArchive.save,
          masteryWriter: @escaping @MainActor (Data, UserDefaults) throws -> Void = StoryMasteryStore.write) {
         self.defaults = defaults
+        let hasHistory = defaults.dictionaryRepresentation().keys.contains {
+            $0.hasPrefix("starfall.accumulation.") || $0.hasPrefix("starfall.world.") || $0.hasPrefix("starfall.mastery.")
+        }
+        let usesTooling = arguments.contains {
+            $0 == "--starfalls-reset" || $0.contains("-review") || $0.contains("-fixture=") || $0.hasPrefix("--starfalls-seed=")
+        }
+        if case .missing = SkySaveArchive.inspect(from: defaults) {
+            firstPlayInitiallyEligible = tutorial == nil && !hasHistory && !usesTooling
+        } else { firstPlayInitiallyEligible = false }
         journey = WorldJourneyStore(defaults: defaults, ignoreSaved: tutorial != nil || arguments.contains("--starfalls-reset"))
         mastery = StoryMasteryStore(defaults: defaults, ignoreSaved: tutorial != nil || arguments.contains("--starfalls-reset"),
                                     writer: masteryWriter)

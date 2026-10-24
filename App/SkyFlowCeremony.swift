@@ -16,7 +16,7 @@ enum SkyFlowScreen: Equatable {
     }
 }
 enum SkyFlowAction: Equatable {
-    case start, firstLight, fullBoardLantern, ribbonCrossing, fullBoardRibbon, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill
+    case start, firstPlay, firstLight, fullBoardLantern, ribbonCrossing, fullBoardRibbon, kiteHarbor, seedMoon, silverPools, frostfruitOrchard, sunwheelMill
     case begin, entryBack, resume, replay, another, home, preferences, worldMap, worldBack, tutorial, modePractice
     case onward(WorldLocation)
 }
@@ -28,6 +28,7 @@ enum SkyFlowAction: Equatable {
     let result: SkyResultSnapshot?
     let onward: SkyOnwardSnapshot?
     let welcome: SkyWelcomeSnapshot
+    var offersFirstPlay: Bool = false
     var mastery: SkyMasterySnapshot? = nil
     var finalLight: SkyFinalLightReceipt? = nil
     var scoreExplanation: SkyScoreExplanation? = nil
@@ -190,9 +191,12 @@ enum SkyFlowAction: Equatable {
                         .frame(minHeight: SkyCastFormation.height(terminal: true))
                     }
                     VStack(spacing: StarfallTheme.Spacing.medium) {
-                        modeButton(.story, title: SkyCopy.text(.homeStoryMode), promise: SkyCopy.text(.homeStoryPromise), action: .worldMap, id: "sky.worldMap")
-                        modeButton(.freePlay, title: SkyCopy.text(.homeFreePlay), promise: SkyCopy.text(.homeOpenPromise), action: .start, id: "sky.start")
-                        modeButton(.tutorial, title: SkyCopy.text(.homeTutorial), action: .tutorial, id: "sky.learn")
+                        if offersFirstPlay {
+                            flowButton(SkyCopy.text(.homeFirstPlay), action: .firstPlay, id: "sky.firstPlay", primary: true)
+                        }
+                        modeButton(.story, title: SkyCopy.text(.homeStoryMode), promise: SkyCopy.text(.homeStoryPromise), action: .worldMap, id: "sky.worldMap", primary: !offersFirstPlay)
+                        modeButton(.freePlay, title: SkyCopy.text(.homeFreePlay), promise: SkyCopy.text(.homeOpenPromise), action: .start, id: "sky.start", primary: !offersFirstPlay)
+                        modeButton(.tutorial, title: SkyCopy.text(.homeTutorial), action: .tutorial, id: "sky.learn", primary: !offersFirstPlay)
                     }
                     if let summary = welcome.summary {
                         VStack(spacing: StarfallTheme.Spacing.compact) {
@@ -230,7 +234,7 @@ enum SkyFlowAction: Equatable {
         .accessibilityHidden(!active)
     }
 
-    private func modeButton(_ mode: ObservatoryMode, title: String, promise: String? = nil, action choice: SkyFlowAction, id: String) -> some View {
+    private func modeButton(_ mode: ObservatoryMode, title: String, promise: String? = nil, action choice: SkyFlowAction, id: String, primary: Bool = true) -> some View {
         Button { action(choice) } label: {
             VStack(spacing: StarfallTheme.Spacing.compact) {
                 ObservatoryModeLabel(mode: mode, title: title)
@@ -242,7 +246,7 @@ enum SkyFlowAction: Equatable {
                 }
             }
         }
-        .buttonStyle(StarfallButtonStyle(role: .ceremonyPrimary, expands: true))
+        .buttonStyle(StarfallButtonStyle(role: primary ? .ceremonyPrimary : .compact, expands: true))
         .accessibilityLabel(title)
         .accessibilityHint(promise ?? "")
         .accessibilityIdentifier(id)
@@ -570,6 +574,16 @@ extension FallingSkyStore {
     @MainActor static func forSkyFlowApp(arguments: [String] = ProcessInfo.processInfo.arguments) -> FallingSkyStore {
         let defaults = SkyDefaults.forApp(arguments: arguments)
         #if DEBUG
+        let firstPlayReviewFlags: Set<String> = ["--starfalls-reset", "--sky-flow-review", "--first-play-review"]
+        if firstPlayReviewFlags.isSubset(of: Set(arguments)) {
+            // A fresh native journey uses the existing isolated flow domain.
+            // Only the explicit reset triple clears it; cold relaunch restores it.
+            let suite = "Starfall.SkyFlowReview"
+            let reviewDefaults = UserDefaults(suiteName: suite)!
+            reviewDefaults.removePersistentDomain(forName: suite)
+            return FallingSkyStore(defaults: reviewDefaults,
+                                   arguments: arguments.filter { !firstPlayReviewFlags.contains($0) })
+        }
         if let fixture = WorldMapReviewFixture.requested(arguments: arguments) {
             let reviewDefaults = try! fixture.prepareIsolatedDefaults()
             return FallingSkyStore(defaults: reviewDefaults, arguments: arguments.filter { $0 != "--starfalls-reset" })

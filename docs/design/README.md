@@ -1,5 +1,7 @@
 # Design documents
 
+[Player momentum](PLAYER_MOMENTUM_PLAN.md) prioritizes responsive queued moves, a direct first real Lantern clear, actual voluntary-return observations, concise live feedback, campaign pacing, repeat value and a separately scoped commercial proposition. The [first two slices are development verified locally](../evidence/player-momentum-2026-10-24/README.md); human retention remains unmeasured.
+
 [Native HUD guide](hud/README.md) is the starting point for HUD work: approved visual direction, official component/source owners and separate mechanical/visual acceptance. App instructions and the UI production skill route HUD changes through it; the October 24 rejected composition remains an explicit counterexample.
 
 [Round pacing and repeat value](ROUND_PACING_AND_REPEAT_VALUE.md) compares the seven current encounters and exact Replay/mastery contracts using source-bound witnesses; human duration and return remain unobserved.
@@ -32,7 +34,7 @@ Behavior proposals, production contracts and research supporting decisions.
 
 [Gesture edges](GESTURE_EDGES.md) specifies valid long flicks and unchanged tap/drawing boundaries.
 
-[Follow-up input](FOLLOW_UP_INPUT.md) retains one recent tap or swap while its stars finish presentation; [immediate swipes](IMMEDIATE_SWIPES.md) owns movement versus held drawing.
+[Follow-up input](FOLLOW_UP_INPUT.md) defines a bounded FIFO with stable star identities while full physical presentation continues; [immediate swipes](IMMEDIATE_SWIPES.md) owns movement versus held drawing.
 
 [Starlight celebrations](STARLIGHT_CELEBRATIONS.md) investigates more prominent accumulation, dramatic clear/constellation feedback, and the separate design questions behind combos and recipes. User-approved mock and normal-target integration using existing constellation, recipe, relay and Dusk rules.
 
