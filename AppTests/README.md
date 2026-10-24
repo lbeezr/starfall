@@ -1,5 +1,7 @@
 # Hosted app tests
 
+`AutomaticPatternReturnTests` covers all committed recipes, separate/overlapping geometry, dense75-recipe resolution, exact phase identities, shared fitting, quiet parity, raster HUD exclusions and real Store save/win/cancellation boundaries. Synthetic geometry fixtures are distinct from reachable Story histories. [Source-bound acceptance](../docs/evidence/identity-goal-05-story-patterns-2026-10-24/README.md).
+
 `SkyEntryReturnTests` covers actual preview origin, stale IDs, frozen pause/deadline, save/mastery preservation and failed Begin rollback. `SavedRoundModeTests` distinguishes current and historical mode labels without writing/upgrading saves. [Goal10 evidence](../docs/evidence/depth-goal-10-repeat-journey-2026-10-23/README.md).
 
 Native tests for stores, presentation and materials that require Apple frameworks.

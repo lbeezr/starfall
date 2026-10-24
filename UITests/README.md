@@ -1,5 +1,7 @@
 # Native interaction tests
 
+`AutomaticPatternReturnInteractionTests` contrasts Story inspection/setup/automatic clears with Open Sky, checks a real Silver repair and Replay, and exercises AX3XL Calm Full Board/practice/return. The tablet method is explicitly selected by the existing tablet matrix. When a test changes an actual preference, omit that key’s launch-argument override: `-calmEffects NO` masks later `@AppStorage` writes through the argument domain. Operate Settings, verify the actual value and restore its prior state. [Executed evidence](../docs/evidence/identity-goal-05-story-patterns-2026-10-24/README.md).
+
 The mastery journeys also cover earned-result and paused-round Back, Map mode-preview cancellation, exact Continue, committing the opposite mode and explicit Home. Existing Ribbon/Open Sky cancellation cases keep their own contrasts. [Goal10 evidence](../docs/evidence/depth-goal-10-repeat-journey-2026-10-23/README.md).
 
 XCTest flows exercising the app through native controls on Apple tooling.

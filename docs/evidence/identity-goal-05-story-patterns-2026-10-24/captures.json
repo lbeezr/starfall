@@ -1,0 +1,124 @@
+{
+  "images": [
+    {
+      "file": "dev-024e14a__square-return__iphone-17e__normal.jpg",
+      "source": "024e14aa699da4501d044df2d4f30cbc6b3bfba7",
+      "bundle": "dev.local",
+      "kind": "Native recording frame",
+      "raw": "/private/tmp/starfall-identity-05-20261024/phone-square-selected/frame-00000.png",
+      "raw_sha256": "b20ac673d7405c28d86efd88f5fd097b12f464e854d1474b65d503207fdf286c",
+      "sha256": "f33fa0d971326163c13a61ddc49ce7ce2d0fb881ed6113425c2054971f448d7c",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "sips JPEG85, original resolution; no crop or repaint",
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "video_sha256": "af4ea1dc15c1c98b6bd8f5440e71336d4c6d37f0a893ae64979b1dc809620fde",
+      "frame": {
+        "actual": 159.975,
+        "index": 0,
+        "requested": 159.975,
+        "sheet": 0
+      }
+    },
+    {
+      "file": "dev-024e14a__line-return__iphone-17e__normal.jpg",
+      "source": "024e14aa699da4501d044df2d4f30cbc6b3bfba7",
+      "bundle": "dev.local",
+      "kind": "Native recording frame",
+      "raw": "/private/tmp/starfall-identity-05-20261024/phone-line-selected/frame-00000.png",
+      "raw_sha256": "737d04e8f6546fd57c09e533215aee5a11199a16cbfa9a1053b3acf0b4e30567",
+      "sha256": "b8a78fc0234d7dcbacee75dc96e2931d271b3c5889878dae69a46c97e1e13705",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "sips JPEG85, original resolution; no crop or repaint",
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "video_sha256": "af4ea1dc15c1c98b6bd8f5440e71336d4c6d37f0a893ae64979b1dc809620fde",
+      "frame": {
+        "actual": 168.09666666666666,
+        "index": 0,
+        "requested": 168.097,
+        "sheet": 0
+      }
+    },
+    {
+      "file": "dev-05235c4__separate-squares__hosted__normal.jpg",
+      "source": "05235c48b87933281e460e8badf3d91ef9e08d8b",
+      "bundle": "dev.local",
+      "kind": "Hosted fixed-age production Canvas",
+      "raw": "/private/tmp/starfall-identity-05-20261024/hosted-accepted-attachments/41C37DEF-3EB9-4EAA-BA08-B24DC14A157A.png",
+      "raw_sha256": "c9316ff0f526ea2ab334cdb64e551981b973af4e24aa034e86c5160a6a25de4d",
+      "sha256": "b379482af936b3ccdbb7d6b867b675f533103d9b4ce17c47281a2bc9fac37a9d",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "sips JPEG85, original resolution; no crop or repaint",
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "attachment_timestamp": 1792815382.477
+    },
+    {
+      "file": "dev-c0616cf__full-board-return__ipad-pro11-m5__ax3xl-calm.jpg",
+      "source": "c0616cfbf8098e84a5d9e630a2a57e1e7d02ecf6",
+      "bundle": "dev.local",
+      "kind": "Native XCTest attachment",
+      "raw": "/private/tmp/starfall-identity-05-20261024/tablet-final-attachments/111B0E37-0A1F-42BA-B2A5-2541F35ED905.png",
+      "raw_sha256": "cf241c86a53c74ca5eecc08f750a75175da086ea56ca44104d40d8a79d932af9",
+      "sha256": "55862152fe2b49a3ed62fcc38504ccd952393fa03e20cddb79a1b7f54705294a",
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "conversion": "sips JPEG85, original resolution; no crop or repaint",
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "attachment_timestamp": 1792816437.309
+    },
+    {
+      "file": "dev-c0616cf__two-squares__ipad-pro11-m5__ax3xl-calm.jpg",
+      "source": "c0616cfbf8098e84a5d9e630a2a57e1e7d02ecf6",
+      "bundle": "dev.local",
+      "kind": "Native XCTest attachment",
+      "raw": "/private/tmp/starfall-identity-05-20261024/tablet-final-attachments/30A00DBD-EF3D-406E-9372-6AE342895623.png",
+      "raw_sha256": "ebeb3e451170c8c831385c66674815514c461205785c65dacec10b719ad18bbe",
+      "sha256": "c1a6a1d0537007627f1646acd701cecbe0d0cf8facccb4731ca9a739d0a4d05b",
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "conversion": "sips JPEG85, original resolution; no crop or repaint",
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "attachment_timestamp": 1792816490.443
+    },
+    {
+      "file": "dev-c0616cf__practice-reading__ipad-pro11-m5__ax3xl-calm.jpg",
+      "source": "c0616cfbf8098e84a5d9e630a2a57e1e7d02ecf6",
+      "bundle": "dev.local",
+      "kind": "Native XCTest attachment",
+      "raw": "/private/tmp/starfall-identity-05-20261024/tablet-final-attachments/8F94EECF-9FC0-4CA1-9C7E-9AFA8DD214FE.png",
+      "raw_sha256": "2f23bd07839dea2dfd0dd22d656c5f286c25a183e0e51a59917098c80025423a",
+      "sha256": "13227ce470705a84a35b7b434f6e22b5d54af9b10ae37c22e4f560e8036608fc",
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "conversion": "sips JPEG85, original resolution; no crop or repaint",
+      "inspected_original": true,
+      "inspected_promoted": true,
+      "attachment_timestamp": 1792816497.892
+    }
+  ],
+  "sequences": "return-sequences.json",
+  "limits": [
+    "Intermediate phone frames do not by themselves establish arrival; sampled sequences separately include rise/arrival/expiry.",
+    "Hosted synthetic geometry is not native reachability.",
+    "Tablet captures use actual AX3XL Calm and include deliberate guide scrolling."
+  ]
+}

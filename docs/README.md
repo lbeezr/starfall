@@ -1,5 +1,7 @@
 # Documentation map
 
+[Automatic Story figures](evidence/identity-goal-05-story-patterns-2026-10-24/README.md) carry each committed recipe into the existing celestial return, preserving simultaneous patterns and exact manual drawing. Source-bound phone/tablet, geometry and lifecycle evidence retain earlier failed checks separately.
+
 [Repeat-visit continuity](evidence/depth-goal-10-repeat-journey-2026-10-23/README.md) completes the depth queue with origin-preserving Back and explicit saved-mode progress, backed by complete mode journeys.
 
 [Optional Lantern mastery](evidence/depth-goal-09-optional-mastery-2026-10-23/README.md) adds mode-appropriate accomplishments and independent best records while preserving ordinary repairs and retained saves.

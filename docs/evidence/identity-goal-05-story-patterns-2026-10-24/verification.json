@@ -1,0 +1,153 @@
+{
+  "goal": 340,
+  "base": "7358e8330a9d2038aaaf9d658bbfd7ff52d812b7",
+  "runtime_test_checkpoint": "c0616cfbf8098e84a5d9e630a2a57e1e7d02ecf6",
+  "runtime_fingerprint": "dev.65e76cefff",
+  "actual_bundle": {
+    "StarfallBuildID": "dev.local",
+    "version": "0.1.0",
+    "build": "1"
+  },
+  "source_hashes": {
+    "App/StarlightCelebration.swift": "fb79aa6b5186cd51a4c359946c9c38277771baadbbb1048016880f474e71af2b",
+    "App/FallingSkyView.swift": "754597f85770e3163f0269ff590f840c5144311efef33065c725e36c7cc9db52",
+    "AppTests/AutomaticPatternReturnTests.swift": "a69a23de56537ee914f14d7f4a2e0a378b651ece115eed7721472284cc6fec3f",
+    "UITests/AutomaticPatternReturnInteractionTests.swift": "f5157fc7f6df0a5985a4787c5c4f0e78dc7c26b405526a79fd43652ab5ef80c0",
+    "Starfall.xcodeproj/project.pbxproj": "3d1fe5497295aff07fbfff58e4c12e9bcbbebf879a1325f5602e29dbbd53a60a",
+    "Package.swift": "3d0eff92cb330f4053958fb53a03e5dbf1d786ae8f33f287d58d2902ba7293d5",
+    "Config/Clean.xcconfig": "4650ec2003b522e5f57696746d755b382349e97b5acb0085e4c0224322b4fa0e",
+    "Config/Starfall-Info.plist": "3cc86a35a113daca7543ff84cd26e40601acec33a509ea5ee20f325f4c9afcd4"
+  },
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 21.569,
+    "command": "swift test --scratch-path /private/tmp/starfall-identity-05-20261024/CoreBuild",
+    "inputs_manifest_sha256": "282e49c87d1d8d7da69b1845e017290138ffa8a853975926e5593d1b6b3454f4",
+    "all_inputs_unchanged": true
+  },
+  "executions": [
+    {
+      "name": "first hosted",
+      "source": "024e14a",
+      "raw": "/private/tmp/starfall-identity-05-20261024/hosted-summary.json",
+      "sha256": "60a38a3412277b95ce5c14749db566d94fe96a7dfc5d44e2fba636601177f049",
+      "passedTests": 167,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 168,
+      "startTime": 1792814982.928,
+      "finishTime": 1792815051.989
+    },
+    {
+      "name": "accepted hosted",
+      "source": "05235c4",
+      "raw": "/private/tmp/starfall-identity-05-20261024/hosted-accepted-summary.json",
+      "sha256": "af0278f205e94136cc119323e3134704c5f7a34b10612bd23635c03061e9c98e",
+      "passedTests": 168,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 168,
+      "startTime": 1792815361.644,
+      "finishTime": 1792815428.533
+    },
+    {
+      "name": "ordinary phone",
+      "source": "024e14a",
+      "raw": "/private/tmp/starfall-identity-05-20261024/phone-summary.json",
+      "sha256": "fef617812d69a71710b4d78aeca82b616f2a379da09e417eff62c9cda68a38e5",
+      "passedTests": 3,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 3,
+      "startTime": 1792815117.841,
+      "finishTime": 1792815340.294
+    },
+    {
+      "name": "first tablet",
+      "source": "05235c4",
+      "raw": "/private/tmp/starfall-identity-05-20261024/tablet-summary.json",
+      "sha256": "1956aa0d57b110c372c56fee67641eb5abb0f24cb18b90181bbbd9fe99bc0118",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792815508.918,
+      "finishTime": 1792815573.203
+    },
+    {
+      "name": "second tablet",
+      "source": "da6d0fc",
+      "raw": "/private/tmp/starfall-identity-05-20261024/tablet-second-summary.json",
+      "sha256": "6eb5d8a9df7271e3138c17e5659d88ffc36c42cf25a9b6205e21206bb3ba97e9",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792815860.796,
+      "finishTime": 1792815921.187
+    },
+    {
+      "name": "final tablet",
+      "source": "c0616cf",
+      "raw": "/private/tmp/starfall-identity-05-20261024/tablet-final-summary.json",
+      "sha256": "898160e4b09889b2a88def483a54991f6eec97e41502efe42b6f5cd5031a9e80",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792816371.616,
+      "finishTime": 1792816529.133
+    }
+  ],
+  "hosted_selection": [
+    "AutomaticPatternReturnTests(14)",
+    "StarlightCelebrationTests(27)",
+    "SkyTechniqueStoreTests(30)",
+    "FallingSkyStoreTests(51)",
+    "TraceInputPolishTests(32)",
+    "HelperDepartureTests(5)",
+    "OpenSkyPracticePresentationTests(4)",
+    "FullBoardCascadePracticePresentationTests(5)"
+  ],
+  "builds": {
+    "Debug": "XcodeBuildMCP build_sim(buildForTesting:true, extraArgs:[ONLY_ACTIVE_ARCH=YES,-jobs,4,CODE_SIGNING_ALLOWED=NO]); final native-test checkpoint build passed in2.1s",
+    "Release": "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination generic/platform=iOS Simulator -derivedDataPath /private/tmp/starfall-identity-05-20261024/Release -jobs4 CODE_SIGNING_ALLOWED=NO build; succeeded at024e14a, same runtime/config bytes",
+    "app_executable_sha256": "7af06d068d0f000615bb2830e33703770da6141ca8d6f9edd52a1e67fc7e6991"
+  },
+  "commands": {
+    "hosted": "test_sim(testProductsPath:<source-bound prepared package>,extraArgs:[-parallel-testing-enabled,NO,-resultBundlePath,<result>, eight -only-testing:StarfallAppTests/<class> selectors])",
+    "native": "test_sim(testProductsPath:<source-bound prepared package>,extraArgs:[-parallel-testing-enabled,NO,-resultBundlePath,<result>,-only-testing:StarfallUITests/<selected method>])",
+    "recording": "xcrun simctl io <owned simulator> recordVideo --codec=h264 --force <explicit output>; readiness and saved file verified",
+    "planner": "python3 scripts/test_native_test_plan.py (3 passed); python3 scripts/native_test_plan.py --stage dev"
+  },
+  "environment": {
+    "macOS": "27.0.1",
+    "Xcode": "27.1 (27A9275)",
+    "simulatorOS": "iOS27.0",
+    "phone": "iPhone17e 64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+    "tablet": "iPadPro11 M5 255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+    "configuration": "Debug arm64; generic Release arm64/x86_64",
+    "tablet_variant": "AX3XL actual Settings Calm OFF\u2192ON, restored"
+  },
+  "failures": [
+    "Initial Debug build: ambiguous nonfinite numeric constants, corrected explicit CGFloat type.",
+    "First hosted167/1: bitwise endpoint assumption corrected with exact quiet parity plus coordinate-relative4ULP rounding measurement; all semantic assertions retained.",
+    "Two tablet pregameplay failures: unconditional argument-domain calmEffectsNO masked preference writes; launch boundary corrected after independent Foundation probe. Initial gesture hypothesis incomplete.",
+    "One MCP Home Settings tap did not visibly navigate; unavailable observation, no inferred product cause.",
+    "Shutdown/boot requests once returned alreadyShutdown/alreadyBooted (405); no unrelated resource stopped."
+  ],
+  "limits": [
+    "Geometry fixtures do not prove reachable histories.",
+    "Prior/next phase and earned result retain existing cancellation; an earlier phase may be replaced before0.92s arrival.",
+    "Selected matrix, not full Apple acceptance.",
+    "No human, physical device, minimumOS, actualVoiceOver or sustainedperformance evidence."
+  ],
+  "owned_devices_final": "Both confirmed Shutdown; no physical device operations",
+  "raw_root": "/private/tmp/starfall-identity-05-20261024",
+  "local_link_targets": 946,
+  "promoted_images": 6,
+  "hygiene_diff_membership": "pass",
+  "tablet_method_seconds": 154.348
+}

@@ -148,14 +148,12 @@ import StarfallCore
                                 edgeHeader(island: false)
                                     .padding(.horizontal, StarfallTheme.Spacing.medium)
                                     .padding(.top, StarfallTheme.Spacing.compact)
-                                if store.game.supportsManualClears {
-                                    // Fixed outside scrolling play: a returning figure
-                                    // never needs to cover the HUD or a visible star.
-                                    Color.clear.frame(height: 80)
-                                        .starlightAnchor(.constellationReturn)
-                                        .padding(.vertical, 8)
-                                        .allowsHitTesting(false).accessibilityHidden(true)
-                                }
+                                // Manual walks and automatic patterns share fixed
+                                // protected sky outside the scrolling playfield.
+                                Color.clear.frame(height: 80)
+                                    .starlightAnchor(.constellationReturn)
+                                    .padding(.vertical, 8)
+                                    .allowsHitTesting(false).accessibilityHidden(true)
                             }
                             GeometryReader { readingViewport in
                                 ScrollView {
