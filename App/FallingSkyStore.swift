@@ -121,7 +121,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
 
     private func guide(_ id: String, values: [String: String] = [:], visible: Bool = false) {
-        guideLine = SkyDialogueLibrary.line(id, values: values)
+        guide(SkyDialogueLibrary.line(id, values: values), visible: visible)
+    }
+
+    private func guide(_ line: SkyDialogueLine, visible: Bool = false) {
+        guideLine = line
         if visible {
             guideLine = SkyDialogueLibrary.contextual(guideLine, game: game, cadence: nextShowerCadence)
             dialogue.show(guideLine, interrupt: true)
@@ -582,7 +586,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         guard canReceiveInput, !constellationTracing else { return }
         if !game.supportsManualClears {
             guard canContact(cell) else { explainSettling(at: cell); return }
-            guide("guide.patterns-inspect", values: game.automaticPatternValues, visible: true)
+            let inspection = SkyDialogueLibrary.ingredientInspection(at: cell, game: game)
+                ?? SkyDialogueLibrary.line("guide.patterns-inspect", values: game.automaticPatternValues)
+            guide(inspection, visible: true)
             feedback.announce(guideLine.spokenText)
             return
         }

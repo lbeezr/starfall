@@ -1,5 +1,7 @@
 # iOS application
 
+`SkyDialogueLibrary.ingredientInspection` gives automatic-Story taps facts from the actual committed star: family/material, small/grown and light units, plus the saved line threshold. It reuses the Store’s guide/contact owner; manual taps/traces, clocks and saves keep their existing paths. [Decision goal1 evidence](../docs/evidence/decision-goal-01-ingredient-inspection-2026-10-24/README.md).
+
 Home distinguishes automatic Story patterns from Open Sky drawing through the existing mode buttons, retaining their literal accessible action names. `SkyHelpContext.restorationSection` exists only for the actual selected restoration; Open Sky never borrows a fresh Lantern objective. Entry, retained Help and Replay continue to use their existing rule snapshots. [Identity goal10 evidence](../docs/evidence/identity-goal-10-coherent-return-2026-10-24/README.md).
 
 `SkyLightReceiptSession` owns the existing latest live receipt expiry and one immutable in-session final figure. Capture happens from the committed turn before terminal presentation teardown; `SkyFinalLightView` fits exact separate paths beside the result as **Last earned light**. Round replacement clears it; cold restore omits unavailable geometry. The receipt never encodes or grants an award. [Identity goal9 evidence](../docs/evidence/identity-goal-09-final-light-2026-10-24/README.md).

@@ -1,0 +1,72 @@
+[
+  {
+    "name": "phone-grown",
+    "file": "dev-087b7f0bc4-decision01-phone-grown.jpg",
+    "source": "7db83ac7be61c223da71ffea42e92a20560d2188",
+    "runtime": "dev.087b7f0bc4",
+    "raw": "/private/tmp/starfall-decision-01-20261024/phone-corrected-attachments/CC469619-1708-4136-A599-FA7641213D41.png",
+    "sha256": "f60356359584c57a6bac6220916702cd5cc3d43db651db326cc2d3ca87623b64",
+    "bytes": 892765,
+    "inspection": "passed, independently inspected original-resolution export; static text/state scope"
+  },
+  {
+    "name": "phone-small",
+    "file": "dev-087b7f0bc4-decision01-phone-small.jpg",
+    "source": "7db83ac7be61c223da71ffea42e92a20560d2188",
+    "runtime": "dev.087b7f0bc4",
+    "raw": "/private/tmp/starfall-decision-01-20261024/phone-corrected-attachments/0C33BBEC-9F72-4890-A4EB-F56B4210FFD8.png",
+    "sha256": "8d1064f90e4d0a7c0c28ac2b80f5c41925a800eef4c51cc7833f4b33f7f1db02",
+    "bytes": 890688,
+    "inspection": "passed, independently inspected original-resolution export; static text/state scope"
+  },
+  {
+    "name": "phone-moved-restored",
+    "file": "dev-087b7f0bc4-decision01-phone-moved-restored.jpg",
+    "source": "7db83ac7be61c223da71ffea42e92a20560d2188",
+    "runtime": "dev.087b7f0bc4",
+    "raw": "/private/tmp/starfall-decision-01-20261024/phone-corrected-attachments/8998979A-A58E-4915-BAAE-37C1CE853563.png",
+    "sha256": "250070e0525b9b53aa6514f2e5666d2095125d05bf759f3fd12f87a23bda8145",
+    "bytes": 892865,
+    "inspection": "passed, independently inspected original-resolution export; static text/state scope"
+  },
+  {
+    "name": "tablet-actual-calm",
+    "file": "dev-087b7f0bc4-decision01-tablet-actual-calm.jpg",
+    "source": "7db83ac7be61c223da71ffea42e92a20560d2188",
+    "runtime": "dev.087b7f0bc4",
+    "raw": "/private/tmp/starfall-decision-01-20261024/tablet-attachments/97A1A8F4-95E2-4149-AA9E-ADDF8A60252A.png",
+    "sha256": "02c235f68a48c504da3b5d82a2732168635a0d02b15692cd2f270183d6a685d1",
+    "bytes": 662822,
+    "inspection": "passed, independently inspected original-resolution export; static text/state scope"
+  },
+  {
+    "name": "tablet-guide-start",
+    "file": "dev-087b7f0bc4-decision01-tablet-guide-start.jpg",
+    "source": "7db83ac7be61c223da71ffea42e92a20560d2188",
+    "runtime": "dev.087b7f0bc4",
+    "raw": "/private/tmp/starfall-decision-01-20261024/tablet-attachments/178776A3-50C4-43C7-ACE4-53DACF1C4369.png",
+    "sha256": "c25645cc8abb8e4185d43644728c24d874ad110b384610f26d261689e5cbf0f3",
+    "bytes": 644231,
+    "inspection": "passed, independently inspected original-resolution export; static text/state scope"
+  },
+  {
+    "name": "tablet-guide-end",
+    "file": "dev-087b7f0bc4-decision01-tablet-guide-end.jpg",
+    "source": "7db83ac7be61c223da71ffea42e92a20560d2188",
+    "runtime": "dev.087b7f0bc4",
+    "raw": "/private/tmp/starfall-decision-01-20261024/tablet-attachments/E5A92447-5949-40A2-8543-478A11AF7287.png",
+    "sha256": "c25645cc8abb8e4185d43644728c24d874ad110b384610f26d261689e5cbf0f3",
+    "bytes": 644231,
+    "inspection": "passed, independently inspected original-resolution export; static text/state scope"
+  },
+  {
+    "name": "tablet-next-clear",
+    "file": "dev-087b7f0bc4-decision01-tablet-next-clear.jpg",
+    "source": "7db83ac7be61c223da71ffea42e92a20560d2188",
+    "runtime": "dev.087b7f0bc4",
+    "raw": "/private/tmp/starfall-decision-01-20261024/tablet-attachments/B2B7408F-9FE0-4FB0-AD8B-222EBA61F72D.png",
+    "sha256": "68f0ca7d4d0ece421deaa93f8eed8cbdad24dc29901d9b326b8e2f218ac4a2c2",
+    "bytes": 956897,
+    "inspection": "passed, independently inspected original-resolution export; static text/state scope"
+  }
+]

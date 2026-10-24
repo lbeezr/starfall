@@ -24,6 +24,20 @@ enum SkyDialogueLibrary {
 
 
 extension SkyDialogueLibrary {
+    /// Describes one actual committed ingredient without choosing or previewing a move.
+    @MainActor static func ingredientInspection(at cell: Cell, game: FallingSky) -> SkyDialogueLine? {
+        guard !game.isOver, !game.supportsManualClears, game.supportsAutomaticRecipes,
+              game.board.count == FallingSky.side * FallingSky.side,
+              (0..<FallingSky.side).contains(cell.row), (0..<FallingSky.side).contains(cell.column),
+              let gem = game.gem(at: cell), let lines = game.automaticPatternValues["lines"] else { return nil }
+        return line("guide.patterns-inspect-star", values: [
+            "star": SkyPiece.description(for: .init(gem)),
+            "size": SkyCopy.text(gem.grown ? .inspectionGrown : .inspectionSmall),
+            "light": SkyCopy.count(.inspectionLightOne, .inspectionLightMany, gem.value),
+            "lines": lines
+        ])
+    }
+
     static func contextual(_ result: SkyDialogueLine, game: FallingSky, cadence: SkyCadenceStep, includeTiming: Bool = true) -> SkyDialogueLine {
         let context = [includeTiming ? timing(game: game, cadence: cadence)?.text : nil, DuskWarning(game: game)?.text, CriticalMassPresentation.warning(game: game)]
             .compactMap { $0 }.joined(separator: " ")

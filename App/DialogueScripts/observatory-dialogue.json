@@ -1290,6 +1290,17 @@
       ]
     },
     {
+      "id": "guide.patterns-inspect-star",
+      "lines": [
+        {
+          "id": "guide.patterns-inspect-star.1",
+          "speaker": "spark",
+          "text": "{star}. {size}: {light}. Swipe neighbors into squares of 4, crosses of 5, or {lines}. Patterns pop automatically.",
+          "priority": "help"
+        }
+      ]
+    },
+    {
       "id": "full-board-lantern.entry",
       "lines": [
         {
@@ -1844,6 +1855,10 @@
     "help.sunwheel": "Restore Sunwheel Mill with 18 starlight. Each clear returns light to its copper wheel and golden channels. Finish to open the outlet and send light onward before an arriving star has nowhere to land. Swipe neighboring stars to arrange matches, tap groups or hold and draw selected traces and shape recipes. Showers arrive at a steady pace. This place has no Dusk, Opal Orbs or storms.",
     "patterns.linesFour": "straight lines of 4 or more",
     "patterns.linesSeven": "full lines of 7",
+    "inspection.small": "Small",
+    "inspection.grown": "Grown",
+    "inspection.lightOne": "1 light unit",
+    "inspection.lightMany": "{count} light units",
     "help.patternsTitle": "Arrange automatic patterns",
     "help.patternsControls": "Swipe a star toward a neighbor to exchange them, or into an empty space. Matching patterns pop as soon as the stars settle. Tap a star for guidance. With VoiceOver, use its Move left, Move right, Move up or Move down action.",
     "help.patternsSwap": "Swipe one space left, right, up or down. Swap with a neighboring star or move into an empty space; matching patterns pop after the stars settle.",
