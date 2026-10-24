@@ -1,0 +1,44 @@
+{
+  "base": "22ab5c2dcbd0503f03b26e3e8e2d3b70b485c2af",
+  "build_affecting_inputs": [
+    {
+      "path": "App/ConstellationTraceSurface.swift",
+      "sha256": "1c3f90355ae1021fd4fcd217862aea2522ed4c1f5ede7f3e711c85004d366435"
+    },
+    {
+      "path": "App/DialogueScripts/observatory-dialogue.json",
+      "sha256": "a3c2f6b11a9593796b9a0d0c8fa535ab98851282108aa50ace38c1ff1ff6a07e"
+    },
+    {
+      "path": "App/FallingSkyPresentation.swift",
+      "sha256": "a42d5e99ee6d8e069c57d01cbae745f337b64ebc9db8da5642b577255716a17b"
+    },
+    {
+      "path": "App/FallingSkyStore.swift",
+      "sha256": "da531d337fcd1eb7b567117c217eb3981e58576b2bb10c4ad7e79a8ed4715e80"
+    },
+    {
+      "path": "App/FallingSkyView.swift",
+      "sha256": "204ba012fc0e48ee79adf4da86ee216ec9b6257c2ea0c9b23bd76656bc49b943"
+    },
+    {
+      "path": "App/SkyCopy.swift",
+      "sha256": "44b891869072b1152401f866387a5cd0fc85eca73bb9293d96062c8e269e43c6"
+    },
+    {
+      "path": "App/SkyTechniqueIntent.swift",
+      "sha256": "3a6e1db717d5a4b43406c84b6753569c4f4fdb71e8ce880330a7329d5b23ffdf"
+    },
+    {
+      "path": "AppTests/SkyTechniqueStoreTests.swift",
+      "sha256": "da69eb63250c44cce2adc5f1e85f4462aded1400cb21922a53bc71b5da837745"
+    },
+    {
+      "path": "UITests/FullBoardRibbonInteractionTests.swift",
+      "sha256": "3147dbb9fbf121690262608630b35db63636860605a3853cb03b77507d59ccf4"
+    }
+  ],
+  "snapshot_sha256": "43c7af31a9028bb62a2f6463e7ab59f897b3505fd21336f962c4dc879ddf2cd4",
+  "actual_simulator_build": "dev.local / 0.1.0 (1)",
+  "configuration": "Debug arm64; normal system motion and Calm off; iOSSimulator27.0 (24A434), Xcode27.1 (27A9275) SDK27.1"
+}

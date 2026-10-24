@@ -620,6 +620,8 @@ enum SkyCopy {
         case inputShortSwipe = "input.shortSwipe"
         case inputSwapEdge = "input.swapEdge"
         case inputBuffered = "input.buffered"
+        case inputQueueFull = "input.queueFull"
+        case inputQueueChanged = "input.queueChanged"
         case inputBufferExpired = "input.bufferExpired"
         case inputShowerDue = "input.showerDue"
         case inputTraceStart = "input.traceStart"

@@ -1792,6 +1792,8 @@
     "input.shortSwipe": "Swipe a little farther to move a star.",
     "input.swapEdge": "That direction leaves the sky. Swipe inward.",
     "input.buffered": "Move ready — finishing this motion.",
+    "input.queueFull": "Four moves are already planned. Let this sequence finish.",
+    "input.queueChanged": "Those stars move in an earlier plan. Choose stars that stay in place.",
     "input.bufferExpired": "That move expired. Swipe or tap again.",
     "input.showerDue": "A shower is arriving. Try again when the stars settle.",
     "input.traceStart": "Hold a colored star to begin a constellation.",

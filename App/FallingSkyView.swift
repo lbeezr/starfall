@@ -8,6 +8,7 @@ import StarfallCore
     private var tutorialEndingAfter: SkyTutorial?
     @State private var store: FallingSkyStore
     @State private var interaction = SkyInteractionSession()
+    @State private var contactInputSnapshot: FallingSky?
     @State private var forecastInspection: SkyForecastInspection?
     @State private var showerInspection: SkyShowerInspection?
     private var trace: ConstellationTraceIntent { interaction.trace }
@@ -111,7 +112,7 @@ import StarfallCore
         .tint(StarfallTheme.Colors.actionPrimary)
         .onAppear { CrystalCelebrationArtwork.shared.prewarm(); store.terminalSpeech = .ceremony; updateSuspension(); store.settlePresentation(); updateMotion() }
         .onDisappear { invalidateInteraction(); store.setSuspended(true); store.terminalSpeech = .feedback }
-        .onChange(of: store.constellationInputGeneration) { invalidateInteraction() }
+        .onChange(of: store.constellationInputGeneration) { invalidateInteraction(cancelQueue: false) }
         .onChange(of: forecastSource) { forecastInspection = nil; showerInspection = nil }
         .onChange(of: store.game) {
             interaction.reconcile(with: store.game, release: store.endConstellationHold)
@@ -590,7 +591,7 @@ import StarfallCore
                                               end: releaseConstellation, cancel: cancelConstellation,
                                               contact: { beginBoardContact($0, size: geometry.size) },
                                               feedback: store.explainInputFailure,
-                                              swapStart: { point in mapping.cell(at:point).map { store.game.canArrangeStars && store.game.gem(at:$0) != nil && store.canReceiveInput } ?? false },
+                                              swapStart: { point in mapping.cell(at:point).map { store.game.canArrangeStars && store.canQueueInput(at: $0) } ?? false },
                                               swap: commitDirectSwap,
                                               cancelDrawing: { trace.cancel(); store.scene.clearConstellationTrace() },
                                               drawingEnabled: store.game.supportsManualClears)
@@ -885,23 +886,28 @@ private extension FallingSkyView {
     func tapBoardCell(_ cell: Cell) {
         showerInspection = nil
         forecastInspection = nil
-        cancelConstellation()
-        store.requestTap(cell)
+        defer { cancelConstellation() }
+        guard let snapshot = contactInputSnapshot ?? store.inputSnapshot(at: cell) else {
+            store.explainSettling(at: cell); return
+        }
+        _ = store.requestInput(.tap(cell), snapshot: snapshot, generation: store.constellationInputGeneration)
     }
     func commitDirectSwap(from: Cell, to: Cell, generation: UInt64) {
         defer { cancelConstellation() }
-        guard store.constellationTracing, generation == store.constellationInputGeneration else { return }
-        let snapshot = store.game
+        guard store.constellationTracing, generation == store.constellationInputGeneration,
+              let snapshot = contactInputSnapshot else { return }
         _ = store.requestInput(.swap(from, to), snapshot: snapshot, generation: generation)
     }
     func cancelConstellation() {
+        contactInputSnapshot = nil
         interaction.cancelContact(release: store.endConstellationHold)
         store.scene.clearConstellationTrace()
     }
-    func invalidateInteraction() {
+    func invalidateInteraction(cancelQueue: Bool = true) {
         showerInspection = nil
         forecastInspection = nil
-        store.cancelBufferedInput()
+        contactInputSnapshot = nil
+        if cancelQueue { store.cancelBufferedInput() }
         interaction.invalidate(release: store.endConstellationHold)
         store.scene.clearConstellationTrace()
     }
@@ -910,9 +916,13 @@ private extension FallingSkyView {
         forecastInspection = nil
         cancelConstellation()
         guard let cell = LandingGeometry(size: size).cell(at: point) else { return false }
+        guard let snapshot = store.inputSnapshot(at: cell) else {
+            store.explainSettling(at: cell); return false
+        }
         guard interaction.acquireHold(at: cell, using: store.beginResponsiveContact) else {
             store.explainSettling(at: cell); return false
         }
+        contactInputSnapshot = snapshot
         store.showInputFeedback(nil)
         store.scene.showContact(cell, drawingEligible: store.game.canStartConstellation(at: cell) && store.canTrace([cell]))
         return true

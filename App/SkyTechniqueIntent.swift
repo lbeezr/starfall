@@ -33,22 +33,29 @@ enum SkyPlayerInput: Equatable {
 }
 
 struct SkyBufferedInput: Equatable {
-    // Covers the ordinary 340 ms swap/fall and 560 ms clear presentation.
-    // Identity checks and replacement on new contact prevent delayed retargeting.
-    static let lifetime: TimeInterval = 0.65
+    /// A bounded plan, never a timer or a saved action. Every entry names the
+    /// exact projected prestate and endpoints; later contacts cannot retarget it.
+    static let capacity = 4
     let ticket: UInt64
     let action: SkyPlayerInput
     let snapshot: FallingSky
     let sourceID: Int
     let destinationID: Int?
-    let deadline: TimeInterval
+    let projectedGame: FallingSky
 
-    init?(ticket: UInt64, action: SkyPlayerInput, game: FallingSky, now: TimeInterval) {
-        guard let sourceID = game.gem(at: action.source)?.id, action.preview(in: game) != nil else { return nil }
+    init?(ticket: UInt64, action: SkyPlayerInput, game: FallingSky) {
+        guard let sourceID = game.gem(at: action.source)?.id else { return nil }
+        var projected = game
+        let turn: FallingSkyTurn?
+        switch action {
+        case .tap(let cell): turn = projected.clear(cell)
+        case .swap(let from, let to): turn = projected.nudge(from: from, to: to)
+        }
+        guard turn != nil else { return nil }
         self.ticket = ticket; self.action = action; snapshot = game
         self.sourceID = sourceID
         destinationID = action.destination.flatMap { game.gem(at: $0)?.id }
-        deadline = now + Self.lifetime
+        projectedGame = projected
     }
     func matches(_ game: FallingSky) -> Bool {
         snapshot == game && game.gem(at: action.source)?.id == sourceID

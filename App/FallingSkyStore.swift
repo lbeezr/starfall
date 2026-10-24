@@ -160,8 +160,13 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private var constellationHoldSequence: UInt64 = 0
     @ObservationIgnored private var traceFeedbackCount = 0
     @ObservationIgnored private var traceReadySignaled = false
-    private(set) var bufferedInput: SkyBufferedInput?
-    @ObservationIgnored private var bufferedInputTask: Task<Void, Never>?
+    private var inputQueue: [SkyBufferedInput] = []
+    var bufferedInput: SkyBufferedInput? { inputQueue.first }
+    var queuedInputCount: Int { inputQueue.count }
+    var queuedInputs: [SkyPlayerInput] { inputQueue.map(\.action) }
+    var queuedInputCapacity: Int { SkyBufferedInput.capacity }
+    @ObservationIgnored private var queuedAdmissions = 0
+    @ObservationIgnored private var dispatchingQueuedInput = false
     @ObservationIgnored private var bufferedInputSequence: UInt64 = 0
 
     /// Only the owner may release a live hold; late callbacks cannot resume a newer touch.
@@ -179,9 +184,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         constellationTracing = true
         traceFeedbackCount = 0; traceReadySignaled = false
         freezeClock(for: .contact)
-        // A newly touched star replaces a pending intention before any completion
-        // can execute beneath this contact. The new hold owns the frozen clock.
-        cancelBufferedInput()
+        // Contact freezes dispatch, while previous accepted commands retain
+        // their FIFO order. Releasing this ticket may dispatch only the head.
         #if DEBUG
         observeTiming(.state)
         #endif
@@ -343,9 +347,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
     }
     private func invalidateInput(_ reason: String) {
-        cancelBufferedInput()
+        if reason != "clear" || !dispatchingQueuedInput { cancelBufferedInput() }
         endConstellationHold(constellationHold)
-        showInputFeedback(nil)
+        if inputQueue.isEmpty { showInputFeedback(nil) }
         constellationInputGeneration &+= 1
         #if DEBUG
         observeTiming(.invalidated(reason))
@@ -515,34 +519,79 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     }
     func canTrace(_ path: [Cell]) -> Bool { game.supportsManualClears && traceAvailability(path).isReady }
 
-    /// Physical and accessibility requests may wait briefly; direct commit APIs
-    /// remain strict so stale callers never gain an implicit replay queue.
+    /// A contact names a visible, stationary identity. Never use the final
+    /// occupant of a cell while another star is visibly departing from it.
+    func inputSnapshot(at cell: Cell) -> FallingSky? {
+        guard canReceiveInput, let id = game.gem(at: cell)?.id,
+              presentations.preservesInputIdentity(at: cell, id: id) else { return nil }
+        let projected = inputQueue.last?.projectedGame ?? game
+        guard projected.gem(at: cell)?.id == id, !projected.isOver else { return nil }
+        return game
+    }
+    func canQueueInput(at cell: Cell) -> Bool { inputSnapshot(at: cell) != nil }
+
+    /// Physical and accessibility requests plan against the FIFO tail. Only
+    /// independent visible endpoints are accepted; no source follows a moved ID
+    /// to a different cell and no destination is silently reinterpreted.
     @discardableResult func requestTap(_ cell: Cell) -> Bool {
         requestInput(.tap(cell), snapshot: game, generation: constellationInputGeneration)
     }
 
     @discardableResult func requestInput(_ action: SkyPlayerInput, snapshot: FallingSky, generation: UInt64) -> Bool {
         guard snapshot == game, generation == constellationInputGeneration, canReceiveInput else { return false }
-        cancelBufferedInput()
-        guard let turn = action.preview(in: game) else {
-            if case .tap(let cell) = action { clear(cell) }
+        let projected = inputQueue.last?.projectedGame ?? game
+        guard let sourceID = game.gem(at: action.source)?.id,
+              presentations.preservesInputIdentity(at: action.source, id: sourceID) else {
+            explainSettling(at: action.source); return false
+        }
+        guard projected.gem(at: action.source)?.id == sourceID else {
+            explainInputFailure(SkyCopy.text(.inputQueueChanged)); return false
+        }
+        if let destination = action.destination {
+            let visibleID = game.gem(at: destination)?.id
+            guard visibleID == projected.gem(at: destination)?.id else {
+                explainInputFailure(SkyCopy.text(.inputQueueChanged)); return false
+            }
+            guard visibleID.map({ presentations.preservesInputIdentity(at: destination, id: $0) })
+                    ?? !changingColumns.contains(destination.column) else {
+                explainSettling(at: destination); return false
+            }
+        }
+        guard let turn = action.preview(in: projected) else {
+            if case .tap(let cell) = action, inputQueue.isEmpty { inspectStar(cell) }
             return false
         }
-        let availability = inputPolicy.reserving(turn.changingColumns)
-        if availability.isReady { return executeInput(action) }
-        guard case .settling = availability else { return false }
+        var heldTap = false
+        if case .tap = action { heldTap = constellationTracing }
+        if !busy && inputQueue.isEmpty && !heldTap {
+            queuedAdmissions = 0
+            return executeInput(action)
+        }
+        guard queuedAdmissions < SkyBufferedInput.capacity, inputQueue.count < SkyBufferedInput.capacity else {
+            explainInputFailure(SkyCopy.text(.inputQueueFull)); return false
+        }
+        guard !projected.isOver else { return false }
+        // A manual tap names its actual group too, rather than collecting a
+        // different projected neighborhood after an earlier queued clear.
+        if case .tap = action {
+            guard let visible = action.preview(in: game),
+                  Set(visible.cleared.compactMap { game.gem(at: $0)?.id })
+                    == Set(turn.cleared.compactMap { projected.gem(at: $0)?.id }) else { return false }
+            guard visible.cleared.allSatisfy({ cell in
+                guard let id = game.gem(at: cell)?.id else { return false }
+                return presentations.preservesInputIdentity(at: cell, id: id)
+            }) else {
+                explainInputFailure(SkyCopy.text(.inputQueueChanged)); return false
+            }
+        }
         bufferedInputSequence &+= 1
-        guard let pending = SkyBufferedInput(ticket: bufferedInputSequence, action: action, game: game, now: clock.now) else { return false }
-        bufferedInput = pending
+        guard let pending = SkyBufferedInput(ticket: bufferedInputSequence, action: action, game: projected) else { return false }
+        inputQueue.append(pending)
+        queuedAdmissions += 1
         freezeClock(for: .contact)
-        presenter.showBufferedInput(action)
+        presenter.showBufferedInput(inputQueue.first?.action)
         showInputFeedback(SkyCopy.text(.inputBuffered))
         feedback.announce(SkyCopy.text(.inputBuffered))
-        bufferedInputTask = Task { @MainActor [weak self] in
-            do { try await Task.sleep(for: .seconds(SkyBufferedInput.lifetime)) } catch { return }
-            guard !Task.isCancelled else { return }
-            self?.expireBufferedInput(ticket: pending.ticket)
-        }
         return true
     }
 
@@ -556,32 +605,32 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
     }
 
+    /// Lifecycle cancellation retires every uncommitted command. A contact or
+    /// ordinary command completion never calls this replacement boundary.
     func cancelBufferedInput() {
-        guard bufferedInput != nil else { return }
-        bufferedInput = nil
-        bufferedInputTask?.cancel(); bufferedInputTask = nil
+        let hadQueue = !inputQueue.isEmpty
+        inputQueue.removeAll()
+        queuedAdmissions = 0
         presenter.showBufferedInput(nil)
-        showInputFeedback(nil)
-        armClock()
-    }
-
-    func expireBufferedInput(ticket: UInt64) {
-        guard bufferedInput?.ticket == ticket else { return }
-        cancelBufferedInput()
-        if !suspended && !game.isOver { explainInputFailure(SkyCopy.text(.inputBufferExpired)) }
+        if hadQueue {
+            showInputFeedback(nil)
+            armClock()
+        }
     }
 
     @discardableResult private func deliverBufferedInputIfReady() -> Bool {
-        guard let pending = bufferedInput else { return false }
-        guard pending.matches(game), clock.now <= pending.deadline else {
-            expireBufferedInput(ticket: pending.ticket); return false
-        }
-        guard !constellationTracing, canReceiveInput,
+        guard !busy, !constellationTracing, let pending = inputQueue.first else { return false }
+        guard canReceiveInput, pending.matches(game),
               let turn = pending.action.preview(in: game),
-              inputPolicy.reserving(turn.changingColumns).isReady else { return false }
-        // Retire before committing. Reentrant or stale presenter completions can
-        // neither execute twice nor clear a replacement pending action.
-        cancelBufferedInput()
+              inputPolicy.reserving(turn.changingColumns).isReady else {
+            cancelBufferedInput(); return false
+        }
+        // Retire the head before committing. Ordinary present invalidation keeps
+        // the remaining exact projected states; lifecycle invalidation clears all.
+        inputQueue.removeFirst()
+        presenter.showBufferedInput(inputQueue.first?.action)
+        dispatchingQueuedInput = true
+        defer { dispatchingQueuedInput = false }
         return executeInput(pending.action)
     }
 
@@ -589,23 +638,14 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         guard canReceiveInput, !constellationTracing else { return }
         if !game.supportsManualClears {
             guard canContact(cell) else { explainSettling(at: cell); return }
-            let inspection = SkyDialogueLibrary.ingredientInspection(at: cell, game: game)
-                ?? SkyDialogueLibrary.line("guide.patterns-inspect", values: game.automaticPatternValues)
-            guide(inspection, visible: true)
-            feedback.announce(guideLine.spokenText)
+            inspectStar(cell)
             return
         }
         guard canClear(cell) else { explainSettling(at: cell); return }
         showInputFeedback(nil)
         let old = game
         guard let turn = game.clear(cell) else {
-            let gem = game.gem(at: cell)
-            let id = gem?.gravityKind == .hole ? "guide.hole-help"
-                : gem?.gravityKind == .magnet ? "guide.magnet-help"
-                : gem?.isDark == true ? (game.duskRule != .legacy ? "guide.dusk-help" : "guide.dark-help")
-                : gem?.isLight == true ? "guide.opal-help" : "guide.match-help"
-            guide(id, values: id == "guide.dusk-help" ? ["feeds": String(game.duskRule.feedingShowers)] : [:], visible: true)
-            feedback.announce(guideLine.spokenText)
+            inspectStar(cell)
             return
         }
         #if DEBUG
@@ -613,6 +653,24 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
         if game.isOver { freezeClock() }
         present(turn, from: old)
+    }
+
+    /// Inspection has no commit capability and can answer an invalid tap while
+    /// its physical contact still owns release and queued dispatch.
+    private func inspectStar(_ cell: Cell) {
+        if !game.supportsManualClears {
+            let inspection = SkyDialogueLibrary.ingredientInspection(at: cell, game: game)
+                ?? SkyDialogueLibrary.line("guide.patterns-inspect", values: game.automaticPatternValues)
+            guide(inspection, visible: true)
+        } else {
+            let gem = game.gem(at: cell)
+            let id = gem?.gravityKind == .hole ? "guide.hole-help"
+                : gem?.gravityKind == .magnet ? "guide.magnet-help"
+                : gem?.isDark == true ? (game.duskRule != .legacy ? "guide.dusk-help" : "guide.dark-help")
+                : gem?.isLight == true ? "guide.opal-help" : "guide.match-help"
+            guide(id, values: id == "guide.dusk-help" ? ["feeds": String(game.duskRule.feedingShowers)] : [:], visible: true)
+        }
+        feedback.announce(guideLine.spokenText)
     }
 
     func clearTracedConstellation(_ path: [Cell], snapshot: FallingSky, generation ticket: UInt64) {
@@ -683,7 +741,6 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         lightReceipts.cancel()
     }
 
-    deinit { bufferedInputTask?.cancel() }
 
     /// Explicit input works while paused too, without starting an automatic clock.
     func callShower() {
@@ -820,7 +877,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         else if presenter.reduceMotion {
             celebratePhase(turn.resolutionPhases.count - 1, turn: turn, oldScore: old.displayScore)
         } else { cancelCelebration() }
-        let ticket = presentations.begin(turn)
+        let ticket = presentations.begin(turn, from: old, to: game)
+        if game.isOver { cancelBufferedInput() }
         guideLine = SkyDialogueLibrary.result(for: turn, from: old, to: game,
             tracedCount: Set(path).count, recipe: resolvedRecipe, relayDepth: techniqueRelay.depth,
             techniqueResult: techniqueResult)
@@ -860,6 +918,11 @@ enum SkyTerminalSpeech { case feedback, ceremony }
                 self.showInputFeedback(nil)
             }
             if self.deliverBufferedInputIfReady() { return }
+            if !self.busy && self.inputQueue.isEmpty {
+                self.queuedAdmissions = 0
+                self.presenter.showBufferedInput(nil)
+                self.armClock()
+            }
             // Completion order cannot give an older automatic result ownership of current feedback.
             if !publishesImmediately, self.inputFeedback == nil, let spokenResult,
                self.dialogue.revision == dialogueRevision, self.presentations.isLatest(ticket),
