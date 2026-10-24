@@ -1,5 +1,7 @@
 # Hosted app tests
 
+`SkySurvivorIngredientsTests`, `SkySurvivorRenderingTests` and `SkySurvivorGuideTests` check exact original-action identity/movement, refill-birth exclusion across multiple phases, overlap membership, valid empty boundaries, affine diamond geometry/raster/expiry and paired terminal capture/reset. Current Silver, Lantern6 and Ribbon7 receipts retain separate geometry-only hostile fixtures. [Decision goal7 evidence](../docs/evidence/decision-goal-07-survivor-ingredients-2026-10-24/README.md).
+
 `SkyScoreExplanationTests`, `SkyScoreGuideTests` and `SkyScorePresentationTests` cover committed components, overlap union, grown versus ordinary light, unscaled Open Sky/history, bounded guide copy, phase prefixes and terminal capture/cancellation. The explicit presenter harness holds callbacks rather than assuming the default recorder is asynchronous. [Decision goal6 evidence](../docs/evidence/decision-goal-06-earned-score-2026-10-24/README.md).
 
 `SkyHeadroomFeedbackTests` and `SkyHeadroomGuideTests` cover current Kite choices/recovery, zero-light history, named-column gains versus a negative global net, FullBoard6/retained5 replacements and real Store timing/save/feedback boundaries. Exact dialogue oracles retain full-column recovery and terminal priority. [Source-bound execution](../docs/evidence/decision-goal-05-committed-headroom-2026-10-24/README.md).

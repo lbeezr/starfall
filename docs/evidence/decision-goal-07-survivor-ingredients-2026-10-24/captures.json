@@ -1,0 +1,120 @@
+[
+  {
+    "run": "phone",
+    "attachment": "survivor-phone-ribbon-four-causal-movers-end",
+    "file": "dev-9f61b92__ribbon-four-causal-movers-end__iphone-17e__normal.jpg",
+    "timestamp": 1792858185.847,
+    "sourcePNGsha256": "71e6026351aaecbad38f690f37697c39b449ea909ece64ee554e0e072235f86c",
+    "sha256": "20c1583e87b4927985957c3de1edf27cc7f32a06680d2d13a8897db72aad678d",
+    "source": "9f61b92af96db59950be3e32e17cc76e26f2e904",
+    "runtime": "dbb0c3bb4258f26b6a1e93bdeb2a5b8e078b320c",
+    "variant": "normal",
+    "status": "Accepted: root PNG/frame inspection and independent exact original-resolution JPEG inspection"
+  },
+  {
+    "run": "phone",
+    "attachment": "survivor-phone-independent-action-no-old-causal-claim-end",
+    "file": "dev-9f61b92__independent-action-no-old-causal-claim-end__iphone-17e__normal.jpg",
+    "timestamp": 1792858195.935,
+    "sourcePNGsha256": "2f4bdd53c713d05207f9587c5cededf094c55035541f87550beb0198920556eb",
+    "sha256": "e55b9b535554d1816ab426e499f678d00749f922d4541b55bb1edcbd0b3994c3",
+    "source": "9f61b92af96db59950be3e32e17cc76e26f2e904",
+    "runtime": "dbb0c3bb4258f26b6a1e93bdeb2a5b8e078b320c",
+    "variant": "normal",
+    "status": "Accepted: root PNG/frame inspection and independent exact original-resolution JPEG inspection"
+  },
+  {
+    "run": "phone",
+    "attachment": "survivor-phone-silver-terminal-fact-only",
+    "file": "dev-9f61b92__silver-terminal-fact-only__iphone-17e__normal.jpg",
+    "timestamp": 1792858283.997,
+    "sourcePNGsha256": "b7398c09352506eebf5024484725e43fc7d5721dc7561646caf4e2959bde0637",
+    "sha256": "e07135e7fc33c019b85e9ad1c867a3243b0139e64597f65e2c598e16d571a788",
+    "source": "9f61b92af96db59950be3e32e17cc76e26f2e904",
+    "runtime": "dbb0c3bb4258f26b6a1e93bdeb2a5b8e078b320c",
+    "variant": "normal",
+    "status": "Accepted: root PNG/frame inspection and independent exact original-resolution JPEG inspection"
+  },
+  {
+    "run": "phone",
+    "attachment": "survivor-phone-cold-ending-no-invented-receipt",
+    "file": "dev-9f61b92__cold-ending-no-invented-receipt__iphone-17e__normal.jpg",
+    "timestamp": 1792858309.946,
+    "sourcePNGsha256": "84663a9f564ec14e81019f0dfefa1549ec48506bb17a11856e5ac9fec9c36959",
+    "sha256": "5d572b38535a451de94c3b480394a0c20868e25373fe766434bf2cfaf5d592ff",
+    "source": "9f61b92af96db59950be3e32e17cc76e26f2e904",
+    "runtime": "dbb0c3bb4258f26b6a1e93bdeb2a5b8e078b320c",
+    "variant": "normal",
+    "status": "Accepted: root PNG/frame inspection and independent exact original-resolution JPEG inspection"
+  },
+  {
+    "run": "tablet",
+    "attachment": "survivor-tablet-two-phase-current-lantern-diamonds",
+    "file": "dev-9f61b92__two-phase-current-lantern-diamonds__ipad-pro-11__ax3xl-calm.jpg",
+    "timestamp": 1792858455.692,
+    "sourcePNGsha256": "09933568488d5ce39eae451d7ba6ea337a855a3a41055f5bd6201b6445b3c93f",
+    "sha256": "38ca2f3e18d5506d91cb9e8c75905661c0352665b9726f5a8e8058908bf893cd",
+    "source": "9f61b92af96db59950be3e32e17cc76e26f2e904",
+    "runtime": "dbb0c3bb4258f26b6a1e93bdeb2a5b8e078b320c",
+    "variant": "ax3xl-calm",
+    "status": "Accepted: root PNG/frame inspection and independent exact original-resolution JPEG inspection"
+  },
+  {
+    "run": "tablet",
+    "attachment": "survivor-tablet-two-causal-movers-full-guide-end",
+    "file": "dev-9f61b92__two-causal-movers-full-guide-end__ipad-pro-11__ax3xl-calm.jpg",
+    "timestamp": 1792858468.333,
+    "sourcePNGsha256": "e33dffe676cdbb5e1a973b8d28601b61fd3a5a1ca3468f0c7a0f6439fc9a7f56",
+    "sha256": "996ba2ffd7e3a705d34037e214e7599ea3e6b65b50b0ede4916856a171972511",
+    "source": "9f61b92af96db59950be3e32e17cc76e26f2e904",
+    "runtime": "dbb0c3bb4258f26b6a1e93bdeb2a5b8e078b320c",
+    "variant": "ax3xl-calm",
+    "status": "Accepted: root PNG/frame inspection and independent exact original-resolution JPEG inspection"
+  },
+  {
+    "run": "tablet",
+    "attachment": "survivor-tablet-simultaneous-choice-reading",
+    "file": "dev-9f61b92__simultaneous-choice-reading__ipad-pro-11__ax3xl-calm.jpg",
+    "timestamp": 1792858536.108,
+    "sourcePNGsha256": "f7dfaf91f55e480040584188f7228ad8d1f88ab1daf3ad8edd159016b0a1899d",
+    "sha256": "6f58b112b0a86ce7fc4aaecac5248ea858d310cf5b25ad5e09942a03f2de1a97",
+    "source": "9f61b92af96db59950be3e32e17cc76e26f2e904",
+    "runtime": "dbb0c3bb4258f26b6a1e93bdeb2a5b8e078b320c",
+    "variant": "ax3xl-calm",
+    "status": "Accepted: root PNG/frame inspection and independent exact original-resolution JPEG inspection"
+  },
+  {
+    "run": "phone movie",
+    "attachment": "ribbon-second-phase-two-diamonds",
+    "file": "dev-9f61b92__ribbon-second-phase-two-diamonds__iphone-17e__normal-movie-frame.jpg",
+    "frame": {
+      "actual": 59.3,
+      "index": 0,
+      "requested": 59.3,
+      "sheet": 0
+    },
+    "sourcePNGsha256": "f7d59551db4f987d7cf40db839089cec3c7b26903873c9e19d6c9674caba3a2d",
+    "sha256": "5f7d18fbe6c266908dc2b476f8cd84ad06c210c04841eba4b85654ad347aa343",
+    "source": "9f61b92af96db59950be3e32e17cc76e26f2e904",
+    "runtime": "dbb0c3bb4258f26b6a1e93bdeb2a5b8e078b320c",
+    "variant": "normal",
+    "status": "Accepted: root PNG/frame inspection and independent exact original-resolution JPEG inspection"
+  },
+  {
+    "run": "phone movie",
+    "attachment": "ribbon-third-phase-two-diamonds",
+    "file": "dev-9f61b92__ribbon-third-phase-two-diamonds__iphone-17e__normal-movie-frame.jpg",
+    "frame": {
+      "actual": 61,
+      "index": 0,
+      "requested": 61,
+      "sheet": 0
+    },
+    "sourcePNGsha256": "66818aecefca13a1014e0710a3107c545dbd9db33c711ad5250f6cc2d1be4ca6",
+    "sha256": "ecfa7a38105b3ffd2097319e047f4880f60aedac301a2912fa586ffb6cbe055a",
+    "source": "9f61b92af96db59950be3e32e17cc76e26f2e904",
+    "runtime": "dbb0c3bb4258f26b6a1e93bdeb2a5b8e078b320c",
+    "variant": "normal",
+    "status": "Accepted: root PNG/frame inspection and independent exact original-resolution JPEG inspection"
+  }
+]

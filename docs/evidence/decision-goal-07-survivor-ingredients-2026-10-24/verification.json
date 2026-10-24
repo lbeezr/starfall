@@ -1,0 +1,575 @@
+{
+  "status": "Accepted bounded development slice; human, physical, minimum OS and actual VoiceOver remain separate",
+  "runtimeCheckpoint": "dbb0c3bb4258f26b6a1e93bdeb2a5b8e078b320c",
+  "acceptedCheckpoint": "9f61b92af96db59950be3e32e17cc76e26f2e904",
+  "runtimeFingerprint": "dev.071f90f67e",
+  "actualBundle": {
+    "CFBundleIdentifier": "com.starfall.prototype",
+    "CFBundleShortVersionString": "0.1.0",
+    "CFBundleVersion": "1",
+    "MinimumOSVersion": "17.0",
+    "StarfallBuildID": "dev.local"
+  },
+  "environment": {
+    "xcode": "Xcode 27.1\nBuild version 27A9275",
+    "macOS": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434",
+    "simulatorSDK": "27.1",
+    "simulators": {
+      "phone": {
+        "architecture": "arm64",
+        "deviceId": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+        "deviceName": "Starfall Factory Goals iPhone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "tablet": {
+        "architecture": "arm64",
+        "deviceId": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+        "deviceName": "Starfall Factory Goals iPad",
+        "modelName": "iPad Pro 11-inch (M5)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      }
+    }
+  },
+  "core": {
+    "base": "e949048606165829fbfb49dcaf8936523f848291",
+    "inputCount": 68,
+    "differences": [],
+    "checks": {
+      "passed": 352,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 21.023
+    }
+  },
+  "sourceInputs": {
+    "count": 722,
+    "changedAfterNativeCheckpoint": [],
+    "dirtyAtNativeCheckpoint": [
+      " M App/README.md",
+      " M AppTests/README.md",
+      " M UITests/README.md"
+    ],
+    "compiledDirtyPaths": []
+  },
+  "checks": {
+    "hosted": {
+      "totalTestCount": 167,
+      "passedTests": 166,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792857858.379,
+      "finishTime": 1792857991.953,
+      "resultIntervalSeconds": 133.574
+    },
+    "hosted-test": {
+      "totalTestCount": 167,
+      "passedTests": 167,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792858040.128,
+      "finishTime": 1792858097.297,
+      "resultIntervalSeconds": 57.169
+    },
+    "phone": {
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792858123.565,
+      "finishTime": 1792858349.699,
+      "resultIntervalSeconds": 226.134,
+      "methodSeconds": 211.52
+    },
+    "tablet": {
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792858376.808,
+      "finishTime": 1792858630.466,
+      "resultIntervalSeconds": 253.658,
+      "methodSeconds": 237.81
+    }
+  },
+  "commands": {
+    "build": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-decision-07-20261024/Debug -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -resultBundlePath /private/tmp/starfall-decision-07-20261024/build.xcresult build-for-testing",
+    "build-test": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-decision-07-20261024/Debug -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -resultBundlePath /private/tmp/starfall-decision-07-20261024/build-test.xcresult build-for-testing",
+    "hosted": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-07-20261024/Debug -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkySurvivorIngredientsTests\" \"-only-testing:StarfallAppTests/SkySurvivorRenderingTests\" \"-only-testing:StarfallAppTests/SkySurvivorGuideTests\" \"-only-testing:StarfallAppTests/SkyScoreGuideTests\" \"-only-testing:StarfallAppTests/SkyScorePresentationTests\" \"-only-testing:StarfallAppTests/SkyHeadroomGuideTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/SkyDialogueCatalogBoundsTests\" \"-only-testing:StarfallAppTests/FinalLightSessionTests\" \"-only-testing:StarfallAppTests/FinalLightPresentationTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/FallingSkyStoreTests\" -resultBundlePath /private/tmp/starfall-decision-07-20261024/hosted.xcresult test-without-building",
+    "hosted-test": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-07-20261024/Debug -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkySurvivorIngredientsTests\" \"-only-testing:StarfallAppTests/SkySurvivorRenderingTests\" \"-only-testing:StarfallAppTests/SkySurvivorGuideTests\" \"-only-testing:StarfallAppTests/SkyScoreGuideTests\" \"-only-testing:StarfallAppTests/SkyScorePresentationTests\" \"-only-testing:StarfallAppTests/SkyHeadroomGuideTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/SkyDialogueCatalogBoundsTests\" \"-only-testing:StarfallAppTests/FinalLightSessionTests\" \"-only-testing:StarfallAppTests/FinalLightPresentationTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/FallingSkyStoreTests\" -resultBundlePath /private/tmp/starfall-decision-07-20261024/hosted-test.xcresult test-without-building",
+    "phone": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-07-20261024/Debug -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/SurvivorIngredientsInteractionTests/testNormalRibbonSurvivorsSeparateActionAndSilverTerminalCancellation\" -resultBundlePath /private/tmp/starfall-decision-07-20261024/phone.xcresult test-without-building",
+    "tablet": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-07-20261024/Debug -destination \"platform=iOS Simulator,id=255E141F-D4D6-45DA-89FF-51436BF1BBA7\" -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/SurvivorIngredientsInteractionTests/testLargestCalmSurvivorsAndSimultaneousPatternsPreserveRound\" -resultBundlePath /private/tmp/starfall-decision-07-20261024/tablet.xcresult test-without-building",
+    "release": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-decision-07-20261024/Release -jobs 4 -resultBundlePath /private/tmp/starfall-decision-07-20261024/release.xcresult build"
+  },
+  "membership": [
+    {
+      "source": "SkySurvivorIngredients.swift",
+      "targets": [
+        "Starfall"
+      ]
+    },
+    {
+      "source": "SkySurvivorCopy.swift",
+      "targets": [
+        "Starfall"
+      ]
+    },
+    {
+      "source": "SkySurvivorIngredientsTests.swift",
+      "targets": [
+        "StarfallAppTests"
+      ]
+    },
+    {
+      "source": "SkySurvivorRenderingTests.swift",
+      "targets": [
+        "StarfallAppTests"
+      ]
+    },
+    {
+      "source": "SkySurvivorGuideTests.swift",
+      "targets": [
+        "StarfallAppTests"
+      ]
+    },
+    {
+      "source": "SurvivorIngredientsInteractionTests.swift",
+      "targets": [
+        "StarfallUITests"
+      ]
+    }
+  ],
+  "catalogue": {
+    "typedKeys": 584,
+    "scripts": 121,
+    "maximumScripts": 128,
+    "newTypedKeys": 3
+  },
+  "planner": {
+    "tests": 3,
+    "passed": true
+  },
+  "diagnostic": {
+    "reason": "Only completed failed167-test diagnostic;166pass/1fail assertions already finished",
+    "pid": 32867,
+    "parent": 31637,
+    "command": "31637 /Library/Developer/PrivateFrameworks/CoreSimulator.framework/Versions/A/Resources/bin/simctl diagnose -l -b --timeout=600 --log-option=--last --log-option=3m --output=/tmp/starfall-decision-07-20261024/hosted.xcresult/Staging/1_Test/Diagnostics/simctl_diagnostics --no-archive --udid=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324"
+  },
+  "recordings": {
+    "phone": {
+      "run": "phone",
+      "udid": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "recordPID": 36511,
+      "recordReadyUTC": 1792858119.95964,
+      "movie": "/private/tmp/starfall-decision-07-20261024/phone.mov",
+      "xcodebuildPID": 36529,
+      "xcodebuildExit": 0,
+      "xcodebuildExitUTC": 1792858349.793609,
+      "recordExit": 0,
+      "recordExitUTC": 1792858350.28488,
+      "movieBytes": 342294932,
+      "movieReadabilityExit": 0,
+      "movieReadabilityUTC": 1792858350.561806
+    },
+    "tablet": {
+      "run": "tablet",
+      "udid": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "recordPID": 40894,
+      "recordReadyUTC": 1792858370.9780421,
+      "movie": "/private/tmp/starfall-decision-07-20261024/tablet.mov",
+      "xcodebuildPID": 40928,
+      "xcodebuildExit": 0,
+      "xcodebuildExitUTC": 1792858630.5328488,
+      "recordExit": 0,
+      "recordExitUTC": 1792858631.1363819,
+      "movieBytes": 479452007,
+      "movieReadabilityExit": 0,
+      "movieReadabilityUTC": 1792858631.2509801
+    }
+  },
+  "nativeFrameRequests": {
+    "duration": 229.85833333333332,
+    "frames": [
+      {
+        "actual": 55,
+        "index": 0,
+        "requested": 55,
+        "sheet": 0
+      },
+      {
+        "actual": 55.098333333333336,
+        "index": 1,
+        "requested": 55.1,
+        "sheet": 0
+      },
+      {
+        "actual": 55.19833333333333,
+        "index": 2,
+        "requested": 55.2,
+        "sheet": 0
+      },
+      {
+        "actual": 55.29666666666667,
+        "index": 3,
+        "requested": 55.3,
+        "sheet": 0
+      },
+      {
+        "actual": 55.395,
+        "index": 4,
+        "requested": 55.4,
+        "sheet": 0
+      },
+      {
+        "actual": 55.49666666666667,
+        "index": 5,
+        "requested": 55.5,
+        "sheet": 0
+      },
+      {
+        "actual": 55.598333333333336,
+        "index": 6,
+        "requested": 55.6,
+        "sheet": 0
+      },
+      {
+        "actual": 55.66166666666667,
+        "index": 7,
+        "requested": 55.7,
+        "sheet": 0
+      },
+      {
+        "actual": 55.795,
+        "index": 8,
+        "requested": 55.8,
+        "sheet": 0
+      },
+      {
+        "actual": 55.88166666666667,
+        "index": 9,
+        "requested": 55.9,
+        "sheet": 0
+      },
+      {
+        "actual": 55.99666666666667,
+        "index": 10,
+        "requested": 56,
+        "sheet": 0
+      },
+      {
+        "actual": 56.096666666666664,
+        "index": 11,
+        "requested": 56.1,
+        "sheet": 0
+      },
+      {
+        "actual": 56.178333333333335,
+        "index": 12,
+        "requested": 56.2,
+        "sheet": 0
+      },
+      {
+        "actual": 56.278333333333336,
+        "index": 13,
+        "requested": 56.3,
+        "sheet": 0
+      },
+      {
+        "actual": 56.278333333333336,
+        "index": 14,
+        "requested": 56.4,
+        "sheet": 0
+      },
+      {
+        "actual": 56.48,
+        "index": 15,
+        "requested": 56.5,
+        "sheet": 0
+      },
+      {
+        "actual": 56.596666666666664,
+        "index": 16,
+        "requested": 56.6,
+        "sheet": 0
+      },
+      {
+        "actual": 56.7,
+        "index": 17,
+        "requested": 56.7,
+        "sheet": 0
+      },
+      {
+        "actual": 56.8,
+        "index": 18,
+        "requested": 56.8,
+        "sheet": 0
+      },
+      {
+        "actual": 56.9,
+        "index": 19,
+        "requested": 56.9,
+        "sheet": 0
+      },
+      {
+        "actual": 57,
+        "index": 20,
+        "requested": 57,
+        "sheet": 0
+      },
+      {
+        "actual": 57.1,
+        "index": 21,
+        "requested": 57.1,
+        "sheet": 0
+      },
+      {
+        "actual": 57.19833333333333,
+        "index": 22,
+        "requested": 57.2,
+        "sheet": 0
+      },
+      {
+        "actual": 57.295,
+        "index": 23,
+        "requested": 57.3,
+        "sheet": 0
+      },
+      {
+        "actual": 57.32833333333333,
+        "index": 24,
+        "requested": 57.4,
+        "sheet": 0
+      },
+      {
+        "actual": 57.41166666666667,
+        "index": 25,
+        "requested": 57.5,
+        "sheet": 0
+      },
+      {
+        "actual": 57.598333333333336,
+        "index": 26,
+        "requested": 57.6,
+        "sheet": 0
+      },
+      {
+        "actual": 57.69833333333333,
+        "index": 27,
+        "requested": 57.7,
+        "sheet": 0
+      },
+      {
+        "actual": 57.79666666666667,
+        "index": 28,
+        "requested": 57.8,
+        "sheet": 0
+      },
+      {
+        "actual": 57.89833333333333,
+        "index": 29,
+        "requested": 57.9,
+        "sheet": 0
+      },
+      {
+        "actual": 57.998333333333335,
+        "index": 0,
+        "requested": 58,
+        "sheet": 1
+      },
+      {
+        "actual": 58.08,
+        "index": 1,
+        "requested": 58.1,
+        "sheet": 1
+      },
+      {
+        "actual": 58.195,
+        "index": 2,
+        "requested": 58.2,
+        "sheet": 1
+      },
+      {
+        "actual": 58.29666666666667,
+        "index": 3,
+        "requested": 58.3,
+        "sheet": 1
+      },
+      {
+        "actual": 58.39833333333333,
+        "index": 4,
+        "requested": 58.4,
+        "sheet": 1
+      },
+      {
+        "actual": 58.5,
+        "index": 5,
+        "requested": 58.5,
+        "sheet": 1
+      },
+      {
+        "actual": 58.6,
+        "index": 6,
+        "requested": 58.6,
+        "sheet": 1
+      },
+      {
+        "actual": 58.69833333333333,
+        "index": 7,
+        "requested": 58.7,
+        "sheet": 1
+      },
+      {
+        "actual": 58.8,
+        "index": 8,
+        "requested": 58.8,
+        "sheet": 1
+      },
+      {
+        "actual": 58.89833333333333,
+        "index": 9,
+        "requested": 58.9,
+        "sheet": 1
+      },
+      {
+        "actual": 58.998333333333335,
+        "index": 10,
+        "requested": 59,
+        "sheet": 1
+      },
+      {
+        "actual": 59.1,
+        "index": 11,
+        "requested": 59.1,
+        "sheet": 1
+      },
+      {
+        "actual": 59.2,
+        "index": 12,
+        "requested": 59.2,
+        "sheet": 1
+      },
+      {
+        "actual": 59.3,
+        "index": 13,
+        "requested": 59.3,
+        "sheet": 1
+      },
+      {
+        "actual": 59.39833333333333,
+        "index": 14,
+        "requested": 59.4,
+        "sheet": 1
+      },
+      {
+        "actual": 59.5,
+        "index": 15,
+        "requested": 59.5,
+        "sheet": 1
+      },
+      {
+        "actual": 59.6,
+        "index": 16,
+        "requested": 59.6,
+        "sheet": 1
+      },
+      {
+        "actual": 59.69833333333333,
+        "index": 17,
+        "requested": 59.7,
+        "sheet": 1
+      },
+      {
+        "actual": 59.8,
+        "index": 18,
+        "requested": 59.8,
+        "sheet": 1
+      },
+      {
+        "actual": 59.89833333333333,
+        "index": 19,
+        "requested": 59.9,
+        "sheet": 1
+      },
+      {
+        "actual": 60,
+        "index": 20,
+        "requested": 60,
+        "sheet": 1
+      },
+      {
+        "actual": 60.1,
+        "index": 21,
+        "requested": 60.1,
+        "sheet": 1
+      },
+      {
+        "actual": 60.19833333333333,
+        "index": 22,
+        "requested": 60.2,
+        "sheet": 1
+      },
+      {
+        "actual": 60.29833333333333,
+        "index": 23,
+        "requested": 60.3,
+        "sheet": 1
+      },
+      {
+        "actual": 60.39833333333333,
+        "index": 24,
+        "requested": 60.4,
+        "sheet": 1
+      },
+      {
+        "actual": 60.498333333333335,
+        "index": 25,
+        "requested": 60.5,
+        "sheet": 1
+      },
+      {
+        "actual": 60.598333333333336,
+        "index": 26,
+        "requested": 60.6,
+        "sheet": 1
+      },
+      {
+        "actual": 60.69833333333333,
+        "index": 27,
+        "requested": 60.7,
+        "sheet": 1
+      },
+      {
+        "actual": 60.8,
+        "index": 28,
+        "requested": 60.8,
+        "sheet": 1
+      },
+      {
+        "actual": 60.89833333333333,
+        "index": 29,
+        "requested": 60.9,
+        "sheet": 1
+      },
+      {
+        "actual": 61,
+        "index": 0,
+        "requested": 61,
+        "sheet": 2
+      }
+    ],
+    "step": 0.1,
+    "video": "/private/tmp/starfall-decision-07-20261024/phone.mov"
+  },
+  "captureCount": 9,
+  "rawRoot": "/private/tmp/starfall-decision-07-20261024",
+  "documentation": {
+    "localTargets": 1279,
+    "missing": [],
+    "inputs": 722,
+    "changedInputs": []
+  }
+}
