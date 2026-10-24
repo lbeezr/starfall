@@ -657,7 +657,7 @@ final class SkyDialogueTests: XCTestCase {
             XCTAssertEqual(line.priority, .help)
             XCTAssertNil(line.seconds, "Ribbon identity remains player-paced copy")
         }
-        let samples = ["count": "4", "score": "18", "target": "150,000", "lines": "straight lines of 4 or more", "stars": "5", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "release": "The hole releases its stars after 3 more showers.", "feeds": "5", "swallowed": "I swallowed 3 stars.", "shape": "Square", "depth": "2", "phase": "Storm: 3 heavy showers left.", "cadence": "Showers are closer together now.", "summary": "Paused", "reason": "First Light complete!", "context": "A storm is coming", "columns": "2", "recovery": "Column 2 has room again."]
+        let samples = ["star": "Aqua swept comet shard, Spark", "size": "Grown", "light": "2 light units", "count": "4", "score": "18", "target": "150,000", "lines": "straight lines of 4 or more", "stars": "5", "dark": "Dark star", "growth": "A star grew", "arrival": "One star arrived", "detail": "A fixture", "release": "The hole releases its stars after 3 more showers.", "feeds": "5", "swallowed": "I swallowed 3 stars.", "shape": "Square", "depth": "2", "phase": "Storm: 3 heavy showers left.", "cadence": "Showers are closer together now.", "summary": "Paused", "reason": "First Light complete!", "context": "A storm is coming", "columns": "2", "recovery": "Column 2 has room again."]
         for source in catalog.scripts {
             let values = samples.filter { key, _ in source.lines.contains { $0.text.contains("{\(key)}") } }
             let rendered = try catalog.script(source.id, values: values)

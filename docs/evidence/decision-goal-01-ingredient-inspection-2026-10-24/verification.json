@@ -1,0 +1,123 @@
+{
+  "goal": 361,
+  "parent": 360,
+  "base": "c127fa28c3f4dd0f07909ae97771315e738d8ad0",
+  "runtime_checkpoint": "8c6eefbdacfec07835cb59ab9c90689b24434228",
+  "accepted_native_checkpoint": "7db83ac7be61c223da71ffea42e92a20560d2188",
+  "accepted_native_tree": "5ad57e5733ac7285a955b252904a6d56e5040fd7",
+  "runtime": "dev.087b7f0bc4",
+  "actual_bundle": {
+    "CFBundleIdentifier": "com.starfall.prototype",
+    "CFBundleShortVersionString": "0.1.0",
+    "CFBundleVersion": "1",
+    "StarfallBuildID": "dev.local"
+  },
+  "recorded_input_count": 654,
+  "recorded_inputs_unchanged_after_native": true,
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 21.893,
+    "command": "swift test --scratch-path /private/tmp/starfall-decision-01-20261024/CoreBuild"
+  },
+  "executions": [
+    {
+      "name": "hosted",
+      "source": "b6b503d643b77814540b12d4690b1c7322763e97",
+      "raw": "/private/tmp/starfall-decision-01-20261024/hosted.xcresult",
+      "summary_sha256": "0df18c2ac9d4137f210413b6661881c16d3af93cdbd1060c1f4144f83ba6e2c1",
+      "passedTests": 118,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792838854.798,
+      "finishTime": 1792838881.687
+    },
+    {
+      "name": "phone",
+      "source": "b6b503d643b77814540b12d4690b1c7322763e97",
+      "raw": "/private/tmp/starfall-decision-01-20261024/phone.xcresult",
+      "summary_sha256": "deda268b30e987944150470d420ac38cfbcd4b4f615b7a32fbac7496bdf09ba4",
+      "passedTests": 2,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792838962.898,
+      "finishTime": 1792839060.571
+    },
+    {
+      "name": "phone-corrected",
+      "source": "7db83ac7be61c223da71ffea42e92a20560d2188",
+      "raw": "/private/tmp/starfall-decision-01-20261024/phone-corrected.xcresult",
+      "summary_sha256": "33653bb59d9b2d4e80faa8f6b3805a0b9c8a8904e2499d8bfb02d999b80076bd",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792839236.144,
+      "finishTime": 1792839352.849
+    },
+    {
+      "name": "tablet",
+      "source": "7db83ac7be61c223da71ffea42e92a20560d2188",
+      "raw": "/private/tmp/starfall-decision-01-20261024/tablet.xcresult",
+      "summary_sha256": "26761b350c18d266536e1300066639925bec2f9f4f092a78d31d805ec10c773f",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792839426.826,
+      "finishTime": 1792839590.852
+    }
+  ],
+  "native": {
+    "distinct_methods": 4,
+    "executions": 5,
+    "passed": 4,
+    "failed": 1,
+    "skipped": 0,
+    "new_phone_method_seconds": 113.585,
+    "new_tablet_method_seconds": 157.389,
+    "manual_tap_method_seconds": 19.13,
+    "manual_trace_method_seconds": 9.539
+  },
+  "membership": {
+    "StoryIngredientInspectionTests.swift": "StarfallAppTests",
+    "StoryIngredientInspectionInteractionTests.swift": "StarfallUITests"
+  },
+  "catalogue": {
+    "typed_keys": 548,
+    "scripts": 121,
+    "script_capacity": 128
+  },
+  "planner_tests": 3,
+  "exports": 7,
+  "environment": {
+    "macOS": "27.0.1 (26A434)",
+    "Xcode": "27.1 (27A9275)",
+    "simulatorOS": "iOS27.0",
+    "phone": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324 / iPhone17e",
+    "tablet": "255E141F-D4D6-45DA-89FF-51436BF1BBA7 / iPadPro11 M5",
+    "final_owned_state": "Shutdown"
+  },
+  "builds": {
+    "debug": "XcodeBuildMCP build_sim(buildForTesting:true), Starfall/arm64/ONLY_ACTIVE_ARCH=YES/-jobs4",
+    "release": "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination 'generic/platform=iOS Simulator' -derivedDataPath /private/tmp/starfall-decision-01-20261024/Release -jobs 4 build"
+  },
+  "motion": {
+    "video": "/private/tmp/starfall-decision-01-20261024/phone-corrected.mp4",
+    "requested_samples": 26,
+    "interval": [
+      60,
+      85,
+      1
+    ],
+    "actual_timestamps": "/private/tmp/starfall-decision-01-20261024/normal-review/frames.json",
+    "scope": "Normal inspection, close, real no-clear swap, current ingredient guide and background; no complete short trajectory."
+  },
+  "limits": [
+    "Selected development acceptance, not full current Apple matrix.",
+    "Existing-install Seed admission does not prove earlier campaign repairs earned.",
+    "Manual gravity trace fixture is historical; no modern shower-supply claim.",
+    "Native ordinary Seed is deliberately paused at zero showers; hosted tests prove exact live deadline preservation.",
+    "No complete0.18s helper trajectory, physical smoothness, sustained performance, human recognition, minimum-iOS17 or actualVoiceOver acceptance."
+  ],
+  "local_link_targets": 773
+}

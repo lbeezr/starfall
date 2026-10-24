@@ -1,5 +1,7 @@
 # Hosted app tests
 
+`StoryIngredientInspectionTests` checks actual Seed ingredient movement, exact live deadline/save/world/mastery preservation, current/retained pattern thresholds, Full Board and manual tap/trace siblings. [Decision goal1 evidence](../docs/evidence/decision-goal-01-ingredient-inspection-2026-10-24/README.md) records the selected118 hosted passes separately from native interaction.
+
 `IdentityJourneyTests` verifies mode promises, Open Sky omission of restoration Help, exact current/retained Story Help and the selected context boundary. Together with affected dialogue/flow/return/mode/catalogue tests, [identity goal10](../docs/evidence/identity-goal-10-coherent-return-2026-10-24/README.md) records 87 selected hosted passes. No gameplay or save owner changes.
 
 `CascadeReturnTests` covers real two/three-phase histories, same-phase multiple recipes, independent consecutive actions, exact pre-clear IDs, bounded ordered geometry, active-packet acknowledgement, stale/invalid callback rejection, expiry, background deadlines, saves and immediate wins/Replay. Its synthetic six-depth budget fixture is not a reachable-play claim; fixed-age raster checks separate geometry and arrival ownership from native motion. [Source-bound evidence](../docs/evidence/identity-goal-06-cascade-returns-2026-10-24/README.md).

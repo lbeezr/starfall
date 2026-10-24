@@ -1,5 +1,7 @@
 # Evidence index
 
+[Actual Story ingredient inspection](decision-goal-01-ingredient-inspection-2026-10-24/README.md) adds factual small/grown/light-unit guidance, with exact state/deadline checks, normal phone/AX3XL Calm native journeys and the initial inline-Close test correction retained.
+
 [One promise through Home and returning play](identity-goal-10-coherent-return-2026-10-24/README.md) corrects Open Sky restoration-Help leakage and verifies both mode promises, ordinary outcomes, exact returning play and complete native reading. Earlier failures and the final completed tablet timeout remain separate.
 
 [Open Sky’s choose-five practice](identity-goal-04-open-sky-practice-2026-10-24/README.md) records optional Hint, either-five acceptance, exact retained helpers, saved-round isolation and normal/AX3XL Calm native reading. The first viewport weakness and bounded copy refinement retain their separate source receipts.

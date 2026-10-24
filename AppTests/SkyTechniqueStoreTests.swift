@@ -31,7 +31,7 @@ final class SkyTechniqueStoreTests: XCTestCase {
             XCTAssertFalse(store.requestTap(Cell(0, 0)), "Inspecting never reports a committed board action")
             store.clearTracedConstellation([Cell(0, 0), Cell(0, 1), Cell(1, 0), Cell(2, 0), Cell(3, 0)],
                                           snapshot: opening, generation: generation)
-            XCTAssertEqual(store.guideLine.id, "guide.patterns-inspect.1")
+            XCTAssertEqual(store.guideLine.id, "guide.patterns-inspect-star.1")
             XCTAssertTrue(store.guideLine.text.contains(revision == 4 ? "straight lines of 4 or more" : "full lines of 7"))
             XCTAssertEqual(store.game, opening)
             XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)
