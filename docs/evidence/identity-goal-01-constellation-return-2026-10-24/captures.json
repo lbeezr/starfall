@@ -1,0 +1,132 @@
+{
+  "source": "a3b6799183afc12388b8d4c07b561ab84ef13081",
+  "bundle_build_id": "dev.local",
+  "capture_date_utc": "2026-10-24",
+  "os": "iOS27.0 Simulator",
+  "entries": [
+    {
+      "path": "captures/dev-a3b6799__diagonal-held__iphone-17e__normal.jpg",
+      "kind": "native video frame",
+      "original_path": "/private/tmp/starfall-identity-01-20261024/phone-diagonal-held/frame-00000.png",
+      "original_sha256": "0142eeca1aab0371d1afb1055ce8f5924a14b9a5a4e74600576ba0d7a79e1400",
+      "export_sha256": "9f5fa1e260e3af3f2c243166beefd6b1faa24da600c8ab842f2f4b18a79052df",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "JPEG82; no pixel resize of source frame/sheet",
+      "inspected_export": true,
+      "limit": "Intermediate held stroke; counter is four/five, not a completed five selection.",
+      "requested_seconds": 49.118,
+      "actual_seconds": 48.97,
+      "raw_video": "phone-final.mp4"
+    },
+    {
+      "path": "captures/dev-a3b6799__diagonal-return__iphone-17e__normal.jpg",
+      "kind": "native video frame",
+      "original_path": "/private/tmp/starfall-identity-01-20261024/phone-diagonal-arrived/frame-00000.png",
+      "original_sha256": "5c3f0d826740287bf7728acd9fa368eeeb59da298243487201ec1625537e81d7",
+      "export_sha256": "732ad5b8e8ae2a520f71bf230861cf2810e40b5ea5b25d06ba6371dc5b4567cf",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "JPEG82; no pixel resize of source frame/sheet",
+      "inspected_export": true,
+      "limit": "Five committed drawn stars; sixth retained.",
+      "requested_seconds": 49.86,
+      "actual_seconds": 49.86,
+      "raw_video": "phone-final.mp4"
+    },
+    {
+      "path": "captures/dev-a3b6799__horizontal-return__ipad-pro-11-m5__normal.jpg",
+      "kind": "native video frame",
+      "original_path": "/private/tmp/starfall-identity-01-20261024/tablet-arrived/frame-00000.png",
+      "original_sha256": "8812cded05af3fa05411d02a1dbdb36afef1b3f35ded68d0d558ef2588db860a",
+      "export_sha256": "c42386e9ac9770c6f0322723d6173c881c7cef37670b8696eb21a7d0531ee0c5",
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "conversion": "JPEG82; no pixel resize of source frame/sheet",
+      "inspected_export": true,
+      "limit": "Normal motion, separate award and drawn line.",
+      "requested_seconds": 37.123,
+      "actual_seconds": 37.12,
+      "raw_video": "tablet-motion.mp4"
+    },
+    {
+      "path": "captures/dev-a3b6799__diagonal-return__ipad-pro-11-m5__ax3xl-calm.jpg",
+      "kind": "native XCTest attachment",
+      "original_path": "/private/tmp/starfall-identity-01-20261024/tablet-attachments/BEE84E6A-0D5B-4731-A29A-62A4096436C0.png",
+      "original_sha256": "184df9639267d7e4501a00c526d10b4a702d5c14feb2b9d7465c94cfc69b72ec",
+      "export_sha256": "c472c51f404042653008838d4c83b54d5c7a48eb3f2fc98a253780fd5c75135d",
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "conversion": "JPEG82; no pixel resize of source frame/sheet",
+      "inspected_export": true,
+      "limit": "AX3XL Calm on; static exact figure and untouched sixth; viewport scrolled."
+    },
+    {
+      "path": "captures/dev-a3b6799__branch-return__hosted-canvas__quiet.jpg",
+      "kind": "hosted Canvas raster",
+      "original_path": "/private/tmp/starfall-identity-01-20261024/hosted-accepted-attachments/4C1D5D7D-E502-4585-8C1A-33302DDB1A9C.png",
+      "original_sha256": "b0d95ac24ef62d020d84d5b0f44393bac54afc8a7901cb02e68a1a55d2783b62",
+      "export_sha256": "2a9b66b08276aff7c3a052613c89ced19572b5b34d717c81ec673ee26c316c0a",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "JPEG82; no pixel resize of source frame/sheet",
+      "inspected_export": true,
+      "limit": "Real Store branch receipt; test marker; not a native gesture."
+    },
+    {
+      "path": "captures/dev-a3b6799__horizontal-sequence__ipad-pro-11-m5__sampled.jpg",
+      "kind": "derived timestamped contact sheet",
+      "original_path": "/private/tmp/starfall-identity-01-20261024/tablet-horizontal-burst/sheet-001.png",
+      "original_sha256": "a2bbc06cb9a98cd12f0ef62701e0611a53382f07bddba23568f75e10a5ebf184",
+      "export_sha256": "98adfccf7357954ff2ed8610c500be230264f0a1149640d9d08554523a7b1003",
+      "dimensions": [
+        1080,
+        1415
+      ],
+      "conversion": "JPEG82; no pixel resize of source frame/sheet",
+      "inspected_export": true,
+      "limit": "Thirty thumbnails/labels,36.492\u201337.452s; duplicate actual timestamps retained.",
+      "raw_video": "tablet-motion.mp4"
+    }
+  ],
+  "motion": {
+    "phone": {
+      "raw_path": "/private/tmp/starfall-identity-01-20261024/phone-final.mp4",
+      "sha256": "e05d044810dbb5442c86ca34aa869b500133528f63dfb33bd7b41fb49f798f54",
+      "inspected_windows_seconds": [
+        [
+          14.6,
+          16.8
+        ],
+        [
+          38.5,
+          40.8
+        ],
+        [
+          48.7,
+          51.0
+        ]
+      ],
+      "distinct_frame_interval_observed_seconds": "approximately0.13\u20130.18; no cause or physical smoothness claim"
+    },
+    "tablet": {
+      "raw_path": "/private/tmp/starfall-identity-01-20261024/tablet-motion.mp4",
+      "sha256": "87b4c8fc384d091d87d79112eacd1c4e24ad0691962128ddfb91ae12e30b752a",
+      "inspected_window_seconds": [
+        35.5,
+        38.2
+      ],
+      "distinct_frame_interval_observed_seconds": "approximately0.033 around return; not performance certification"
+    }
+  }
+}

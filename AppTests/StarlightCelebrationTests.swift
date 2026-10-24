@@ -16,6 +16,7 @@ final class StarlightCelebrationTests: XCTestCase {
             let event = StarlightCelebration(id: UInt64(index), phase: phase,
                                             cumulativeAward: cumulative, total: cumulative)
             XCTAssertEqual(event.displayAward, cumulative)
+            XCTAssertTrue(event.constellationPath.isEmpty, "Automatic patterns must not invent a player's drawn walk")
             XCTAssertEqual(event.contributors.map(\.reward).reduce(0, +), phase.award.baseLight)
             XCTAssertEqual(Set(event.cells), phase.cleared)
             for contributor in event.contributors {
@@ -75,6 +76,77 @@ final class StarlightCelebrationTests: XCTestCase {
                 attachment.name = "packet-score-exclusion-\(index)-\(age)"
                 attachment.lifetime = .keepAlways; add(attachment)
             }
+        }
+    }
+
+    @MainActor func testConstellationFigureAndShadowLeaveMeasuredHUDRegionsUnpainted() async throws {
+        let walk = [Cell(0,4), Cell(1,3), Cell(2,4), Cell(1,3), Cell(0,4), Cell(1,5), Cell(1,6)]
+        let (store, _, _, _) = try makeStore(ConstellationFixture.overlap.game())
+        store.clearTracedConstellation(walk, snapshot: store.game, generation: store.constellationInputGeneration)
+        let receipt = try XCTUnwrap(store.celebration)
+        XCTAssertEqual(receipt.constellationPath, walk)
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(windowScene: scene)
+        window.frame = CGRect(x: 0, y: 0, width: 390, height: 844)
+        let host = UIHostingController(rootView: AnyView(Color.black))
+        window.rootViewController = host; window.makeKeyAndVisible()
+        defer { store.setSuspended(true); window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+        let header = CGRect(x: 20, y: 20, width: 350, height: 96)
+        let award = StarlightCelebrationOverlay.awardRegion(board: window.bounds, header: header, accessible: false)
+        let layout = try XCTUnwrap(ConstellationReturnLayout(path: receipt.constellationPath,
+            board: window.bounds, header: header, award: award))
+        let flightAge = 0.48
+        let crossedPoint = layout.points(at: flightAge)[1]
+        let crossingScore = CGRect(x: crossedPoint.x - 8, y: crossedPoint.y - 6, width: 16, height: 12)
+        let offRouteScore = CGRect(x: 330, y: 780, width: 40, height: 36)
+        XCTAssertTrue(crossingScore.contains(crossedPoint))
+        let marker = CGRect(x: 4, y: window.bounds.maxY - 10, width: 6, height: 6)
+        let figureRegion = CGRect(x: 0, y: 0, width: window.bounds.width, height: window.bounds.height - 16)
+        let cases: [(name: String, age: Double, quiet: Bool, score: CGRect)] = [
+            ("branch-flight-control", flightAge, false, offRouteScore),
+            ("branch-flight-score-exclusion", flightAge, false, crossingScore),
+            ("branch-early-flight", 0.25, false, offRouteScore),
+            ("branch-arrived", 0.98, false, offRouteScore),
+            ("branch-quiet-arrived", 0.3, true, offRouteScore)
+        ]
+        for (index, example) in cases.enumerated() {
+            let overlay = StarlightCelebrationOverlay(event: receipt, board: window.bounds,
+                score: example.score, header: header, quiet: example.quiet)
+            let markerLit = index.isMultiple(of: 2)
+            host.rootView = AnyView(Canvas { context, size in
+                overlay.drawConstellation(in: &context, layout: layout, age: example.age, canvasSize: size)
+                // A changing marker outside the figure region proves that this
+                // capture contains the requested Canvas, rather than its predecessor.
+                context.fill(Path(marker), with: .color(markerLit ? .white : .black))
+            }.background(Color.black).ignoresSafeArea().id(example.name))
+            var image: UIImage?
+            var figureInk = 0
+            var markerMatches = false
+            let deadline = ContinuousClock.now + .milliseconds(900)
+            repeat {
+                await Task.yield(); host.view.layoutIfNeeded()
+                image = windowImage(window)
+                let frame = try XCTUnwrap(image)
+                figureInk = try packetInk(in: frame, region: figureRegion)
+                let markerInk = try packetInk(in: frame, region: marker)
+                markerMatches = markerLit ? markerInk > 0 : markerInk == 0
+                if figureInk <= 25 || !markerMatches { try await Task.sleep(for: .milliseconds(20)) }
+            } while (figureInk <= 25 || !markerMatches) && ContinuousClock.now < deadline
+            XCTAssertTrue(markerMatches, example.name)
+            XCTAssertGreaterThan(figureInk, 25, "The actual figure must remain visible outside its exclusions")
+            let rendered = try XCTUnwrap(image)
+            if index == 0 {
+                XCTAssertGreaterThan(try packetInk(in: rendered, region: crossingScore), 0,
+                    "The control figure really paints through the synthetic score region before clipping")
+            }
+            for exclusion in [example.score, header, layout.labelBounds] {
+                XCTAssertEqual(try packetInk(in: rendered, region: exclusion), 0,
+                    "Constellation lines, stars and composited shadow must leave HUD regions clear: \(example.name)")
+            }
+            let attachment = XCTAttachment(image: rendered)
+            attachment.name = "constellation-return-\(example.name)"
+            attachment.lifetime = .keepAlways; add(attachment)
         }
     }
 
@@ -339,6 +411,8 @@ final class StarlightCelebrationTests: XCTestCase {
                 case .fork: XCTAssertEqual(receipt.level, .recipe(.cross))
                 default: XCTAssertEqual(receipt.level, action == 0 ? .recipe(.square) : .relay(2))
                 }
+                XCTAssertEqual(receipt.constellationPath,
+                               example == .trace ? (0..<5).map { Cell(0, $0) } : [])
                 var captured = false
                 let end = ContinuousClock.now + .seconds(2)
                 var frame = 0
@@ -576,12 +650,196 @@ final class StarlightCelebrationTests: XCTestCase {
         store.clearTracedConstellation(path, snapshot: before, generation: store.constellationInputGeneration)
         let receipt = try XCTUnwrap(store.celebration)
         XCTAssertEqual(receipt.level, .constellation); XCTAssertEqual(receipt.path, path)
+        XCTAssertEqual(receipt.constellationPath, path)
         XCTAssertEqual(before.value(of: Set(path)), 8)
         XCTAssertTrue(before.isDrained(at: Cell(3, 2)))
         XCTAssertEqual(receipt.collected, 7); XCTAssertEqual(receipt.total, store.game.score)
         XCTAssertEqual(Set(receipt.cells), Set(path).subtracting([Cell(3, 2)]))
+        XCTAssertTrue(receipt.constellationPath.contains(Cell(3, 2)),
+                      "A selected drained star still belongs to the drawing, even when it contributes no light")
         XCTAssertTrue(receipt.cells.contains { before.gem(at: $0)?.isLight == true })
         XCTAssertEqual(store.game.incoming, before.incoming)
+    }
+
+    @MainActor func testManualConstellationReturnsPreserveShapesSubsetsRevisitsAndGaps() throws {
+        let examples: [(ConstellationFixture, [Cell])] = [
+            (.diagonalSix, (0..<5).map { Cell($0, $0) }),
+            (.horizontalFive, (0..<5).map { Cell(0, $0) }),
+            (.overlap, [Cell(0,4), Cell(1,3), Cell(2,4), Cell(1,3), Cell(0,4), Cell(1,5), Cell(1,6)]),
+            (.singleGap, [0,1,2,3,5].map { Cell(0, $0) })
+        ]
+        for (fixture, walk) in examples {
+            let (store, _, _, defaults) = try makeStore(fixture.game())
+            let before = store.game
+            XCTAssertEqual(before.constellationCells(along: walk), Set(walk))
+            let selectedIDs = Set(walk.compactMap { before.gem(at: $0)?.id })
+            let survivorIDs = Set(before.board.compactMap { $0?.id }).subtracting(selectedIDs)
+            store.clearTracedConstellation(walk, snapshot: before, generation: store.constellationInputGeneration)
+            let receipt = try XCTUnwrap(store.celebration)
+            XCTAssertEqual(receipt.constellationPath, walk, fixture.rawValue)
+            XCTAssertEqual(Set(receipt.constellationPath).count, 5)
+            XCTAssertEqual(receipt.path, walk)
+            XCTAssertEqual(Set(receipt.cells), Set(walk))
+            XCTAssertEqual(receipt.collected, 5)
+            XCTAssertEqual(store.game.score - before.score, 5)
+            XCTAssertEqual(Set(store.game.board.compactMap { $0?.id }), survivorIDs,
+                           "The return cannot collect the rest of the connected family")
+            XCTAssertEqual(store.game.incoming, before.incoming)
+            XCTAssertEqual(store.game.turns, before.turns)
+            XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), store.game)
+            XCTAssertLessThanOrEqual(receipt.packets.count, StarlightCelebration.maximumPackets)
+        }
+    }
+
+    @MainActor func testConstellationReturnKeepsTheDrawnShapeInsideTheProtectedSkyAcrossLayouts() throws {
+        let diagonal = (0..<5).map { Cell($0, $0) }
+        let horizontal = (0..<5).map { Cell(0, $0) }
+        let branch = [Cell(0,4), Cell(1,3), Cell(2,4), Cell(1,3), Cell(0,4), Cell(1,5), Cell(1,6)]
+        let gap = [0,1,2,3,5].map { Cell(0, $0) }
+        let variants: [(board: CGRect, header: CGRect, accessible: Bool)] = [
+            (CGRect(x: 0, y: 0, width: 390, height: 844), CGRect(x: 20, y: 20, width: 350, height: 96), false),
+            (CGRect(x: 0, y: 0, width: 834, height: 1194), CGRect(x: 24, y: 24, width: 786, height: 88), false),
+            (CGRect(x: 18, y: -140, width: 744, height: 1500), CGRect(x: 32, y: 0, width: 716, height: 138), true)
+        ]
+        for variant in variants {
+            let mapping = LandingGeometry(size: variant.board.size)
+            let arena = mapping.arenaFrame.offsetBy(dx: variant.board.minX, dy: variant.board.minY)
+            let award = StarlightCelebrationOverlay.awardRegion(board: variant.board,
+                                                               header: variant.header, accessible: variant.accessible)
+            var shapes: [[CGPoint]] = []
+            for walk in [diagonal, horizontal, branch, gap] {
+                let layout = try XCTUnwrap(ConstellationReturnLayout(path: walk, board: variant.board,
+                                                                    header: variant.header, award: award))
+                XCTAssertEqual(layout.walk, walk)
+                XCTAssertEqual(layout.sourcePoints, walk.map {
+                    let point = mapping.viewPoint($0)
+                    return CGPoint(x: point.x + variant.board.minX, y: point.y + variant.board.minY)
+                })
+                XCTAssertEqual(layout.destinationPoints.count, walk.count)
+                XCTAssertGreaterThanOrEqual(layout.skyBounds.minY, variant.header.maxY)
+                XCTAssertLessThanOrEqual(layout.skyBounds.maxY, arena.minY)
+                XCTAssertFalse(layout.skyBounds.intersects(layout.labelBounds))
+                for point in layout.destinationPoints {
+                    XCTAssertTrue(layout.skyBounds.contains(point), "Every selected star must fit its protected sky slot")
+                    XCTAssertFalse(variant.header.contains(point))
+                    XCTAssertFalse(layout.labelBounds.contains(point))
+                    XCTAssertFalse(arena.contains(point))
+                }
+                XCTAssertEqual(layout.points(at: 0), layout.sourcePoints)
+                let arrived = layout.points(at: ConstellationReturnLayout.arrivalTime)
+                XCTAssertEqual(layout.points(at: 0, quiet: true), arrived)
+                XCTAssertEqual(layout.points(at: StarlightCelebration.duration, quiet: true), arrived)
+                for (point, destination) in zip(arrived, layout.destinationPoints) {
+                    XCTAssertEqual(point.x, destination.x, accuracy: 0.000001)
+                    XCTAssertEqual(point.y, destination.y, accuracy: 0.000001)
+                }
+                // Relative direction and distance ratios describe the player's shape,
+                // independently of the slot's chosen size, offset or easing curve.
+                for points in [layout.destinationPoints, layout.points(at: ConstellationReturnLayout.arrivalTime / 2)] {
+                    XCTAssertEqual(points.count, walk.count)
+                    let first = try XCTUnwrap(points.first)
+                    let source = try XCTUnwrap(layout.sourcePoints.first)
+                    let sourceStep = CGPoint(x: layout.sourcePoints[1].x - source.x,
+                                             y: layout.sourcePoints[1].y - source.y)
+                    let step = CGPoint(x: points[1].x - first.x, y: points[1].y - first.y)
+                    let scale = hypot(step.x, step.y) / hypot(sourceStep.x, sourceStep.y)
+                    XCTAssertGreaterThan(scale, 0)
+                    for index in points.indices {
+                        let dx = layout.sourcePoints[index].x - source.x
+                        let dy = layout.sourcePoints[index].y - source.y
+                        XCTAssertEqual(points[index].x - first.x, dx * scale, accuracy: 0.000001)
+                        XCTAssertEqual(points[index].y - first.y, dy * scale, accuracy: 0.000001)
+                    }
+                }
+                if walk == branch {
+                    XCTAssertEqual(layout.destinationPoints[0], layout.destinationPoints[4])
+                    XCTAssertEqual(layout.destinationPoints[1], layout.destinationPoints[3])
+                }
+                shapes.append(layout.destinationPoints)
+            }
+            XCTAssertNotEqual(shapes[0], shapes[1], "Different drawn shapes must not collapse to a shared emblem")
+            XCTAssertEqual(distinctPointCount(shapes[2]), 5, "Retracing adds no invented star")
+            XCTAssertEqual(distinctPointCount(shapes[3]), 5, "The gap remains a bridge, not an extra selected star")
+        }
+    }
+
+    @MainActor func testScrolledPhoneConstellationUsesTheFixedSkySlotWithoutChangingItsWalk() throws {
+        let board = CGRect(x: 0, y: -140, width: 390, height: 900)
+        let header = CGRect(x: 20, y: 20, width: 350, height: 96)
+        let protectedSky = CGRect(x: 20, y: 124, width: 350, height: 80)
+        let viewport = CGRect(x: 0, y: 212, width: 390, height: 688)
+        let award = CGRect(x: 20, y: viewport.minY, width: 350, height: 64)
+        let walk = [Cell(0,4), Cell(1,3), Cell(2,4), Cell(1,3), Cell(0,4), Cell(1,5), Cell(1,6)]
+        XCTAssertNil(ConstellationReturnLayout(path: walk, board: board, header: header, award: award),
+                     "The scrolled phone has no safe default band between its header and projected arena")
+        let layout = try XCTUnwrap(ConstellationReturnLayout(path: walk, board: board, header: header,
+                                                             award: award, protectedSky: protectedSky))
+        let fartherScrolled = try XCTUnwrap(ConstellationReturnLayout(path: walk,
+            board: board.offsetBy(dx: 0, dy: -100), header: header, award: award, protectedSky: protectedSky))
+        XCTAssertEqual(layout.walk, walk)
+        XCTAssertEqual(fartherScrolled.walk, walk)
+        XCTAssertEqual(layout.skyBounds, fartherScrolled.skyBounds)
+        XCTAssertTrue(protectedSky.contains(layout.skyBounds))
+        XCTAssertGreaterThanOrEqual(layout.skyBounds.minY, header.maxY + 8)
+        XCTAssertLessThanOrEqual(layout.skyBounds.maxY, viewport.minY - 8)
+        XCTAssertFalse(layout.skyBounds.intersects(layout.labelBounds))
+        XCTAssertEqual(layout.destinationPoints.count, walk.count)
+        XCTAssertEqual(distinctPointCount(layout.destinationPoints), 5)
+        XCTAssertEqual(layout.destinationPoints[0], layout.destinationPoints[4])
+        XCTAssertEqual(layout.destinationPoints[1], layout.destinationPoints[3])
+        XCTAssertEqual(layout.points(at: 0, quiet: true), layout.points(at: ConstellationReturnLayout.arrivalTime))
+        let sourceOrigin = layout.sourcePoints[0], destinationOrigin = layout.destinationPoints[0]
+        let scale = hypot(layout.destinationPoints[1].x - destinationOrigin.x,
+                          layout.destinationPoints[1].y - destinationOrigin.y)
+            / hypot(layout.sourcePoints[1].x - sourceOrigin.x, layout.sourcePoints[1].y - sourceOrigin.y)
+        XCTAssertGreaterThan(scale, 0)
+        for index in walk.indices {
+            XCTAssertTrue(layout.skyBounds.contains(layout.destinationPoints[index]))
+            XCTAssertEqual(layout.destinationPoints[index].x - destinationOrigin.x,
+                           (layout.sourcePoints[index].x - sourceOrigin.x) * scale, accuracy: 0.000001)
+            XCTAssertEqual(layout.destinationPoints[index].y - destinationOrigin.y,
+                           (layout.sourcePoints[index].y - sourceOrigin.y) * scale, accuracy: 0.000001)
+            XCTAssertEqual(layout.sourcePoints[index].x, fartherScrolled.sourcePoints[index].x)
+            XCTAssertEqual(layout.sourcePoints[index].y - fartherScrolled.sourcePoints[index].y, 100, accuracy: 0.000001)
+            XCTAssertEqual(layout.destinationPoints[index].x, fartherScrolled.destinationPoints[index].x, accuracy: 0.000001)
+            XCTAssertEqual(layout.destinationPoints[index].y, fartherScrolled.destinationPoints[index].y, accuracy: 0.000001)
+        }
+        XCTAssertNil(ConstellationReturnLayout(path: walk, board: board, header: header, award: award,
+            protectedSky: CGRect(x: 20, y: CGFloat.nan, width: 350, height: 80)))
+        XCTAssertNil(ConstellationReturnLayout(path: walk, board: board, header: header, award: award,
+            protectedSky: CGRect(x: 20, y: 124, width: CGFloat.infinity, height: 80)))
+    }
+
+    private func distinctPointCount(_ points: [CGPoint]) -> Int {
+        points.reduce(into: [CGPoint]()) { unique, point in
+            if !unique.contains(point) { unique.append(point) }
+        }.count
+    }
+
+    @MainActor func testConstellationReturnBoundsWalkResourcesAndRejectsUnusableGeometry() throws {
+        let board = CGRect(x: 0, y: 0, width: 390, height: 844)
+        let header = CGRect(x: 20, y: 20, width: 350, height: 96)
+        let award = StarlightCelebrationOverlay.awardRegion(board: board, header: header, accessible: false)
+        let stars = (0..<49).map { Cell($0 / 7, $0 % 7) }
+        var walk = stars
+        walk += Array(repeating: stars[0], count: 196 - walk.count)
+        XCTAssertEqual(ConstellationReturnLayout.maximumWalkEntries, 196)
+        XCTAssertEqual(ConstellationReturnLayout.maximumStars, 49)
+        let bounded = try XCTUnwrap(ConstellationReturnLayout(path: walk, board: board, header: header, award: award))
+        XCTAssertEqual(bounded.walk, walk)
+        XCTAssertEqual(bounded.sourcePoints.count, 196)
+        XCTAssertEqual(bounded.destinationPoints.count, 196)
+        XCTAssertEqual(distinctPointCount(bounded.destinationPoints), 49)
+        XCTAssertNil(ConstellationReturnLayout(path: walk + [stars[0]], board: board, header: header, award: award))
+        XCTAssertNil(ConstellationReturnLayout(path: stars + [Cell(7,0)], board: board, header: header, award: award))
+        XCTAssertNil(ConstellationReturnLayout(path: [], board: board, header: header, award: award))
+        XCTAssertNil(ConstellationReturnLayout(path: stars, board: .zero, header: header, award: award))
+        XCTAssertNil(ConstellationReturnLayout(path: stars,
+            board: CGRect(x: 0, y: 0, width: CGFloat.infinity, height: 844), header: header, award: award))
+        XCTAssertNil(ConstellationReturnLayout(path: stars, board: board,
+            header: CGRect(x: CGFloat.nan, y: 0, width: 350, height: 96), award: award))
+        XCTAssertNil(ConstellationReturnLayout(path: stars, board: board, header: header,
+            award: CGRect(x: 0, y: 0, width: CGFloat.infinity, height: 40)))
     }
 
     @MainActor func testContributorColorsAndWeightsComeFromRewardingPreclearStars() throws {
@@ -747,6 +1005,7 @@ final class StarlightCelebrationTests: XCTestCase {
         XCTAssertTrue(store.performTechnique(.recipe(first), snapshot: store.game, generation: store.constellationInputGeneration))
         XCTAssertEqual(store.celebration?.level, .recipe(.square))
         XCTAssertEqual(store.celebration?.path, first.presentationPath)
+        XCTAssertEqual(store.celebration?.constellationPath, [])
         XCTAssertEqual(store.game.score, 4)
         presenter.finish()
         let second = try XCTUnwrap(store.game.recipes.first)

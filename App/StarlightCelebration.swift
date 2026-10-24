@@ -14,6 +14,9 @@ struct StarlightCelebration: Equatable, Identifiable {
     var awardText: String { "+\(displayAward.formatted())" }
     let cells: [Cell]
     let path: [Cell]
+    /// Only a committed manual walk returns as a player-authored constellation.
+    /// Recipe drawing order is retained separately in `path`.
+    let constellationPath: [Cell]
     struct Contributor: Equatable {
         let cell: Cell
         let identity: SkyIdentity
@@ -92,6 +95,7 @@ struct StarlightCelebration: Equatable, Identifiable {
             }
         }
         path = phase.recipes.first?.presentationPath ?? []
+        constellationPath = []
         if phase.comboDepth > 1 { level = .cascade(phase.comboDepth) }
         else if let recipe = phase.recipes.first { level = .recipe(recipe.shape) }
         else { level = phase.award.sizeBonus > 0 || collected >= 8 ? .brilliant : .ordinary }
@@ -111,6 +115,7 @@ struct StarlightCelebration: Equatable, Identifiable {
         }
         // Only the validated input path supplied by the store names a constellation.
         self.path = path.isEmpty ? (recipe?.presentationPath ?? []) : path
+        constellationPath = path
         if relayDepth > 1 { level = .relay(relayDepth) }
         else if let recipe { level = .recipe(recipe.shape) }
         else {
@@ -120,7 +125,72 @@ struct StarlightCelebration: Equatable, Identifiable {
     }
 }
 
-enum StarlightAnchor: Hashable { case board, score, header, award, restorationLight, restorationScenery }
+/// A bounded affine presentation of the exact committed walk. It never closes,
+/// sorts or simplifies links, including revisits and empty-midpoint gaps.
+struct ConstellationReturnLayout {
+    static let maximumWalkEntries = FallingSky.side * FallingSky.side * 4
+    static let maximumStars = FallingSky.side * FallingSky.side
+    static let arrivalTime: TimeInterval = 0.92
+    let walk: [Cell]
+    let sourcePoints: [CGPoint]
+    let destinationPoints: [CGPoint]
+    let skyBounds: CGRect
+    let labelBounds: CGRect
+
+    init?(path: [Cell], board: CGRect, header: CGRect, award: CGRect, protectedSky: CGRect? = nil) {
+        guard path.count > 1, path.count <= Self.maximumWalkEntries,
+              Set(path).count <= Self.maximumStars,
+              path.allSatisfy({ (0..<FallingSky.side).contains($0.row) && (0..<FallingSky.side).contains($0.column) }),
+              ([board, header, award] + (protectedSky.map { [$0] } ?? [])).allSatisfy({ !$0.isNull && !$0.isInfinite &&
+                  $0.minX.isFinite && $0.minY.isFinite && $0.width.isFinite && $0.height.isFinite }),
+              board.width > 0, board.height > 0 else { return nil }
+        let mapping = LandingGeometry(size: board.size)
+        let arena = mapping.arenaFrame.offsetBy(dx: board.minX, dy: board.minY)
+        let top = max(board.minY + 8, header.maxY + 8)
+        let band = protectedSky?.insetBy(dx: 10, dy: 0)
+            ?? CGRect(x: arena.minX + 10, y: top, width: arena.width - 20,
+                      height: arena.minY - 10 - top)
+        guard band.width >= 40, band.height >= 24 else { return nil }
+        let sharesAwardBand = award.intersects(band)
+        let width = min(120, band.width * 0.34)
+        let height = min(100, band.height)
+        let slot = CGRect(x: sharesAwardBand ? band.minX : band.midX - width / 2,
+                          y: band.midY - height / 2, width: width, height: height)
+        let labelLeft = max(award.minX, slot.maxX + 12)
+        let label = sharesAwardBand
+            ? CGRect(x: labelLeft, y: award.minY,
+                     width: max(0, award.maxX - labelLeft), height: award.height)
+            : award
+        let source = path.map { cell in
+            let point = mapping.viewPoint(cell)
+            return CGPoint(x: point.x + board.minX, y: point.y + board.minY)
+        }
+        let xs = source.map(\.x), ys = source.map(\.y)
+        guard let left = xs.min(), let right = xs.max(), let upper = ys.min(), let lower = ys.max() else { return nil }
+        let center = CGPoint(x: (left + right) / 2, y: (upper + lower) / 2)
+        let scale = min(0.7, (slot.width - 16) / max(1, right - left),
+                        (slot.height - 16) / max(1, lower - upper))
+        walk = path
+        sourcePoints = source
+        destinationPoints = source.map {
+            CGPoint(x: slot.midX + ($0.x - center.x) * scale,
+                    y: slot.midY + ($0.y - center.y) * scale)
+        }
+        skyBounds = slot
+        labelBounds = label
+    }
+
+    func points(at age: TimeInterval, quiet: Bool = false) -> [CGPoint] {
+        let elapsed = min(1, max(0, (age - 0.08) / (Self.arrivalTime - 0.08)))
+        let progress = quiet ? 1 : elapsed * elapsed * (3 - 2 * elapsed)
+        return zip(sourcePoints, destinationPoints).map { start, end in
+            CGPoint(x: start.x + (end.x - start.x) * progress,
+                    y: start.y + (end.y - start.y) * progress)
+        }
+    }
+}
+
+enum StarlightAnchor: Hashable { case board, score, header, award, constellationReturn, restorationLight, restorationScenery }
 struct StarlightAnchors: PreferenceKey {
     static var defaultValue: [StarlightAnchor: Anchor<CGRect>] { [:] }
     static func reduce(value: inout [StarlightAnchor: Anchor<CGRect>], nextValue: () -> [StarlightAnchor: Anchor<CGRect>]) {
@@ -147,6 +217,7 @@ struct StarlightCelebrationOverlay: View {
     let quiet: Bool
     var lightDestination: CGRect? = nil
     var awardBounds: CGRect? = nil
+    var constellationBounds: CGRect? = nil
     @Environment(\.dynamicTypeSize) private var textSize
 
     var body: some View {
@@ -155,10 +226,19 @@ struct StarlightCelebrationOverlay: View {
             let exit = min(1, max(0, (age - 1.08) / 0.32))
             let fade = quiet ? 1 : min(1, age / 0.07) * (1 - exit)
             let entrance = min(1, max(0, age - 0.04) / 0.22)
-            let region = awardBounds ?? Self.awardRegion(board: board, header: header, accessible: textSize.isAccessibilitySize)
+            let award = awardBounds ?? Self.awardRegion(board: board, header: header, accessible: textSize.isAccessibilitySize)
+            let constellation = ConstellationReturnLayout(path: event.constellationPath, board: board, header: header,
+                                                         award: award, protectedSky: constellationBounds)
+            let region = constellation?.labelBounds ?? award
             ZStack(alignment: .topLeading) {
-                if !quiet {
-                    Canvas { context, size in draw(in: &context, age: age, canvasSize: size) }
+                if !quiet || constellation != nil {
+                    Canvas { context, size in
+                        if quiet {
+                            if let constellation { drawConstellation(in: &context, layout: constellation, age: age, canvasSize: size) }
+                        } else {
+                            draw(in: &context, age: age, canvasSize: size, constellation: constellation)
+                        }
+                    }
                 }
                 CrystalCelebrationLabel(event: event, tint: accent, width: region.width - 12,
                                         height: region.height - 8, showsTitle: !textSize.isAccessibilitySize,
@@ -203,7 +283,8 @@ struct StarlightCelebrationOverlay: View {
         return CGPoint(x: local.x + board.minX, y: local.y + board.minY)
     }
 
-    private func draw(in context: inout GraphicsContext, age: Double, canvasSize: CGSize) {
+    private func draw(in context: inout GraphicsContext, age: Double, canvasSize: CGSize,
+                      constellation: ConstellationReturnLayout?) {
         guard age < StarlightCelebration.duration else { return }
         let points = event.cells.map(location)
         let origin = CGPoint(x: points.map(\.x).reduce(0, +) / CGFloat(points.count),
@@ -232,12 +313,13 @@ struct StarlightCelebrationOverlay: View {
                 let point = CGPoint(x: origin.x + cos(angle) * distance, y: origin.y + sin(angle) * distance * 0.72)
                 glint(in: &pulse, at: point, radius: index.isMultiple(of: 3) ? 4 : 2, color: color(event.contributors[index % event.contributors.count]))
             }
-            if !event.path.isEmpty {
+            if constellation == nil, !event.path.isEmpty {
                 var outline = Path()
                 outline.addLines(event.path.map(location))
                 pulse.stroke(outline, with: .color(.white), style: StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
             }
         }
+        if let constellation { drawConstellation(in: &context, layout: constellation, age: age, canvasSize: canvasSize) }
         drawPackets(in: &context, age: age, canvasSize: canvasSize)
         if age > 0.58 {
             let t = min(1, (age - 0.58) / 0.65)
@@ -247,6 +329,33 @@ struct StarlightCelebrationOverlay: View {
             let bounds = score.insetBy(dx: -8 - 5*t, dy: -3 - 3*t)
             bloom.stroke(Path(roundedRect: bounds, cornerRadius: 18), with: .color(accent), lineWidth: 1.5 + energy * 2)
             glint(in: &bloom, at: CGPoint(x: score.maxX + 8, y: score.minY), radius: 5, color: accent)
+        }
+    }
+
+    /// The figure is passive ink, with no new nodes, clock or completion callback.
+    /// The existing latest-only receipt owns its full 1.4-second lifetime.
+    func drawConstellation(in context: inout GraphicsContext, layout: ConstellationReturnLayout,
+                           age: Double, canvasSize: CGSize) {
+        guard age < StarlightCelebration.duration else { return }
+        let points = layout.points(at: age, quiet: quiet)
+        var ink = context
+        for exclusion in [score.insetBy(dx: -6, dy: -6), header, layout.labelBounds] where !exclusion.isEmpty {
+            var visible = Path(CGRect(origin: .zero, size: canvasSize))
+            visible.addRect(exclusion)
+            ink.clip(to: visible, style: FillStyle(eoFill: true))
+        }
+        ink.opacity = quiet ? 1 : min(1, max(0, age / 0.07))
+        var outline = Path()
+        outline.addLines(points)
+        var glow = ink
+        if !quiet { glow.addFilter(.shadow(color: accent, radius: 4)) }
+        glow.stroke(outline, with: .color(accent.opacity(0.75)),
+                    style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+        glow.stroke(outline, with: .color(.white),
+                    style: StrokeStyle(lineWidth: 1.6, lineCap: .round, lineJoin: .round))
+        var drawn = Set<Cell>()
+        for (cell, point) in zip(layout.walk, points) where drawn.insert(cell).inserted {
+            glint(in: &glow, at: point, radius: quiet ? 3 : 3.5, color: .white)
         }
     }
 

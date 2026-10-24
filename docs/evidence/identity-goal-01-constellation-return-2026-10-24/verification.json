@@ -1,0 +1,138 @@
+{
+  "goal": 336,
+  "base_main": "1f322e8db30abe8e887e2a5c360e545093734700",
+  "runtime_test_checkpoint": "a3b6799183afc12388b8d4c07b561ab84ef13081",
+  "runtime_test_tree": "61259c233ff942a2b1d4cead1a50e8804a3ea1ae",
+  "bundle_build_id": "dev.local",
+  "dirty_compiled_inputs_at_final_tests": [],
+  "later_delta": "Documentation/evidence only; compiled inputs equal runtime/test checkpoint.",
+  "source_sha256": {
+    "App/FallingSkyView.swift": "1e2b92f4c02a2cfec1a83e7431fd84695033a2ad4f4d7505a6c1d6ea34a2eeeb",
+    "App/StarlightCelebration.swift": "a3b6cd710238c85c1c3d34baaf300e35d5f95b68a877d53270ee0b8aa5fbf9ba",
+    "AppTests/StarlightCelebrationTests.swift": "1a1277f049ecc98db0aee1f1d4e6c0bfad0c28c59d04110ed9e13982b9f5a1b8",
+    "UITests/ConstellationTraceNativeTests.swift": "f0256f5198133019bba412742e56ebbde6668032ec8f60c643e99b10c41102a0"
+  },
+  "core_inputs_unchanged_from_main": [
+    "Sources",
+    "Tests",
+    "Package.swift"
+  ],
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "macos": "27.0.1",
+    "simulator_os": "iOS 27.0",
+    "phone": {
+      "model": "iPhone17e",
+      "udid": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324"
+    },
+    "tablet": {
+      "model": "iPad Pro11 M5",
+      "udid": "255E141F-D4D6-45DA-89FF-51436BF1BBA7"
+    },
+    "final_owned_simulator_state": "Shutdown; sequential owned use"
+  },
+  "checks": {
+    "core": {
+      "command": "swift test --scratch-path /private/tmp/starfall-identity-01-20261024/CoreBuild",
+      "passed": 348,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 21.212,
+      "raw_log": "/private/tmp/starfall-identity-01-20261024/core.log"
+    },
+    "hosted": {
+      "passed": 117,
+      "failed": 0,
+      "skipped": 0,
+      "classes": {
+        "StarlightCelebrationTests": 27,
+        "TraceInputPolishTests": 32,
+        "FallingSkyStoreTests": 51,
+        "CrystalCelebrationArtworkTests": 7
+      }
+    },
+    "phone": {
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    "tablet": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    "tablet_capture_repeat": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "reason": "Recover missing recording; identical source/assertions, horizontal method only"
+    },
+    "debug": "BUILD FOR TESTING SUCCEEDED arm64 simulator",
+    "release": "BUILD SUCCEEDED generic simulator",
+    "hygiene": "passed",
+    "diff_check": "passed",
+    "membership": "All four existing files retain correct source target membership; no project diff",
+    "local_links": {
+      "checked": 748,
+      "missing": 0
+    }
+  },
+  "logs": {
+    "hosted": {
+      "path": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/logs/test_sim_2026-10-24T01-00-40-978Z_pid51923_c1ce894c.log",
+      "sha256": "7d9dfde670e05ab043483b9ed953b06360c7321e0c15522232d51988d526d004",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -testProductsPath /Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T01-00-21-409Z_pid51923_384d311c.xctestproducts -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -collect-test-diagnostics never \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/TraceInputPolishTests\" \"-only-testing:StarfallAppTests/FallingSkyStoreTests\" \"-only-testing:StarfallAppTests/CrystalCelebrationArtworkTests\" -parallel-testing-enabled NO -resultBundlePath /private/tmp/starfall-identity-01-20261024/hosted-accepted.xcresult test-without-building"
+    },
+    "debug": {
+      "path": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/logs/build_sim_2026-10-24T01-00-21-410Z_pid51923_c012eb8c.log",
+      "sha256": "1553be5806b56fc178e77bc7cae2941aa89d5449b642156e62ce9dd4cd17b7f3",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project /Users/lbeezr/.codex/worktrees/9a48/Starfall/Starfall.xcodeproj -scheme Starfall -configuration Debug -skipMacroValidation -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -collect-test-diagnostics never COMPILER_INDEX_STORE_ENABLE=NO ONLY_ACTIVE_ARCH=YES -packageCachePath /Users/lbeezr/Library/Caches/org.swift.swiftpm -derivedDataPath /private/tmp/starfall-identity-01-20261024/Debug CODE_SIGNING_ALLOWED=NO -jobs 4 -testProductsPath /Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T01-00-21-409Z_pid51923_384d311c.xctestproducts build-for-testing"
+    },
+    "release": {
+      "path": "/private/tmp/starfall-identity-01-20261024/release-final.log",
+      "sha256": "6196670050d2f658ddd4ad37eddd178d02797cc170805aab48ef95cb05be01ab",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-identity-01-20261024/Release -jobs 4 CODE_SIGNING_ALLOWED=NO build"
+    },
+    "phone": {
+      "path": "/private/tmp/starfall-identity-01-20261024/phone-final.log",
+      "sha256": "d6e102f47258bfd1eaddbaf84de72dee1b0f22ebf5af5497236364c6085f581a",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -testProductsPath /Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T01-00-21-409Z_pid51923_384d311c.xctestproducts -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -collect-test-diagnostics never \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testHorizontalTraceAndOrdinaryTapKeepDistinctCommittedSelections\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testNativeSwipeClearsChosenFiveAndLeavesSixth\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testNativeGapSwipeAndRepeatedAttempt\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testTracedSelectionAllowsNextClearAndSurvivesLifecycle\" -parallel-testing-enabled NO -resultBundlePath /private/tmp/starfall-identity-01-20261024/phone-final.xcresult test-without-building"
+    },
+    "tablet": {
+      "path": "/private/tmp/starfall-identity-01-20261024/tablet-final.log",
+      "sha256": "69b5586c6b97123cc842b6894ffd8b3b5982015a1328dc8886ff5162a77bc47a",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -testProductsPath /Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T01-00-21-409Z_pid51923_384d311c.xctestproducts -destination \"platform=iOS Simulator,id=255E141F-D4D6-45DA-89FF-51436BF1BBA7\" -collect-test-diagnostics never \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testHorizontalTraceAndOrdinaryTapKeepDistinctCommittedSelections\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testBuildIDMenuAndLargestTextTrace\" \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testLargestTextCalmTraceKeepsCommittedSelectionAndNextInput\" -parallel-testing-enabled NO -resultBundlePath /private/tmp/starfall-identity-01-20261024/tablet-final.xcresult test-without-building"
+    },
+    "tablet_capture_repeat": {
+      "path": "/private/tmp/starfall-identity-01-20261024/tablet-motion.log",
+      "sha256": "97d4a6f3069d3d7bdec53a0c29a84445937034ae71709ed022aded0cbf81a7f7",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -testProductsPath /Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T01-00-21-409Z_pid51923_384d311c.xctestproducts -destination \"platform=iOS Simulator,id=255E141F-D4D6-45DA-89FF-51436BF1BBA7\" -collect-test-diagnostics never \"-only-testing:StarfallUITests/ConstellationTraceNativeTests/testHorizontalTraceAndOrdinaryTapKeepDistinctCommittedSelections\" -parallel-testing-enabled NO -resultBundlePath /private/tmp/starfall-identity-01-20261024/tablet-motion.xcresult test-without-building"
+    }
+  },
+  "native_scope": {
+    "executions": 8,
+    "distinct_methods": 6,
+    "tests": [
+      "testHorizontalTraceAndOrdinaryTapKeepDistinctCommittedSelections",
+      "testNativeSwipeClearsChosenFiveAndLeavesSixth",
+      "testNativeGapSwipeAndRepeatedAttempt",
+      "testTracedSelectionAllowsNextClearAndSurvivesLifecycle",
+      "testBuildIDMenuAndLargestTextTrace",
+      "testLargestTextCalmTraceKeepsCommittedSelectionAndNextInput"
+    ]
+  },
+  "failed_attempts": [
+    "Initial sandboxed Core command failed before tests: module cache permission; authorized rerun passed.",
+    "Initial hosted115/116 and pre-slot phone runs retain their earlier source.",
+    "First recording stop omitted required outputFile; later target Shutdown owner not isolated.",
+    "Final tablet recording tool stop failed ENOENT; three passing tests retained; direct simctl capture-only repeat passed and recovered video."
+  ],
+  "not_established": [
+    "Actual native multipoint branch gesture",
+    "Physical installation/play",
+    "Minimum iOS17 runtime",
+    "Actual VoiceOver",
+    "Human recognition/enjoyment",
+    "Continuous frame-rate or sustained performance"
+  ]
+}

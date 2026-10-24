@@ -1,5 +1,7 @@
 # Evidence index
 
+[Exact constellation return](identity-goal-01-constellation-return-2026-10-24/README.md) records original manual topology, the scrolled reading-slot correction, native phone/tablet return and quiet/next-input contrasts, with capture failures and evidence limits retained.
+
 [Sunwheel capstone](depth-goal-08-sunwheel-capstone-2026-10-23/README.md) records three complete plans, a shared grown ingredient, same-preview pressure, retained saves and native earned progression.
 
 [Frostfruit pressure](depth-goal-07-frostfruit-pressure-2026-10-23/README.md) records top-growth room, immediate points and complete recoveries under the same preview.
