@@ -105,23 +105,25 @@ final class SkyScorePresentationTests: XCTestCase {
                                                               age:0.5,quiet:false)
             .environment(\.dynamicTypeSize,.large).background(StarfallTheme.Colors.skyTop))
         let liveAttachment = XCTAttachment(image:try XCTUnwrap(label.uiImage))
-        liveAttachment.name = "score-live-cumulative-components"
+        liveAttachment.name = "score-live-primary-chain-and-award"
         liveAttachment.lifetime = .keepAlways
         add(liveAttachment)
     }
 
-    @MainActor func testNarrowLiveRegionKeepsThePrimaryAwardRatherThanClippingComponentText() throws {
+    @MainActor func testLiveRegionsKeepThePrimaryAwardAtOrdinaryAndAccessibilityTextSizes() throws {
         var game = FallingSky.freshChallenge(.silverPools)
         let turn = try XCTUnwrap(game.nudge(from:Cell(1,2),to:Cell(1,3)))
         let receipt = StarlightCelebration(id:4,phase:turn.resolutionPhases[1],cumulativeAward:19_000,
                                           total:19_000,precedingPhases:[turn.resolutionPhases[0]])
-        for size:DynamicTypeSize in [.large,.xxxLarge] {
+        for size:DynamicTypeSize in [.large,.xxxLarge,.accessibility5] {
+          for region in [CGSize(width:80,height:40), CGSize(width:220,height:72), CGSize(width:330,height:100)] {
             let actual = ImageRenderer(content:SkyScoreReceiptLabel(event:receipt,tint:.yellow,
-                width:80,height:40,age:0.5,quiet:true).environment(\.dynamicTypeSize,size))
+                width:region.width,height:region.height,age:0.5,quiet:true).environment(\.dynamicTypeSize,size))
             let primary = ImageRenderer(content:CrystalCelebrationLabel(event:receipt,tint:.yellow,
-                width:80,height:40,showsTitle:true,age:0.5,quiet:true)
-                .frame(width:80,height:40).environment(\.dynamicTypeSize,size))
+                width:region.width,height:region.height,showsTitle:!size.isAccessibilitySize,age:0.5,quiet:true)
+                .frame(width:region.width,height:region.height).environment(\.dynamicTypeSize,size))
             XCTAssertEqual(try XCTUnwrap(actual.uiImage).pngData(),try XCTUnwrap(primary.uiImage).pngData())
+          }
         }
     }
 

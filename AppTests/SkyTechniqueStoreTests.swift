@@ -1123,12 +1123,12 @@ extension SkyTechniqueStoreTests {
             XCTAssertTrue(store.requestInput(.swap(Cell(1, 1), Cell(1, 2)), snapshot: opening,
                                              generation: store.constellationInputGeneration))
             XCTAssertGreaterThan(store.game.displayScore, 0)
-            XCTAssertEqual(store.guideLine.id, "guide.cascade.1")
+            XCTAssertEqual(store.guideLine.id, "guide.live-cascade.1")
             XCTAssertTrue(store.guideLine.text.contains(store.game.displayScore.formatted()))
             XCTAssertFalse(store.guideLine.text.contains("Gravity brought"))
             XCTAssertEqual(SkySaveArchive.load(from: defaults), store.game)
             presenter.finish()
-            XCTAssertEqual(store.guideLine.id, "guide.cascade.1")
+            XCTAssertEqual(store.guideLine.id, "guide.live-cascade.1")
             store.setSuspended(true)
         }
     }

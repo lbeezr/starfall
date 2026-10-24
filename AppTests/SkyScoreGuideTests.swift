@@ -12,7 +12,7 @@ final class SkyScoreGuideTests: XCTestCase {
         try XCTUnwrap(game.nudge(from: Cell(from / 7, from % 7), to: Cell(to / 7, to % 7)))
     }
 
-    func testScaledClearCopySeparatesActualStarAndLightCountsFromCommittedPointComponents() throws {
+    func testAutomaticClearKeepsLiveCopyBriefAndExactAccountingInLastClear() throws {
         let examples: [(StarfallChallenge, Int, Int, String, String, String)] = [
             (.kiteHarbor, 15, 14, "5,000",
              "4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points.",
@@ -36,9 +36,13 @@ final class SkyScoreGuideTests: XCTestCase {
             XCTAssertEqual(explanation.phases.count, 1)
             XCTAssertEqual(explanation.phases[0].explanationText, equation)
             XCTAssertEqual(explanation.guideText, equation)
-            let original = SkyDialogueLibrary.line("guide.automatic-recipe", values: ["score": points])
+            let original = SkyDialogueLibrary.line("guide.live-automatic-recipe", values: ["score": points])
             let line = result(turn, from: opening, to: game)
-            XCTAssertEqual(line.text, original.text + " " + equation + " " + room)
+            XCTAssertEqual(line.text, "Pattern clear · +\(points) points")
+            let recap = try XCTUnwrap(SkyLastClearSnapshot(turn: turn, from: opening, to: game,
+                path: [], recipe: nil, roundGeneration: 0, sequence: 1))
+            XCTAssertEqual(recap.score.guideText, equation)
+            XCTAssertEqual(SkyLastClearCopy.room(recap), room + " \(game.occupiedCount) stars on the board after this clear.")
             XCTAssertEqual(line.id, original.id)
             XCTAssertEqual(line.speaker, original.speaker)
             XCTAssertEqual(line.priority, original.priority)
@@ -98,6 +102,25 @@ final class SkyScoreGuideTests: XCTestCase {
         XCTAssertTrue(line.isValid)
     }
 
+    func testRetainedRevisionTwoKeepsItsOriginalManualCompatibleChainGuide() throws {
+        let opening = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(.firstLight, revision: 2)))
+        XCTAssertTrue(opening.supportsManualClears)
+        var game = opening
+        let turn = try exchange(8, 9, in: &game)
+        XCTAssertEqual(turn.resolutionPhases.count, 2)
+        let line = result(turn, from: opening, to: game)
+        let original = SkyDialogueLibrary.line("guide.cascade", values: ["depth": "2", "score": "15,000"])
+        XCTAssertEqual(original.text, "A 2-clear chain! +15,000 starlight. Falling stars kept it going.")
+        XCTAssertEqual(line.id, original.id)
+        XCTAssertEqual(line.speaker, original.speaker)
+        XCTAssertEqual(line.priority, original.priority)
+        XCTAssertEqual(line.seconds, original.seconds)
+        XCTAssertTrue(line.text.hasPrefix(original.text + " "))
+        XCTAssertTrue(line.text.contains(try XCTUnwrap(SkyScoreExplanation(turn: turn, from: opening)).guideText))
+        XCTAssertTrue(line.text.contains("Diamond marks: 2 survivors fell into later patterns."))
+        XCTAssertTrue(line.isValid)
+    }
+
     func testFullBoardAggregateCountsEachRealClearOnceAndPreservesTheExactCumulativePrefix() throws {
         let opening = FallingSky.fullBoardLantern()
         var game = opening
@@ -108,9 +131,15 @@ final class SkyScoreGuideTests: XCTestCase {
         XCTAssertEqual(first.compactText, "4,000 base + 1,000 size")
         XCTAssertEqual(whole.guideText, "8 stars · 8 light. 8,000 base + 2,000 size + 5,000 chain = 15,000 points.")
         XCTAssertEqual(whole.totalText, "15,000 points this clear.")
-        let original = SkyDialogueLibrary.line("guide.cascade", values: ["depth": "2", "score": "15,000"])
+        let original = SkyDialogueLibrary.line("guide.live-cascade", values: ["depth": "2", "score": "15,000"])
         XCTAssertEqual(result(turn, from: opening, to: game).text,
-                       original.text + " " + whole.guideText + " Diamond marks: 2 survivors fell into later patterns. Refill added 8 stars; the board is full.")
+                       "2-clear chain · +15,000 points")
+        XCTAssertEqual(result(turn, from: opening, to: game), original)
+        let recap = try XCTUnwrap(SkyLastClearSnapshot(turn: turn, from: opening, to: game,
+            path: [], recipe: nil, roundGeneration: 0, sequence: 1))
+        XCTAssertEqual(recap.score, whole)
+        XCTAssertEqual(recap.survivorCount, 2)
+        XCTAssertEqual(SkyLastClearCopy.room(recap), "Refill added 8 stars. 49 stars on the board after this clear.")
 
         var setup = opening
         let move = try exchange(0, 1, in: &setup)
@@ -141,7 +170,13 @@ final class SkyScoreGuideTests: XCTestCase {
                 XCTAssertTrue(line.isValid, "\(opening.challengeRevision): \(line.text)")
                 XCTAssertTrue(context.isValid, context.text)
                 if !game.isOver, let explanation = SkyScoreExplanation(turn: turn, from: old) {
-                    XCTAssertTrue(line.text.contains(explanation.guideText))
+                    let recap = try XCTUnwrap(SkyLastClearSnapshot(turn: turn, from: old, to: game,
+                        path: [], recipe: nil, roundGeneration: 0, sequence: 1))
+                    XCTAssertEqual(recap.score, explanation)
+                    XCTAssertFalse(line.text.contains(" base"))
+                    XCTAssertFalse(line.text.contains("Diamond"))
+                    XCTAssertFalse(line.text.contains("Refill added"))
+                    XCTAssertLessThanOrEqual(line.text.count, 50)
                 }
             }
             XCTAssertEqual(game.outcome, .won)
@@ -196,11 +231,9 @@ final class SkyScoreGuideTests: XCTestCase {
         XCTAssertEqual(explanation.guideText,
                        "80 stars · 80 light. 80,000 base + 20,000 size + 350,000 chain = 450,000 points.")
         XCTAssertEqual(explanation.totalText, "450,000 points this clear.")
-        let original = SkyDialogueLibrary.line("guide.cascade", values: ["depth": "20", "score": "450,000"])
-        let full = SkyDialogueLine(id: original.id, speaker: original.speaker,
-            text: original.text + " " + explanation.guideText + " Refill added 80 stars; the board is full.",
-            priority: original.priority, seconds: original.seconds)
-        XCTAssertTrue(full.isValid, full.text)
+        let live = SkyDialogueLibrary.line("guide.live-cascade", values: ["depth": "20", "score": "450,000"])
+        XCTAssertEqual(live.text, "20-clear chain · +450,000 points")
+        XCTAssertTrue(live.isValid, live.text)
         XCTAssertEqual(SkyCopy.text(.scoreExplanationTitle), "Last clear")
     }
 }

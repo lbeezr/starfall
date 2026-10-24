@@ -11,7 +11,6 @@ struct StarlightCelebration: Equatable, Identifiable {
     let collected: Int
     let displayAward: Int
     let scoreExplanation: SkyScoreExplanation?
-    let scoreComponentText: String?
     let total: Int
     var awardText: String { "+\(displayAward.formatted())" }
     let cells: [Cell]
@@ -134,7 +133,6 @@ struct StarlightCelebration: Equatable, Identifiable {
         collected = phase.award.baseLight
         displayAward = cumulativeAward
         scoreExplanation = SkyScoreExplanation(phases: precedingPhases + [phase], expectedTotal: cumulativeAward)
-        scoreComponentText = scoreExplanation?.compactText
         self.total = total
         cells = phase.cleared.sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }
         contributors = cells.compactMap { cell in
@@ -165,7 +163,6 @@ struct StarlightCelebration: Equatable, Identifiable {
         self.id = id; self.started = started; self.collected = turn.collected
         self.displayAward = turn.displayAward
         scoreExplanation = SkyScoreExplanation(turn: turn, from: old)
-        scoreComponentText = scoreExplanation?.compactText
         self.total = total; self.cells = cells
         contributors = cells.compactMap { cell in
             old.gem(at: cell).map { Contributor(cell: cell, identity: $0.identity, reward: old.reward(of: [cell])) }

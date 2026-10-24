@@ -1,5 +1,7 @@
 # iOS application
 
+The [concise feedback candidate](../docs/evidence/player-momentum-feedback-2026-10-24/README.md) keeps current automatic Story results to an event and exact award, retaining equations, ingredients and room/refills in existing optional readers. It remains held for complete native navigation and whole-screen visual acceptance; no adoption is claimed.
+
 The [nonvisual responsiveness correction](../docs/evidence/player-momentum-input-2026-10-24/README.md) keeps four independent FIFO plans through physical cascades, validating visible stationary identities and preserving committed-only saves and the existing shower remainder. Existing HUD/arrow artwork remains; first-play and multi-plan visual guidance are separate held work in PR #395.
 
 For HUD changes, start with the [native HUD guide](../docs/design/hud/README.md), the official component roster and the UI production skill. [App instructions](AGENTS.md) apply to the current flat HUD source files.

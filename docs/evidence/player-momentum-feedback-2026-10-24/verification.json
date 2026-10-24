@@ -1,0 +1,158 @@
+{
+  "status": "draft; interaction and complete visual acceptance held",
+  "main_base": "ac7de9cb9ce37e8ea9ff9879f05f55857b678b68",
+  "rebased_tested_source": "795171a2c7cefefac39b5f42a1e1e336761f2fa8",
+  "build_affecting_dirty_inputs": [],
+  "documentation_dirty_inputs": [
+    "docs/evidence/player-momentum-feedback-2026-10-24/"
+  ],
+  "changed_inputs": [
+    {
+      "path": "App/DialogueScripts/observatory-dialogue.json",
+      "sha256": "2141cf1dab60b707d7c918dbb4512df631d7418949a8618867aa997dec41fa1c"
+    },
+    {
+      "path": "App/SkyDialogueLibrary.swift",
+      "sha256": "1ec36b3e019ae7af4e0e03209d0d9677d446e80a57cddcd12fbf3a23c1865a6b"
+    },
+    {
+      "path": "App/SkyScoreExplanationView.swift",
+      "sha256": "d767c1525e196cea82895208e322e94a51475e1196222f4a84370e467b28553a"
+    },
+    {
+      "path": "App/StarlightCelebration.swift",
+      "sha256": "d7180b861475eaa774d9889b73ffb6ddd31de66c03167c163b2607d4b910a003"
+    },
+    {
+      "path": "AppTests/SkyDialogueTests.swift",
+      "sha256": "d400cf54cf9b55c31f50969450e53fbb9c852b229f60e1a0c407c595622ac3ff"
+    },
+    {
+      "path": "AppTests/SkyHeadroomGuideTests.swift",
+      "sha256": "e9240030494365bf26948a5e7d2542a23e97a5b191c40b61addf3eb2c8d9ed1a"
+    },
+    {
+      "path": "AppTests/SkyScoreGuideTests.swift",
+      "sha256": "6627dd347c9fd9f6f4bac903dcdd4f82098513ffcfb3e6141a78a89275c3a662"
+    },
+    {
+      "path": "AppTests/SkyScorePresentationTests.swift",
+      "sha256": "58ebf99b784730c073390df6b798ce558477a0b65bf800ac34d2d44b0195b94a"
+    },
+    {
+      "path": "AppTests/SkySurvivorGuideTests.swift",
+      "sha256": "36b880958f1416af27001b3fcf463574e6eb75c786c3981f1953d95457438346"
+    },
+    {
+      "path": "AppTests/SkyTechniqueStoreTests.swift",
+      "sha256": "e0127cf145e03cee1b7c71b391f4db25441d73bf5b0fbd928fce242fbf140e35"
+    },
+    {
+      "path": "UITests/HeadroomFeedbackInteractionTests.swift",
+      "sha256": "c837bb8f54d2e914bb96044334c7a51448403398a656b84bcaaf09463d0afc9d"
+    },
+    {
+      "path": "UITests/ScoreExplanationInteractionTests.swift",
+      "sha256": "fb8706902591c06819c0eb24c0be0304f948ceb8500e494b05469516b7d76047"
+    },
+    {
+      "path": "UITests/SurvivorIngredientsInteractionTests.swift",
+      "sha256": "7518b3649cbf1ed03bc5bfdaa7e57f9547a4ff31e3bf90e47959030b9d825baa"
+    }
+  ],
+  "checks": {
+    "core": {
+      "passed": 352,
+      "failed": 0,
+      "scope": "unchanged Core; main input acceptance source269abe2"
+    },
+    "rebased_debug_build": "passed",
+    "rebased_hosted": {
+      "passed": 113,
+      "failed": 0,
+      "skipped": 0,
+      "bundle": "/private/tmp/starfall-feedback-main-hosted.xcresult"
+    },
+    "rebased_release_build": "passed",
+    "earlier_release_build": {
+      "source": "fd2d28a",
+      "result": "passed"
+    },
+    "tablet_native": {
+      "source": "fd2d28a",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    "final_phone_native": {
+      "source": "626b9d7",
+      "passed": 2,
+      "failed": 1,
+      "skipped": 0,
+      "passed_methods": [
+        "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay",
+        "ScoreExplanationInteractionTests/testNormalSilverPhaseScoresSeparateActionsAndExactReplay"
+      ],
+      "failed_method": "SurvivorIngredientsInteractionTests/testNormalRibbonSurvivorsSeparateActionAndSilverTerminalCancellation",
+      "failure": "generic experiment.settings readiness before opening independent Last clear after35000points/two exchanges; exists but enabled/hittable predicate fails; exact state unproven",
+      "bundle": "/private/tmp/starfall-feedback-final-phone.xcresult"
+    },
+    "hygiene": "passed",
+    "git_diff_check": "passed"
+  },
+  "failures_retained": [
+    {
+      "source": "fd2d28a",
+      "run": "/private/tmp/starfall-feedback-phone.xcresult",
+      "passes": 1,
+      "failures": 2,
+      "causes": [
+        "redundant Settings Motion navigation",
+        "pause helper queried dismissed menu"
+      ]
+    },
+    {
+      "source": "be55422",
+      "run": "/private/tmp/starfall-feedback-repair-phone.xcresult",
+      "passes": 0,
+      "failures": 3,
+      "causes": [
+        "actual Resume sky after automation allowed showers before pausing",
+        "ambiguous parent/current Last clear title"
+      ]
+    },
+    {
+      "source": "626b9d7",
+      "run": "/private/tmp/starfall-feedback-final-phone.xcresult",
+      "passes": 2,
+      "failures": 1,
+      "cause": "remaining menu readiness unresolved; no blanket retry"
+    }
+  ],
+  "visual_review": {
+    "reviewer": "independent round_replay_audit agent",
+    "tablet_source": "fd2d28a",
+    "tablet_captures": 10,
+    "phone_source": "626b9d7",
+    "phone_captures": 6,
+    "scoped_verdict": "concise messages and exact retained facts pass sampled reading review",
+    "whole_screen_verdict": "held: inherited dark header/oversized inspection and weak pressure text separation over bright painting",
+    "rebased_source_visual": "not assessed; earlier sources remain explicit"
+  },
+  "environment": "Xcode27.1(27A9275), SDK27.1, arm64, iOSSimulator27.0(24A434); dedicated Momentum phone/tablet; normal motion except named actual-Calm AX3XL methods",
+  "limits": [
+    "No full native or visual acceptance of rebased795171a2",
+    "Remaining Survivor reader/interruption/restore/replay/terminal suffix not executed in final phone run",
+    "No human timing/enjoyment/return, actual VoiceOver, hardware latency or minimum-iOS acceptance",
+    "No phone installation or SDK/telemetry/network scope"
+  ],
+  "commands": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=9ADC6510-1A37-4046-9FCA-FC6B498444FA,arch=arm64\" -derivedDataPath /private/tmp/starfall-feedback-dd -clonedSourcePackagesDirPath /private/tmp/starfall-momentum-packages build-for-testing CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=YES ARCHS=arm64",
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -xctestrun /private/tmp/starfall-feedback-dd/Build/Products/Starfall_iphonesimulator27.1-arm64.xctestrun -destination \"platform=iOS Simulator,id=9ADC6510-1A37-4046-9FCA-FC6B498444FA,arch=arm64\" -resultBundlePath /private/tmp/starfall-feedback-main-hosted.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests/SkyScoreGuideTests\" \"-only-testing:StarfallAppTests/SkySurvivorGuideTests\" \"-only-testing:StarfallAppTests/SkyHeadroomGuideTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/SkyScorePresentationTests\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallAppTests/SkyLastClearSnapshotTests\" \"-only-testing:StarfallAppTests/SkyLastClearStoreTests\" \"-only-testing:StarfallAppTests/SkyLastClearPresentationTests\" test-without-building",
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"platform=iOS Simulator,id=9ADC6510-1A37-4046-9FCA-FC6B498444FA,arch=arm64\" -derivedDataPath /private/tmp/starfall-feedback-dd -clonedSourcePackagesDirPath /private/tmp/starfall-momentum-packages build CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=YES ARCHS=arm64",
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -xctestrun /private/tmp/starfall-feedback-repair-dd/Build/Products/Starfall_iphonesimulator27.1-arm64.xctestrun -destination \"platform=iOS Simulator,id=362DC1A0-13DB-41F5-9CDB-86A72EB0E7A0,arch=arm64\" -resultBundlePath /private/tmp/starfall-feedback-final-phone.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallUITests/HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay\" \"-only-testing:StarfallUITests/ScoreExplanationInteractionTests/testNormalSilverPhaseScoresSeparateActionsAndExactReplay\" \"-only-testing:StarfallUITests/SurvivorIngredientsInteractionTests/testNormalRibbonSurvivorsSeparateActionAndSilverTerminalCancellation\" test-without-building",
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test-without-building -xctestrun /private/tmp/starfall-feedback-dd/Build/Products/Starfall_iphonesimulator27.1-arm64.xctestrun -destination \"platform=iOS Simulator,id=9ADC6510-1A37-4046-9FCA-FC6B498444FA,arch=arm64\" -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests/SkyScoreGuideTests\" \"-only-testing:StarfallAppTests/SkySurvivorGuideTests\" \"-only-testing:StarfallAppTests/SkyHeadroomGuideTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/SkyScorePresentationTests\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallAppTests/SkyLastClearSnapshotTests\" \"-only-testing:StarfallAppTests/SkyLastClearStoreTests\" \"-only-testing:StarfallAppTests/SkyLastClearPresentationTests\" \"-only-testing:StarfallUITests/ScoreExplanationInteractionTests/testLargestCalmGrownScoreAndUnscaledOpenSkyReadCompletely\" \"-only-testing:StarfallUITests/SurvivorIngredientsInteractionTests/testLargestCalmSurvivorsAndSimultaneousPatternsPreserveRound\" \"-only-testing:StarfallUITests/HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely\" -resultBundlePath /private/tmp/starfall-feedback-tablet.xcresult",
+    "python3 scripts/ci-hygiene.py",
+    "git diff --check"
+  ]
+}

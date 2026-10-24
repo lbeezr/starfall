@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 
 /// Native components explain earned points without replaying an award. The
 /// isolated historical manual fixture below proves unscaled input, not modern
@@ -70,15 +71,26 @@ final class ScoreExplanationInteractionTests: XCTestCase {
     }
 
     @MainActor private func pauseNewSky(in app: XCUIApplication) {
-        tap("experiment.settings", in: app)
+        // Freeze the live clock as soon as the fixed HUD menu is admitted.
+        // Generic scroll discovery can consume this opening's six-second sky.
+        let menu = app.buttons["experiment.settings"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
+            format: "enabled == true AND hittable == true"), object: menu).wait(timeout: 5))
+        XCTAssertTrue(app.frame.contains(menu.frame))
+        menu.tap()
         let pause = app.buttons["experiment.pause"]
         app.revealSkyControls([pause])
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
             format: "label == %@ AND enabled == true AND hittable == true", "Pause sky"),
             object: pause).wait(timeout: 5))
         pause.tap()
+        // The shipping pause action dismisses its menu. Reopen it to inspect
+        // the retained choice, then return to the paused board for play.
+        tap("experiment.settings", in: app)
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Start sky"),
-                                                object: app.buttons["experiment.pause"]).wait(timeout: 5))
+                                                object: app.buttons["experiment.pause"]).wait(timeout: 5),
+            "Expected untouched opening: board=\(app.otherElements["experiment.board"].value as? String ?? "unavailable"), pause=\(app.buttons["experiment.pause"].label)")
+        tap("experiment.done", in: app)
         let next = app.buttons["experiment.next"]
         app.revealSkyControls([next])
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
@@ -234,6 +246,21 @@ final class ScoreExplanationInteractionTests: XCTestCase {
         close.tap(); XCTAssertEqual(try round(in: app), retained)
     }
 
+    @MainActor private func reviewLastScore(_ expected: String, room: String, capture name: String,
+                                           in app: XCUIApplication) throws {
+        let retained = try round(in: app)
+        tap("experiment.settings", in: app); tap("sky.lastClear.menu.open", in: app)
+        let title = app.staticTexts.matching(NSPredicate(
+            format: "identifier == %@ AND label == %@", "sky.menu.title", "Last clear")).firstMatch
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
+            format: "exists == true AND hittable == true"), object: title).wait(timeout: 5))
+        readPassive("sky.lastClear.score.1", expected: expected, capture: name + "-equation", in: app)
+        XCTAssertFalse(app.staticTexts["sky.lastClear.phase.2"].exists)
+        readPassive("sky.lastClear.room", expected: room, capture: name + "-room", in: app)
+        tap("experiment.done", in: app)
+        XCTAssertEqual(try round(in: app), retained, "Optional accounting cannot replay or alter the clear")
+    }
+
     @MainActor private func assertResult(score: Int, in app: XCUIApplication) {
         let outcome = app.staticTexts["experiment.outcome"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Silver Pools restored!"),
@@ -263,13 +290,15 @@ final class ScoreExplanationInteractionTests: XCTestCase {
     @MainActor func testNormalSilverPhaseScoresSeparateActionsAndExactReplay() throws {
         continueAfterFailure = false
         executionTimeAllowance = 300
-        let (settings, reduce) = NativeSystemMotionSettings.open()
-        let original = reduce.value as? String == "1"
-        NativeSystemMotionSettings.set(false, on: reduce); settings.terminate()
-        addTeardownBlock { @MainActor in
+        if UIAccessibility.isReduceMotionEnabled {
             let (settings, reduce) = NativeSystemMotionSettings.open()
-            NativeSystemMotionSettings.set(original, on: reduce); settings.terminate()
+            NativeSystemMotionSettings.set(false, on: reduce); settings.terminate()
+            addTeardownBlock { @MainActor in
+                let (settings, reduce) = NativeSystemMotionSettings.open()
+                NativeSystemMotionSettings.set(true, on: reduce); settings.terminate()
+            }
         }
+        XCTAssertFalse(UIAccessibility.isReduceMotionEnabled, "This journey requires actual normal system motion")
         let app = XCUIApplication(); defer { app.terminate() }
         let retainedArguments = ["--sky-flow-review", "--dialogue-review", "-calmEffects", "NO"]
         app.launchArguments = retainedArguments + ["--starfalls-reset", "--world-legacy-review"]
@@ -303,9 +332,11 @@ final class ScoreExplanationInteractionTests: XCTestCase {
         XCTAssertEqual(unrelated(repairedWorld), unrelated(initialWorld))
         try replaySilver(opening: opening, in: app)
         exchange(2, 9, in: app); settled(7_000, target: 12_000, in: app)
-        let separateGuide = "Pip. Recipe popped! +7,000 starlight. That made room. " + fiveSmall
-            + " 5 more spaces above the stars in columns 1, 2, 3, 4, 5."
+        let separateGuide = "Pip. Pattern clear · +7,000 points"
         try guide(separateGuide, capture: "score-phone-independent-seven-thousand", in: app)
+        try reviewLastScore(fiveSmall,
+            room: "5 more spaces above the stars in columns 1, 2, 3, 4, 5. 19 stars on the board after this clear.",
+            capture: "score-phone-optional-independent-accounting", in: app)
         exchange(23, 22, in: app)
         capture("score-phone-independent-final-five-thousand", in: app)
         assertResult(score: 12_000, in: app)
@@ -337,9 +368,11 @@ final class ScoreExplanationInteractionTests: XCTestCase {
         let originalCalm = setCalm(true, verifyOffToOn: true, in: app)
         XCTAssertTrue(app.buttons["experiment.cell.0.1"].label.hasPrefix("Grown Aqua"))
         exchange(4, 3, in: app); settled(6_000, target: 11_000, in: app)
-        let grownGuide = "Pip. Recipe popped! +6,000 starlight. That made room. " + fourWithGrown
-            + " 4 more spaces above the stars in columns 1, 2, 3, 4."
+        let grownGuide = "Pip. Pattern clear · +6,000 points"
         try guide(grownGuide, capture: "score-tablet-four-stars-five-light-grown-award", in: app)
+        try reviewLastScore(fourWithGrown,
+            room: "4 more spaces above the stars in columns 1, 2, 3, 4. 19 stars on the board after this clear.",
+            capture: "score-tablet-optional-grown-accounting", in: app)
         let spent = try round(in: app)
         XCTAssertEqual(try world(in: app), seedWorld)
         settled(6_000, target: 11_000, in: app); XCTAssertEqual(try round(in: app), spent)

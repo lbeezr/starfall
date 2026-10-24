@@ -95,12 +95,12 @@ extension SkyDialogueLibrary {
             result = line("guide.dusk-collapse", values: ["swallowed": SkyCopy.count(.eventEatenOne, .eventEatenMany, count)])
         } else if turn.resolutionPhases.contains(where: { $0.kind == .recipe }) {
             if turn.resolutionPhases.count > 1 {
-                result = line("guide.cascade", values: [
+                result = line(old.supportsManualClears ? "guide.cascade" : "guide.live-cascade", values: [
                     "depth": String(turn.resolutionPhases.count),
                     "score": game.displayAward(for: turn).formatted()
                 ])
             } else {
-                result = line("guide.automatic-recipe", values: [
+                result = line(old.supportsManualClears ? "guide.automatic-recipe" : "guide.live-automatic-recipe", values: [
                     "score": game.displayAward(for: turn).formatted()
                 ])
             }
@@ -135,6 +135,11 @@ extension SkyDialogueLibrary {
             result = line("guide.orbit", values: ["release": SkyCopy.count(.orbitReleaseOne, .orbitReleaseMany, field.windowsRemaining)])
         } else if !game.isOver, turn.presentationPhases.contains(where: { $0.event == .release }) {
             result = line("guide.release")
+        }
+        // Automatic play keeps one reaction beside the next decision. Exact
+        // score, survivor and room/refill facts remain in optional Last clear.
+        if result.id == "guide.live-automatic-recipe.1" || result.id == "guide.live-cascade.1" {
+            return result
         }
         if !game.isOver, let explanation = SkyScoreExplanation(turn: turn, from: old) {
             result = SkyDialogueLine(id: result.id, speaker: result.speaker,

@@ -9,7 +9,6 @@ final class SkyHeadroomGuideTests: XCTestCase {
     private let pointsMove = (Cell(0, 4), Cell(1, 4))
     private let spaceText = "4 more spaces above the stars in column 1."
     private let pointsText = "5 more spaces above the stars in columns 3, 4, 5, 6, 7."
-    private let refillText = "Refill added 8 stars; the board is full."
 
     @MainActor private func make(_ game: FallingSky, quiet: Bool = false) throws -> Harness {
         let suite = "Starfall.HeadroomGuide.\(UUID())"
@@ -39,8 +38,8 @@ final class SkyHeadroomGuideTests: XCTestCase {
     }
 
     private func assertLine(_ actual: SkyDialogueLine, preserves original: SkyDialogueLine,
-                            scoreText: String, suffix: String, file: StaticString = #filePath, line: UInt = #line) {
-        XCTAssertEqual(actual.text, original.text + " " + scoreText + " " + suffix, file: file, line: line)
+                            file: StaticString = #filePath, line: UInt = #line) {
+        XCTAssertEqual(actual.text, original.text, file: file, line: line)
         XCTAssertEqual(actual.id, original.id, file: file, line: line)
         XCTAssertEqual(actual.speaker, original.speaker, file: file, line: line)
         XCTAssertEqual(actual.priority, original.priority, file: file, line: line)
@@ -76,13 +75,15 @@ final class SkyHeadroomGuideTests: XCTestCase {
                 let turn = try exchange(spaceFirst ? spaceMove : pointsMove, in: fixture)
                 XCTAssertEqual(turn.displayAward, spaceFirst ? 5_000 : 7_000)
                 XCTAssertEqual(heights(store.game), spaceFirst ? [2, 6, 3, 3, 2, 2, 2] : [6, 6, 2, 2, 1, 1, 1])
-                let original = SkyDialogueLibrary.line("guide.automatic-recipe", values: ["score": spaceFirst ? "5,000" : "7,000"])
-                assertLine(store.guideLine, preserves: original,
-                           scoreText: spaceFirst
+                let original = SkyDialogueLibrary.line("guide.live-automatic-recipe", values: ["score": spaceFirst ? "5,000" : "7,000"])
+                assertLine(store.guideLine, preserves: original)
+                let recap = try XCTUnwrap(store.lastClear)
+                XCTAssertEqual(recap.score.guideText, spaceFirst
                             ? "4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points."
-                            : "5 stars · 5 light. 5,000 base + 2,000 size = 7,000 points.",
-                           suffix: spaceFirst ? spaceText : pointsText)
-                XCTAssertEqual(store.dialogue.line, store.guideLine, "Committed room is visible before presentation completion")
+                            : "5 stars · 5 light. 5,000 base + 2,000 size = 7,000 points.")
+                XCTAssertEqual(SkyLastClearCopy.room(recap), (spaceFirst ? spaceText : pointsText)
+                    + " \(store.game.occupiedCount) stars on the board after this clear.")
+                XCTAssertEqual(store.dialogue.line, store.guideLine, "One committed reaction is visible before presentation completion")
                 XCTAssertEqual(fixture.feedback.announcements, [store.guideLine.spokenText])
                 XCTAssertEqual(store.forecast, forecast)
                 XCTAssertEqual(store.game.incoming, forecast)
@@ -122,7 +123,7 @@ final class SkyHeadroomGuideTests: XCTestCase {
         }
     }
 
-    @MainActor func testKiteRecoveryAppendsNewRoomBeforeTheExistingFullColumnRecoveryExactlyOnce() throws {
+    @MainActor func testKiteRecoveryKeepsExactOptionalRoomAndCurrentPressureWithoutRepeatingTheLiveReaction() throws {
         for quiet in [false, true] {
             var game = FallingSky.freshChallenge(.kiteHarbor)
             XCTAssertNotNil(game.nudge(from: pointsMove.0, to: pointsMove.1))
@@ -135,10 +136,11 @@ final class SkyHeadroomGuideTests: XCTestCase {
             XCTAssertEqual(fixture.store.game.displayScore, 12_000)
             XCTAssertEqual(heights(fixture.store.game), [3, 7, 2, 3, 1, 2, 1])
             XCTAssertEqual(fixture.store.pressureCue?.text, "Column 2 is full.")
-            let original = SkyDialogueLibrary.line("guide.automatic-recipe", values: ["score": "5,000"])
-            assertLine(fixture.store.guideLine, preserves: original,
-                       scoreText: "4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points.",
-                       suffix: spaceText + " Column 1 has room again.")
+            let original = SkyDialogueLibrary.line("guide.live-automatic-recipe", values: ["score": "5,000"])
+            assertLine(fixture.store.guideLine, preserves: original)
+            let recap = try XCTUnwrap(fixture.store.lastClear)
+            XCTAssertEqual(recap.score.guideText, "4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points.")
+            XCTAssertEqual(SkyLastClearCopy.room(recap), spaceText + " 19 stars on the board after this clear.")
             let line = fixture.store.guideLine
             XCTAssertEqual(fixture.feedback.announcements, [line.spokenText])
             fixture.presenter.finish(); fixture.presenter.finish()
@@ -191,10 +193,12 @@ final class SkyHeadroomGuideTests: XCTestCase {
             XCTAssertEqual(heights(fixture.store.game), Array(repeating: 7, count: 7))
             XCTAssertTrue(fixture.store.forecast.isEmpty)
             XCTAssertNil(fixture.clock.deadline)
-            let original = SkyDialogueLibrary.line("guide.cascade", values: ["depth": "2", "score": "15,000"])
-            assertLine(fixture.store.guideLine, preserves: original,
-                       scoreText: "8 stars · 8 light. 8,000 base + 2,000 size + 5,000 chain = 15,000 points. Diamond marks: 2 survivors fell into later patterns.",
-                       suffix: refillText)
+            let original = SkyDialogueLibrary.line("guide.live-cascade", values: ["depth": "2", "score": "15,000"])
+            assertLine(fixture.store.guideLine, preserves: original)
+            let recap = try XCTUnwrap(fixture.store.lastClear)
+            XCTAssertEqual(recap.score.guideText, "8 stars · 8 light. 8,000 base + 2,000 size + 5,000 chain = 15,000 points.")
+            XCTAssertEqual(recap.survivorCount, 2)
+            XCTAssertEqual(SkyLastClearCopy.room(recap), "Refill added 8 stars. 49 stars on the board after this clear.")
             XCTAssertFalse(fixture.store.guideLine.text.contains("more spaces"))
             XCTAssertFalse(fixture.store.guideLine.text.contains("room again"))
             var expected = opening

@@ -1,6 +1,7 @@
 import XCTest
+import UIKit
 
-/// Committed room/refill facts share the existing guide. All boards, showers
+/// Concise live reactions retain exact room/refill facts in Last clear. All boards, showers
 /// and rewards below come from ordinary current-definition native input.
 final class HeadroomFeedbackInteractionTests: XCTestCase {
     private struct RoundState: Equatable {
@@ -9,10 +10,10 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         let cells: [String]
     }
 
-    private let highGuide = "Pip. Recipe popped! +5,000 starlight. That made room. 4 more spaces above the stars in column 1."
-    private let lowGuide = "Pip. Recipe popped! +7,000 starlight. That made room. 5 more spaces above the stars in columns 3, 4, 5, 6, 7."
-    private let recoveryGuide = "Pip. Recipe popped! +5,000 starlight. That made room. 4 more spaces above the stars in column 1. Column 1 has room again."
-    private let refillGuide = "Spark. A 2-clear chain! +15,000 starlight. Falling stars kept it going. Refill added 8 stars; the board is full."
+    private let highGuide = "Pip. Pattern clear · +5,000 points"
+    private let lowGuide = "Pip. Pattern clear · +7,000 points"
+    private let recoveryGuide = "Pip. Pattern clear · +5,000 points"
+    private let refillGuide = "Spark. 2-clear chain · +15,000 points"
 
     @MainActor private func tap(_ id: String, in app: XCUIApplication) {
         let control = app.buttons[id]
@@ -66,15 +67,26 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
     }
 
     @MainActor private func pauseNewSky(in app: XCUIApplication) {
-        tap("experiment.settings", in: app)
+        // Freeze the live clock as soon as the fixed HUD menu is admitted.
+        // Generic scroll discovery can consume this opening's six-second sky.
+        let menu = app.buttons["experiment.settings"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
+            format: "enabled == true AND hittable == true"), object: menu).wait(timeout: 5))
+        XCTAssertTrue(app.frame.contains(menu.frame))
+        menu.tap()
         let pause = app.buttons["experiment.pause"]
         app.revealSkyControls([pause])
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
             format: "label == %@ AND enabled == true AND hittable == true", "Pause sky"),
             object: pause).wait(timeout: 5))
         pause.tap()
+        // Pause dismisses the production menu; inspect its retained choice
+        // through a new menu visit before returning to the paused board.
+        tap("experiment.settings", in: app)
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Start sky"),
-                                                object: app.buttons["experiment.pause"]).wait(timeout: 5))
+                                                object: app.buttons["experiment.pause"]).wait(timeout: 5),
+            "Expected untouched opening: board=\(app.otherElements["experiment.board"].value as? String ?? "unavailable"), pause=\(app.buttons["experiment.pause"].label)")
+        tap("experiment.done", in: app)
         let next = app.buttons["experiment.next"]
         app.revealSkyControls([next])
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
@@ -218,6 +230,23 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         return initialWorld
     }
 
+    @MainActor private func reviewRoom(_ expected: String, capture name: String,
+                                      in app: XCUIApplication) throws {
+        let retained = try round(in: app)
+        tap("experiment.settings", in: app); tap("sky.lastClear.menu.open", in: app)
+        let title = app.staticTexts.matching(NSPredicate(
+            format: "identifier == %@ AND label == %@", "sky.menu.title", "Last clear")).firstMatch
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
+            format: "exists == true AND hittable == true"), object: title).wait(timeout: 5))
+        let room = app.staticTexts["sky.lastClear.room"]
+        app.revealSkyMenuElement(room); app.revealSkyControls([room])
+        XCTAssertEqual(room.label, expected)
+        XCTAssertTrue(app.frame.contains(room.frame) && room.isHittable)
+        capture(name, in: app)
+        tap("experiment.done", in: app)
+        XCTAssertEqual(try round(in: app), retained, "Reading room/refills cannot change the committed round")
+    }
+
     @MainActor private func replayKite(in app: XCUIApplication, fromEnding: Bool = false) {
         if !fromEnding { tap("experiment.settings", in: app) }
         tap("experiment.replay", in: app)
@@ -230,19 +259,23 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
     @MainActor func testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay() throws {
         continueAfterFailure = false
         executionTimeAllowance = 300
-        let (settings, reduce) = NativeSystemMotionSettings.open()
-        let original = reduce.value as? String == "1"
-        NativeSystemMotionSettings.set(false, on: reduce); settings.terminate()
-        addTeardownBlock { @MainActor in
+        if UIAccessibility.isReduceMotionEnabled {
             let (settings, reduce) = NativeSystemMotionSettings.open()
-            NativeSystemMotionSettings.set(original, on: reduce); settings.terminate()
+            NativeSystemMotionSettings.set(false, on: reduce); settings.terminate()
+            addTeardownBlock { @MainActor in
+                let (settings, reduce) = NativeSystemMotionSettings.open()
+                NativeSystemMotionSettings.set(true, on: reduce); settings.terminate()
+            }
         }
+        XCTAssertFalse(UIAccessibility.isReduceMotionEnabled, "This journey requires actual normal system motion")
         let app = XCUIApplication(); defer { app.terminate() }
         let initialWorld = try launchKite(largest: false, in: app)
         let opening = try round(in: app), announced = forecast(in: app)
         exchange(15, 14, in: app); settled(5_000, in: app)
         XCTAssertEqual(forecast(in: app), announced)
         try guide(highGuide, capture: "headroom-phone-high-column-four-spaces", in: app)
+        try reviewRoom("4 more spaces above the stars in column 1. 20 stars on the board after this clear.",
+            capture: "headroom-phone-optional-high-column", in: app)
         let high = try round(in: app)
         XCTAssertEqual(try world(in: app), initialWorld)
         settled(5_000, in: app); XCTAssertEqual(try round(in: app), high)
@@ -258,6 +291,8 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         exchange(4, 11, in: app); settled(7_000, in: app)
         XCTAssertEqual(forecast(in: app), announced)
         try guide(lowGuide, capture: "headroom-phone-low-five-spaces", in: app)
+        try reviewRoom("5 more spaces above the stars in columns 3, 4, 5, 6, 7. 19 stars on the board after this clear.",
+            capture: "headroom-phone-optional-low-columns", in: app)
         tap("experiment.next", in: app); settled(7_000, showers: 1, in: app)
         noStaleRoomClaim(in: app)
         let pressure = app.staticTexts["sky.pressure"]
@@ -266,6 +301,9 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         exchange(15, 14, in: app); settled(12_000, showers: 1, in: app)
         XCTAssertEqual(forecast(in: app), nextAnnounced)
         try guide(recoveryGuide, capture: "headroom-phone-real-full-column-recovery", in: app)
+        XCTAssertEqual(pressure.label, "Column 2 is full.")
+        try reviewRoom("4 more spaces above the stars in column 1. 19 stars on the board after this clear.",
+            capture: "headroom-phone-optional-recovered-column", in: app)
         // The existing points-first route has four non-clearing setup moves;
         // none may retain the previous clear's room claim.
         for (from, to) in [(36, 29), (29, 22), (4, 3), (3, 2)] {
@@ -317,6 +355,8 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         exchange(4, 11, in: app); settled(7_000, in: app)
         XCTAssertEqual(forecast(in: app), announced)
         try guide(lowGuide, capture: "headroom-tablet-low-clear-full-guide", in: app)
+        try reviewRoom("5 more spaces above the stars in columns 3, 4, 5, 6, 7. 19 stars on the board after this clear.",
+            capture: "headroom-tablet-optional-low-columns", in: app)
         let retained = try round(in: app)
         XCTAssertEqual(try world(in: app), initialWorld)
         settled(7_000, in: app); XCTAssertEqual(try round(in: app), retained)
@@ -327,6 +367,8 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         XCTAssertEqual(app.staticTexts["lantern.mode"].label, "Full Board · clears refill and cascade")
         exchange(8, 9, in: app); settled(15_000, target: 150_000, exchanges: 1, in: app)
         try guide(refillGuide, capture: "headroom-tablet-full-board-refilled-eight-stars", in: app)
+        try reviewRoom("Refill added 8 stars. 49 stars on the board after this clear.",
+            capture: "headroom-tablet-optional-full-board-refills", in: app)
         XCTAssertEqual(app.buttons.matching(NSPredicate(format:
             "identifier BEGINSWITH %@ AND NOT label BEGINSWITH %@", "experiment.cell.", "Empty,")).count, 49)
         XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "sky.pressure").firstMatch.exists)
