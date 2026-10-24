@@ -286,14 +286,19 @@ struct SkyTutorialGuide: View {
     let run: SkyTutorialRun
     let constrained: Bool
     let endingAfter: SkyTutorial?
+    let finalLight: SkyFinalLightReceipt?
+    let active: Bool
+    let quiet: Bool
     let retry: () -> Void
     let next: (SkyTutorial) -> Void
     let exit: () -> Void
     @State private var showDetail: Bool
-    init(run: SkyTutorialRun, constrained: Bool, endingAfter: SkyTutorial? = nil, retry: @escaping () -> Void,
+    init(run: SkyTutorialRun, constrained: Bool, endingAfter: SkyTutorial? = nil,
+         finalLight: SkyFinalLightReceipt? = nil, active: Bool = true, quiet: Bool = false, retry: @escaping () -> Void,
          next: @escaping (SkyTutorial) -> Void, exit: @escaping () -> Void) {
         self.run = run; self.constrained = constrained
         self.endingAfter = endingAfter
+        self.finalLight = finalLight; self.active = active; self.quiet = quiet
         self.retry = retry; self.next = next; self.exit = exit
         // Seed this mounted chapter's local disclosure; later chapters reset below.
         _showDetail = State(initialValue: run.chapter.showsDetailInitially)
@@ -316,6 +321,7 @@ struct SkyTutorialGuide: View {
         .foregroundStyle(StarfallTheme.Colors.textPrimary)
         .onChange(of: run.chapter) { _, chapter in showDetail = chapter.showsDetailInitially }
     }
+    var visibleFinalLight: SkyFinalLightReceipt? { run.complete && !run.needsRetry ? finalLight : nil }
     private var reading: some View {
             VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
                 HStack(alignment: .firstTextBaseline, spacing: StarfallTheme.Spacing.small) {
@@ -330,6 +336,9 @@ struct SkyTutorialGuide: View {
                 Text(run.instruction(showingHint: showDetail))
                     .font(StarfallTheme.Typography.supporting).fixedSize(horizontal: false, vertical: true)
                     .accessibilityIdentifier("tutorial.instruction")
+                if let visibleFinalLight {
+                    SkyFinalLightView(receipt: visibleFinalLight, active: active, quiet: quiet, identifier: "tutorial.finalLight")
+                }
                 if showDetail {
                     Text(run.chapter.detail).font(StarfallTheme.Typography.skyCaption)
                         .accessibilityIdentifier("tutorial.detail")

@@ -254,6 +254,7 @@ enum SkyCopy {
         case a11yPatternsValue = "a11y.patternsValue"
         case techniqueLine = "technique.line"
         case celebrationLine = "celebration.line"
+        case finalLightCaption = "finalLight.caption"
 
         case saveRejectedTitle = "save.rejectedTitle"
         case saveRejectedMessage = "save.rejectedMessage"
