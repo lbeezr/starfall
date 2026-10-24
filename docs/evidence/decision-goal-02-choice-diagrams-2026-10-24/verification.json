@@ -1,0 +1,131 @@
+{
+  "goal": 362,
+  "parent": 360,
+  "base": "2125275db4a7b831cfd622379902a2ecbb7da2c6",
+  "runtime_checkpoint": "ce191eaedb7ae659bd6d5b98a3e5013e60809b8c",
+  "accepted_native_checkpoint": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+  "accepted_native_tree": "3165202ece5899d8ee467c6793a8eb88056c4d31",
+  "runtime": "dev.4f553d4b34",
+  "actual_bundle": {
+    "CFBundleIdentifier": "com.starfall.prototype",
+    "CFBundleShortVersionString": "0.1.0",
+    "CFBundleVersion": "1",
+    "StarfallBuildID": "dev.local"
+  },
+  "recorded_input_count": 658,
+  "recorded_inputs_unchanged_after_native": true,
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 21.819,
+    "command": "swift test --scratch-path /private/tmp/starfall-decision-02-20261024/CoreBuild",
+    "source_scope": "Working tree before production checkpoint; Core/package/test inputs unchanged throughout this slice"
+  },
+  "executions": [
+    {
+      "name": "hosted",
+      "source": "ce191eaedb7ae659bd6d5b98a3e5013e60809b8c",
+      "raw": "/private/tmp/starfall-decision-02-20261024/hosted.xcresult",
+      "summary_sha256": "f1989cfde301d7b012ba3453ef78ff27661314c42054cad2089ad6e07a066cac",
+      "passedTests": 57,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792841214.739,
+      "finishTime": 1792841244.196
+    },
+    {
+      "name": "phone",
+      "source": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+      "raw": "/private/tmp/starfall-decision-02-20261024/phone.xcresult",
+      "summary_sha256": "022a31b83b095bf272ffd86ece4713f802e9b0763777727adac524f42e9652da",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792841389.52,
+      "finishTime": 1792841599.638
+    },
+    {
+      "name": "tablet",
+      "source": "88a20b65e06569a31e7c4341eed5fed4f90a9bd5",
+      "raw": "/private/tmp/starfall-decision-02-20261024/tablet.xcresult",
+      "summary_sha256": "d0d57a6746ee6ab95f87a81a6d6eff84519093bcf7e0bd3507adb1a7774fdd7e",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792841680.483,
+      "finishTime": 1792841921.684
+    }
+  ],
+  "native": {
+    "distinct_methods": 2,
+    "executions": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "phone_method_seconds": 203.16472804546356,
+    "tablet_method_seconds": 232.5768450498581
+  },
+  "membership": {
+    "Starfall": [
+      "SkyFullBoardChoiceDiagramView.swift",
+      "SkyFullBoardChoiceDiagram.swift"
+    ],
+    "StarfallAppTests": [
+      "FullBoardChoiceDiagramTests.swift"
+    ],
+    "StarfallUITests": [
+      "FullBoardChoiceDiagramInteractionTests.swift"
+    ]
+  },
+  "catalogue": {
+    "typed_keys": 552,
+    "scripts": 121,
+    "script_capacity": 128
+  },
+  "planner_tests": 3,
+  "exports": 9,
+  "export_bytes": 6513617,
+  "environment": {
+    "macOS": "27.0.1 (26A434)",
+    "Xcode": "27.1 (27A9275)",
+    "simulatorOS": "iOS27.0",
+    "phone": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324 / iPhone17e",
+    "tablet": "255E141F-D4D6-45DA-89FF-51436BF1BBA7 / iPadPro11 M5",
+    "final_owned_state": "Shutdown"
+  },
+  "builds": {
+    "debug": "XcodeBuildMCP build_sim(buildForTesting:true), Starfall/arm64/ONLY_ACTIVE_ARCH=YES/-jobs4; native-only checkpoint rebuild",
+    "release": "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination 'generic/platform=iOS Simulator' -derivedDataPath /private/tmp/starfall-decision-02-20261024/Release -jobs 4 build"
+  },
+  "motion": {
+    "video": "/private/tmp/starfall-decision-02-20261024/phone.mp4",
+    "requested_samples": 47,
+    "sample_sets": [
+      {
+        "interval": [
+          100,
+          260,
+          5
+        ],
+        "timestamps": "/private/tmp/starfall-decision-02-20261024/normal-review/frames.json"
+      },
+      {
+        "interval": [
+          250,
+          276,
+          2
+        ],
+        "timestamps": "/private/tmp/starfall-decision-02-20261024/normal-next-clear/frames.json"
+      }
+    ],
+    "scope": "Optional reveal, passive page pan, distinct before/after diagrams, cancellation/Continue, actual next clear; sampled frames are not a full short trajectory."
+  },
+  "limits": [
+    "Selected development acceptance, not a full current Apple/terminal matrix.",
+    "Ribbon admission uses existing-install legacy access, not newly earning prior campaign repairs.",
+    "Native identity/persistence is complemented by Core/hosted exact pre-clear ID/save/refill equality; stills alone cannot establish these.",
+    "No actual VoiceOver, physical/minimum-iOS17, human recognition/enjoyment, sustained performance or complete short-body trajectory evidence."
+  ],
+  "local_link_targets": 1006
+}

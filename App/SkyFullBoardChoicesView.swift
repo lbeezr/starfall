@@ -117,10 +117,22 @@ struct SkyFullBoardChoicesView: View {
             .buttonStyle(StarfallButtonStyle(role: .compact))
             .accessibilityIdentifier("fullBoard.choices.reveal.\(index)")
             if revealed.contains(index) {
+                let diagram = SkyFullBoardChoiceDiagram(game: game, choice: presentation.choice)
+                Text(SkyCopy.text(.choiceDiagramLegend))
+                    .font(StarfallTheme.Typography.skyCaption)
+                    .fixedSize(horizontal: false, vertical: true)
                 ForEach(Array(presentation.instructions.enumerated()), id: \.offset) { step, instruction in
-                    Text(instruction)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .accessibilityIdentifier("fullBoard.choices.step.\(index).\(step)")
+                    VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
+                        Text(instruction)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .accessibilityIdentifier("fullBoard.choices.step.\(index).\(step)")
+                        if let frame = diagram?.frames[step] {
+                            SkyFullBoardChoiceDiagramView(frame: frame, identifier: "\(index).\(step)")
+                        }
+                    }
+                }
+                if let frame = diagram?.frames.last {
+                    SkyFullBoardChoiceDiagramView(frame: frame, identifier: "\(index).\(presentation.instructions.count)")
                 }
                 Text(SkyCopy.text(.practiceCoordinates))
                     .font(StarfallTheme.Typography.skyCaption)

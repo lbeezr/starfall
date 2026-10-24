@@ -1,5 +1,7 @@
 # iOS application
 
+`SkyFullBoardChoiceDiagram` derives at most three exchange-only frames from one immutable Full Board snapshot and its existing Core choice. `SkyFullBoardChoiceDiagramView` passively fits the actual cached materials, endpoint rings and separate post-exchange recipe paths; the revealed coordinate prose remains equivalent. It cannot play a move or inspect hidden supply. [Decision goal2 evidence](../docs/evidence/decision-goal-02-choice-diagrams-2026-10-24/README.md).
+
 `SkyDialogueLibrary.ingredientInspection` gives automatic-Story taps facts from the actual committed star: family/material, small/grown and light units, plus the saved line threshold. It reuses the Store’s guide/contact owner; manual taps/traces, clocks and saves keep their existing paths. [Decision goal1 evidence](../docs/evidence/decision-goal-01-ingredient-inspection-2026-10-24/README.md).
 
 Home distinguishes automatic Story patterns from Open Sky drawing through the existing mode buttons, retaining their literal accessible action names. `SkyHelpContext.restorationSection` exists only for the actual selected restoration; Open Sky never borrows a fresh Lantern objective. Entry, retained Help and Replay continue to use their existing rule snapshots. [Identity goal10 evidence](../docs/evidence/identity-goal-10-coherent-return-2026-10-24/README.md).
