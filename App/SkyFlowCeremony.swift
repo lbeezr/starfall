@@ -30,6 +30,7 @@ enum SkyFlowAction: Equatable {
     let welcome: SkyWelcomeSnapshot
     var mastery: SkyMasterySnapshot? = nil
     var finalLight: SkyFinalLightReceipt? = nil
+    var scoreExplanation: SkyScoreExplanation? = nil
     let active: Bool
     let quiet: Bool
     let modal: Bool
@@ -290,6 +291,9 @@ enum SkyFlowAction: Equatable {
                     .accessibilityIdentifier(terminal ? "experiment.score" : "sky.subtitle")
                 if let mastery, screen == .entry || screen == .won {
                     SkyMasteryView(snapshot: mastery)
+                }
+                if terminal, let scoreExplanation {
+                    SkyScoreExplanationView(explanation: scoreExplanation)
                 }
                 if let visibleFinalLight {
                     SkyFinalLightView(receipt: visibleFinalLight, active: active, quiet: quiet)

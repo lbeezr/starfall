@@ -1,0 +1,177 @@
+{
+  "status": "Accepted bounded development slice; actual human/physical/minimumOS/VoiceOver remain separate",
+  "runtimeCheckpoint": "409cf44783db8809864db586605badd40144aec9",
+  "hostedCheckpoint": "6099df445d5f086dd2cd86c48c1056f1f2cb4317",
+  "nativeCheckpoint": "8be7672e45821a74f45faa9aac802145c4b59a28",
+  "runtimeFingerprint": "dev.b3d8e2d36a",
+  "actualBundle": {
+    "CFBundleIdentifier": "com.starfall.prototype",
+    "CFBundleShortVersionString": "0.1.0",
+    "CFBundleVersion": "1",
+    "MinimumOSVersion": "17.0",
+    "StarfallBuildID": "dev.local"
+  },
+  "environment": {
+    "xcode": "Xcode 27.1\nBuild version 27A9275",
+    "macOS": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434",
+    "simulatorSDK": "27.1"
+  },
+  "sourceInputs": {
+    "count": 716,
+    "changedAfterNativeCheckpoint": [],
+    "dirtyAtNativeCheckpoint": [
+      " M App/README.md",
+      " M AppTests/README.md",
+      " M UITests/README.md"
+    ],
+    "compiledDirtyPaths": []
+  },
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 21.358,
+    "exactUnchangedCorePackageTestInputs": 68
+  },
+  "checks": {
+    "hosted": {
+      "totalTestCount": 157,
+      "passedTests": 156,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792855004.422,
+      "finishTime": 1792855096.843,
+      "resultIntervalSeconds": 92.421
+    },
+    "hosted-test": {
+      "totalTestCount": 157,
+      "passedTests": 157,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792855160.668,
+      "finishTime": 1792855216.816,
+      "resultIntervalSeconds": 56.148
+    },
+    "phone": {
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792855256.782,
+      "finishTime": 1792855384.421,
+      "resultIntervalSeconds": 127.639,
+      "methodSeconds": 57.657
+    },
+    "phone-native": {
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792855433.326,
+      "finishTime": 1792855622.471,
+      "resultIntervalSeconds": 189.145,
+      "methodSeconds": 168.284
+    },
+    "tablet": {
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792855653.485,
+      "finishTime": 1792855851.294,
+      "resultIntervalSeconds": 197.809,
+      "methodSeconds": 176.857
+    }
+  },
+  "commands": {
+    "build": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-decision-06-20261024/Debug -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -resultBundlePath /private/tmp/starfall-decision-06-20261024/build.xcresult build-for-testing",
+    "build-test": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-decision-06-20261024/Debug -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -resultBundlePath /private/tmp/starfall-decision-06-20261024/build-test.xcresult build-for-testing",
+    "build-native": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-decision-06-20261024/Debug -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -resultBundlePath /private/tmp/starfall-decision-06-20261024/build-native.xcresult build-for-testing",
+    "hosted": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-06-20261024/Debug -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyScoreExplanationTests\" \"-only-testing:StarfallAppTests/SkyScoreGuideTests\" \"-only-testing:StarfallAppTests/SkyScorePresentationTests\" \"-only-testing:StarfallAppTests/SkyHeadroomGuideTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/SkyDialogueCatalogBoundsTests\" \"-only-testing:StarfallAppTests/FinalLightSessionTests\" \"-only-testing:StarfallAppTests/FinalLightPresentationTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/FallingSkyStoreTests\" -resultBundlePath /private/tmp/starfall-decision-06-20261024/hosted.xcresult test-without-building",
+    "hosted-test": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-06-20261024/Debug -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyScoreExplanationTests\" \"-only-testing:StarfallAppTests/SkyScoreGuideTests\" \"-only-testing:StarfallAppTests/SkyScorePresentationTests\" \"-only-testing:StarfallAppTests/SkyHeadroomGuideTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/SkyDialogueCatalogBoundsTests\" \"-only-testing:StarfallAppTests/FinalLightSessionTests\" \"-only-testing:StarfallAppTests/FinalLightPresentationTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/FallingSkyStoreTests\" -resultBundlePath /private/tmp/starfall-decision-06-20261024/hosted-test.xcresult test-without-building",
+    "phone": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-06-20261024/Debug -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ScoreExplanationInteractionTests/testNormalSilverPhaseScoresSeparateActionsAndExactReplay\" -resultBundlePath /private/tmp/starfall-decision-06-20261024/phone.xcresult test-without-building",
+    "phone-native": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-06-20261024/Debug -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ScoreExplanationInteractionTests/testNormalSilverPhaseScoresSeparateActionsAndExactReplay\" -resultBundlePath /private/tmp/starfall-decision-06-20261024/phone-native.xcresult test-without-building",
+    "tablet": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-06-20261024/Debug -destination \"platform=iOS Simulator,id=255E141F-D4D6-45DA-89FF-51436BF1BBA7\" -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ScoreExplanationInteractionTests/testLargestCalmGrownScoreAndUnscaledOpenSkyReadCompletely\" -resultBundlePath /private/tmp/starfall-decision-06-20261024/tablet.xcresult test-without-building",
+    "release": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-decision-06-20261024/Release -jobs 4 -resultBundlePath /private/tmp/starfall-decision-06-20261024/release.xcresult build"
+  },
+  "membership": [
+    {
+      "source": "SkyScoreExplanation.swift",
+      "targets": [
+        "Starfall"
+      ]
+    },
+    {
+      "source": "SkyScoreExplanationCopy.swift",
+      "targets": [
+        "Starfall"
+      ]
+    },
+    {
+      "source": "SkyScoreExplanationView.swift",
+      "targets": [
+        "Starfall"
+      ]
+    },
+    {
+      "source": "SkyScoreExplanationTests.swift",
+      "targets": [
+        "StarfallAppTests"
+      ]
+    },
+    {
+      "source": "SkyScoreGuideTests.swift",
+      "targets": [
+        "StarfallAppTests"
+      ]
+    },
+    {
+      "source": "SkyScorePresentationTests.swift",
+      "targets": [
+        "StarfallAppTests"
+      ]
+    },
+    {
+      "source": "ScoreExplanationInteractionTests.swift",
+      "targets": [
+        "StarfallUITests"
+      ]
+    }
+  ],
+  "catalogue": {
+    "keys": 581,
+    "scripts": 121,
+    "maximumScripts": 128,
+    "newTypedKeys": 9
+  },
+  "planner": {
+    "tests": 3,
+    "passed": true
+  },
+  "diagnostics": {
+    "records": [
+      {
+        "owned_xcodebuild": 83502,
+        "verified_diagnostic_child": 85101,
+        "signal": "SIGTERM",
+        "reason": "157 hosted assertions finished; preserve156pass/1failed; finalize same failedbundle",
+        "scope": "only exact verified descendant; no unrelated process/device stopped"
+      },
+      {
+        "owned_xcodebuild": 88373,
+        "verified_diagnostic_child": 89882,
+        "signal": "SIGTERM",
+        "reason": "Original phone assertion finished failed57.657s; finalize same result",
+        "scope": "only exact verified descendant"
+      }
+    ]
+  },
+  "captureCount": 7,
+  "rawRoot": "/private/tmp/starfall-decision-06-20261024",
+  "documentation": {
+    "localTargets": 1037,
+    "missing": []
+  },
+  "hygiene": "passed staged explicit paths",
+  "diffCheck": "passed"
+}

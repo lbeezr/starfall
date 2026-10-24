@@ -39,8 +39,8 @@ final class SkyHeadroomGuideTests: XCTestCase {
     }
 
     private func assertLine(_ actual: SkyDialogueLine, preserves original: SkyDialogueLine,
-                            suffix: String, file: StaticString = #filePath, line: UInt = #line) {
-        XCTAssertEqual(actual.text, original.text + " " + suffix, file: file, line: line)
+                            scoreText: String, suffix: String, file: StaticString = #filePath, line: UInt = #line) {
+        XCTAssertEqual(actual.text, original.text + " " + scoreText + " " + suffix, file: file, line: line)
         XCTAssertEqual(actual.id, original.id, file: file, line: line)
         XCTAssertEqual(actual.speaker, original.speaker, file: file, line: line)
         XCTAssertEqual(actual.priority, original.priority, file: file, line: line)
@@ -77,7 +77,11 @@ final class SkyHeadroomGuideTests: XCTestCase {
                 XCTAssertEqual(turn.displayAward, spaceFirst ? 5_000 : 7_000)
                 XCTAssertEqual(heights(store.game), spaceFirst ? [2, 6, 3, 3, 2, 2, 2] : [6, 6, 2, 2, 1, 1, 1])
                 let original = SkyDialogueLibrary.line("guide.automatic-recipe", values: ["score": spaceFirst ? "5,000" : "7,000"])
-                assertLine(store.guideLine, preserves: original, suffix: spaceFirst ? spaceText : pointsText)
+                assertLine(store.guideLine, preserves: original,
+                           scoreText: spaceFirst
+                            ? "4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points."
+                            : "5 stars · 5 light. 5,000 base + 2,000 size = 7,000 points.",
+                           suffix: spaceFirst ? spaceText : pointsText)
                 XCTAssertEqual(store.dialogue.line, store.guideLine, "Committed room is visible before presentation completion")
                 XCTAssertEqual(fixture.feedback.announcements, [store.guideLine.spokenText])
                 XCTAssertEqual(store.forecast, forecast)
@@ -133,6 +137,7 @@ final class SkyHeadroomGuideTests: XCTestCase {
             XCTAssertEqual(fixture.store.pressureCue?.text, "Column 2 is full.")
             let original = SkyDialogueLibrary.line("guide.automatic-recipe", values: ["score": "5,000"])
             assertLine(fixture.store.guideLine, preserves: original,
+                       scoreText: "4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points.",
                        suffix: spaceText + " Column 1 has room again.")
             let line = fixture.store.guideLine
             XCTAssertEqual(fixture.feedback.announcements, [line.spokenText])
@@ -187,7 +192,9 @@ final class SkyHeadroomGuideTests: XCTestCase {
             XCTAssertTrue(fixture.store.forecast.isEmpty)
             XCTAssertNil(fixture.clock.deadline)
             let original = SkyDialogueLibrary.line("guide.cascade", values: ["depth": "2", "score": "15,000"])
-            assertLine(fixture.store.guideLine, preserves: original, suffix: refillText)
+            assertLine(fixture.store.guideLine, preserves: original,
+                       scoreText: "8 stars · 8 light. 8,000 base + 2,000 size + 5,000 chain = 15,000 points.",
+                       suffix: refillText)
             XCTAssertFalse(fixture.store.guideLine.text.contains("more spaces"))
             XCTAssertFalse(fixture.store.guideLine.text.contains("room again"))
             var expected = opening

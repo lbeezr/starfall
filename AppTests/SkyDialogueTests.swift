@@ -832,7 +832,7 @@ extension SkyDialogueTests {
         XCTAssertEqual(result.speaker, original.speaker)
         XCTAssertEqual(result.priority, original.priority)
         XCTAssertEqual(result.seconds, original.seconds)
-        XCTAssertEqual(result.text, original.text + " 4 more spaces above the stars in column 2. Column 2 has room again.")
+        XCTAssertEqual(result.text, original.text + " 4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points. 4 more spaces above the stars in column 2. Column 2 has room again.")
         XCTAssertTrue(result.isValid)
 
         _ = try XCTUnwrap(game.letStarsFall())
@@ -857,7 +857,7 @@ extension SkyDialogueTests {
         let original = SkyDialogueLibrary.line(turn.resolutionPhases.count > 1 ? "guide.cascade" : "guide.automatic-recipe",
             values: turn.resolutionPhases.count > 1
                 ? ["depth": String(turn.resolutionPhases.count), "score": "50,000"] : ["score": "50,000"])
-        XCTAssertEqual(result.text, original.text + " 16 more spaces above the stars in columns 1, 2, 3, 4, 5. Columns 1, 2, 4 have room again.")
+        XCTAssertEqual(result.text, original.text + " 16 stars · 16 light. 16,000 base + 4,000 size + 30,000 chain = 50,000 points. 16 more spaces above the stars in columns 1, 2, 3, 4, 5. Columns 1, 2, 4 have room again.")
         XCTAssertEqual(result.id, original.id)
         XCTAssertEqual(result.speaker, original.speaker)
         XCTAssertEqual(result.priority, original.priority)
@@ -1005,7 +1005,7 @@ extension SkyDialogueTests {
         let clear = SkyDialogueLibrary.line("guide.clear", values: ["score": String(value)])
         XCTAssertEqual(value, 3, "This retained manual fixture removes three actual bodies")
         let clearWithRoom = SkyDialogueLine(id: clear.id, speaker: clear.speaker,
-            text: clear.text + " 3 more spaces above the stars in columns 1, 2, 3.",
+            text: clear.text + " 3 stars · 3 light = 3 points. 3 more spaces above the stars in columns 1, 2, 3.",
             priority: clear.priority, seconds: clear.seconds)
         XCTAssertEqual(store.pausedGuideLine, SkyDialogueLibrary.contextual(clearWithRoom, game: store.game, cadence: store.nextShowerCadence))
         let revision = store.dialogue.revision

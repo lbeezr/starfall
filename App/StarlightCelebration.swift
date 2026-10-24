@@ -10,6 +10,8 @@ struct StarlightCelebration: Equatable, Identifiable {
     /// the committed story scale and bonus without changing the effect budget.
     let collected: Int
     let displayAward: Int
+    let scoreExplanation: SkyScoreExplanation?
+    let scoreComponentText: String?
     let total: Int
     var awardText: String { "+\(displayAward.formatted())" }
     let cells: [Cell]
@@ -128,6 +130,8 @@ struct StarlightCelebration: Equatable, Identifiable {
         self.started = started
         collected = phase.award.baseLight
         displayAward = cumulativeAward
+        scoreExplanation = SkyScoreExplanation(phases: precedingPhases + [phase], expectedTotal: cumulativeAward)
+        scoreComponentText = scoreExplanation?.compactText
         self.total = total
         cells = phase.cleared.sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }
         contributors = cells.compactMap { cell in
@@ -155,6 +159,8 @@ struct StarlightCelebration: Equatable, Identifiable {
         guard !cells.isEmpty else { return nil }
         self.id = id; self.started = started; self.collected = turn.collected
         self.displayAward = turn.displayAward
+        scoreExplanation = SkyScoreExplanation(turn: turn, from: old)
+        scoreComponentText = scoreExplanation?.compactText
         self.total = total; self.cells = cells
         contributors = cells.compactMap { cell in
             old.gem(at: cell).map { Contributor(cell: cell, identity: $0.identity, reward: old.reward(of: [cell])) }
@@ -447,9 +453,8 @@ struct StarlightCelebrationOverlay: View {
                         }
                     }
                 }
-                CrystalCelebrationLabel(event: event, tint: accent, width: region.width - 12,
-                                        height: region.height - 8, showsTitle: !textSize.isAccessibilitySize,
-                                        age: age, quiet: quiet)
+                SkyScoreReceiptLabel(event: event, tint: accent, width: region.width - 12,
+                                     height: region.height - 8, age: age, quiet: quiet)
                 .multilineTextAlignment(.center)
                 .shadow(color: StarfallTheme.Colors.skyTop, radius: 3)
                 .shadow(color: accent.opacity(0.8), radius: quiet ? 0 : 4)

@@ -145,6 +145,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private let lightReceipts = SkyLightReceiptSession()
     var celebration: StarlightCelebration? { lightReceipts.current }
     var finalLight: SkyFinalLightReceipt? { lightReceipts.lastEarned }
+    var finalScoreExplanation: SkyScoreExplanation? { lightReceipts.lastScore }
     private(set) var techniqueResult = ""
     private var techniqueRelay = SkyTechniqueRelay()
     #if DEBUG
