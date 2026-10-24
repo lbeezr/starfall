@@ -1,5 +1,7 @@
 # Design documents
 
+[Player momentum](PLAYER_MOMENTUM_PLAN.md) prioritizes responsive queued moves, a direct first real Lantern clear, actual voluntary-return observations, concise live feedback, campaign pacing, repeat value and a separately scoped commercial proposition. The [first two slices are development verified locally](../evidence/player-momentum-2026-10-24/README.md); human retention remains unmeasured.
+
 [Seven-place decision curriculum](STORY_ENCOUNTER_CURRICULUM.md) connects adopted Kite/Seed encounters and the adopted Silver sequencing slice with the remaining Frostfruit/Sunwheel questions. Its original Kite carrier remains authoring history; current native/save acceptance is recorded separately for each adopted encounter. Human comprehension, comfort and balance remain unmeasured.
 
 [Optional Story mastery contract](STORY_MASTERY_CONTRACT.md) defines current-pattern accomplishments, winning-action credit, versioned enrollment, best single-run records and interruption/rejection behavior. It is proposed semantics. [A real joint win](../evidence/story-mastery-feasibility-2026-10-22/README.md) and [later-chain win after declining the opening](../evidence/story-mastery-recovery-2026-10-23/README.md) are verified. Missed-first-grown recovery, remaining qualification/ledger cases, persistence and native presentation stay unproved.
@@ -28,7 +30,7 @@ Behavior proposals, production contracts and research supporting decisions.
 
 [Gesture edges](GESTURE_EDGES.md) specifies valid long flicks and unchanged tap/drawing boundaries.
 
-[Follow-up input](FOLLOW_UP_INPUT.md) retains one recent tap or swap while its stars finish presentation; [immediate swipes](IMMEDIATE_SWIPES.md) owns movement versus held drawing.
+[Follow-up input](FOLLOW_UP_INPUT.md) defines a bounded FIFO with stable star identities while full physical presentation continues; [immediate swipes](IMMEDIATE_SWIPES.md) owns movement versus held drawing.
 
 [Starlight celebrations](STARLIGHT_CELEBRATIONS.md) investigates more prominent accumulation, dramatic clear/constellation feedback, and the separate design questions behind combos and recipes. User-approved mock and normal-target integration using existing constellation, recipe, relay and Dusk rules.
 

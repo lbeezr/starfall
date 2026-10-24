@@ -1,0 +1,21 @@
+{
+  "base": "0d71f18cf8d41277bc3ae1a5b8c6536cde7cb9ca",
+  "sha256": {
+    "App/ConstellationTraceSurface.swift": "1c3f90355ae1021fd4fcd217862aea2522ed4c1f5ede7f3e711c85004d366435",
+    "App/DialogueScripts/observatory-dialogue.json": "b947a52d8382937042c9ed659e23dcc7ade71ab703891bab6b7266cd76499e1f",
+    "App/FallingSkyPresentation.swift": "a42d5e99ee6d8e069c57d01cbae745f337b64ebc9db8da5642b577255716a17b",
+    "App/FallingSkyStore.swift": "6d0cfa9d755c6e2bdcc6311061d276a6aa0a28abd29646809c482510acddd6f5",
+    "App/FallingSkyView.swift": "f55b2835928f4c95bf621a40e54447bcf88aafd6829316c503984fe66b99fe0c",
+    "App/SkyCopy.swift": "59e77104652709c3a301fc62a00172634e2be1226547e64e4d45d4fcef0d3293",
+    "App/SkyFlowCeremony.swift": "8b172075e4b0c41d0011f180fed6b5b8b5e5cbbe780f5fefff77ba48a922f8be",
+    "App/SkyFlowSnapshots.swift": "d69121125ee39251a52be025012c382d496973b452c3c9c5ac1233ac40d4f5e3",
+    "App/SkyFlowState.swift": "78ff6953da950c567b0f0cadd573ddb54578a1c004a028995c152682abdc961c",
+    "App/SkyTechniqueIntent.swift": "3a6e1db717d5a4b43406c84b6753569c4f4fdb71e8ce880330a7329d5b23ffdf",
+    "AppTests/ResponsiveInputTests.swift": "e183b023fd78fd827d1deb45d1119308d978e8676372119dd4745c9d6ea72577",
+    "AppTests/SkyFlowStateTests.swift": "d635f47d0fd0d975d05c382da7932a078cb6608674d10a70a9b9617e0e2f9a15",
+    "AppTests/SkyTechniqueStoreTests.swift": "da69eb63250c44cce2adc5f1e85f4462aded1400cb21922a53bc71b5da837745",
+    "UITests/FullBoardRibbonInteractionTests.swift": "bc17fceae86b12c8c0b05ccfe6df87f82f856a6cab0ef00ba6d2ca416d0b58a6",
+    "UITests/SkyFlowInteractionTests.swift": "421bc850b1fbcd89960d27b35dde9102f8d604e927438b8900522cfad7074d3b"
+  },
+  "snapshot_id": "90b622e0042b"
+}

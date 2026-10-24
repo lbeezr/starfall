@@ -75,6 +75,9 @@ struct SkyFlowState: Equatable {
     private(set) var entry: SkyEntryRequest?
     private(set) var entryID: UInt64?
     private(set) var handoff: SkyPlayHandoff?
+    /// In-memory context for the real round started by the fresh-player action.
+    /// Returning saves and practice never reconstruct this guidance context.
+    private(set) var firstPlay = false
     private var mapOrigin: SkyFlowScreen?
     private var entryOrigin: SkyFlowScreen?
     private var generation: UInt64 = 0
@@ -85,7 +88,8 @@ struct SkyFlowState: Equatable {
 
     init(practice: SkyTutorial) { screen = .playing }
 
-    mutating func handle(_ action: SkyFlowAction, hasSavedSky: Bool, entryID expectedID: UInt64? = nil) -> SkyFlowEffect? {
+    mutating func handle(_ action: SkyFlowAction, hasSavedSky: Bool, offersFirstPlay: Bool = false,
+                         entryID expectedID: UInt64? = nil) -> SkyFlowEffect? {
         guard handoff == nil || action == .home else { return nil }
         switch action {
         case .onward:
@@ -110,6 +114,12 @@ struct SkyFlowState: Equatable {
         case .start:
             guard screen == .welcome else { return nil }
             return stage(hasSavedSky ? .fresh : .initial)
+        case .firstPlay:
+            guard screen == .welcome, offersFirstPlay, !hasSavedSky else { return nil }
+            firstPlay = true
+            entry = nil; entryID = nil; entryOrigin = nil; mapOrigin = nil
+            beginHandoff(from: .welcome, startsClock: true)
+            return .began(.firstLight)
         case .firstLight: return stageMode(.firstLight, expectedID: expectedID)
         case .fullBoardLantern: return stageMode(.fullBoardLantern, expectedID: expectedID)
         case .ribbonCrossing: return stageMode(.ribbonCrossing, expectedID: expectedID)
@@ -124,6 +134,7 @@ struct SkyFlowState: Equatable {
             return stage(action == .replay ? .replay : .fresh)
         case .begin:
             guard screen == .entry, let request = entry, let entryID, expectedID == entryID else { return nil }
+            firstPlay = false
             entry = nil; self.entryID = nil; entryOrigin = nil; mapOrigin = nil
             beginHandoff(from: .entry, startsClock: true)
             return .began(request)

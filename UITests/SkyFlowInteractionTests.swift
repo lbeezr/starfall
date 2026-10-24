@@ -1,14 +1,71 @@
 import XCTest
 
 final class SkyFlowInteractionTests: XCTestCase {
+    /// Reset-only isolated defaults supply a genuinely empty history; every
+    /// button, first move, earned score and saved return uses production owners.
+    @MainActor private func verifyFreshFirstClear(largest: Bool, quiet: Bool) {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--sky-flow-review", "--first-play-review", "-calmEffects", quiet ? "YES" : "NO"]
+        if largest { app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] }
+        app.launch()
+        defer { app.terminate() }
+        let play = app.buttons["sky.firstPlay"]
+        XCTAssertTrue(play.waitForExistence(timeout: 10), "Reset-only review must supply a truly missing history")
+        app.revealSkyControls([play])
+        capture(app, largest ? "momentum-fresh-home-largest" : "momentum-fresh-home")
+        play.tap()
+        XCTAssertFalse(app.buttons["sky.begin"].exists, "The direct route does not ask for a second Begin")
+        let source = app.buttons["experiment.cell.1.2"], destination = app.buttons["experiment.cell.1.1"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: source).wait(timeout: 10))
+        let hint = app.staticTexts["sky.firstClear.hint"]
+        XCTAssertTrue(hint.exists)
+        XCTAssertTrue(hint.label.contains("complete a square"))
+        XCTAssertTrue(app.frame.contains(hint.frame), "The first action must be visible before scrolling to stars")
+        XCTAssertFalse(app.buttons["sky.showerInspection.open"].exists, "Advanced forecast reading follows the first board change")
+        capture(app, largest ? "momentum-first-square-largest" : "momentum-first-square")
+        app.revealSkyControls([source, destination])
+        source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)).press(forDuration: 0.05,
+            thenDragTo: destination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
+            withVelocity: .fast, thenHoldForDuration: 0)
+        let score = app.staticTexts["experiment.score"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "15,000 of 150,000 starlight collected"), object: score).wait(timeout: 5))
+        XCTAssertFalse(hint.exists)
+        XCTAssertFalse(app.staticTexts["experiment.outcome"].exists, "A first clear is not a completed repair")
+        capture(app, largest ? "momentum-first-earned-clear-largest" : "momentum-first-earned-clear")
+        tap("experiment.settings", app)
+        app.skyMenuControl("sky.home").tap()
+        XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout: 5))
+        XCTAssertFalse(play.exists)
+        app.terminate()
+        app.launchArguments.removeAll { $0 == "--starfalls-reset" }
+        app.launch()
+        XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout: 10))
+        XCTAssertFalse(play.exists, "Cold return uses the real retained-round route")
+        tap("sky.resume", app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "15,000 of 150,000 starlight collected"), object: score).wait(timeout: 5))
+        capture(app, largest ? "momentum-retained-return-largest" : "momentum-retained-return")
+    }
+
+    @MainActor func testFreshPlayerOneTapToRealSquareAndSavedReturn() {
+        requireNormalMotion()
+        verifyFreshFirstClear(largest: false, quiet: false)
+    }
+
+    @MainActor func testLargestCalmFreshPlayerOneTapToRealSquareAndSavedReturn() {
+        verifyFreshFirstClear(largest: true, quiet: true)
+    }
+
     @MainActor private func requireNormalMotion() {
         let (preferences, reduce) = NativeSystemMotionSettings.open()
         let originalMotion = reduce.value as? String == "1"
         NativeSystemMotionSettings.set(false, on: reduce)
         preferences.terminate()
-        addTeardownBlock { @MainActor in
-            let (settings, toggle) = NativeSystemMotionSettings.open()
-            NativeSystemMotionSettings.set(originalMotion, on: toggle); settings.terminate()
+        if originalMotion {
+            addTeardownBlock { @MainActor in
+                let (settings, toggle) = NativeSystemMotionSettings.open()
+                NativeSystemMotionSettings.set(originalMotion, on: toggle); settings.terminate()
+            }
         }
     }
 

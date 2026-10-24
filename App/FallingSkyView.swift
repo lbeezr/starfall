@@ -8,6 +8,7 @@ import StarfallCore
     private var tutorialEndingAfter: SkyTutorial?
     @State private var store: FallingSkyStore
     @State private var interaction = SkyInteractionSession()
+    @State private var contactInputSnapshot: FallingSky?
     @State private var forecastInspection: SkyForecastInspection?
     @State private var showerInspection: SkyShowerInspection?
     private var trace: ConstellationTraceIntent { interaction.trace }
@@ -55,6 +56,9 @@ import StarfallCore
         return store.game.challenge
     }
     private var quietMotion: Bool { reduceMotion || calmEffects || voiceOver }
+    private var firstClearHint: SkyFirstClearHint? {
+        SkyFirstClearHint(game: store.game, firstPlay: flow.firstPlay)
+    }
     private var forecastSource: SkyForecastInspection.Source? {
         guard scenePhase == .active, !settings, !showingCeremony, !store.suspended else { return nil }
         return .init(game: store.game, generation: store.constellationInputGeneration,
@@ -111,7 +115,7 @@ import StarfallCore
         .tint(StarfallTheme.Colors.actionPrimary)
         .onAppear { CrystalCelebrationArtwork.shared.prewarm(); store.terminalSpeech = .ceremony; updateSuspension(); store.settlePresentation(); updateMotion() }
         .onDisappear { invalidateInteraction(); store.setSuspended(true); store.terminalSpeech = .feedback }
-        .onChange(of: store.constellationInputGeneration) { invalidateInteraction() }
+        .onChange(of: store.constellationInputGeneration) { invalidateInteraction(cancelQueue: false) }
         .onChange(of: forecastSource) { forecastInspection = nil; showerInspection = nil }
         .onChange(of: store.game) {
             interaction.reconcile(with: store.game, release: store.endConstellationHold)
@@ -207,6 +211,7 @@ import StarfallCore
                                         onward: endingReady && store.hasSavedSky
                                             ? SkyOnwardSnapshot(game: store.game, journey: store.journey.journey) : nil,
                                         welcome: SkyWelcomeSnapshot(game: store.game, hasSavedSky: store.hasSavedSky, paused: store.isPaused),
+                                        offersFirstPlay: store.offersFirstPlay,
                                         mastery: flow.entry.map {
                                             SkyMasterySnapshot.entry(request: $0, retainedRound: store.game, bestRecords: store.mastery.records)
                                         } ?? SkyMasterySnapshot.current(game: store.game, bestRecords: store.mastery.records, context: .result),
@@ -341,10 +346,19 @@ import StarfallCore
                     stackedHeader(island: island)
                 }
             }
-            if showsMode {
+            if let hint = firstClearHint {
+                Text(hint.text)
+                    .font(StarfallTheme.Typography.body)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+                    .accessibilityLabel(hint.accessibilityText)
+                    .accessibilityIdentifier("sky.firstClear.hint")
+            } else if showsMode {
                 modeSupport(source: inspectionSource)
             }
-            if !store.game.isOver && !store.game.usesFullBoardRefill && !store.forecast.isEmpty {
+            if firstClearHint == nil && !store.game.isOver && !store.game.usesFullBoardRefill && !store.forecast.isEmpty {
                 SkyForecastDestinations(forecast: store.forecast, arriving: store.showerCountdown.arriving,
                                         selectedID: forecastInspection?.entry(in: forecastSource)?.id,
                                         select: { inspectForecast($0, source: renderedForecastSource) })
@@ -448,6 +462,17 @@ import StarfallCore
                     }.buttonStyle(StarfallButtonStyle(role: .compact))
                 }
             }
+        } else if store.queuedInputCount > 0 {
+            Text(SkyCopy.queuedInputCount(store.queuedInputCount))
+                .font(StarfallTheme.Typography.body)
+                .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                .padding(StarfallTheme.Spacing.medium)
+                .starfallPanel()
+                .accessibilityIdentifier("sky.inputQueue")
+        } else if firstClearHint != nil {
+            // The first action belongs beside the score, before the playfield,
+            // so large-text players need not find a footer to learn the swipe.
+            EmptyView()
         } else if !store.game.isOver {
             SkyDialogueOverlay(session: store.dialogue,
                                pausedLine: store.isPaused ? store.pausedGuideLine : nil,
@@ -551,6 +576,10 @@ import StarfallCore
                     if boardVisible && !endingReady {
                         SkyCeilingOverlay(game: store.game, mapping: mapping)
                             .accessibilityHidden(settings || showingCeremony)
+                        if !store.busy, let hint = firstClearHint {
+                            firstClearMarker(hint, mapping: mapping)
+                        }
+                        queuedMoveMarkers(mapping: mapping)
                         if let entry = forecastInspection?.entry(in: forecastSource) {
                             SkyForecastColumnOverlay(entry: entry, mapping: mapping)
                         }
@@ -590,7 +619,7 @@ import StarfallCore
                                               end: releaseConstellation, cancel: cancelConstellation,
                                               contact: { beginBoardContact($0, size: geometry.size) },
                                               feedback: store.explainInputFailure,
-                                              swapStart: { point in mapping.cell(at:point).map { store.game.canArrangeStars && store.game.gem(at:$0) != nil && store.canReceiveInput } ?? false },
+                                              swapStart: { point in mapping.cell(at:point).map { store.game.canArrangeStars && store.canQueueInput(at: $0) } ?? false },
                                               swap: commitDirectSwap,
                                               cancelDrawing: { trace.cancel(); store.scene.clearConstellationTrace() },
                                               drawingEnabled: store.game.supportsManualClears)
@@ -613,11 +642,52 @@ import StarfallCore
 
     private var boardAccessible: Bool { !settings && !showingCeremony }
 
+    private func firstClearMarker(_ hint: SkyFirstClearHint, mapping: LandingGeometry) -> some View {
+        moveMarker(from: hint.source, to: hint.destination, mapping: mapping, number: nil)
+            .allowsHitTesting(false).accessibilityHidden(true)
+    }
+
+    private func queuedMoveMarkers(mapping: LandingGeometry) -> some View {
+        ZStack {
+            ForEach(Array(store.queuedInputs.enumerated()), id: \.offset) { index, action in
+                if let destination = action.destination {
+                    moveMarker(from: action.source, to: destination, mapping: mapping, number: index + 1)
+                }
+            }
+        }
+        .allowsHitTesting(false).accessibilityHidden(true)
+    }
+
+    /// Static, passive directions share the board's native input projection.
+    private func moveMarker(from source: Cell, to destination: Cell, mapping: LandingGeometry, number: Int?) -> some View {
+        let start = mapping.viewPoint(source), end = mapping.viewPoint(destination)
+        let radius = min(mapping.frame(source).width, mapping.frame(source).height) * 0.34
+        let angle = atan2(end.y - start.y, end.x - start.x)
+        return ZStack {
+            Path { path in
+                path.addEllipse(in: CGRect(x: start.x - radius, y: start.y - radius, width: radius * 2, height: radius * 2))
+                path.move(to: start); path.addLine(to: end)
+                path.move(to: CGPoint(x: end.x - 10 * cos(angle - .pi / 6), y: end.y - 10 * sin(angle - .pi / 6)))
+                path.addLine(to: end)
+                path.addLine(to: CGPoint(x: end.x - 10 * cos(angle + .pi / 6), y: end.y - 10 * sin(angle + .pi / 6)))
+            }
+            .stroke(StarfallTheme.Ceremony.gold, style: StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
+            .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+            if let number {
+                Text(String(number)).font(StarfallTheme.Typography.supporting)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                    .padding(4).background(StarfallTheme.Colors.skyTop, in: Circle())
+                    .position(x: start.x, y: start.y - radius)
+            }
+        }
+    }
+
     private var boardSummary: String {
         let summary = SkyCopy.boardSummary(showers: store.game.turns, groups: store.game.legalGroups.count,
                              manualClears: store.game.supportsManualClears, automaticLineLength: store.game.automaticLineLength,
                              fullBoard: store.game.usesFullBoardRefill)
-        return store.busy ? summary + " " + SkyCopy.text(.statusSettling) : summary
+        let state = store.busy ? summary + " " + SkyCopy.text(.statusSettling) : summary
+        return store.queuedInputCount > 0 ? state + " " + SkyCopy.queuedInputCount(store.queuedInputCount) : state
     }
 
     private func cellButton(_ cell: Cell) -> some View {
@@ -745,7 +815,8 @@ import StarfallCore
         }
         let previousFlow = flow
         guard scenePhase == .active,
-              let effect = flow.handle(action, hasSavedSky: store.hasSavedSky, entryID: entryID) else { return }
+              let effect = flow.handle(action, hasSavedSky: store.hasSavedSky,
+                                       offersFirstPlay: store.offersFirstPlay, entryID: entryID) else { return }
         switch effect {
         case .worldMap:
             store.setSuspended(true)
@@ -885,23 +956,28 @@ private extension FallingSkyView {
     func tapBoardCell(_ cell: Cell) {
         showerInspection = nil
         forecastInspection = nil
-        cancelConstellation()
-        store.requestTap(cell)
+        defer { cancelConstellation() }
+        guard let snapshot = contactInputSnapshot ?? store.inputSnapshot(at: cell) else {
+            store.explainSettling(at: cell); return
+        }
+        _ = store.requestInput(.tap(cell), snapshot: snapshot, generation: store.constellationInputGeneration)
     }
     func commitDirectSwap(from: Cell, to: Cell, generation: UInt64) {
         defer { cancelConstellation() }
-        guard store.constellationTracing, generation == store.constellationInputGeneration else { return }
-        let snapshot = store.game
+        guard store.constellationTracing, generation == store.constellationInputGeneration,
+              let snapshot = contactInputSnapshot else { return }
         _ = store.requestInput(.swap(from, to), snapshot: snapshot, generation: generation)
     }
     func cancelConstellation() {
+        contactInputSnapshot = nil
         interaction.cancelContact(release: store.endConstellationHold)
         store.scene.clearConstellationTrace()
     }
-    func invalidateInteraction() {
+    func invalidateInteraction(cancelQueue: Bool = true) {
         showerInspection = nil
         forecastInspection = nil
-        store.cancelBufferedInput()
+        contactInputSnapshot = nil
+        if cancelQueue { store.cancelBufferedInput() }
         interaction.invalidate(release: store.endConstellationHold)
         store.scene.clearConstellationTrace()
     }
@@ -910,9 +986,13 @@ private extension FallingSkyView {
         forecastInspection = nil
         cancelConstellation()
         guard let cell = LandingGeometry(size: size).cell(at: point) else { return false }
+        guard let snapshot = store.inputSnapshot(at: cell) else {
+            store.explainSettling(at: cell); return false
+        }
         guard interaction.acquireHold(at: cell, using: store.beginResponsiveContact) else {
             store.explainSettling(at: cell); return false
         }
+        contactInputSnapshot = snapshot
         store.showInputFeedback(nil)
         store.scene.showContact(cell, drawingEligible: store.game.canStartConstellation(at: cell) && store.canTrace([cell]))
         return true

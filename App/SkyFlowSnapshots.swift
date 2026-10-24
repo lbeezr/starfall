@@ -1,5 +1,33 @@
 import StarfallCore
 
+/// A factual cue for the unchanged production opening, never an input or award.
+/// Only the exact opening, including its committed supply, can display the cue.
+struct SkyFirstClearHint: Equatable {
+    let from = Cell(1, 2)
+    let to = Cell(1, 1)
+    var source: Cell { from }
+    var destination: Cell { to }
+    var action: SkyPlayerInput { .swap(from, to) }
+
+    init?(game: FallingSky, firstPlay: Bool) {
+        guard firstPlay else { return nil }
+        var opening = FallingSky.freshChallenge(.firstLight)
+        if let enrollment = game.masteryEnrollment {
+            guard opening.enrollMastery(runID: enrollment.runID) else { return nil }
+        }
+        guard game == opening else { return nil }
+    }
+
+    var text: String {
+        SkyCopy.text(.firstClearHint)
+    }
+
+    var accessibilityText: String {
+        let position = SkyCopy.boardPosition(from)
+        return SkyCopy.text(.firstClearHintAccessibility, values: ["row": String(position.row), "column": String(position.column)])
+    }
+}
+
 extension SkyEntryRequest {
     /// Explains the pending choice without reading or replacing the retained round.
     func introduction(challenge: StarfallChallenge?, replayingRevision: Int = 0, replayingTarget: Int? = nil) -> SkyDialogueLine {

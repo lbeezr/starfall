@@ -14,6 +14,10 @@ enum SkyCopy {
              "score": Self.score(score), "target": Self.score(target)])
     }
 
+    static func queuedInputCount(_ count: Int) -> String {
+        text(.inputQueueCount, values: ["count": String(count)])
+    }
+
     /// Core grows from the bottom; every player-facing coordinate reads top-down.
     static func boardPosition(_ cell: Cell) -> (row: Int, column: Int) {
         (FallingSky.side - cell.row, cell.column + 1)
@@ -389,6 +393,9 @@ enum SkyCopy {
         case flowRoundOver = "flow.roundOver"
         case flowWelcome = "flow.welcome"
         case homeObservatory = "home.observatory"
+        case homeFirstPlay = "home.firstPlay"
+        case firstClearHint = "firstPlay.clearHint"
+        case firstClearHintAccessibility = "firstPlay.clearHintAccessibility"
         case homeStoryMode = "home.storyMode"
         case homeStoryPromise = "home.storyPromise"
         case homeFreePlay = "home.freePlay"
@@ -620,6 +627,9 @@ enum SkyCopy {
         case inputShortSwipe = "input.shortSwipe"
         case inputSwapEdge = "input.swapEdge"
         case inputBuffered = "input.buffered"
+        case inputQueueCount = "input.queueCount"
+        case inputQueueFull = "input.queueFull"
+        case inputQueueChanged = "input.queueChanged"
         case inputBufferExpired = "input.bufferExpired"
         case inputShowerDue = "input.showerDue"
         case inputTraceStart = "input.traceStart"

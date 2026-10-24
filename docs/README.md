@@ -1,5 +1,7 @@
 # Documentation map
 
+[Player momentum](design/PLAYER_MOMENTUM_PLAN.md) orders the adversarial review's follow-up: responsive queued moves, a direct first clear, observed voluntary continuation, round pacing, repeat value and a separately scoped commercial proposition. The first two slices are implemented locally; [verification and limits](evidence/player-momentum-2026-10-24/README.md) distinguish development checks from human retention.
+
 [The ordered HUD stack](evidence/hud-stack-2026-10-24/README.md) begins with native-verified mode/inspection grouping, exact forecast targets and large-text stacking. Each of ten goals is tested and merged before its successor starts.
 
 [Optional Last clear reading](evidence/decision-goal-08-last-clear-2026-10-24/README.md) keeps one actual committed clear in session memory, with exact ingredient diagrams, score components, survivors and room/refills. Native phone/tablet journeys preserve rewards, Map/Entry return and exact Replay; result decisions precede optional detail. Cold restore omits unavailable history.

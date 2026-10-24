@@ -1,0 +1,136 @@
+{
+  "status": "Current for the sampled slice",
+  "source_snapshot": "90b622e0042b",
+  "captures": [
+    {
+      "file": "dev-0d71f18c-wip-90b622e0042b__fresh-home__iphone-17e__default-text.png",
+      "sha256": "54687f567b6e47282d204a73f68711d2aeb2d137954aced3fff9e1efbe02308a",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "test": "SkyFlowInteractionTests/testFreshPlayerOneTapToRealSquareAndSavedReturn()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "362DC1A0-13DB-41F5-9CDB-86A72EB0E7A0",
+        "deviceName": "Starfall Momentum Phone 4611",
+        "exportedFileName": "76AC9112-E36B-4DA5-B3D0-C55A36F41F2A.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "momentum-fresh-home_0_2F73FB37-F7D0-430E-8C6F-DE65EE2F8262.png",
+        "timestamp": 1792876707.031
+      },
+      "source_snapshot": "90b622e0042b",
+      "configuration": "Debug",
+      "runtime_fingerprint": "dev.b4043586aa",
+      "app_build_label": "dev.local",
+      "simulator_os": "iOS27.0(24A434)",
+      "orientation": "portrait",
+      "inspected": true,
+      "scope": "Direct Play Lantern Landing and existing alternative modes all fit in the sampled phone viewport."
+    },
+    {
+      "file": "dev-0d71f18c-wip-90b622e0042b__first-square__iphone-17e__normal-motion.png",
+      "sha256": "c00e3bd08c6d4092633f978bd320860f2666e02b04e662718215069141b8a4c3",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "test": "SkyFlowInteractionTests/testFreshPlayerOneTapToRealSquareAndSavedReturn()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "362DC1A0-13DB-41F5-9CDB-86A72EB0E7A0",
+        "deviceName": "Starfall Momentum Phone 4611",
+        "exportedFileName": "F12E60C2-93EF-4A99-9980-73983C2467FB.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "momentum-first-square_0_FFEF2185-1B4C-4A2D-85A6-6154DEB79B56.png",
+        "timestamp": 1792876709.708
+      },
+      "source_snapshot": "90b622e0042b",
+      "configuration": "Debug",
+      "runtime_fingerprint": "dev.b4043586aa",
+      "app_build_label": "dev.local",
+      "simulator_os": "iOS27.0(24A434)",
+      "orientation": "portrait",
+      "inspected": true,
+      "scope": "The header cue, complete opening and passive Aqua-left marker are visible before the real exchange."
+    },
+    {
+      "file": "dev-0d71f18c-wip-90b622e0042b__queued-during-five-phases__iphone-17e__normal-motion.png",
+      "sha256": "70bbacba00f580560abb36a6b8cf1ec8130262fb7fe02fbabbc58b2ed666ed51",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "test": "FullBoardRibbonInteractionTests/testThreeRapidPlansSurviveFivePhaseCascadeWithoutSettlingWaits()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "362DC1A0-13DB-41F5-9CDB-86A72EB0E7A0",
+        "deviceName": "Starfall Momentum Phone 4611",
+        "exportedFileName": "A5B8906A-35DA-4A66-91BA-90EC18F4D231.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "momentum-ribbon-plan-during-five-phases_0_2F01A461-5879-4E58-A7B8-98325A4A36A8.png",
+        "timestamp": 1792876680.013
+      },
+      "source_snapshot": "90b622e0042b",
+      "configuration": "Debug",
+      "runtime_fingerprint": "dev.b4043586aa",
+      "app_build_label": "dev.local",
+      "simulator_os": "iOS27.0(24A434)",
+      "orientation": "portrait",
+      "inspected": true,
+      "scope": "One accepted plan is numbered at bottom left while 2 CHAIN and the actual physical pattern remain visible. This still does not prove the entire motion trajectory."
+    },
+    {
+      "file": "dev-0d71f18c-wip-90b622e0042b__three-plans-committed__iphone-17e__normal-motion.png",
+      "sha256": "855e47085f38798bb85f1ad4077da0ab30ce15aada68e207029576f1a79e7845",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "test": "FullBoardRibbonInteractionTests/testThreeRapidPlansSurviveFivePhaseCascadeWithoutSettlingWaits()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "362DC1A0-13DB-41F5-9CDB-86A72EB0E7A0",
+        "deviceName": "Starfall Momentum Phone 4611",
+        "exportedFileName": "86121411-A15C-48C7-B919-4F9E762DD055.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "momentum-ribbon-three-plans-committed_0_770138BE-8BDF-41D0-857A-3FB4D8D963BB.png",
+        "timestamp": 1792876687.777
+      },
+      "source_snapshot": "90b622e0042b",
+      "configuration": "Debug",
+      "runtime_fingerprint": "dev.b4043586aa",
+      "app_build_label": "dev.local",
+      "simulator_os": "iOS27.0(24A434)",
+      "orientation": "portrait",
+      "inspected": true,
+      "scope": "The settled result has49 actual stars and179,000points; the native test separately asserts15exchanges and no pending queue."
+    },
+    {
+      "file": "dev-0d71f18c-wip-90b622e0042b__first-square__ipad-mini-a17pro__ax3xl-calm.png",
+      "sha256": "c54515419bc3956605461c74de7c15265745ab5a78cbb773a74e821615580563",
+      "dimensions": [
+        1488,
+        2266
+      ],
+      "test": "SkyFlowInteractionTests/testLargestCalmFreshPlayerOneTapToRealSquareAndSavedReturn()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "9ADC6510-1A37-4046-9FCA-FC6B498444FA",
+        "deviceName": "Starfall Momentum Tablet 4611",
+        "exportedFileName": "A9AC259F-FA6A-4628-854B-DAC37575279A.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "momentum-first-square-largest_0_7D41EABE-3133-439D-84BA-78D7C868A723.png",
+        "timestamp": 1792876570.967
+      },
+      "source_snapshot": "90b622e0042b",
+      "configuration": "Debug",
+      "runtime_fingerprint": "dev.b4043586aa",
+      "app_build_label": "dev.local",
+      "simulator_os": "iOS27.0(24A434)",
+      "orientation": "portrait",
+      "inspected": true,
+      "scope": "The full first-action instruction is above the board; lower rows are below this viewport and the native test reveals the source and destination before swiping."
+    }
+  ]
+}

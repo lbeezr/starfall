@@ -499,3 +499,32 @@ extension ResponsiveInputTests {
         XCTAssertEqual(Array(feedback.ready.suffix(5)),[false,false,false,true,false])
     }
 }
+
+
+extension ResponsiveInputTests {
+    @MainActor func testFirstPlayEligibilityRequiresCompletelyMissingHistoryAndOrdinaryLaunch() throws {
+        let suite = "FirstPlayEligibility.\(UUID())", defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        func store(_ arguments: [String] = [], tutorial: SkyTutorial? = nil) -> FallingSkyStore {
+            FallingSkyStore(defaults: defaults, arguments: arguments, presenter: FallingSkyRecorder(),
+                            clock: ManualRainClock(), tutorial: tutorial)
+        }
+        let fresh = store()
+        XCTAssertTrue(fresh.offersFirstPlay)
+        XCTAssertNil(defaults.object(forKey: SkySaveArchive.key), "Eligibility and construction are read-only")
+        for key in [SkySaveArchive.key, SkySaveArchive.legacyKey, SkySaveArchive.rejectedKey,
+                    WorldJourneyStore.key, WorldJourneyStore.rejectedKey,
+                    StoryMasteryStore.key, StoryMasteryStore.rejectedKey] {
+            defaults.set(Data([0]), forKey: key)
+            XCTAssertFalse(store().offersFirstPlay, key)
+            defaults.removeObject(forKey: key)
+        }
+        for arguments in [["--starfalls-reset"], ["--dialogue-review"], ["--technique-example=nudge", "--technique-review"],
+                          ["--constellation-fixture=diagonalSix"], ["--starfalls-seed=5"]] {
+            XCTAssertFalse(store(arguments).offersFirstPlay, arguments.description)
+        }
+        fresh.setSuspended(false)
+        XCTAssertFalse(fresh.offersFirstPlay, "Activation has committed an actual retained sky")
+        fresh.setSuspended(true)
+    }
+}

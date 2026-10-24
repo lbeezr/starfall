@@ -1,0 +1,145 @@
+{
+  "status": "development verified locally; no physical or human acceptance",
+  "base": "0d71f18cf8d41277bc3ae1a5b8c6536cde7cb9ca",
+  "source_snapshot": "90b622e0042b",
+  "runtime_fingerprint": "dev.b4043586aa",
+  "actual_simulator_build_label": "dev.local",
+  "app_version": "0.1.0/1",
+  "environment": {
+    "host": "macOS arm64",
+    "xcode": "27.1(27A9275)",
+    "sdk": "iOS Simulator27.1",
+    "simulator_os": "iOS27.0(24A434)",
+    "configuration": "Debug tests / Release build",
+    "phone": "iPhone17e",
+    "tablet": "iPad mini(A17Pro)"
+  },
+  "builds": [
+    {
+      "configuration": "Debug",
+      "passed": true,
+      "command": "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination 'platform=iOS Simulator,id=362DC1A0-13DB-41F5-9CDB-86A72EB0E7A0,arch=arm64' -derivedDataPath /private/tmp/starfall-momentum-dd -clonedSourcePackagesDirPath /private/tmp/starfall-momentum-packages build-for-testing CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=YES ARCHS=arm64",
+      "log": "/private/tmp/starfall-momentum-build-isolation.log"
+    },
+    {
+      "configuration": "Release",
+      "passed": true,
+      "command": "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination 'generic/platform=iOS Simulator' -derivedDataPath /private/tmp/starfall-momentum-dd -clonedSourcePackagesDirPath /private/tmp/starfall-momentum-packages build CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=YES ARCHS=arm64",
+      "log": "/private/tmp/starfall-momentum-release-isolation.log"
+    }
+  ],
+  "core": {
+    "command": "env CLANG_MODULE_CACHE_PATH=/private/tmp/starfall-momentum-clang SWIFTPM_MODULECACHE_OVERRIDE=/private/tmp/starfall-momentum-module swift test --disable-sandbox --cache-path /private/tmp/starfall-momentum-cache --scratch-path /private/tmp/starfall-momentum-swift",
+    "passed": 352,
+    "failed": 0,
+    "log": "/private/tmp/starfall-momentum-core.log",
+    "scope": "Core unchanged at recorded base throughout this batch"
+  },
+  "final_built_source_runs": [
+    {
+      "label": "phone",
+      "command": "xcodebuild test-without-building -xctestrun /private/tmp/starfall-momentum-dd/Build/Products/Starfall_iphonesimulator27.1-arm64.xctestrun -destination 'platform=iOS Simulator,id=362DC1A0-13DB-41F5-9CDB-86A72EB0E7A0,arch=arm64' -parallel-testing-enabled NO -collect-test-diagnostics never -only-testing:StarfallUITests/SkyFlowInteractionTests/testFreshPlayerOneTapToRealSquareAndSavedReturn -only-testing:StarfallUITests/FullBoardRibbonInteractionTests/testThreeRapidPlansSurviveFivePhaseCascadeWithoutSettlingWaits -resultBundlePath /private/tmp/starfall-momentum-accepted-phone.xcresult",
+      "result": "Passed",
+      "expected": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "start_unix": 1792876553.729,
+      "finish_unix": 1792876732.811,
+      "raw_log": "/private/tmp/starfall-momentum-accepted-phone.log",
+      "raw_bundle": "/private/tmp/starfall-momentum-accepted-phone.xcresult"
+    },
+    {
+      "label": "tablet",
+      "command": "xcodebuild test-without-building -xctestrun /private/tmp/starfall-momentum-dd/Build/Products/Starfall_iphonesimulator27.1-arm64.xctestrun -destination 'platform=iOS Simulator,id=9ADC6510-1A37-4046-9FCA-FC6B498444FA,arch=arm64' -parallel-testing-enabled NO -collect-test-diagnostics never -only-testing:StarfallAppTests/SkyFlowStateTests -only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestCalmFreshPlayerOneTapToRealSquareAndSavedReturn -resultBundlePath /private/tmp/starfall-momentum-accepted-tablet.xcresult",
+      "result": "Passed",
+      "expected": 47,
+      "passed": 47,
+      "failed": 0,
+      "skipped": 0,
+      "start_unix": 1792876554.438,
+      "finish_unix": 1792876603.582,
+      "raw_log": "/private/tmp/starfall-momentum-accepted-tablet.log",
+      "raw_bundle": "/private/tmp/starfall-momentum-accepted-tablet.xcresult"
+    },
+    {
+      "label": "hosted",
+      "command": "xcodebuild test-without-building -xctestrun /private/tmp/starfall-momentum-dd/Build/Products/Starfall_iphonesimulator27.1-arm64.xctestrun -destination 'platform=iOS Simulator,id=9ADC6510-1A37-4046-9FCA-FC6B498444FA,arch=arm64' -parallel-testing-enabled NO -collect-test-diagnostics never -only-testing:StarfallAppTests/SkyTechniqueStoreTests -only-testing:StarfallAppTests/ResponsiveInputTests -only-testing:StarfallAppTests/SkyDialogueTests -only-testing:StarfallAppTests/SkyPhasePresentationTests -resultBundlePath /private/tmp/starfall-momentum-accepted-hosted.xcresult",
+      "result": "Passed",
+      "expected": 89,
+      "passed": 89,
+      "failed": 0,
+      "skipped": 0,
+      "start_unix": 1792876715.511,
+      "finish_unix": 1792876722.493,
+      "raw_log": "/private/tmp/starfall-momentum-accepted-hosted.log",
+      "raw_bundle": "/private/tmp/starfall-momentum-accepted-hosted.xcresult"
+    }
+  ],
+  "unique_final_tests": {
+    "hosted": 135,
+    "native": 3,
+    "failed": 0,
+    "skipped": 0
+  },
+  "static_checks": {
+    "hygiene": {
+      "command": "python3 scripts/ci-hygiene.py",
+      "exit_code": 0,
+      "log": "/private/tmp/starfall-momentum-hygiene.log"
+    },
+    "whitespace": {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    "input_hashes_match_snapshot": true,
+    "membership": "No new Swift/resource files; existing PBX membership retained, project/scheme unchanged; Debug and Release compiled"
+  },
+  "earlier_results": [
+    {
+      "scope": "focused hosted before final first-play isolation/header integration",
+      "passed": 132,
+      "failed": 0,
+      "skipped": 0,
+      "bundle": "/private/tmp/starfall-momentum-hosted.xcresult",
+      "superseded_by": "135 final-source hosted checks above"
+    },
+    {
+      "scope": "initial largest-text first-play interaction before cue moved above board",
+      "passed": 1,
+      "failed": 0,
+      "bundle": "/private/tmp/starfall-momentum-first-tablet.xcresult",
+      "visual_result": "Instruction was below viewport; layout rejected and corrected"
+    },
+    {
+      "scope": "initial normal-phone first play",
+      "passed": 0,
+      "failed": 1,
+      "bundle": "/private/tmp/starfall-momentum-first-phone.xcresult",
+      "cause": "Gameplay/cold-return assertions passed; redundant Settings teardown launch timed out; helper now restores only changed system motion setting"
+    },
+    {
+      "scope": "superseded phone run before cue-header correction",
+      "status": "canceled before test case started",
+      "bundle": "/private/tmp/starfall-momentum-phone-final.xcresult",
+      "acceptance": false
+    }
+  ],
+  "not_performed": [
+    "physical device installation/play",
+    "uncoached player learning/satisfaction/retention",
+    "actual VoiceOver",
+    "minimum-iOS17 runtime",
+    "sustained performance or hardware latency",
+    "continuous motion-quality review",
+    "full hosted/native suite or remote CI",
+    "implementation publication or merge"
+  ],
+  "publication": "Earlier automatic approval review rejected issue publication for missing external-posting authorization. After explicit user approval, the GitHub plugin published the prioritized plan as issue #393, verified open on October 24, 2026. Implementation remains local; no PR or installation was created.",
+  "plan_issue": {
+    "number": 393,
+    "url": "https://github.com/lbeezr/starfall/issues/393",
+    "state": "open",
+    "created_at": "2026-10-24T21:27:41Z"
+  }
+}

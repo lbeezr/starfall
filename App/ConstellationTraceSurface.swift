@@ -202,7 +202,11 @@ struct ConstellationTraceSurface: UIViewRepresentable {
             holdDeadline = nil; latestSampleTime = nil; drawingCueStarted = false
             switch outcome {
             case .trace: input.end()
-            case .tap(let cell): input.cancel(); input.tap(cell)
+            case .tap(let cell):
+                // Submit against the contact's snapshot before release can
+                // dispatch an earlier queued move beneath this selection.
+                input.tap(cell)
+                input.cancel()
             case .shortSwipe:
                 input.cancel()
                 input.feedback?(SkyCopy.text(.inputShortSwipe))
