@@ -1,0 +1,260 @@
+{
+  "status": "Verified development slice",
+  "runtimeCheckpoint": "946ff2bad36ff13352103a46d28a99109462a795",
+  "runtimeFingerprint": "dev.85e9d430e8",
+  "actualBundle": "dev.local",
+  "sourceInputs": {
+    "count": 666,
+    "changedAfterRuntimeCheckpoint": [],
+    "markdownInputs": []
+  },
+  "environment": {
+    "host": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\n",
+    "xcode": "Xcode 27.1\nBuild version 27A9275\n"
+  },
+  "actualBundleIdentity": {
+    "CFBundleIdentifier": "com.starfall.prototype",
+    "CFBundleShortVersionString": "0.1.0",
+    "CFBundleVersion": "1",
+    "StarfallBuildID": "dev.local",
+    "DTSDKName": "iphonesimulator27.1",
+    "MinimumOSVersion": "17.0"
+  },
+  "checks": {
+    "core": {
+      "passed": 352,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 21.69,
+      "source": "fb2eeee; Core/package/tests unchanged at946ff2b"
+    },
+    "hosted": {
+      "passed": 142,
+      "failed": 0,
+      "skipped": 0,
+      "result": "hosted-page.xcresult",
+      "selectedClasses": [
+        "SkyShowerInspectionTests",
+        "SkyForecastInspectionTests",
+        "SkyForecastDestinationsTests",
+        "SkyForecastRecoveryTests",
+        "FallingSkyStoreTests",
+        "TraceInputPolishTests",
+        "SkyDialogueTests",
+        "SkyDialogueCatalogBoundsTests"
+      ]
+    },
+    "native": {
+      "acceptedDistinctMethods": 2,
+      "finalSourceExecutions": 2,
+      "finalSourcePassed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "allIterations": {
+        "executions": 4,
+        "passed": 3,
+        "failed": 1,
+        "skipped": 0
+      },
+      "phoneSeconds": 181.783,
+      "tabletSeconds": 280.438
+    },
+    "debugBuildForTesting": "passed arm64 generic simulator",
+    "release": "passed generic simulator",
+    "catalogue": {
+      "keys": 568,
+      "scripts": 121,
+      "maxScripts": 128
+    },
+    "membership": [
+      {
+        "path": "App/SkyShowerInspection.swift",
+        "fileRef": "C5F396B5AA594FA090516114",
+        "buildRef": "96A87D2B30794AB287CF28F8",
+        "targets": [
+          "Starfall"
+        ]
+      },
+      {
+        "path": "App/SkyShowerInspectionView.swift",
+        "fileRef": "BCC7248D41744681A5A56241",
+        "buildRef": "03B32DC05904445CB13834D5",
+        "targets": [
+          "Starfall"
+        ]
+      },
+      {
+        "path": "AppTests/SkyShowerInspectionTests.swift",
+        "fileRef": "1EC047F33A7B452E8585DB81",
+        "buildRef": "742585EA84974E7BA16ECB5F",
+        "targets": [
+          "StarfallAppTests"
+        ]
+      },
+      {
+        "path": "UITests/ShowerInspectionInteractionTests.swift",
+        "fileRef": "F67AEC45E679403F8D7B3F23",
+        "buildRef": "B0A0CC9BE61D4C4E80C7F25F",
+        "targets": [
+          "StarfallUITests"
+        ]
+      }
+    ],
+    "plannerTests": 3,
+    "hygiene": "passed",
+    "diff": "passed",
+    "localLinks": {
+      "count": 1048,
+      "missing": [],
+      "files": [
+        "App/README.md",
+        "AppTests/README.md",
+        "UITests/README.md",
+        "docs/ENGINEERING.md",
+        "docs/EXPERIMENTS.md",
+        "docs/ROADMAP.md",
+        "docs/design/VISUAL_REFERENCE.md",
+        "docs/evidence/README.md",
+        "docs/evidence/decision-goal-04-shower-inspection-2026-10-24/README.md"
+      ]
+    },
+    "images": {
+      "accepted": 9,
+      "rejected": 1,
+      "inspected": "All9accepted original-resolution exports; peer all6phone, root3tablet. Rejected initial capture separately inspected."
+    }
+  },
+  "failures": [
+    {
+      "source": "fb2eeee",
+      "native": "tablet.xcresult",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "seconds": 69.485,
+      "invariant": "428pt row could not fit254.5pt reading viewport",
+      "correction": "supported-iOS page presentation sizing; corrected actual reader752.5pt; every assertion unchanged"
+    },
+    {
+      "tool": "XcodeBuildMCP",
+      "attempts": 2,
+      "stage": "before compilation; zero tests",
+      "error": "missing scheme despite immediately verified defaults",
+      "recovery": "existing Xcode CLI, not a product workaround"
+    },
+    {
+      "selector": "SkyRecoveryCueTests typo omitted four actual SkyForecastRecoveryTests",
+      "recovery": "four separately selected on initial source; final142 in one correct run"
+    }
+  ],
+  "diagnostic": {
+    "pid": 74268,
+    "parent": 72529,
+    "verified_command": "72529 /Library/Developer/PrivateFrameworks/CoreSimulator.framework/Versions/A/Resources/bin/simctl diagnose -l -b --timeout=600 --log-option=--last --log-option=3m --output=/tmp/starfall-decision-04-20261024/tablet.xcresult/Staging/1_Test/Diagnostics/simctl_diagnostics --no-archive --udid=255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+    "reason": "Native case already failed at69.485s; owned failure diagnostic used600s timeout and delayed result finalization",
+    "signal": "SIGTERM"
+  },
+  "capture": "Static original-resolution native XCTest attachments. No new movie/capture workflow run. Prior #363 movie finalization failure remains historical; confirm recorder exit/readability before future shutdown.",
+  "limits": [
+    "actual human recognition/enjoyment",
+    "physical-device installation/play",
+    "actual minimum iOS17 execution",
+    "actual VoiceOver",
+    "sustained performance",
+    "complete short helper motion trajectory",
+    "precisely timed native Arriving tap",
+    "naturally reached historical/repeated-column fixtures",
+    "growth-plus-recipe current native route (existing constructed revision2 mechanical fixture only)"
+  ],
+  "resources": {
+    "bothOwnedSimulators": "confirmed Shutdown",
+    "unrelatedResourcesStopped": false,
+    "physicalPhoneProbedOrInstalled": false
+  },
+  "rawDirectory": "/private/tmp/starfall-decision-04-20261024",
+  "nativeDevices": {
+    "phone-page": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+          "deviceName": "Starfall Factory Goals iPhone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 1,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "tablet-page": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+          "deviceName": "Starfall Factory Goals iPad",
+          "modelName": "iPad Pro 11-inch (M5)",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 1,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ]
+  },
+  "nativeIterations": [
+    {
+      "source": "fb2eeee",
+      "result": "phone.xcresult",
+      "passed": 1,
+      "failed": 0,
+      "seconds": 178.293
+    },
+    {
+      "source": "fb2eeee",
+      "result": "tablet.xcresult",
+      "passed": 0,
+      "failed": 1,
+      "seconds": 69.485
+    },
+    {
+      "source": "946ff2b",
+      "result": "tablet-page.xcresult",
+      "passed": 1,
+      "failed": 0,
+      "seconds": 280.438
+    },
+    {
+      "source": "946ff2b",
+      "result": "phone-page.xcresult",
+      "passed": 1,
+      "failed": 0,
+      "seconds": 181.783
+    }
+  ],
+  "commands": [
+    "swift test --scratch-path /private/tmp/starfall-decision-04-20261024/CoreBuild",
+    "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination generic/platform=iOS Simulator -derivedDataPath /private/tmp/starfall-decision-04-20261024/Debug -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+    "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-04-20261024/Debug -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -destination 'platform=iOS Simulator,id=255E141F-D4D6-45DA-89FF-51436BF1BBA7' -only-testing:StarfallAppTests/SkyShowerInspectionTests -only-testing:StarfallAppTests/SkyForecastInspectionTests -only-testing:StarfallAppTests/SkyForecastDestinationsTests -only-testing:StarfallAppTests/SkyForecastRecoveryTests -only-testing:StarfallAppTests/FallingSkyStoreTests -only-testing:StarfallAppTests/TraceInputPolishTests -only-testing:StarfallAppTests/SkyDialogueTests -only-testing:StarfallAppTests/SkyDialogueCatalogBoundsTests -resultBundlePath /private/tmp/starfall-decision-04-20261024/hosted-page.xcresult test-without-building",
+    "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -sdk iphonesimulator -destination generic/platform=iOS Simulator -derivedDataPath /private/tmp/starfall-decision-04-20261024/Release -jobs 4 build",
+    "python3 scripts/test_native_test_plan.py",
+    "python3 scripts/ci-hygiene.py",
+    "git diff --check",
+    "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-04-20261024/Debug -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -destination 'platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324' -only-testing:StarfallUITests/ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning -resultBundlePath /private/tmp/starfall-decision-04-20261024/phone-page.xcresult test-without-building",
+    "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-decision-04-20261024/Debug -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -destination 'platform=iOS Simulator,id=255E141F-D4D6-45DA-89FF-51436BF1BBA7' -only-testing:StarfallUITests/ShowerInspectionInteractionTests/testLargestCalmShowerInspectionReadsWithoutCommitAndFullBoardHasNone -resultBundlePath /private/tmp/starfall-decision-04-20261024/tablet-page.xcresult test-without-building"
+  ]
+}
