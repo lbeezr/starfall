@@ -48,6 +48,8 @@ An unfinished Full Board round offers **Find a move** in its menu. `SkyFullBoard
 
 **Compare clears** opens two disposable practice chapters from that advice page. Both explicitly reconstruct revision-5 history: the same real Full Board position lets the player try a smaller square whose visible survivors form a later line, then compare two larger simultaneous squares. Optional hints, Retry, Next and Finish use the existing tutorial owner; return preserves the live round and repairs. [Goal 3 evidence](../docs/evidence/depth-goal-03-survivor-cascades-2026-10-23/README.md) distinguishes the committed consequences from unmeasured learning.
 
+The [nonvisual input correction #398](https://github.com/lbeezr/starfall/pull/398) is merged and has its own [exact-source acceptance](../docs/evidence/player-momentum-input-2026-10-24/README.md). First-play and multi-plan visual guidance remain held in PR #395 pending complete-screen acceptance.
+
 ## Start here
 
 Deterministic rules belong in [StarfallCore](../Sources/StarfallCore/README.md). Build the shared Starfall scheme and run affected hosted/UI checks after source changes. Asset catalogs are packaged data; their sets are documented by this folder, not individual READMEs.

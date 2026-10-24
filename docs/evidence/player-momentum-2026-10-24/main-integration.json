@@ -85,5 +85,29 @@
       "detached AX3XL header and oversized optional inspection"
     ],
     "correction": "registered shared status/marker role in progress; active HUD382 composition dependency; new native review required"
+  },
+  "shared_role_correction": {
+    "tested_commit": "4be4874f8ec93aca07e1f8091ceec8eabb43f8fe",
+    "core_passes": 352,
+    "hosted_passes": 135,
+    "native_passes": 3,
+    "failures": 0,
+    "skips": 0,
+    "debug_build": "passed",
+    "release_build": "passed",
+    "native_bundles": [
+      "/private/tmp/starfall-momentum-status-phone.xcresult",
+      "/private/tmp/starfall-momentum-status-tablet.xcresult"
+    ],
+    "visual_verdict": "registered roles and sampled phone status accepted; wholejourney still rejected for detached AX3XL header/oversized inspector; AX3XL queue not assessed"
+  },
+  "shipped_input": {
+    "pr": 398,
+    "main": "6dcda31a5268002c21c07b97cf8285e6c2df92d3",
+    "evidence": "../player-momentum-input-2026-10-24/README.md"
+  },
+  "held_firstplay_reconciliation": {
+    "local": "432e28a",
+    "production_difference_from_4be4874": "none; App README and additional native test differ"
   }
 }
