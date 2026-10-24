@@ -137,6 +137,36 @@ final class FullBoardRibbonInteractionTests: XCTestCase {
 
     private let survivorMoves = [(8,9),(11,12),(31,38),(17,24),(9,16),(9,10),(1,8),(1,2),(1,8),(9,10),(10,11),(22,29),(2,3),(2,9),(1,8),(37,38),(2,3),(16,17)]
     private let survivorScores = [30,35,40,45,50,65,80,80,85,85,90,179,179,184,199,214,214,229]
+
+    @MainActor func testThreeRapidInputsSurviveFivePhaseCascadeWithoutSettlingWaits() throws {
+        executionTimeAllowance = 240
+        if UIAccessibility.isReduceMotionEnabled { requireNormalMotion() }
+        XCTAssertFalse(UIAccessibility.isReduceMotionEnabled, "This journey requires actual normal system motion")
+        let app = launch()
+        defer { app.terminate() }
+        chooseFullBoard(app, captureName: "momentum-input-ribbon-mode")
+        for index in 0..<11 {
+            let move = survivorMoves[index]
+            exchange(move.0, move.1, score: survivorScores[index] * 1_000, count: index + 1, in: app)
+        }
+        func coordinate(_ index: Int) -> XCUICoordinate {
+            app.buttons["experiment.cell.\(index / 7).\(index % 7)"].coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5))
+        }
+        let trigger = (coordinate(22), coordinate(29))
+        let plans = [(coordinate(0), coordinate(1)), (coordinate(2), coordinate(3)), (coordinate(4), coordinate(5))]
+        trigger.0.press(forDuration: 0.05, thenDragTo: trigger.1, withVelocity: .fast, thenHoldForDuration: 0)
+        // No wait for readiness, settling or a new visual queue indicator. The
+        // existing arrow presents the head; the final committed count proves
+        // that all three independent requests executed exactly once.
+        for plan in plans {
+            plan.0.press(forDuration: 0.05, thenDragTo: plan.1, withVelocity: .fast, thenHoldForDuration: 0)
+        }
+        capture(app, "momentum-input-rapid-contacts-during-five-phases")
+        waitForRound(app, exchanges: 15, score: 179_000)
+        XCTAssertEqual(try cells(app).count, 49)
+        capture(app, "momentum-input-three-requests-committed")
+    }
+
     private let lineMoves = [(1,2),(7,8),(11,12),(30,37),(8,9),(36,37),(39,40),(32,33),(0,1),(1,8),(43,44),(36,37),(4,5),(3,4),(19,20),(2,9),(2,3),(17,24),(1,8),(8,9),(8,15),(38,45),(2,9),(9,16),(3,10),(9,10),(14,15),(26,33),(31,32),(12,19),(18,25),(14,21),(32,33),(16,23)]
     private let lineScores = [5,28,33,71,76,83,88,93,93,98,103,110,110,115,120,120,125,130,130,135,140,145,145,150,155,160,165,170,175,175,180,195,218,223]
 

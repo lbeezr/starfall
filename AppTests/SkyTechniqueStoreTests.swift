@@ -216,11 +216,11 @@ final class SkyTechniqueStoreTests: XCTestCase {
             let first = store.game
             XCTAssertEqual(first.gem(at: Cell(0,3))?.id, id)
             refreshSurface()
-            surface.beginInput(at: mapping.viewPoint(Cell(0,3)))
-            surface.moveInput(to: mapping.viewPoint(Cell(0,4)))
-            surface.endInput(at: mapping.viewPoint(Cell(0,4)))
+            surface.beginInput(at: mapping.viewPoint(Cell(1,0)))
+            surface.moveInput(to: mapping.viewPoint(Cell(1,1)))
+            surface.endInput(at: mapping.viewPoint(Cell(1,1)))
             var expected = first
-            XCTAssertNotNil(expected.nudge(from: Cell(0,3), to: Cell(0,4)))
+            XCTAssertNotNil(expected.nudge(from: Cell(1,0), to: Cell(1,1)))
             if quiet {
                 XCTAssertNil(store.bufferedInput)
                 XCTAssertNil(scene.childNode(withName: "//sky.input.buffered.direction"))
@@ -243,9 +243,10 @@ final class SkyTechniqueStoreTests: XCTestCase {
             }
             XCTAssertFalse(store.busy); XCTAssertEqual(store.game, expected)
             XCTAssertNil(store.bufferedInput); XCTAssertNil(scene.childNode(withName: "//sky.input.buffered.direction"))
-            let finalPosition = try XCTUnwrap(scene.childNode(withName: "//sky.star.\(id)")).position
-            XCTAssertEqual(finalPosition.x, mapping.scenePoint(Cell(0,4)).x, accuracy: 0.01)
-            XCTAssertEqual(finalPosition.y, mapping.scenePoint(Cell(0,4)).y, accuracy: 0.01)
+            let queuedID = try XCTUnwrap(first.gem(at: Cell(1,0))?.id)
+            let finalPosition = try XCTUnwrap(scene.childNode(withName: "//sky.star.\(queuedID)")).position
+            XCTAssertEqual(finalPosition.x, mapping.scenePoint(Cell(1,1)).x, accuracy: 0.01)
+            XCTAssertEqual(finalPosition.y, mapping.scenePoint(Cell(1,1)).y, accuracy: 0.01)
             XCTAssertNotNil(firstMotion)
             let measurement = XCTAttachment(string: "quiet=\(quiet); first observed displacement seconds=\(firstMotion ?? -1); sequence seconds=\(ProcessInfo.processInfo.systemUptime-started)")
             measurement.name = "Native buffered sequence timing"; measurement.lifetime = .keepAlways; add(measurement)
@@ -261,79 +262,198 @@ final class SkyTechniqueStoreTests: XCTestCase {
         }
     }
 
-    @MainActor func testBufferedSwapAcknowledgesThenCommitsExactlyOnceAfterContactRelease() throws {
-        let (store, presenter, _, _) = fixture("nudge")
-        let original = store.game
+    @MainActor func testQueuedSwapSurvivesLongPresentationAndCommitsExactlyOnceAfterContactRelease() throws {
+        let (store, presenter, clock, _) = fixture("nudge")
         XCTAssertTrue(request(.swap(Cell(0,2), Cell(1,2)), in: store))
         let first = store.game
-        let hold = try XCTUnwrap(store.beginResponsiveContact(at: Cell(1,2)))
-        XCTAssertTrue(request(.swap(Cell(1,2), Cell(0,2)), in: store))
-        XCTAssertEqual(store.game, first)
-        XCTAssertEqual(presenter.bufferedCue, .swap(Cell(1,2), Cell(0,2)))
-        XCTAssertEqual(store.inputMessage, SkyCopy.text(.inputBuffered))
+        let action = SkyPlayerInput.swap(Cell(1,0), Cell(1,1))
+        let hold = try XCTUnwrap(store.beginResponsiveContact(at: action.source))
+        XCTAssertTrue(request(action, in: store))
+        XCTAssertEqual(store.queuedInputCount, 1)
+        XCTAssertEqual(presenter.bufferedCue, action)
+        clock.advance(10) // Far beyond the former 0.65-second expiration.
         presenter.completions[0]()
-        XCTAssertEqual(store.game, first, "A live finger retains contact ownership")
+        XCTAssertEqual(store.game, first, "A live contact retains dispatch ownership")
+        var expected = first
+        XCTAssertNotNil(expected.nudge(from: Cell(1,0), to: Cell(1,1)))
         store.endConstellationHold(hold)
-        XCTAssertEqual(store.game, original)
+        XCTAssertEqual(store.game, expected)
         XCTAssertEqual(presenter.completions.count, 2)
-        XCTAssertNil(store.bufferedInput); XCTAssertNil(presenter.bufferedCue)
+        XCTAssertEqual(store.queuedInputCount, 0)
         presenter.completions[0](); store.endConstellationHold(hold)
         XCTAssertEqual(presenter.completions.count, 2)
         presenter.finish(); XCTAssertFalse(store.busy)
     }
 
-    @MainActor func testLatestBufferedIntentReplacesPreviousAndNewContactCancelsIt() throws {
-        let (store, presenter, _, _) = fixture("nudge")
-        XCTAssertTrue(request(.swap(Cell(0,2), Cell(1,2)), in: store))
-        let first = store.game
-        XCTAssertTrue(request(.swap(Cell(1,2), Cell(0,2)), in: store))
-        let retired = try XCTUnwrap(store.bufferedInput?.ticket)
-        let latest = SkyPlayerInput.swap(Cell(1,2), Cell(1,1))
-        XCTAssertTrue(request(latest, in: store))
-        store.expireBufferedInput(ticket: retired)
-        XCTAssertEqual(store.bufferedInput?.action, latest)
-        let hold = try XCTUnwrap(store.beginResponsiveContact(at: Cell(1,2)))
-        XCTAssertNil(store.bufferedInput); XCTAssertNil(presenter.bufferedCue)
-        presenter.finish(); store.endConstellationHold(hold)
-        XCTAssertEqual(store.game, first)
-        XCTAssertEqual(presenter.completions.count, 1)
+    @MainActor func testSeparateContactsAppendAndDispatchFIFOWithoutLosingAcceptedCommands() throws {
+        let (store, presenter, _, _) = try queueFixture()
+        XCTAssertTrue(request(.swap(Cell(0,0), Cell(0,1)), in: store))
+        let initial = store.game
+        let first = try independentQueuedAction(in: store)
+        let firstHold = try XCTUnwrap(store.beginResponsiveContact(at: first.source))
+        XCTAssertTrue(request(first, in: store)); store.endConstellationHold(firstHold)
+        let second = try independentQueuedAction(in: store)
+        let secondHold = try XCTUnwrap(store.beginResponsiveContact(at: second.source))
+        XCTAssertTrue(request(second, in: store)); store.endConstellationHold(secondHold)
+        XCTAssertEqual(store.queuedInputs, [first, second])
+        XCTAssertEqual(store.game, initial)
+        var expected = initial
+        apply(first, to: &expected)
+        presenter.completions[0]()
+        XCTAssertEqual(store.game, expected)
+        XCTAssertEqual(store.queuedInputs, [second])
+        XCTAssertEqual(presenter.completions.count, 2, "Only one physical presentation starts")
+        presenter.completions[0]()
+        XCTAssertEqual(store.queuedInputCount, 1, "A stale completion cannot dispatch twice")
+        apply(second, to: &expected)
+        presenter.completions[1]()
+        XCTAssertEqual(store.game, expected)
+        XCTAssertEqual(store.queuedInputCount, 0)
+        XCTAssertEqual(presenter.completions.count, 3)
+        presenter.finish(); XCTAssertFalse(store.busy)
     }
 
-    @MainActor func testExpiredBufferedInputNeverReplaysOnLateCompletion() throws {
-        let (store, presenter, clock, _) = fixture("nudge")
-        XCTAssertTrue(request(.swap(Cell(0,2), Cell(1,2)), in: store))
-        let first = store.game
-        XCTAssertTrue(request(.swap(Cell(1,2), Cell(0,2)), in: store))
-        clock.advance(SkyBufferedInput.lifetime + 0.001)
+    @MainActor func testQueueCapacityRejectsFifthAndCannotBeRefilledDuringTheSameBurst() throws {
+        let (store, presenter, _, _) = try queueFixture()
+        XCTAssertTrue(request(.swap(Cell(0,0), Cell(0,1)), in: store))
+        for _ in 0..<4 { XCTAssertTrue(request(try independentQueuedAction(in: store), in: store)) }
+        let accepted = store.queuedInputs
+        XCTAssertEqual(accepted.count, 4)
+        XCTAssertFalse(request(try independentQueuedAction(in: store), in: store))
+        XCTAssertEqual(store.queuedInputs, accepted, "A rejected fifth move cannot evict the head")
+        presenter.completions[0]()
+        XCTAssertEqual(store.queuedInputCount, 3)
+        XCTAssertFalse(request(try independentQueuedAction(in: store), in: store), "Draining cannot extend a burst indefinitely")
+        for index in 1...4 { presenter.completions[index]() }
+        XCTAssertFalse(store.busy)
+        XCTAssertEqual(store.queuedInputCount, 0)
+        XCTAssertTrue(request(try independentQueuedAction(in: store), in: store))
         presenter.finish()
-        XCTAssertNil(store.bufferedInput); XCTAssertNil(presenter.bufferedCue)
-        XCTAssertEqual(store.game, first); XCTAssertEqual(presenter.completions.count, 1)
-        XCTAssertEqual(store.inputMessage, SkyCopy.text(.inputBufferExpired))
-        XCTAssertTrue(store.dialogue.line?.text.contains(SkyCopy.text(.inputBufferExpired)) == true,
-                      "The older animation cannot overwrite newer cancellation feedback")
     }
 
-    @MainActor func testPendingDeadlineExpiresWithoutAnyPresenterCompletion() async throws {
+    @MainActor func testDependentAndMovingEndpointRequestsCannotRetargetVisibleStars() throws {
         let (store, presenter, _, _) = fixture("nudge")
         XCTAssertTrue(request(.swap(Cell(0,2), Cell(1,2)), in: store))
         let first = store.game
-        XCTAssertTrue(request(.swap(Cell(1,2), Cell(0,2)), in: store))
-        let deadline = ContinuousClock.now + .seconds(2)
-        while store.bufferedInput != nil && ContinuousClock.now < deadline {
-            try await Task.sleep(for: .milliseconds(10))
-        }
-        XCTAssertNil(store.bufferedInput); XCTAssertNil(presenter.bufferedCue)
-        XCTAssertEqual(store.inputMessage, SkyCopy.text(.inputBufferExpired))
-        presenter.finish(); XCTAssertEqual(store.game, first)
+        XCTAssertNil(store.inputSnapshot(at: Cell(1,2)), "The visible pre-exchange occupant differs from the final one")
+        XCTAssertFalse(request(.swap(Cell(1,2), Cell(0,2)), in: store))
+        XCTAssertTrue(request(.swap(Cell(1,0), Cell(1,1)), in: store))
+        let retained = store.queuedInputs
+        XCTAssertFalse(request(.swap(Cell(1,0), Cell(0,0)), in: store), "A prior queued exchange changes this source ID")
+        XCTAssertEqual(store.queuedInputs, retained)
+        XCTAssertEqual(store.game, first)
+        presenter.completions[0](); presenter.finish()
     }
 
-    @MainActor func testBufferedIdentityCannotFollowAReplacementOrIndependentCommit() throws {
+    @MainActor func testSettleBackExchangeRemainsMovingWhileUnrelatedSurvivorCanQueue() throws {
+        let (store,presenter,_,_) = fixture("nudge")
+        let before = store.game, source = Cell(1,2), waypoint = Cell(2,2)
+        XCTAssertNil(before.gem(at: waypoint))
+        let action = SkyPlayerInput.swap(source,waypoint)
+        let turn = try XCTUnwrap(action.preview(in: before))
+        XCTAssertEqual(turn.settled, before.board, "The upward trip settles back without changing its final board")
+        XCTAssertTrue(request(action, in: store))
+        XCTAssertEqual(store.game, before)
+        XCTAssertTrue(store.busy)
+        XCTAssertNil(store.inputSnapshot(at: source), "Matching sampled endpoints cannot hide the exchange waypoint")
+        XCTAssertFalse(request(.swap(source,Cell(1,1)), in: store))
+        XCTAssertNotNil(store.inputSnapshot(at: Cell(0,0)))
+        let unrelated = SkyPlayerInput.swap(Cell(0,0),Cell(0,1))
+        XCTAssertTrue(request(unrelated, in: store))
+        XCTAssertEqual(store.queuedInputs, [unrelated])
+        presenter.completions[0]()
+        var expected = before; apply(unrelated, to: &expected)
+        XCTAssertEqual(store.game, expected)
+        presenter.finish()
+        XCTAssertNotNil(store.inputSnapshot(at: source), "Actual presentation completion restores stationary admission")
+    }
+
+    @MainActor func testQueuedTapRejectsAMovingMemberEvenWhenTheTappedStarIsStationary() throws {
+        let (store,presenter,_,_) = fixture("nudge")
+        let before = store.game
+        XCTAssertTrue(request(.swap(Cell(1,0),Cell(2,0)), in: store))
+        XCTAssertEqual(store.game, before, "This group member moves up and settles back")
+        let tapped = Cell(0,1), movingMember = Cell(1,0)
+        XCTAssertTrue(store.game.group(at: tapped).contains(movingMember))
+        XCTAssertNotNil(store.inputSnapshot(at: tapped))
+        XCTAssertNil(store.inputSnapshot(at: movingMember))
+        XCTAssertFalse(store.requestTap(tapped), "Admission covers every selected group member")
+        XCTAssertEqual(store.queuedInputCount, 0)
+        XCTAssertEqual(store.game, before)
+        presenter.completions[0]()
+        var expected = before
+        XCTAssertNotNil(expected.clear(tapped))
+        XCTAssertTrue(store.requestTap(tapped))
+        XCTAssertEqual(store.game, expected)
+        presenter.finish()
+    }
+
+    @MainActor func testHeldIdleTapCommitsOnlyAfterItsContactReleases() throws {
+        let (store,presenter,_,_) = fixture("bank")
+        let tapped = Cell(0,2), before = store.game
+        let hold = try XCTUnwrap(store.beginResponsiveContact(at: tapped))
+        XCTAssertTrue(request(.tap(tapped), in: store))
+        XCTAssertEqual(store.game, before)
+        XCTAssertEqual(store.queuedInputs, [.tap(tapped)])
+        XCTAssertTrue(presenter.completions.isEmpty)
+        store.endConstellationHold(hold)
+        var expected = before
+        XCTAssertNotNil(expected.clear(tapped))
+        XCTAssertEqual(store.game, expected)
+        XCTAssertEqual(store.queuedInputCount, 0)
+        XCTAssertEqual(presenter.completions.count, 1)
+        presenter.finish()
+    }
+
+    @MainActor func testSurfaceSubmitsHeldTapBeforeReleaseCanRetargetItThroughAQueuedHead() throws {
+        let (store,presenter,_,_) = fixture("trim")
+        XCTAssertTrue(request(.swap(Cell(2,4),Cell(3,4)), in: store)) // Real settle-back motion.
+        let queued = SkyPlayerInput.swap(Cell(2,2),Cell(2,1))
+        XCTAssertTrue(request(queued, in: store))
+        let tapped = Cell(3,1), before = store.game
+        XCTAssertEqual(before.value(of: before.group(at: tapped)), 2, "The visible tap group is initially invalid")
+        var afterHead = before; apply(queued, to: &afterHead)
+        XCTAssertEqual(afterHead.value(of: afterHead.group(at: tapped)), 3, "The queued head changes which stars a later tap would collect")
+        let mapping = LandingGeometry(size: CGSize(width:390,height:844))
+        let surface = ConstellationTraceSurface.Surface()
+        var hold: UInt64?, captured: FallingSky?, events: [String] = []
+        let generation = store.constellationInputGeneration
+        surface.updateInput(.init(size:mapping.size,enabled:true,generation:generation,
+            traceStart:{ mapping.cell(at:$0) },
+            tap:{ cell in
+                events.append("tap")
+                XCTAssertEqual(store.game, before)
+                XCTAssertFalse(store.requestInput(.tap(cell),snapshot: captured!,generation:generation))
+                XCTAssertEqual(store.queuedInputs,[queued])
+            }, begin:{ _ in XCTFail("A quick tap cannot arm drawing") },move:{ _ in },end:{},
+            cancel:{
+                events.append("cancel")
+                store.endConstellationHold(hold); hold = nil
+            }, contact:{ point in
+                guard let cell = mapping.cell(at:point), let snapshot = store.inputSnapshot(at:cell) else { return false }
+                captured = snapshot; hold = store.beginResponsiveContact(at:cell)
+                return hold != nil
+            }, swapStart:{ _ in true }))
+        let timestamp = ProcessInfo.processInfo.systemUptime
+        surface.beginInput(at:mapping.viewPoint(tapped),timestamp:timestamp)
+        presenter.completions[0]() // Motion ends under the held finger; the queue must still wait.
+        XCTAssertEqual(store.game,before)
+        surface.endInput(at:mapping.viewPoint(tapped),timestamp:timestamp + 0.05)
+        XCTAssertEqual(events,["tap","cancel"])
+        XCTAssertEqual(store.game,afterHead)
+        XCTAssertEqual(store.game.score,0,"Release may execute the head, never a newly interpreted tap")
+        XCTAssertEqual(presenter.completions.count,2)
+        presenter.finish()
+    }
+
+    @MainActor func testIndependentDirectCommitRetiresIncompatibleQueuedProjection() throws {
         let (store, presenter, _, _) = fixture("nudge")
         XCTAssertTrue(request(.swap(Cell(0,2), Cell(1,2)), in: store))
-        XCTAssertTrue(request(.swap(Cell(1,2), Cell(0,2)), in: store))
+        XCTAssertTrue(request(.swap(Cell(1,0), Cell(1,1)), in: store))
         let pending = try XCTUnwrap(store.bufferedInput)
         XCTAssertTrue(pending.matches(store.game))
-        XCTAssertTrue(request(.swap(Cell(1,0), Cell(1,1)), in: store))
+        XCTAssertTrue(store.performTechnique(.nudge(Cell(0,0), Cell(0,1)), snapshot: store.game,
+                                             generation: store.constellationInputGeneration))
         XCTAssertFalse(pending.matches(store.game))
         XCTAssertNil(store.bufferedInput)
         let committed = store.game
@@ -341,33 +461,36 @@ final class SkyTechniqueStoreTests: XCTestCase {
         XCTAssertEqual(store.game, committed)
     }
 
-    @MainActor func testLifecycleRetiresPendingIntentBeforeAnyStaleCallbacks() throws {
-        for interruption in 0..<6 {
-            let (store, presenter, _, _) = fixture("nudge")
-            XCTAssertTrue(request(.swap(Cell(0,2), Cell(1,2)), in: store))
-            XCTAssertTrue(request(.swap(Cell(1,2), Cell(0,2)), in: store))
-            let pending = try XCTUnwrap(store.bufferedInput)
+    @MainActor func testLifecycleRetiresWholeQueueBeforeAnyStaleCallbacks() throws {
+        for interruption in 0..<7 {
+            let (store, presenter, _, _) = try queueFixture()
+            XCTAssertTrue(request(.swap(Cell(0,0), Cell(0,1)), in: store))
+            XCTAssertTrue(request(try independentQueuedAction(in: store), in: store))
+            XCTAssertTrue(request(try independentQueuedAction(in: store), in: store))
+            let generation = store.constellationInputGeneration
             switch interruption {
-            case 0: store.setSuspended(true) // Settings and background share this boundary.
+            case 0: store.setSuspended(true)
             case 1: store.restart(sameSky: true)
             case 2: store.setReducedMotion(true)
             case 3: store.scene.onLayout?()
             case 4: store.startFirstLight()
-            default: store.settlePresentation(reason: "detachment")
+            case 5: store.settlePresentation(reason: "detachment")
+            default: store.togglePause()
             }
             let after = store.game
             XCTAssertNil(store.bufferedInput); XCTAssertNil(presenter.bufferedCue)
-            presenter.completions[0](); store.expireBufferedInput(ticket: pending.ticket)
+            XCTAssertNotEqual(store.constellationInputGeneration, generation)
+            presenter.completions[0]()
             XCTAssertEqual(store.game, after)
-            XCTAssertNotEqual(store.inputMessage, SkyCopy.text(.inputBufferExpired))
+            XCTAssertEqual(store.queuedInputCount, 0)
         }
     }
 
-    @MainActor func testQueuedTapCommitsOnlyAfterItsClearColumnsAreAvailable() throws {
-        let (store, presenter, _, _) = fixture("nudge")
-        XCTAssertTrue(request(.swap(Cell(1,2), Cell(1,1)), in: store))
-        let cell = try XCTUnwrap(store.game.legalGroups.first?.first)
-        XCTAssertFalse(store.canClear(cell))
+    @MainActor func testQueuedTapKeepsItsVisibleGroupAndCommitsOnlyAfterPresentation() throws {
+        let (store, presenter, _, _) = fixture("bank")
+        // Exchanging equal colors changes identities without changing group legality.
+        XCTAssertTrue(request(.swap(Cell(0,0), Cell(0,1)), in: store))
+        let cell = Cell(0,2)
         let first = store.game
         var expected = first
         XCTAssertNotNil(expected.clear(cell))
@@ -381,37 +504,128 @@ final class SkyTechniqueStoreTests: XCTestCase {
         presenter.finish()
     }
 
-    @MainActor func testPendingInputPreservesCommittedSaveAndExactShowerRemainder() throws {
-        let suite = "Starfall.BufferedSave.\(UUID())", defaults = UserDefaults(suiteName: suite)!
-        defer { defaults.removePersistentDomain(forName: suite) }
-        var game = FallingSky(seed: 5, generation: .current); game.letStarsFall()
-        defaults.set(try SkySaveArchive.encode(game), forKey: SkySaveArchive.key)
-        let presenter = FallingSkyRecorder(), clock = ManualRainClock()
-        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
-        store.setSuspended(false); store.togglePause()
+    @MainActor func testQueuePreservesCommittedSaveAndExactShowerRemainderThenDueRainWins() throws {
+        var game = FallingSky.freshChallenge(.firstLight)
+        _ = game.letStarsFall()
+        let (store, presenter, clock, defaults) = try queueFixture(game)
+        store.togglePause()
         let deadline = try XCTUnwrap(clock.deadline)
-        clock.advance(deadline - 0.04)
-        let pairs = (0..<7).flatMap { column in [-1,1].map { (Cell(0,column), Cell(0,column+$0)) } }
-        let (from, to) = try XCTUnwrap(pairs.first { from, to in
-            var preview = store.game
-            return preview.nudge(from: from, to: to) != nil && preview.canNudge(from: to, to: from)
-        })
-        XCTAssertTrue(request(.swap(from, to), in: store))
-        let first = store.game
-        XCTAssertTrue(request(.swap(to, from), in: store))
-        let pending = try XCTUnwrap(store.bufferedInput)
+        clock.advance(deadline - clock.now - 0.04)
+        let first = try independentQueuedAction(in: store)
+        XCTAssertTrue(request(first, in: store))
+        let committed = store.game
+        let queued = try independentQueuedAction(in: store)
+        XCTAssertTrue(request(queued, in: store))
         XCTAssertNil(clock.deadline)
-        XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), first)
-        clock.advance(0.1)
-        store.expireBufferedInput(ticket: pending.ticket)
+        XCTAssertEqual(SkySaveArchive.load(from: defaults), committed)
+        clock.advance(10)
+        XCTAssertEqual(store.game, committed)
+        presenter.completions[0]()
+        var expected = committed; apply(queued, to: &expected)
+        XCTAssertEqual(store.game, expected)
+        XCTAssertEqual(SkySaveArchive.load(from: defaults), expected)
+        XCTAssertNil(clock.deadline, "The final queued physical presentation retains the clock hold")
+        presenter.completions[1]()
         XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, 0.04, accuracy: 0.0001)
+        // Hold an ordinary presentation open as the exact remainder becomes due.
+        XCTAssertTrue(request(try independentQueuedAction(in: store), in: store))
+        let beforeRain = store.game
         clock.advance(0.04)
         XCTAssertFalse(store.canReceiveInput)
-        XCTAssertFalse(request(.swap(to, from), in: store), "Already-due rain retains priority")
-        presenter.completions[0]()
-        XCTAssertEqual(store.game.turns, first.turns + 1)
-        XCTAssertNil(store.bufferedInput)
+        XCTAssertFalse(request(queued, in: store))
+        presenter.finish()
+        XCTAssertEqual(store.game.turns, beforeRain.turns + 1)
+        XCTAssertEqual(store.queuedInputCount, 0)
         store.setSuspended(true)
+    }
+
+    @MainActor func testFivePhaseTransactionKeepsAnAcceptedPlanWithoutAnExpiry() throws {
+        let route = [(8,9),(11,12),(31,38),(17,24),(9,16),(9,10),(1,8),(1,2),(1,8),(9,10),(10,11)]
+        var game = FallingSky.fullBoardRibbon()
+        for (from,to) in route { XCTAssertNotNil(game.nudge(from: Cell(from/7,from%7), to: Cell(to/7,to%7))) }
+        let (store, presenter, clock, _) = try queueFixture(game)
+        let action = SkyPlayerInput.swap(Cell(3,1), Cell(4,1)) // 22 -> 29, the recorded five-phase middle.
+        let turn = try XCTUnwrap(action.preview(in: game))
+        XCTAssertEqual(turn.resolutionPhases.count, 5)
+        XCTAssertTrue(request(action, in: store))
+        let committed = store.game
+        let next = try independentQueuedAction(in: store)
+        XCTAssertTrue(request(next, in: store))
+        clock.advance(30)
+        XCTAssertEqual(store.game, committed)
+        XCTAssertEqual(store.queuedInputs, [next])
+        presenter.completions[0]()
+        var expected = committed; apply(next, to: &expected)
+        XCTAssertEqual(store.game, expected)
+        presenter.finish()
+    }
+
+    @MainActor func testProjectedWinningCommandRejectsFollowersAndSavesOnlyItsRealCommit() throws {
+        var game = FallingSky.fullBoardLantern()
+        for (from,to) in [(27,34),(1,2),(31,32),(12,13),(16,17),(8,9),(11,12),(29,30),(29,36)] {
+            XCTAssertNotNil(game.nudge(from: Cell(from/7,from%7), to: Cell(to/7,to%7)))
+        }
+        XCTAssertEqual(game.displayScore, 98_000)
+        let (store,presenter,_,defaults) = try queueFixture(game)
+        let winning = SkyPlayerInput.swap(Cell(1,2),Cell(2,2)) // 9 -> 16.
+        let excluded: Set<Cell> = [winning.source, try XCTUnwrap(winning.destination)]
+        var harmless: SkyPlayerInput?
+        for row in 0..<7 { for column in 0..<6 {
+            let from = Cell(row,column), to = Cell(row,column+1)
+            guard !excluded.contains(from), !excluded.contains(to),
+                  game.gem(at: from)?.kind == game.gem(at: to)?.kind else { continue }
+            harmless = .swap(from,to)
+        } }
+        XCTAssertTrue(request(try XCTUnwrap(harmless), in: store))
+        let committed = store.game
+        XCTAssertTrue(request(winning, in: store))
+        XCTAssertEqual(store.queuedInputCount, 1)
+        XCTAssertFalse(request(.swap(Cell(0,0),Cell(0,1)), in: store))
+        XCTAssertEqual(store.game, committed)
+        XCTAssertEqual(SkySaveArchive.load(from: defaults), committed)
+        presenter.completions[0]()
+        XCTAssertEqual(store.game.outcome, .won)
+        XCTAssertEqual(store.queuedInputCount, 0)
+        XCTAssertEqual(SkySaveArchive.load(from: defaults), store.game)
+        let winner = store.game
+        presenter.completions[0](); presenter.finish()
+        XCTAssertEqual(store.game, winner)
+        XCTAssertFalse(request(winning, in: store))
+    }
+
+    @MainActor private func queueFixture(_ game: FallingSky = .fullBoardLantern()) throws -> (FallingSkyStore,FallingSkyRecorder,ManualRainClock,UserDefaults) {
+        let suite = "Starfall.Queue.\(UUID())", defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        addTeardownBlock { defaults.removePersistentDomain(forName: suite) }
+        try SkySaveArchive.save(game, to: defaults)
+        let presenter = FallingSkyRecorder(), clock = ManualRainClock()
+        let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
+        store.setSuspended(false)
+        return (store,presenter,clock,defaults)
+    }
+
+    @MainActor private func apply(_ action: SkyPlayerInput, to game: inout FallingSky, file: StaticString = #filePath, line: UInt = #line) {
+        let turn: FallingSkyTurn?
+        switch action {
+        case .tap(let cell): turn = game.clear(cell)
+        case .swap(let from,let to): turn = game.nudge(from: from, to: to)
+        }
+        XCTAssertNotNil(turn, file: file, line: line)
+    }
+
+    @MainActor private func independentQueuedAction(in store: FallingSkyStore, file: StaticString = #filePath, line: UInt = #line) throws -> SkyPlayerInput {
+        var projected = store.game
+        for action in store.queuedInputs { apply(action, to: &projected, file: file, line: line) }
+        for row in 0..<7 { for column in 0..<7 {
+            let from = Cell(row,column)
+            guard store.canQueueInput(at: from), projected.gem(at: from)?.id == store.game.gem(at: from)?.id else { continue }
+            for to in [Cell(row,column+1),Cell(row+1,column)] where to.row < 7 && to.column < 7 {
+                guard store.canQueueInput(at: to), projected.gem(at: to)?.id == store.game.gem(at: to)?.id else { continue }
+                let action = SkyPlayerInput.swap(from,to)
+                guard let turn = action.preview(in: projected), turn.resolutionPhases.isEmpty else { continue }
+                return action
+            }
+        } }
+        return try XCTUnwrap(nil as SkyPlayerInput?, "No independent visible exchange", file: file, line: line)
     }
 
     @MainActor private func fixture(_ name:String) -> (FallingSkyStore,FallingSkyRecorder,ManualRainClock,UserDefaults) {

@@ -1,0 +1,63 @@
+{
+  "status": "verified nonvisual correction",
+  "tested_local_commit": "269abe2743d624e1380ca469dd595296b75670b7",
+  "tested_tree": "8a956f8fd4e34734e6528d597742442164f6a9af",
+  "acceptance_source": "All 9 compiled build-input hashes match the clean tested commit; subsequent edits are documentation/evidence only.",
+  "checks": {
+    "core": {
+      "passed": 352,
+      "failed": 0,
+      "log": "/private/tmp/starfall-momentum-input-core.log"
+    },
+    "hosted": {
+      "passed": 88,
+      "failed": 0,
+      "skipped": 0
+    },
+    "native": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "method": "FullBoardRibbonInteractionTests/testThreeRapidInputsSurviveFivePhaseCascadeWithoutSettlingWaits",
+      "result": "15exchanges /179000points /49actual stars after3rapid requests during5phases"
+    },
+    "debug_build_for_testing": "passed",
+    "release_simulator_build": "passed",
+    "hygiene": "passed",
+    "git_diff_check": "passed"
+  },
+  "commands": [
+    "swift test --scratch-path /private/tmp/starfall-momentum-swift --cache-path /private/tmp/starfall-momentum-cache",
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -destination \"platform=iOS Simulator,id=362DC1A0-13DB-41F5-9CDB-86A72EB0E7A0,arch=arm64\" -derivedDataPath /private/tmp/starfall-momentum-input-dd -clonedSourcePackagesDirPath /private/tmp/starfall-momentum-packages build-for-testing CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=YES ARCHS=arm64",
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -xctestrun /private/tmp/starfall-momentum-input-dd/Build/Products/Starfall_iphonesimulator27.1-arm64.xctestrun -destination \"platform=iOS Simulator,id=9ADC6510-1A37-4046-9FCA-FC6B498444FA,arch=arm64\" -resultBundlePath /private/tmp/starfall-momentum-input-tablet.xcresult -parallel-testing-enabled NO -collect-test-diagnostics never \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallAppTests/ResponsiveInputTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/SkyPhasePresentationTests\" \"-only-testing:StarfallUITests/FullBoardRibbonInteractionTests/testThreeRapidInputsSurviveFivePhaseCascadeWithoutSettlingWaits\" test-without-building",
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"platform=iOS Simulator,id=362DC1A0-13DB-41F5-9CDB-86A72EB0E7A0,arch=arm64\" -derivedDataPath /private/tmp/starfall-momentum-input-dd -clonedSourcePackagesDirPath /private/tmp/starfall-momentum-packages build CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=YES ARCHS=arm64",
+    "python3 scripts/ci-hygiene.py",
+    "git diff --check"
+  ],
+  "hosted_selection": [
+    "SkyTechniqueStoreTests",
+    "ResponsiveInputTests",
+    "SkyDialogueTests",
+    "SkyPhasePresentationTests"
+  ],
+  "run": {
+    "startTime": 1792880371.565,
+    "finishTime": 1792880586.887,
+    "result": "Passed",
+    "totalTestCount": 89,
+    "passedTests": 89,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "runtimeWarnings": [
+      {
+        "issueType": "Runtime Warning",
+        "message": "Modifying state during view update, this will cause undefined behavior."
+      }
+    ]
+  },
+  "limits": [
+    "Existing HUD/arrow styling only; no new visual adoption",
+    "Human recognition/physical latency/actual VoiceOver/minimum-iOS/continuous motion quality unmeasured",
+    "No phone installation; first-play395 and HUD382 remain held"
+  ]
+}

@@ -1,5 +1,7 @@
 # iOS application
 
+The [nonvisual responsiveness correction](../docs/evidence/player-momentum-input-2026-10-24/README.md) keeps four independent FIFO plans through physical cascades, validating visible stationary identities and preserving committed-only saves and the existing shower remainder. Existing HUD/arrow artwork remains; first-play and multi-plan visual guidance are separate held work in PR #395.
+
 For HUD changes, start with the [native HUD guide](../docs/design/hud/README.md), the official component roster and the UI production skill. [App instructions](AGENTS.md) apply to the current flat HUD source files.
 
 The [ordered HUD stack's October 24 erratum](../docs/evidence/hud-stack-2026-10-24/README.md#october-24-visual-rejection-erratum) records user-rejected goal 1: its menu-role inspection action is oversized, and tablet instruments disconnect from the scenery. Mechanical forecast/target/state checks remain factual, but initial visual adoption is superseded. Issue #382 is reopened for correction through the official HUD component system; goal 2 is held. Correct this composition before continuing rather than deferring it to later goals. Ordered forecast facts, source validation, Full Board absence and existing clocks remain authoritative.
