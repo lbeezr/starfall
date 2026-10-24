@@ -32,6 +32,7 @@ import StarfallCore
     override func didChangeSize(_ oldSize: CGSize) {
         guard oldSize != size else { return }
         clearConstellationTrace()
+        cancelDepartures()
         onLayout?()
         reportReadiness()
     }
@@ -44,6 +45,7 @@ import StarfallCore
     }
     override func willMove(from view: SKView) {
         clearConstellationTrace()
+        cancelDepartures()
         for node in nodes.values { node.setGrowthMotion(false); node.setPieceMotion(false) }
         cancelFlightPoses()
         onReadinessChanged?(false); onLayout?()
@@ -80,7 +82,17 @@ import StarfallCore
             node.setGrowthMotion(growthMotionEnabled)
             node.setPieceMotion(pieceMotionEnabled)
         }
-        if !pieceMotionEnabled { cancelFlightPoses() }
+        if !pieceMotionEnabled { cancelFlightPoses(); cancelDepartures() }
+    }
+
+    /// Removed bodies are no longer in the active ID map. Retire their finite
+    /// actions explicitly so retained references cannot finish after replacement.
+    private func cancelDepartures() {
+        for node in pieces.children where node.action(forKey: FallingSkyCharacter.departureKey) != nil {
+            node.removeAllActions()
+            (node as? FallingSkyCharacter)?.cancelLocalMotion()
+            node.removeFromParent()
+        }
     }
 
     private func cancelFlightPoses() {
@@ -122,6 +134,7 @@ import StarfallCore
         rendered = game
         openingPrepared = false
         if !preservingInput { constellationTrail.removeAllChildren(); showBufferedInput(nil) }
+        cancelDepartures()
         removeAllActions(); cancelFlightPoses(); effects.removeAllChildren(); effects.removeAllActions()
         for node in nodes.values { node.setGrowthMotion(false); node.setPieceMotion(false) }
         pieces.removeAllChildren(); grid.removeAllChildren(); nodes.removeAll(); cellsByID.removeAll()
@@ -203,13 +216,14 @@ import StarfallCore
         }
         for cell in turn.cleared {
             if let id = old.gem(at: cell)?.id, let node = takeCharacter(id) {
-                node.update(node.gem, expression: .clearing)
                 cellsByID.removeValue(forKey: id)
-                run(.sequence([.wait(forDuration: StarfallMotion.gatherDuration), .run { [weak self] in
-                    guard let self else { return }
-                    self.light(at: self.point(cell), color: old.gem(at: cell).map { StarCast.Identity($0).color } ?? .systemPurple, strength: 0.75)
-                }]))
-                node.run(.sequence([.scale(to: 0.91, duration: StarfallMotion.gatherDuration), .group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12), .rotate(byAngle: 0.18, duration: 0.12)]), .removeFromParent()]))
+                if old.reward(of: [cell]) > 0 {
+                    run(.sequence([.wait(forDuration: StarfallMotion.gatherDuration), .run { [weak self] in
+                        guard let self else { return }
+                        self.light(at: self.point(cell), color: StarCast.Identity(node.gem).color, strength: 0.75)
+                    }]))
+                }
+                node.depart(step: step)
             }
         }
         if turn.collected == 0, !turn.cleared.isEmpty {
@@ -545,21 +559,17 @@ extension FallingSkyScene {
             guard let gem = phase.before[cell.row * 7 + cell.column],
                   let node = takeCharacter(gem.id) else { continue }
             cellsByID.removeValue(forKey: gem.id)
-            node.update(gem, expression: .clearing)
-            node.run(.sequence([
-                .scale(to: 0.91, duration: StarfallMotion.gatherDuration),
-                .group([.fadeOut(withDuration: 0.12), .scale(to: 1.2, duration: 0.12),
-                        .rotate(byAngle: 0.18, duration: 0.12)]),
-                .removeFromParent()
-            ]), withKey: "sky.recipe-pop")
-            run(.sequence([
-                .wait(forDuration: StarfallMotion.gatherDuration),
-                .run { [weak self] in
-                    guard let self else { return }
-                    self.light(at: self.point(cell), color: StarCast.Identity(gem).color,
-                               strength: phase.comboDepth > 1 ? 1 : 0.75)
-                }
-            ]))
+            node.depart(step: step)
+            if gem.value > 0 {
+                run(.sequence([
+                    .wait(forDuration: StarfallMotion.gatherDuration),
+                    .run { [weak self] in
+                        guard let self else { return }
+                        self.light(at: self.point(cell), color: StarCast.Identity(gem).color,
+                                   strength: phase.comboDepth > 1 ? 1 : 0.75)
+                    }
+                ]))
+            }
         }
     }
 

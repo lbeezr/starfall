@@ -11,6 +11,7 @@ import StarfallCore
     private var growthMotionEnabled = false
     private var pieceMotionEnabled = true
     private static let growthPulseKey = "sky.growth-pulse"
+    static let departureKey = "sky.helper-departure"
 
     init(gem: StarfallGem, step: CGFloat) {
         self.gem = gem
@@ -110,6 +111,28 @@ import StarfallCore
         SkyPieceMotion.reset(character)
     }
 
+    /// The same body leaves the terrace; credited light has a separate owner.
+    /// This finite decoration never calls gameplay completion or changes size.
+    func depart(step: CGFloat) {
+        removeAllActions()
+        setGrowthMotion(false)
+        setPieceMotion(false)
+        let origin = position, initialAlpha = alpha, initialRotation = zRotation
+        let direction: CGFloat = gem.id.isMultiple(of: 2) ? 1 : -1
+        let duration = StarfallMotion.departureDuration
+        run(.sequence([
+            .customAction(withDuration: duration) { node, elapsed in
+                let t = min(1, max(0, CGFloat(elapsed) / CGFloat(duration)))
+                let lift = t * t * (3 - 2 * t)
+                node.position = CGPoint(x: origin.x + direction * step * 0.18 * sin(t * .pi / 2),
+                                        y: origin.y + step * 0.68 * lift)
+                node.zRotation = initialRotation + direction * 0.24 * lift
+                node.alpha = initialAlpha * min(1, (1 - t) / 0.38)
+            },
+            .removeFromParent()
+        ]), withKey: Self.departureKey)
+    }
+
     func land(direction: CGFloat, step: CGFloat) {
         guard pieceMotionEnabled else { return }
         SkyPieceMotion.land(character, identity: .init(gem), direction: direction,
@@ -150,6 +173,7 @@ enum StarfallMotion {
     static let receiverResponseDelay: TimeInterval = 0.38
     static let landingDuration: TimeInterval = 0.34
     static let gatherDuration: TimeInterval = 0.06
+    static let departureDuration: TimeInterval = gatherDuration + 0.12
     static let gravityStart: TimeInterval = 0.32
     static let clearDuration: TimeInterval = 0.56
     static let exchangeSlideDuration: TimeInterval = 0.14
