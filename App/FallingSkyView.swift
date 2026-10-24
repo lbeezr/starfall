@@ -195,6 +195,7 @@ import StarfallCore
                                         mastery: flow.entry.map {
                                             SkyMasterySnapshot.entry(request: $0, retainedRound: store.game, bestRecords: store.mastery.records)
                                         } ?? SkyMasterySnapshot.current(game: store.game, bestRecords: store.mastery.records, context: .result),
+                                        finalLight: endingReady ? store.finalLight : nil,
                                         active: scenePhase == .active && flow.handoff == nil && !settings, quiet: quietMotion, modal: settings,
                                         restoredSceneryBounds: anchors[.restorationScenery].map { geometry[$0] },
                                         action: { handleFlowAction($0, entryID: entryID) })
@@ -344,7 +345,9 @@ import StarfallCore
         if let run = store.tutorial {
             VStack(spacing: StarfallTheme.Spacing.medium) {
                 let hasControls = run.showsPauseControl || run.showsShowerControl
-                SkyTutorialGuide(run: run, constrained: maximumHeight != nil, endingAfter: tutorialEndingAfter, retry: { store.loadTutorial(run.chapter) },
+                SkyTutorialGuide(run: run, constrained: maximumHeight != nil, endingAfter: tutorialEndingAfter,
+                                 finalLight: store.finalLight, active: scenePhase == .active && !settings, quiet: quietMotion,
+                                 retry: { store.loadTutorial(run.chapter) },
                                  next: { chapter in store.loadTutorial(chapter) }, exit: { tutorialExit?() })
                     .frame(height: maximumHeight.map {
                         max(128, $0 - (hasControls ? StarfallTheme.Layout.preferenceTarget + StarfallTheme.Spacing.medium : 0))

@@ -1,0 +1,245 @@
+{
+  "goal": 344,
+  "base": "70f2932ef5df5d2106d2d8b44b1782e67f065c8f",
+  "runtime_checkpoint": "afb0496d70666355d8e58d0dd180c18336f72e5a",
+  "accepted_checkpoint": "0acdcca1f423742380b1c0ba37d785040f0d9942",
+  "tested_tree": "59c853ee4fef89b34772130ae16d1d6c3c4c83e6",
+  "runtime_fingerprint": "dev.207c6a5c5b",
+  "actual_bundle": {
+    "StarfallBuildID": "dev.local",
+    "CFBundleIdentifier": "com.starfall.prototype",
+    "CFBundleShortVersionString": "0.1.0",
+    "CFBundleVersion": "1"
+  },
+  "recorded_input_count": 700,
+  "noncompiled_recorded_input_delta": [],
+  "runtime_inputs_match_accepted_checkpoint": true,
+  "source_hashes": {
+    "App/DialogueScripts/observatory-dialogue.json": "b114d6427b041d799bd0cddba654efb643be5cc064223b8854001b31d247832c",
+    "App/FallingSkyStore.swift": "3090684e5d2341f1a85f4ff71044a41550bdc875769d51f90c3c29c9c4fb6d6e",
+    "App/FallingSkyView.swift": "b1d7510912e69e6581d6cad3e0f948889d5ebc1d158e7149aba05d49c80647b5",
+    "App/README.md": "f0d039959a0542d3c58ecc5a2b8e3b8d22dfdee6f84619dd6b2d9f71b706333d",
+    "App/SkyCopy.swift": "2a8c0313f923465898c34080a587c1f13c6b28a59c72c107078c4858569d1f5a",
+    "App/SkyFinalLightView.swift": "703aeda26abefc4ce230d269e5246e2477b1370e5c33031fd9f2aac25b892fb1",
+    "App/SkyFlowCeremony.swift": "dcacf57a6c29562e7511f584a555e7bcc32f30ae123af78a9c2d11ab9144ecf5",
+    "App/SkyLightReceiptSession.swift": "5dcc52beeb4eb2326fed7d4bf81d0fa005922750e4f548861962bb6044884e45",
+    "App/SkyTutorialView.swift": "037335ecca83aae1e36f262e3fd4365f7de9d0f5af166f8c4a26fb883cfe691d",
+    "AppTests/FinalLightPresentationTests.swift": "689847fdce61a380cd3989149cc718c8903527101bb01fefaa4cbbb40739506d",
+    "AppTests/FinalLightSessionTests.swift": "f6221d90e360eb0a3a7abd06edbd2d333c1547058aecf5704eff8c4d131d75ba",
+    "Starfall.xcodeproj/project.pbxproj": "e601b3dd440d5f93f90809b65ca2769660b1ff83522dcb3f8f5e4699262f4b9b",
+    "UITests/FinalLightInteractionTests.swift": "ae1aed86389d3a571ae28cccfe111a9d8447a2035e1fa241f339bdec76a45438",
+    "scripts/native_test_plan.py": "cc8f4514238008a2c9fc76c38c6e5d60bc8929bc30098265ff5b5a44623a16a7"
+  },
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 21.288,
+    "input_count": 68,
+    "all_inputs_unchanged": true,
+    "command": "swift test --scratch-path /private/tmp/starfall-identity-09-20261024/CoreBuild"
+  },
+  "executions": [
+    {
+      "name": "hosted",
+      "source": "9fcf278272397ee60bc90abf1d082d91f4d8b22f",
+      "raw": "/private/tmp/starfall-identity-09-20261024/hosted-summary.json",
+      "sha256": "8a8b0ebbe7e3bf62f696bf85f74a4915750e2a119c2e9af64b1d7e8783824637",
+      "passedTests": 255,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 255,
+      "startTime": 1792827515.632,
+      "finishTime": 1792827585.459
+    },
+    {
+      "name": "phone-silver",
+      "source": "87266e823d9a2228fe473bfcc30e59ad7b360ee7",
+      "raw": "/private/tmp/starfall-identity-09-20261024/phone-silver-summary.json",
+      "sha256": "55eb7e844f1e4217553a7d635baa0ea7bb6d9e260d07ea461cdbeb452450cb1e",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792827990.231,
+      "finishTime": 1792828080.182
+    },
+    {
+      "name": "phone-loss",
+      "source": "87266e823d9a2228fe473bfcc30e59ad7b360ee7",
+      "raw": "/private/tmp/starfall-identity-09-20261024/phone-loss-summary.json",
+      "sha256": "432c671fb9537a862a71278ad06e466debb77e5b2477cfd44ed82dae1b772426",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792828116.286,
+      "finishTime": 1792828366.53
+    },
+    {
+      "name": "phone-silver-corrected",
+      "source": "4d02d82812623894f46d9a1bfd28b76c8c71223d",
+      "raw": "/private/tmp/starfall-identity-09-20261024/phone-silver-corrected-summary.json",
+      "sha256": "5d0cb6b951a85c5a295f8ed612b43bd379bc49de82fd9f95b67596e8535227de",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792828387.801,
+      "finishTime": 1792828528.438
+    },
+    {
+      "name": "tablet-practice",
+      "source": "4d02d82812623894f46d9a1bfd28b76c8c71223d",
+      "raw": "/private/tmp/starfall-identity-09-20261024/tablet-practice-summary.json",
+      "sha256": "e60e1d92d30846936636711efb7f3fac58fa88519da77505d06cf2ad0575e8f3",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792828574.434,
+      "finishTime": 1792828620.33
+    },
+    {
+      "name": "tablet-full-board",
+      "source": "4d02d82812623894f46d9a1bfd28b76c8c71223d",
+      "raw": "/private/tmp/starfall-identity-09-20261024/tablet-full-board-summary.json",
+      "sha256": "b81953bc857753ad6a096b498753215f282e352b357d1767226c5846ac8a44dc",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792828777.105,
+      "finishTime": 1792829007.964
+    },
+    {
+      "name": "tablet-practice-corrected",
+      "source": "7dc2f9c1e7c16ad299133756647533fa64049147",
+      "raw": "/private/tmp/starfall-identity-09-20261024/tablet-practice-corrected-summary.json",
+      "sha256": "5577475dee24e6fbcc1c22e92fda89bd44a7d317d3d995165621413162d5202d",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792829050.091,
+      "finishTime": 1792829155.729
+    },
+    {
+      "name": "tablet-practice-final",
+      "source": "0acdcca1f423742380b1c0ba37d785040f0d9942",
+      "raw": "/private/tmp/starfall-identity-09-20261024/tablet-practice-final-summary.json",
+      "sha256": "4e7ca17a20418afd97377508187b53f41a058baf719425989675f06bf739e659",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 1,
+      "startTime": 1792829838.432,
+      "finishTime": 1792830035.148
+    }
+  ],
+  "membership": {
+    "SkyFinalLightView.swift": [
+      "Starfall"
+    ],
+    "SkyLightReceiptSession.swift": [
+      "Starfall"
+    ],
+    "FinalLightSessionTests.swift": [
+      "StarfallAppTests"
+    ],
+    "FinalLightPresentationTests.swift": [
+      "StarfallAppTests"
+    ],
+    "FinalLightInteractionTests.swift": [
+      "StarfallUITests"
+    ]
+  },
+  "catalogue_keys": 542,
+  "limits": [
+    "Selected development scope, not a full Apple matrix.",
+    "Historical Dusk fixture supplies native Open Sky overflow; not modern shower-supply evidence.",
+    "Normal phone actual current Silver4 and quiet tablet current FullBoard6 are separately source-bound.",
+    "Static signature and sampled recordings do not establish physical smoothness, sustained performance or human recognition.",
+    "No actual VoiceOver, physical-device or minimum-iOS17 execution."
+  ],
+  "working_tree_differences_at_native_acceptance": [
+    "App/README.md (noncompiled)",
+    "docs/ENGINEERING.md (noncompiled)",
+    "untracked docs/evidence/identity-goal-09-final-light-2026-10-24/ (noncompiled)"
+  ],
+  "prepared_products_source_contract": "Execution source identifies exported test-product inputs. Later test-only changes and noncompiled documents do not retroactively certify new code; all App/Core/config bytes match afb0496 throughout.",
+  "hosted_suites": {
+    "FinalLightSessionTests": 9,
+    "FinalLightPresentationTests": 8,
+    "FallingSkyStoreTests": 51,
+    "StarlightCelebrationTests": 27,
+    "CascadeReturnTests": 15,
+    "SkyPhasePresentationTests": 6,
+    "SkyFlowStateTests": 39,
+    "SavedRoundModeTests": 7,
+    "SkyEntryReturnTests": 7,
+    "SkyTutorialPresentationTests": 4,
+    "SkyDialogueTests": 28,
+    "SkyDialogueCatalogBoundsTests": 2,
+    "TraceInputPolishTests": 32,
+    "LanternAwardResponseTests": 11,
+    "RibbonAwardResponseTests": 9
+  },
+  "native_method_seconds": {
+    "Silver win/Replay/cold": 120.073,
+    "Historical Open Sky loss/cold": 230.446,
+    "AX3XL Calm FullBoard6 win/Replay": 227.595,
+    "AX3XL Calm practice/Retry/retained": 193.255
+  },
+  "native_executions": {
+    "passed": 4,
+    "failed": 3,
+    "skipped": 0,
+    "distinct_methods": 4
+  },
+  "builds": {
+    "Debug": "Arm64 build-for-testing, ONLY_ACTIVE_ARCH=YES, jobs4; final source0acdcca passed",
+    "Release": "Generic iOS Simulator, signing disabled, jobs4; unchanged runtime/config inputs passed",
+    "first_compile_failure": "afb0496 new test numeric literal ambiguity; CGFloat qualification only, assertions unchanged"
+  },
+  "validation": {
+    "planner_tests": 3,
+    "pbx_lint": "pass",
+    "hygiene": "pass",
+    "diff_check": "pass",
+    "catalogue_keys": 542,
+    "capture_exports": 8,
+    "local_targets": 989,
+    "exact_image_hashes_and_dimensions": "8pass"
+  },
+  "final_owned_devices": [
+    {
+      "udid": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "name": "Starfall Factory Goals iPhone",
+      "state": "Shutdown"
+    },
+    {
+      "udid": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "name": "Starfall Factory Goals iPad",
+      "state": "Shutdown"
+    }
+  ],
+  "media": {
+    "inspected_exports": 8,
+    "normal_silver_transition_samples": 51,
+    "requested_step_seconds": 0.2,
+    "interval_seconds": [
+      60,
+      70
+    ],
+    "scope": "Actual decoded timestamps/repeats retained; no full short-body trajectory/physical/sustained-performance claim."
+  },
+  "hosted_test_tree": {
+    "raw": "/private/tmp/starfall-identity-09-20261024/hosted-tests.json",
+    "sha256": "c55d51ba3afbef8d7fc4c804154a33807698f160e24a98f083eb34d700a985ad",
+    "results": {
+      "Passed": 255
+    },
+    "note": "xcresult test tree has all51 Store methods; condensed MCP case listing omitted one, summary and raw tree agree255."
+  }
+}

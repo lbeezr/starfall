@@ -1,0 +1,186 @@
+{
+  "status": "Current for the inspected slice",
+  "runtime": "dev.207c6a5c5b",
+  "actual_bundle": "dev.local",
+  "captures": [
+    {
+      "file": "dev-87266e8__loss-last-earned-line__iphone-17e__normal.jpg",
+      "source_attachment": "/private/tmp/starfall-identity-09-20261024/phone-loss-attachments/3C8F7831-E1F0-4D82-BD52-4E4C9AC4C798.png",
+      "checkpoint": "87266e823d9a2228fe473bfcc30e59ad7b360ee7",
+      "runtime_fingerprint": "dev.207c6a5c5b",
+      "actual_bundle": "dev.local",
+      "meaning": "Normal Open Sky loss keeps the actual last earned five-star line; no restoration is claimed.",
+      "sha256": "42e9daa5a2f178bdb48232f6fe1b4d5336c44757f9facbe47a145f077cd4cb84",
+      "inspected": true,
+      "pixel_size": [
+        1170,
+        2532
+      ],
+      "inspection": "Exact promoted JPEG independently inspected at original resolution; JPEG85, no crop.",
+      "scope": "Actual bounded horizontalFive Debug fixture; retained Dusk generation. Not fresh survival-supply evidence.",
+      "source_sha256": "00a6c9fa9925c1a96806ba5cf7ac047bcf6dd459352477e483c32d40eb48d59e",
+      "capture_timestamp": 1792828318.995,
+      "original_name": "identity09-phone-open-sky-loss-last-earned-light_0_6F0E5BFD-8F78-4DDB-BA71-A6AD484F176B.png",
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "device_name": "Starfall Factory Goals iPhone",
+      "os": "iOS27.0 Simulator",
+      "configuration": "Debug"
+    },
+    {
+      "file": "dev-87266e8__cold-loss-no-signature__iphone-17e__normal.jpg",
+      "source_attachment": "/private/tmp/starfall-identity-09-20261024/phone-loss-attachments/A0B6286E-C9C5-46F7-A875-2A5A4AAB1052.png",
+      "checkpoint": "87266e823d9a2228fe473bfcc30e59ad7b360ee7",
+      "runtime_fingerprint": "dev.207c6a5c5b",
+      "actual_bundle": "dev.local",
+      "meaning": "Cold-restored loss preserves outcome and score while honestly omitting unavailable session geometry.",
+      "sha256": "26819f48d4a0659f6a284a9bd52a75da9f84395e87144791570e92b0cca503c1",
+      "inspected": true,
+      "pixel_size": [
+        1170,
+        2532
+      ],
+      "inspection": "Exact promoted JPEG independently inspected at original resolution; JPEG85, no crop.",
+      "scope": "Actual bounded horizontalFive Debug fixture; retained Dusk generation. Not fresh survival-supply evidence.",
+      "source_sha256": "e6ee7ac3fcd5b969946180e93976d8cccfee75de1027c7e20f2830eea0b57acc",
+      "capture_timestamp": 1792828353.56,
+      "original_name": "identity09-phone-open-sky-cold-loss-no-session-light_0_970760D1-EB3C-404D-956F-7378FAC92018.png",
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "device_name": "Starfall Factory Goals iPhone",
+      "os": "iOS27.0 Simulator",
+      "configuration": "Debug"
+    },
+    {
+      "file": "dev-4d02d82__silver-earned-line__iphone-17e__normal.jpg",
+      "source_attachment": "/private/tmp/starfall-identity-09-20261024/phone-silver-corrected-attachments/D3C77FF8-543D-4351-9203-87408CB7C5FF.png",
+      "checkpoint": "4d02d82812623894f46d9a1bfd28b76c8c71223d",
+      "runtime_fingerprint": "dev.207c6a5c5b",
+      "actual_bundle": "dev.local",
+      "meaning": "Current Silver4 actual19,000-point win, final line and immediate onward/Replay controls.",
+      "sha256": "7c582a5ce3ec01fb8d677efd54b3a9c4816b1ec52e57f8f592f9ca3c2d0a96d5",
+      "pixel_size": [
+        1170,
+        2532
+      ],
+      "inspected": true,
+      "inspection": "Exact promoted JPEG independently inspected at original resolution; JPEG85, no crop.",
+      "source_sha256": "7690643df0aad190933d194220e9abfd7718e4544e68751fc81fa9cbaed01914",
+      "capture_timestamp": 1792828454.155,
+      "original_name": "identity09-phone-silver-earned-final-light_0_708138D6-3464-433B-A204-E49E26CDFA74.png",
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "device_name": "Starfall Factory Goals iPhone",
+      "os": "iOS27.0 Simulator",
+      "configuration": "Debug"
+    },
+    {
+      "file": "dev-4d02d82__cold-silver-no-signature__iphone-17e__normal.jpg",
+      "source_attachment": "/private/tmp/starfall-identity-09-20261024/phone-silver-corrected-attachments/E033C7BF-C51A-4E8C-995B-60B3FEABE7AA.png",
+      "checkpoint": "4d02d82812623894f46d9a1bfd28b76c8c71223d",
+      "runtime_fingerprint": "dev.207c6a5c5b",
+      "actual_bundle": "dev.local",
+      "meaning": "Cold-restored Silver result keeps19,000 points and repaired world without unavailable session drawing.",
+      "sha256": "5d572b38535a451de94c3b480394a0c20868e25373fe766434bf2cfaf5d592ff",
+      "pixel_size": [
+        1170,
+        2532
+      ],
+      "inspected": true,
+      "inspection": "Exact promoted JPEG independently inspected at original resolution; JPEG85, no crop.",
+      "source_sha256": "84663a9f564ec14e81019f0dfefa1549ec48506bb17a11856e5ac9fec9c36959",
+      "capture_timestamp": 1792828514.356,
+      "original_name": "identity09-phone-silver-cold-ending-no-session-light_0_5F64F502-E50E-42D4-A1ED-E8AFC0848D40.png",
+      "device_id": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+      "device_name": "Starfall Factory Goals iPhone",
+      "os": "iOS27.0 Simulator",
+      "configuration": "Debug"
+    },
+    {
+      "file": "dev-4d02d82__lantern-final-light-actions__ipad-pro11__ax3xl-calm.jpg",
+      "source_attachment": "/private/tmp/starfall-identity-09-20261024/tablet-full-board-attachments/73BD0B69-2F71-4EC7-B344-23B4D850AA62.png",
+      "checkpoint": "4d02d82812623894f46d9a1bfd28b76c8c71223d",
+      "runtime_fingerprint": "dev.207c6a5c5b",
+      "actual_bundle": "dev.local",
+      "meaning": "Actual AX3XL Calm FullBoard6 result at its lower scroll position, with final line and all next actions. Reading above remains scrollable.",
+      "sha256": "52b5db95ba0a83a929ac9c02f56b6e33e34f3e95b7e239c795e6ac8f895599e6",
+      "pixel_size": [
+        1668,
+        2420
+      ],
+      "inspected": true,
+      "inspection": "Exact promoted JPEG independently inspected at original resolution; JPEG85, no crop.",
+      "source_sha256": "1860a70f529cad85dc44615f17158e86237d350717ef507f3f88b1fcbfae772a",
+      "capture_timestamp": 1792828938.297,
+      "original_name": "identity09-tablet-full-board-action-sky_0_88C30B51-1160-496E-82B3-638DC049B3F6.home",
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "device_name": "Starfall Factory Goals iPad",
+      "os": "iOS27.0 Simulator",
+      "configuration": "Debug"
+    },
+    {
+      "file": "dev-4d02d82__lantern-result-three-stars__ipad-pro11__ax3xl-calm.jpg",
+      "source_attachment": "/private/tmp/starfall-identity-09-20261024/tablet-full-board-attachments/E61CDB06-C85B-4D05-A4BF-3CA52C63BE5B.png",
+      "checkpoint": "4d02d82812623894f46d9a1bfd28b76c8c71223d",
+      "runtime_fingerprint": "dev.207c6a5c5b",
+      "actual_bundle": "dev.local",
+      "meaning": "Actual156,000-point repair and3-of3 rating at the upper reading position. Native checks separately reveal each full accomplishment/best block.",
+      "sha256": "63d54b0f1aba00dbe1d411c64139262bafcb74b32124f679685bfe1d1e0332b5",
+      "pixel_size": [
+        1668,
+        2420
+      ],
+      "inspected": true,
+      "inspection": "Exact promoted JPEG independently inspected at original resolution; JPEG85, no crop.",
+      "source_sha256": "ce5a379913476d7af5fde06e8187797cdee1d34e247e93b309e2f0a14202c434",
+      "capture_timestamp": 1792828895.803,
+      "original_name": "identity09-tablet-full-board-result-rating_0_D9680F0F-A1DA-43DE-BFEF-71E7FA24DA3E.png",
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "device_name": "Starfall Factory Goals iPad",
+      "os": "iOS27.0 Simulator",
+      "configuration": "Debug"
+    },
+    {
+      "file": "dev-0acdcca__practice-last-earned-light__ipad-pro11__ax3xl-calm.jpg",
+      "source_attachment": "/private/tmp/starfall-identity-09-20261024/tablet-practice-final-attachments/49BE77BF-FF63-4CF9-A5F0-D3738477B610.png",
+      "checkpoint": "0acdcca1f423742380b1c0ba37d785040f0d9942",
+      "runtime_fingerprint": "dev.207c6a5c5b",
+      "actual_bundle": "dev.local",
+      "meaning": "Actual largest-text Calm five-helper practice completion; the full passive figure/caption is revealed through both real scroll owners.",
+      "sha256": "85aee56d3dd7b9371ecdf8ab7922f9b3ec4143cd0d29e613950e403eeaad3e93",
+      "source_sha256": "f79a41434d8fee132300c615641689f845aefe2665f3d767ffed993b0069a214",
+      "capture_timestamp": 1792829951.116,
+      "original_name": "identity09-tablet-completed-practice-final-light_0_EF3FF6CD-C097-4921-ABCF-12C45CBFBC1D.png",
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "device_name": "Starfall Factory Goals iPad",
+      "os": "iOS27.0 Simulator",
+      "configuration": "Debug",
+      "pixel_size": [
+        1668,
+        2420
+      ],
+      "inspected": true,
+      "inspection": "Exact promoted JPEG independently inspected at original resolution; JPEG85, no crop."
+    },
+    {
+      "file": "dev-0acdcca__practice-retry-no-signature__ipad-pro11__ax3xl-calm.jpg",
+      "source_attachment": "/private/tmp/starfall-identity-09-20261024/tablet-practice-final-attachments/CD92B914-9B35-45D6-82CB-692E65EF7644.png",
+      "checkpoint": "0acdcca1f423742380b1c0ba37d785040f0d9942",
+      "runtime_fingerprint": "dev.207c6a5c5b",
+      "actual_bundle": "dev.local",
+      "meaning": "Practice Retry resets score/opening and removes the signature; native checks separately prove canceled-four and retained real15,000-point round/world isolation.",
+      "sha256": "1befccc21b90c90d36ea60dda6ae14916b63f4e175a95ae3a715621e0f28500d",
+      "source_sha256": "ab6db6ab6900fd7543ad4b939289ff68f7f01e470317ead4526a54df5e7c60b8",
+      "capture_timestamp": 1792829965.316,
+      "original_name": "identity09-tablet-practice-retry-no-final-light_0_37A0EA90-8EB9-45DE-980C-56C6EA928AB0.png",
+      "device_id": "255E141F-D4D6-45DA-89FF-51436BF1BBA7",
+      "device_name": "Starfall Factory Goals iPad",
+      "os": "iOS27.0 Simulator",
+      "configuration": "Debug",
+      "pixel_size": [
+        1668,
+        2420
+      ],
+      "inspected": true,
+      "inspection": "Exact promoted JPEG independently inspected at original resolution; JPEG85, no crop."
+    }
+  ],
+  "limits": "Selected scroll positions; not every reading block/action is visible together. Native methods separately verify reachability. No physical, actual VoiceOver, minimum-OS or human-recognition claim."
+}

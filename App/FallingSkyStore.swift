@@ -138,9 +138,9 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         dialogue.next()
         if dialogue.visible, let line = dialogue.line { feedback.announce(line.spokenText) }
     }
-    private(set) var celebration: StarlightCelebration?
-    @ObservationIgnored private var celebrationTask: Task<Void, Never>?
-    @ObservationIgnored private var celebrationSequence: UInt64 = 0
+    private let lightReceipts = SkyLightReceiptSession()
+    var celebration: StarlightCelebration? { lightReceipts.current }
+    var finalLight: SkyFinalLightReceipt? { lightReceipts.lastEarned }
     private(set) var techniqueResult = ""
     private var techniqueRelay = SkyTechniqueRelay()
     #if DEBUG
@@ -649,8 +649,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private func celebrate(_ turn: FallingSkyTurn, from old: FallingSky, path: [Cell], recipe: StarRecipe?) {
         guard turn.collected > 0 else { cancelCelebration(); return }
         cancelCelebration()
-        celebrationSequence &+= 1
-        guard let receipt = StarlightCelebration(id: celebrationSequence, turn: turn, from: old,
+        guard let receipt = StarlightCelebration(id: lightReceipts.nextSequence(), turn: turn, from: old,
             total: game.displayScore, path: path, recipe: recipe, relayDepth: techniqueRelay.depth) else { return }
         publishCelebration(receipt)
     }
@@ -658,30 +657,24 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private func celebratePhase(_ index: Int, turn: FallingSkyTurn, oldScore: Int) {
         guard turn.resolutionPhases.indices.contains(index) else { return }
         cancelCelebration()
-        celebrationSequence &+= 1
         let cumulative = turn.resolutionPhases.prefix(index + 1).reduce(0) { $0 + $1.award.displayPoints }
-        let receipt = StarlightCelebration(id: celebrationSequence, phase: turn.resolutionPhases[index],
+        let receipt = StarlightCelebration(id: lightReceipts.nextSequence(), phase: turn.resolutionPhases[index],
             cumulativeAward: cumulative, total: oldScore + cumulative,
             precedingPhases: Array(turn.resolutionPhases.prefix(index)))
         publishCelebration(receipt)
     }
 
     private func publishCelebration(_ receipt: StarlightCelebration) {
-        celebration = receipt
+        lightReceipts.publish(receipt)
         feedback.collected(receipt.level, soundEnabled: soundEnabled, hapticsEnabled: hapticsEnabled,
                            reducedMotion: presenter.reduceMotion)
-        celebrationTask = Task { [weak self] in
-            do { try await Task.sleep(for: .seconds(StarlightCelebration.duration)) } catch { return }
-            guard let self, self.celebration?.id == receipt.id else { return }
-            self.celebration = nil; self.celebrationTask = nil
-        }
     }
 
     func cancelCelebration() {
-        celebrationTask?.cancel(); celebrationTask = nil; celebration = nil
+        lightReceipts.cancel()
     }
 
-    deinit { celebrationTask?.cancel(); bufferedInputTask?.cancel() }
+    deinit { bufferedInputTask?.cancel() }
 
     /// Explicit input works while paused too, without starting an automatic clock.
     func callShower() {
@@ -805,6 +798,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         let selected = path.isEmpty ? turn.cleared.filter { old.gem(at: $0)?.isDark == false } : Set(path)
         let resolvedRecipe = recipe ?? (old.canArrangeStars
             ? old.recipe(matching: selected) : nil)
+        lightReceipts.capture(turn, from: old, path: path, recipe: resolvedRecipe)
         invalidateInput(isShower ? (announcesResult ? "manualShower" : "automaticShower") : "clear")
         if turn.exchange != nil {
             techniqueRelay.reset()
@@ -908,6 +902,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
         isPaused = true
         interruptPlay(reason: "restart")
+        lightReceipts.beginRound()
         #if DEBUG
         let replayAllowed = !isTechniqueFixture && sameSky
         isTechniqueFixture = false
@@ -935,6 +930,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     func loadConstellationFixture(_ fixture: ConstellationFixture) {
         isPaused = true
         interruptPlay(reason: "fixture")
+        lightReceipts.beginRound()
         game = fixture.game().adoptingFeedingDusk()
         refreshCadence()
         remaining = showerInterval
@@ -948,6 +944,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     func loadGravityFixture(_ fixture: GravityFixture) {
         isPaused = true
         interruptPlay(reason: "presentation")
+        lightReceipts.beginRound()
         game = fixture.game().adoptingFeedingDusk(); refreshCadence(); remaining = showerInterval
         guide("guide.fixture", values: ["detail": fixture.message])
         save(); presenter.render(game)
@@ -973,6 +970,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         #endif
         isPaused = true
         interruptPlay(reason: "challenge")
+        lightReceipts.beginRound()
         game = fresh
         refreshCadence()
         remaining = showerInterval
@@ -1094,6 +1092,7 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         guard tutorial != nil else { return }
         isPaused = true
         interruptPlay(reason: "tutorial")
+        lightReceipts.beginRound()
         tutorial = SkyTutorialRun(chapter)
         game = chapter.game()
         refreshCadence(); remaining = showerInterval

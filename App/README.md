@@ -1,5 +1,7 @@
 # iOS application
 
+`SkyLightReceiptSession` owns the existing latest live receipt expiry and one immutable in-session final figure. Capture happens from the committed turn before terminal presentation teardown; `SkyFinalLightView` fits exact separate paths beside the result as **Last earned light**. Round replacement clears it; cold restore omits unavailable geometry. The receipt never encodes or grants an award. [Identity goal9 evidence](../docs/evidence/identity-goal-09-final-light-2026-10-24/README.md).
+
 `RestorationAwardResponse` shares receipt admission and actual arrival between Lantern and Ribbon. `RibbonAwardResponse` draws four local crossed threads through the existing scenery Canvas and composition selector; latest-receipt cancellation owns its lifetime. [Identity goal8 evidence](../docs/evidence/identity-goal-08-ribbon-response-2026-10-24/README.md).
 
 Successive recipe phases keep at most two preceding exact figures beside the active return in `CascadeReturnLayout`. Only the current receipt emits packets and acknowledges its actual destination after arrival; receipt replacement cancels the superseded flight. Separate actions start a new strip, and quiet presentation shows the same bounded causal prefix directly. The Store rejects invalid, duplicate and backward phase callbacks without delaying gameplay. [Identity goal6 evidence](../docs/evidence/identity-goal-06-cascade-returns-2026-10-24/README.md).

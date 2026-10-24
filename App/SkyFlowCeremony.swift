@@ -29,6 +29,7 @@ enum SkyFlowAction: Equatable {
     let onward: SkyOnwardSnapshot?
     let welcome: SkyWelcomeSnapshot
     var mastery: SkyMasterySnapshot? = nil
+    var finalLight: SkyFinalLightReceipt? = nil
     let active: Bool
     let quiet: Bool
     let modal: Bool
@@ -47,6 +48,7 @@ enum SkyFlowAction: Equatable {
     @State private var burst: CGFloat = 0
     @State private var celebrating = true
     private var terminal: Bool { screen == .won || screen == .full }
+    var visibleFinalLight: SkyFinalLightReceipt? { terminal ? finalLight : nil }
     private var motionKey: String { "\(active)-\(quiet)" }
 
     var body: some View {
@@ -139,7 +141,7 @@ enum SkyFlowAction: Equatable {
             }
             heading().accessibilityHidden(!active)
             revealedActions
-            if !compact { decorativeCast }
+            if !compact && visibleFinalLight == nil { decorativeCast }
         }
         .padding(StarfallTheme.Spacing.section)
         .frame(maxWidth: StarfallTheme.Layout.menuWidth)
@@ -278,6 +280,9 @@ enum SkyFlowAction: Equatable {
                     .accessibilityIdentifier(terminal ? "experiment.score" : "sky.subtitle")
                 if let mastery, screen == .entry || screen == .won {
                     SkyMasteryView(snapshot: mastery)
+                }
+                if let visibleFinalLight {
+                    SkyFinalLightView(receipt: visibleFinalLight, active: active, quiet: quiet)
                 }
                 actions
             }
