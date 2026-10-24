@@ -1943,6 +1943,20 @@
     "mastery.modeBest": "{mode} best: {count} of 3 stars",
     "mastery.modeNoResult": "{mode}: no result for these optional goals yet",
     "mastery.saveFailedTitle": "Optional stars need saving",
-    "mastery.saveFailedMessage": "Your repair is saved. The optional best could not be saved yet. Try again before starting another round."
+    "mastery.saveFailedMessage": "Your repair is saved. The optional best could not be saved yet. Try again before starting another round.",
+    "showerInspection.action": "Inspect next shower",
+    "showerInspection.title": "This announced shower",
+    "showerInspection.snapshot": "For this sky now. A move or shower closes this view.",
+    "showerInspection.running": "The sky keeps running unless you pause it first.",
+    "showerInspection.paused": "Your sky is already paused.",
+    "showerInspection.step": "{number}. {star} → column {column}",
+    "showerInspection.grows": "Would grow the top star at row {row}, column {column} to {light} light.",
+    "showerInspection.lands": "Would add a star at row {row}, column {column}.",
+    "showerInspection.blocks": "Would fill the sky at column {column}. This star cannot enter.",
+    "showerInspection.unreached": "Not reached after the earlier blocked star.",
+    "showerInspection.patterns": "After all arrivals: {patterns}.",
+    "showerInspection.noPatterns": "No automatic pattern clear in this snapshot.",
+    "showerInspection.prelude": "Existing stars change before these arrivals; the rows below include that change.",
+    "showerInspection.phase": "Phase {number}: {patterns}"
   }
 }

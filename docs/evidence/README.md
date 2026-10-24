@@ -1,5 +1,7 @@
 # Evidence index
 
+[One announced shower against this sky](decision-goal-04-shower-inspection-2026-10-24/README.md) records authoritative value-copy growth/placement/block facts, exact live deadline/save/RNG preservation, ordinary running-shower dismissal and AX3XL Calm reading. The real form-sheet failure, product page-sizing correction and unchanged assertions remain separate.
+
 [Actual forecast column inspection](decision-goal-03-forecast-columns-2026-10-24/README.md) links ordered announced stars to a passive column bracket, with exact source/deadline/save checks, normal Seed4 and AX3XL Calm Lantern/Full Board journeys, preserved test corrections and the final tablet-video capture limit.
 
 [Optional Full Board choice diagrams](decision-goal-02-choice-diagrams-2026-10-24/README.md) pair exact source/setup/final arrangements with existing coordinate instructions, including native pan-through and real next-clear contrasts without changing the round.
