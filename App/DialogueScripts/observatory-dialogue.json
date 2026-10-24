@@ -1504,6 +1504,7 @@
     "worldRecovery": "Some world progress could not be read. Any completed saved round has been recovered. Your current sky is unchanged.",
     "worldTitle": "World map",
     "worldBack": "Back",
+    "worldViewRestored": "View restored place",
     "worldPlay": "Play",
     "worldChoose": "Choose a place",
     "worldExplore": "Scroll to explore",

@@ -109,6 +109,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
     private var openingGeneration: UInt64 = 0
     private(set) var suspended = true
     private(set) var sceneReady = false
+    /// Preserve a detach/reattach pair even when SwiftUI coalesces its Boolean values.
+    private(set) var sceneReadinessRevision: UInt64 = 0
     private(set) var isPaused = true
     /// Interval/phase leading to the next shower, including while paused or overdue.
     private(set) var nextShowerCadence: SkyCadenceStep = .init(delay: 4, phase: .steady)
@@ -469,7 +471,10 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
         scene.onReadinessChanged = { [weak self] ready in
             guard let self else { return }
-            self.sceneReady = ready
+            if self.sceneReady != ready {
+                self.sceneReady = ready
+                self.sceneReadinessRevision &+= 1
+            }
             // Detachment must reject a due clock callback before SwiftUI observes
             // readiness on its next update. Re-admission remains view-owned.
             if !ready { self.setSuspended(true) }

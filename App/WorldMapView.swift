@@ -35,6 +35,7 @@ struct WorldMapView: View {
     let select: (WorldLocation) -> Void
     let enter: (StarfallChallenge) -> Void
     let resume: (() -> Void)?
+    let viewRestored: ((SkyRestoredPlaceSnapshot) -> Void)?
     let learn: () -> Void
     let done: () -> Void
     @Binding private var list: Bool
@@ -46,10 +47,13 @@ struct WorldMapView: View {
     init(journey: WorldJourney, list: Binding<Bool>, quiet: Bool, recovered: Bool = false, accessible: Bool = true,
          goal: WorldMapGoalSnapshot? = nil, masteryRecords: [StoryMasteryRecord] = [],
          select: @escaping (WorldLocation) -> Void,
-         enter: @escaping (StarfallChallenge) -> Void, resume: (() -> Void)? = nil, learn: @escaping () -> Void, done: @escaping () -> Void) {
+         enter: @escaping (StarfallChallenge) -> Void, resume: (() -> Void)? = nil,
+         viewRestored: ((SkyRestoredPlaceSnapshot) -> Void)? = nil,
+         learn: @escaping () -> Void, done: @escaping () -> Void) {
         self.journey = journey; _list = list; self.quiet = quiet; self.recovered = recovered; self.accessible = accessible; self.select = select
         self.enter = enter; self.resume = resume; self.learn = learn; self.done = done; self.goal = goal
         self.masteryRecords = masteryRecords
+        self.viewRestored = viewRestored
     }
     private var selected: WorldLocation { journey.selected }
 
@@ -262,22 +266,30 @@ struct WorldMapView: View {
     }
 
     @ViewBuilder private func destinationActions(_ challenge: StarfallChallenge) -> some View {
-        if let resume {
-            ViewThatFits(in: .horizontal) {
-                HStack(spacing: StarfallTheme.Spacing.small) {
-                    continueButton(resume)
-                    restartButton(challenge)
-                }.fixedSize(horizontal: true, vertical: false)
-                VStack(spacing: StarfallTheme.Spacing.small) {
-                    continueButton(resume)
-                    restartButton(challenge)
+        VStack(spacing: StarfallTheme.Spacing.small) {
+            if let resume {
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: StarfallTheme.Spacing.small) {
+                        continueButton(resume)
+                        restartButton(challenge)
+                    }.fixedSize(horizontal: true, vertical: false)
+                    VStack(spacing: StarfallTheme.Spacing.small) {
+                        continueButton(resume)
+                        restartButton(challenge)
+                    }
                 }
+            } else {
+                Button(SkyCopy.text(journey.completed.contains(selected) ? .worldRevisit : .worldVisit,
+                                    values: ["place": selected.title])) { enter(challenge) }
+                    .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
+                    .accessibilityIdentifier("world.visit")
             }
-        } else {
-            Button(SkyCopy.text(journey.completed.contains(selected) ? .worldRevisit : .worldVisit,
-                                values: ["place": selected.title])) { enter(challenge) }
-                .buttonStyle(StarfallButtonStyle(role: .primary, expands: true))
-                .accessibilityIdentifier("world.visit")
+            if let snapshot = SkyRestoredPlaceSnapshot(location: selected, journey: journey),
+               let viewRestored {
+                Button(SkyCopy.text(.worldViewRestored)) { viewRestored(snapshot) }
+                    .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+                    .accessibilityIdentifier("world.viewRestored")
+            }
         }
     }
 
