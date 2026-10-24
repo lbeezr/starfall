@@ -9,6 +9,11 @@ enum SkyCopy {
         value.formatted(.number.grouping(.automatic))
     }
 
+    static func savedProgress(score: Int, target: Int, fullBoard: Bool) -> String {
+        text(.worldSavedProgress, values: ["mode": text(fullBoard ? .fullBoardMode : .fallingSkyMode),
+             "score": Self.score(score), "target": Self.score(target)])
+    }
+
     /// Core grows from the bottom; every player-facing coordinate reads top-down.
     static func boardPosition(_ cell: Cell) -> (row: Int, column: Int) {
         (FallingSky.side - cell.row, cell.column + 1)

@@ -55,12 +55,14 @@ final class StoryMasteryInteractionTests: RestorationInteractionScenarios {
         for name in names {
             let row = goal(name, context: context, in: app)
             XCTAssertTrue(row.waitForExistence(timeout: 5), name)
+            // Large-text goals are a scrollable reading sequence; each complete
+            // block must be reachable, without requiring the whole set at once.
+            app.revealSkyControls([row])
             let state = earned.contains(name) ? "Earned this run"
                 : context == "result" ? "Not earned this run" : "Not yet this run"
             XCTAssertEqual(row.value as? String, state)
         }
         XCTAssertFalse(goal(fullBoard ? "grownCollection" : "largeClear", context: context, in: app).exists)
-        app.revealSkyControls(names.map { goal($0, context: context, in: app) })
         if fullBoard {
             XCTAssertTrue(goal("largeClear", context: context, in: app).label.contains("Clear 8 stars at once"))
             XCTAssertTrue(goal("cascade", context: context, in: app).label.contains("gaps refill"))
@@ -175,6 +177,141 @@ final class StoryMasteryInteractionTests: RestorationInteractionScenarios {
         tapControl("sky.resume", in: app)
     }
 
+    @MainActor private func cancelWinningReplay(score: Int, fullBoard: Bool, in app: XCUIApplication) {
+        let onward = app.buttons["sky.worldMap"].label
+        tapControl("experiment.replay", in: app)
+        assertGoals("entry", fullBoard: fullBoard, earned: [], in: app)
+        assertBest("entry", in: app)
+        tapControl("sky.home", in: app)
+        assertWin(score: score, fullBoard: fullBoard, in: app)
+        XCTAssertEqual(app.buttons["sky.worldMap"].label, onward)
+        XCTAssertFalse(app.buttons["sky.resume"].exists, "Back restores the earned result directly")
+        capture(app, fullBoard ? "depth10-full-board-earned-result-after-replay-back"
+                              : "depth10-largest-sky-earned-result-after-replay-back")
+    }
+
+    @MainActor private func assertRoundMode(fullBoard: Bool, score: Int, counter: Int, in app: XCUIApplication) {
+        if fullBoard {
+            waitFullBoard(exchanges: counter, score: score, in: app)
+            XCTAssertFalse(app.buttons["experiment.next"].exists)
+            XCTAssertFalse(app.buttons["experiment.pause"].exists)
+            XCTAssertFalse(element("sky.forecast.destinations", in: app).exists)
+            XCTAssertEqual(element("sky.ceiling", in: app).label, "Board top edge")
+            XCTAssertEqual(element("sky.ceiling", in: app).value as? String ?? "", "")
+        } else {
+            waitSky(score: score, showers: counter, in: app)
+            XCTAssertTrue(app.buttons["experiment.next"].isEnabled, "Returning from a preview keeps the sky paused")
+            let forecast = element("sky.forecast.destinations", in: app)
+            XCTAssertTrue(forecast.exists)
+            XCTAssertFalse((forecast.value as? String ?? "").isEmpty)
+            XCTAssertEqual(element("sky.ceiling", in: app).label, "Sky ceiling")
+            XCTAssertTrue((element("sky.ceiling", in: app).value as? String ?? "").contains("spaces left"))
+        }
+        XCTAssertEqual(app.staticTexts["lantern.mode"].label,
+                       fullBoard ? "Full Board · clears refill and cascade" : "Falling Sky")
+    }
+
+    @MainActor private func chooseAlternateMode(fromFullBoard: Bool, in app: XCUIApplication) {
+        // A new visit defaults to Falling Sky. Exercise an actual selection in
+        // both directions before inspecting the alternative to the saved round.
+        tapControl("sky.lanternMode.fullBoard", in: app)
+        if fromFullBoard { tapControl("sky.lanternMode.fallingSky", in: app) }
+        XCTAssertTrue(app.buttons[fromFullBoard ? "sky.lanternMode.fallingSky" : "sky.lanternMode.fullBoard"].isSelected)
+    }
+
+    @MainActor private func cancelRoundPreviewsAndSwitch(fullBoard: Bool, score: Int, counter: Int,
+                                                       in app: XCUIApplication) throws {
+        assertRoundMode(fullBoard: fullBoard, score: score, counter: counter, in: app)
+        let retained = try state(app)
+        let forecastElement = element("sky.forecast.destinations", in: app)
+        let forecast = forecastElement.exists ? forecastElement.value as? String : nil
+        for action in ["experiment.replay", "experiment.new"] {
+            tapControl("experiment.settings", in: app)
+            assertGoals("progress", fullBoard: fullBoard, earned: ["cascade"], in: app)
+            assertBest("progress", in: app)
+            tapControl(action, in: app)
+            XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))
+            if action == "experiment.replay" {
+                assertGoals("entry", fullBoard: fullBoard, earned: [], in: app)
+                assertBest("entry", in: app)
+            }
+            tapControl("sky.home", in: app)
+            assertRoundMode(fullBoard: fullBoard, score: score, counter: counter, in: app)
+            XCTAssertEqual(try state(app), retained)
+            let currentForecast = element("sky.forecast.destinations", in: app)
+            XCTAssertEqual(currentForecast.exists ? currentForecast.value as? String : nil, forecast)
+            XCTAssertFalse(app.buttons["sky.resume"].exists, "Back returns to the round rather than Observatory")
+            tapControl("experiment.settings", in: app)
+            assertGoals("progress", fullBoard: fullBoard, earned: ["cascade"], in: app)
+            assertBest("progress", in: app)
+            capture(app, "depth10-\(fullBoard ? "full-board" : "largest-sky")-\(action)-back-retains-progress")
+            tapControl("experiment.done", in: app)
+        }
+
+        tapControl("experiment.settings", in: app)
+        let visit = app.worldVisitControl("firstLight")
+        let saved = app.staticTexts["world.savedProgress"]
+        let savedLabel = "Saved \(fullBoard ? "Full Board" : "Falling Sky") progress: \(score.formatted()) of 150,000 starlight."
+        XCTAssertEqual(saved.label, savedLabel)
+        visit.tap()
+        chooseAlternateMode(fromFullBoard: fullBoard, in: app)
+        assertGoals("entry", fullBoard: !fullBoard, earned: [], in: app)
+        tapControl("sky.home", in: app)
+        XCTAssertTrue(app.otherElements["world.page"].waitForExistence(timeout: 5))
+        XCTAssertEqual(app.staticTexts["world.selection"].label, "Lantern Landing")
+        XCTAssertEqual(saved.label, savedLabel)
+        app.revealSkyControls([saved, app.buttons["world.resume"]])
+        capture(app, fullBoard ? "depth10-full-board-saved-mode-after-map-preview-back"
+                              : "depth10-largest-sky-saved-mode-after-map-preview-back")
+        tapControl("world.resume", in: app)
+        assertRoundMode(fullBoard: fullBoard, score: score, counter: counter, in: app)
+        XCTAssertEqual(try state(app), retained)
+        tapControl("experiment.settings", in: app)
+        assertGoals("progress", fullBoard: fullBoard, earned: ["cascade"], in: app)
+        assertBest("progress", in: app)
+
+        app.worldVisitControl("firstLight").tap()
+        chooseAlternateMode(fromFullBoard: fullBoard, in: app)
+        assertGoals("entry", fullBoard: !fullBoard, earned: [], in: app)
+        XCTAssertFalse(app.staticTexts["sky.mastery.entry.best"].exists,
+                       "The other mode has its own completed-best contract")
+        begin(app)
+        if fullBoard { pauseRunningSky(app) }
+        assertRoundMode(fullBoard: !fullBoard, score: 0, counter: 0, in: app)
+        let switched = try state(app)
+        XCTAssertNotEqual(switched, retained, "Only Begin commits the alternative mode's opening")
+        if !fullBoard {
+            XCTAssertEqual(app.buttons.matching(NSPredicate(format:
+                "identifier BEGINSWITH %@ AND label BEGINSWITH %@", "experiment.cell.", "Empty,")).count, 0)
+        }
+        capture(app, fullBoard ? "depth10-explicit-begin-switches-full-board-to-sky"
+                              : "depth10-largest-explicit-begin-switches-sky-to-full-board")
+        tapControl("experiment.settings", in: app)
+        assertGoals("progress", fullBoard: !fullBoard, earned: [], in: app)
+        XCTAssertFalse(app.staticTexts["sky.mastery.progress.best"].exists)
+        tapControl("sky.home", in: app)
+        XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout: 5),
+                      "The explicit Observatory action still opens Home")
+        XCTAssertEqual(app.staticTexts["sky.title"].label, "Welcome to the Observatory")
+        tapControl("sky.resume", in: app)
+        assertRoundMode(fullBoard: !fullBoard, score: 0, counter: 0, in: app)
+        XCTAssertEqual(try state(app), switched)
+        tapControl("experiment.settings", in: app)
+        _ = app.worldVisitControl("firstLight")
+        XCTAssertEqual(saved.label,
+                       "Saved \(fullBoard ? "Falling Sky" : "Full Board") progress: 0 of 150,000 starlight.")
+        let skyBest = app.staticTexts["world.mastery.fallingSky"]
+        let fullBest = app.staticTexts["world.mastery.fullBoard"]
+        XCTAssertEqual(skyBest.label, fullBoard ? "Falling Sky: no result for these optional goals yet" : "Falling Sky best: 3 of 3 stars")
+        XCTAssertEqual(fullBest.label, fullBoard ? "Full Board best: 3 of 3 stars" : "Full Board: no result for these optional goals yet")
+        app.revealSkyControls([saved, skyBest, fullBest])
+        capture(app, fullBoard ? "depth10-switched-sky-saved-mode-preserves-full-board-best"
+                              : "depth10-largest-switched-full-board-preserves-sky-best")
+        tapControl("world.resume", in: app)
+        assertRoundMode(fullBoard: !fullBoard, score: 0, counter: 0, in: app)
+        XCTAssertEqual(try state(app), switched)
+    }
+
     @MainActor func testNormalFullBoardGoalsWinRestoreAndReplay() throws {
         executionTimeAllowance = 600
         setSystemMotion(reduced: false)
@@ -205,6 +342,7 @@ final class StoryMasteryInteractionTests: RestorationInteractionScenarios {
         }
         assertWin(score: 156_000, fullBoard: true, in: app)
         capture(app, "mastery-normal-full-board-earned-three-stars")
+        cancelWinningReplay(score: 156_000, fullBoard: true, in: app)
         inspectModeBests(fullBoard: true, in: app)
         relaunch(app, largest: false, quiet: false, fullBoard: true)
         assertWin(score: 156_000, fullBoard: true, in: app)
@@ -226,10 +364,14 @@ final class StoryMasteryInteractionTests: RestorationInteractionScenarios {
         assertGoals("progress", fullBoard: true, earned: [], in: app)
         assertBest("progress", in: app)
         capture(app, "mastery-normal-full-board-restored-replay-progress")
+        tapControl("experiment.done", in: app)
+        exchange(app.buttons["experiment.cell.3.6"], app.buttons["experiment.cell.4.6"], in: app)
+        waitFullBoard(exchanges: 1, score: 42_000, in: app)
+        try cancelRoundPreviewsAndSwitch(fullBoard: true, score: 42_000, counter: 1, in: app)
     }
 
     @MainActor func testLargestCalmFallingSkyGoalsWinRestoreAndReplay() throws {
-        executionTimeAllowance = 900
+        executionTimeAllowance = 1_100
         setSystemMotion(reduced: false)
         let app = fresh(largest: true, quiet: true)
         defer { app.terminate() }
@@ -257,6 +399,7 @@ final class StoryMasteryInteractionTests: RestorationInteractionScenarios {
         XCTAssertEqual(exchanges, 75)
         assertWin(score: 151_000, fullBoard: false, in: app)
         capture(app, "mastery-largest-sky-earned-three-stars")
+        cancelWinningReplay(score: 151_000, fullBoard: false, in: app)
         inspectModeBests(fullBoard: false, in: app)
         relaunch(app, largest: true, quiet: true, fullBoard: false)
         assertWin(score: 151_000, fullBoard: false, in: app)
@@ -275,5 +418,12 @@ final class StoryMasteryInteractionTests: RestorationInteractionScenarios {
         assertGoals("progress", fullBoard: false, earned: [], in: app)
         assertBest("progress", in: app)
         capture(app, "mastery-largest-sky-replay-cleared-goals")
+        tapControl("experiment.done", in: app)
+        relaunch(app, largest: true, quiet: true, fullBoard: false)
+        waitSky(score: 0, showers: 0, in: app)
+        XCTAssertEqual(try state(app), opening)
+        exchange(app.buttons["experiment.cell.1.1"], app.buttons["experiment.cell.1.2"], in: app)
+        waitSky(score: 15_000, showers: 0, in: app)
+        try cancelRoundPreviewsAndSwitch(fullBoard: false, score: 15_000, counter: 0, in: app)
     }
 }

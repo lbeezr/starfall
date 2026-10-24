@@ -1,5 +1,7 @@
 # Documentation map
 
+[Repeat-visit continuity](evidence/depth-goal-10-repeat-journey-2026-10-23/README.md) completes the depth queue with origin-preserving Back and explicit saved-mode progress, backed by complete mode journeys.
+
 [Optional Lantern mastery](evidence/depth-goal-09-optional-mastery-2026-10-23/README.md) adds mode-appropriate accomplishments and independent best records while preserving ordinary repairs and retained saves.
 
 [Sunwheel capstone](evidence/depth-goal-08-sunwheel-capstone-2026-10-23/README.md) combines headroom, grown value and causal sequencing with complete alternatives and mistake recovery.
@@ -50,7 +52,7 @@
 
 The factory's [discovery/refill contract](AGENT_FACTORY.md#keep-useful-work-discoverable) captures worker findings and searches for useful work when the actionable queue is low. [Current Story observation preparation](design/CURRENT_STORY_PLAYTEST.md) and [device readiness](evidence/device-readiness-2026-10-22/README.md) advance the next tasks without claiming unperformed human/device acceptance.
 
-[Story Mode gameplay plan](STORY_MODE_GAMEPLAY_PLAN.md) proposes distinct decisions, theatrical scores, optional mastery and a campaign content budget. [Lantern/Ribbon revision 3](evidence/story-patterns-2026-10-20/README.md) is development verified and installed as `dev.e3878b33d4`: automatic patterns only, full seven-star lines and mixed five-family supply. [Delivered revision 2](evidence/story-cascades-2026-10-20/README.md) retains its original evidence and save contract. Later redesign, ratings and multiplayer remain proposals.
+[Story Mode gameplay plan](STORY_MODE_GAMEPLAY_PLAN.md) proposes distinct decisions, theatrical scores, optional mastery and a campaign content budget. [Lantern/Ribbon revision 3](evidence/story-patterns-2026-10-20/README.md) is development verified and installed as `dev.e3878b33d4`: automatic patterns only, full seven-star lines and mixed five-family supply. [Delivered revision 2](evidence/story-cascades-2026-10-20/README.md) retains its original evidence and save contract. Those delivered revisions retain their historical behavior. Current first-pair rules and [bounded Lantern mastery](evidence/depth-goal-09-optional-mastery-2026-10-23/README.md) have later development evidence; wider mastery and multiplayer remain proposals.
 
 [Competitive pacing research](design/PUZZLE_PACING_RESEARCH.md) records the sparse-board feedback and primary sources. Revision 3 retains 24/25 opening stars, five incoming stars per shower and the six-/four-second cadence while removing manual clears. Native verification, human balance and delivery remain separate acceptance. The [Pokémon Puzzle League guide](design/POKEMON_PUZZLE_LEAGUE_REFERENCE.md) retains the primary reference and future local versus/co-op direction.
 

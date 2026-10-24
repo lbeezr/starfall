@@ -111,7 +111,7 @@ final class FrostfruitEncounterPresentationTests: XCTestCase {
             XCTAssertEqual(goal.newVisitLabel, "New visit objective: 15,000 starlight.")
             XCTAssertEqual(goal.retainedProgress, retained.restoration)
             XCTAssertEqual(goal.retainedLabel,
-                "Saved round: \(SkyCopy.score(retained.displayScore)) of \(SkyCopy.score(try XCTUnwrap(retained.displayTarget))) starlight.")
+                "Saved Falling Sky progress: \(SkyCopy.score(retained.displayScore)) of \(SkyCopy.score(try XCTUnwrap(retained.displayTarget))) starlight.")
             XCTAssertEqual(RestorationPresentation.selected(game: retained, entry: .frostfruitOrchard)?.progress,
                            StarlightRestoration(score: 0, target: 15_000))
             XCTAssertEqual(RestorationPresentation.selected(game: retained, entry: .replay)?.progress,

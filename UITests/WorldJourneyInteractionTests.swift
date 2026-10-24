@@ -288,7 +288,7 @@ final class WorldJourneyInteractionTests: XCTestCase {
         let cells = try visibleIdentities(board, prefix: "experiment.cell.")
         XCTAssertNotNil(summary); XCTAssertEqual(cells.count, 49)
         tap("experiment.settings", app); tap("sky.worldMap", app)
-        let saved = "Saved round: 15,000 of 150,000 starlight."
+        let saved = "Saved Falling Sky progress: 15,000 of 150,000 starlight."
         assertWorldGoalCard(app, target: 150_000, saved: saved, captureName: "world-goal-current-map-default")
         tap("world.list", app)
         assertWorldGoalCard(app, target: 150_000, saved: saved, captureName: "world-goal-current-places-default")
@@ -336,7 +336,7 @@ final class WorldJourneyInteractionTests: XCTestCase {
         tap("experiment.settings", app); tap("sky.worldMap", app)
         XCTAssertTrue(app.buttons["world.place.firstLight"].waitForExistence(timeout: 5))
         XCTAssertFalse(app.buttons["world.list"].exists, "Largest text uses the equivalent native Places surface")
-        let saved = "Saved round: 9 of 18 starlight."
+        let saved = "Saved Falling Sky progress: 9 of 18 starlight."
         assertWorldGoalCard(app, target: 150_000, saved: saved, captureName: "world-goal-historical-largest")
         tap("world.visit", app)
         XCTAssertTrue(app.buttons["sky.begin"].waitForExistence(timeout: 5))

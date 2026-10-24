@@ -38,23 +38,24 @@ extension SkyEntryRequest {
 struct WorldMapGoalSnapshot: Equatable {
     let newVisitTarget: Int
     let retainedProgress: StarlightRestoration?
+    private let retainedFullBoard: Bool?
 
     init?(journey: WorldJourney, retainedRound: FallingSky?) {
         guard let challenge = journey.selected.challenge, journey.canEnter(journey.selected),
               let target = FallingSky.freshChallenge(challenge).displayTarget else { return nil }
         newVisitTarget = target
-        retainedProgress = retainedRound.flatMap {
-            $0.challenge == challenge && !$0.isOver ? $0.restoration : nil
-        }
+        let retained = retainedRound.flatMap { $0.challenge == challenge && !$0.isOver ? $0 : nil }
+        retainedProgress = retained?.restoration
+        retainedFullBoard = retained?.usesFullBoardRefill
     }
 
     var newVisitLabel: String {
         SkyCopy.text(.worldNewVisitGoal, values: ["target": SkyCopy.score(newVisitTarget)])
     }
     var retainedLabel: String? {
-        retainedProgress.map {
-            SkyCopy.text(.worldSavedProgress, values: ["score": SkyCopy.score($0.score), "target": SkyCopy.score($0.target)])
-        }
+        guard let retainedProgress, let retainedFullBoard else { return nil }
+        return SkyCopy.savedProgress(score: retainedProgress.score, target: retainedProgress.target,
+                                     fullBoard: retainedFullBoard)
     }
 }
 
