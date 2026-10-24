@@ -451,7 +451,7 @@ import StarfallCore
                                            ambientActive: !showingCeremony && !store.isPaused,
                                            quiet: quietMotion || reduceTransparency, isTablet: UIDevice.current.userInterfaceIdiom == .pad,
                                            isLandscape: landscape,
-                                           award: !settings && !showingCeremony && restoration?.challenge == .firstLight ? store.celebration : nil,
+                                           award: !settings && !showingCeremony && RestorationAwardResponse.supports(restoration?.challenge) ? store.celebration : nil,
                                            awardQuiet: quietMotion)
                         .id("\(scenery.challenge.rawValue).\(environmentGeneration)")
                     if environmentContrast == .increased || reduceTransparency {

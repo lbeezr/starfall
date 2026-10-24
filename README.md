@@ -1,5 +1,7 @@
 # Starfall
 
+[Ribbon’s woven response](docs/evidence/identity-goal-08-ribbon-response-2026-10-24/README.md) now answers arriving light with four local cross-stitches at its material seam. Both Story modes retain exact rounds and immediate earned outcomes; Calm shows the same temporary figure directly.
+
 [Lantern’s delivered light](docs/evidence/identity-goal-07-lantern-response-2026-10-24/README.md) now answers at the existing aperture before the next painting milestone. Shared arrival timing, Calm equivalence and immediate earned repair remain separate from score and saves.
 
 [Repeat-visit continuity](docs/evidence/depth-goal-10-repeat-journey-2026-10-23/README.md) returns preview Back to its original round/result and names the saved mode beside Map/Places progress. The ten gameplay-depth goals retain both modes and exact historical Replay.

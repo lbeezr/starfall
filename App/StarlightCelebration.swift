@@ -617,10 +617,10 @@ struct StarlightCelebrationOverlay: View {
     /// One acknowledgement belongs to the current receipt's actual receiver.
     /// Preceding figures are inert geometry and cannot restart this effect.
     func drawReceiver(in context: inout GraphicsContext, age: Double, canvasSize: CGSize) {
-        // Lantern answers underneath native HUD content in its scenery owner.
+        // Material-specific scenery answers underneath native HUD content.
         // The full-width header container includes empty sky, so masking that
-        // container here would erase the registered aperture itself.
-        if restorationChallenge == .firstLight, lightDestination != nil { return }
+        // container here would erase a registered aperture or receiving seam.
+        if RestorationAwardResponse.supports(restorationChallenge), lightDestination != nil { return }
         guard let progress = event.receiverProgress(at: age, toRestoration: lightDestination != nil, quiet: quiet) else { return }
         let target = lightDestination ?? score
         guard !target.isEmpty, !target.isNull, !target.isInfinite else { return }

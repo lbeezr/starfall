@@ -1,0 +1,80 @@
+[
+  {
+    "file": "dev-6adc17e__phone-no-award__iphone-17e__normal-reversal.jpg",
+    "source": "/private/tmp/starfall-identity-08-20261024/phone-attachments/F74C9533-C53A-4580-9C23-F794C57CAB4F.png",
+    "source_sha256": "da1c2380960b2ac67c532f2d2f919b289c6d682278e7743f9d09846d5f3c8bc7",
+    "sha256": "3be39b7dc57d384b4bcc76f971fcfbc19dd1a4cb2419de69f6c9d86119015b93",
+    "source_commit": "6adc17e",
+    "runtime": "dev.27d1719bfc",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Native no-award reversed setup, zero points and unchanged damaged painting.",
+    "movie_actual_seconds": null,
+    "inspected": true
+  },
+  {
+    "file": "dev-6adc17e__phone-partial-thread__iphone-17e__normal-arrival.jpg",
+    "source": "/private/tmp/starfall-identity-08-20261024/phone-response-selected/frame-00001.png",
+    "source_sha256": "609ad91440f95d40f66f0618769313c82a38a41052d12482a0f7daa96156944c",
+    "sha256": "9bffb6f79701c4355eb0566dd271c696d1cd1b529a52a378d1da49b0b152db05",
+    "source_commit": "6adc17e",
+    "runtime": "dev.27d1719bfc",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Native sampled partial thread; movie request63.2s, actual63.19s. Gap remains open.",
+    "movie_actual_seconds": 63.19,
+    "inspected": true
+  },
+  {
+    "file": "dev-6adc17e__phone-full-thread__iphone-17e__normal-arrival.jpg",
+    "source": "/private/tmp/starfall-identity-08-20261024/phone-response-selected/frame-00002.png",
+    "source_sha256": "403ff8918d6ee8c176e1fb108ffda47c66f973afd3b753197ebed47a3dc1d5d5",
+    "sha256": "9f0aa66239cbefcddf33706e0e8df4780d1ddd3534c1d1d20ad514ce5e6d3634",
+    "source_commit": "6adc17e",
+    "runtime": "dev.27d1719bfc",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Native four crossed stitches; request63.3s, actual63.293333s. Temporary response, not persistent repair.",
+    "movie_actual_seconds": 63.29333333333334,
+    "inspected": true
+  },
+  {
+    "file": "dev-2615c6d__tablet-portrait-award__ipad-pro11-m5__ax3xl-calm-portrait.jpg",
+    "source": "/private/tmp/starfall-identity-08-20261024/tablet-attachments/93D6F9AB-4997-4371-94D3-7F574CB8D1DB.png",
+    "source_sha256": "bf1524c86db3f54f5495b969fe33d42579efca323169e262b4c99f4bae864e39",
+    "sha256": "178ec1b2e9b3f61cd3f58f7c65a3339bd95fc12cd81496ca7c079f111b2d8a99",
+    "source_commit": "2615c6d",
+    "runtime": "dev.27d1719bfc",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Native actual Settings Calm, 5000-point award in FullBoard7; thread follows receiving frayed edge.",
+    "movie_actual_seconds": null,
+    "inspected": true
+  },
+  {
+    "file": "dev-2615c6d__tablet-landscape-award__ipad-pro11-m5__ax3xl-calm-landscape.jpg",
+    "source": "/private/tmp/starfall-identity-08-20261024/tablet-attachments/CE896B31-04F0-4B63-9029-33466A70BD9C.png",
+    "source_sha256": "f1568867336533583c6da1d7a361fa840d4baa692f81148d17eff62d70575b8a",
+    "sha256": "2bd277845b14383b21a3c00ef4af6631bc4ac9fa331e9757bb622606f7275744",
+    "source_commit": "2615c6d",
+    "runtime": "dev.27d1719bfc",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Same actual5000-point award and49-star board in landscape; same composition selector as painting.",
+    "movie_actual_seconds": null,
+    "inspected": true
+  },
+  {
+    "file": "dev-2615c6d__phone-earned-repair__iphone-17e__normal-earned-result.jpg",
+    "source": "/private/tmp/starfall-identity-08-20261024/phone-winner-attachments/1E4B704B-418E-460A-89D4-DD66DAD89B9A.png",
+    "source_sha256": "30722fd3347eebe1d049fe54f48bfac9db8cd349c0c25655679c327d92971cfb",
+    "sha256": "83f2711300034f576d9ee455768dafeab6d53705a3508cea177067325eb08636",
+    "source_commit": "2615c6d",
+    "runtime": "dev.27d1719bfc",
+    "actual_bundle": "dev.local",
+    "conversion": "sips JPEG85, original resolution, no crop",
+    "caption": "Native real229000-point FullBoard7 repair and immediate result controls.",
+    "movie_actual_seconds": null,
+    "inspected": true
+  }
+]

@@ -422,7 +422,7 @@ final class LanternAwardResponseTests: XCTestCase {
             ("ambient-paused", arrival + 0.16, true, false, false, nil, true, .firstLight, true),
             ("inactive", arrival + 0.16, false, true, false, nil, true, .firstLight, false),
             ("no-current-award", arrival + 0.16, true, true, false, nil, false, .firstLight, false),
-            ("other-location", arrival + 0.16, true, true, false, nil, true, .ribbonCrossing, false),
+            ("other-location", arrival + 0.16, true, true, false, nil, true, .kiteHarbor, false),
             ("transparency-before-arrival", 0, true, true, true, false, true, .firstLight, false),
             ("transparency-after-arrival", arrival + 0.16, true, true, true, false, true, .firstLight, true),
             ("actual-calm-static", 0, true, false, true, true, true, .firstLight, true),

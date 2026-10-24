@@ -39,8 +39,8 @@ import StarfallCore
                 // validation admits the receipt before arrival without painting
                 // an early normal response; drawAward uses its real motion mode.
                 let currentAward = active && award.map {
-                    LanternAwardResponse(event: $0, challenge: presentation.challenge,
-                                         receiver: layout.light, age: Date.now.timeIntervalSince($0.started), quiet: true) != nil
+                    RestorationAwardResponse.progress(event: $0, challenge: presentation.challenge,
+                                                      receiver: layout.light, age: Date.now.timeIntervalSince($0.started), quiet: true) != nil
                 } == true
                 TimelineView(.animation(minimumInterval: 1 / 24, paused: !running && (responseQuiet || !currentAward))) { timeline in
                     let phase = quiet ? 0 : clock.phase(at: ProcessInfo.processInfo.systemUptime)
@@ -81,10 +81,38 @@ import StarfallCore
     /// The current receipt paints behind native chrome in the scenery's existing
     /// timeline. Its registered light remains authoritative through layout changes.
     func drawAward(in context: inout GraphicsContext, age: TimeInterval, canvasSize: CGSize, receiver: CGRect) {
-        guard active, let award,
-              let response = LanternAwardResponse(event: award, challenge: presentation.challenge,
-                                                   receiver: receiver, age: age, quiet: responseQuiet) else { return }
-        LanternAwardResponse.draw(in: &context, response: response, canvasSize: canvasSize)
+        guard active, let award else { return }
+        switch presentation.challenge {
+        case .firstLight:
+            guard let response = LanternAwardResponse(event: award, challenge: presentation.challenge,
+                                                       receiver: receiver, age: age, quiet: responseQuiet) else { return }
+            LanternAwardResponse.draw(in: &context, response: response, canvasSize: canvasSize)
+        case .ribbonCrossing:
+            let composition = RestorationComposition.selected(isTablet: isTablet, isLandscape: isLandscape, size: canvasSize)
+            guard let response = RibbonAwardResponse(event: award, challenge: presentation.challenge,
+                                                      receiver: receiver, composition: composition, age: age, quiet: responseQuiet) else { return }
+            RibbonAwardResponse.draw(in: &context, response: response, canvasSize: canvasSize)
+        default: break
+        }
+    }
+}
+
+/// Admission shared by the two material-specific scenery answers. The committed
+/// receipt still owns arrival timing, positive light and its existing lifetime.
+enum RestorationAwardResponse {
+    static func supports(_ challenge: StarfallChallenge?) -> Bool {
+        challenge == .firstLight || challenge == .ribbonCrossing
+    }
+
+    static func progress(event: StarlightCelebration, challenge: StarfallChallenge?, receiver: CGRect,
+                         age: TimeInterval, quiet: Bool) -> Double? {
+        guard supports(challenge), event.displayAward > 0, event.collected > 0,
+              !event.packets.isEmpty, !receiver.isNull, !receiver.isInfinite,
+              receiver.minX.isFinite, receiver.maxX.isFinite,
+              receiver.minY.isFinite, receiver.maxY.isFinite,
+              receiver.width.isFinite, receiver.height.isFinite,
+              receiver.width > 0, receiver.height > 0 else { return nil }
+        return event.receiverProgress(at: age, toRestoration: true, quiet: quiet)
     }
 }
 
@@ -102,13 +130,9 @@ struct LanternAwardResponse {
 
     init?(event: StarlightCelebration, challenge: StarfallChallenge?, receiver: CGRect,
           age: TimeInterval, quiet: Bool) {
-        guard challenge == .firstLight, event.displayAward > 0, event.collected > 0,
-              !event.packets.isEmpty, !receiver.isNull, !receiver.isInfinite,
-              receiver.minX.isFinite, receiver.maxX.isFinite,
-              receiver.minY.isFinite, receiver.maxY.isFinite,
-              receiver.width.isFinite, receiver.height.isFinite,
-              receiver.width > 0, receiver.height > 0,
-              let progress = event.receiverProgress(at: age, toRestoration: true, quiet: quiet) else { return nil }
+        guard challenge == .firstLight,
+              let progress = RestorationAwardResponse.progress(event: event, challenge: challenge,
+                                                               receiver: receiver, age: age, quiet: quiet) else { return nil }
         self.receiver = receiver
         // Registration is the actual painting's light aperture, without another
         // screen-size estimate or a destination inferred from animated pieces.
@@ -149,6 +173,94 @@ struct LanternAwardResponse {
             Gradient(colors: [StarfallTheme.Colors.textPrimary, StarfallTheme.Observatory.lanternGlow]),
             center: center, startRadius: 0,
             endRadius: max(response.aperture.width, response.aperture.height) / 2))
+    }
+}
+
+/// Four local cross-stitches answer delivered light on Ribbon's receiving seam.
+/// They neither close the painted gap nor add permanent restoration progress.
+struct RibbonAwardResponse {
+    let receiver: CGRect
+    let seam: [CGPoint]
+    /// Two independent diagonals per stitch, never a connecting zigzag.
+    let stitches: [[CGPoint]]
+    let bounds: CGRect
+    let progress: Double
+    let opacity: Double
+    let reveals: [Double]
+    let quiet: Bool
+
+    init?(event: StarlightCelebration, challenge: StarfallChallenge?, receiver: CGRect,
+          composition: RestorationComposition, age: TimeInterval, quiet: Bool) {
+        guard challenge == .ribbonCrossing,
+              let progress = RestorationAwardResponse.progress(event: event, challenge: challenge,
+                                                               receiver: receiver, age: age, quiet: quiet) else { return nil }
+        self.receiver = receiver
+        self.progress = progress
+        self.quiet = quiet
+        // The completed paintings register the join. In the torn variants this
+        // same light anchor meets the receiving fray, rather than inventing a
+        // temporary bridge across the still-unrepaired gap.
+        let direction: CGVector
+        switch composition {
+        case .phone: direction = CGVector(dx: 0.10, dy: 0.995)
+        case .tabletPortrait: direction = CGVector(dx: -0.52, dy: 0.854)
+        case .tabletLandscape: direction = CGVector(dx: 0.42, dy: 0.908)
+        }
+        let magnitude = hypot(direction.dx, direction.dy)
+        let along = CGVector(dx: direction.dx / magnitude, dy: direction.dy / magnitude)
+        let across = CGVector(dx: -along.dy, dy: along.dx)
+        let size = max(receiver.width, receiver.height)
+        let length = min(42, size * 2.25)
+        let crossSpan = min(18, size * 1.1)
+        let center = CGPoint(x: receiver.midX, y: receiver.midY)
+        func point(along a: CGFloat, across b: CGFloat) -> CGPoint {
+            CGPoint(x: center.x + along.dx * a + across.dx * b,
+                    y: center.y + along.dy * a + across.dy * b)
+        }
+        seam = [point(along: -length / 2, across: 0), point(along: length / 2, across: 0)]
+        let pitch = length / 4
+        stitches = (0..<4).flatMap { index -> [[CGPoint]] in
+            let position = (CGFloat(index) - 1.5) * pitch
+            let inset = pitch * 0.34
+            return [[point(along: position - inset, across: -crossSpan / 2),
+                     point(along: position + inset, across: crossSpan / 2)],
+                    [point(along: position - inset, across: crossSpan / 2),
+                     point(along: position + inset, across: -crossSpan / 2)]]
+        }
+        let points = stitches.flatMap { $0 }
+        let xs = points.map(\.x), ys = points.map(\.y)
+        guard let left = xs.min(), let right = xs.max(), let top = ys.min(), let bottom = ys.max() else { return nil }
+        bounds = CGRect(x: left, y: top, width: right - left, height: bottom - top).insetBy(dx: -1.5, dy: -1.5)
+        opacity = quiet ? 0.8 : 0.8 * min(1, progress / 0.12) * min(1, (1 - progress) / 0.3)
+        reveals = (0..<8).map { index in
+            quiet ? 1 : min(1, max(0, progress / 0.65 * 4 - Double(index / 2)))
+        }
+    }
+
+    static func draw(in context: inout GraphicsContext, response: Self,
+                     canvasSize: CGSize, exclusions: [CGRect] = []) {
+        guard canvasSize.width.isFinite, canvasSize.height.isFinite,
+              canvasSize.width > 0, canvasSize.height > 0 else { return }
+        var thread = context
+        thread.clip(to: Path(CGRect(origin: .zero, size: canvasSize)))
+        thread.clip(to: Path(response.bounds))
+        for exclusion in exclusions where !exclusion.isEmpty && !exclusion.isNull && !exclusion.isInfinite {
+            var visible = Path(CGRect(origin: .zero, size: canvasSize))
+            visible.addRect(exclusion)
+            thread.clip(to: visible, style: FillStyle(eoFill: true))
+        }
+        thread.opacity = response.opacity
+        var stitches = Path()
+        for (segment, reveal) in zip(response.stitches, response.reveals) where reveal > 0 {
+            let start = segment[0], end = segment[1]
+            stitches.move(to: start)
+            stitches.addLine(to: CGPoint(x: start.x + (end.x - start.x) * reveal,
+                                        y: start.y + (end.y - start.y) * reveal))
+        }
+        thread.stroke(stitches, with: .color(StarfallTheme.Dialogue.brass),
+                      style: StrokeStyle(lineWidth: 2.6, lineCap: .round, lineJoin: .round))
+        thread.stroke(stitches, with: .color(StarfallTheme.Colors.textPrimary),
+                      style: StrokeStyle(lineWidth: 1, lineCap: .round, lineJoin: .round))
     }
 }
 
