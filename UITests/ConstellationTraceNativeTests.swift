@@ -19,14 +19,14 @@ final class ConstellationTraceNativeTests: XCTestCase {
         reopen.tap()
         XCTAssertTrue(app.staticTexts["experiment.message"].waitForExistence(timeout: 5))
     }
-    @MainActor private func drag(_ app:XCUIApplication,from:(Int,Int),to:(Int,Int)) {
+    @MainActor private func drag(_ app:XCUIApplication,from:(Int,Int),to:(Int,Int),thenHold:TimeInterval = 0.1) {
         let before = app.otherElements["experiment.board"].value as? String
         XCTAssertNotNil(before)
         app.revealSkyControls([app.buttons["experiment.cell.\(from.0).\(from.1)"], app.buttons["experiment.cell.\(to.0).\(to.1)"]])
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, before, "Preparing a paused trace must not change the sky")
         let start=app.buttons["experiment.cell.\(from.0).\(from.1)"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
         let end=app.buttons["experiment.cell.\(to.0).\(to.1)"].coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5))
-        start.press(forDuration:0.4,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:0.1)
+        start.press(forDuration:0.4,thenDragTo:end,withVelocity:.slow,thenHoldForDuration:thenHold)
     }
     @MainActor func testNativeSwipeClearsChosenFiveAndLeavesSixth() {
         let app=launch();defer {app.terminate()}
@@ -81,6 +81,86 @@ final class ConstellationTraceNativeTests: XCTestCase {
         XCTAssertEqual(app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'")).count,0)
         for column in 0...5 { XCTAssertTrue(app.buttons["experiment.cell.0.\(column)"].label.hasPrefix("Empty")) }
         let image=XCTAttachment(screenshot:app.screenshot());image.name="one-gap-clear";image.lifetime = .keepAlways;add(image)
+    }
+
+    @MainActor func testPartialFullAndCancelledNativeTracesKeepExactSelections() {
+        let partial = launch(); defer { partial.terminate() }
+        let board = partial.otherElements["experiment.board"]
+        let initialBoard = board.value as? String
+        XCTAssertNotNil(initialBoard)
+        func labels() -> [String] {
+            (0..<7).flatMap { row in (0..<7).map { column in
+                partial.buttons["experiment.cell.\(row).\(column)"].label
+            } }
+        }
+        let initialLabels = labels()
+        drag(partial, from: (0,0), to: (3,3), thenHold: 0.45); score(0, partial)
+        XCTAssertEqual(board.value as? String, initialBoard)
+        XCTAssertEqual(labels(), initialLabels, "A short trace must preserve every committed cell")
+        let start = partial.buttons["experiment.cell.0.0"].coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+        start.press(forDuration: 0.4,
+                    thenDragTo: partial.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.1)),
+                    withVelocity: .slow, thenHoldForDuration: 0.45)
+        score(0, partial)
+        XCTAssertEqual(board.value as? String, initialBoard)
+        XCTAssertEqual(labels(), initialLabels, "An outside release must preserve every committed cell")
+        drag(partial, from: (0,0), to: (4,4), thenHold: 0.45); score(5, partial)
+        XCTAssertEqual(partial.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'")).count, 1)
+        XCTAssertTrue(partial.buttons["experiment.cell.5.5"].label.contains("Twinkle"))
+        let selected = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        selected.name = "membership-partial-five-after-cancellation"; selected.lifetime = .keepAlways; add(selected)
+        partial.terminate()
+
+        let full = launch(); defer { full.terminate() }
+        drag(full, from: (0,0), to: (5,5), thenHold: 0.45); score(6, full)
+        XCTAssertEqual(full.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'")).count, 0)
+        XCTAssertEqual(full.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Spark'")).count, 15)
+        let complete = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        complete.name = "membership-full-six-committed"; complete.lifetime = .keepAlways; add(complete)
+        let next = full.buttons["experiment.cell.0.1"]
+        full.revealSkyControls([next])
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: next).wait(timeout: 5))
+        next.tap(); score(21, full)
+    }
+
+    @MainActor func testDenseNativeTraceSelectsFiveAndRetainsUnselectedMatchingStar() {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--starfalls-reset", "--observatory-review", "--observatory-dense"]
+        app.launch(); defer { app.terminate() }
+        XCTAssertTrue(app.buttons["experiment.cell.0.0"].waitForExistence(timeout: 10))
+        let occupied = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND NOT (label BEGINSWITH 'Empty')"))
+        let amber = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Sunny'"))
+        XCTAssertEqual(occupied.count, 49); XCTAssertEqual(amber.count, 11); score(0, app)
+        // The existing fixture's six nongrown Amber stars on row+column=7
+        // form one diagonal component. The first five avoid its Dusk neighbor.
+        let path = [(1,6),(2,5),(3,4),(4,3),(5,2)]
+        let retained = app.buttons["experiment.cell.6.1"]
+        let untouched = ["experiment.cell.0.0", "experiment.cell.1.1", "experiment.cell.1.3", "experiment.cell.6.1"]
+        let originalLabels = untouched.map { app.buttons[$0].label }
+        let originalBoard = app.otherElements["experiment.board"].value as? String
+        XCTAssertNotNil(originalBoard)
+        let visible = (path + [(6,1)]).map { app.buttons["experiment.cell.\($0.0).\($0.1)"] }
+        app.revealSkyControls(visible)
+        for star in visible {
+            XCTAssertTrue(star.isHittable)
+            XCTAssertTrue(app.frame.contains(star.frame), "The complete diagonal must fit the native viewport")
+            XCTAssertTrue(star.label.contains("Sunny"))
+        }
+        XCTAssertEqual(app.otherElements["experiment.board"].value as? String, originalBoard)
+        let before = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        before.name = "membership-dense-49-before-held-stroke"; before.lifetime = .keepAlways; add(before)
+        drag(app, from: (1,6), to: (5,2), thenHold: 0.45); score(5, app)
+        XCTAssertEqual(occupied.count, 44); XCTAssertEqual(amber.count, 6)
+        XCTAssertTrue(retained.label.contains("Sunny"))
+        XCTAssertEqual(untouched.map { app.buttons[$0].label }, originalLabels)
+        for cell in path {
+            XCTAssertTrue(app.buttons["experiment.cell.\(cell.0).\(cell.1)"].label.contains("Nova"), "The Violet star above each selected Amber falls into its cell")
+        }
+        // Pixel coverage of selected rays, unselected supports and the return
+        // figure belongs to external recording, not these committed-state checks.
+        let after = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+        after.name = "membership-dense-five-selected-one-retained"; after.lifetime = .keepAlways; add(after)
     }
 
     @MainActor func testHorizontalTraceAndOrdinaryTapKeepDistinctCommittedSelections() {
@@ -174,7 +254,7 @@ final class ConstellationTraceNativeTests: XCTestCase {
             NativeSystemMotionSettings.set(originalCalm, on: calm)
             app.buttons["experiment.done"].tap()
         }
-        drag(app, from: (0,0), to: (4,4)); score(5, app)
+        drag(app, from: (0,0), to: (4,4), thenHold: 0.45); score(5, app)
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'experiment.cell.' AND label CONTAINS 'Twinkle'")).count, 1)
         XCTAssertTrue(app.buttons["experiment.cell.5.5"].label.contains("Twinkle"))
         // The checkpoint preserves the actual AX3XL viewport for review. It

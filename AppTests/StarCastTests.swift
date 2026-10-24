@@ -719,6 +719,228 @@ extension StarCastTests {
 
 
 extension StarCastTests {
+    @MainActor private func retainedCueNodes(in scene: FallingSkyScene) -> [SKShapeNode] {
+        var result: [SKShapeNode] = []
+        for name in ["constellation.trace.retained", "constellation.trace.retained.contrast"] {
+            scene.enumerateChildNodes(withName: "//" + name) { node, _ in
+                if let shape = node as? SKShapeNode { result.append(shape) }
+            }
+        }
+        return result
+    }
+
+    @MainActor private func assertRetainedCue(_ scene: FallingSkyScene, source: FallingSky,
+                                             cells: Set<Cell>, file: StaticString = #filePath, line: UInt = #line) throws {
+        let cues = retainedCueNodes(in: scene)
+        XCTAssertEqual(cues.count, cells.isEmpty ? 0 : 2, file: file, line: line)
+        guard !cells.isEmpty else { return }
+        let foreground = try XCTUnwrap(cues.first { $0.name == "constellation.trace.retained" }, file: file, line: line)
+        let expectedIDs = Set(cells.compactMap { source.gem(at: $0)?.id })
+        XCTAssertEqual(Set(try XCTUnwrap(foreground.userData?["identities"] as? [Int], file: file, line: line)),
+                       expectedIDs, file: file, line: line)
+        let ordered = cells.sorted { $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row }
+        let mapping = LandingGeometry(size: scene.size)
+        for cue in cues {
+            XCTAssertFalse(cue.hasActions(), file: file, line: line)
+            XCTAssertTrue(cue.children.isEmpty, "Retained stars share aggregate geometry", file: file, line: line)
+            XCTAssertEqual(cue.fillColor.cgColor.alpha, 0, file: file, line: line)
+            var points: [CGPoint] = [], moves = 0, lines = 0, enclosedOrCurved = 0
+            let path = try XCTUnwrap(cue.path, file: file, line: line)
+            path.applyWithBlock { element in
+                switch element.pointee.type {
+                case .moveToPoint: moves += 1; points.append(element.pointee.points[0])
+                case .addLineToPoint: lines += 1; points.append(element.pointee.points[0])
+                default: enclosedOrCurved += 1
+                }
+            }
+            XCTAssertEqual(moves, cells.count, file: file, line: line)
+            XCTAssertEqual(lines, cells.count * 3, file: file, line: line)
+            XCTAssertEqual(enclosedOrCurved, 0, "A retained cue is an open cradle, never a ring or fill", file: file, line: line)
+            guard points.count == ordered.count * 4 else { XCTFail("Each retained star needs one three-line cradle", file: file, line: line); continue }
+            for (index, cell) in ordered.enumerated() {
+                let cradle = (0..<4).map { scene.convert(points[index * 4 + $0], from: cue) }
+                let center = mapping.scenePoint(cell)
+                let gem = try XCTUnwrap(source.gem(at: cell), file: file, line: line)
+                let bodyRadius = StarfallMotion.pieceRadius * FallingSkyCharacter.bodyScale(for: gem)
+                let baseline = max(StarfallTheme.SelectionCue.retainedBaseline,
+                                   bodyRadius + StarfallTheme.SelectionCue.retainedBodyClearance)
+                // SpriteKit's scene conversion quantizes transforms to Float32.
+                // Compare at that measurement boundary, without widening an epsilon.
+                XCTAssertEqual(Float((cradle[0].x + cradle[3].x) / 2), Float(center.x), file: file, line: line)
+                XCTAssertEqual(Float(cradle[1].y), Float(center.y - mapping.starStep * baseline), file: file, line: line)
+                XCTAssertLessThan(cradle[0].y, center.y, file: file, line: line)
+                XCTAssertEqual(Float(cradle[0].y), Float(cradle[3].y), file: file, line: line)
+                XCTAssertEqual(Float(cradle[1].y), Float(cradle[2].y), file: file, line: line)
+                XCTAssertLessThan(cradle[1].y, cradle[0].y, file: file, line: line)
+                XCTAssertLessThan(cradle[3].x - cradle[0].x, mapping.starStep, file: file, line: line)
+            }
+        }
+    }
+
+    @MainActor func testRetainedTraceCuesFollowCoreSubsetsBranchesGapsAndOpalSurvivors() throws {
+        let diagonal = (0..<5).map { Cell($0, $0) }
+        let branch = [Cell(0,4), Cell(1,3), Cell(2,4), Cell(1,3), Cell(0,4), Cell(1,5), Cell(1,6)]
+        let examples: [(ConstellationFixture, [Cell], Bool)] = [
+            (.diagonalSix, diagonal, true), (.diagonalSix, (0..<6).map { Cell($0, $0) }, true),
+            (.overlap, branch, true), (.singleGap, [0,1,2,3].map { Cell(0, $0) }, false),
+            (.singleGap, [0,1,2,3,5].map { Cell(0, $0) }, true),
+            (.opalTrace, (0..<5).map { Cell($0, 2) }, true)
+        ]
+        let scene = FallingSkyScene(size: CGSize(width: 390, height: 844))
+        for (fixture, walk, ready) in examples {
+            let source = fixture.game()
+            let kept = source.constellationGroup(at: walk[0]).subtracting(Set(walk))
+            scene.render(source)
+            for _ in 0..<3 { scene.showConstellationTrace(walk, ready: ready, source: source) }
+            try assertRetainedCue(scene, source: source, cells: kept)
+            XCTAssertNotNil(scene.childNode(withName: "//constellation.trace.thread"))
+            let beforeIDs = Set(source.board.compactMap { $0?.id })
+            var after = source
+            if ready {
+                let turn = try XCTUnwrap(after.clearConstellation(walk))
+                let clearedIDs = Set(turn.cleared.compactMap { source.gem(at: $0)?.id })
+                XCTAssertEqual(turn.cleared.filter { source.gem(at: $0)?.isDark == false }, Set(walk))
+                XCTAssertEqual(Set(after.board.compactMap { $0?.id }), beforeIDs.subtracting(clearedIDs))
+                XCTAssertTrue(Set(kept.compactMap { source.gem(at: $0)?.id }).isSubset(of: Set(after.board.compactMap { $0?.id })))
+                let receipt = try XCTUnwrap(StarlightCelebration(id: 1, turn: turn, from: source,
+                                                               total: after.displayScore, path: walk))
+                XCTAssertEqual(receipt.constellationPath, walk, "The selection cue must not rewrite goal one's ordered return")
+                if fixture == .opalTrace {
+                    let white = try XCTUnwrap(walk.first { source.gem(at: $0)?.isLight == true })
+                    scene.showConstellationTrace([white], ready: false, source: source)
+                    XCTAssertTrue(retainedCueNodes(in: scene).isEmpty, "An Opal cannot anchor a different family")
+                    XCTAssertNil(scene.childNode(withName: "//constellation.trace.thread"))
+                    for cell in walk where source.reward(of: [cell]) == 0 {
+                        XCTAssertTrue(receipt.constellationPath.contains(cell))
+                        XCTAssertFalse(receipt.contributors.contains { $0.cell == cell })
+                    }
+                }
+            } else {
+                XCTAssertNil(after.clearConstellation(walk)); XCTAssertEqual(after, source)
+            }
+            scene.render(after)
+            XCTAssertTrue(retainedCueNodes(in: scene).isEmpty)
+        }
+    }
+
+    @MainActor func testRetainedTraceCuesRejectInvalidOrStaleSourcesAndClearOnCancellationAndResize() throws {
+        let source = ConstellationFixture.diagonalSix.game(), walk = (0..<5).map { Cell($0, $0) }
+        let scene = FallingSkyScene(size: CGSize(width: 390, height: 844))
+        scene.render(source); scene.showConstellationTrace(walk, ready: true, source: source)
+        XCTAssertEqual(retainedCueNodes(in: scene).count, 2)
+        for invalid in [[], [Cell(0,0), Cell(0,1)], Array(repeating: Cell(0,0), count: 197)] {
+            scene.showConstellationTrace(invalid, ready: false, source: source)
+            XCTAssertTrue(retainedCueNodes(in: scene).isEmpty)
+            XCTAssertNil(scene.childNode(withName: "//constellation.trace.thread"))
+        }
+        var newer = source
+        newer.setBalance(.init(pace: source.balance.pace == .gentle ? .steady : .gentle,
+                               darkStars: source.balance.darkStars))
+        XCTAssertNotEqual(newer, source)
+        XCTAssertEqual(newer.board, source.board, "Same identities do not authorize a stale committed snapshot")
+        scene.render(newer); scene.showConstellationTrace(walk, ready: true, source: source)
+        XCTAssertTrue(retainedCueNodes(in: scene).isEmpty)
+        scene.showConstellationTrace(walk, ready: true, source: newer)
+        XCTAssertEqual(retainedCueNodes(in: scene).count, 2)
+        scene.clearConstellationTrace()
+        XCTAssertTrue(retainedCueNodes(in: scene).isEmpty)
+        scene.showConstellationTrace(walk, ready: true, source: newer)
+        scene.size = CGSize(width: 430, height: 932)
+        XCTAssertTrue(retainedCueNodes(in: scene).isEmpty)
+        let won = ObservatoryReviewFixture.game(dense: false, score: 18, challenge: .firstLight)
+        XCTAssertTrue(won.isOver)
+        scene.render(won); scene.showConstellationTrace([Cell(0,0)], ready: false, source: won)
+        XCTAssertTrue(retainedCueNodes(in: scene).isEmpty)
+        XCTAssertNil(scene.childNode(withName: "//constellation.trace.thread"))
+    }
+
+    @MainActor func testRetainedSquareExceptionDoesNotPromiseSurvivorsInAutomaticStory() throws {
+        var square = SkyLesson.square.game()
+        XCTAssertNotNil(square.nudge(from: Cell(1,2), to: Cell(1,1)))
+        let walk = [Cell(0,0), Cell(0,1), Cell(1,1), Cell(1,0)]
+        XCTAssertTrue(square.constellationGroup(at: walk[0]).isEmpty)
+        XCTAssertEqual(square.recipe(matching: Set(walk))?.shape, .square)
+        let scene = FallingSkyScene(size: CGSize(width: 390, height: 844))
+        scene.render(square)
+        scene.showConstellationTrace(Array(walk.prefix(2)), ready: false, source: square)
+        try assertRetainedCue(scene, source: square, cells: Set(walk.dropFirst(2)))
+        scene.showConstellationTrace(walk, ready: true, source: square)
+        try assertRetainedCue(scene, source: square, cells: [])
+        XCTAssertEqual(square.clearConstellation(walk)?.collected, 4)
+        for revision in [2, 4] {
+            let automatic = FallingSky(definition: try XCTUnwrap(StoryChallengeDefinition(.firstLight, revision: revision)))
+            XCTAssertTrue(automatic.supportsAutomaticRecipes)
+            scene.render(automatic)
+            scene.showConstellationTrace([Cell(0,0)], ready: false, source: automatic)
+            XCTAssertTrue(retainedCueNodes(in: scene).isEmpty,
+                          "Retained v2 can consume other ingredients later; current Story does not permit manual tracing")
+        }
+    }
+
+    @MainActor func testRetainedTraceCradlesActuallyRasterizeInNormalQuietAndDenseScenesAndDetach() async throws {
+        let windowScene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = windowScene.windows.first(where: \.isKeyWindow)
+        let view = SKView(frame: CGRect(x: 0, y: 0, width: 390, height: 844))
+        let window = UIWindow(windowScene: windowScene); window.frame = view.frame
+        let controller = UIViewController(); controller.view = view
+        window.rootViewController = controller; window.makeKeyAndVisible()
+        defer { view.presentScene(nil); window.isHidden = true; previous?.makeKey() }
+        let scene = FallingSkyScene(size: view.bounds.size); view.presentScene(scene)
+        var object = try XCTUnwrap(JSONSerialization.jsonObject(with: JSONEncoder().encode(ObservatoryReviewFixture.game(dense: true))) as? [String: Any])
+        object["board"] = (0..<49).map { ["id": $0, "kind": Jewel.rose.rawValue, "grown": $0 == 5] as [String: Any] }
+        object["starsLanded"] = 50; object["turns"] = 10
+        let dense = try JSONDecoder().decode(FallingSky.self, from: JSONSerialization.data(withJSONObject: object))
+        XCTAssertTrue(dense.isValidSave); XCTAssertEqual(dense.occupiedCount, 49)
+        XCTAssertTrue(try XCTUnwrap(dense.gem(at: Cell(0,5))).grown, "The retained grown body's clearance uses the character owner")
+        let walk = (0..<5).map { Cell(0, $0) }
+        for (name, source) in [("five-of-six", SkyTutorial.trace.game()), ("dense49", dense)] {
+            let kept = source.constellationGroup(at: walk[0]).subtracting(Set(walk))
+            XCTAssertEqual(kept.count, name == "dense49" ? 44 : 1)
+            for quiet in [false, true] {
+                scene.reduceMotion = quiet; scene.render(source)
+                scene.showConstellationTrace(walk, ready: true, source: source)
+                try assertRetainedCue(scene, source: source, cells: kept)
+                let foreground = try XCTUnwrap(scene.childNode(withName: "//constellation.trace.retained"))
+                var texture: SKTexture?, ink = 0
+                let deadline = ContinuousClock.now + .seconds(2)
+                repeat {
+                    await Task.yield(); view.layoutIfNeeded()
+                    texture = view.texture(from: foreground)
+                    if let texture { ink = try retainedRasterInk(texture.cgImage()) }
+                    if ink == 0 { try await Task.sleep(for: .milliseconds(20)) }
+                } while ink == 0 && ContinuousClock.now < deadline
+                XCTAssertGreaterThan(ink, kept.count * 8, "Actual SpriteKit strokes must rasterize; metadata alone cannot pass")
+                let capture = XCTAttachment(image: UIImage(cgImage: try XCTUnwrap(view.texture(from: scene)).cgImage()))
+                capture.name = "retained-cradles-\(name)-\(quiet ? "quiet" : "normal")"
+                capture.lifetime = .keepAlways; add(capture)
+            }
+        }
+        var after = dense
+        let turn = try XCTUnwrap(after.clearConstellation(walk))
+        scene.reduceMotion = false; scene.render(dense)
+        var settled = false
+        scene.animate(turn, from: dense, to: after) { settled = true }
+        let held = [Cell(0,5), Cell(0,6)]
+        scene.showConstellationTrace(held, ready: false, source: after)
+        let kept = after.constellationGroup(at: held[0]).subtracting(Set(held))
+        let settledCells = settled ? kept : kept.filter { !turn.changingColumns.contains($0.column) }
+        try assertRetainedCue(scene, source: after, cells: settledCells)
+        scene.render(after)
+        scene.showConstellationTrace(held, ready: false, source: after)
+        XCTAssertEqual(retainedCueNodes(in: scene).count, 2)
+        view.presentScene(nil)
+        XCTAssertTrue(retainedCueNodes(in: scene).isEmpty, "Real scene detachment must remove the transient cue")
+    }
+
+    private func retainedRasterInk(_ image: CGImage) throws -> Int {
+        var pixels = [UInt8](repeating: 0, count: image.width * image.height * 4)
+        let context = try XCTUnwrap(CGContext(data: &pixels, width: image.width, height: image.height,
+            bitsPerComponent: 8, bytesPerRow: image.width * 4, space: CGColorSpaceCreateDeviceRGB(),
+            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue))
+        context.draw(image, in: CGRect(x: 0, y: 0, width: image.width, height: image.height))
+        return stride(from: 3, to: pixels.count, by: 4).filter { pixels[$0] > 16 }.count
+    }
+
     @MainActor func testAttractionFieldsHaveNoGroundShadowsOrStarDescription() throws {
         let game = GravityFixture.opportunity.game()
         let scene = FallingSkyScene(size:CGSize(width:350,height:560))

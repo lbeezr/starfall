@@ -840,7 +840,8 @@ private extension FallingSkyView {
         store.scene.moveConstellationTip(point)
     }
     func refreshConstellation() {
-        store.scene.showConstellationTrace(trace.path, ready: store.game.constellationCells(along:trace.path) != nil)
+        store.scene.showConstellationTrace(trace.path, ready: store.game.constellationCells(along:trace.path) != nil,
+                                          source: trace.snapshot)
         if trace.count > 0 {
             let ready = store.game.constellationCells(along: trace.path) != nil
             let value = store.game.displayReward(of: Set(trace.path))
