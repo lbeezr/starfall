@@ -15,7 +15,10 @@
   },
   "runtime_inputs_unchanged_after_runtime_checkpoint": true,
   "recorded_input_count": 662,
-  "noncompiled_input_delta": [],
+  "noncompiled_input_delta": [
+    "AppTests/README.md",
+    "UITests/README.md"
+  ],
   "core": {
     "passed": 352,
     "failed": 0,
@@ -253,5 +256,7 @@
     ],
     "actual_timestamps_retained_in": "/private/tmp/starfall-identity-10-20261024/accepted-open-{motion,trace,release}/frames.json",
     "scope": "Sampled normal Entry, selection, release, exact return, expiry and remaining board; no complete short trajectory."
-  }
+  },
+  "unchanged_recorded_input_count": 660,
+  "runtime_test_configuration_bytes_unchanged": true
 }
