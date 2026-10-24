@@ -13,10 +13,27 @@ struct StarlightCelebration: Equatable, Identifiable {
     let total: Int
     var awardText: String { "+\(displayAward.formatted())" }
     let cells: [Cell]
+    /// Compatibility outline for selection callers. Automatic return rendering
+    /// uses every entry in `patterns`, never this first-recipe outline alone.
     let path: [Cell]
     /// Only a committed manual walk returns as a player-authored constellation.
-    /// Recipe drawing order is retained separately in `path`.
     let constellationPath: [Cell]
+    /// Automatic patterns retain each committed recipe separately, including
+    /// simultaneous and overlapping figures. They are never a manual walk.
+    struct Pattern: Equatable {
+        let shape: StarRecipe.Shape
+        let cells: [Cell]
+        let starIDs: Set<Int>
+        let path: [Cell]
+
+        init(recipe: StarRecipe) {
+            shape = recipe.shape
+            cells = recipe.cells
+            starIDs = recipe.starIDs
+            path = recipe.presentationPath
+        }
+    }
+    let patterns: [Pattern]
     struct Contributor: Equatable {
         let cell: Cell
         let identity: SkyIdentity
@@ -96,6 +113,7 @@ struct StarlightCelebration: Equatable, Identifiable {
         }
         path = phase.recipes.first?.presentationPath ?? []
         constellationPath = []
+        patterns = phase.kind == .recipe ? phase.recipes.map { Pattern(recipe: $0) } : []
         if phase.comboDepth > 1 { level = .cascade(phase.comboDepth) }
         else if let recipe = phase.recipes.first { level = .recipe(recipe.shape) }
         else { level = phase.award.sizeBonus > 0 || collected >= 8 ? .brilliant : .ordinary }
@@ -116,6 +134,7 @@ struct StarlightCelebration: Equatable, Identifiable {
         // Only the validated input path supplied by the store names a constellation.
         self.path = path.isEmpty ? (recipe?.presentationPath ?? []) : path
         constellationPath = path
+        patterns = path.isEmpty ? recipe.map { [Pattern(recipe: $0)] } ?? [] : []
         if relayDepth > 1 { level = .relay(relayDepth) }
         else if let recipe { level = .recipe(recipe.shape) }
         else {
@@ -180,12 +199,72 @@ struct ConstellationReturnLayout {
         labelBounds = label
     }
 
+    static func returnProgress(at age: TimeInterval, quiet: Bool) -> Double {
+        let elapsed = min(1, max(0, (age - 0.08) / (arrivalTime - 0.08)))
+        return quiet ? 1 : elapsed * elapsed * (3 - 2 * elapsed)
+    }
+
     func points(at age: TimeInterval, quiet: Bool = false) -> [CGPoint] {
-        let elapsed = min(1, max(0, (age - 0.08) / (Self.arrivalTime - 0.08)))
-        let progress = quiet ? 1 : elapsed * elapsed * (3 - 2 * elapsed)
+        let progress = Self.returnProgress(at: age, quiet: quiet)
         return zip(sourcePoints, destinationPoints).map { start, end in
             CGPoint(x: start.x + (end.x - start.x) * progress,
                     y: start.y + (end.y - start.y) * progress)
+        }
+    }
+}
+
+/// Each actual recipe remains a separate subpath. One shared affine transform
+/// preserves the original spacing and intersections of simultaneous patterns.
+struct PatternReturnLayout {
+    // Core can discover one square at each 2x2 origin, one cross at each
+    // interior center and at most one >=4 run per family in each 7-cell axis.
+    // This conservative geometry bound admits every committed recipe, including
+    // wildcard-family lines, without truncating a real simultaneous phase.
+    static let maximumPatterns = (FallingSky.side - 1) * (FallingSky.side - 1)
+        + (FallingSky.side - 2) * (FallingSky.side - 2)
+        + 2 * FallingSky.side * Jewel.allCases.count
+    static let maximumPathEntries = 8 // cross retraces its center; lines have <=7
+    let patterns: [StarlightCelebration.Pattern]
+    let sourcePaths: [[CGPoint]]
+    let destinationPaths: [[CGPoint]]
+    let starCells: [Cell]
+    let skyBounds: CGRect
+    let labelBounds: CGRect
+
+    init?(patterns: [StarlightCelebration.Pattern], board: CGRect, header: CGRect,
+          award: CGRect, protectedSky: CGRect? = nil) {
+        guard !patterns.isEmpty, patterns.count <= Self.maximumPatterns,
+              patterns.allSatisfy({ pattern in
+                  (2...Self.maximumPathEntries).contains(pattern.path.count)
+                      && !pattern.cells.isEmpty && pattern.cells.count <= FallingSky.side
+                      && Set(pattern.cells).count == pattern.cells.count
+                      && pattern.starIDs.count == pattern.cells.count
+                      && Set(pattern.path) == Set(pattern.cells)
+              }) else { return nil }
+        let footprint = Set(patterns.flatMap(\.cells)).sorted {
+            $0.row == $1.row ? $0.column < $1.column : $0.row < $1.row
+        }
+        // The unique footprint supplies bounds only. Its ordering is NEVER
+        // drawn: the original per-recipe presentation paths remain separate.
+        guard let fit = ConstellationReturnLayout(path: footprint, board: board, header: header,
+                                                  award: award, protectedSky: protectedSky) else { return nil }
+        let source = Dictionary(uniqueKeysWithValues: zip(footprint, fit.sourcePoints))
+        let destination = Dictionary(uniqueKeysWithValues: zip(footprint, fit.destinationPoints))
+        self.patterns = patterns
+        sourcePaths = patterns.map { $0.path.map { source[$0]! } }
+        destinationPaths = patterns.map { $0.path.map { destination[$0]! } }
+        starCells = footprint
+        skyBounds = fit.skyBounds
+        labelBounds = fit.labelBounds
+    }
+
+    func points(at age: TimeInterval, quiet: Bool = false) -> [[CGPoint]] {
+        let progress = ConstellationReturnLayout.returnProgress(at: age, quiet: quiet)
+        return zip(sourcePaths, destinationPaths).map { source, destination in
+            zip(source, destination).map { start, end in
+                CGPoint(x: start.x + (end.x - start.x) * progress,
+                        y: start.y + (end.y - start.y) * progress)
+            }
         }
     }
 }
@@ -229,14 +308,17 @@ struct StarlightCelebrationOverlay: View {
             let award = awardBounds ?? Self.awardRegion(board: board, header: header, accessible: textSize.isAccessibilitySize)
             let constellation = ConstellationReturnLayout(path: event.constellationPath, board: board, header: header,
                                                          award: award, protectedSky: constellationBounds)
-            let region = constellation?.labelBounds ?? award
+            let patterns = PatternReturnLayout(patterns: event.patterns, board: board, header: header,
+                                               award: award, protectedSky: constellationBounds)
+            let region = constellation?.labelBounds ?? patterns?.labelBounds ?? award
             ZStack(alignment: .topLeading) {
-                if !quiet || constellation != nil {
+                if !quiet || constellation != nil || patterns != nil {
                     Canvas { context, size in
                         if quiet {
                             if let constellation { drawConstellation(in: &context, layout: constellation, age: age, canvasSize: size) }
+                            if let patterns { drawPatterns(in: &context, layout: patterns, age: age, canvasSize: size) }
                         } else {
-                            draw(in: &context, age: age, canvasSize: size, constellation: constellation)
+                            draw(in: &context, age: age, canvasSize: size, constellation: constellation, patterns: patterns)
                         }
                     }
                 }
@@ -284,7 +366,7 @@ struct StarlightCelebrationOverlay: View {
     }
 
     private func draw(in context: inout GraphicsContext, age: Double, canvasSize: CGSize,
-                      constellation: ConstellationReturnLayout?) {
+                      constellation: ConstellationReturnLayout?, patterns: PatternReturnLayout?) {
         guard age < StarlightCelebration.duration else { return }
         let points = event.cells.map(location)
         let origin = CGPoint(x: points.map(\.x).reduce(0, +) / CGFloat(points.count),
@@ -313,13 +395,14 @@ struct StarlightCelebrationOverlay: View {
                 let point = CGPoint(x: origin.x + cos(angle) * distance, y: origin.y + sin(angle) * distance * 0.72)
                 glint(in: &pulse, at: point, radius: index.isMultiple(of: 3) ? 4 : 2, color: color(event.contributors[index % event.contributors.count]))
             }
-            if constellation == nil, !event.path.isEmpty {
+            if constellation == nil, event.patterns.isEmpty, !event.path.isEmpty {
                 var outline = Path()
                 outline.addLines(event.path.map(location))
                 pulse.stroke(outline, with: .color(.white), style: StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round))
             }
         }
         if let constellation { drawConstellation(in: &context, layout: constellation, age: age, canvasSize: canvasSize) }
+        if let patterns { drawPatterns(in: &context, layout: patterns, age: age, canvasSize: canvasSize) }
         drawPackets(in: &context, age: age, canvasSize: canvasSize)
         if age > 0.58 {
             let t = min(1, (age - 0.58) / 0.65)
@@ -356,6 +439,39 @@ struct StarlightCelebrationOverlay: View {
         var drawn = Set<Cell>()
         for (cell, point) in zip(layout.walk, points) where drawn.insert(cell).inserted {
             glint(in: &glow, at: point, radius: quiet ? 3 : 3.5, color: .white)
+        }
+    }
+
+    /// Automatic geometry shares the manual return's Canvas and affine fitting,
+    /// while every recipe starts its own subpath and shared ingredients glint once.
+    func drawPatterns(in context: inout GraphicsContext, layout: PatternReturnLayout,
+                      age: Double, canvasSize: CGSize) {
+        guard age < StarlightCelebration.duration else { return }
+        let paths = layout.points(at: age, quiet: quiet)
+        var ink = context
+        for exclusion in [score.insetBy(dx: -6, dy: -6), header, layout.labelBounds] where !exclusion.isEmpty {
+            var visible = Path(CGRect(origin: .zero, size: canvasSize))
+            visible.addRect(exclusion)
+            ink.clip(to: visible, style: FillStyle(eoFill: true))
+        }
+        ink.opacity = quiet ? 1 : min(1, max(0, age / 0.07))
+        var outline = Path()
+        for points in paths {
+            guard let first = points.first else { continue }
+            outline.move(to: first)
+            for point in points.dropFirst() { outline.addLine(to: point) }
+        }
+        var glow = ink
+        if !quiet { glow.addFilter(.shadow(color: accent, radius: 4)) }
+        glow.stroke(outline, with: .color(accent.opacity(0.75)),
+                    style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+        glow.stroke(outline, with: .color(.white),
+                    style: StrokeStyle(lineWidth: 1.6, lineCap: .round, lineJoin: .round))
+        var drawn = Set<Cell>()
+        for (pattern, points) in zip(layout.patterns, paths) {
+            for (cell, point) in zip(pattern.path, points) where drawn.insert(cell).inserted {
+                glint(in: &glow, at: point, radius: quiet ? 3 : 3.5, color: .white)
+            }
         }
     }
 

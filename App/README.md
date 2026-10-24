@@ -1,5 +1,7 @@
 # iOS application
 
+Committed automatic recipe phases now return every actual square/cross/line as separate geometry, including simultaneous overlaps. `StarlightCelebration.Pattern` and `PatternReturnLayout` reuse the existing affine return, easing, Canvas and cancellation; manual walks keep their exact topology. Story reading layouts share the protected return band. [Identity goal5 acceptance](../docs/evidence/identity-goal-05-story-patterns-2026-10-24/README.md).
+
 Replay/New Entry Back restores the originating round or earned result; explicit Home still opens the Observatory, and Map previews return to Map. Saved Map/Places progress names the retained Falling Sky/Full Board mode. [Goal10 source-bound acceptance](../docs/evidence/depth-goal-10-repeat-journey-2026-10-23/README.md).
 
 [Native implementation and test instructions](AGENTS.md) give the local working contract.

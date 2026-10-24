@@ -1,0 +1,387 @@
+{
+  "sequences": [
+    {
+      "name": "phone-square-sequence",
+      "video_sha256": "af4ea1dc15c1c98b6bd8f5440e71336d4c6d37f0a893ae64979b1dc809620fde",
+      "source": "024e14a",
+      "frames": [
+        {
+          "actual": 158.28833333333333,
+          "index": 0,
+          "requested": 158.3,
+          "sheet": 0
+        },
+        {
+          "actual": 158.38833333333332,
+          "index": 1,
+          "requested": 158.4,
+          "sheet": 0
+        },
+        {
+          "actual": 158.48833333333334,
+          "index": 2,
+          "requested": 158.5,
+          "sheet": 0
+        },
+        {
+          "actual": 158.59666666666666,
+          "index": 3,
+          "requested": 158.60000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 158.68833333333333,
+          "index": 4,
+          "requested": 158.70000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 158.70333333333335,
+          "index": 5,
+          "requested": 158.8,
+          "sheet": 0
+        },
+        {
+          "actual": 158.88833333333332,
+          "index": 6,
+          "requested": 158.9,
+          "sheet": 0
+        },
+        {
+          "actual": 158.98833333333334,
+          "index": 7,
+          "requested": 159,
+          "sheet": 0
+        },
+        {
+          "actual": 159.08333333333334,
+          "index": 8,
+          "requested": 159.10000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 159.195,
+          "index": 9,
+          "requested": 159.20000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 159.285,
+          "index": 10,
+          "requested": 159.3,
+          "sheet": 0
+        },
+        {
+          "actual": 159.395,
+          "index": 11,
+          "requested": 159.4,
+          "sheet": 0
+        },
+        {
+          "actual": 159.495,
+          "index": 12,
+          "requested": 159.5,
+          "sheet": 0
+        },
+        {
+          "actual": 159.595,
+          "index": 13,
+          "requested": 159.60000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 159.69166666666666,
+          "index": 14,
+          "requested": 159.70000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 159.79166666666666,
+          "index": 15,
+          "requested": 159.8,
+          "sheet": 0
+        },
+        {
+          "actual": 159.89,
+          "index": 16,
+          "requested": 159.9,
+          "sheet": 0
+        },
+        {
+          "actual": 159.975,
+          "index": 17,
+          "requested": 160,
+          "sheet": 0
+        },
+        {
+          "actual": 160.09166666666667,
+          "index": 18,
+          "requested": 160.10000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 160.19166666666666,
+          "index": 19,
+          "requested": 160.20000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 160.29166666666666,
+          "index": 20,
+          "requested": 160.3,
+          "sheet": 0
+        },
+        {
+          "actual": 160.4,
+          "index": 21,
+          "requested": 160.4,
+          "sheet": 0
+        },
+        {
+          "actual": 160.49166666666667,
+          "index": 22,
+          "requested": 160.5,
+          "sheet": 0
+        },
+        {
+          "actual": 160.59,
+          "index": 23,
+          "requested": 160.60000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 160.69166666666666,
+          "index": 24,
+          "requested": 160.70000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 160.79166666666666,
+          "index": 25,
+          "requested": 160.8,
+          "sheet": 0
+        },
+        {
+          "actual": 160.89333333333335,
+          "index": 26,
+          "requested": 160.9,
+          "sheet": 0
+        },
+        {
+          "actual": 160.98666666666668,
+          "index": 27,
+          "requested": 161,
+          "sheet": 0
+        },
+        {
+          "actual": 161.08833333333334,
+          "index": 28,
+          "requested": 161.10000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 161.19,
+          "index": 29,
+          "requested": 161.20000000000002,
+          "sheet": 0
+        },
+        {
+          "actual": 161.28833333333333,
+          "index": 0,
+          "requested": 161.3,
+          "sheet": 1
+        },
+        {
+          "actual": 161.38833333333332,
+          "index": 1,
+          "requested": 161.4,
+          "sheet": 1
+        }
+      ],
+      "inspected": true
+    },
+    {
+      "name": "phone-line-sequence",
+      "video_sha256": "af4ea1dc15c1c98b6bd8f5440e71336d4c6d37f0a893ae64979b1dc809620fde",
+      "source": "024e14a",
+      "frames": [
+        {
+          "actual": 167.08833333333334,
+          "index": 0,
+          "requested": 167.1,
+          "sheet": 0
+        },
+        {
+          "actual": 167.19,
+          "index": 1,
+          "requested": 167.2,
+          "sheet": 0
+        },
+        {
+          "actual": 167.28833333333333,
+          "index": 2,
+          "requested": 167.29999999999998,
+          "sheet": 0
+        },
+        {
+          "actual": 167.38833333333332,
+          "index": 3,
+          "requested": 167.4,
+          "sheet": 0
+        },
+        {
+          "actual": 167.48833333333334,
+          "index": 4,
+          "requested": 167.5,
+          "sheet": 0
+        },
+        {
+          "actual": 167.59166666666667,
+          "index": 5,
+          "requested": 167.6,
+          "sheet": 0
+        },
+        {
+          "actual": 167.69833333333332,
+          "index": 6,
+          "requested": 167.7,
+          "sheet": 0
+        },
+        {
+          "actual": 167.79833333333335,
+          "index": 7,
+          "requested": 167.79999999999998,
+          "sheet": 0
+        },
+        {
+          "actual": 167.895,
+          "index": 8,
+          "requested": 167.9,
+          "sheet": 0
+        },
+        {
+          "actual": 167.995,
+          "index": 9,
+          "requested": 168,
+          "sheet": 0
+        },
+        {
+          "actual": 168.09666666666666,
+          "index": 10,
+          "requested": 168.1,
+          "sheet": 0
+        },
+        {
+          "actual": 168.195,
+          "index": 11,
+          "requested": 168.2,
+          "sheet": 0
+        },
+        {
+          "actual": 168.295,
+          "index": 12,
+          "requested": 168.29999999999998,
+          "sheet": 0
+        },
+        {
+          "actual": 168.39666666666668,
+          "index": 13,
+          "requested": 168.4,
+          "sheet": 0
+        },
+        {
+          "actual": 168.43833333333333,
+          "index": 14,
+          "requested": 168.5,
+          "sheet": 0
+        },
+        {
+          "actual": 168.55333333333334,
+          "index": 15,
+          "requested": 168.6,
+          "sheet": 0
+        },
+        {
+          "actual": 168.695,
+          "index": 16,
+          "requested": 168.7,
+          "sheet": 0
+        },
+        {
+          "actual": 168.79333333333332,
+          "index": 17,
+          "requested": 168.79999999999998,
+          "sheet": 0
+        },
+        {
+          "actual": 168.89166666666668,
+          "index": 18,
+          "requested": 168.9,
+          "sheet": 0
+        },
+        {
+          "actual": 168.98833333333334,
+          "index": 19,
+          "requested": 169,
+          "sheet": 0
+        },
+        {
+          "actual": 169.08666666666667,
+          "index": 20,
+          "requested": 169.1,
+          "sheet": 0
+        },
+        {
+          "actual": 169.18833333333333,
+          "index": 21,
+          "requested": 169.2,
+          "sheet": 0
+        },
+        {
+          "actual": 169.28666666666666,
+          "index": 22,
+          "requested": 169.29999999999998,
+          "sheet": 0
+        },
+        {
+          "actual": 169.38833333333332,
+          "index": 23,
+          "requested": 169.4,
+          "sheet": 0
+        },
+        {
+          "actual": 169.49,
+          "index": 24,
+          "requested": 169.5,
+          "sheet": 0
+        },
+        {
+          "actual": 169.59,
+          "index": 25,
+          "requested": 169.6,
+          "sheet": 0
+        },
+        {
+          "actual": 169.69,
+          "index": 26,
+          "requested": 169.7,
+          "sheet": 0
+        },
+        {
+          "actual": 169.78833333333333,
+          "index": 27,
+          "requested": 169.79999999999998,
+          "sheet": 0
+        },
+        {
+          "actual": 169.88833333333332,
+          "index": 28,
+          "requested": 169.9,
+          "sheet": 0
+        }
+      ],
+      "inspected": true
+    }
+  ],
+  "limits": "Sampled native motion, including actual repeated timestamps. Not every short helper-body frame, sustained performance or physical smoothness."
+}
