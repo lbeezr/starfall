@@ -235,7 +235,7 @@
         {
           "id": "observatory.entry.1",
           "speaker": "sunny",
-          "text": "Clear matching stars to make space for each shower. The round ends when an arriving star has nowhere to land.",
+          "text": "Tap a matching group, or hold and draw through 5 or more matching stars. Only the stars you draw clear. Make room for each shower.",
           "priority": "help"
         }
       ]
@@ -246,7 +246,7 @@
         {
           "id": "observatory.replay.1",
           "speaker": "sunny",
-          "text": "Same starting sky, with your current sky settings. Your saved round stays until you tap Begin.",
+          "text": "Replay the same starting sky and shower rules with your current sky settings. Your saved round stays until you tap Begin.",
           "priority": "help"
         }
       ]
@@ -1587,7 +1587,9 @@
     "flow.welcome": "Welcome to the Observatory",
     "home.observatory": "The Observatory",
     "home.storyMode": "Story Mode",
+    "home.storyPromise": "Arrange automatic patterns to restore places.",
     "home.freePlay": "Free Play",
+    "home.openPromise": "Draw constellations. Make room for showers.",
     "home.tutorial": "Tutorial",
     "flow.entry": "Make room for the stars",
     "flow.won": "Lantern Landing restored!",
@@ -1655,7 +1657,7 @@
     "help.tap": "Tap matching stars connected up, down, left or right. Small stars count as 1 and grown stars as 2. You need a total of 3 to clear the group.",
     "help.identity": "A grown star and a matching small star are enough. Match by color and shape. Small stars normally earn 1 starlight; grown stars earn 2. Gray stars earn none.",
     "help.traceTitle": "Draw a constellation",
-    "help.trace": "Hold a star until it glows, then draw through 5 or more matching stars and lift your finger. Only the stars you trace will clear. Each star can touch the previous star or cross one empty space in a straight line, including diagonally. Another star blocks the gap.",
+    "help.trace": "Hold a star until it glows, then draw through 5 or more matching stars and lift your finger. Only the stars you trace will clear. Each star can touch the previous star or cross one empty space in a straight line, including diagonally. Another star blocks the gap. When your drawing earns light, its shape returns with it.",
     "help.branch": "You can retrace your path to branch out. Each star counts once, even when grown. Leave the board to cancel. A four-star square can also clear as a recipe.",
     "help.accessibleTrace": "With VoiceOver, use Add to constellation on each star, then Release constellation. Use Cancel constellation to start over.",
     "help.showerTitle": "Make space for showers",
@@ -1881,9 +1883,9 @@
     "lantern.fullBoardPace": "Play at your own pace · no timed showers",
     "lantern.fullBoardRefill": "Full Board · clears refill and cascade",
     "help.fullBoardTitle": "A board that refills",
-    "help.fullBoardRefill": "Full Board starts with 49 stars. Swipe neighboring stars in any direction to arrange matching squares of 4, crosses of 5, or straight lines of 4 or more. Setup swaps are allowed. After each pop, survivors fall and new stars fill the spaces; a new pattern continues the chain. Every star counts once. There is no star growth, timed shower, or ceiling loss in this comparison.",
-    "help.fullBoardChallenge": "Restore Lantern Landing with {target} starlight in Full Board. Build patterns with swaps, then watch the empty spaces refill and the next patterns pop. Chains earn the same increasing bonus as Falling Sky. Take as many setup moves as you need; this comparison has no move limit. Both Lantern boards can earn the repair.",
-    "help.fullBoardRibbonChallenge": "Reconnect Ribbon Crossing with {target} starlight in Full Board. Choose a clear that keeps useful stars for the next pattern. Falling survivors and refills can continue the reaction and earn an increasing chain bonus. Take as many setup moves as you need; this comparison has no move limit. Both Ribbon boards can earn the repair.",
+    "help.fullBoardRefill": "Full Board starts with 49 stars. Swipe neighboring stars in any direction to arrange matching squares of 4, crosses of 5, or straight lines of 4 or more. Setup swaps are allowed. After each pop, survivors fall and new stars fill the spaces; a new pattern continues the chain. Every star counts once. There is no star growth, timed shower, or ceiling loss.",
+    "help.fullBoardChallenge": "Restore Lantern Landing with {target} starlight in Full Board. Build patterns with swaps, then watch the empty spaces refill and the next patterns pop. Chains earn the same increasing bonus as Falling Sky. Take as many setup moves as you need; there is no move limit. Both Lantern boards can earn the repair.",
+    "help.fullBoardRibbonChallenge": "Reconnect Ribbon Crossing with {target} starlight in Full Board. Choose a clear that keeps useful stars for the next pattern. Falling survivors and refills can continue the reaction and earn an increasing chain bonus. Take as many setup moves as you need; there is no move limit. Both Ribbon boards can earn the repair.",
     "help.fullBoardMenu": "Opening the menu or leaving the app suspends input and settles the committed move. Continue keeps this Full Board round; Replay keeps its starting board and refill rules. Return to Lantern Landing on the World Map to choose Falling Sky or Full Board for a new visit.",
     "help.fullBoardRibbonMenu": "Opening the menu or leaving the app suspends input and settles the committed move. Continue keeps this Full Board round; Replay keeps its starting board and refill rules. Return to Ribbon Crossing on the World Map to choose Falling Sky or Full Board for a new visit.",
     "a11y.fullBoardSummary": "Exchanges: {moves}. Full Board. Arrange matching squares of 4, crosses of 5, or straight lines of 4 or more. Clears refill automatically. No timed showers.",

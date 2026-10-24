@@ -1,5 +1,7 @@
 # Evidence index
 
+[One promise through Home and returning play](identity-goal-10-coherent-return-2026-10-24/README.md) corrects Open Sky restoration-Help leakage and verifies both mode promises, ordinary outcomes, exact returning play and complete native reading. Earlier failures and the final completed tablet timeout remain separate.
+
 [Open Sky’s choose-five practice](identity-goal-04-open-sky-practice-2026-10-24/README.md) records optional Hint, either-five acceptance, exact retained helpers, saved-round isolation and normal/AX3XL Calm native reading. The first viewport weakness and bounded copy refinement retain their separate source receipts.
 
 [Helpers leave and light travels onward](identity-goal-03-helper-departures-2026-10-24/README.md) records actual-body departures, exact manual/automatic membership, quiet/interruption behavior and eight native executions, with the initial hosted measurement correction and native sampling limit retained.

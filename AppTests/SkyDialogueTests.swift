@@ -4,6 +4,34 @@ import StarfallCore
 @testable import Starfall
 
 final class SkyDialogueTests: XCTestCase {
+    func testHomeAndOpenSkyGuidanceConnectModeActionsToTheReturnedDrawing() {
+        XCTAssertEqual(SkyCopy.text(.homeStoryMode), "Story Mode")
+        XCTAssertEqual(SkyCopy.text(.homeFreePlay), "Free Play")
+        let storyPromise = SkyCopy.text(.homeStoryPromise)
+        XCTAssertTrue(storyPromise.contains("automatic patterns"))
+        XCTAssertTrue(storyPromise.contains("restore places"))
+        XCTAssertFalse(storyPromise.contains("draw"))
+        let openPromise = SkyCopy.text(.homeOpenPromise)
+        XCTAssertTrue(openPromise.contains("Draw constellations"))
+        XCTAssertTrue(openPromise.contains("room for showers"))
+        XCTAssertFalse(openPromise.contains("automatic patterns"))
+
+        let entry = SkyEntryRequest.fresh.introduction(challenge: nil)
+        XCTAssertEqual(entry.id, "observatory.entry.1")
+        XCTAssertTrue(entry.text.contains("Tap a matching group"), "Drawing remains one choice alongside ordinary taps")
+        XCTAssertTrue(entry.text.contains("5 or more matching stars"))
+        XCTAssertTrue(entry.text.contains("Only the stars you draw clear"))
+        XCTAssertTrue(entry.text.contains("room for each shower"))
+        let traceHelp = SkyCopy.text(.helpTrace)
+        XCTAssertTrue(traceHelp.contains("Only the stars you trace will clear"))
+        XCTAssertTrue(traceHelp.contains("When your drawing earns light, its shape returns with it"))
+
+        let replay = SkyEntryRequest.replay.introduction(challenge: nil)
+        XCTAssertTrue(replay.text.contains("same starting sky and shower rules"))
+        XCTAssertTrue(replay.text.contains("current sky settings"))
+        XCTAssertTrue(replay.text.contains("saved round stays until you tap Begin"))
+    }
+
     @MainActor func testSwapAndMultitouchInstructionsFollowTheSavedControlRules() throws {
         for challenge in [StarfallChallenge.firstLight, .ribbonCrossing] {
             for revision in 1...4 {

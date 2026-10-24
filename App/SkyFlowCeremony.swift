@@ -185,8 +185,8 @@ enum SkyFlowAction: Equatable {
                         .frame(minHeight: SkyCastFormation.height(terminal: true))
                     }
                     VStack(spacing: StarfallTheme.Spacing.medium) {
-                        modeButton(.story, title: SkyCopy.text(.homeStoryMode), action: .worldMap, id: "sky.worldMap")
-                        modeButton(.freePlay, title: SkyCopy.text(.homeFreePlay), action: .start, id: "sky.start")
+                        modeButton(.story, title: SkyCopy.text(.homeStoryMode), promise: SkyCopy.text(.homeStoryPromise), action: .worldMap, id: "sky.worldMap")
+                        modeButton(.freePlay, title: SkyCopy.text(.homeFreePlay), promise: SkyCopy.text(.homeOpenPromise), action: .start, id: "sky.start")
                         modeButton(.tutorial, title: SkyCopy.text(.homeTutorial), action: .tutorial, id: "sky.learn")
                     }
                     if let summary = welcome.summary {
@@ -225,11 +225,21 @@ enum SkyFlowAction: Equatable {
         .accessibilityHidden(!active)
     }
 
-    private func modeButton(_ mode: ObservatoryMode, title: String, action choice: SkyFlowAction, id: String) -> some View {
+    private func modeButton(_ mode: ObservatoryMode, title: String, promise: String? = nil, action choice: SkyFlowAction, id: String) -> some View {
         Button { action(choice) } label: {
-            ObservatoryModeLabel(mode: mode, title: title)
+            VStack(spacing: StarfallTheme.Spacing.compact) {
+                ObservatoryModeLabel(mode: mode, title: title)
+                if let promise {
+                    Text(promise)
+                        .font(StarfallTheme.Typography.supporting)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.center)
+                }
+            }
         }
         .buttonStyle(StarfallButtonStyle(role: .ceremonyPrimary, expands: true))
+        .accessibilityLabel(title)
+        .accessibilityHint(promise ?? "")
         .accessibilityIdentifier(id)
     }
 

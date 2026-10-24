@@ -33,6 +33,17 @@ struct SkyHelpContext: Equatable {
         opalStorms = game.generation != .legacy
     }
 
+    struct RestorationSection: Equatable {
+        let title: String
+        let body: String
+    }
+    /// Only the actual selected rules may describe a restoration objective.
+    /// Open Sky has no location contract to replace with a fresh Lantern visit.
+    var restorationSection: RestorationSection? {
+        guard let restorationChallenge, let restorationHelp else { return nil }
+        return RestorationSection(title: restorationChallenge.helpTitle, body: restorationHelp)
+    }
+
     var recipeInstructions: String {
         if fullBoard { return SkyCopy.text(.helpFullBoardRecipe) }
         if let automaticLineLength {
@@ -229,8 +240,10 @@ struct SkyHowToPlay: View {
                     Text(SkyCopy.text(context.automaticRecipes ? .helpCascadeChain : .helpRelay))
                 }
             }
-            SkyMenuSection(context.restorationChallenge?.helpTitle ?? SkyCopy.text(.helpChallengeTitle)) {
-                Text(context.restorationHelp ?? FallingSky.freshChallenge(.firstLight).challengeHelpText ?? SkyCopy.text(.helpChallenge))
+            if let section = context.restorationSection {
+                SkyMenuSection(section.title) {
+                    Text(section.body)
+                }
             }
         }
     }

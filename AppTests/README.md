@@ -1,5 +1,7 @@
 # Hosted app tests
 
+`IdentityJourneyTests` verifies mode promises, Open Sky omission of restoration Help, exact current/retained Story Help and the selected context boundary. Together with affected dialogue/flow/return/mode/catalogue tests, [identity goal10](../docs/evidence/identity-goal-10-coherent-return-2026-10-24/README.md) records 87 selected hosted passes. No gameplay or save owner changes.
+
 `CascadeReturnTests` covers real two/three-phase histories, same-phase multiple recipes, independent consecutive actions, exact pre-clear IDs, bounded ordered geometry, active-packet acknowledgement, stale/invalid callback rejection, expiry, background deadlines, saves and immediate wins/Replay. Its synthetic six-depth budget fixture is not a reachable-play claim; fixed-age raster checks separate geometry and arrival ownership from native motion. [Source-bound evidence](../docs/evidence/identity-goal-06-cascade-returns-2026-10-24/README.md).
 
 `AutomaticPatternReturnTests` covers all committed recipes, separate/overlapping geometry, dense75-recipe resolution, exact phase identities, shared fitting, quiet parity, raster HUD exclusions and real Store save/win/cancellation boundaries. Synthetic geometry fixtures are distinct from reachable Story histories. [Source-bound acceptance](../docs/evidence/identity-goal-05-story-patterns-2026-10-24/README.md).

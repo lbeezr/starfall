@@ -1,0 +1,114 @@
+[
+  {
+    "name": "phone-home",
+    "file": "dev-ea32539b25-identity10-phone-home.jpg",
+    "original": "/private/tmp/starfall-identity-10-20261024/phone-silver-final-attachments/16422C5F-7BC1-495C-8606-953F293AB3E2.png",
+    "source": "138a3d4a4ef6b09f803e14a8d957897d50a9a54c",
+    "runtime": "dev.ea32539b25",
+    "sha256": "0e1e883910cf99ad99acd554ea001823d82d5bac2b48507e90d25be071ad5058",
+    "bytes": 613008,
+    "dimensions": [
+      "  pixelWidth: 1170",
+      "  pixelHeight: 2532"
+    ],
+    "inspection": "passed, original-resolution export; scoped reading/outcome review, not motion or human acceptance"
+  },
+  {
+    "name": "phone-open-entry",
+    "file": "dev-ea32539b25-identity10-phone-open-entry.jpg",
+    "original": "/private/tmp/starfall-identity-10-20261024/phone-open-sky-accepted-attachments/454A845B-682E-4E7E-9663-8FC7E35D5BF5.png",
+    "source": "cd751b880b08d7296978b476ef25f3797d1b22e5",
+    "runtime": "dev.ea32539b25",
+    "sha256": "60152594dad27814d2c47ba8e7ce30e839747898cfad0e5312d8fcf3bf2502b9",
+    "bytes": 615320,
+    "dimensions": [
+      "  pixelWidth: 1170",
+      "  pixelHeight: 2532"
+    ],
+    "inspection": "passed, original-resolution export; scoped reading/outcome review, not motion or human acceptance"
+  },
+  {
+    "name": "phone-open-help",
+    "file": "dev-ea32539b25-identity10-phone-open-help.jpg",
+    "original": "/private/tmp/starfall-identity-10-20261024/phone-open-sky-accepted-attachments/8BEAB354-011B-4E99-8195-B46BB4CD7C3C.png",
+    "source": "cd751b880b08d7296978b476ef25f3797d1b22e5",
+    "runtime": "dev.ea32539b25",
+    "sha256": "67cb0ca29bfc77fc792f1e90180d6da462dea688fb8224b161ea0877df1b2dce",
+    "bytes": 701859,
+    "dimensions": [
+      "  pixelWidth: 1170",
+      "  pixelHeight: 2532"
+    ],
+    "inspection": "passed, original-resolution export; scoped reading/outcome review, not motion or human acceptance"
+  },
+  {
+    "name": "phone-open-ending",
+    "file": "dev-ea32539b25-identity10-phone-open-ending.jpg",
+    "original": "/private/tmp/starfall-identity-10-20261024/phone-open-sky-accepted-attachments/51040417-1C7E-4551-B97B-F5CF8DC2DA7B.png",
+    "source": "cd751b880b08d7296978b476ef25f3797d1b22e5",
+    "runtime": "dev.ea32539b25",
+    "sha256": "60968b07eb74de481f62a05da6efbf4a719b9ebae861f16f6363cc416ff184aa",
+    "bytes": 639763,
+    "dimensions": [
+      "  pixelWidth: 1170",
+      "  pixelHeight: 2532"
+    ],
+    "inspection": "passed, original-resolution export; scoped reading/outcome review, not motion or human acceptance"
+  },
+  {
+    "name": "phone-saved-result",
+    "file": "dev-ea32539b25-identity10-phone-saved-result.jpg",
+    "original": "/private/tmp/starfall-identity-10-20261024/phone-silver-final-attachments/5878C159-E0DE-4C7A-B2F3-7AB4F8C7992C.png",
+    "source": "138a3d4a4ef6b09f803e14a8d957897d50a9a54c",
+    "runtime": "dev.ea32539b25",
+    "sha256": "9eb51a1cc5c9fdd2c86857820211157a719dc8be9cd6bf2578edd5c232b5cf6c",
+    "bytes": 866501,
+    "dimensions": [
+      "  pixelWidth: 1170",
+      "  pixelHeight: 2532"
+    ],
+    "inspection": "passed, original-resolution export; scoped reading/outcome review, not motion or human acceptance"
+  },
+  {
+    "name": "tablet-home",
+    "file": "dev-ea32539b25-identity10-tablet-home.jpg",
+    "original": "/private/tmp/starfall-identity-10-20261024/tablet-accepted-attachments/8005784E-3919-47CC-8C4A-3CDFA0D14A25.png",
+    "source": "ea5d27505e81125b263d5bb79c4cd82cd62ad416",
+    "runtime": "dev.ea32539b25",
+    "sha256": "d53deff8799790f66fc368c7b45da817fd1da0bb8595b14869d0961092926911",
+    "bytes": 860064,
+    "dimensions": [
+      "  pixelWidth: 1668",
+      "  pixelHeight: 2420"
+    ],
+    "inspection": "passed, original-resolution export; scoped reading/outcome review, not motion or human acceptance"
+  },
+  {
+    "name": "tablet-full-board-help",
+    "file": "dev-ea32539b25-identity10-tablet-full-board-help.jpg",
+    "original": "/private/tmp/starfall-identity-10-20261024/tablet-accepted-attachments/90688397-0C6D-43A1-86EE-8313024F4028.png",
+    "source": "ea5d27505e81125b263d5bb79c4cd82cd62ad416",
+    "runtime": "dev.ea32539b25",
+    "sha256": "4babb221ace806138f54f23f0150a6fabe8a9406b8d6db3c264bf0f0f4b5cc84",
+    "bytes": 780766,
+    "dimensions": [
+      "  pixelWidth: 1668",
+      "  pixelHeight: 2420"
+    ],
+    "inspection": "passed, original-resolution export; scoped reading/outcome review, not motion or human acceptance"
+  },
+  {
+    "name": "tablet-saved-mode",
+    "file": "dev-ea32539b25-identity10-tablet-saved-mode.jpg",
+    "original": "/private/tmp/starfall-identity-10-20261024/tablet-accepted-attachments/B79C3977-015B-42E8-8480-88A60A59A8C4.png",
+    "source": "ea5d27505e81125b263d5bb79c4cd82cd62ad416",
+    "runtime": "dev.ea32539b25",
+    "sha256": "da40793c6ff112454ad1293524bd4bfbc12482c849b253aeaf1d00548d66eeae",
+    "bytes": 852013,
+    "dimensions": [
+      "  pixelWidth: 1668",
+      "  pixelHeight: 2420"
+    ],
+    "inspection": "passed, original-resolution export; scoped reading/outcome review, not motion or human acceptance"
+  }
+]
