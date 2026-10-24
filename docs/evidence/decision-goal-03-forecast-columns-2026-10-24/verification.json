@@ -1,0 +1,187 @@
+{
+  "goal": 363,
+  "parent": 360,
+  "base": "5b7342f2aab9d63dfe375c8391de366fcc7dd39a",
+  "runtime_checkpoint": "181ab85f1dc7f0274bd9092153448a5c042ea741",
+  "accepted_hosted_phone_checkpoint": "d34e7d29fa242540f13c768150ace9862cf35aa1",
+  "accepted_tablet_checkpoint": "85bacf3e901199349844f4a692d3d9a2338c5afd",
+  "accepted_tablet_tree": "087db0e28cc43d6625e6ed0e98e8ecc39352a839",
+  "accepted_dirty_paths": [
+    "?? docs/evidence/decision-goal-03-forecast-columns-2026-10-24/"
+  ],
+  "runtime": "dev.e60556d923",
+  "actual_bundle": {
+    "CFBundleIdentifier": "com.starfall.prototype",
+    "CFBundleShortVersionString": "0.1.0",
+    "CFBundleVersion": "1",
+    "StarfallBuildID": "dev.local"
+  },
+  "recorded_input_count": 662,
+  "recorded_inputs_unchanged_after_acceptance": true,
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 21.039,
+    "command": "swift test --scratch-path /private/tmp/starfall-decision-03-20261024/CoreBuild",
+    "scope": "Core/package/test inputs unchanged throughout; ran once on working tree before final App checkpoint"
+  },
+  "executions": [
+    {
+      "name": "hosted",
+      "source": "181ab85 + recorded test-only working-tree delta",
+      "raw": "/private/tmp/starfall-decision-03-20261024/hosted.xcresult",
+      "summary_sha256": "14e76bfbc7a417bab8b94f343c2ea852fef71177de05d2b21cb6fbf50b47b06c",
+      "passedTests": 130,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792844004.741,
+      "finishTime": 1792844029.848
+    },
+    {
+      "name": "hosted-corrected",
+      "source": "4a5856e40c0db0ea8e9b1813f398eae558a284db",
+      "raw": "/private/tmp/starfall-decision-03-20261024/hosted-corrected.xcresult",
+      "summary_sha256": "819f7ff67551ed92d9ea7706fddc79f51e7fc39c3b350c4ff92535004c952ff2",
+      "passedTests": 130,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792844344.58,
+      "finishTime": 1792844368.477
+    },
+    {
+      "name": "hosted-final",
+      "source": "d34e7d29fa242540f13c768150ace9862cf35aa1",
+      "raw": "/private/tmp/starfall-decision-03-20261024/hosted-final.xcresult",
+      "summary_sha256": "292791144910674426cdf4567611142527c53d75c12a171c4f027972db891016",
+      "passedTests": 131,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792844494.129,
+      "finishTime": 1792844515.507
+    },
+    {
+      "name": "phone",
+      "source": "181ab85; App/native bytes unchanged by hosted-only delta",
+      "raw": "/private/tmp/starfall-decision-03-20261024/phone.xcresult",
+      "summary_sha256": "1d58a999508e4118509d434fcc5e4408572dff66863fae57fdbf221ecd9631b0",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792844114.962,
+      "finishTime": 1792844195.68
+    },
+    {
+      "name": "phone-final",
+      "source": "d34e7d29fa242540f13c768150ace9862cf35aa1",
+      "raw": "/private/tmp/starfall-decision-03-20261024/phone-final.xcresult",
+      "summary_sha256": "d07575775b548b5099cadffd39974945f394e42454da9484ad0b16cf8081deee",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792844532.009,
+      "finishTime": 1792844696.5
+    },
+    {
+      "name": "tablet",
+      "source": "d34e7d29fa242540f13c768150ace9862cf35aa1",
+      "raw": "/private/tmp/starfall-decision-03-20261024/tablet.xcresult",
+      "summary_sha256": "85d26c42e9f704aca11ac613071b15cca4eb8d37f68985e0317116f5c6051310",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "startTime": 1792844758.307,
+      "finishTime": 1792844904
+    },
+    {
+      "name": "tablet-final",
+      "source": "85bacf3e901199349844f4a692d3d9a2338c5afd",
+      "raw": "/private/tmp/starfall-decision-03-20261024/tablet-final.xcresult",
+      "summary_sha256": "a76bf9fcfb3e8754862eda4043ceb74fd0f7eb064f0f832173995f3eec0a9c70",
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "startTime": 1792845514.698,
+      "finishTime": 1792845713.996
+    }
+  ],
+  "native": {
+    "distinct_methods": 2,
+    "executions": 4,
+    "passed": 2,
+    "failed": 2,
+    "skipped": 0,
+    "phone_method_seconds": 145.2406679391861,
+    "tablet_method_seconds": 195.87126302719116
+  },
+  "membership": [
+    {
+      "path": "App/SkyForecastInspection.swift",
+      "ref": "990F3BA29CFF4A6D9F6B3679",
+      "build": "DD5159B957AA4AD4A02032BF",
+      "phase": "00000000000000000000000A"
+    },
+    {
+      "path": "App/SkyForecastColumnOverlay.swift",
+      "ref": "8BEB30E2B209423C83C3F4CF",
+      "build": "E4959D2A35164F1D8B6F4D94",
+      "phase": "00000000000000000000000A"
+    },
+    {
+      "path": "AppTests/SkyForecastInspectionTests.swift",
+      "ref": "433B284E0A6D402993B64F17",
+      "build": "6D3D7941DE3B4C49B948FFC6",
+      "phase": "000000000000000000000045"
+    },
+    {
+      "path": "UITests/ForecastColumnInspectionInteractionTests.swift",
+      "ref": "568257F3786A44DF95FAFCE6",
+      "build": "FDCD59EF7C444FF49C7CBAFA",
+      "phase": "000000000000000000000025"
+    }
+  ],
+  "catalogue": {
+    "typed_keys": 554,
+    "scripts": 121,
+    "script_capacity": 128
+  },
+  "planner_tests": 3,
+  "exports": 9,
+  "export_bytes": 7742295,
+  "environment": {
+    "macOS": "27.0.1 (26A434)",
+    "Xcode": "27.1 (27A9275)",
+    "simulatorOS": "iOS27.0",
+    "phone": "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324 / iPhone17e",
+    "tablet": "255E141F-D4D6-45DA-89FF-51436BF1BBA7 / iPadPro11 M5",
+    "final_owned_state": "Shutdown"
+  },
+  "builds": {
+    "debug": "XcodeBuildMCP build_sim(buildForTesting:true), arm64/ONLY_ACTIVE_ARCH=YES/-jobs4",
+    "release": "xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination 'generic/platform=iOS Simulator' -derivedDataPath /private/tmp/starfall-decision-03-20261024/Release -jobs 4 build",
+    "release_warning": "Metadata extraction skipped, no AppIntents.framework dependency found; no suppression or dependency added"
+  },
+  "motion": {
+    "phone_movie": "/private/tmp/starfall-decision-03-20261024/phone-final.mp4",
+    "phone_duration": 163.47166666666666,
+    "phone_samples": 10,
+    "phone_timestamps": "/private/tmp/starfall-decision-03-20261024/phone-final-review/frames.json",
+    "tablet_final_movie": "unavailable: owned direct recorder did not finalize after SIGINT; exact owned process terminated; existing file failed AVFoundation decode -11821/-12911; no native rerun",
+    "tablet_stills": "nine total accepted phone/tablet exports; complete tablet native case passed independently",
+    "tablet_capture_ordering": "Coordinator requested shutdown before recorder finalization was confirmed. Cause unisolated; next capture must verify recorder exit and file readability before shutdown."
+  },
+  "calm": {
+    "original": "ON",
+    "evidence": "tablet-activities.json contains a tap to value0 followed by a tap to value1 in setCalm(verifyOffToOn:true); helper selects0 only when initial value was1",
+    "after_failed_attempt": "ON; same as actual original",
+    "cleanup_change": false,
+    "historical_goal2_receipt": "retains its own OFF scope; not assumed current"
+  },
+  "limits": [
+    "Selected development slice, not a full current Apple matrix.",
+    "Repeated-column hostile input is an existing synthetic display fixture, not a naturally repeated historical saved round.",
+    "Native Next/Arriving selection timing is not established; injected Store callbacks prove pending-versus-next identity and exact automatic clock continuation.",
+    "No actual VoiceOver, physical/minimum-iOS17, human recognition/enjoyment, sustained performance or full short-body trajectory claim."
+  ],
+  "local_link_targets": 1014
+}

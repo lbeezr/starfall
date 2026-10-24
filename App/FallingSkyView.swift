@@ -8,6 +8,7 @@ import StarfallCore
     private var tutorialEndingAfter: SkyTutorial?
     @State private var store: FallingSkyStore
     @State private var interaction = SkyInteractionSession()
+    @State private var forecastInspection: SkyForecastInspection?
     private var trace: ConstellationTraceIntent { interaction.trace }
     @State private var menu: SkyMenuDestination?
     private var settings: Bool { menu != nil }
@@ -53,6 +54,11 @@ import StarfallCore
         return store.game.challenge
     }
     private var quietMotion: Bool { reduceMotion || calmEffects || voiceOver }
+    private var forecastSource: SkyForecastInspection.Source? {
+        guard scenePhase == .active, !settings, !showingCeremony, !store.suspended else { return nil }
+        return .init(game: store.game, generation: store.constellationInputGeneration,
+                     forecast: store.forecast, arriving: store.showerCountdown.arriving)
+    }
     private var restoration: RestorationPresentation? {
         RestorationPresentation.selected(game: store.game, entry: flow.entry)
     }
@@ -98,6 +104,7 @@ import StarfallCore
         .onAppear { CrystalCelebrationArtwork.shared.prewarm(); store.terminalSpeech = .ceremony; updateSuspension(); store.settlePresentation(); updateMotion() }
         .onDisappear { invalidateInteraction(); store.setSuspended(true); store.terminalSpeech = .feedback }
         .onChange(of: store.constellationInputGeneration) { invalidateInteraction() }
+        .onChange(of: forecastSource) { forecastInspection = nil }
         .onChange(of: store.game) {
             interaction.reconcile(with: store.game, release: store.endConstellationHold)
             store.scene.clearConstellationTrace()
@@ -292,7 +299,8 @@ import StarfallCore
     }
 
     private func edgeHeader(island: Bool, stacked: Bool = false) -> some View {
-        VStack(spacing: StarfallTheme.Spacing.compact) {
+        let renderedForecastSource = forecastSource
+        return VStack(spacing: StarfallTheme.Spacing.compact) {
             if largeText || stacked {
                 stackedHeader(island: island)
             } else {
@@ -313,7 +321,9 @@ import StarfallCore
                     .allowsHitTesting(false)
             }
             if !store.game.isOver && !store.game.usesFullBoardRefill && !store.forecast.isEmpty {
-                SkyForecastDestinations(forecast: store.forecast, arriving: store.showerCountdown.arriving)
+                SkyForecastDestinations(forecast: store.forecast, arriving: store.showerCountdown.arriving,
+                                        selectedID: forecastInspection?.entry(in: forecastSource)?.id,
+                                        select: { inspectForecast($0, source: renderedForecastSource) })
                     .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
             }
             if let pressure = store.pressureCue {
@@ -468,6 +478,9 @@ import StarfallCore
                     if boardVisible && !endingReady {
                         SkyCeilingOverlay(game: store.game, mapping: mapping)
                             .accessibilityHidden(settings || showingCeremony)
+                        if let entry = forecastInspection?.entry(in: forecastSource) {
+                            SkyForecastColumnOverlay(entry: entry, mapping: mapping)
+                        }
                     }
                     if endingReady, let column = store.game.blockedColumn {
                         Path { path in
@@ -769,7 +782,13 @@ private struct MatchingGroupsRotor: ViewModifier {
 
 
 private extension FallingSkyView {
+    func inspectForecast(_ entryID: Int, source: SkyForecastInspection.Source?) {
+        guard let source, source == forecastSource else { return }
+        if forecastInspection?.entry(in: source)?.id == entryID { forecastInspection = nil }
+        else { forecastInspection = .init(entryID: entryID, source: source) }
+    }
     func tapBoardCell(_ cell: Cell) {
+        forecastInspection = nil
         cancelConstellation()
         store.requestTap(cell)
     }
@@ -784,11 +803,13 @@ private extension FallingSkyView {
         store.scene.clearConstellationTrace()
     }
     func invalidateInteraction() {
+        forecastInspection = nil
         store.cancelBufferedInput()
         interaction.invalidate(release: store.endConstellationHold)
         store.scene.clearConstellationTrace()
     }
     func beginBoardContact(_ point: CGPoint, size: CGSize) -> Bool {
+        forecastInspection = nil
         cancelConstellation()
         guard let cell = LandingGeometry(size: size).cell(at: point) else { return false }
         guard interaction.acquireHold(at: cell, using: store.beginResponsiveContact) else {

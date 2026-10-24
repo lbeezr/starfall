@@ -1,5 +1,7 @@
 # Hosted app tests
 
+`SkyForecastInspectionTests` covers source identity, repeated destinations, exact native-cell geometry, real exchange/lifecycle/Replay, deadline/save/world/mastery preservation and pending-versus-next forecast refresh. Strict hosted rasters prove one unfilled cue and unsupported-state absence. Actual SwiftUI target exposure/44-point size/reading containment live in native XCTest, rather than in-process UIKit AX traversal. [Decision goal3](../docs/evidence/decision-goal-03-forecast-columns-2026-10-24/README.md) records131 final selected passes and the earlier measurement failures.
+
 `FullBoardChoiceDiagramTests` compares source/setup/final frames with real pre-clear Core receipts, preserving every actual ingredient and separate overlapping recipe. It covers current Lantern6/Ribbon7 and retained Lantern5, encoded state/next refill, stale/invalid/ended inputs and top-down bounded geometry. [Decision goal2](../docs/evidence/decision-goal-02-choice-diagrams-2026-10-24/README.md) records seven new and57 selected hosted passes separately from native acceptance.
 
 `StoryIngredientInspectionTests` checks actual Seed ingredient movement, exact live deadline/save/world/mastery preservation, current/retained pattern thresholds, Full Board and manual tap/trace siblings. [Decision goal1 evidence](../docs/evidence/decision-goal-01-ingredient-inspection-2026-10-24/README.md) records the selected118 hosted passes separately from native interaction.

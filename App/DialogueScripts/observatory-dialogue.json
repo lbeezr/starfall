@@ -1919,6 +1919,8 @@
     "forecast.destination": "{star}, column {column}",
     "forecast.destinationList": "{first}, then {next}",
     "forecast.columnsHint": "Columns count from 1 at the left to 7 at the right.",
+    "forecast.inspectHint": "Show this receiving column. Tap again to hide it.",
+    "forecast.selectedColumn": "Column {column}",
     "help.fullBoardRecipe": "Arrange a 2×2 square of 4 matching stars, a cross of 5, or a straight horizontal or vertical line of 4 or more. Patterns pop after a swap or refill. Overlapping patterns spend each shared star once.",
     "help.fullBoardIdentity": "Match stars by color and shape. Each star earns 1,000 starlight. Clearing more than three actual stars adds 1,000 for each extra star. Five stars earn 7,000 before any chain bonus.",
     "help.fullBoardControls": "Swipe a star toward a neighbor to exchange them. Setup swaps are allowed even without a match. Matching patterns pop as soon as the stars settle. Tap a star for guidance. With VoiceOver, use its Move left, Move right, Move up or Move down action.",

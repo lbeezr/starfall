@@ -1,0 +1,155 @@
+[
+  {
+    "file": "dev-e60556d923__phone-column-six__iphone-17e__normal.jpg",
+    "source_attachment": "forecast-inspection-phone-column-six_0_1AFFD58D-F7D1-423D-B874-0C7D31F07262.png",
+    "attachment_sha256": "19bad7ca91cc54804afb8f4161ad0d5e1bf9fa07df4043c0dd2600073650c9be",
+    "sha256": "a39ff5e40ea3aba82fa1c62803664fe5f84a2585b6cb6826a04ab184631cf174",
+    "bytes": 932566,
+    "source": "d34e7d29fa242540f13c768150ace9862cf35aa1",
+    "runtime": "dev.e60556d923",
+    "actual_bundle": "dev.local",
+    "variant": "normal phone",
+    "inspection": "passed: independent original-detail static review; actual native interaction is separately recorded",
+    "label": "Phone: selected column6",
+    "original_pixels": [
+      1170,
+      2532
+    ]
+  },
+  {
+    "file": "dev-e60556d923__phone-column-one__iphone-17e__normal.jpg",
+    "source_attachment": "forecast-inspection-phone-column-one_0_3C5EA0F3-89A3-4165-A30F-BE470EC5BA42.png",
+    "attachment_sha256": "d029e0cadda1d84e20b235b1c84d7cbbe6d8cbdca68d1b1f5c801edeb2213baa",
+    "sha256": "cc471248ccbf28aa7ab5a1d841f27420c60290561e8b9fa031d45019ef6004e3",
+    "bytes": 929943,
+    "source": "d34e7d29fa242540f13c768150ace9862cf35aa1",
+    "runtime": "dev.e60556d923",
+    "actual_bundle": "dev.local",
+    "variant": "normal phone",
+    "inspection": "passed: independent original-detail static review; actual native interaction is separately recorded",
+    "label": "Phone: selected column1",
+    "original_pixels": [
+      1170,
+      2532
+    ]
+  },
+  {
+    "file": "dev-e60556d923__phone-before-real-setup__iphone-17e__normal.jpg",
+    "source_attachment": "forecast-inspection-phone-before-real-setup_0_C4EC9619-886A-437C-A68F-CDEDC8E72BDF.png",
+    "attachment_sha256": "40ac8dd15425834829c98cfdd50ff209eddd910949b9d7b6eb2348e7caddad88",
+    "sha256": "d86fec6909d70fa3f498e0e30c963a8646fb282685a205c91aabc56fbe2ebce1",
+    "bytes": 928457,
+    "source": "d34e7d29fa242540f13c768150ace9862cf35aa1",
+    "runtime": "dev.e60556d923",
+    "actual_bundle": "dev.local",
+    "variant": "normal phone",
+    "inspection": "passed: independent original-detail static review; actual native interaction is separately recorded",
+    "label": "Phone: column2 before the actual grown-star setup",
+    "original_pixels": [
+      1170,
+      2532
+    ]
+  },
+  {
+    "file": "dev-e60556d923__phone-replaced-arrivals__iphone-17e__normal.jpg",
+    "source_attachment": "forecast-inspection-phone-replaced-arrivals_0_99B90A6B-822A-4BEE-B2EE-4E5DD794BD4A.png",
+    "attachment_sha256": "3dbf15bb6d7979b030226077846447d550f13ed4073ed0f87e218b51795f74ea",
+    "sha256": "84cb6183f0d304d0267824d934cad4cd2cbf41712cbcfad103d1682575e2e8f9",
+    "bytes": 885917,
+    "source": "d34e7d29fa242540f13c768150ace9862cf35aa1",
+    "runtime": "dev.e60556d923",
+    "actual_bundle": "dev.local",
+    "variant": "normal phone",
+    "inspection": "passed: independent original-detail static review; actual native interaction is separately recorded",
+    "label": "Phone: replacement forecast with no stale cue",
+    "original_pixels": [
+      1170,
+      2532
+    ]
+  },
+  {
+    "file": "dev-e60556d923__tablet-actual-calm-on__ipad-pro11__ax3xl-calm.jpg",
+    "source_attachment": "forecast-inspection-tablet-actual-calm-on_0_45A31984-ADD0-4D28-AD3B-D9466B372D4C.png",
+    "attachment_sha256": "c5d48746f43b298a66ce390e8df4c1ef906bcb7608886cd875a6ac0f1380c83f",
+    "sha256": "56aa97133aa7e999d848475b3804e8bb00b87e2cdb97945ce16f70adad1b46e6",
+    "bytes": 652641,
+    "source": "85bacf3e901199349844f4a692d3d9a2338c5afd",
+    "runtime": "dev.e60556d923",
+    "actual_bundle": "dev.local",
+    "variant": "AX3XL actual Calm tablet",
+    "inspection": "passed: independent original-detail static review; actual native interaction is separately recorded",
+    "label": "Tablet: actual Settings Calm ON",
+    "original_pixels": [
+      1668,
+      2420
+    ]
+  },
+  {
+    "file": "dev-e60556d923__tablet-column-six__ipad-pro11__ax3xl-calm.jpg",
+    "source_attachment": "forecast-inspection-tablet-column-six_0_FB964733-C407-4922-AAE4-83B94E5444C3.png",
+    "attachment_sha256": "ef06d5442ff3ad668a624140091cfa15b2008ef050d25e8fa1362e9f738a1677",
+    "sha256": "1f3e508e4347b6ebdd3772aedf30d627c363a6b8882ea8e87fbbdf6149cf6a12",
+    "bytes": 840880,
+    "source": "85bacf3e901199349844f4a692d3d9a2338c5afd",
+    "runtime": "dev.e60556d923",
+    "actual_bundle": "dev.local",
+    "variant": "AX3XL actual Calm tablet",
+    "inspection": "passed: independent original-detail static review; actual native interaction is separately recorded",
+    "label": "Tablet: selected column6 at largest text",
+    "original_pixels": [
+      1668,
+      2420
+    ]
+  },
+  {
+    "file": "dev-e60556d923__tablet-column-one__ipad-pro11__ax3xl-calm.jpg",
+    "source_attachment": "forecast-inspection-tablet-column-one_0_4E59F326-55E9-4739-BD12-58C5E1D13796.png",
+    "attachment_sha256": "4f1baf2a522cb9209e11108a6a67a5236cc773bf12ff51999ea57df4546c088b",
+    "sha256": "ae2bfe662e00e63439e07404354201b58d2ec177f60f27c5da742ad2fa8d6d44",
+    "bytes": 842165,
+    "source": "85bacf3e901199349844f4a692d3d9a2338c5afd",
+    "runtime": "dev.e60556d923",
+    "actual_bundle": "dev.local",
+    "variant": "AX3XL actual Calm tablet",
+    "inspection": "passed: independent original-detail static review; actual native interaction is separately recorded",
+    "label": "Tablet: selected column1 at largest text",
+    "original_pixels": [
+      1668,
+      2420
+    ]
+  },
+  {
+    "file": "dev-e60556d923__tablet-real-automatic-chain__ipad-pro11__ax3xl-calm.jpg",
+    "source_attachment": "forecast-inspection-tablet-real-automatic-chain_0_712DDC6C-DA6F-4A1C-8D78-9AC39FB70AD2.png",
+    "attachment_sha256": "5d775b11da7451cc24c8a2866e1910f08d5dfebf164594385ba13cf14a6a9516",
+    "sha256": "7a4ee27688bb34857f712393343076c4b283174593a0229042289c8107bef049",
+    "bytes": 793707,
+    "source": "85bacf3e901199349844f4a692d3d9a2338c5afd",
+    "runtime": "dev.e60556d923",
+    "actual_bundle": "dev.local",
+    "variant": "AX3XL actual Calm tablet",
+    "inspection": "passed: independent original-detail static review; actual native interaction is separately recorded",
+    "label": "Tablet: real15,000-point chain with the cue retired",
+    "original_pixels": [
+      1668,
+      2420
+    ]
+  },
+  {
+    "file": "dev-e60556d923__tablet-full-board-has-no-shower-focus__ipad-pro11__ax3xl-calm.jpg",
+    "source_attachment": "forecast-inspection-tablet-full-board-has-no-shower-focus_0_9DA7C7D1-AAB6-4827-8592-8777DDCB05DC.png",
+    "attachment_sha256": "d0c8acda977986276a81ec9fc92eee99eda5fd5832e3471a82b8a0d28679ca36",
+    "sha256": "427a7d99666ba3c5dce42a2661c09b27fc4d51331cf31c7ec7adb0d370b72d54",
+    "bytes": 936019,
+    "source": "85bacf3e901199349844f4a692d3d9a2338c5afd",
+    "runtime": "dev.e60556d923",
+    "actual_bundle": "dev.local",
+    "variant": "AX3XL actual Calm tablet",
+    "inspection": "passed: independent original-detail static review; actual native interaction is separately recorded",
+    "label": "Tablet: Full Board has no forecast or column cue",
+    "original_pixels": [
+      1668,
+      2420
+    ]
+  }
+]
