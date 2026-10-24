@@ -193,7 +193,7 @@ final class SkyHeadroomGuideTests: XCTestCase {
             XCTAssertNil(fixture.clock.deadline)
             let original = SkyDialogueLibrary.line("guide.cascade", values: ["depth": "2", "score": "15,000"])
             assertLine(fixture.store.guideLine, preserves: original,
-                       scoreText: "8 stars · 8 light. 8,000 base + 2,000 size + 5,000 chain = 15,000 points.",
+                       scoreText: "8 stars · 8 light. 8,000 base + 2,000 size + 5,000 chain = 15,000 points. Diamond marks: 2 survivors fell into later patterns.",
                        suffix: refillText)
             XCTAssertFalse(fixture.store.guideLine.text.contains("more spaces"))
             XCTAssertFalse(fixture.store.guideLine.text.contains("room again"))

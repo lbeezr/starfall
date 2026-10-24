@@ -1,5 +1,7 @@
 # Evidence index
 
+[Actual survivor ingredients](decision-goal-07-survivor-ingredients-2026-10-24/README.md) records352 Core/167 affected hosted and two whole normal-phone/AX3XL actual-Calm tablet journeys, nine independently inspected exports, actual successive marked figures and the preserved original exact-oracle failure. Identity, static raster, native interaction and sampled motion remain separate.
+
 [Exact earned points — Decision goal6](decision-goal-06-earned-score-2026-10-24/README.md) records immutable phase components, physical-light versus point units, unscaled Open Sky,157affected hosted checks, two whole native journeys and seven independently inspected exports. The held-presenter and exact terminal-score oracle corrections, original failures and unperformed human/device acceptance remain explicit.
 
 [Committed headroom — Decision goal5](decision-goal-05-committed-headroom-2026-10-24/README.md) records exact Kite room/points contrasts, real full-column recovery, Full Board replacements, 352 Core/114 hosted checks and two complete native phone/tablet journeys. Original test-oracle failures, source boundaries and eight inspected exports remain explicit; actual human/physical/minimum-OS/VoiceOver acceptance is separate.

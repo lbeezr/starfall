@@ -110,7 +110,7 @@ final class SkyScoreGuideTests: XCTestCase {
         XCTAssertEqual(whole.totalText, "15,000 points this clear.")
         let original = SkyDialogueLibrary.line("guide.cascade", values: ["depth": "2", "score": "15,000"])
         XCTAssertEqual(result(turn, from: opening, to: game).text,
-                       original.text + " " + whole.guideText + " Refill added 8 stars; the board is full.")
+                       original.text + " " + whole.guideText + " Diamond marks: 2 survivors fell into later patterns. Refill added 8 stars; the board is full.")
 
         var setup = opening
         let move = try exchange(0, 1, in: &setup)

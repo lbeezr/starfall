@@ -141,6 +141,11 @@ extension SkyDialogueLibrary {
                 text: SkyCopy.text(.pressureResult, values: ["detail": result.text, "recovery": explanation.guideText]),
                 priority: result.priority, seconds: result.seconds)
         }
+        if !game.isOver, let survivors = SkySurvivorCopy.guide(SkySurvivorCopy.count(in: turn.resolutionPhases)) {
+            result = SkyDialogueLine(id: result.id, speaker: result.speaker,
+                text: SkyCopy.text(.pressureResult, values: ["detail": result.text, "recovery": survivors]),
+                priority: result.priority, seconds: result.seconds)
+        }
         if let headroom = SkyHeadroomFeedback(turn: turn, from: old, to: game) {
             let detail: String
             switch headroom.kind {

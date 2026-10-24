@@ -1,5 +1,7 @@
 # Starfall
 
+[Actual survivors](docs/evidence/decision-goal-07-survivor-ingredients-2026-10-24/README.md) now receive open diamond marks only when they really fell into a later committed pattern. Exact whole-clear facts and immediate result reading preserve rules, clocks, saves and Replay; human recognition remains separate.
+
 [Last earned light](docs/evidence/identity-goal-09-final-light-2026-10-24/README.md) now stays beside an immediate result as an exact passive signature. Cold restore omits unavailable geometry; score, repairs, Replay and result actions keep their existing owners.
 
 [Ribbon’s woven response](docs/evidence/identity-goal-08-ribbon-response-2026-10-24/README.md) now answers arriving light with four local cross-stitches at its material seam. Both Story modes retain exact rounds and immediate earned outcomes; Calm shows the same temporary figure directly.

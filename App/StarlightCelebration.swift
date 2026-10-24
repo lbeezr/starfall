@@ -36,6 +36,9 @@ struct StarlightCelebration: Equatable, Identifiable {
         }
     }
     let patterns: [Pattern]
+    /// Only original-action stars that actually fell into this later phase's
+    /// recipes. The immutable Core snapshots, never the drawing, establish it.
+    let survivorIngredients: SkySurvivorIngredients?
     struct PrecedingReturn: Equatable {
         let patterns: [Pattern]
         let depth: Int
@@ -142,6 +145,8 @@ struct StarlightCelebration: Equatable, Identifiable {
         path = phase.recipes.first?.presentationPath ?? []
         constellationPath = []
         patterns = phase.kind == .recipe ? phase.recipes.map { Pattern(recipe: $0) } : []
+        survivorIngredients = SkySurvivorIngredients(phases: precedingPhases + [phase],
+                                                     currentIndex: precedingPhases.count)
         precedingReturns = phase.kind == .recipe ? precedingPhases
             .filter { $0.kind == .recipe && $0.comboDepth < phase.comboDepth && !$0.recipes.isEmpty }
             .suffix(Self.maximumPrecedingReturns)
@@ -169,6 +174,7 @@ struct StarlightCelebration: Equatable, Identifiable {
         self.path = path.isEmpty ? (recipe?.presentationPath ?? []) : path
         constellationPath = path
         patterns = path.isEmpty ? recipe.map { [Pattern(recipe: $0)] } ?? [] : []
+        survivorIngredients = nil
         precedingReturns = []
         if relayDepth > 1 { level = .relay(relayDepth) }
         else if let recipe { level = .recipe(recipe.shape) }
@@ -329,6 +335,57 @@ struct PatternReturnLayout {
                         y: start.y + (end.y - start.y) * progress)
             }
         }
+    }
+}
+
+/// One unfilled, non-color mark per actual moved survivor in the current
+/// figure. Shared knots are mapped once even when multiple recipes overlap.
+struct SkySurvivorMarkerLayout {
+    struct Marker {
+        let cell: Cell
+        let center: CGPoint
+        let radius: CGFloat
+        var strokeWidth: CGFloat { min(2.5, radius * 0.35) }
+        var diamond: [CGPoint] {
+            [CGPoint(x: center.x, y: center.y - radius),
+             CGPoint(x: center.x + radius, y: center.y),
+             CGPoint(x: center.x, y: center.y + radius),
+             CGPoint(x: center.x - radius, y: center.y),
+             CGPoint(x: center.x, y: center.y - radius)]
+        }
+    }
+    let markers: [Marker]
+
+    init?(ingredients: SkySurvivorIngredients, layout: PatternReturnLayout,
+          age: TimeInterval, quiet: Bool) {
+        guard age.isFinite, age >= 0, age < StarlightCelebration.duration,
+              !ingredients.movements.isEmpty,
+              ingredients.movements.count <= SkySurvivorIngredients.maximumMovements,
+              ingredients.patterns.map({ StarlightCelebration.Pattern(recipe: $0) }) == layout.patterns else { return nil }
+        let paths = layout.points(at: age, quiet: quiet)
+        var knots: [Cell: CGPoint] = [:]
+        for (pattern, points) in zip(layout.patterns, paths) {
+            for (cell, point) in zip(pattern.path, points) {
+                guard point.x.isFinite, point.y.isFinite else { return nil }
+                if let prior = knots[cell], prior != point { return nil }
+                knots[cell] = point
+            }
+        }
+        let cells = ingredients.movements.map(\.to)
+        guard Set(cells).count == cells.count,
+              Set(ingredients.movements.map(\.id)).count == cells.count,
+              cells.allSatisfy({ knots[$0] != nil }) else { return nil }
+        markers = cells.map { cell in
+            let center = knots[cell]!
+            // Fit to ALL current knots, including unmarked neighbors. The
+            // stroke stays within half the nearest-knot distance; no marks are
+            // dropped when a dense phase uses the small chronological strip.
+            let spacing = knots.filter { $0.key != cell }.map {
+                hypot($0.value.x - center.x, $0.value.y - center.y)
+            }.min() ?? 15
+            return Marker(cell: cell, center: center, radius: min(6, spacing * 0.4))
+        }
+        guard markers.allSatisfy({ $0.radius.isFinite && $0.radius > 0 }) else { return nil }
     }
 }
 
@@ -617,6 +674,31 @@ struct StarlightCelebrationOverlay: View {
                           style: StrokeStyle(lineWidth: 1.5, lineCap: .round, lineJoin: .round))
         }
         drawPatterns(in: &context, layout: layout.current, age: age, canvasSize: canvasSize)
+        drawSurvivorMarkers(in: &context, layout: layout.current, age: age, canvasSize: canvasSize)
+    }
+
+    /// The current recipe's existing return and lifetime own these passive
+    /// diamonds. Preceding figures and separate actions never inherit them.
+    func drawSurvivorMarkers(in context: inout GraphicsContext, layout: PatternReturnLayout,
+                             age: Double, canvasSize: CGSize) {
+        guard let ingredients = event.survivorIngredients,
+              let markers = SkySurvivorMarkerLayout(ingredients: ingredients, layout: layout,
+                                                     age: age, quiet: quiet) else { return }
+        var ink = context
+        for exclusion in [score.insetBy(dx: -6, dy: -6), header, layout.labelBounds] where !exclusion.isEmpty {
+            var visible = Path(CGRect(origin: .zero, size: canvasSize))
+            visible.addRect(exclusion)
+            ink.clip(to: visible, style: FillStyle(eoFill: true))
+        }
+        ink.opacity = quiet ? 1 : min(1, max(0, age / 0.07))
+        for marker in markers.markers {
+            var diamond = Path()
+            diamond.addLines(marker.diamond)
+            ink.stroke(diamond, with: .color(StarfallTheme.Colors.skyTop),
+                       style: StrokeStyle(lineWidth: marker.strokeWidth, lineCap: .round, lineJoin: .round))
+            ink.stroke(diamond, with: .color(StarfallTheme.Colors.textPrimary),
+                       style: StrokeStyle(lineWidth: marker.strokeWidth * 0.42, lineCap: .round, lineJoin: .round))
+        }
     }
 
     /// One acknowledgement belongs to the current receipt's actual receiver.

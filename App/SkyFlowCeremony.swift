@@ -31,6 +31,7 @@ enum SkyFlowAction: Equatable {
     var mastery: SkyMasterySnapshot? = nil
     var finalLight: SkyFinalLightReceipt? = nil
     var scoreExplanation: SkyScoreExplanation? = nil
+    var survivorCount: Int = 0
     let active: Bool
     let quiet: Bool
     let modal: Bool
@@ -293,7 +294,7 @@ enum SkyFlowAction: Equatable {
                     SkyMasteryView(snapshot: mastery)
                 }
                 if terminal, let scoreExplanation {
-                    SkyScoreExplanationView(explanation: scoreExplanation)
+                    SkyScoreExplanationView(explanation: scoreExplanation, survivorCount: survivorCount)
                 }
                 if let visibleFinalLight {
                     SkyFinalLightView(receipt: visibleFinalLight, active: active, quiet: quiet)

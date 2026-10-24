@@ -3,10 +3,14 @@ import SwiftUI
 /// Static reading of already-earned values; no award, clock or replay capability.
 struct SkyScoreExplanationView: View {
     let explanation: SkyScoreExplanation
+    var survivorCount: Int = 0
 
     var body: some View {
         VStack(spacing: StarfallTheme.Spacing.small) {
             Text(SkyCopy.text(.scoreExplanationTitle)).accessibilityAddTraits(.isHeader)
+            if let fact = SkySurvivorCopy.fact(survivorCount) {
+                Text(fact).accessibilityIdentifier("score.survivors")
+            }
             ForEach(Array(explanation.phases.enumerated()), id: \.offset) { index, phase in
                 Text(phase.explanationText)
                     .accessibilityIdentifier("score.phase.\(index + 1)")

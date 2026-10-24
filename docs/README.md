@@ -1,5 +1,7 @@
 # Documentation map
 
+[Actual carried ingredients](evidence/decision-goal-07-survivor-ingredients-2026-10-24/README.md) connect committed phases through exact original-action star identities. Current-return diamonds, complete score/room guides and terminal fact-only reading retain native evidence and explicit recognition limits.
+
 [Successive cascade returns](evidence/identity-goal-06-cascade-returns-2026-10-24/README.md) retain a bounded causal strip of exact phase figures, cancel superseded flights and acknowledge only the active receipt's actual arrival, preserving gameplay timing and separate manual drawing.
 
 [Automatic Story figures](evidence/identity-goal-05-story-patterns-2026-10-24/README.md) carry each committed recipe into the existing celestial return, preserving simultaneous patterns and exact manual drawing. Source-bound phone/tablet, geometry and lifecycle evidence retain earlier failed checks separately.

@@ -1,5 +1,7 @@
 # Native interaction tests
 
+`SurvivorIngredientsInteractionTests` contrasts current Ribbon7 three-phase returns with an independent clear and Silver4 immediate terminal cancellation. Its tablet-only AX3XL actual-Calm journey checks Lantern6 two-phase reading and the existing historical Compare lessons, preserving the real round/world and exact Replay. Native prose/outcome checks are distinct from hosted exact-ID/raster proof and inspected recordings. [Decision goal7 evidence](../docs/evidence/decision-goal-07-survivor-ingredients-2026-10-24/README.md).
+
 `ScoreExplanationInteractionTests` follows actual Silver4 chain versus separate actions and Seed4 grown ingredients versus an explicitly historical Open Sky trace. It checks complete static/guide reading, exact saved/world state, Replay and actual Settings Calm at AX3XL. Native overlap and short live-caption timing remain separate from deterministic hosted proof. [Decision goal6 evidence](../docs/evidence/decision-goal-06-earned-score-2026-10-24/README.md).
 
 `HeadroomFeedbackInteractionTests` contrasts current Kite high/low clears under the same announcement, full-column recovery, no-clear setup and real repair/Replay. Its tablet-only journey reads complete AX3XL actual-Calm guide text, then contrasts current FullBoard6 replacements with a following clear. [Execution and limits](../docs/evidence/decision-goal-05-committed-headroom-2026-10-24/README.md).

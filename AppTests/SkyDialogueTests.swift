@@ -857,7 +857,7 @@ extension SkyDialogueTests {
         let original = SkyDialogueLibrary.line(turn.resolutionPhases.count > 1 ? "guide.cascade" : "guide.automatic-recipe",
             values: turn.resolutionPhases.count > 1
                 ? ["depth": String(turn.resolutionPhases.count), "score": "50,000"] : ["score": "50,000"])
-        XCTAssertEqual(result.text, original.text + " 16 stars · 16 light. 16,000 base + 4,000 size + 30,000 chain = 50,000 points. 16 more spaces above the stars in columns 1, 2, 3, 4, 5. Columns 1, 2, 4 have room again.")
+        XCTAssertEqual(result.text, original.text + " 16 stars · 16 light. 16,000 base + 4,000 size + 30,000 chain = 50,000 points. Diamond marks: 6 survivors fell into later patterns. 16 more spaces above the stars in columns 1, 2, 3, 4, 5. Columns 1, 2, 4 have room again.")
         XCTAssertEqual(result.id, original.id)
         XCTAssertEqual(result.speaker, original.speaker)
         XCTAssertEqual(result.priority, original.priority)
