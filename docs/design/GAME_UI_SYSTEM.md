@@ -8,6 +8,8 @@ The user approved the game concept, [source kit](../../Artwork/ObservatoryUI/REA
 
 **Continuing acceptance:** Use this shared system for future UI work and retain its regression contracts. The native evidence owns publication and canonical delivery status. Physical reading comfort, sustained performance and full VoiceOver remain release-candidate checks; development adoption does not establish them.
 
+**Component rule:** Use only this official design/component system, in the documented role. When a necessary piece is missing, design it, add it to the shared component owner and roster, and prove one native slice before using it across screens. Shared tokens or an official component borrowed from the wrong context do not establish design compliance. Ordinary composition remains screen-owned; new visual roles and control states do not.
+
 ![Approved concept showing a scenic home with three tactile mode buttons, a quiet top-edge gameplay HUD and a bottom-anchored settings instrument](interface/observatory-game-ui-concept-2026-10-19.png)
 
 **Concept — not implementation evidence.** Built-in ImageGen, October 19, using existing Lantern Landing scenery, a source-bound native board capture and world-map artwork. [Provenance and brief](interface/README.md#game-ui-concept--october-19). The image illustrates material and hierarchy, not final camera clearance, star geometry, exact progress art or text metrics.
@@ -47,7 +49,7 @@ These are predominantly historical design accounts, selected for their relevance
 - **Resilience:** Long labels, exact large scores, accessibility text, reduced motion/transparency, interruptions and rapid repeated input retain meaning and control. Native VoiceOver and physical-device reading require separate observation.
 - **Performance:** Profile dense play with celebrations and UI transitions together on supported hardware. Compare frame pacing and memory with the existing baseline; reject new hitches from text/material generation. A static concept or simulator build does not establish this result.
 
-The quality bar remains a continuing acceptance target, not a claim that every concept or implemented surface meets it. Keep two reviews: visual craft at actual size, then behavior during play. Neither replaces the other.
+The quality bar remains a continuing acceptance target, not a claim that every concept or implemented surface meets it. Keep two reviews: visual craft at actual size, then behavior during play. Neither replaces the other. Apply the [visual acceptance review](UI_PRODUCTION.md#decide-visual-acceptance-separately) before merging visual work; a known visual failure keeps its goal open even when every mechanical check passes.
 
 ## Typography: related voices with different jobs
 
@@ -115,14 +117,17 @@ Fixed corners prevent long labels from stretching a lantern or bevel. SwiftUI's 
 
 ### 3. Shared native components
 
-| Component | Variants/states | Native owner |
+| Component | Context and variants/states | Native owner |
 | --- | --- | --- |
-| Action button | Primary, secondary, compact, quiet; resting, pressed, disabled, focused | `StarfallButtonStyle` |
-| Utility icon control | Rendered silhouette, pressed/disabled/focused states, spoken label; no extra visible bezel | `StarfallUtilityButtonStyle`, `ObservatoryIcon` |
-| Instrument panel | Half-scale compact fitting and full reading panel; fixed header/footer, scrolling body, large-text reflow | `StarfallTheme`, `ObservatorySurface`, `SkyMenuSurface` |
-| Preference toggle | On/off, pressed, disabled, focused; native label/value semantics | `ObservatoryToggleStyle`, `SkyPreferenceToggle`, `SkyFeelSection` |
-| Gameplay instruments | Exact score/goal, committed forecast and pause action | `FallingSkyHUD`, `SkyShowerTrail` |
+| Menu/reader action | Home, Entry, pause, settings and reading decisions; primary, secondary, compact, quiet; resting, pressed, disabled, focused | `StarfallButtonStyle` |
+| Gameplay text action | Subordinate actions during play; clear resting face, material press/contrast response, disabled/focused states; no menu-sized panel | `StarfallGameButtonStyle` |
+| Utility icon control | Viewport-edge pause and other small utilities; rendered silhouette, pressed/disabled/focused states, spoken label; no extra visible bezel | `StarfallUtilityButtonStyle`, `ObservatoryIcon` |
+| Instrument panel | Menu/reading surfaces; half-scale compact fitting and full reading panel; fixed header/footer, scrolling body, large-text reflow | `StarfallTheme`, `ObservatorySurface`, `SkyMenuSurface` |
+| Preference toggle | Preferences; on/off, pressed, disabled, focused; native label/value semantics | `ObservatoryToggleStyle`, `SkyPreferenceToggle`, `SkyFeelSection` |
+| Gameplay instruments | Active-play exact score/goal, committed forecast and pause action; compact visual emphasis with complete native reading | `FallingSkyHUD`, `SkyShowerTrail` |
 | Feedback surface | Brief active message, retained/reopened message, player-paced script, important outcome | `SkyDialogueOverlay`, `SkyDialogueBubble` |
+
+The menu `compact` variant describes its menu size, not permission to use its serif panel as a gameplay instrument. The [HUD guide](hud/README.md) maps the native owners; known missing component contracts remain correction work until registered and proved.
 
 Settings, Help and balance share `SkyMenuSurface`. A transparent full-screen native modal retains focus/dismissal ownership while `SkyMenuPresentation` supplies the game scrim and panel height; no system sheet glass surrounds the authored instrument. The retained board withdraws its accessibility group, value and rotor while a modal covers it.
 
