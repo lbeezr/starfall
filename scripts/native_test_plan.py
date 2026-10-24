@@ -14,6 +14,7 @@ VOICEOVER_RC = {
         'testVoiceOverOpalIdentityActivationAndStormCue'},
 }
 TABLET_ONLY = {
+    'testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay': 'StarfallUITests/LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay',
     'testLargestCalmSurvivorsAndSimultaneousPatternsPreserveRound': 'StarfallUITests/SurvivorIngredientsInteractionTests/testLargestCalmSurvivorsAndSimultaneousPatternsPreserveRound',
     'testLargestCalmGrownScoreAndUnscaledOpenSkyReadCompletely': 'StarfallUITests/ScoreExplanationInteractionTests/testLargestCalmGrownScoreAndUnscaledOpenSkyReadCompletely',
     'testLargestCalmHeadroomAndFullBoardRefillReadCompletely': 'StarfallUITests/HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely',

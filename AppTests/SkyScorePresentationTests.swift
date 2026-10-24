@@ -23,7 +23,7 @@ final class SkyScorePresentationTests: XCTestCase {
         var game = old
         let turn = try XCTUnwrap(game.nudge(from: Cell(1,2), to: Cell(1,3)))
         let session = SkyLightReceiptSession()
-        session.capture(turn, from: old, path: [], recipe: nil)
+        session.capture(turn, from: old, to: game, path: [], recipe: nil)
         let explanation = try XCTUnwrap(session.lastScore)
         XCTAssertEqual(explanation.total, 19_000)
         XCTAssertEqual(explanation.phases.map(\.points), [5_000,14_000])
@@ -40,18 +40,18 @@ final class SkyScorePresentationTests: XCTestCase {
         let session = SkyLightReceiptSession()
         let old = game
         let first = try XCTUnwrap(game.nudge(from: Cell(0,2), to: Cell(1,2)))
-        session.capture(first, from: old, path: [], recipe: nil)
+        session.capture(first, from: old, to: game, path: [], recipe: nil)
         XCTAssertEqual(session.lastScore?.total, 7_000)
         let before = game
         let second = try XCTUnwrap(game.nudge(from: Cell(3,2), to: Cell(3,1)))
-        session.capture(second, from: before, path: [], recipe: nil)
+        session.capture(second, from: before, to: game, path: [], recipe: nil)
         XCTAssertEqual(game.displayScore,12_000)
         XCTAssertEqual(session.lastScore?.total,5_000)
         XCTAssertEqual(session.lastScore?.phases.map(\.comboBonus),[0])
         let unchanged = session.lastScore
         session.capture(FallingSkyTurn(cleared: [], collected: 0, settled: game.board,
                                       forecast: game.incoming, arrivals: [], blockedColumn: nil),
-                        from: game, path: [], recipe: nil)
+                        from: game, to: game, path: [], recipe: nil)
         XCTAssertEqual(session.lastScore,unchanged)
     }
 

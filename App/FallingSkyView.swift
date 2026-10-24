@@ -213,6 +213,7 @@ import StarfallCore
                                         finalLight: endingReady ? store.finalLight : nil,
                                         scoreExplanation: endingReady ? store.finalScoreExplanation : nil,
                                         survivorCount: endingReady ? store.finalSurvivorCount : 0,
+                                        inspectLastClear: lastClearAction,
                                         active: scenePhase == .active && flow.handoff == nil && !settings, quiet: quietMotion, modal: settings,
                                         restoredSceneryBounds: anchors[.restorationScenery].map { geometry[$0] },
                                         action: { handleFlowAction($0, entryID: entryID) })
@@ -757,8 +758,25 @@ import StarfallCore
             && store.journey.journey.selected.challenge == store.game.challenge
     }
 
+    private var lastClearAction: (() -> Void)? {
+        guard endingReady, store.lastClear != nil else { return nil }
+        return { openLastClear() }
+    }
+
+    private func openLastClear() {
+        guard scenePhase == .active, endingReady, menu == nil, store.lastClear != nil else { return }
+        menu = .lastClear
+    }
+
     @ViewBuilder private func settingsView(_ destination: SkyMenuDestination) -> some View {
         switch destination {
+        case .lastClear:
+            NavigationStack {
+                if let snapshot = store.lastClear {
+                    SkyLastClearView(snapshot: snapshot, done: { menu = nil })
+                }
+            }
+            .skyMenuPresentation()
         case .tutorial:
             SkyTutorialView(done: { menu = nil })
                 .skyMenuPresentation()
@@ -774,6 +792,7 @@ import StarfallCore
                            challenge: store.game.challenge, helpContext: .init(game: store.game),
                            choiceSnapshot: store.game.usesFullBoardRefill ? store.game : nil,
                            mastery: SkyMasterySnapshot.current(game: store.game, bestRecords: store.mastery.records, context: .progress),
+                           lastClear: store.tutorial == nil ? store.lastClear : nil,
                            balance: store.game.balance,
                            sound: $store.soundEnabled, haptics: $store.hapticsEnabled, calm: $calmEffects,
                            pause: togglePauseFromMenu,
@@ -938,7 +957,7 @@ private extension FallingSkyView {
 }
 
 private enum SkyMenuDestination: Hashable, Identifiable {
-    case game, welcome, tutorial
+    case game, welcome, tutorial, lastClear
     case practice(SkyTutorial)
     var id: Self { self }
 }

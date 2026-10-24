@@ -44,7 +44,7 @@ final class SkySurvivorGuideTests: XCTestCase {
         var game = old
         let turn = try exchange(9,10,in:&game)
         let session = SkyLightReceiptSession()
-        session.capture(turn,from:old,path:[],recipe:nil)
+        session.capture(turn,from:old,to:game,path:[],recipe:nil)
         XCTAssertEqual(game.outcome,.won)
         XCTAssertEqual(session.lastSurvivorCount,1)
         XCTAssertEqual(SkySurvivorCopy.fact(1),"1 survivor fell into a later pattern.")
@@ -52,7 +52,7 @@ final class SkySurvivorGuideTests: XCTestCase {
         XCTAssertNil(SkyLightReceiptSession().lastSurvivorCount,"Cold restore has no reconstructed provenance")
         var alternate = old
         let single = try exchange(2,9,in:&alternate)
-        session.capture(single,from:old,path:[],recipe:nil)
+        session.capture(single,from:old,to:alternate,path:[],recipe:nil)
         XCTAssertEqual(session.lastSurvivorCount,0)
         session.beginRound();XCTAssertNil(session.lastSurvivorCount)
     }

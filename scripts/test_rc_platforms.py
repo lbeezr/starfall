@@ -5,6 +5,7 @@ import json
 import subprocess
 import tempfile
 from unittest.mock import patch
+from native_test_plan import TABLET_ONLY
 
 spec = importlib.util.spec_from_file_location('rc_platforms', Path(__file__).with_name('rc-platforms.py'))
 rc = importlib.util.module_from_spec(spec); spec.loader.exec_module(rc)
@@ -14,18 +15,9 @@ MINIMUM_IOS_TESTS = [
     'StarfallUITests/SkyFlowInteractionTests/testCurrentRibbonWinReplayAndFullSky',
     'StarfallUITests/FallingSkyInteractionTests/testSystemReduceMotionKeepsManualPlayWorking',
 ]
-TABLET_TESTS = [
-    'StarfallUITests/SkyFlowInteractionTests/testLandscapeWelcomeEntryAndPreferences',
-    'StarfallUITests/LanternLandingInteractionTests/testTabletRotationKeepsRestorationAndNativeInput',
-    'StarfallUITests/RibbonCrossingInteractionTests/testTabletRotationKeepsRibbonRestorationAndNativeInput',
-    'StarfallUITests/KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput',
-    'StarfallUITests/SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput',
-    'StarfallUITests/SilverPoolsInteractionTests/testTabletRotationKeepsSilverRestorationAndNativeInput',
-    'StarfallUITests/SilverPoolsInteractionTests/testTabletDenseSilverCompletionKeepsNativeInput',
-    'StarfallUITests/FrostfruitOrchardInteractionTests/testTabletRotationKeepsFrostfruitRestorationAndNativeInput',
-    'StarfallUITests/FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput',
-    'StarfallUITests/SunwheelMillInteractionTests/testTabletRotationKeepsSunwheelRestorationAndNativeInput',
-    'StarfallUITests/SunwheelMillInteractionTests/testTabletDenseSunwheelCompletionKeepsNativeInput',
+# Platform-only selectors have one authoritative owner. Keep the two general
+# tablet scenarios explicit while checking the registry's sources/exclusions below.
+TABLET_TESTS = [*TABLET_ONLY.values(),
     'StarfallUITests/SkyFlowInteractionTests/testLargestTextWelcomeEntryAndBackRemainReachable',
     'StarfallUITests/CriticalMassInteractionTests/testLargestTextCalmKeepsWarningAndHelpUsable',
 ]

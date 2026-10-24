@@ -11,6 +11,7 @@ struct FallingSkyMenu: View {
     let helpContext: SkyHelpContext
     let choiceSnapshot: FallingSky?
     let mastery: SkyMasterySnapshot?
+    let lastClear: SkyLastClearSnapshot?
     let balance: StarfallBalance
     @Binding var sound: Bool
     @Binding var haptics: Bool
@@ -26,6 +27,7 @@ struct FallingSkyMenu: View {
 
     init(paused: Bool, turns: Int, groups: Int, over: Bool, challenge: StarfallChallenge?,
          helpContext: SkyHelpContext, choiceSnapshot: FallingSky? = nil, mastery: SkyMasterySnapshot? = nil,
+         lastClear: SkyLastClearSnapshot? = nil,
          balance: StarfallBalance,
          sound: Binding<Bool>, haptics: Binding<Bool>, calm: Binding<Bool>,
          pause: @escaping () -> Void, restart: @escaping (Bool) -> Void,
@@ -34,7 +36,7 @@ struct FallingSkyMenu: View {
          done: @escaping () -> Void) {
         self.paused = paused; self.turns = turns; self.groups = groups; self.over = over
         self.challenge = challenge; self.helpContext = helpContext; self.choiceSnapshot = choiceSnapshot
-        self.mastery = mastery
+        self.mastery = mastery; self.lastClear = lastClear
         self.balance = balance
         _sound = sound; _haptics = haptics; _calm = calm
         self.pause = pause; self.restart = restart; self.worldMap = worldMap; self.learn = learn
@@ -79,6 +81,14 @@ struct FallingSkyMenu: View {
                 }
                 SkyMenuRule()
                 VStack(spacing: StarfallTheme.Spacing.compact) {
+                    if let lastClear {
+                        NavigationLink {
+                            SkyLastClearView(snapshot: lastClear, done: done, back: true)
+                        } label: {
+                            SkyMenuRow(SkyCopy.text(.lastClearReview), glyph: .list, disclosure: true)
+                        }
+                        .accessibilityIdentifier("sky.lastClear.menu.open")
+                    }
                     if let choiceSnapshot, SkyFullBoardChoiceAnalysis.supports(choiceSnapshot) {
                         NavigationLink {
                             SkyFullBoardChoicesView(game: choiceSnapshot, done: done)

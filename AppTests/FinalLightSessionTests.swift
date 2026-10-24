@@ -174,7 +174,7 @@ final class FinalLightSessionTests: XCTestCase {
         let source = FallingSky(board: board, incoming: [.init(id: 49, kind: .rose, column: 0)])
         let denseTurn = FallingSkyTurn(resolutionPhases: phases, cleared: [], collected: dense.award.baseLight,
             settled: dense.settled, forecast: [], arrivals: [], blockedColumn: nil)
-        session.capture(denseTurn, from: source, path: [], recipe: nil)
+        session.capture(denseTurn, from: source, to: source, path: [], recipe: nil)
         let all = try XCTUnwrap(session.lastEarned)
         XCTAssertEqual(all.paths, dense.recipes.map(\.presentationPath))
         XCTAssertEqual(all.paths.count, 75)
@@ -191,10 +191,10 @@ final class FinalLightSessionTests: XCTestCase {
         var game = source
         let turn = try XCTUnwrap(game.clearConstellation(path))
         let session = SkyLightReceiptSession()
-        session.capture(turn, from: source, path: path, recipe: nil)
+        session.capture(turn, from: source, to: game, path: path, recipe: nil)
         XCTAssertEqual(session.lastEarned?.paths, [path])
         XCTAssertEqual(session.lastEarned?.cells.count, 5)
-        session.capture(turn, from: source, path: path + [Cell(0,3)], recipe: nil)
+        session.capture(turn, from: source, to: game, path: path + [Cell(0,3)], recipe: nil)
         XCTAssertNil(session.lastEarned, "A positive transaction with an invalid supplied walk cannot reuse old geometry")
     }
 
@@ -262,7 +262,7 @@ final class FinalLightSessionTests: XCTestCase {
         var game = source
         let turn = try XCTUnwrap(game.nudge(from: Cell(1,1), to: Cell(1,2)))
         let session = SkyLightReceiptSession()
-        session.capture(turn, from: source, path: [], recipe: nil)
+        session.capture(turn, from: source, to: game, path: [], recipe: nil)
         let retained = try XCTUnwrap(session.lastEarned)
         let phase = try XCTUnwrap(turn.resolutionPhases.last)
         session.publish(.init(id: session.nextSequence(), phase: phase,
