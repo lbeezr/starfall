@@ -71,7 +71,7 @@ extension SkyTutorial {
     }
     var showsDetailInitially: Bool {
         switch self {
-        case .storySquare, .storyRoom, .fullBoardRefill, .fullBoardSurvivors, .fullBoardImmediate: false
+        case .storySquare, .storyRoom, .fullBoardRefill, .fullBoardSurvivors, .fullBoardImmediate, .trace: false
         default: true
         }
     }
@@ -107,6 +107,7 @@ extension SkyTutorialRun {
     func instruction(showingHint: Bool) -> String {
         if complete {
             let key: SkyCopy.Key = switch chapter {
+            case .trace: .practiceTraceComplete
             case .storySquare: .practiceStorySquareComplete
             case .storyRoom: .practiceStoryRoomComplete
             case .fullBoardRefill: .practiceFullBoardRefillComplete
@@ -119,6 +120,7 @@ extension SkyTutorialRun {
         if needsRetry { return SkyCopy.text(.practiceRetryMessage) }
         if !showingHint {
             switch chapter {
+            case .trace: return SkyCopy.text(.practiceTracePrompt)
             case .storySquare: return SkyCopy.text(.practiceStorySquarePrompt)
             case .storyRoom:
                 return SkyCopy.text(step == 0 ? .practiceStoryRoomPrompt : .practiceStoryRoomAfterClear)

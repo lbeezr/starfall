@@ -163,7 +163,8 @@ public enum SkyTutorial: String, CaseIterable, Sendable, Identifiable {
 }
 
 /// Advances only from committed actions. Different taps/paths that spend the same
-/// ingredients are accepted; another legal result stays visible for comparison/retry.
+/// ingredients are accepted; the introductory trace accepts any five actual stars.
+/// Other legal results stay visible for comparison/retry.
 public struct SkyTutorialRun: Equatable, Sendable {
     public let chapter: SkyTutorial
     public private(set) var step = 0
@@ -180,9 +181,16 @@ public struct SkyTutorialRun: Equatable, Sendable {
     public mutating func observe(_ action: SkyTutorial.Action, before: FallingSky, after: FallingSky) {
         guard let next else { return }
         let prior = expected
+        guard before == prior, action.sameMethod(as: next) else { needsRetry = true; return }
         var result = prior
-        _ = next.perform(in: &result)
-        guard before == prior, after == result, action.sameMethod(as: next) else { needsRetry = true; return }
+        if chapter == .trace && step == 0 {
+            guard case .trace(let path) = action,
+                  prior.constellationCells(along: path)?.count == 5,
+                  action.perform(in: &result) != nil else { needsRetry = true; return }
+        } else {
+            _ = next.perform(in: &result)
+        }
+        guard after == result else { needsRetry = true; return }
         expected = result
         step += 1
     }

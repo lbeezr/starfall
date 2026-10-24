@@ -1,0 +1,319 @@
+{
+  "goal": 339,
+  "base_main": "12d77967ad460994ce998dbfc45396c49ba0de16",
+  "runtime_checkpoint": "52b35518a96418937fed01e2390150b1d6293441",
+  "accepted_test_checkpoint": "52b35518a96418937fed01e2390150b1d6293441",
+  "accepted_test_tree": "8b09ccede9539cf72e55447fa19e5d9623b71367",
+  "actual_bundle": "dev.local",
+  "source_sha256": {
+    "Sources/StarfallCore/SkyTutorial.swift": "d0f916940e94c6e0de469c752734efeb1e1db1041972c1ef9bfa29c55a7426f0",
+    "Tests/StarfallCoreTests/SkyTutorialTests.swift": "85f493366c20b4f18a3e4cc2b460657dbd193c203bd901c9f0c7f316713f951d",
+    "App/SkyTutorialView.swift": "1a8211bfc936a888f87f82b673af9220d5b52fb5d45586d98fa8dfe99a961dc0",
+    "App/SkyCopy.swift": "ed43f2797c4fa3e73d21c688082a7c98055cfae23d73d38157ab8a85ce2dc64d",
+    "App/DialogueScripts/observatory-dialogue.json": "c9a5694388943ae4fe50b8602eb8bd71b4cf6a78a0e127bdd949fcb3611ff3c7",
+    "AppTests/OpenSkyPracticePresentationTests.swift": "fab723842dfff8827e3bf5029b4ef383cf3bdba39fd25da7bb0d1b30d422fc28",
+    "UITests/OpenSkyPracticeInteractionTests.swift": "89ca1d1d2dc057a7f2464e211d5694ffd0d02397f4154c1567b2a231e1a67b4a",
+    "UITests/WorldJourneyInteractionTests.swift": "e06ec1692d5db105b6f869c94c67e94d05518cc64540e23901927be40b025a41",
+    "Starfall.xcodeproj/project.pbxproj": "b12f4de0fb323cec98b3a68db97650e183c02868f37a597ebba7028bb8b42596",
+    "scripts/native_test_plan.py": "95028533e6f2b3174b5a917d4d2766c55bd2b9131a6c50ae2e019b713bc3bebb",
+    "AppTests/HelperDepartureTests.swift": "bc89258512866cdaa8b406dbab605d8d55c7a3c7281b432c40996b875d520b5f"
+  },
+  "runtime_delta_after_171a557": "Final two catalogue values changed at52b3551. Other production App/Core/project inputs unchanged; hosted/native expected text updated. b2ff778/628e822 are test-only corrections.",
+  "dirty_inputs_note": "App/Core/resources/project/test inputs match their recorded checkpoints. Report/index/README differences only during later tests; no compiled differences.",
+  "environment": {
+    "xcode": "27.1 (27A9275)",
+    "macos": "27.0.1",
+    "simulator_os": "iOS27.0",
+    "phone": "iPhone17e /64231AFE-4CDB-4B5A-B6D5-70CD7CEED324",
+    "tablet": "iPad Pro11 M5 /255E141F-D4D6-45DA-89FF-51436BF1BBA7"
+  },
+  "first_source_434cbc": {
+    "core": {
+      "log": "/private/tmp/starfall-identity-04-20261024/core.log",
+      "log_sha256": "6e201165449cdf67e0ad906cbdc06c396e684ad01768ea19f9a3243758009df9",
+      "status": "passed",
+      "passed": 352,
+      "failed": 0,
+      "skipped": 0,
+      "test_seconds": 21.132,
+      "suite_elapsed_seconds": 21.153,
+      "source_note": "Executed before first checkpoint; frozen Core source hashes match both checkpoints."
+    },
+    "hosted": {
+      "log": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/logs/test_sim_2026-10-24T03-05-12-228Z_pid51923_8c582226.log",
+      "log_sha256": "5dc83b119fbc898eda18eebdf31df96a09b3472ccfba02940c70d42efdfec3d1",
+      "status": "passed",
+      "passed": 120,
+      "failed": 0,
+      "skipped": 0,
+      "test_seconds": 40.76,
+      "suite_elapsed_seconds": 40.79,
+      "runner_seconds": 62.119,
+      "classes": {
+        "HelperDepartureTests": 5,
+        "ModePracticeTests": 3,
+        "OpenSkyPracticePresentationTests": 4,
+        "SkyDialogueCatalogBoundsTests": 2,
+        "SkyDialogueTests": 28,
+        "SkyModeDiscoveryPresentationTests": 4,
+        "StarlightCelebrationTests": 27,
+        "TraceInputPolishTests": 32,
+        "WorldJourneyTests": 15
+      }
+    },
+    "phone": {
+      "log": "/private/tmp/starfall-identity-04-20261024/phone.log",
+      "log_sha256": "10063d799bf0ff281a70edeab9dcbc328032d8064bcc6a41c8bd74b397311890",
+      "status": "passed",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "test_seconds": 273.303,
+      "suite_elapsed_seconds": 273.309,
+      "runner_seconds": 287.575,
+      "methods": [
+        {
+          "name": "-[StarfallUITests.OpenSkyPracticeInteractionTests testOpenSkyTraceChoosesEitherEndAndPreservesCurrentRound]",
+          "status": "passed",
+          "test_seconds": 144.394
+        },
+        {
+          "name": "-[StarfallUITests.WorldJourneyInteractionTests testTutorialRealTapSwapTraceRetryAndExitPreserveRound]",
+          "status": "passed",
+          "test_seconds": 128.909
+        }
+      ]
+    },
+    "tablet": {
+      "log": "/private/tmp/starfall-identity-04-20261024/tablet.log",
+      "log_sha256": "2a3f6a330923339a1c30c140ddaf3376dee9c48b6750dbce596df527e3138032",
+      "status": "passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "test_seconds": 167.405,
+      "suite_elapsed_seconds": 167.411,
+      "runner_seconds": 176.337,
+      "methods": [
+        {
+          "name": "-[StarfallUITests.OpenSkyPracticeInteractionTests testTabletLargestTextCalmTraceKeepsHintOptionalAndRoundSafe]",
+          "status": "passed",
+          "test_seconds": 167.405
+        }
+      ]
+    },
+    "debug": {
+      "log": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/logs/build_sim_2026-10-24T03-04-00-956Z_pid51923_ebcf6221.log",
+      "log_sha256": "59f4ebdfc0eb0e169fbed4f8b56fe65c4318487afd8f670329de2018284e9c59",
+      "status": "passed",
+      "configuration": "Debug arm64 build-for-testing, ONLY_ACTIVE_ARCH=YES"
+    },
+    "release": {
+      "log": "/private/tmp/starfall-identity-04-20261024/release.log",
+      "log_sha256": "911d2a1791ce6e5e1b860f7bb7ba24ef5af99067c3b29c4192de172a5df2419b",
+      "status": "passed"
+    }
+  },
+  "checks": {
+    "core": {
+      "log": "/private/tmp/starfall-identity-04-20261024/core.log",
+      "log_sha256": "6e201165449cdf67e0ad906cbdc06c396e684ad01768ea19f9a3243758009df9",
+      "status": "passed",
+      "passed": 352,
+      "failed": 0,
+      "skipped": 0,
+      "test_seconds": 21.132,
+      "suite_elapsed_seconds": 21.153,
+      "source_note": "Executed before first checkpoint; frozen Core source hashes match both checkpoints."
+    },
+    "hosted": {
+      "status": "passed",
+      "source": "52b35518a96418937fed01e2390150b1d6293441",
+      "log": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/logs/test_sim_2026-10-24T03-42-30-321Z_pid51923_f330aea5.log",
+      "log_sha256": "a352968e9010d499cb8c7cf7b22bf1e90d4239249e618724a413ea084148ad40",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -testProductsPath /Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T03-37-03-534Z_pid51923_2fc5e587.xctestproducts -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -collect-test-diagnostics never \"-only-testing:StarfallAppTests/HelperDepartureTests\" \"-only-testing:StarfallAppTests/ModePracticeTests\" \"-only-testing:StarfallAppTests/OpenSkyPracticePresentationTests\" \"-only-testing:StarfallAppTests/SkyDialogueCatalogBoundsTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/SkyModeDiscoveryPresentationTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/TraceInputPolishTests\" \"-only-testing:StarfallAppTests/WorldJourneyTests\" -parallel-testing-enabled NO -resultBundlePath /private/tmp/starfall-identity-04-20261024/hosted-copy-final.xcresult test-without-building",
+      "passed": 120,
+      "failed": 0,
+      "skipped": 0,
+      "test_seconds": 40.78,
+      "runner_seconds": 42.842,
+      "classes": {
+        "HelperDepartureTests": 5,
+        "ModePracticeTests": 3,
+        "OpenSkyPracticePresentationTests": 4,
+        "SkyDialogueCatalogBoundsTests": 2,
+        "SkyDialogueTests": 28,
+        "SkyModeDiscoveryPresentationTests": 4,
+        "StarlightCelebrationTests": 27,
+        "TraceInputPolishTests": 32,
+        "WorldJourneyTests": 15
+      },
+      "measurement_correction": {
+        "source": "b2ff7788a362f044e77e29c47038b03387629248",
+        "raw_frame_diagnostics": "/private/tmp/starfall-identity-04-20261024/hosted-accepted-attachments",
+        "observed": "All lift/drift/turn/lateFade/captured flags true for Rose1/grownAqua2/Opal3. Same thresholds/material/grownsize/lifetime/retirement; no runtime edit."
+      }
+    },
+    "native": {
+      "phone": {
+        "status": "passed",
+        "source": "52b35518a96418937fed01e2390150b1d6293441",
+        "log": "/private/tmp/starfall-identity-04-20261024/phone-copy-final.log",
+        "log_sha256": "ebf7224361a61509aa539687f26f26cbc9a8c02a81c430a07691c36b1cbec338",
+        "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -testProductsPath /Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T03-37-03-534Z_pid51923_2fc5e587.xctestproducts -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -collect-test-diagnostics never \"-only-testing:StarfallUITests/OpenSkyPracticeInteractionTests/testOpenSkyTraceChoosesEitherEndAndPreservesCurrentRound\" \"-only-testing:StarfallUITests/WorldJourneyInteractionTests/testTutorialRealTapSwapTraceRetryAndExitPreserveRound\" -parallel-testing-enabled NO -resultBundlePath /private/tmp/starfall-identity-04-20261024/phone-copy-final.xcresult test-without-building",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "test_seconds": 270.754,
+        "runner_seconds": 274.029
+      },
+      "tablet": {
+        "status": "passed",
+        "source": "52b35518a96418937fed01e2390150b1d6293441",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "test_seconds": 175.516,
+        "runner_seconds": 186.647,
+        "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -testProductsPath /Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T03-37-03-534Z_pid51923_2fc5e587.xctestproducts -destination \"platform=iOS Simulator,id=255E141F-D4D6-45DA-89FF-51436BF1BBA7\" -collect-test-diagnostics never \"-only-testing:StarfallUITests/OpenSkyPracticeInteractionTests/testTabletLargestTextCalmTraceKeepsHintOptionalAndRoundSafe\" -parallel-testing-enabled NO -resultBundlePath /private/tmp/starfall-identity-04-20261024/tablet-copy-final.xcresult test-without-building",
+        "log": "/private/tmp/starfall-identity-04-20261024/tablet-copy-final.log",
+        "log_sha256": "b441ea02d1fba18b5dda4e2b6173a7ba4e1b536ac71d8f58f8e6a232e0daffbf"
+      },
+      "earlier_171a557_tablet": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "test_seconds": 161.341,
+        "runner_seconds": 164.468,
+        "scope": "Earlier shortcopy/source; not final52b3551 acceptance"
+      },
+      "final_executions": 3,
+      "distinct_methods": 3,
+      "all_iterations": {
+        "executions": 11,
+        "passed": 8,
+        "failed": 3,
+        "skipped": 0,
+        "scope": "Three distinct methods. Final-source3/3passes; earlier3failures retained, not erased or reclassified."
+      },
+      "owned_devices_after": {
+        "64231AFE-4CDB-4B5A-B6D5-70CD7CEED324": "Shutdown",
+        "255E141F-D4D6-45DA-89FF-51436BF1BBA7": "Shutdown"
+      },
+      "ordinary_settings_note": "Phone normal motion; tablet actual Settings Calm restored in defer. SystemReduceMotion unchanged. Only one owned Booted at a time; no physical phone."
+    },
+    "catalogue": {
+      "keys": 541,
+      "result": "Strict inventory/placeholder/bounds checks included in120 affected hosted tests"
+    },
+    "native_plan": {
+      "script": "python3 scripts/test_native_test_plan.py",
+      "passed": 3,
+      "failed": 0
+    },
+    "membership": {
+      "OpenSkyPracticePresentationTests.swift": [
+        "StarfallAppTests"
+      ],
+      "OpenSkyPracticeInteractionTests.swift": [
+        "StarfallUITests"
+      ]
+    },
+    "debug": {
+      "status": "passed",
+      "source": "52b35518a96418937fed01e2390150b1d6293441",
+      "log": "/Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/logs/build_sim_2026-10-24T03-37-03-534Z_pid51923_a9d408e0.log",
+      "log_sha256": "19f5800cacf78b7809d0bc2b50bee2a20f47675c553f24d8b0056fae5f5c486c",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project /Users/lbeezr/.codex/worktrees/9a48/Starfall/Starfall.xcodeproj -scheme Starfall -configuration Debug -skipMacroValidation -destination \"platform=iOS Simulator,id=64231AFE-4CDB-4B5A-B6D5-70CD7CEED324\" -collect-test-diagnostics never COMPILER_INDEX_STORE_ENABLE=NO ONLY_ACTIVE_ARCH=YES -packageCachePath /Users/lbeezr/Library/Caches/org.swift.swiftpm -derivedDataPath /private/tmp/starfall-identity-04-20261024/Debug ONLY_ACTIVE_ARCH=YES -testProductsPath /Users/lbeezr/Library/Developer/XcodeBuildMCP/workspaces/Starfall-74d37a56403e/test-products/build_sim_2026-10-24T03-37-03-534Z_pid51923_2fc5e587.xctestproducts build-for-testing",
+      "seconds": 3.526,
+      "warnings": 0
+    },
+    "release": {
+      "status": "passed",
+      "source": "52b35518a96418937fed01e2390150b1d6293441",
+      "log": "/private/tmp/starfall-identity-04-20261024/release-copy-final.log",
+      "log_sha256": "44dae35407925cf4294b07db0a5783ebc06288d9848376a9be28c5c5f34f7cc5",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-identity-04-20261024/Release -jobs 4 CODE_SIGNING_ALLOWED=NO build"
+    },
+    "inspected_exports": 6,
+    "sequence_sample_requests": 28,
+    "local_targets": {
+      "checked": 956,
+      "missing": [],
+      "scope": "Relative Markdown/HTML targets in changed Markdown; fenced examples and web anchors excluded."
+    },
+    "hygiene": "Passed after explicit staging of all final paths",
+    "diff_check": "git diff --check and git diff --cached --check passed"
+  },
+  "initial_failures": [
+    {
+      "check": "Sandbox Core worker preflight",
+      "result": "Cache/manifest access failed before tests; same focused command with authorized cache access passed17. Full Core later352passed."
+    },
+    {
+      "check": "Planner invocation preflight",
+      "result": "python3 -m unittest scripts/test_native_test_plan.py failed import before intended checks; canonical python3 scripts/test_native_test_plan.py passed3."
+    },
+    {
+      "check": "434cbc phone visual inspection",
+      "result": "All selected checks and3native executions passed; long prompt/completion final clause below initial phone viewport. Shortened two messages, added full-reading/simultaneous-viewport assertions."
+    },
+    {
+      "check": "171a557 hosted repeat",
+      "result": "119passed/1failed/0skipped. Unchanged helper-body sampling shared assertion did not identify individual missing flags; onlyIDs1/3 captured. Frame-readiness/delegate sampling and delayed single raster preserve thresholds, material/grown-size,1s lifetime, capture and retirement. Exclusive environmental cause unproved."
+    },
+    {
+      "check": "171a557 phone repeat",
+      "result": "Choice case failed28.991s before practice: next paused control absent after direct Settings/Pause. Separate sibling passed134.528s. Recorded transient menu/background retained; no clock fault inferred."
+    },
+    {
+      "check": "b2ff778 phone setup correction",
+      "result": "One choice case failed27.974s at same paused-control condition despite enabled+hittable cell readiness. Does not prove modal Pause admission. Final628e822 uses existing control helper and actualPause label; actual execution recorded separately."
+    },
+    {
+      "check": "628e822 phone viewport",
+      "result": "Pause setup reached practice; whole-initial-viewport assertion failed: instruction.maxY746 > viewport.maxY+1=735. Shortened prompt/completion to89/88characters at52b3551; kept exact bounds and gesture/consequence meaning."
+    }
+  ],
+  "limits": [
+    "Counts and timing are execution evidence, not visual/animation acceptance.",
+    "First-source native results are not relabeled as copy-refined runs.",
+    "Pending refined execution must be finalized by the coordinator; this receipt does not poll it.",
+    "No physical device, actual VoiceOver, minimum-iOS17 or uncoached learning acceptance inferred.",
+    "Both final native test extensions must retain their actual execution status; immutable prepared products identify each run.",
+    "The transitional menu observation is deduplicated into existing goal345 comments6379329092/6379370746; no additional witness leaf."
+  ],
+  "runtime_tree": "8b09ccede9539cf72e55447fa19e5d9623b71367",
+  "dirty_build_affecting_paths": [],
+  "noncompiled_working_tree_differences": [
+    "App/README.md",
+    "docs/ENGINEERING.md",
+    "docs/EXPERIMENTS.md",
+    "docs/ROADMAP.md",
+    "docs/design/VISUAL_REFERENCE.md",
+    "docs/evidence/README.md",
+    "docs/evidence/identity-goal-04-open-sky-practice-2026-10-24/"
+  ],
+  "commands": {
+    "core": "swift test --scratch-path /private/tmp/starfall-identity-04-20261024/CoreBuild",
+    "hygiene": "python3 scripts/ci-hygiene.py",
+    "diff": "git diff --check; git diff --cached --check",
+    "recording": "xcrun simctl io <ownedUDID> recordVideo --codec=h264 --force <explicit.mp4>; verified Recording started; stopped owned process withSIGINT and verified output file",
+    "native_plan": "python3 scripts/test_native_test_plan.py; python3 scripts/native_test_plan.py --stage dev",
+    "membership": "plutil JSON parse of target source phases; plutil -lint Starfall.xcodeproj/project.pbxproj"
+  },
+  "media": {
+    "phone-copy-final": {
+      "path": "/private/tmp/starfall-identity-04-20261024/phone-copy-final.mp4",
+      "bytes": 299490292,
+      "sha256": "43f1472f8b756783a418ee6fd9864cfad96161adb3510f611051fe25705edde1",
+      "capture": "Explicit simctl output; Recording started observed; own recorder stopped withSIGINT and output write verified."
+    },
+    "tablet-copy-final": {
+      "path": "/private/tmp/starfall-identity-04-20261024/tablet-copy-final.mp4",
+      "bytes": 323624762,
+      "sha256": "43db3a789ac34d4540ab13d0de17a2c1be0910f0e63431863fa8e48c452ffbba",
+      "capture": "Explicit simctl output; Recording started observed; own recorder stopped withSIGINT and output write verified."
+    }
+  }
+}

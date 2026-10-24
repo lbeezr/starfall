@@ -505,7 +505,7 @@ final class WorldJourneyInteractionTests: XCTestCase {
             XCTAssertTrue(app.staticTexts["tutorial.title"].waitForExistence(timeout: 5))
             assertTutorialIndexCovered(app)
             drag(app, from: (0,0), to: (0,4), drawing: true)
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Chapter complete"),
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Five helpers share light as your drawing returns. One Aqua stays. Retry to choose again."),
                                                     object: app.staticTexts["tutorial.instruction"]).wait(timeout: 5))
             XCTAssertTrue(app.buttons["experiment.cell.0.5"].label.contains("Aqua"),
                           "The existing trace still clears exactly the selected five")
@@ -745,7 +745,7 @@ final class WorldJourneyInteractionTests: XCTestCase {
                 drag(app, from: (0,0), to: (0,4), drawing: true)
                 XCTAssertTrue(app.buttons["experiment.cell.0.5"].label.contains("Aqua"))
             }
-            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Chapter complete"), object: app.staticTexts["tutorial.instruction"]).wait(timeout: 5))
+            XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", chapter == "trace" ? "Five helpers share light as your drawing returns. One Aqua stays. Retry to choose again." : "Chapter complete"), object: app.staticTexts["tutorial.instruction"]).wait(timeout: 5))
             assertTutorialIndexCovered(app)
             capture("tutorial-\(chapter)-native-complete", app)
             tap("tutorial.retry", app)

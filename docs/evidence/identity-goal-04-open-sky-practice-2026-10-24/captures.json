@@ -1,0 +1,123 @@
+{
+  "goal": 339,
+  "images": [
+    {
+      "file": "dev-52b3551__prompt__iphone-17e__normal.jpg",
+      "source": "52b35518a96418937fed01e2390150b1d6293441",
+      "bundle": "dev.local",
+      "kind": "Native XCTest screenshot attachment",
+      "raw": "/private/tmp/starfall-identity-04-20261024/phone-copy-final-attachments/3C0FE999-6D19-413A-81F2-A7667EE4CA7B.png",
+      "raw_sha256": "b2a0729e9cd966a29e612915150a7c42ab4be24317074dd8964dd92358d4095e",
+      "attachment_timestamp": 1792813111.331,
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "simulator_os": "iOS27.0",
+      "variant": "normal",
+      "conversion": "sips JPEG85, original resolution, no crop or repainting",
+      "sha256": "7f3959a35c4574c0c10dff9d02f3b019f57639851635b20d29a1410c2edf72d3",
+      "inspected": true
+    },
+    {
+      "file": "dev-52b3551__right-retained__iphone-17e__normal.jpg",
+      "source": "52b35518a96418937fed01e2390150b1d6293441",
+      "bundle": "dev.local",
+      "kind": "Native XCTest screenshot attachment",
+      "raw": "/private/tmp/starfall-identity-04-20261024/phone-copy-final-attachments/B79BCF6C-DF35-4BAF-9B90-019FE5048586.png",
+      "raw_sha256": "71087c3307770981a30af3105711686384ac8b74086668644a109d3686657d89",
+      "attachment_timestamp": 1792813157.86,
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "simulator_os": "iOS27.0",
+      "variant": "normal",
+      "conversion": "sips JPEG85, original resolution, no crop or repainting",
+      "sha256": "8e308b31fe3795070a78b6d8209735becc9e272f5cfe39d1708a188ced06f26b",
+      "inspected": true
+    },
+    {
+      "file": "dev-52b3551__left-retained__iphone-17e__normal.jpg",
+      "source": "52b35518a96418937fed01e2390150b1d6293441",
+      "bundle": "dev.local",
+      "kind": "Native XCTest screenshot attachment",
+      "raw": "/private/tmp/starfall-identity-04-20261024/phone-copy-final-attachments/130CC791-C468-42EE-BA9B-22141F1C207B.png",
+      "raw_sha256": "caa03005a1cbe77e905d43c32b452a0ca434f8ecf16cf5efd593392c3ee77a8c",
+      "attachment_timestamp": 1792813170.065,
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "simulator_os": "iOS27.0",
+      "variant": "normal",
+      "conversion": "sips JPEG85, original resolution, no crop or repainting",
+      "sha256": "c2e4afefb640b2ed7a2bb3eabda6bd6e74b9b227ba61aee52dfd4add7523dbb8",
+      "inspected": true
+    },
+    {
+      "file": "dev-52b3551__prompt__ipad-pro11-m5__ax3xl-calm.jpg",
+      "source": "52b35518a96418937fed01e2390150b1d6293441",
+      "bundle": "dev.local",
+      "kind": "Native XCTest screenshot attachment",
+      "raw": "/private/tmp/starfall-identity-04-20261024/tablet-copy-final-attachments/7C8E2A31-1CD0-41F4-8A46-4E992CCED29B.png",
+      "raw_sha256": "85b5c1822049eb3ca7f427f1e75bda71a310a8669789f68874103d387470de0c",
+      "attachment_timestamp": 1792813535.95,
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "simulator_os": "iOS27.0",
+      "variant": "ax3xl-calm",
+      "conversion": "sips JPEG85, original resolution, no crop or repainting",
+      "sha256": "832b721a9feb442e21ba2695e2c776edae3445fb07d626fffb64d7fd76bd843d",
+      "inspected": true
+    },
+    {
+      "file": "dev-52b3551__complete__ipad-pro11-m5__ax3xl-calm.jpg",
+      "source": "52b35518a96418937fed01e2390150b1d6293441",
+      "bundle": "dev.local",
+      "kind": "Native XCTest screenshot attachment",
+      "raw": "/private/tmp/starfall-identity-04-20261024/tablet-copy-final-attachments/566B0AF8-B375-4DF2-9A3B-FE5A421C151E.png",
+      "raw_sha256": "0cf02855d150cf2c5eb547f9d484fbfd2ecd3d995bbb1f3fc62ced5aef0dc636",
+      "attachment_timestamp": 1792813560.369,
+      "dimensions": [
+        1668,
+        2420
+      ],
+      "simulator_os": "iOS27.0",
+      "variant": "ax3xl-calm",
+      "conversion": "sips JPEG85, original resolution, no crop or repainting",
+      "sha256": "9ee81321e19f40e7f2022333342946cdf1b2a6366f9866f8a36d4098dfc7a30b",
+      "inspected": true
+    },
+    {
+      "file": "dev-52b3551__drawn-return__iphone-17e__normal.jpg",
+      "source": "52b35518a96418937fed01e2390150b1d6293441",
+      "bundle": "dev.local",
+      "kind": "Native Simulator recording frame",
+      "raw_video": "/private/tmp/starfall-identity-04-20261024/phone-copy-final.mp4",
+      "video_sha256": "43f1472f8b756783a418ee6fd9864cfad96161adb3510f611051fe25705edde1",
+      "decoded_frame": {
+        "actual": 110.89333333333333,
+        "index": 0,
+        "requested": 110.9,
+        "sheet": 0
+      },
+      "raw_decoded_png_sha256": "3810a13360c76b695fc0075e94ff118d6f117f0f2bbe9ac741ccb54903b8c44c",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "conversion": "AVFoundation exact-time original-resolution decode; sips JPEG85; no crop/repaint",
+      "sha256": "5dd86c7edfcdae13bbe7d7d639c59bb48622c2825647409bd41be64eba95b1e1",
+      "inspected": true
+    }
+  ],
+  "sequence": "return-sequence.json",
+  "limits": [
+    "Tablet stills use the guide reading position; native interaction separately operates Hint/Retry and exact five-star/round return.",
+    "Returned-drawing frame is intermediate; inspected28sample requests cover held selection/release/light/line rise and retain exact actual timestamps, including duplicates. Not every display frame or a complete0.18s body trajectory.",
+    "No physical smoothness/performance, actualVoiceOver, minimumOS or uncoached learning inferred."
+  ]
+}

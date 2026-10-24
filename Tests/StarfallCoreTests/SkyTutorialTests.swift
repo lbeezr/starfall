@@ -266,6 +266,102 @@ final class SkyTutorialTests: XCTestCase {
         XCTAssertTrue(run.complete)
     }
 
+    func testTraceAcceptsEitherFiveStarSubsetAndPreservesItsExactSurvivor() throws {
+        let opening = SkyTutorial.trace.game()
+        XCTAssertEqual(opening.board.compactMap { $0?.id }, Array(0..<6))
+        XCTAssertEqual(SkyTutorial.trace.actions, [.trace((0..<5).map { Cell(0,$0) })])
+        let choices: [([Int], Int)] = [
+            ([0,1,2,3,4], 5),
+            ([1,2,3,4,5], 0),
+            ([1,2,1,2,3,4,5], 0)
+        ]
+        for (columns, survivorID) in choices {
+            var game = opening, run = SkyTutorialRun(.trace)
+            let path = columns.map { Cell(0,$0) }, action = SkyTutorial.Action.trace(path)
+            let turn = try XCTUnwrap(action.perform(in: &game))
+            XCTAssertEqual(turn.cleared, Set(columns.map { Cell(0,$0) }))
+            XCTAssertEqual(game.board.compactMap { $0?.id }, [survivorID])
+            XCTAssertEqual(game.gem(at: Cell(0,survivorID)), opening.gem(at: Cell(0,survivorID)))
+            XCTAssertEqual(game.score, 5)
+            XCTAssertEqual(game.turns, opening.turns)
+            XCTAssertEqual(game.incoming, opening.incoming)
+
+            run.observe(action, before: opening, after: game)
+            XCTAssertTrue(run.complete, "The player's exact five-star result is the completed lesson")
+            XCTAssertEqual(run.step, 1)
+            XCTAssertFalse(run.needsRetry)
+            XCTAssertNil(run.next)
+        }
+    }
+
+    func testTraceRejectsAllSixAndTapsWithoutReplacingTheirCommittedResults() throws {
+        let opening = SkyTutorial.trace.game()
+        for action in [SkyTutorial.Action.trace((0..<6).map { Cell(0,$0) }), .tap(Cell(0,0))] {
+            var game = opening, run = SkyTutorialRun(.trace)
+            let turn = try XCTUnwrap(action.perform(in: &game))
+            XCTAssertEqual(turn.cleared, Set((0..<6).map { Cell(0,$0) }))
+            XCTAssertEqual(game.score, 6)
+            XCTAssertEqual(game.occupiedCount, 0)
+            let committed = game
+
+            run.observe(action, before: opening, after: game)
+            XCTAssertEqual(game, committed)
+            XCTAssertTrue(run.needsRetry)
+            XCTAssertFalse(run.complete)
+            XCTAssertEqual(run.step, 0)
+            XCTAssertNil(run.next)
+            XCTAssertEqual(SkyTutorial.trace.game(), opening, "Retry still starts from the same six stars")
+        }
+    }
+
+    func testTraceRequiresItsPristineBeforeStateAndActualCommittedAfterState() throws {
+        let opening = SkyTutorial.trace.game()
+        let rightmost = SkyTutorial.Action.trace((1..<6).map { Cell(0,$0) })
+        var rightmostResult = opening
+        XCTAssertNotNil(rightmost.perform(in: &rightmostResult))
+        var canonicalResult = opening
+        XCTAssertNotNil(SkyTutorial.trace.actions[0].perform(in: &canonicalResult))
+        XCTAssertEqual(rightmostResult.score, canonicalResult.score)
+        XCTAssertEqual(rightmostResult.occupiedCount, canonicalResult.occupiedCount)
+        XCTAssertNotEqual(rightmostResult.board, canonicalResult.board)
+
+        var changedBefore = opening
+        XCTAssertNotNil(changedBefore.letStarsFall())
+        let attempts: [(SkyTutorial.Action, FallingSky, FallingSky)] = [
+            (rightmost, changedBefore, rightmostResult),
+            (rightmost, opening, canonicalResult),
+            (.tap(Cell(0,0)), opening, rightmostResult),
+            (.trace([Cell(0,0), Cell(0,2), Cell(0,3), Cell(0,4), Cell(0,5)]), opening, rightmostResult)
+        ]
+        for (action, before, after) in attempts {
+            var run = SkyTutorialRun(.trace)
+            run.observe(action, before: before, after: after)
+            XCTAssertTrue(run.needsRetry)
+            XCTAssertFalse(run.complete)
+            XCTAssertEqual(run.step, 0)
+        }
+    }
+
+    func testCanceledFourStarTraceLeavesTheOpeningAndLessonReadyForAnotherChoice() throws {
+        let opening = SkyTutorial.trace.game()
+        var game = opening, run = SkyTutorialRun(.trace)
+        let untouchedRun = run
+        let canceled = SkyTutorial.Action.trace((0..<4).map { Cell(0,$0) })
+        XCTAssertNil(canceled.perform(in: &game))
+        XCTAssertEqual(game, opening)
+        // No committed turn is published to observe when the player cancels or releases too soon.
+        XCTAssertEqual(run, untouchedRun)
+        XCTAssertEqual(run.step, 0)
+        XCTAssertFalse(run.needsRetry)
+        XCTAssertFalse(run.complete)
+
+        let choice = SkyTutorial.Action.trace((1..<6).map { Cell(0,$0) })
+        XCTAssertNotNil(choice.perform(in: &game))
+        run.observe(choice, before: opening, after: game)
+        XCTAssertTrue(run.complete)
+        XCTAssertEqual(game.board.compactMap { $0?.id }, [0])
+    }
+
     func testWorldProgressDistinguishesUnavailableLockedRestoredAndLegacyAccess() throws {
         var progress = WorldJourney()
         XCTAssertEqual(WorldLocation.allCases.count, 12)
