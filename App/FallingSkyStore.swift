@@ -661,7 +661,8 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         celebrationSequence &+= 1
         let cumulative = turn.resolutionPhases.prefix(index + 1).reduce(0) { $0 + $1.award.displayPoints }
         let receipt = StarlightCelebration(id: celebrationSequence, phase: turn.resolutionPhases[index],
-            cumulativeAward: cumulative, total: oldScore + cumulative)
+            cumulativeAward: cumulative, total: oldScore + cumulative,
+            precedingPhases: Array(turn.resolutionPhases.prefix(index)))
         publishCelebration(receipt)
     }
 
@@ -836,9 +837,12 @@ enum SkyTerminalSpeech { case feedback, ceremony }
         }
         let dialogueRevision = dialogue.revision
         var presentedPhase = presenter.reduceMotion
+        var latestPhase = -1
         presenter.animate(turn, from: old, to: game, phaseBegan: { [weak self] index in
             guard let self, self.presentations.isActive(ticket), self.presentations.isLatest(ticket),
-                  !self.suspended, !self.presenter.reduceMotion else { return }
+                  !self.suspended, !self.presenter.reduceMotion,
+                  turn.resolutionPhases.indices.contains(index), index > latestPhase else { return }
+            latestPhase = index
             presentedPhase = true
             self.celebratePhase(index, turn: turn, oldScore: old.displayScore)
         }) { [weak self] in

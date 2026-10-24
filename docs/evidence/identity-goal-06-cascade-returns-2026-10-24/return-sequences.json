@@ -1,0 +1,1255 @@
+{
+  "sequences": [
+    {
+      "name": "phone-ribbon-opening-sequence",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "video_sha256": "6982d1bb4ee74192b68254837d5ac08b6d2d717d4b7704eccb7a35c72189504d",
+      "inspected_sheets": [
+        0,
+        1
+      ],
+      "frames": [
+        {
+          "actual": 131.98833333333334,
+          "index": 0,
+          "requested": 132,
+          "sheet": 0
+        },
+        {
+          "actual": 132.09,
+          "index": 1,
+          "requested": 132.1,
+          "sheet": 0
+        },
+        {
+          "actual": 132.18833333333333,
+          "index": 2,
+          "requested": 132.2,
+          "sheet": 0
+        },
+        {
+          "actual": 132.28833333333333,
+          "index": 3,
+          "requested": 132.3,
+          "sheet": 0
+        },
+        {
+          "actual": 132.38833333333332,
+          "index": 4,
+          "requested": 132.4,
+          "sheet": 0
+        },
+        {
+          "actual": 132.49,
+          "index": 5,
+          "requested": 132.5,
+          "sheet": 0
+        },
+        {
+          "actual": 132.59166666666667,
+          "index": 6,
+          "requested": 132.6,
+          "sheet": 0
+        },
+        {
+          "actual": 132.69,
+          "index": 7,
+          "requested": 132.7,
+          "sheet": 0
+        },
+        {
+          "actual": 132.78833333333333,
+          "index": 8,
+          "requested": 132.8,
+          "sheet": 0
+        },
+        {
+          "actual": 132.89,
+          "index": 9,
+          "requested": 132.9,
+          "sheet": 0
+        },
+        {
+          "actual": 132.99,
+          "index": 10,
+          "requested": 133,
+          "sheet": 0
+        },
+        {
+          "actual": 133.09,
+          "index": 11,
+          "requested": 133.1,
+          "sheet": 0
+        },
+        {
+          "actual": 133.19166666666666,
+          "index": 12,
+          "requested": 133.2,
+          "sheet": 0
+        },
+        {
+          "actual": 133.28833333333333,
+          "index": 13,
+          "requested": 133.3,
+          "sheet": 0
+        },
+        {
+          "actual": 133.39166666666668,
+          "index": 14,
+          "requested": 133.4,
+          "sheet": 0
+        },
+        {
+          "actual": 133.48833333333334,
+          "index": 15,
+          "requested": 133.5,
+          "sheet": 0
+        },
+        {
+          "actual": 133.59,
+          "index": 16,
+          "requested": 133.6,
+          "sheet": 0
+        },
+        {
+          "actual": 133.69,
+          "index": 17,
+          "requested": 133.7,
+          "sheet": 0
+        },
+        {
+          "actual": 133.79166666666666,
+          "index": 18,
+          "requested": 133.8,
+          "sheet": 0
+        },
+        {
+          "actual": 133.89166666666668,
+          "index": 19,
+          "requested": 133.9,
+          "sheet": 0
+        },
+        {
+          "actual": 133.98833333333334,
+          "index": 20,
+          "requested": 134,
+          "sheet": 0
+        },
+        {
+          "actual": 134.00666666666666,
+          "index": 21,
+          "requested": 134.1,
+          "sheet": 0
+        },
+        {
+          "actual": 134.19166666666666,
+          "index": 22,
+          "requested": 134.2,
+          "sheet": 0
+        },
+        {
+          "actual": 134.29,
+          "index": 23,
+          "requested": 134.3,
+          "sheet": 0
+        },
+        {
+          "actual": 134.39666666666668,
+          "index": 24,
+          "requested": 134.4,
+          "sheet": 0
+        },
+        {
+          "actual": 134.48833333333334,
+          "index": 25,
+          "requested": 134.5,
+          "sheet": 0
+        },
+        {
+          "actual": 134.58833333333334,
+          "index": 26,
+          "requested": 134.6,
+          "sheet": 0
+        },
+        {
+          "actual": 134.69,
+          "index": 27,
+          "requested": 134.7,
+          "sheet": 0
+        },
+        {
+          "actual": 134.78833333333333,
+          "index": 28,
+          "requested": 134.8,
+          "sheet": 0
+        },
+        {
+          "actual": 134.88833333333332,
+          "index": 29,
+          "requested": 134.9,
+          "sheet": 0
+        },
+        {
+          "actual": 134.93833333333333,
+          "index": 0,
+          "requested": 135,
+          "sheet": 1
+        },
+        {
+          "actual": 134.93833333333333,
+          "index": 1,
+          "requested": 135.1,
+          "sheet": 1
+        },
+        {
+          "actual": 134.93833333333333,
+          "index": 2,
+          "requested": 135.2,
+          "sheet": 1
+        },
+        {
+          "actual": 135.3,
+          "index": 3,
+          "requested": 135.3,
+          "sheet": 1
+        },
+        {
+          "actual": 135.39833333333334,
+          "index": 4,
+          "requested": 135.4,
+          "sheet": 1
+        },
+        {
+          "actual": 135.49666666666667,
+          "index": 5,
+          "requested": 135.5,
+          "sheet": 1
+        },
+        {
+          "actual": 135.59833333333333,
+          "index": 6,
+          "requested": 135.6,
+          "sheet": 1
+        },
+        {
+          "actual": 135.69833333333332,
+          "index": 7,
+          "requested": 135.7,
+          "sheet": 1
+        },
+        {
+          "actual": 135.79833333333335,
+          "index": 8,
+          "requested": 135.8,
+          "sheet": 1
+        },
+        {
+          "actual": 135.895,
+          "index": 9,
+          "requested": 135.9,
+          "sheet": 1
+        },
+        {
+          "actual": 135.99,
+          "index": 10,
+          "requested": 136,
+          "sheet": 1
+        },
+        {
+          "actual": 136.095,
+          "index": 11,
+          "requested": 136.1,
+          "sheet": 1
+        },
+        {
+          "actual": 136.18833333333333,
+          "index": 12,
+          "requested": 136.2,
+          "sheet": 1
+        },
+        {
+          "actual": 136.295,
+          "index": 13,
+          "requested": 136.3,
+          "sheet": 1
+        },
+        {
+          "actual": 136.39166666666668,
+          "index": 14,
+          "requested": 136.4,
+          "sheet": 1
+        },
+        {
+          "actual": 136.49166666666667,
+          "index": 15,
+          "requested": 136.5,
+          "sheet": 1
+        },
+        {
+          "actual": 136.595,
+          "index": 16,
+          "requested": 136.6,
+          "sheet": 1
+        },
+        {
+          "actual": 136.69666666666666,
+          "index": 17,
+          "requested": 136.7,
+          "sheet": 1
+        },
+        {
+          "actual": 136.77,
+          "index": 18,
+          "requested": 136.8,
+          "sheet": 1
+        },
+        {
+          "actual": 136.9,
+          "index": 19,
+          "requested": 136.9,
+          "sheet": 1
+        },
+        {
+          "actual": 136.99333333333334,
+          "index": 20,
+          "requested": 137,
+          "sheet": 1
+        }
+      ]
+    },
+    {
+      "name": "phone-ribbon-sequence",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "video_sha256": "6982d1bb4ee74192b68254837d5ac08b6d2d717d4b7704eccb7a35c72189504d",
+      "inspected_sheets": [
+        0,
+        1
+      ],
+      "frames": [
+        {
+          "actual": 136.99333333333334,
+          "index": 0,
+          "requested": 137,
+          "sheet": 0
+        },
+        {
+          "actual": 137.09333333333333,
+          "index": 1,
+          "requested": 137.1,
+          "sheet": 0
+        },
+        {
+          "actual": 137.195,
+          "index": 2,
+          "requested": 137.2,
+          "sheet": 0
+        },
+        {
+          "actual": 137.29333333333332,
+          "index": 3,
+          "requested": 137.3,
+          "sheet": 0
+        },
+        {
+          "actual": 137.39333333333335,
+          "index": 4,
+          "requested": 137.4,
+          "sheet": 0
+        },
+        {
+          "actual": 137.49166666666667,
+          "index": 5,
+          "requested": 137.5,
+          "sheet": 0
+        },
+        {
+          "actual": 137.59833333333333,
+          "index": 6,
+          "requested": 137.6,
+          "sheet": 0
+        },
+        {
+          "actual": 137.69166666666666,
+          "index": 7,
+          "requested": 137.7,
+          "sheet": 0
+        },
+        {
+          "actual": 137.79166666666666,
+          "index": 8,
+          "requested": 137.8,
+          "sheet": 0
+        },
+        {
+          "actual": 137.89333333333335,
+          "index": 9,
+          "requested": 137.9,
+          "sheet": 0
+        },
+        {
+          "actual": 137.99333333333334,
+          "index": 10,
+          "requested": 138,
+          "sheet": 0
+        },
+        {
+          "actual": 138.1,
+          "index": 11,
+          "requested": 138.1,
+          "sheet": 0
+        },
+        {
+          "actual": 138.19333333333333,
+          "index": 12,
+          "requested": 138.2,
+          "sheet": 0
+        },
+        {
+          "actual": 138.29333333333332,
+          "index": 13,
+          "requested": 138.3,
+          "sheet": 0
+        },
+        {
+          "actual": 138.39,
+          "index": 14,
+          "requested": 138.4,
+          "sheet": 0
+        },
+        {
+          "actual": 138.475,
+          "index": 15,
+          "requested": 138.5,
+          "sheet": 0
+        },
+        {
+          "actual": 138.59833333333333,
+          "index": 16,
+          "requested": 138.6,
+          "sheet": 0
+        },
+        {
+          "actual": 138.69833333333332,
+          "index": 17,
+          "requested": 138.7,
+          "sheet": 0
+        },
+        {
+          "actual": 138.79333333333332,
+          "index": 18,
+          "requested": 138.8,
+          "sheet": 0
+        },
+        {
+          "actual": 138.89333333333335,
+          "index": 19,
+          "requested": 138.9,
+          "sheet": 0
+        },
+        {
+          "actual": 138.995,
+          "index": 20,
+          "requested": 139,
+          "sheet": 0
+        },
+        {
+          "actual": 139.095,
+          "index": 21,
+          "requested": 139.1,
+          "sheet": 0
+        },
+        {
+          "actual": 139.195,
+          "index": 22,
+          "requested": 139.2,
+          "sheet": 0
+        },
+        {
+          "actual": 139.29333333333332,
+          "index": 23,
+          "requested": 139.3,
+          "sheet": 0
+        },
+        {
+          "actual": 139.395,
+          "index": 24,
+          "requested": 139.4,
+          "sheet": 0
+        },
+        {
+          "actual": 139.49333333333334,
+          "index": 25,
+          "requested": 139.5,
+          "sheet": 0
+        },
+        {
+          "actual": 139.59333333333333,
+          "index": 26,
+          "requested": 139.6,
+          "sheet": 0
+        },
+        {
+          "actual": 139.695,
+          "index": 27,
+          "requested": 139.7,
+          "sheet": 0
+        },
+        {
+          "actual": 139.79333333333332,
+          "index": 28,
+          "requested": 139.8,
+          "sheet": 0
+        },
+        {
+          "actual": 139.89333333333335,
+          "index": 29,
+          "requested": 139.9,
+          "sheet": 0
+        },
+        {
+          "actual": 139.99,
+          "index": 0,
+          "requested": 140,
+          "sheet": 1
+        },
+        {
+          "actual": 140.05666666666667,
+          "index": 1,
+          "requested": 140.1,
+          "sheet": 1
+        },
+        {
+          "actual": 140.05666666666667,
+          "index": 2,
+          "requested": 140.2,
+          "sheet": 1
+        },
+        {
+          "actual": 140.28333333333333,
+          "index": 3,
+          "requested": 140.3,
+          "sheet": 1
+        },
+        {
+          "actual": 140.39166666666668,
+          "index": 4,
+          "requested": 140.4,
+          "sheet": 1
+        },
+        {
+          "actual": 140.49,
+          "index": 5,
+          "requested": 140.5,
+          "sheet": 1
+        },
+        {
+          "actual": 140.595,
+          "index": 6,
+          "requested": 140.6,
+          "sheet": 1
+        },
+        {
+          "actual": 140.69,
+          "index": 7,
+          "requested": 140.7,
+          "sheet": 1
+        },
+        {
+          "actual": 140.79166666666666,
+          "index": 8,
+          "requested": 140.8,
+          "sheet": 1
+        },
+        {
+          "actual": 140.89,
+          "index": 9,
+          "requested": 140.9,
+          "sheet": 1
+        },
+        {
+          "actual": 140.99,
+          "index": 10,
+          "requested": 141,
+          "sheet": 1
+        },
+        {
+          "actual": 141.09,
+          "index": 11,
+          "requested": 141.1,
+          "sheet": 1
+        },
+        {
+          "actual": 141.19,
+          "index": 12,
+          "requested": 141.2,
+          "sheet": 1
+        },
+        {
+          "actual": 141.29166666666666,
+          "index": 13,
+          "requested": 141.3,
+          "sheet": 1
+        },
+        {
+          "actual": 141.39333333333335,
+          "index": 14,
+          "requested": 141.4,
+          "sheet": 1
+        },
+        {
+          "actual": 141.49333333333334,
+          "index": 15,
+          "requested": 141.5,
+          "sheet": 1
+        },
+        {
+          "actual": 141.59333333333333,
+          "index": 16,
+          "requested": 141.6,
+          "sheet": 1
+        },
+        {
+          "actual": 141.69,
+          "index": 17,
+          "requested": 141.7,
+          "sheet": 1
+        },
+        {
+          "actual": 141.78833333333333,
+          "index": 18,
+          "requested": 141.8,
+          "sheet": 1
+        },
+        {
+          "actual": 141.89,
+          "index": 19,
+          "requested": 141.9,
+          "sheet": 1
+        },
+        {
+          "actual": 141.99,
+          "index": 20,
+          "requested": 142,
+          "sheet": 1
+        },
+        {
+          "actual": 142.09,
+          "index": 21,
+          "requested": 142.1,
+          "sheet": 1
+        },
+        {
+          "actual": 142.19,
+          "index": 22,
+          "requested": 142.2,
+          "sheet": 1
+        },
+        {
+          "actual": 142.29166666666666,
+          "index": 23,
+          "requested": 142.3,
+          "sheet": 1
+        },
+        {
+          "actual": 142.39333333333335,
+          "index": 24,
+          "requested": 142.4,
+          "sheet": 1
+        },
+        {
+          "actual": 142.49166666666667,
+          "index": 25,
+          "requested": 142.5,
+          "sheet": 1
+        },
+        {
+          "actual": 142.59333333333333,
+          "index": 26,
+          "requested": 142.6,
+          "sheet": 1
+        },
+        {
+          "actual": 142.69333333333333,
+          "index": 27,
+          "requested": 142.7,
+          "sheet": 1
+        },
+        {
+          "actual": 142.79166666666666,
+          "index": 28,
+          "requested": 142.8,
+          "sheet": 1
+        },
+        {
+          "actual": 142.89,
+          "index": 29,
+          "requested": 142.9,
+          "sheet": 1
+        }
+      ]
+    },
+    {
+      "name": "phone-lantern-opening-sequence",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "video_sha256": "6982d1bb4ee74192b68254837d5ac08b6d2d717d4b7704eccb7a35c72189504d",
+      "inspected_sheets": [
+        1,
+        2
+      ],
+      "frames": [
+        {
+          "actual": 250.99333333333334,
+          "index": 0,
+          "requested": 251,
+          "sheet": 1
+        },
+        {
+          "actual": 251.09333333333333,
+          "index": 1,
+          "requested": 251.1,
+          "sheet": 1
+        },
+        {
+          "actual": 251.19333333333333,
+          "index": 2,
+          "requested": 251.2,
+          "sheet": 1
+        },
+        {
+          "actual": 251.29333333333332,
+          "index": 3,
+          "requested": 251.3,
+          "sheet": 1
+        },
+        {
+          "actual": 251.38166666666666,
+          "index": 4,
+          "requested": 251.4,
+          "sheet": 1
+        },
+        {
+          "actual": 251.48333333333332,
+          "index": 5,
+          "requested": 251.5,
+          "sheet": 1
+        },
+        {
+          "actual": 251.59333333333333,
+          "index": 6,
+          "requested": 251.6,
+          "sheet": 1
+        },
+        {
+          "actual": 251.69333333333333,
+          "index": 7,
+          "requested": 251.7,
+          "sheet": 1
+        },
+        {
+          "actual": 251.79,
+          "index": 8,
+          "requested": 251.8,
+          "sheet": 1
+        },
+        {
+          "actual": 251.89333333333335,
+          "index": 9,
+          "requested": 251.9,
+          "sheet": 1
+        },
+        {
+          "actual": 251.995,
+          "index": 10,
+          "requested": 252,
+          "sheet": 1
+        },
+        {
+          "actual": 252.095,
+          "index": 11,
+          "requested": 252.1,
+          "sheet": 1
+        },
+        {
+          "actual": 252.195,
+          "index": 12,
+          "requested": 252.2,
+          "sheet": 1
+        },
+        {
+          "actual": 252.295,
+          "index": 13,
+          "requested": 252.3,
+          "sheet": 1
+        },
+        {
+          "actual": 252.395,
+          "index": 14,
+          "requested": 252.4,
+          "sheet": 1
+        },
+        {
+          "actual": 252.49666666666667,
+          "index": 15,
+          "requested": 252.5,
+          "sheet": 1
+        },
+        {
+          "actual": 252.59333333333333,
+          "index": 16,
+          "requested": 252.6,
+          "sheet": 1
+        },
+        {
+          "actual": 252.69166666666666,
+          "index": 17,
+          "requested": 252.7,
+          "sheet": 1
+        },
+        {
+          "actual": 252.795,
+          "index": 18,
+          "requested": 252.8,
+          "sheet": 1
+        },
+        {
+          "actual": 252.89333333333335,
+          "index": 19,
+          "requested": 252.9,
+          "sheet": 1
+        },
+        {
+          "actual": 252.99333333333334,
+          "index": 20,
+          "requested": 253,
+          "sheet": 1
+        },
+        {
+          "actual": 253.09666666666666,
+          "index": 21,
+          "requested": 253.1,
+          "sheet": 1
+        },
+        {
+          "actual": 253.19666666666666,
+          "index": 22,
+          "requested": 253.2,
+          "sheet": 1
+        },
+        {
+          "actual": 253.295,
+          "index": 23,
+          "requested": 253.3,
+          "sheet": 1
+        },
+        {
+          "actual": 253.395,
+          "index": 24,
+          "requested": 253.4,
+          "sheet": 1
+        },
+        {
+          "actual": 253.495,
+          "index": 25,
+          "requested": 253.5,
+          "sheet": 1
+        },
+        {
+          "actual": 253.59666666666666,
+          "index": 26,
+          "requested": 253.6,
+          "sheet": 1
+        },
+        {
+          "actual": 253.695,
+          "index": 27,
+          "requested": 253.7,
+          "sheet": 1
+        },
+        {
+          "actual": 253.79166666666666,
+          "index": 28,
+          "requested": 253.8,
+          "sheet": 1
+        },
+        {
+          "actual": 253.89166666666668,
+          "index": 29,
+          "requested": 253.9,
+          "sheet": 1
+        },
+        {
+          "actual": 253.99166666666667,
+          "index": 0,
+          "requested": 254,
+          "sheet": 2
+        },
+        {
+          "actual": 254.09666666666666,
+          "index": 1,
+          "requested": 254.1,
+          "sheet": 2
+        },
+        {
+          "actual": 254.19166666666666,
+          "index": 2,
+          "requested": 254.2,
+          "sheet": 2
+        },
+        {
+          "actual": 254.29666666666665,
+          "index": 3,
+          "requested": 254.3,
+          "sheet": 2
+        },
+        {
+          "actual": 254.39166666666668,
+          "index": 4,
+          "requested": 254.4,
+          "sheet": 2
+        },
+        {
+          "actual": 254.40833333333333,
+          "index": 5,
+          "requested": 254.5,
+          "sheet": 2
+        },
+        {
+          "actual": 254.59166666666667,
+          "index": 6,
+          "requested": 254.6,
+          "sheet": 2
+        },
+        {
+          "actual": 254.69333333333333,
+          "index": 7,
+          "requested": 254.7,
+          "sheet": 2
+        },
+        {
+          "actual": 254.78333333333333,
+          "index": 8,
+          "requested": 254.8,
+          "sheet": 2
+        },
+        {
+          "actual": 254.9,
+          "index": 9,
+          "requested": 254.9,
+          "sheet": 2
+        },
+        {
+          "actual": 255,
+          "index": 10,
+          "requested": 255,
+          "sheet": 2
+        },
+        {
+          "actual": 255.1,
+          "index": 11,
+          "requested": 255.1,
+          "sheet": 2
+        },
+        {
+          "actual": 255.2,
+          "index": 12,
+          "requested": 255.2,
+          "sheet": 2
+        },
+        {
+          "actual": 255.29833333333335,
+          "index": 13,
+          "requested": 255.3,
+          "sheet": 2
+        },
+        {
+          "actual": 255.395,
+          "index": 14,
+          "requested": 255.4,
+          "sheet": 2
+        },
+        {
+          "actual": 255.495,
+          "index": 15,
+          "requested": 255.5,
+          "sheet": 2
+        },
+        {
+          "actual": 255.59833333333333,
+          "index": 16,
+          "requested": 255.6,
+          "sheet": 2
+        },
+        {
+          "actual": 255.68,
+          "index": 17,
+          "requested": 255.7,
+          "sheet": 2
+        },
+        {
+          "actual": 255.79666666666665,
+          "index": 18,
+          "requested": 255.8,
+          "sheet": 2
+        },
+        {
+          "actual": 255.89833333333334,
+          "index": 19,
+          "requested": 255.9,
+          "sheet": 2
+        },
+        {
+          "actual": 255.99166666666667,
+          "index": 20,
+          "requested": 256,
+          "sheet": 2
+        },
+        {
+          "actual": 256.09833333333336,
+          "index": 21,
+          "requested": 256.1,
+          "sheet": 2
+        },
+        {
+          "actual": 256.1933333333333,
+          "index": 22,
+          "requested": 256.2,
+          "sheet": 2
+        },
+        {
+          "actual": 256.2966666666667,
+          "index": 23,
+          "requested": 256.3,
+          "sheet": 2
+        },
+        {
+          "actual": 256.395,
+          "index": 24,
+          "requested": 256.4,
+          "sheet": 2
+        },
+        {
+          "actual": 256.495,
+          "index": 25,
+          "requested": 256.5,
+          "sheet": 2
+        },
+        {
+          "actual": 256.5966666666667,
+          "index": 26,
+          "requested": 256.6,
+          "sheet": 2
+        },
+        {
+          "actual": 256.69166666666666,
+          "index": 27,
+          "requested": 256.7,
+          "sheet": 2
+        },
+        {
+          "actual": 256.7916666666667,
+          "index": 28,
+          "requested": 256.8,
+          "sheet": 2
+        },
+        {
+          "actual": 256.89166666666665,
+          "index": 29,
+          "requested": 256.9,
+          "sheet": 2
+        }
+      ]
+    },
+    {
+      "name": "phone-lantern-sequence",
+      "source": "b0fbbb31cd2afb84de3263a9baf8063fe2c6600e",
+      "video_sha256": "6982d1bb4ee74192b68254837d5ac08b6d2d717d4b7704eccb7a35c72189504d",
+      "inspected_sheets": [
+        1
+      ],
+      "frames": [
+        {
+          "actual": 259.99,
+          "index": 0,
+          "requested": 260,
+          "sheet": 1
+        },
+        {
+          "actual": 260.09166666666664,
+          "index": 1,
+          "requested": 260.1,
+          "sheet": 1
+        },
+        {
+          "actual": 260.1933333333333,
+          "index": 2,
+          "requested": 260.2,
+          "sheet": 1
+        },
+        {
+          "actual": 260.295,
+          "index": 3,
+          "requested": 260.3,
+          "sheet": 1
+        },
+        {
+          "actual": 260.37833333333333,
+          "index": 4,
+          "requested": 260.4,
+          "sheet": 1
+        },
+        {
+          "actual": 260.5,
+          "index": 5,
+          "requested": 260.5,
+          "sheet": 1
+        },
+        {
+          "actual": 260.59166666666664,
+          "index": 6,
+          "requested": 260.6,
+          "sheet": 1
+        },
+        {
+          "actual": 260.68333333333334,
+          "index": 7,
+          "requested": 260.7,
+          "sheet": 1
+        },
+        {
+          "actual": 260.7816666666667,
+          "index": 8,
+          "requested": 260.8,
+          "sheet": 1
+        },
+        {
+          "actual": 260.8933333333333,
+          "index": 9,
+          "requested": 260.9,
+          "sheet": 1
+        },
+        {
+          "actual": 260.995,
+          "index": 10,
+          "requested": 261,
+          "sheet": 1
+        },
+        {
+          "actual": 261.095,
+          "index": 11,
+          "requested": 261.1,
+          "sheet": 1
+        },
+        {
+          "actual": 261.1983333333333,
+          "index": 12,
+          "requested": 261.2,
+          "sheet": 1
+        },
+        {
+          "actual": 261.2916666666667,
+          "index": 13,
+          "requested": 261.3,
+          "sheet": 1
+        },
+        {
+          "actual": 261.32666666666665,
+          "index": 14,
+          "requested": 261.4,
+          "sheet": 1
+        },
+        {
+          "actual": 261.4916666666667,
+          "index": 15,
+          "requested": 261.5,
+          "sheet": 1
+        },
+        {
+          "actual": 261.5933333333333,
+          "index": 16,
+          "requested": 261.6,
+          "sheet": 1
+        },
+        {
+          "actual": 261.6983333333333,
+          "index": 17,
+          "requested": 261.7,
+          "sheet": 1
+        },
+        {
+          "actual": 261.8,
+          "index": 18,
+          "requested": 261.8,
+          "sheet": 1
+        },
+        {
+          "actual": 261.895,
+          "index": 19,
+          "requested": 261.9,
+          "sheet": 1
+        },
+        {
+          "actual": 262,
+          "index": 20,
+          "requested": 262,
+          "sheet": 1
+        },
+        {
+          "actual": 262.1,
+          "index": 21,
+          "requested": 262.1,
+          "sheet": 1
+        },
+        {
+          "actual": 262.13166666666666,
+          "index": 22,
+          "requested": 262.2,
+          "sheet": 1
+        },
+        {
+          "actual": 262.29833333333335,
+          "index": 23,
+          "requested": 262.3,
+          "sheet": 1
+        },
+        {
+          "actual": 262.39166666666665,
+          "index": 24,
+          "requested": 262.4,
+          "sheet": 1
+        },
+        {
+          "actual": 262.49833333333333,
+          "index": 25,
+          "requested": 262.5,
+          "sheet": 1
+        },
+        {
+          "actual": 262.59833333333336,
+          "index": 26,
+          "requested": 262.6,
+          "sheet": 1
+        },
+        {
+          "actual": 262.69666666666666,
+          "index": 27,
+          "requested": 262.7,
+          "sheet": 1
+        },
+        {
+          "actual": 262.7966666666667,
+          "index": 28,
+          "requested": 262.8,
+          "sheet": 1
+        },
+        {
+          "actual": 262.8983333333333,
+          "index": 29,
+          "requested": 262.9,
+          "sheet": 1
+        }
+      ]
+    }
+  ],
+  "native_separate_gestures": "wallStart=2026-10-24T05:08:39Z; firstGesture=0.533957209 seconds; secondGesture=0.606075083 seconds; total=1.140032292 seconds. No sub-receipt latency threshold is inferred.",
+  "limits": "Actual sampled timestamps may repeat; no complete short helper-body trajectory, sustained performance or physical smoothness claim."
+}
