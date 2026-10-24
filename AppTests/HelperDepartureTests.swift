@@ -4,6 +4,19 @@ import SpriteKit
 import StarfallCore
 @testable import Starfall
 
+/// Observe the actual display loop without replacing the scene's update owner.
+@MainActor private final class DepartureFrameSampler: NSObject, SKSceneDelegate {
+    var completedFrames = 0
+    var sample: (() -> Void)?
+
+    nonisolated func didFinishUpdate(for scene: SKScene) {
+        MainActor.assumeIsolated {
+            completedFrames += 1
+            sample?()
+        }
+    }
+}
+
 final class HelperDepartureTests: XCTestCase {
     @MainActor private func requireNormalMotion() throws {
         guard !UIAccessibility.isReduceMotionEnabled && !UIAccessibility.isVoiceOverRunning else {
@@ -67,34 +80,69 @@ final class HelperDepartureTests: XCTestCase {
         XCTAssertEqual(StarfallMotion.departureDuration, 0.18, accuracy: 0.000001)
         XCTAssertEqual(StarfallMotion.clearDuration, 0.56)
         XCTAssertEqual(StarfallMotion.gravityStart, 0.32)
+        let sampler = DepartureFrameSampler()
+        scene.delegate = sampler
+        defer { sampler.sample = nil; scene.delegate = nil }
         for gem in gems {
             let body = FallingSkyCharacter(gem: gem, step: 54)
             body.position = CGPoint(x: 195, y: 300); scene.addChild(body)
             let original = body.position, size = body.character.size, texture = body.character.texture
             let children = body.children.count, innerChildren = body.character.children.count
-            body.depart(step: 54)
-            XCTAssertNotNil(body.action(forKey: FallingSkyCharacter.departureKey))
+            // Two completed callbacks with the resting body ensure that the
+            // visible SKView has rendered a frame before its short action starts.
+            let readyFrame = sampler.completedFrames + 2
+            let readyDeadline = ContinuousClock.now + .seconds(1)
+            while sampler.completedFrames < readyFrame && ContinuousClock.now < readyDeadline {
+                try await Task.sleep(for: .milliseconds(8))
+            }
+            XCTAssertNotNil(view.window, "gem \(gem.id): the rendering host must remain attached")
+            XCTAssertFalse(view.isPaused); XCTAssertFalse(scene.isPaused)
+            XCTAssertGreaterThanOrEqual(sampler.completedFrames, readyFrame,
+                                        "gem \(gem.id): no rendered-frame readiness before departure")
             var lifted = false, drifted = false, turned = false, lateFade = false, captured = false
-            let deadline = ContinuousClock.now + .seconds(1)
-            while body.parent != nil && ContinuousClock.now < deadline {
+            var captureAttempted = false, frameStates: [String] = []
+            let started = ProcessInfo.processInfo.systemUptime
+            sampler.sample = {
+                let frame = sampler.completedFrames
+                frameStates.append("frame=\(frame) elapsed=\(ProcessInfo.processInfo.systemUptime - started) "
+                    + "position=\(body.position) rotation=\(body.zRotation) alpha=\(body.alpha) attached=\(body.parent != nil)")
+                guard body.parent != nil else { return }
                 lifted = lifted || body.position.y > original.y + 1
                 drifted = drifted || abs(body.position.x - original.x) > 0.5
                 turned = turned || abs(body.zRotation) > 0.01
                 lateFade = lateFade || (body.alpha > 0 && body.alpha < 0.95)
-                XCTAssertEqual(body.character.size, size)
-                XCTAssertEqual(body.xScale, 1); XCTAssertEqual(body.yScale, 1)
-                XCTAssertTrue(body.character.texture === texture)
-                XCTAssertEqual(body.children.count, children)
-                XCTAssertEqual(body.character.children.count, innerChildren)
-                if lifted && turned && !captured, let image = view.texture(from: scene)?.cgImage() {
-                    let attachment = XCTAttachment(image: UIImage(cgImage: image))
-                    attachment.name = "helper-departure-actual-body-\(gem.id)"
-                    attachment.lifetime = .keepAlways; add(attachment); captured = true
+                let state = "gem \(gem.id), frame \(frame)"
+                XCTAssertEqual(body.character.size, size, state)
+                XCTAssertEqual(body.xScale, 1, state); XCTAssertEqual(body.yScale, 1, state)
+                XCTAssertTrue(body.character.texture === texture, state)
+                XCTAssertEqual(body.children.count, children, state)
+                XCTAssertEqual(body.character.children.count, innerChildren, state)
+                // Rasterization is synchronous. It must not interrupt sampling
+                // before the brief late-fade frame has actually been observed.
+                if lifted && drifted && turned && lateFade && !captureAttempted {
+                    captureAttempted = true
+                    if let image = view.texture(from: scene)?.cgImage() {
+                        let attachment = XCTAttachment(image: UIImage(cgImage: image))
+                        attachment.name = "helper-departure-actual-body-\(gem.id)"
+                        attachment.lifetime = .keepAlways; self.add(attachment); captured = true
+                    }
                 }
+            }
+            body.depart(step: 54)
+            XCTAssertNotNil(body.action(forKey: FallingSkyCharacter.departureKey))
+            let deadline = ContinuousClock.now + .seconds(1)
+            while body.parent != nil && ContinuousClock.now < deadline {
                 try await Task.sleep(for: .milliseconds(8))
             }
-            XCTAssertTrue(lifted); XCTAssertTrue(drifted); XCTAssertTrue(turned); XCTAssertTrue(lateFade)
-            XCTAssertTrue(captured)
+            sampler.sample = nil
+            let state = "gem=\(gem.id) grown=\(gem.grown) lifted=\(lifted) drifted=\(drifted) "
+                + "turned=\(turned) lateFade=\(lateFade) captured=\(captured) captureAttempted=\(captureAttempted)"
+            let diagnostics = XCTAttachment(string: ([state] + frameStates).joined(separator: "\n"))
+            diagnostics.name = "helper-departure-frame-states-\(gem.id)"
+            diagnostics.lifetime = .keepAlways; add(diagnostics)
+            XCTAssertTrue(lifted, state); XCTAssertTrue(drifted, state)
+            XCTAssertTrue(turned, state); XCTAssertTrue(lateFade, state)
+            XCTAssertTrue(captured, state)
             assertRetired([body])
         }
     }

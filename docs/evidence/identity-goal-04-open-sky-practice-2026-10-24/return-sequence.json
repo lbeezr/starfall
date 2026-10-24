@@ -1,0 +1,178 @@
+{
+  "duration": 306.89166666666665,
+  "frames": [
+    {
+      "actual": 108.795,
+      "index": 0,
+      "requested": 108.8,
+      "sheet": 0
+    },
+    {
+      "actual": 108.89666666666666,
+      "index": 1,
+      "requested": 108.89999999999999,
+      "sheet": 0
+    },
+    {
+      "actual": 108.99666666666667,
+      "index": 2,
+      "requested": 109,
+      "sheet": 0
+    },
+    {
+      "actual": 109.09666666666666,
+      "index": 3,
+      "requested": 109.1,
+      "sheet": 0
+    },
+    {
+      "actual": 109.19666666666667,
+      "index": 4,
+      "requested": 109.2,
+      "sheet": 0
+    },
+    {
+      "actual": 109.29833333333333,
+      "index": 5,
+      "requested": 109.3,
+      "sheet": 0
+    },
+    {
+      "actual": 109.39666666666666,
+      "index": 6,
+      "requested": 109.39999999999999,
+      "sheet": 0
+    },
+    {
+      "actual": 109.49833333333333,
+      "index": 7,
+      "requested": 109.5,
+      "sheet": 0
+    },
+    {
+      "actual": 109.59666666666666,
+      "index": 8,
+      "requested": 109.6,
+      "sheet": 0
+    },
+    {
+      "actual": 109.69833333333334,
+      "index": 9,
+      "requested": 109.7,
+      "sheet": 0
+    },
+    {
+      "actual": 109.79666666666667,
+      "index": 10,
+      "requested": 109.8,
+      "sheet": 0
+    },
+    {
+      "actual": 109.89833333333333,
+      "index": 11,
+      "requested": 109.89999999999999,
+      "sheet": 0
+    },
+    {
+      "actual": 109.99833333333333,
+      "index": 12,
+      "requested": 110,
+      "sheet": 0
+    },
+    {
+      "actual": 110.09833333333333,
+      "index": 13,
+      "requested": 110.1,
+      "sheet": 0
+    },
+    {
+      "actual": 110.19666666666667,
+      "index": 14,
+      "requested": 110.2,
+      "sheet": 0
+    },
+    {
+      "actual": 110.29666666666667,
+      "index": 15,
+      "requested": 110.3,
+      "sheet": 0
+    },
+    {
+      "actual": 110.39666666666666,
+      "index": 16,
+      "requested": 110.39999999999999,
+      "sheet": 0
+    },
+    {
+      "actual": 110.49666666666667,
+      "index": 17,
+      "requested": 110.5,
+      "sheet": 0
+    },
+    {
+      "actual": 110.6,
+      "index": 18,
+      "requested": 110.6,
+      "sheet": 0
+    },
+    {
+      "actual": 110.69833333333334,
+      "index": 19,
+      "requested": 110.7,
+      "sheet": 0
+    },
+    {
+      "actual": 110.8,
+      "index": 20,
+      "requested": 110.8,
+      "sheet": 0
+    },
+    {
+      "actual": 110.89333333333333,
+      "index": 21,
+      "requested": 110.89999999999999,
+      "sheet": 0
+    },
+    {
+      "actual": 110.89333333333333,
+      "index": 22,
+      "requested": 111,
+      "sheet": 0
+    },
+    {
+      "actual": 111.00833333333334,
+      "index": 23,
+      "requested": 111.1,
+      "sheet": 0
+    },
+    {
+      "actual": 111.2,
+      "index": 24,
+      "requested": 111.2,
+      "sheet": 0
+    },
+    {
+      "actual": 111.3,
+      "index": 25,
+      "requested": 111.3,
+      "sheet": 0
+    },
+    {
+      "actual": 111.39666666666666,
+      "index": 26,
+      "requested": 111.39999999999999,
+      "sheet": 0
+    },
+    {
+      "actual": 111.5,
+      "index": 27,
+      "requested": 111.5,
+      "sheet": 0
+    }
+  ],
+  "step": 0.1,
+  "video": "/private/tmp/starfall-identity-04-20261024/phone-copy-final.mp4",
+  "source": "52b35518a96418937fed01e2390150b1d6293441",
+  "actual_bundle": "dev.local",
+  "review": "Inspected all28sampled frames as a contact sheet; not every recorded display frame or a physical/performance measurement."
+}

@@ -157,6 +157,8 @@ enum SkyCopy {
         case practiceExchangeDetail = "practiceExchangeDetail"
         case practiceEmptySpaceDetail = "practiceEmptySpaceDetail"
         case practiceTraceDetail = "practiceTraceDetail"
+        case practiceTracePrompt = "practiceTracePrompt"
+        case practiceTraceComplete = "practiceTraceComplete"
         case practiceDiagonalDetail = "practiceDiagonalDetail"
         case practiceGapDetail = "practiceGapDetail"
         case practiceBranchDetail = "practiceBranchDetail"

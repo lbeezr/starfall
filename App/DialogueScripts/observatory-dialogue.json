@@ -1395,6 +1395,8 @@
     "practiceExchangeTitle": "Move in four directions",
     "practiceEmptySpaceTitle": "Move into space",
     "practiceTraceTitle": "Draw five stars",
+    "practiceTracePrompt": "Open Sky: hold, trace five of six Aqua stars, then lift. Your drawing returns; one stays.",
+    "practiceTraceComplete": "Five helpers share light as your drawing returns. One Aqua stays. Retry to choose again.",
     "practiceDiagonalTitle": "Draw diagonally",
     "practiceGapTitle": "Cross one gap",
     "practiceBranchTitle": "Retrace a branch",

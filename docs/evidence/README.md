@@ -1,5 +1,7 @@
 # Evidence index
 
+[Open Sky’s choose-five practice](identity-goal-04-open-sky-practice-2026-10-24/README.md) records optional Hint, either-five acceptance, exact retained helpers, saved-round isolation and normal/AX3XL Calm native reading. The first viewport weakness and bounded copy refinement retain their separate source receipts.
+
 [Helpers leave and light travels onward](identity-goal-03-helper-departures-2026-10-24/README.md) records actual-body departures, exact manual/automatic membership, quiet/interruption behavior and eight native executions, with the initial hosted measurement correction and native sampling limit retained.
 
 [Selective stars kept behind](identity-goal-02-retained-stars-2026-10-24/README.md) records non-color chosen/retained cues, exact release/survivor contrasts, dense phone/tablet and AX3XL Calm, with source boundaries and initial failures retained.
