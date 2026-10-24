@@ -6,6 +6,8 @@ Keep **twelve earned repairs** as the campaign baseline. Seven places have produ
 
 **Next action:** A later Bell production packet must select a versioned encounter contract, witness its two legal plans, and prove one rich phone composition natively before expanding the family. This document completes [planning leaf #254](https://github.com/lbeezr/starfall/issues/254); it does not register a challenge, choose its target or authorize mass asset production.
 
+**Current readiness correction — October 24:** Seven places now have automatic-pattern definitions: Lantern4/Full6, Ribbon4/Full7, Kite4, Seed4, Silver4, Frostfruit8 and Sunwheel9. Optional Lantern mastery is implemented. The [round/repeat comparison](ROUND_PACING_AND_REPEAT_VALUE.md) records their current objectives and remaining player questions. The October 22 table and content budget below retain their original source; their readiness and proposed encounter columns are historical, not the current registry. Bell Choir remains unbuilt.
+
 ## The journey we are budgeting
 
 <img src="world-01/map-v2-no-helpers.png" width="550" alt="Approved twelve-place Starfall map concept, with Bell Choir's three hanging chimes between Sunwheel Mill and Starferry Station">
@@ -27,7 +29,7 @@ Keep **twelve earned repairs** as the campaign baseline. Seven places have produ
 | 11 Petal · Night's Edge | **Unbuilt** | Proposed preparation and recoverable pressure; a revealed route. | One witnessed arrangement and lens/beam finish; no new obstruction by default. |
 | 12 Hollow Crown · Night's Edge | **Unbuilt** | Proposed synthesis of learned decisions; circulating light returned. | Final encounter plus reservoir/map payoff; the announced restoration objective completes the job. |
 
-Only the first pair has authored current-pattern definitions. All five other ready places retain seed-42/18-light rules. New first-pair visits use revision-4 straight runs of at least four matching stars, with unchanged squares/crosses; retained revision 3 keeps seven-star lines and older definitions keep their controls. [Current trial](../evidence/four-star-lines-2026-10-22/README.md). Attractive places do not establish different gameplay or campaign hours.
+At this document’s October 22 source, only the first pair had authored current-pattern definitions; all five other ready places retained seed-42/18-light rules. That readiness is historical, superseded by the October 24 correction above. New first-pair visits use revision-4 straight runs of at least four matching stars, with unchanged squares/crosses; retained revision 3 keeps seven-star lines and older definitions keep their controls. [Current trial](../evidence/four-star-lines-2026-10-22/README.md). Attractive places do not establish different gameplay or campaign hours.
 
 For art/native acceptance, the ready seven reuse their existing production packages and [source-bound evidence](WORLD_ATLAS.md), retaining documented physical/motion/accessibility limits. Each unbuilt place needs its own native composition, cumulative-state, interaction and access evidence after Bell's pilot; a map concept or artwork count does not supply that acceptance.
 
