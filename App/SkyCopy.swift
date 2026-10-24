@@ -232,6 +232,7 @@ enum SkyCopy {
         case worldRecovery
         case worldTitle = "worldTitle"
         case worldBack
+        case worldViewRestored
         case worldPlay, worldRestart, worldChoose, worldContinue, worldExplore
         case worldNewVisitGoal, worldSavedProgress
         case worldMap = "worldMap"

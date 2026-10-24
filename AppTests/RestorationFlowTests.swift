@@ -78,8 +78,11 @@ final class RestorationFlowTests: XCTestCase {
                 guard case .began(let request) = flow.handle(.begin, hasSavedSky: true, entryID: id) else {
                     return XCTFail("Expected the explicit Begin boundary")
                 }
-                store.beginEntry(request)
-                let opening = FallingSky.freshChallenge(destination)
+                XCTAssertTrue(store.beginEntry(request))
+                let fresh = FallingSky.freshChallenge(destination)
+                let opening = destination == .firstLight
+                    ? try enrolledMasteryOpening(fresh, matching: store.game)
+                    : fresh
                 XCTAssertEqual(store.game, opening)
                 XCTAssertTrue(store.isPaused); XCTAssertTrue(store.suspended)
                 XCTAssertEqual(try SkySaveArchive.decode(XCTUnwrap(defaults.data(forKey: SkySaveArchive.key))), opening)

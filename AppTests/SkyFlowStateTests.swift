@@ -1,4 +1,6 @@
 import XCTest
+import SwiftUI
+import UIKit
 import StarfallCore
 @testable import Starfall
 
@@ -901,6 +903,146 @@ final class SkyFlowStateTests: XCTestCase {
             XCTAssertEqual(welcome.score, result.score)
             XCTAssertEqual(welcome.target, result.target)
             XCTAssertTrue(welcome.summary?.contains("\(SkyCopy.score(result.score)) of \(SkyCopy.score(target)) starlight") == true)
+        }
+    }
+}
+
+/// Isolates SwiftUI's real onChange transaction semantics. It does not claim to
+/// invoke FallingSkyView's private navigation callbacks or SpriteKit attachment.
+@MainActor private final class ReadinessObservationGate: ObservableObject {
+    @Published var active = true
+    @Published var modal = false
+    @Published var renderTick = 0
+    var renderedTick = 0
+    var admissions = 0
+}
+
+private enum ReadinessObservationValue: Equatable {
+    case boolean(Bool), revision(UInt64)
+}
+
+@MainActor private struct ReadinessObservationHost: View {
+    let store: FallingSkyStore
+    @ObservedObject var gate: ReadinessObservationGate
+    let usesRevision: Bool
+    private var observed: ReadinessObservationValue {
+        usesRevision ? .revision(store.sceneReadinessRevision) : .boolean(store.sceneReady)
+    }
+    var body: some View {
+        Text(store.canReceiveInput ? "Ready" : "Suspended")
+            .onAppear { admit() }
+            .onChange(of: observed) { _, _ in admit() }
+            .onChange(of: gate.active) { _, _ in admit() }
+            .onChange(of: gate.modal) { _, _ in admit() }
+            .onChange(of: gate.renderTick) { _, value in gate.renderedTick = value }
+    }
+    private func admit() {
+        gate.admissions += 1
+        // This isolated host has no ceremony or handoff. All other suspension
+        // inputs retain the production policy rather than resuming on true alone.
+        store.setSuspended(!gate.active || gate.modal || store.persistenceNotice != nil || !store.sceneReady)
+    }
+}
+
+extension SkyFlowStateTests {
+    @MainActor private func readinessHost(_ store: FallingSkyStore, usesRevision: Bool)
+        -> (UIWindow, ReadinessObservationGate, UIWindow?) {
+        let prior = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+            .flatMap(\.windows).first(where: \.isKeyWindow)
+        let gate = ReadinessObservationGate()
+        let controller = UIHostingController(rootView: ReadinessObservationHost(store: store, gate: gate, usesRevision: usesRevision))
+        let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 390, height: 844))
+        window.rootViewController = controller; window.makeKeyAndVisible()
+        controller.view.layoutIfNeeded()
+        return (window, gate, prior)
+    }
+
+    @MainActor private func renderedReadinessUpdate(_ condition: () -> Bool) async throws {
+        let limit = ContinuousClock.now + .seconds(3)
+        while !condition() && ContinuousClock.now < limit { try await Task.sleep(for: .milliseconds(10)) }
+        XCTAssertTrue(condition(), "The bounded real SwiftUI update must finish")
+    }
+
+    @MainActor func testCoalescedReadinessBounceReadmitsOnlyThroughRevisionObservation() async throws {
+        for usesRevision in [false, true] {
+            for paused in [false, true] {
+                let (store, _, clock, defaults) = make(legacyClock: true)
+                store.scene.onReadinessChanged?(true)
+                store.setSuspended(false)
+                if !paused { store.togglePause(); clock.advance(0.1) }
+                let (window, gate, prior) = readinessHost(store, usesRevision: usesRevision)
+                defer { window.isHidden = true; window.rootViewController = nil; prior?.makeKey(); store.setSuspended(true) }
+                try await renderedReadinessUpdate { gate.admissions > 0 }
+                let game = store.game, bytes = defaults.data(forKey: SkySaveArchive.key)
+                let world = defaults.data(forKey: WorldJourneyStore.key), mastery = defaults.data(forKey: StoryMasteryStore.key)
+                let remainder = store.showerCountdown.remaining, staleRain = clock.action
+                let admissions = gate.admissions
+                // Both scene callbacks occur before yielding to a rendered update.
+                store.scene.onReadinessChanged?(false)
+                XCTAssertTrue(store.suspended, "False freezes synchronously, before observation")
+                XCTAssertNil(clock.deadline)
+                staleRain?()
+                store.scene.onReadinessChanged?(true)
+                XCTAssertTrue(store.sceneReady)
+                XCTAssertTrue(store.suspended, "True alone cannot resume the Store")
+                gate.renderTick += 1
+                try await renderedReadinessUpdate { gate.renderedTick == gate.renderTick }
+                if usesRevision {
+                    try await renderedReadinessUpdate { !store.suspended }
+                    XCTAssertGreaterThan(gate.admissions, admissions)
+                    XCTAssertTrue(store.canReceiveInput)
+                } else {
+                    XCTAssertEqual(gate.admissions, admissions, "The old true→true observation loses the transient false")
+                    XCTAssertTrue(store.suspended)
+                    XCTAssertFalse(store.canReceiveInput)
+                }
+                XCTAssertEqual(store.game, game)
+                XCTAssertEqual(store.isPaused, paused)
+                XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)
+                XCTAssertEqual(defaults.data(forKey: WorldJourneyStore.key), world)
+                XCTAssertEqual(defaults.data(forKey: StoryMasteryStore.key), mastery)
+                XCTAssertEqual(store.showerCountdown.remaining, remainder, accuracy: 0.0001)
+                if usesRevision && !paused {
+                    XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, remainder, accuracy: 0.0001)
+                } else { XCTAssertNil(clock.deadline) }
+            }
+        }
+    }
+
+    @MainActor func testReadinessBounceCannotReadmitThroughAModalOrBackgroundGate() async throws {
+        for background in [false, true] {
+            let (store, _, clock, defaults) = make(legacyClock: true)
+            store.scene.onReadinessChanged?(true)
+            store.setSuspended(false); store.togglePause(); clock.advance(0.1)
+            let (window, gate, prior) = readinessHost(store, usesRevision: true)
+            defer { window.isHidden = true; window.rootViewController = nil; prior?.makeKey(); store.setSuspended(true) }
+            try await renderedReadinessUpdate { gate.admissions > 0 }
+            let game = store.game, bytes = defaults.data(forKey: SkySaveArchive.key)
+            let world = defaults.data(forKey: WorldJourneyStore.key), mastery = defaults.data(forKey: StoryMasteryStore.key)
+            let remainder = store.showerCountdown.remaining, staleRain = clock.action
+            if background { gate.active = false } else { gate.modal = true }
+            try await renderedReadinessUpdate { store.suspended }
+            let admissions = gate.admissions
+            store.scene.onReadinessChanged?(false)
+            store.scene.onReadinessChanged?(true)
+            gate.renderTick += 1
+            try await renderedReadinessUpdate { gate.renderedTick == gate.renderTick && gate.admissions > admissions }
+            XCTAssertTrue(store.sceneReady)
+            XCTAssertTrue(store.suspended)
+            XCTAssertFalse(store.canReceiveInput)
+            XCTAssertNil(clock.deadline)
+            staleRain?(); clock.advance(100)
+            XCTAssertEqual(store.game, game)
+            XCTAssertEqual(store.showerCountdown.remaining, remainder, accuracy: 0.0001)
+            if background { gate.active = true } else { gate.modal = false }
+            try await renderedReadinessUpdate { !store.suspended }
+            XCTAssertFalse(store.isPaused)
+            XCTAssertTrue(store.canReceiveInput)
+            XCTAssertEqual(try XCTUnwrap(clock.deadline) - clock.now, remainder, accuracy: 0.0001)
+            XCTAssertEqual(store.game, game)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), bytes)
+            XCTAssertEqual(defaults.data(forKey: WorldJourneyStore.key), world)
+            XCTAssertEqual(defaults.data(forKey: StoryMasteryStore.key), mastery)
         }
     }
 }

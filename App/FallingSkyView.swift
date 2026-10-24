@@ -123,7 +123,7 @@ import StarfallCore
         .onChange(of: scenePhase) { invalidateInteraction(); updateSuspension() }
         .onChange(of: store.persistenceNotice) { invalidateInteraction(); finishHandoffIfReady(); updateSuspension() }
         .onChange(of: settings) { finishHandoffIfReady(); updateSuspension() }
-        .onChange(of: store.sceneReady) { finishHandoffIfReady(); updateSuspension() }
+        .onChange(of: store.sceneReadinessRevision) { finishHandoffIfReady(); updateSuspension() }
         .onChange(of: flow) { cancelConstellation(); updateSuspension() }
         .onChange(of: endingReady) { updateSuspension() }
         .onChange(of: reduceMotion) { updateMotion() }
@@ -789,6 +789,7 @@ import StarfallCore
                                    store.journey.journey.canEnter(location) else { return }
                              handleFlowAction(challenge.flowAction)
                          }, resume: canResumeMapLocation ? { handleFlowAction(.resume) } : nil,
+                         viewRestored: openRestoredPlace,
                          learn: { menu = .tutorial }, done: { handleFlowAction(.worldBack) })
     }
 
@@ -807,8 +808,17 @@ import StarfallCore
         menu = .lastClear
     }
 
+    private func openRestoredPlace(_ snapshot: SkyRestoredPlaceSnapshot) {
+        guard scenePhase == .active, flow.screen == .worldMap, menu == nil,
+              snapshot.matches(store.journey.journey) else { return }
+        menu = .restoredPlace(snapshot)
+    }
+
     @ViewBuilder private func settingsView(_ destination: SkyMenuDestination) -> some View {
         switch destination {
+        case .restoredPlace(let snapshot):
+            SkyRestoredPlaceView(snapshot: snapshot, active: scenePhase == .active,
+                                 quiet: quietMotion, back: { menu = nil })
         case .lastClear:
             NavigationStack {
                 if let snapshot = store.lastClear {
@@ -1007,5 +1017,6 @@ private extension FallingSkyView {
 private enum SkyMenuDestination: Hashable, Identifiable {
     case game, welcome, tutorial, lastClear
     case practice(SkyTutorial)
+    case restoredPlace(SkyRestoredPlaceSnapshot)
     var id: Self { self }
 }
