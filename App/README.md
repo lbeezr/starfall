@@ -1,5 +1,7 @@
 # iOS application
 
+`RestorationAwardResponse` shares receipt admission and actual arrival between Lantern and Ribbon. `RibbonAwardResponse` draws four local crossed threads through the existing scenery Canvas and composition selector; latest-receipt cancellation owns its lifetime. [Identity goal8 evidence](../docs/evidence/identity-goal-08-ribbon-response-2026-10-24/README.md).
+
 Successive recipe phases keep at most two preceding exact figures beside the active return in `CascadeReturnLayout`. Only the current receipt emits packets and acknowledges its actual destination after arrival; receipt replacement cancels the superseded flight. Separate actions start a new strip, and quiet presentation shows the same bounded causal prefix directly. The Store rejects invalid, duplicate and backward phase callbacks without delaying gameplay. [Identity goal6 evidence](../docs/evidence/identity-goal-06-cascade-returns-2026-10-24/README.md).
 
 Committed automatic recipe phases now return every actual square/cross/line as separate geometry, including simultaneous overlaps. `StarlightCelebration.Pattern` and `PatternReturnLayout` reuse the existing affine return, easing, Canvas and cancellation; manual walks keep their exact topology. Story reading layouts share the protected return band. [Identity goal5 acceptance](../docs/evidence/identity-goal-05-story-patterns-2026-10-24/README.md).
