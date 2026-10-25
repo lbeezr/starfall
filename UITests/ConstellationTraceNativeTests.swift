@@ -1,10 +1,23 @@
 import XCTest
 
 final class ConstellationTraceNativeTests: XCTestCase {
-    @MainActor private func launch(_ fixture:String = "diagonalSix", large:Bool = false) -> XCUIApplication {
+    @MainActor private func launch(_ fixture:String = "diagonalSix", large:Bool = false,
+                                   normal: Bool = false) -> XCUIApplication {
         continueAfterFailure=false
+        if normal {
+            let (settings, reduce) = NativeSystemMotionSettings.open()
+            let original = reduce.value as? String == "1"
+            NativeSystemMotionSettings.set(false, on: reduce)
+            settings.terminate()
+            addTeardownBlock { @MainActor in
+                let (settings, reduce) = NativeSystemMotionSettings.open()
+                NativeSystemMotionSettings.set(original, on: reduce)
+                settings.terminate()
+            }
+        }
         let app=XCUIApplication()
         app.launchArguments=["--starfalls-reset","--constellation-fixture=\(fixture)"]
+        if normal { app.launchArguments += ["-calmEffects", "NO"] }
         if large { app.launchArguments += ["-UIPreferredContentSizeCategoryName","UICTContentSizeCategoryAccessibilityXXXL"] }
         app.launch()
         XCTAssertTrue(app.buttons["experiment.cell.0.0"].waitForExistence(timeout:10))
@@ -187,7 +200,7 @@ final class ConstellationTraceNativeTests: XCTestCase {
     }
 
     @MainActor func testTracedSelectionAllowsNextClearAndSurvivesLifecycle() {
-        let app = launch(); defer { app.terminate() }
+        let app = launch(normal: true); defer { app.terminate() }
         drag(app, from: (0,0), to: (4,4)); score(5, app)
         XCTAssertTrue(app.buttons["experiment.cell.5.5"].label.contains("Twinkle"))
         // No receipt-expiry wait precedes this following ordinary clear. Native
@@ -211,7 +224,7 @@ final class ConstellationTraceNativeTests: XCTestCase {
         done.tap(); score(20, app)
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, board)
         XCTAssertEqual(app.buttons["experiment.cell.0.5"].label, survivor)
-        app.terminate(); app.launchArguments = []; app.launch()
+        app.terminate(); app.launchArguments = ["-calmEffects", "NO"]; app.launch()
         XCTAssertTrue(app.buttons["sky.resume"].waitForExistence(timeout: 10))
         app.buttons["sky.resume"].tap(); score(20, app)
         XCTAssertEqual(app.otherElements["experiment.board"].value as? String, board)

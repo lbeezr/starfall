@@ -155,6 +155,11 @@ import StarfallCore
             && !store.game.supportsManualClears && !store.game.usesFullBoardRefill
     }
 
+    private var compactReadingSky: Bool {
+        compactStoryInstruments || (horizontalSizeClass == .compact && store.tutorial == nil
+            && store.game.challenge == nil)
+    }
+
     private var gameContent: some View {
         ZStack {
             SkyBackdrop().ignoresSafeArea()
@@ -165,7 +170,7 @@ import StarfallCore
                     if store.tutorial != nil && !largeText && !landscape {
                         tutorialPlayfield(viewport: safeViewport.size)
                     } else if largeText || (landscape && canvasHeight < 700) || store.tutorial != nil
-                        || (compactStoryInstruments && !landscape
+                        || (compactReadingSky && !landscape
                             && !usesIslandTimer(size: CGSize(width: safeViewport.size.width, height: canvasHeight),
                                                 topInset: safeViewport.safeAreaInsets.top)) {
                         readingPlayfield(viewport: safeViewport.size, landscape: landscape)

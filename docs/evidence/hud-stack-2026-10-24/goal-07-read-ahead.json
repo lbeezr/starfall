@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "goal": 7,
+  "issue": 388,
+  "issueURL": "https://github.com/lbeezr/starfall/issues/388",
+  "title": "Causal move-to-earned-light attention",
+  "status": "HISTORICAL_READ_AHEAD; activated only after verified Goal6 PR407/main5b783e47, see goal-07-acceptance.json",
+  "observedCommit": "87f846df3870df5d5af8740c6f5185d61bf66805",
+  "recordedUTC": "2026-10-25T00:36:05.926929+00:00",
+  "sourceLimit": "Goal 2 is active. Re-read the actual merged receipt/type/contrast/control/forecast/pressure owners when goal 7 activates. This record implements and accepts no future goal.",
+  "issueOutcome": "Refine shared visual emphasis across move/clear/cascade/score/receiver feedback while keeping next input legible. Reuse actual receipt/cancellation owners and reserve text/control clearance. Prove normal and quiet meaning plus replacement/interruption.",
+  "alreadyOwned": [
+    {
+      "owner": "FallingSkyStore.present / celebrate / celebratePhase",
+      "contract": "Core outcome is committed and saved before presentation. Each admitted increasing phase callback publishes its own before-board contributors and actual cumulative award; quiet publishes one final aggregate. Publication is ticket/latest/suspension guarded. Score text displays committed game.displayScore immediately, independent of arrival."
+    },
+    {
+      "owner": "SkyLightReceiptSession",
+      "contract": "One latest live immutable receipt, 1.4-second lifetime, replacement/expiry/round-generation cancellation. Expiry cannot finish gameplay. Last-clear and last-earned records are separate in-session facts; they are not second live awards."
+    },
+    {
+      "owner": "FallingSkyScene.animateResolution / StarfallMotion",
+      "contract": "Actual exchange, pop, settle/refill and phaseBegan own sprite presentation. Existing exchange 0.14s, gather 0.06s, departure 0.18s, pop 0.22s and settle/read 0.20/0.04s must not be retimed for HUD art. Stable input admission remains the presentation ledger/store responsibility."
+    },
+    {
+      "owner": "StarlightCelebration / StarlightCelebrationOverlay",
+      "contract": "At most six physical-light contributor packets, exact separate point award, real figure paths and bounded causal prefix. One existing Timeline/Canvas uses LandingGeometry and measured score/header/award/return anchors; it is passive, with no persistence/input capability."
+    },
+    {
+      "owner": "RestorationEnvironment / RestorationLayout / LanternAwardResponse / RibbonAwardResponse",
+      "contract": "One painting transform owns actual receiving aperture/seam. Material-specific acknowledgement is behind native HUD; overlay skips duplicate response for Lantern/Ribbon. Other destinations retain generic response. No extra score or progress commit occurs on arrival."
+    }
+  ],
+  "phaseBoundaries": {
+    "source": "Each new live receipt starts at its actual published clear/phase. Source cells and contributor identities come from that committed preclear board; a preceding figure is inert geometry and cannot re-emit packets.",
+    "localClear": "Current source pulse runs under age 0.5s. Exceptional aurora runs under 0.85s, currently centered at board.midX / board.minY + 0.45*height rather than the already computed actual cleared-cell centroid.",
+    "delivery": "Restoration flight starts at gather 0.06s, lasts 0.32s with 0.015s stagger; sixth packet arrives at 0.455s, before existing 0.56s clear handoff. Score fallback remains start 0.15s, duration 0.48s, stagger 0.025s; last possible arrival 0.755s.",
+    "acknowledgement": "receiverProgress is absent before the active receipt final packet, then advances over 0.32s. Quiet directly shows the same committed receiver/figures. Existing prefix figures cannot restart it.",
+    "returnAndExit": "Exact figure return arrival is 0.92s. Existing overlay exit begins 1.08s and ends at 1.4s. New input and result handoff must never wait for either phase."
+  },
+  "carriedGoal1": "Packet heads/tails/composited shadows and returned figure ink exclude measured header/score; protected return and award regions retain native text/control clearance. Goal 7 must add a visible refinement beyond that already merged mask.",
+  "smallVisibleHypothesis": {
+    "outcome": "Focus exceptional clear emphasis on the actual committed cleared group so attention begins at the action before the existing packet flight and receiver answer.",
+    "minimalChange": "Compare a source-centered, locally bounded version of the existing exceptional aurora with the current board-centered wash. Reuse the origin already computed from event.cells, keep one finite Canvas effect, and register its intended transient receipt role/tokens in the official shared system before use. Keep packet paths/timing, score facts, figure topology, receiver response and scene timings intact.",
+    "reason": "The current source pulse already uses the real cleared-cell centroid, while its accompanying exceptional radial wash uses a fixed board center. This is a concrete small emphasis seam, not evidence that the current causal receipt machinery is missing or broken.",
+    "scope": "One existing visual role/geometry refinement in the shared receipt owner. No new art, screen-local overlay, score ticking, extra flight, new receipt/session/clock, sound/haptic output, preference or gameplay delay.",
+    "quiet": "Keep the settled exact award/causal figures and actual receiver meaningful without flight or repeated flash. Quiet need not invent an animated equivalent for a purely transient source wash.",
+    "rejectWhen": "Reject glow that covers next-choice stars, forecast/score/guide ink, a ceiling warning or native controls; decoration cannot alter their geometry. Reconsider the hypothesis if current merged evidence shows no visible benefit. No present visual failure is inferred solely from these source literals."
+  },
+  "observableAcceptance": [
+    "Normal exceptional clear begins visibly at the actual chosen group, then uses the existing flight/receiver; ordinary clear and simultaneous/separate actions retain their correct categories and exact awards.",
+    "Two/three-phase actual chains show their own active source and inert earlier figures; no future phase, duplicate award, re-emission or false chain is shown.",
+    "Complete whole-screen default phone, compact AX5 and actual tablet show readable score/forecast/pressure/guide and next legal stars throughout sampled source, flight, arrival and return phases. Inspect recorded normal motion separately from stills.",
+    "Quiet shows the same exact outcome/receiver once. Replacement, menu/background, replay and terminal handoff retire old live art and reject late callbacks without changing round/save/world/deadline.",
+    "Keep score/target full native fonts and all existing 44/48-point controls, common board mapping, strict packet masking and zero-skip/condition-based test gates."
+  ],
+  "existingVerification": {
+    "hostedSelectors": [
+      "StarfallAppTests/StarlightCelebrationTests/testCausalReceiptsUseEachPhaseBoardAndGrowTheCommittedAward",
+      "StarfallAppTests/StarlightCelebrationTests/testPacketInkAndShadowLeaveTheScoreReadableAtBothDestinations",
+      "StarfallAppTests/StarlightCelebrationTests/testConcurrentAwardsReplaceOnceWithoutOwningInputOrSave",
+      "StarfallAppTests/StarlightCelebrationTests/testInterruptionsCancelReceiptAndRejectStaleCompletion",
+      "StarfallAppTests/StarlightCelebrationTests/testExpiryCannotFinishGameplayPresentation",
+      "StarfallAppTests/CascadeReturnTests/testQuietTwoAndThreePhaseReturnsShowTheSameFinalCausalPrefixOnce",
+      "StarfallAppTests/CascadeReturnTests/testReceiverAcknowledgesOnlyActualActivePacketArrivalAndQuietShowsSameStaticReceipt",
+      "StarfallAppTests/CascadeReturnTests/testRenderedChronologicalFiguresRemainVisibleAndOnlyArrivedPacketsLightTheReceiver",
+      "StarfallAppTests/LanternAwardResponseTests/testEnvironmentOwnsArrivalBelowHeaderAndOverlayNeverDuplicatesItsResponse",
+      "StarfallAppTests/RibbonAwardResponseTests/testActualSceneryOwnerDrawsThreadsBelowHeaderWithoutDuplicateOrEarlyAcknowledgement",
+      "StarfallAppTests/SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls"
+    ],
+    "nativeSelectors": [
+      "StarfallUITests/CascadeReturnInteractionTests/testNormalTwoPhaseChainSeparateActionsAndReplay",
+      "StarfallUITests/CascadeReturnInteractionTests/testNormalDenseThreePhaseRibbonReturnInterruptionAndReplay",
+      "StarfallUITests/CascadeReturnInteractionTests/testLargestCalmDenseChainAndSimultaneousPatternsKeepRetainedRound",
+      "StarfallUITests/LanternAwardResponseInteractionTests/testNormalBelowMilestoneAwardNoAwardContrastAndExactReplay",
+      "StarfallUITests/RibbonAwardResponseInteractionTests/testLargestCalmSameAwardPortraitLandscapeAndExactReplay"
+    ],
+    "nativeIdentities": [
+      "experiment.board",
+      "experiment.cell.<row>.<column>",
+      "experiment.score",
+      "experiment.settings",
+      "sky.worldMap",
+      "lantern.restoration",
+      "ribbon.restoration"
+    ],
+    "smallestExtension": "Reuse existing receipt raster and normal/quiet native journeys; add a behaviorally useful actual-source versus off-source emphasis/ink comparison in their current harness only if the refinement is selected. Retain every timing, exact-outcome, cancellation and input assertion; no new fixture/route is justified by this plan.",
+    "stageSelection": "These are discovered existing selectors, not results or a requirement to run every class. Coordinator selects affected bounded serial stages at activation; Core, build, hygiene and diff requirements still apply. Release/membership only if later changes warrant them."
+  },
+  "unproven": [
+    "Whether localized exceptional emphasis improves actual human recognition or enjoyment.",
+    "Exact radius/opacity and source grouping at crowded/largest-text/bright-painting states.",
+    "Physical comfort/performance, minimum-OS execution and actual VoiceOver; existing physical issue #209 remains separate."
+  ],
+  "performed": "Read-only exact issue/source/capture audit and this planning JSON only. No App/test changes, builds, hosted/native runs, simulator operations or recursive workers."
+}

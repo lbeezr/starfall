@@ -1,0 +1,795 @@
+{
+  "schemaVersion": 1,
+  "goal": 7,
+  "reviewer": "/root/hud_audit",
+  "recordedUTC": "2026-10-25T05:47:12.718747+00:00",
+  "status": "HOSTED_REVIEW_COMPLETE; WHOLE_COMPOSITION_HOLD; no Goal7 adoption",
+  "verdict": {
+    "sourceLightComponent": "BOUNDED_PASS for the inspected source-local wash and ten isolated raster cases.",
+    "wholeComposition": "HOLD: current default-size receipt ink intersects ceiling badge 4 at both viewports. AX5 captures additionally do not establish settled complete-reader/footer composition.",
+    "overallGoal": "Not adopted by this review. Native current-story comparison and other coordinator gates remain separate; component success cannot override the visible current failure."
+  },
+  "independence": "The reviewer inspected source-bound whole PNGs against the approved Play concept before receiving an implementer candidate visual verdict. Mechanical success did not determine the visual judgment.",
+  "source": {
+    "appAndHostedCheckpoint": "4e4886f95a0bcf3fb29ec9a8e443c706af15c0c0",
+    "runtime": "dev.7c88a02de9",
+    "runtimeQualification": "Exact checkpoint/build ID recorded in the coordinator commands and stage receipt; this review did not inspect installed binary metadata or run another build.",
+    "inputs": [
+      {
+        "repositoryPath": "App/StarlightCelebration.swift",
+        "sha256": "d3e011e0a333a197451717782a7ef715025db1ca373355fe8914df8a9aec8e22",
+        "bytes": 43648
+      },
+      {
+        "repositoryPath": "App/StarfallTheme.swift",
+        "sha256": "a6b2604fc5dc11475ca2abfaa5c1c6c34b3c15c1d23a2b77335d727b4182b950",
+        "bytes": 25525
+      },
+      {
+        "repositoryPath": "App/FallingSkyView.swift",
+        "sha256": "53edc3949e760ec59f572a89c3dd54abdfb8cfea028b1bed3eccd8f85aea6574",
+        "bytes": 62451
+      },
+      {
+        "repositoryPath": "AppTests/StarlightCelebrationTests.swift",
+        "sha256": "9d74933798e5bdbb8fa2970cb2986f78f720f3070c9335da624c0f0dd62a3eec",
+        "bytes": 76531
+      },
+      {
+        "repositoryPath": "docs/design/GAME_UI_SYSTEM.md",
+        "sha256": "0cfab3e88af66d8ab5c9f90860749964ac3d63c3286c84c0248e557d4d1e1b5a",
+        "bytes": 41498
+      }
+    ]
+  },
+  "hostedRun": {
+    "result": "Passed",
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "stageElapsedSeconds": 32.098,
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-summary.json",
+      "sha256": "8ebfb4a3182d417539961a606e4bd31936f00de92204ce252d929068c12866a0",
+      "bytes": 744
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-receipt.json",
+      "sha256": "da1797a5871a6dbd426ea0aba1535bc6916f93caae7ab6f0d23415b189ed6bd0",
+      "bytes": 161
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9.log",
+      "sha256": "dfb8af52a29150b67a7d79dca74227825f278c12ad195fdffe75c70a5e321e28",
+      "bytes": 18722
+    },
+    "attachmentManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/manifest.json",
+      "sha256": "4e85a6fa981b51ef5c21cf68ef2335cc86d2a6cc34dcf57e298917b88226f4b4",
+      "bytes": 40218
+    },
+    "scope": "Fourteen hosted methods passed. This independent visual review covers only the twenty crowded whole frames and ten isolated source-light specimens, not every attachment from the fourteen methods."
+  },
+  "approvedReference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182,
+    "view": "Middle Play concept",
+    "role": "Direction for board dominance, continuous scenery, restrained instruments and distinguishable playable stars; concept is not runtime or exact-layout evidence.",
+    "comparison": "The local source wash preserves the star-field focus and leaves distant choices distinct. The observed receipt/ceiling overlap fails independent hierarchy and fact legibility despite the otherwise related Observatory materials."
+  },
+  "fixture": {
+    "wholeScreenSelector": "StarfallAppTests/StarlightCelebrationTests/testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText",
+    "componentSelector": "StarfallAppTests/StarlightCelebrationTests/testExceptionalSourceLightFollowsTheCommittedGroupAndLeavesOtherChoicesAndHUDClear",
+    "wholeScreenKind": "Real production FallingSkyView/store/SpriteKit in hosted UIWindow; deterministic saved survival-history fixture, not a native XCTest current Story journey, mockup or isolated renderer.",
+    "history": {
+      "seed": 28,
+      "actualCoreShowers": 12,
+      "committedOccupiedBefore": 33,
+      "committedClearCellCount": 6,
+      "collectedReward": 8,
+      "committedOccupiedAfter": 27,
+      "clearedCells": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "historyAttachment": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/296038E4-01E2-4B35-912F-7B0872F13937.txt",
+        "sha256": "4190f83f2fe7870f975ffb78e80b179e05e0ed8e5af52b68647058f5bf1b6c59",
+        "bytes": 278
+      },
+      "occupancyQualification": "Exact values come from passed fixture assertions/Core state. Every reviewed whole PNG is visibly star-bearing; this review does not independently pixel-count all occupied cells in every clipped/scrolling frame."
+    },
+    "normalMotion": "Fixture requires actual system Reduce Motion off, calmEffects false and scene.reduceMotion false. ManualRainClock prevents automatic schedule races; the production presenter/receipt runs with normal motion.",
+    "viewportsPoints": [
+      [
+        375,
+        667
+      ],
+      [
+        430,
+        932
+      ]
+    ],
+    "textVariants": [
+      "large (default)",
+      "accessibility5 (maximum)"
+    ],
+    "imageScale": 3,
+    "phaseSampling": {
+      "before": "Captured after sceneReady and unsuspended; no explicit stable painted-placement assertion.",
+      "phase-0": "First capture at event age >= 0.18 seconds.",
+      "phase-1": "First capture at event age >= 0.65 seconds.",
+      "phase-2": "First capture at event age >= 1.1 seconds.",
+      "after": "Captured after celebration becomes nil.",
+      "limit": "Thresholds are source facts, not exact attached event ages. Capture timestamps do not establish continuous motion or exact age."
+    },
+    "isolatedCases": "Ten fixed-age black-Canvas specimens call only production drawSourceLight. Six positive cases include translated/scrolled mapping and four independent protected slots; four negative cases cover ordinary, quiet, before-release and expired. White/black bottom readiness marker is test-only, not product decoration."
+  },
+  "findings": [
+    {
+      "id": "source-wash",
+      "result": "BOUNDED_PASS",
+      "observation": "Default and AX5 visible source areas retain a subtle local left wash; distant right-side stars and fixed score/forecast remain distinguishable. The active packet/pulse shapes are separate existing effects and are not claimed as wash."
+    },
+    {
+      "id": "receipt-ceiling",
+      "result": "CURRENT_VISUAL_FAILURE",
+      "observation": "At 375-default live phases, +8 lies over column-4 ceiling badge. At 430-default live phases, the accounting line crosses badge 4. Full before/after frames make the badge identity clear. This prevents whole-composition acceptance; no claim is made that Goal7 introduced the overlap without a matched fixture baseline.",
+      "rawExamples": [
+        "5463E596-1461-4EE6-A5CF-4C3A2A04ED21.png",
+        "D2F20C1D-D3C7-4E43-9EED-DC1344E83AAD.png"
+      ]
+    },
+    {
+      "id": "ax5-placement",
+      "result": "EXCLUDED_FROM_SETTLED_WHOLE_LAYOUT_PROOF",
+      "observation": "All ten AX5 frames are star-bearing, but initial versus live placement changes and the lower guide/footer are outside the viewport. The capture waits sceneReady rather than stable common placement. These stills cannot prove complete-reader/footer or ceiling-badge clearance; the cause and production extent require responsible-owner verification, not an inferred product or performance diagnosis."
+    },
+    {
+      "id": "isolated-negative-and-exclusion",
+      "result": "BOUNDED_PASS",
+      "observation": "All ten isolated cases visually match their intended source/exclusion/absence roles. They do not contain an actual HUD or guide and therefore cannot establish real whole-screen clearance."
+    }
+  ],
+  "baselineBoundary": {
+    "review": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-07-baseline.json",
+      "sha256": "170abd8a66eff79ade7c4c854cd2d5d59529e0985a53a64120e862c6106e9cc0",
+      "bytes": 26066
+    },
+    "comparisonLimit": "Accepted Goal6 native Ribbon Full Board +15000/+30000 phase stills are a different route/history from this hosted survival +8. No matched numerical or same-phase improvement claim is drawn across those fixtures."
+  },
+  "reviewedWholeFrames": [
+    {
+      "id": "crowded-375x667-default-before",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/96B7B9BF-393C-4F36-A753-183482ACCBBA.png",
+      "exportedFileName": "96B7B9BF-393C-4F36-A753-183482ACCBBA.png",
+      "sha256": "b880d9481e870116195cb8794cb37688bfdc951f841419256708f44615890b6a",
+      "bytes": 7481952,
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906684.799,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 0; ordered forecast Rose 3, 1, 6 and full-column ceiling badges 1, 4, 5 are visible."
+      ],
+      "observation": "Populated score-0 board; forecast 3,1,6; full badges 1,4,5 visible."
+    },
+    {
+      "id": "crowded-375x667-default-phase-0",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/0DB0070E-FF69-4CD7-8CE3-863D5D17C31C.png",
+      "exportedFileName": "0DB0070E-FF69-4CD7-8CE3-863D5D17C31C.png",
+      "sha256": "1db72a4c5278e0a1c48d23d27c9a8e7032a092c3626bae312c637bef6c5c0de4",
+      "bytes": 7366821,
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906685.273,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "CURRENT VISUAL FAILURE: receipt text intersects the column-4 ceiling badge. At 375 the +8 crosses the badge numeral; at 430 the accounting line crosses its top/numeral area. This is visible ink overlap, irrespective of passing test assertions.",
+        "Six active packet paths and source pulses occupy the cleared left group; source wash does not become a board-center sheet.",
+        "Guide is a visible partial excerpt ending before the full canonical text; Close, Resume sky and Next shower are visible. No complete-reader claim."
+      ],
+      "observation": "Active left-source packets/pulses; distant right choices clear; receipt ink crosses badge 4."
+    },
+    {
+      "id": "crowded-375x667-default-phase-1",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/5463E596-1461-4EE6-A5CF-4C3A2A04ED21.png",
+      "exportedFileName": "5463E596-1461-4EE6-A5CF-4C3A2A04ED21.png",
+      "sha256": "e25a336e56202d8d0b976b7e05738aae18644e4ae464137181eeb172e8a319fe",
+      "bytes": 7266591,
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906685.742,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "CURRENT VISUAL FAILURE: receipt text intersects the column-4 ceiling badge. At 375 the +8 crosses the badge numeral; at 430 the accounting line crosses its top/numeral area. This is visible ink overlap, irrespective of passing test assertions.",
+        "Subtle pink source-local wash remains on the left; distant right choices and pinned instruments remain distinguishable.",
+        "Guide is a visible partial excerpt ending before the full canonical text; Close, Resume sky and Next shower are visible. No complete-reader claim."
+      ],
+      "observation": "Subtle local left wash; distant right choices clear; receipt ink crosses badge 4."
+    },
+    {
+      "id": "crowded-375x667-default-phase-2",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/144B5833-DDFE-4602-9F44-F35A061CB4CF.png",
+      "exportedFileName": "144B5833-DDFE-4602-9F44-F35A061CB4CF.png",
+      "sha256": "ea2a6c5ace0f7c662019b4825a6e74bc44611f80245efa37b5c8862f331046a7",
+      "bytes": 7186786,
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906686.194,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "CURRENT VISUAL FAILURE: receipt text intersects the column-4 ceiling badge. At 375 the +8 crosses the badge numeral; at 430 the accounting line crosses its top/numeral area. This is visible ink overlap, irrespective of passing test assertions.",
+        "Source wash and paths have expired; fading receipt remains above the ceiling.",
+        "Guide is a visible partial excerpt ending before the full canonical text; Close, Resume sky and Next shower are visible. No complete-reader claim."
+      ],
+      "observation": "Source wash/flight expired; fading receipt still crosses badge 4."
+    },
+    {
+      "id": "crowded-375x667-default-after",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/B23450A7-A185-4161-816F-D76CE3FCA1B9.png",
+      "exportedFileName": "B23450A7-A185-4161-816F-D76CE3FCA1B9.png",
+      "sha256": "2e7a03d88364a3c2d020907f867bf4107c5abbc78fa75b2ebe373112e8ca53d3",
+      "bytes": 7157853,
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906686.568,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; transient receipt and flight are absent.",
+        "Guide is a visible partial excerpt ending before the full canonical text; Close, Resume sky and Next shower are visible. No complete-reader claim."
+      ],
+      "observation": "Score 8; no transient receipt or source wash; populated remaining board."
+    },
+    {
+      "id": "crowded-375x667-maximum-before",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/8243375B-FE11-42C4-9F7D-6A63BE0D3582.png",
+      "exportedFileName": "8243375B-FE11-42C4-9F7D-6A63BE0D3582.png",
+      "sha256": "264e24035b58727b4989990353f15b9ff3f928dbdbe38908106c9064b9b1647e",
+      "bytes": 6690365,
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906687.206,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 0; ordered forecast Rose 3, 1, 6 and full-column ceiling badges 1, 4, 5 are visible.",
+        "EXCLUDED from settled whole-screen layout/reader acceptance: before and live/after canvas/ceiling placement differ; guide/footer extend below the viewport and complete ceiling-badge clearance is not established. No cause is assigned from this capture alone.",
+        "Populated initial board extends toward/beyond the lower viewport; this is not an empty-field capture."
+      ],
+      "observation": "Star-bearing; initial board placement/ceiling differs from live tranche; no complete reader/footer proof."
+    },
+    {
+      "id": "crowded-375x667-maximum-phase-0",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/DAF8789F-7F88-4629-A8CE-0C97AD2A5405.png",
+      "exportedFileName": "DAF8789F-7F88-4629-A8CE-0C97AD2A5405.png",
+      "sha256": "fdd8db45a068d8ae8247e9d4ca2a032e694433024afb5f8d7f910484d6ff9d02",
+      "bytes": 7368930,
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906687.677,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "EXCLUDED from settled whole-screen layout/reader acceptance: before and live/after canvas/ceiling placement differ; guide/footer extend below the viewport and complete ceiling-badge clearance is not established. No cause is assigned from this capture alone.",
+        "Left packet paths and remaining stars are visible; source-light stays local."
+      ],
+      "observation": "Star-bearing; fixed forecast and visible distant choices remain distinguishable; lower reader/footer is offscreen. Excluded from settled whole-layout acceptance."
+    },
+    {
+      "id": "crowded-375x667-maximum-phase-1",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/E1D94A19-603B-4AD4-9EF9-CADE214C2527.png",
+      "exportedFileName": "E1D94A19-603B-4AD4-9EF9-CADE214C2527.png",
+      "sha256": "f2fd9b8e0eee946d8706670d3a1d89d95e0213db66b9c20fababfe3765b75139",
+      "bytes": 7208076,
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906688.202,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "EXCLUDED from settled whole-screen layout/reader acceptance: before and live/after canvas/ceiling placement differ; guide/footer extend below the viewport and complete ceiling-badge clearance is not established. No cause is assigned from this capture alone.",
+        "Faint left source-light leaves the distant right family silhouettes distinguishable; large +8 remains below the visible stars."
+      ],
+      "observation": "Star-bearing; fixed forecast and visible distant choices remain distinguishable; lower reader/footer is offscreen. Excluded from settled whole-layout acceptance."
+    },
+    {
+      "id": "crowded-375x667-maximum-phase-2",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/9AACF4FF-1B9E-4DC6-92D3-5D34803CCC54.png",
+      "exportedFileName": "9AACF4FF-1B9E-4DC6-92D3-5D34803CCC54.png",
+      "sha256": "1ad0c83a1607752353af6a83308a951b495bc01ae2081f41dcec251d24309490",
+      "bytes": 7201730,
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906688.616,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "EXCLUDED from settled whole-screen layout/reader acceptance: before and live/after canvas/ceiling placement differ; guide/footer extend below the viewport and complete ceiling-badge clearance is not established. No cause is assigned from this capture alone.",
+        "Large +8 remains below the visible stars after the source wash has expired."
+      ],
+      "observation": "Star-bearing; fixed forecast and visible distant choices remain distinguishable; lower reader/footer is offscreen. Excluded from settled whole-layout acceptance."
+    },
+    {
+      "id": "crowded-375x667-maximum-after",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/0BEA49B2-7903-4DAC-BC68-BBF80B1424B5.png",
+      "exportedFileName": "0BEA49B2-7903-4DAC-BC68-BBF80B1424B5.png",
+      "sha256": "b83c03c1b133f6782d5bd2c11d9ccac0bdbd60c28f1643c4ed28873b209f0158",
+      "bytes": 7205166,
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906688.988,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; transient receipt and flight are absent.",
+        "EXCLUDED from settled whole-screen layout/reader acceptance: before and live/after canvas/ceiling placement differ; guide/footer extend below the viewport and complete ceiling-badge clearance is not established. No cause is assigned from this capture alone."
+      ],
+      "observation": "Star-bearing; fixed forecast and visible distant choices remain distinguishable; lower reader/footer is offscreen. Excluded from settled whole-layout acceptance."
+    },
+    {
+      "id": "crowded-430x932-default-before",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/104089E1-32D0-4111-BA70-5E868343E1E5.png",
+      "exportedFileName": "104089E1-32D0-4111-BA70-5E868343E1E5.png",
+      "sha256": "87badbd40ca768890192d17efb9561cde04c5e1c964a13011d9ffe99b2662e45",
+      "bytes": 11813489,
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906689.811,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 0; ordered forecast Rose 3, 1, 6 and full-column ceiling badges 1, 4, 5 are visible."
+      ],
+      "observation": "Populated score-0 board; forecast 3,1,6; full badges 1,4,5 visible."
+    },
+    {
+      "id": "crowded-430x932-default-phase-0",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/79D5A44D-0489-4986-82D2-95351AAD51A2.png",
+      "exportedFileName": "79D5A44D-0489-4986-82D2-95351AAD51A2.png",
+      "sha256": "f0095340ce4a60d90bf73a4f46b550cf0b56646724548a2b0d9bf95f67384f61",
+      "bytes": 11673849,
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906690.43,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "CURRENT VISUAL FAILURE: receipt text intersects the column-4 ceiling badge. At 375 the +8 crosses the badge numeral; at 430 the accounting line crosses its top/numeral area. This is visible ink overlap, irrespective of passing test assertions.",
+        "Six active packet paths and source pulses occupy the cleared left group; source wash does not become a board-center sheet.",
+        "The complete displayed guide paragraph, Close, Resume sky and Next shower fit within this still."
+      ],
+      "observation": "Active left-source packets/pulses; distant right choices clear; receipt ink crosses badge 4."
+    },
+    {
+      "id": "crowded-430x932-default-phase-1",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/D2F20C1D-D3C7-4E43-9EED-DC1344E83AAD.png",
+      "exportedFileName": "D2F20C1D-D3C7-4E43-9EED-DC1344E83AAD.png",
+      "sha256": "f149818533c06ac827709dc1600b3264f5c793bb17e6314a82a1b04aeeeaa553",
+      "bytes": 11459141,
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906690.95,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "CURRENT VISUAL FAILURE: receipt text intersects the column-4 ceiling badge. At 375 the +8 crosses the badge numeral; at 430 the accounting line crosses its top/numeral area. This is visible ink overlap, irrespective of passing test assertions.",
+        "Subtle pink source-local wash remains on the left; distant right choices and pinned instruments remain distinguishable.",
+        "The complete displayed guide paragraph, Close, Resume sky and Next shower fit within this still."
+      ],
+      "observation": "Subtle local left wash; distant right choices clear; receipt ink crosses badge 4."
+    },
+    {
+      "id": "crowded-430x932-default-phase-2",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/52CBC9D8-3CCF-447C-9F6B-56EC2A1071D2.png",
+      "exportedFileName": "52CBC9D8-3CCF-447C-9F6B-56EC2A1071D2.png",
+      "sha256": "f947ba03d0e16f73776e0a7dec61d72fc92ac44795a229724405a73737dc5238",
+      "bytes": 11391503,
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906691.42,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "CURRENT VISUAL FAILURE: receipt text intersects the column-4 ceiling badge. At 375 the +8 crosses the badge numeral; at 430 the accounting line crosses its top/numeral area. This is visible ink overlap, irrespective of passing test assertions.",
+        "Source wash and paths have expired; fading receipt remains above the ceiling.",
+        "The complete displayed guide paragraph, Close, Resume sky and Next shower fit within this still."
+      ],
+      "observation": "Source wash/flight expired; fading receipt still crosses badge 4."
+    },
+    {
+      "id": "crowded-430x932-default-after",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/666E7058-9664-493C-8DA4-90A81F45FBEE.png",
+      "exportedFileName": "666E7058-9664-493C-8DA4-90A81F45FBEE.png",
+      "sha256": "43fadd9b91f86f6977ed3aaf4b74f6410fdc9e81c009632c04d8b2b518a81061",
+      "bytes": 11330847,
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906691.862,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; transient receipt and flight are absent.",
+        "The complete displayed guide paragraph, Close, Resume sky and Next shower fit within this still."
+      ],
+      "observation": "Score 8; no transient receipt or source wash; populated remaining board."
+    },
+    {
+      "id": "crowded-430x932-maximum-before",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/60EC1C9C-457B-48D9-B3EE-313D775D4E7C.png",
+      "exportedFileName": "60EC1C9C-457B-48D9-B3EE-313D775D4E7C.png",
+      "sha256": "e347f8c5ad8b1b5501628892ad15f0330d0fe2da79d4d336a6c20fd66acb10da",
+      "bytes": 10950315,
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906692.671,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 0; ordered forecast Rose 3, 1, 6 and full-column ceiling badges 1, 4, 5 are visible.",
+        "EXCLUDED from settled whole-screen layout/reader acceptance: before and live/after canvas/ceiling placement differ; guide/footer extend below the viewport and complete ceiling-badge clearance is not established. No cause is assigned from this capture alone.",
+        "Populated initial board extends toward/beyond the lower viewport; this is not an empty-field capture."
+      ],
+      "observation": "Star-bearing; initial board placement/ceiling differs from live tranche; no complete reader/footer proof."
+    },
+    {
+      "id": "crowded-430x932-maximum-phase-0",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/B7E7BEB6-D12B-4FF6-AEEE-F507BEBF9DF6.png",
+      "exportedFileName": "B7E7BEB6-D12B-4FF6-AEEE-F507BEBF9DF6.png",
+      "sha256": "25e0369990b7cf1e09f235ec9b5a6192fd03276823c682f9821019bfc6bda7a8",
+      "bytes": 11246799,
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906693.298,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "EXCLUDED from settled whole-screen layout/reader acceptance: before and live/after canvas/ceiling placement differ; guide/footer extend below the viewport and complete ceiling-badge clearance is not established. No cause is assigned from this capture alone.",
+        "Left packet paths and remaining stars are visible; source-light stays local."
+      ],
+      "observation": "Star-bearing; fixed forecast and visible distant choices remain distinguishable; lower reader/footer is offscreen. Excluded from settled whole-layout acceptance."
+    },
+    {
+      "id": "crowded-430x932-maximum-phase-1",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/14A76721-C18F-430F-A1D8-FCD3C07F6ABF.png",
+      "exportedFileName": "14A76721-C18F-430F-A1D8-FCD3C07F6ABF.png",
+      "sha256": "4c45456225e492ba984c24c8b33dd1c91b234d041a8e3b81d2d1e81021ac225f",
+      "bytes": 11067154,
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906693.764,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "EXCLUDED from settled whole-screen layout/reader acceptance: before and live/after canvas/ceiling placement differ; guide/footer extend below the viewport and complete ceiling-badge clearance is not established. No cause is assigned from this capture alone.",
+        "Faint left source-light leaves the distant right family silhouettes distinguishable; large +8 remains below the visible stars."
+      ],
+      "observation": "Star-bearing; fixed forecast and visible distant choices remain distinguishable; lower reader/footer is offscreen. Excluded from settled whole-layout acceptance."
+    },
+    {
+      "id": "crowded-430x932-maximum-phase-2",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/97E536FD-2DCE-479F-819B-2966952B4175.png",
+      "exportedFileName": "97E536FD-2DCE-479F-819B-2966952B4175.png",
+      "sha256": "c69ebede59bf5fae0bc0e37f80c11a4942b9f35cb649103bc2c976e803461fa5",
+      "bytes": 11039654,
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906694.215,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; live receipt is visible; uncollected right-side choices retain distinct family silhouettes.",
+        "EXCLUDED from settled whole-screen layout/reader acceptance: before and live/after canvas/ceiling placement differ; guide/footer extend below the viewport and complete ceiling-badge clearance is not established. No cause is assigned from this capture alone.",
+        "Large +8 remains below the visible stars after the source wash has expired."
+      ],
+      "observation": "Star-bearing; fixed forecast and visible distant choices remain distinguishable; lower reader/footer is offscreen. Excluded from settled whole-layout acceptance."
+    },
+    {
+      "id": "crowded-430x932-maximum-after",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/FCD99BBE-05CC-4406-94A3-822D4C4E0D40.png",
+      "exportedFileName": "FCD99BBE-05CC-4406-94A3-822D4C4E0D40.png",
+      "sha256": "e55e1d81ca39f9bf923b9fbf2833bc59ad031dc29dd4c669827f5470c01c4502",
+      "bytes": 11054556,
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906694.664,
+      "observations": [
+        "Star-bearing; no completely starless frame.",
+        "Earned score 8; transient receipt and flight are absent.",
+        "EXCLUDED from settled whole-screen layout/reader acceptance: before and live/after canvas/ceiling placement differ; guide/footer extend below the viewport and complete ceiling-badge clearance is not established. No cause is assigned from this capture alone."
+      ],
+      "observation": "Star-bearing; fixed forecast and visible distant choices remain distinguishable; lower reader/footer is offscreen. Excluded from settled whole-layout acceptance."
+    }
+  ],
+  "reviewedIsolatedFrames": [
+    {
+      "id": "source-light-source",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/F0C5D1F7-F4D3-4235-822F-6B8B10DC6181.png",
+      "exportedFileName": "F0C5D1F7-F4D3-4235-822F-6B8B10DC6181.png",
+      "sha256": "5485bc07b71f5199fa504763091a6d2367232b2b95cfe4c3d906e9259ba26d72",
+      "bytes": 260973,
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906695.082,
+      "observations": [
+        "Soft, bounded pink radial light appears at the independently mapped left source; the board-center and far-right areas remain black."
+      ]
+    },
+    {
+      "id": "source-light-translated-scrolled",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/77783500-3759-47AB-A923-2BAEA33B3EA8.png",
+      "exportedFileName": "77783500-3759-47AB-A923-2BAEA33B3EA8.png",
+      "sha256": "36708382540ce18ac53278c5caf03d6f722c76c895e0bf36ee20cec811987f99",
+      "bytes": 234316,
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906695.411,
+      "observations": [
+        "The same bounded light moves with the translated/scrolled board mapping; it does not remain fixed at the previous viewport location."
+      ]
+    },
+    {
+      "id": "source-light-crossing-header",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/189A3835-9A52-4523-97E2-D46A8FC71ADF.png",
+      "exportedFileName": "189A3835-9A52-4523-97E2-D46A8FC71ADF.png",
+      "sha256": "158d4f1bcb9ae464f989ebcba01dc24e7b0cc1e9831e0e64a56f7e036a75b74c",
+      "bytes": 258358,
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906695.703,
+      "observations": [
+        "Soft source light remains visible around the deliberately intersecting header exclusion; its central protected rectangle is black. This is a synthetic slot in a component raster, not a painted real HUD."
+      ]
+    },
+    {
+      "id": "source-light-crossing-score",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/7EEE1C3E-0ADC-4A33-9042-398D8ADEAADF.png",
+      "exportedFileName": "7EEE1C3E-0ADC-4A33-9042-398D8ADEAADF.png",
+      "sha256": "8e340103a53b9cb296a8a38dbfe54b5375e6a03d70d5f428a1693e9528c6d29c",
+      "bytes": 254800,
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906696.024,
+      "observations": [
+        "Soft source light remains visible around the deliberately intersecting score exclusion; its central protected rectangle is black. This is a synthetic slot in a component raster, not a painted real HUD."
+      ]
+    },
+    {
+      "id": "source-light-crossing-award",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/EA73754C-363B-4827-A61C-D905E08425FA.png",
+      "exportedFileName": "EA73754C-363B-4827-A61C-D905E08425FA.png",
+      "sha256": "158d4f1bcb9ae464f989ebcba01dc24e7b0cc1e9831e0e64a56f7e036a75b74c",
+      "bytes": 258358,
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906696.354,
+      "observations": [
+        "Soft source light remains visible around the deliberately intersecting award exclusion; its central protected rectangle is black. This is a synthetic slot in a component raster, not a painted real HUD."
+      ]
+    },
+    {
+      "id": "source-light-crossing-return",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/B650F608-8B0A-49D9-8EFE-853CA06003F2.png",
+      "exportedFileName": "B650F608-8B0A-49D9-8EFE-853CA06003F2.png",
+      "sha256": "bbb8d6972950f71235f4ee5c7707ec591eef00ad1f515064912219337c57d4a1",
+      "bytes": 258288,
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906696.663,
+      "observations": [
+        "Soft source light remains visible around the deliberately intersecting return exclusion; its central protected rectangle is black. This is a synthetic slot in a component raster, not a painted real HUD."
+      ]
+    },
+    {
+      "id": "source-light-ordinary",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/B2217641-19E4-4B66-B647-14053F143ECA.png",
+      "exportedFileName": "B2217641-19E4-4B66-B647-14053F143ECA.png",
+      "sha256": "fdc1e47ab5a89dcc2d4d943c927969ea523ab704f278fe047e4cc240355be380",
+      "bytes": 113301,
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906696.936,
+      "observations": [
+        "No source-light wash is visible. The white bottom readiness marker, when present, belongs to the test."
+      ]
+    },
+    {
+      "id": "source-light-quiet",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/4B17B00E-AEEF-48DE-A65C-8105D57BC1B0.png",
+      "exportedFileName": "4B17B00E-AEEF-48DE-A65C-8105D57BC1B0.png",
+      "sha256": "33428a93a08a2047719026a4f865bc071585aff00fa2b360b92137054f3539c3",
+      "bytes": 113211,
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906697.209,
+      "observations": [
+        "No source-light wash is visible. The white bottom readiness marker, when present, belongs to the test."
+      ]
+    },
+    {
+      "id": "source-light-before-release",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/E14B1450-CC2A-4FA6-BF0B-017E4712610B.png",
+      "exportedFileName": "E14B1450-CC2A-4FA6-BF0B-017E4712610B.png",
+      "sha256": "fdc1e47ab5a89dcc2d4d943c927969ea523ab704f278fe047e4cc240355be380",
+      "bytes": 113301,
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906697.5,
+      "observations": [
+        "No source-light wash is visible. The white bottom readiness marker, when present, belongs to the test."
+      ]
+    },
+    {
+      "id": "source-light-expired",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/B9A88399-8826-4F4E-9482-01A51FC6AC12.png",
+      "exportedFileName": "B9A88399-8826-4F4E-9482-01A51FC6AC12.png",
+      "sha256": "33428a93a08a2047719026a4f865bc071585aff00fa2b360b92137054f3539c3",
+      "bytes": 113211,
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureTimestampEpoch": 1792906697.791,
+      "observations": [
+        "No source-light wash is visible. The white bottom readiness marker, when present, belongs to the test."
+      ]
+    }
+  ],
+  "limits": [
+    "No completely starless whole frame was observed. AX5 placement-limited frames are explicitly excluded from settled whole-composition acceptance.",
+    "Static original-dimension PNG inspection does not prove uninterrupted animation, attention, human recognition or comfort.",
+    "No native contact, actual VoiceOver, physical-device, minimum-iOS, performance, full contrast survey or canonical phone delivery was performed by this review.",
+    "Complete scrolling guide facts and reachability are not established by a partial still; 375 default and AX5 limits remain explicit.",
+    "No image was cropped, resized, retouched, decoded from video or exported by this reviewer; only existing PNGs and lightweight source/JSON metadata were read.",
+    "Overall adoption belongs to the coordinator after current visible failures are resolved and final source-bound native/visual/export gates are evaluated."
+  ],
+  "frameRecordConvention": "All frame records are original-dimension portrait PNGs directly inspected with view_image. Full raw paths, hashes and dimensions are retained. Per-variant observations/findings above own repeated scope limits.",
+  "pressureTerminologyErratum": {
+    "recordedUTC": "2026-10-25T06:01:50.931116+00:00",
+    "originalReviewSHA256": "7ceba35449dc79d8e6c8b452660b2b6314eed18f9e738045d2c150ceb23f75af",
+    "originalAtCommit": "a985c5dcb161f746618bb35419455783d17ffa38",
+    "qualification": "Original per-frame full-badge wording is retained as review history, but it was incorrect. Exact committed Core heights establish one-space badges, no full columns. The observed receipt\u2013badge overlap and whole-composition HOLD remain valid.",
+    "seed": 28,
+    "showers": 12,
+    "beforeColumnHeights": [
+      6,
+      5,
+      4,
+      6,
+      6,
+      3,
+      3
+    ],
+    "afterActualSixStarEightLightClearColumnHeights": [
+      4,
+      3,
+      2,
+      6,
+      6,
+      3,
+      3
+    ],
+    "actualPressure": "Columns1/4/5 one space before;4/5 one space after. Zero full columns.",
+    "source": "verification-07-failures.json"
+  }
+}

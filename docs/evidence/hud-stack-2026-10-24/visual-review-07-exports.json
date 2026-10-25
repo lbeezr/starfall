@@ -1,0 +1,478 @@
+{
+  "schemaVersion": 1,
+  "goal": 7,
+  "recordedUTC": "2026-10-25T06:37:31.387Z",
+  "status": "PASS_BOUNDED_EXACT_EXPORTS",
+  "verdict": "All13 exact retained JPEG80 exports preserve the meaning, essential readable ink, figure/source details and whole composition of their indexed raw PNGs within each row's stated limits. No blocking conversion failure, image mismatch, added crop, rotation or lost essential content was found. This is export acceptance; overall Goal7 adoption belongs to the coordinator.",
+  "aggregateReviewer": "/root/hud_audit",
+  "independence": "The aggregate reviewer directly inspected rows1\u20134 before an implementer export verdict. At the coordinator's disjoint delegation, two named independent reviewers directly inspected rows5\u20139 and10\u201313. Their source-bound reports were checked against immutable file identities. A separate native-review result was reported during the work and did not replace these direct pair reviews.",
+  "index": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-07.json",
+    "sha256": "c610671b03e0a9ebad3216d96afb6a53f1823d04c48b3a6185128cd250d4d8a6",
+    "bytes": 44188
+  },
+  "source": {
+    "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+    "testSource": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+    "runtime": "dev.e045b9e428",
+    "historicalRow1Runtime": "dev.606ce1efbe",
+    "verification": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-07.json",
+      "sha256": "f0969735903d5c314d78db99a0bca1b17524b3e67a4e61753cf993971701044d",
+      "bytes": 32594
+    },
+    "sourceProof": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-07.json",
+      "sha256": "e7abfef9aa1175f93ae483947658e7c957cc21e559ea0fb30aeebe00a813b9ac",
+      "bytes": 3597
+    }
+  },
+  "coverage": {
+    "pairs": 13,
+    "wholeFiles": 26,
+    "aggregateReviewerPersonallyViewedPairs": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "hudGoalReviewPersonallyViewedPairs": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "hudReadAheadPersonallyViewedPairs": [
+      10,
+      11,
+      12,
+      13
+    ],
+    "all13MetadataAndHashesIndependentlyVerifiedByAggregateReviewer": true,
+    "jpegBytes": 9758750
+  },
+  "shardReports": [
+    {
+      "identity": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/visual-review-07-exports-part05-09.json",
+        "sha256": "7f3027dcf687ea7047076d367798f769e2659d29cb7220aeb65411b6cfa21d7a",
+        "bytes": 21235
+      },
+      "reviewer": "/root/hud_goal_review",
+      "rows": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "indexSha256": "c610671b03e0a9ebad3216d96afb6a53f1823d04c48b3a6185128cd250d4d8a6",
+      "status": "COMPLETE; BOUNDED_PASS for exact rows5\u20139 only; aggregate13-image acceptance and Goal7 adoption remain with the lead",
+      "relationship": "No implementer/lead export verdict was supplied. Both raw and JPEG files were directly inspected whole via view_image. Reviewer earlier authored hosted test oracles/diagnostic patch, not the production source-light or layout implementation; that relationship is explicit."
+    },
+    {
+      "identity": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/visual-review-07-exports-part10-13.json",
+        "sha256": "68bff0ee0838e7c3fbcfa084deaf97d6097cd9d1d6817367433ed76ea69e333a",
+        "bytes": 12777
+      },
+      "reviewer": "hud_read_ahead; independent App/export reviewer",
+      "rows": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "indexSha256": "f79097f9d5be9abaae73c993ceaba6cd18f5a1465d2c80122bb8e2f711ed6fba",
+      "status": "PASS_BOUNDED_ROWS_10_THROUGH_13",
+      "indexQualification": "Part10\u201313 binds intermediate f790. Finalc610 changes row9 practice classification only; rows10\u201313 paths, both hashes, dimensions and state text match the final index exactly. Its private report's earlier-index explanatory path is historical context, not the final index identity."
+    }
+  ],
+  "captionCorrections": {
+    "arrivedFigures": {
+      "recordedUTC": "2026-10-25T06:30:28.107511+00:00",
+      "originalIndex": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/captures-07-initial-export-index.json",
+        "sha256": "1f1f0d071edc133a047e2eaaf34f1e1fd70ba0ceebf18fb8cb03f42b9b94b002",
+        "bytes": 42875
+      },
+      "reason": "Row06 generic settled-phase wording is narrowed to arrived returned figures; sampled refill star completion is not claimed. Raw/JPEG bytes, paths, dimensions and all13visual witnesses are unchanged."
+    },
+    "guidedPractice": {
+      "recordedUTC": "2026-10-25T06:31:54.778758+00:00",
+      "priorIndex": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/captures-07-after-figure-caption.json",
+        "sha256": "f79097f9d5be9abaae73c993ceaba6cd18f5a1465d2c80122bb8e2f711ed6fba",
+        "bytes": 43477
+      },
+      "reason": "Independent row09 source review identifies guided practice rather than the retained ordinary round. Caption now explicitly distinguishes exercise79k from retained15k; all raw/JPEG bytes, paths, dimensions remain unchanged."
+    },
+    "finalBinding": "The two caption-only corrections did not alter any of26image byte streams or dimensions. Row6 establishes three arrived returned figures, not completion of every refill star. Row9 is guided practice exercise79k/+13k; retained ordinary FullBoard remains15k and is restored after Finish. The complete comparison reader in row10 is also practice.",
+    "hostedPhaseTiming": "Row12's phase0/.18 wording identifies the first >=0.18-second hosted sampling threshold; it is not an independently measured exact0.180-second native event age."
+  },
+  "appearance": [
+    "Historical broad center wash remains visibly distinct from current bounded lower-source pink/teal light. Current source samples retain readable score/mode/forecast/receipt facts and distinguishable distant family silhouettes.",
+    "JPEG80 causes slight scenic, edge and glow smoothing, without consequential text/figure/star loss in the inspected pairs. PNG and original native recording remain the quantitative/temporal sources.",
+    "The faint local lower-arena wash clipping edge is present in raw and JPEG; it is not introduced by export and does not obscure essential ink in the reviewed samples. No unqualified seamless-edges claim.",
+    "Ordinary control, actual Calm/AX5, guided practice, restored historical manual play, native sampled video, historical baseline and hosted production views remain explicitly distinguished."
+  ],
+  "transformVerification": {
+    "declared": "sips JPEG80; original dimensions/orientation; no crop/resize/retouch",
+    "independentChecks": "Read-only stdlib PNG IHDR/eXIf and JPEG SOF/EXIF parsing; both SHA256/byte sizes and effective orientation1 independently match all13 index records. All stored dimensions are unchanged. Recorded export command contains only JPEGformat/quality80/source/output, with no crop/resize/retouch arguments.",
+    "effectiveOrientation": "Absent EXIF orientation is treated as standard upright1; explicit-versus-implicit status is retained per file.",
+    "sourceAndVerificationHashesMatchIndex": true
+  },
+  "reviewedPairs": [
+    {
+      "row": 1,
+      "id": "01__historical-ribbon-broad-wash",
+      "kind": "historical-native-recording",
+      "visualReviewer": "/root/hud_audit",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "Historical accepted Goal6 Ribbon 3 CHAIN +30,000 with broad central teal wash. Exact score/target, two prior figures, current square/diamonds, stars, ceiling and complete guide remain distinguishable in the JPEG.",
+        "Only slight fine scenic/edge/glow softening from JPEG80; no material text, figure, diamond, star or composition loss."
+      ],
+      "limits": [
+        "Historical dev.606ce1efbe wash comparison only; one sampled moment does not establish a global or continuous peak."
+      ],
+      "rawSHA256": "51428937e6efe0f1966e2988b8c233e1e8b7b6899ddb8f1365c22a439bf4a7b0",
+      "rawBytes": 3305420,
+      "exportSHA256": "84419e2b3675dfc5aa800c4d53fd6e4bdcdab6ae7e9083898192aa4cfdc60b10",
+      "exportBytes": 648416,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 2,
+      "id": "02__phone-lantern-two-phase-source",
+      "kind": "native-recording",
+      "visualReviewer": "/root/hud_audit",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "Current normal Lantern 2 CHAIN +15,000, five ordered forecast destinations, prior/current figures, survivor diamonds and right-side Mint choices remain readable. Faint localized pink lower-left source light is preserved; the guide extends below the whole viewport in both files.",
+        "Only slight fine scenic/edge/glow softening from JPEG80; no material text, figure, diamond, star or composition loss."
+      ],
+      "limits": [
+        "Sampled current native flight phase; no complete-guide/controls or precise continuous-timing claim."
+      ],
+      "rawSHA256": "2f7bf51cdaf9a084e5b0111cc854961df254bf5b7f2d41cc1a3eefd63390919a",
+      "rawBytes": 2807102,
+      "exportSHA256": "8f8d50bd8e0f1e0c64c4bc87bd07e87735713cbb64d556722ccc54bdbd31254a",
+      "exportBytes": 496806,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 3,
+      "id": "03__phone-ribbon-two-phase-source",
+      "kind": "native-recording",
+      "visualReviewer": "/root/hud_audit",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "Current normal Ribbon 2 CHAIN +15,000 with pink source, flight paths, rising square and survivor diamonds. Whole-action score/guide already reports30,000. JPEG preserves these separate facts and leaves distant stars distinct.",
+        "Only slight fine scenic/edge/glow softening from JPEG80; no material text, figure, diamond, star or composition loss."
+      ],
+      "limits": [
+        "Phase award is15,000 within the committed30,000 action; no sum of successive labels or all-star settlement claim."
+      ],
+      "rawSHA256": "01869884b31b6c980cafa3dad0d2b6ed0c2b9f83dc834140e376a7f42308beb0",
+      "rawBytes": 3491529,
+      "exportSHA256": "1c3aeb82cd512d60752d1d645cd3c17f5bbad2c153fcf9e508534ba5ae8f79a7",
+      "exportBytes": 685272,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 4,
+      "id": "04__phone-ribbon-three-phase-source",
+      "kind": "native-recording",
+      "visualReviewer": "/root/hud_audit",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "Current normal Ribbon 3 CHAIN +30,000 with local lower-source teal wash. Header/mode, prior figures, current square/diamonds, ceiling, family silhouettes and complete displayed guide remain readable. Faint straight lower-arena clip edge exists in the PNG and remains visible in the JPEG; it is subtle and does not obscure a fact or legal choice.",
+        "Only slight fine scenic/edge/glow softening from JPEG80; no material text, figure, diamond, star or composition loss."
+      ],
+      "limits": [
+        "One sampled rising phase, not a global peak or proof of continuous timing. A visible local clip edge prevents an unqualified seamless-feather claim."
+      ],
+      "rawSHA256": "4b757377b3c07e6202c000d7dcb81e5623d58894389b23d25a6db4aa9ba2049b",
+      "rawBytes": 3483260,
+      "exportSHA256": "7053762074c3333bb38d26d88efbff4331fdd4abcd20f11a88cc608a4f7e0772",
+      "exportBytes": 677641,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 5,
+      "id": "05__tablet-ribbon-three-phase-source",
+      "kind": "native-recording",
+      "visualReviewer": "/root/hud_goal_review",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "Complete score/target, Full Board mode, Pause, primary award and accounting line remain readable above the arena. The lower guide shows the complete30,000 aggregate paragraph and Close in this capture."
+      ],
+      "limits": [
+        "This is one sampled rising/flight phase, not a global peak or proof that every star has settled."
+      ],
+      "rawSHA256": "66e496c4e5fd6731b3d34b938bd225ec12801542b6151646ec2c4cea270f59bf",
+      "rawBytes": 6842253,
+      "exportSHA256": "d28ade051f3d0dff5e7def9beb52fc372d2ce606c5af33429ae37a0f9e1ce3eb",
+      "exportBytes": 1097197,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 6,
+      "id": "06__phone-ribbon-arrived-three-figures",
+      "kind": "native-recording",
+      "visualReviewer": "/root/hud_goal_review",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "Score/target, mode, Pause, returned figures, receipt and complete aggregate guide remain distinct. No receipt ink enters the top board edge."
+      ],
+      "limits": [
+        "This still does not prove every refill star has finished moving, continuous motion or exact arrival latency."
+      ],
+      "rawSHA256": "fe38150de238698933b4db906765c42ac39887fea2f0bd77221798e9eb6ef2a3",
+      "rawBytes": 3558134,
+      "exportSHA256": "412cd9b325fe5dcf0b6a316b69964b4e95d5f6b029f559e24492310253ee20c7",
+      "exportBytes": 691409,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 7,
+      "id": "07__tablet-ordinary-source-control",
+      "kind": "native-xctest",
+      "visualReviewer": "/root/hud_goal_review",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "The phase award and whole-action total are both complete and legible; their differing numbers match the supplied phase-versus-committed-total classification. This is not the later separate35,000 action."
+      ],
+      "limits": [
+        "Visible absence of a broad wash in one ordinary frame does not replace the production-used negative raster gate across time."
+      ],
+      "rawSHA256": "de887fc2f9f35057ecfd441023df8a75f8b4a9e3d08beb25a32931b093fd1223",
+      "rawBytes": 7120425,
+      "exportSHA256": "a2075639a2faa76c237cc41e16a3f10e80ced88c616156edd07ec45ee405441c",
+      "exportBytes": 1128736,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 8,
+      "id": "08__tablet-ax5-calm-two-figures",
+      "kind": "native-xctest",
+      "visualReviewer": "/root/hud_goal_review",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "Large native score/target and Full Board wording fit their protection without truncation. The board remains clearly legible under the fixed figure strip."
+      ],
+      "limits": [
+        "Calm/AX5 state comes from the supplied actual Settings/test provenance, not recognition of a system preference from pixels."
+      ],
+      "rawSHA256": "76322348cc8f73515ba8a1d358ab722cbdd5e5a742514d1bdd61fc5385979e42",
+      "rawBytes": 6981568,
+      "exportSHA256": "518a52f9428067cc0997bf554c3d965699f7a7a859219cf504432e77affb14a4",
+      "exportBytes": 1143777,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 9,
+      "id": "09__tablet-ax5-calm-simultaneous",
+      "kind": "native-xctest",
+      "visualReviewer": "/root/hud_goal_review",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "The exercise score/target, mode, +13,000 and complete displayed comparison paragraph are readable. Last earned light and its two-square figure are visible inside the lesson panel."
+      ],
+      "limits": [
+        "The separate complete lesson-reading frame is outside this shard."
+      ],
+      "rawSHA256": "4b4d94adb893d9cc727e7e44e5390a902235f81414f3faf775e2266106a217d4",
+      "rawBytes": 4548818,
+      "exportSHA256": "79ed7e9b2c206bf5cd5dff82dcc3b58ef344cbf1dca85b74b1bdeabe22323ee3",
+      "exportBytes": 969568,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 10,
+      "id": "10__tablet-ax5-complete-practice-reader",
+      "kind": "native-xctest",
+      "visualReviewer": "hud_read_ahead; independent App/export reviewer",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "79,000/150,000, full Full Board caption, complete Compare the larger clear prose through \u201cthe reward.\u201d, two small square marks, Last earned light and Retry/Hint/Finish stay readable. Board absence is deliberate native reader scroll. Small compression smoothing in scenery has no consequential text/glyph loss."
+      ],
+      "limits": [
+        "The named row's state/scroll and hosted-versus-native limits remain as recorded in captures-07.json and the shard."
+      ],
+      "rawSHA256": "ab77448e8fe2066cfbea7779416fdc9e20b0da1003c2eab304737bc362fb5f7f",
+      "rawBytes": 3409617,
+      "exportSHA256": "296b0a4aca6632987a24141fb50f9fca7c6091ff5d1098070dd3226df044a954",
+      "exportBytes": 804028,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 11,
+      "id": "11__phone-manual-restored",
+      "kind": "native-xctest",
+      "visualReviewer": "hud_read_ahead; independent App/export reviewer",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "Retained20, three Mint destinations4/5/6, Help, Pause, ceiling, single Rose survivor and Resume sky/Next shower remain readable and spatially equivalent. No live exceptional wash/figure is present or claimed. Fine scenic smoothing only."
+      ],
+      "limits": [
+        "The named row's state/scroll and hosted-versus-native limits remain as recorded in captures-07.json and the shard."
+      ],
+      "rawSHA256": "c3fe83bed31dbc218839fc622afd132356bb85a14d89c68ed15d7dee46734fbd",
+      "rawBytes": 3357593,
+      "exportSHA256": "005ea2573a6c9d6e027b733b43445fae46124fa32d0bf98a1e5889db641cb735",
+      "exportBytes": 469250,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 12,
+      "id": "12__hosted-survival-375-default",
+      "kind": "hosted-production",
+      "visualReviewer": "hud_read_ahead; independent App/export reviewer",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "Brilliant!+8 and complete8light=8points stay separated above one-space column4/5 badges and the ceiling. Actual stars/packet heads/tails/source particles remain distinct. JPEG preserves pink localized light and exact scene/ink relationships. This is hosted phase0=.18 setup, not finger input or native elapsed-time evidence."
+      ],
+      "limits": [
+        "The named row's state/scroll and hosted-versus-native limits remain as recorded in captures-07.json and the shard."
+      ],
+      "rawSHA256": "6c994a2c01eddd233563283b184ae2a44a3679bc779e95ebf0356a48077c77f0",
+      "rawBytes": 7697766,
+      "exportSHA256": "44ecfeec21c5bb317ad999f65c0faecc3f72213b722ea8377b2fbe85c66e486a",
+      "exportBytes": 481995,
+      "pixels": [
+        1125,
+        2001
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    },
+    {
+      "row": 13,
+      "id": "13__hosted-survival-375-maximum",
+      "kind": "hosted-production",
+      "visualReviewer": "hud_read_ahead; independent App/export reviewer",
+      "conversionVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observations": [
+        "Maximum-text score8, complete Next columns3/1/6 and native utility glyphs fit; exact+8 remains in below-board apron. The raw hosted fixed reading viewport already clips upper stars/ceiling/footer visibility; JPEG preserves that condition without added crop. This frame does not establish guide/ceiling/footer reachability or zero transient/header intersection."
+      ],
+      "limits": [
+        "The named row's state/scroll and hosted-versus-native limits remain as recorded in captures-07.json and the shard."
+      ],
+      "rawSHA256": "379f8f9b6113399e8e876e4eaec85b3eb38b814275bc3ca651fc8a9e8dd7012d",
+      "rawBytes": 7321481,
+      "exportSHA256": "5ac4eec258ba85c5977b224cfc6291016bef12a3a531d7814ebf166f4379ec07",
+      "exportBytes": 464655,
+      "pixels": [
+        1125,
+        2001
+      ],
+      "orientation": 1,
+      "explicitExifOrientation": {
+        "raw": true,
+        "jpeg": true
+      }
+    }
+  ],
+  "limits": [
+    "Export review is separate from executed Core/build/native interactions, the independent full native/motion review, actual VoiceOver and physical/minimum-iOS verification. It does not adopt or publish Goal7.",
+    "One frame cannot establish continuous animation, exact gesture/event latency, every-star settlement, global peak, human attention/recognition/comfort, performance or numerical JPEG contrast.",
+    "Partial guide/lesson/board views retain their original limits: no inferred complete-reader/footer/ceiling reachability from an offscreen element. Row13 preserves the hosted reading crop without proving zero transient/header intersection.",
+    "View tools can scale large images for display; storage dimensions and orientation were independently read from unchanged original files. This is not physical1:1 acuity proof.",
+    "No source/test edits, builds, simulator/native controllers, AV decode, new export, crop, resize or retouch were performed by this aggregate reviewer. The only repository write is this review."
+  ],
+  "perRowConvention": "Raw/export paths and full state provenance resolve by exact rowID in final captures-07.json. Both SHA256s, byte sizes, dimensions and upright orientation are independently rechecked here. Named shard reports own fuller observations for their directly viewed rows; aggregate reviewer personally viewed only rows1\u20134."
+}

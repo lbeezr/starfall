@@ -1,0 +1,981 @@
+{
+  "schemaVersion": 1,
+  "goal": 7,
+  "status": "Prepared source-bound whole exports; independent exact-export visual acceptance remains separate.",
+  "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+  "testSource": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+  "runtime": "dev.e045b9e428",
+  "verification": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-07.json",
+    "sha256": "f0969735903d5c314d78db99a0bca1b17524b3e67a4e61753cf993971701044d",
+    "bytes": 32594
+  },
+  "source": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-07.json",
+    "sha256": "e7abfef9aa1175f93ae483947658e7c957cc21e559ea0fb30aeebe00a813b9ac",
+    "bytes": 3597
+  },
+  "decodedMotion": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-07-5d4a7250-numberfix-manifest.json",
+    "sha256": "51400e020ace7b37bb53365d6f5e38c1d33e0c16255f34e0231cdbbd23b62ad0",
+    "bytes": 56043
+  },
+  "count": 13,
+  "bytes": 9758750,
+  "transform": "sips JPEG80; exact original dimensions and EXIF orientation; no crop, resize or retouch.",
+  "images": [
+    {
+      "id": "01__historical-ribbon-broad-wash",
+      "kind": "historical-native-recording",
+      "source": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0047.500.png",
+      "state": "Accepted Goal6 normal phone historical comparison, third-phase 30,000 receipt and strongest reviewed broad teal center wash. Actual AV time47.4966667s; not a continuous peak claim.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0047.500.png",
+        "sha256": "51428937e6efe0f1966e2988b8c233e1e8b7b6899ddb8f1365c22a439bf4a7b0",
+        "bytes": 3305420
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "baselineProvenance": {
+        "review": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-07-baseline.json",
+          "sha256": "170abd8a66eff79ade7c4c854cd2d5d59529e0985a53a64120e862c6106e9cc0",
+          "bytes": 26066
+        },
+        "frameManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames.json",
+          "sha256": "26dbafa338626dca038328af5a339a865866b7bf7294f97c6f1515d45d6984e8",
+          "bytes": 6969
+        },
+        "productProof": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-products.json",
+          "sha256": "d282c75a96603517cfa0b7a8dd10ce89cc3da93453960bb1ec11eea3b6784b7c",
+          "bytes": 1579
+        },
+        "runtime": "dev.606ce1efbe",
+        "qualification": "Retained acceptedGoal6 baseline; historical for Goal7 changed wash only."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/01__historical-ribbon-broad-wash.jpg",
+        "sha256": "84419e2b3675dfc5aa800c4d53fd6e4bdcdab6ae7e9083898192aa4cfdc60b10",
+        "bytes": 648416,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/01__historical-ribbon-broad-wash.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0047.500.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/01__historical-ribbon-broad-wash.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "02__phone-lantern-two-phase-source",
+      "kind": "native-recording",
+      "source": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-two-phase-phone-frames/frame-0050.479.png",
+      "state": "Normal Lantern FallingSky phone at actual50.475s:2CHAIN15,000, localized pink lower-left source wash, current figure rising, prior figure and next legal Mint pair clear. Sampled phase, not global peak.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-two-phase-phone-frames/frame-0050.479.png",
+        "sha256": "2f7bf51cdaf9a084e5b0111cc854961df254bf5b7f2d41cc1a3eefd63390919a",
+        "bytes": 2807102
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "motionProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-07-5d4a7250-numberfix-manifest.json",
+          "sha256": "51400e020ace7b37bb53365d6f5e38c1d33e0c16255f34e0231cdbbd23b62ad0",
+          "bytes": 56043
+        },
+        "movie": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-two-phase-phone.mp4",
+          "bytes": 153028112,
+          "sha256": "d941e4d588d68639db8667da1d5ab8f15fff8ed7b44843ad9594430446fcf7ac",
+          "durationSeconds": 125.84333333333333,
+          "metadataLimit": "Existing AV decoder supplies duration and preferred-transform-applied frame dimensions; codec/fps/encoded transform not separately queried."
+        },
+        "recordingEpochUncertainty": {
+          "movieZeroEpochInterval": [
+            1792908008.667248,
+            1792908008.8804412
+          ],
+          "intervalWidthSeconds": 0.21319317817687988,
+          "nominalMediaZeroEpochUsed": 1792908008.8804412,
+          "limit": "Process-start/ready bookends only; no exact media-zero/gesture latency or phase claim."
+        },
+        "frame": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-two-phase-phone-frames/frame-0050.479.png",
+          "bytes": 2807102,
+          "sha256": "2f7bf51cdaf9a084e5b0111cc854961df254bf5b7f2d41cc1a3eefd63390919a",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "requestedMediaTimeSeconds": 50.479,
+          "actualMediaTimeSeconds": 50.475,
+          "requestedGestureOffsetSeconds": 1.7,
+          "possibleActualGestureOffsetSeconds": [
+            1.4826390743255615,
+            1.6958322525024414
+          ],
+          "preferredTrackTransformApplied": true,
+          "wholeFrame": true,
+          "cropResizeOrJPEG": false
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/02__phone-lantern-two-phase-source.jpg",
+        "sha256": "8f8d50bd8e0f1e0c64c4bc87bd07e87735713cbb64d556722ccc54bdbd31254a",
+        "bytes": 496806,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/02__phone-lantern-two-phase-source.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-two-phase-phone-frames/frame-0050.479.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/02__phone-lantern-two-phase-source.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "03__phone-ribbon-two-phase-source",
+      "kind": "native-recording",
+      "source": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0043.716.png",
+      "state": "Normal Ribbon FullBoard phone: second causal receipt15,000, current pink source/diamonds and outward flight. Three-phase round guide already reports committed30,000 whole action.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0043.716.png",
+        "sha256": "01869884b31b6c980cafa3dad0d2b6ed0c2b9f83dc834140e376a7f42308beb0",
+        "bytes": 3491529
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "motionProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-07-5d4a7250-numberfix-manifest.json",
+          "sha256": "51400e020ace7b37bb53365d6f5e38c1d33e0c16255f34e0231cdbbd23b62ad0",
+          "bytes": 56043
+        },
+        "movie": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-three-phase-phone.mp4",
+          "bytes": 173839968,
+          "sha256": "8db63f166b96f94fb7b2f1500b8b1eaaa926a4e5f47cf2215474653e3bf70a66",
+          "durationSeconds": 120.16666666666667,
+          "metadataLimit": "Existing AV decoder supplies duration and preferred-transform-applied frame dimensions; codec/fps/encoded transform not separately queried."
+        },
+        "recordingEpochUncertainty": {
+          "movieZeroEpochInterval": [
+            1792908135.226298,
+            1792908135.548548
+          ],
+          "intervalWidthSeconds": 0.3222498893737793,
+          "nominalMediaZeroEpochUsed": 1792908135.548548,
+          "limit": "Process-start/ready bookends only; no exact media-zero/gesture latency or phase claim."
+        },
+        "frame": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0043.716.png",
+          "bytes": 3491529,
+          "sha256": "01869884b31b6c980cafa3dad0d2b6ed0c2b9f83dc834140e376a7f42308beb0",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "requestedMediaTimeSeconds": 43.716,
+          "actualMediaTimeSeconds": 43.70333333333333,
+          "requestedGestureOffsetSeconds": 2.6,
+          "possibleActualGestureOffsetSeconds": [
+            2.265577554702759,
+            2.587827444076538
+          ],
+          "preferredTrackTransformApplied": true,
+          "wholeFrame": true,
+          "cropResizeOrJPEG": false
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/03__phone-ribbon-two-phase-source.jpg",
+        "sha256": "1c3aeb82cd512d60752d1d645cd3c17f5bbad2c153fcf9e508534ba5ae8f79a7",
+        "bytes": 685272,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/03__phone-ribbon-two-phase-source.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0043.716.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/03__phone-ribbon-two-phase-source.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "04__phone-ribbon-three-phase-source",
+      "kind": "native-recording",
+      "source": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0045.516.png",
+      "state": "Normal Ribbon FullBoard phone: third-phase30,000 receipt, bounded teal wash around the committed lower source; current figure is already rising. Sample only, not exact peak/time.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0045.516.png",
+        "sha256": "4b757377b3c07e6202c000d7dcb81e5623d58894389b23d25a6db4aa9ba2049b",
+        "bytes": 3483260
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "motionProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-07-5d4a7250-numberfix-manifest.json",
+          "sha256": "51400e020ace7b37bb53365d6f5e38c1d33e0c16255f34e0231cdbbd23b62ad0",
+          "bytes": 56043
+        },
+        "movie": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-three-phase-phone.mp4",
+          "bytes": 173839968,
+          "sha256": "8db63f166b96f94fb7b2f1500b8b1eaaa926a4e5f47cf2215474653e3bf70a66",
+          "durationSeconds": 120.16666666666667,
+          "metadataLimit": "Existing AV decoder supplies duration and preferred-transform-applied frame dimensions; codec/fps/encoded transform not separately queried."
+        },
+        "recordingEpochUncertainty": {
+          "movieZeroEpochInterval": [
+            1792908135.226298,
+            1792908135.548548
+          ],
+          "intervalWidthSeconds": 0.3222498893737793,
+          "nominalMediaZeroEpochUsed": 1792908135.548548,
+          "limit": "Process-start/ready bookends only; no exact media-zero/gesture latency or phase claim."
+        },
+        "frame": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0045.516.png",
+          "bytes": 3483260,
+          "sha256": "4b757377b3c07e6202c000d7dcb81e5623d58894389b23d25a6db4aa9ba2049b",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "requestedMediaTimeSeconds": 45.516,
+          "actualMediaTimeSeconds": 45.50333333333333,
+          "requestedGestureOffsetSeconds": 4.4,
+          "possibleActualGestureOffsetSeconds": [
+            4.065577507019043,
+            4.387827396392822
+          ],
+          "preferredTrackTransformApplied": true,
+          "wholeFrame": true,
+          "cropResizeOrJPEG": false
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/04__phone-ribbon-three-phase-source.jpg",
+        "sha256": "7053762074c3333bb38d26d88efbff4331fdd4abcd20f11a88cc608a4f7e0772",
+        "bytes": 677641,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/04__phone-ribbon-three-phase-source.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0045.516.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/04__phone-ribbon-three-phase-source.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "05__tablet-ribbon-three-phase-source",
+      "kind": "native-recording",
+      "source": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-tablet-frames/frame-0045.666.png",
+      "state": "Normal actual Ribbon FullBoard tablet at actual45.621667s:3CHAIN30,000, localized teal lower-source wash with current rising square/flight toward Ribbon receiver. Faint local lower-arena clip edge remains visible; sampled phase, not global peak.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-tablet-frames/frame-0045.666.png",
+        "sha256": "66e496c4e5fd6731b3d34b938bd225ec12801542b6151646ec2c4cea270f59bf",
+        "bytes": 6842253
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "motionProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-07-5d4a7250-numberfix-manifest.json",
+          "sha256": "51400e020ace7b37bb53365d6f5e38c1d33e0c16255f34e0231cdbbd23b62ad0",
+          "bytes": 56043
+        },
+        "movie": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-three-phase-tablet.mp4",
+          "bytes": 250565445,
+          "sha256": "4405ae31e40da23df8f5a2eca159dfeae9020e887e04d6ec233c952cf76707fe",
+          "durationSeconds": 126.33,
+          "metadataLimit": "Existing AV decoder supplies duration and preferred-transform-applied frame dimensions; codec/fps/encoded transform not separately queried."
+        },
+        "recordingEpochUncertainty": {
+          "movieZeroEpochInterval": [
+            1792908256.267744,
+            1792908256.4795651
+          ],
+          "intervalWidthSeconds": 0.2118210792541504,
+          "nominalMediaZeroEpochUsed": 1792908256.4795651,
+          "limit": "Process-start/ready bookends only; no exact media-zero/gesture latency or phase claim."
+        },
+        "frame": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-tablet-frames/frame-0045.666.png",
+          "bytes": 6842253,
+          "sha256": "66e496c4e5fd6731b3d34b938bd225ec12801542b6151646ec2c4cea270f59bf",
+          "dimensions": [
+            2064,
+            2752
+          ],
+          "requestedMediaTimeSeconds": 45.666,
+          "actualMediaTimeSeconds": 45.62166666666667,
+          "requestedGestureOffsetSeconds": 4.4,
+          "possibleActualGestureOffsetSeconds": [
+            4.144004583358765,
+            4.355825662612915
+          ],
+          "preferredTrackTransformApplied": true,
+          "wholeFrame": true,
+          "cropResizeOrJPEG": false
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/05__tablet-ribbon-three-phase-source.jpg",
+        "sha256": "d28ade051f3d0dff5e7def9beb52fc372d2ce606c5af33429ae37a0f9e1ce3eb",
+        "bytes": 1097197,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/05__tablet-ribbon-three-phase-source.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-tablet-frames/frame-0045.666.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/05__tablet-ribbon-three-phase-source.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "06__phone-ribbon-arrived-three-figures",
+      "kind": "native-recording",
+      "source": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0046.116.png",
+      "state": "Normal Ribbon FullBoard phone at actual46.083333s: three ordered arrived figures, current survivor diamonds, exact3CHAIN30,000 receipt, clear header/ceiling/guide. Sampled arrived-figure phase; this does not establish that every refill star has finished moving or precise continuous timing.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0046.116.png",
+        "sha256": "fe38150de238698933b4db906765c42ac39887fea2f0bd77221798e9eb6ef2a3",
+        "bytes": 3558134
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "motionProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-07-5d4a7250-numberfix-manifest.json",
+          "sha256": "51400e020ace7b37bb53365d6f5e38c1d33e0c16255f34e0231cdbbd23b62ad0",
+          "bytes": 56043
+        },
+        "movie": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-three-phase-phone.mp4",
+          "bytes": 173839968,
+          "sha256": "8db63f166b96f94fb7b2f1500b8b1eaaa926a4e5f47cf2215474653e3bf70a66",
+          "durationSeconds": 120.16666666666667,
+          "metadataLimit": "Existing AV decoder supplies duration and preferred-transform-applied frame dimensions; codec/fps/encoded transform not separately queried."
+        },
+        "recordingEpochUncertainty": {
+          "movieZeroEpochInterval": [
+            1792908135.226298,
+            1792908135.548548
+          ],
+          "intervalWidthSeconds": 0.3222498893737793,
+          "nominalMediaZeroEpochUsed": 1792908135.548548,
+          "limit": "Process-start/ready bookends only; no exact media-zero/gesture latency or phase claim."
+        },
+        "frame": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0046.116.png",
+          "bytes": 3558134,
+          "sha256": "fe38150de238698933b4db906765c42ac39887fea2f0bd77221798e9eb6ef2a3",
+          "dimensions": [
+            1170,
+            2532
+          ],
+          "requestedMediaTimeSeconds": 46.116,
+          "actualMediaTimeSeconds": 46.083333333333336,
+          "requestedGestureOffsetSeconds": 5.0,
+          "possibleActualGestureOffsetSeconds": [
+            4.645577430725098,
+            4.967827320098877
+          ],
+          "preferredTrackTransformApplied": true,
+          "wholeFrame": true,
+          "cropResizeOrJPEG": false
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/06__phone-ribbon-arrived-three-figures.jpg",
+        "sha256": "412cd9b325fe5dcf0b6a316b69964b4e95d5f6b029f559e24492310253ee20c7",
+        "bytes": 691409,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/06__phone-ribbon-arrived-three-figures.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/motion-07-5d4a7250-three-phase-phone-frames/frame-0046.116.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/06__phone-ribbon-arrived-three-figures.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "07__tablet-ordinary-source-control",
+      "kind": "native-xctest",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-three-phase-tablet-attachments/3CC84F9E-3510-4066-906A-4D54A976DB63.png",
+      "state": "Normal actual tablet: ordinary first-phase Square +5,000 receipt during the committed three-phase30,000 whole action, cyan active lower-left source/flight. Ordinary control has no exceptional wash. Full board/guide/instruments visible; this is not the later separate35,000 action.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-three-phase-tablet-attachments/3CC84F9E-3510-4066-906A-4D54A976DB63.png",
+        "sha256": "de887fc2f9f35057ecfd441023df8a75f8b4a9e3d08beb25a32931b093fd1223",
+        "bytes": 7120425
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-three-phase-tablet-attachments/manifest.json",
+          "sha256": "81250b3664af3c68847ca1e78406701b48f0a31788a9539424aec888dfa1cc20",
+          "bytes": 4665
+        },
+        "testIdentifier": "CascadeReturnInteractionTests/testNormalDenseThreePhaseRibbonReturnInterruptionAndReplay()",
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "3CC84F9E-3510-4066-906A-4D54A976DB63.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity06-phone-ribbon-three-phase-returns_0_D17988AC-744D-458B-B7B4-19C75279069B.png",
+          "timestamp": 1792908298.884
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/07__tablet-ordinary-source-control.jpg",
+        "sha256": "a2075639a2faa76c237cc41e16a3f10e80ced88c616156edd07ec45ee405441c",
+        "bytes": 1128736,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/07__tablet-ordinary-source-control.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-three-phase-tablet-attachments/3CC84F9E-3510-4066-906A-4D54A976DB63.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/07__tablet-ordinary-source-control.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "08__tablet-ax5-calm-two-figures",
+      "kind": "native-xctest",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/A16FFD16-405E-403F-825F-3A8C64AB5F47.png",
+      "state": "Actual Settings Calm/maximum-text tablet: settled15,000 two-phase FullBoard receipt, two figures and current survivor diamonds. Guide extends below captured opening; complete reading is a separate capture.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/A16FFD16-405E-403F-825F-3A8C64AB5F47.png",
+        "sha256": "76322348cc8f73515ba8a1d358ab722cbdd5e5a742514d1bdd61fc5385979e42",
+        "bytes": 6981568
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/manifest.json",
+          "sha256": "fe4fb383da368c3fcf2f80712521f6125015b88bdb72158a97e15487b72d22b2",
+          "bytes": 6984
+        },
+        "testIdentifier": "CascadeReturnInteractionTests/testLargestCalmDenseChainAndSimultaneousPatternsKeepRetainedRound()",
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "A16FFD16-405E-403F-825F-3A8C64AB5F47.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity06-tablet-full-board-two-phase-returns_0_58C86146-F429-41CE-9B42-53635D0DB3CF.png",
+          "timestamp": 1792908444.409
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/08__tablet-ax5-calm-two-figures.jpg",
+        "sha256": "518a52f9428067cc0997bf554c3d965699f7a7a859219cf504432e77affb14a4",
+        "bytes": 1143777,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/08__tablet-ax5-calm-two-figures.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/A16FFD16-405E-403F-825F-3A8C64AB5F47.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/08__tablet-ax5-calm-two-figures.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "09__tablet-ax5-calm-simultaneous",
+      "kind": "native-xctest",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/59FCCC5E-C099-4880-B99E-C748DD9DBDDA.png",
+      "state": "Actual Settings Calm/maximum-text tablet guided practice, Compare the larger clear: exercise79,000/150,000 and13,000 simultaneous two-square award. This is practice; the retained ordinary FullBoard stays15,000 and is restored after Finish. Partial board/guide scroll position; complete lesson reading is the separate row10 capture.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/59FCCC5E-C099-4880-B99E-C748DD9DBDDA.png",
+        "sha256": "4b4d94adb893d9cc727e7e44e5390a902235f81414f3faf775e2266106a217d4",
+        "bytes": 4548818
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/manifest.json",
+          "sha256": "fe4fb383da368c3fcf2f80712521f6125015b88bdb72158a97e15487b72d22b2",
+          "bytes": 6984
+        },
+        "testIdentifier": "CascadeReturnInteractionTests/testLargestCalmDenseChainAndSimultaneousPatternsKeepRetainedRound()",
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "59FCCC5E-C099-4880-B99E-C748DD9DBDDA.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity06-tablet-one-phase-two-simultaneous-squares_0_0C84BA2B-7DF8-4368-9B00-307953FABBE6.png",
+          "timestamp": 1792908489.144
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/09__tablet-ax5-calm-simultaneous.jpg",
+        "sha256": "79ed7e9b2c206bf5cd5dff82dcc3b58ef344cbf1dca85b74b1bdeabe22323ee3",
+        "bytes": 969568,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/09__tablet-ax5-calm-simultaneous.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/59FCCC5E-C099-4880-B99E-C748DD9DBDDA.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/09__tablet-ax5-calm-simultaneous.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "10__tablet-ax5-complete-practice-reader",
+      "kind": "native-xctest",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/B5E0809D-F02F-4085-A393-3BAE90F738E3.png",
+      "state": "Actual maximum-text Calm tablet: complete practice comparison prose, Last earned light and Retry/Hint/Finish reached by real native reading. Reset practice is not progression.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/B5E0809D-F02F-4085-A393-3BAE90F738E3.png",
+        "sha256": "ab77448e8fe2066cfbea7779416fdc9e20b0da1003c2eab304737bc362fb5f7f",
+        "bytes": 3409617
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/manifest.json",
+          "sha256": "fe4fb383da368c3fcf2f80712521f6125015b88bdb72158a97e15487b72d22b2",
+          "bytes": 6984
+        },
+        "testIdentifier": "CascadeReturnInteractionTests/testLargestCalmDenseChainAndSimultaneousPatternsKeepRetainedRound()",
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "B5E0809D-F02F-4085-A393-3BAE90F738E3.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity06-tablet-simultaneous-pattern-reading_0_882B644C-1D41-4723-9E81-EC933C5D2D68.png",
+          "timestamp": 1792908496.02
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/10__tablet-ax5-complete-practice-reader.jpg",
+        "sha256": "296b0a4aca6632987a24141fb50f9fca7c6091ff5d1098070dd3226df044a954",
+        "bytes": 804028,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/10__tablet-ax5-complete-practice-reader.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-quiet-ax5-tablet-attachments/B5E0809D-F02F-4085-A393-3BAE90F738E3.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/10__tablet-ax5-complete-practice-reader.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "11__phone-manual-restored",
+      "kind": "native-xctest",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-manual-trace-phone-attachments/BB1E33D4-60E7-413A-B5DC-97E146540184.png",
+      "state": "Explicit normal historical Dusk manual trace/next-clear cold-restore:20 retained score and actual survivor, readable native instruments; no live exceptional-light claim.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-manual-trace-phone-attachments/BB1E33D4-60E7-413A-B5DC-97E146540184.png",
+        "sha256": "c3fe83bed31dbc218839fc622afd132356bb85a14d89c68ed15d7dee46734fbd",
+        "bytes": 3357593
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-manual-trace-phone-attachments/manifest.json",
+          "sha256": "f41864c6069ade7181a684e4841f70418477ee995944419ee5626b0f35f02ef6",
+          "bytes": 770
+        },
+        "testIdentifier": "ConstellationTraceNativeTests/testTracedSelectionAllowsNextClearAndSurvivesLifecycle()",
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "BB1E33D4-60E7-413A-B5DC-97E146540184.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "constellation-follow-up-restored_0_85ACBFEE-07C5-4502-91DC-D7062197E889.png",
+          "timestamp": 1792908608.846
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/11__phone-manual-restored.jpg",
+        "sha256": "005ea2573a6c9d6e027b733b43445fae46124fa32d0bf98a1e5889db641cb735",
+        "bytes": 469250,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/11__phone-manual-restored.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-07-5d4a7250-manual-trace-phone-attachments/BB1E33D4-60E7-413A-B5DC-97E146540184.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/11__phone-manual-restored.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "12__hosted-survival-375-default",
+      "kind": "hosted-production",
+      "source": "/private/tmp/starfall-hud-stack-20261024/hosted-07-5d4a7250-attachments/B13AFC71-6CFC-4A31-8E4D-EE59881E6216.png",
+      "state": "Hosted actual production FallingSkyView375x667 default, real seed28/12-showers Survival clear6stars/8light, phase0=.18s: exact +8/components stay above one-space badges4/5, bounded pink source light. Not native finger input.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-5d4a7250-attachments/B13AFC71-6CFC-4A31-8E4D-EE59881E6216.png",
+        "sha256": "6c994a2c01eddd233563283b184ae2a44a3679bc779e95ebf0356a48077c77f0",
+        "bytes": 7697766
+      },
+      "metadata": {
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": 1
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-5d4a7250-attachments/manifest.json",
+          "sha256": "2424598e67a99607b8ff284465c3a36bcb52ce840c535df993d40e79d2c62aa8",
+          "bytes": 57111
+        },
+        "testIdentifier": "StarlightCelebrationTests/testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText()",
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "B13AFC71-6CFC-4A31-8E4D-EE59881E6216.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "crowded-375x667-default-phase-0_0_B85A9017-1A8C-432D-8929-EE66DD1DCA0C.png",
+          "timestamp": 1792907990.675
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/12__hosted-survival-375-default.jpg",
+        "sha256": "44ecfeec21c5bb317ad999f65c0faecc3f72213b722ea8377b2fbe85c66e486a",
+        "bytes": 481995,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/12__hosted-survival-375-default.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/hosted-07-5d4a7250-attachments/B13AFC71-6CFC-4A31-8E4D-EE59881E6216.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/12__hosted-survival-375-default.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            1125,
+            2001
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    },
+    {
+      "id": "13__hosted-survival-375-maximum",
+      "kind": "hosted-production",
+      "source": "/private/tmp/starfall-hud-stack-20261024/hosted-07-5d4a7250-attachments/9F8381E1-6A0F-4209-B4FC-3AE6A068CC1C.png",
+      "state": "Hosted actual production375x667 maximum text, same real committed6star/8light clear: fixed-height clipped reading viewport, award in below-board apron. Complete guide/ceiling/footer not claimed visible/reachable by this frame.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-5d4a7250-attachments/9F8381E1-6A0F-4209-B4FC-3AE6A068CC1C.png",
+        "sha256": "379f8f9b6113399e8e876e4eaec85b3eb38b814275bc3ca651fc8a9e8dd7012d",
+        "bytes": 7321481
+      },
+      "metadata": {
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": 1
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-5d4a7250-attachments/manifest.json",
+          "sha256": "2424598e67a99607b8ff284465c3a36bcb52ce840c535df993d40e79d2c62aa8",
+          "bytes": 57111
+        },
+        "testIdentifier": "StarlightCelebrationTests/testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText()",
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "9F8381E1-6A0F-4209-B4FC-3AE6A068CC1C.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "crowded-375x667-maximum-phase-0_0_3EB87F79-8D35-4ED7-9E80-D4970E9060AD.png",
+          "timestamp": 1792907993.213
+        }
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/13__hosted-survival-375-maximum.jpg",
+        "sha256": "5ac4eec258ba85c5977b224cfc6291016bef12a3a531d7814ebf166f4379ec07",
+        "bytes": 464655,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-07-captures/13__hosted-survival-375-maximum.jpg",
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/hosted-07-5d4a7250-attachments/9F8381E1-6A0F-4209-B4FC-3AE6A068CC1C.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-07-captures/13__hosted-survival-375-maximum.jpg"
+        ],
+        "metadata": {
+          "pixels": [
+            1125,
+            2001
+          ],
+          "orientation": 1
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false
+      }
+    }
+  ],
+  "limits": "Native XCTest, native sampled movie, historical baseline and hosted production captures are explicitly distinct. No continuous performance, exact motion latency, actual VoiceOver, physical or minimum-iOS claim.",
+  "finishedUTC": "2026-10-25T06:19:18.106955+00:00",
+  "captionQualification": {
+    "recordedUTC": "2026-10-25T06:30:28.107511+00:00",
+    "originalIndex": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/captures-07-initial-export-index.json",
+      "sha256": "1f1f0d071edc133a047e2eaaf34f1e1fd70ba0ceebf18fb8cb03f42b9b94b002",
+      "bytes": 42875
+    },
+    "reason": "Row06 generic settled-phase wording is narrowed to arrived returned figures; sampled refill star completion is not claimed. Raw/JPEG bytes, paths, dimensions and all13visual witnesses are unchanged."
+  },
+  "practiceStateQualification": {
+    "recordedUTC": "2026-10-25T06:31:54.778758+00:00",
+    "priorIndex": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/captures-07-after-figure-caption.json",
+      "sha256": "f79097f9d5be9abaae73c993ceaba6cd18f5a1465d2c80122bb8e2f711ed6fba",
+      "bytes": 43477
+    },
+    "reason": "Independent row09 source review identifies guided practice rather than the retained ordinary round. Caption now explicitly distinguishes exercise79k from retained15k; all raw/JPEG bytes, paths, dimensions remain unchanged."
+  }
+}

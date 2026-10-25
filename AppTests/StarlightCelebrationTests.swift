@@ -94,6 +94,110 @@ final class StarlightCelebrationTests: XCTestCase {
         }
     }
 
+    @MainActor func testExceptionalSourceLightFollowsTheCommittedGroupAndLeavesOtherChoicesAndHUDClear() async throws {
+        var game = FallingSky.freshSurvival(seed: 28)
+        for _ in 0..<12 { XCTAssertNotNil(game.letStarsFall()) }
+        XCTAssertFalse(game.isOver)
+        let group = try XCTUnwrap(game.legalGroups.max { game.reward(of: Set($0)) < game.reward(of: Set($1)) })
+        XCTAssertEqual(game.reward(of: Set(group)), 8)
+        let independent = try XCTUnwrap(game.legalGroups.first {
+            Set($0.map(\.column)).isDisjoint(with: Set(group.map(\.column)))
+        })
+        let before = game, turn = try XCTUnwrap(game.clear(try XCTUnwrap(group.first)))
+        let event = try XCTUnwrap(StarlightCelebration(id: 1, turn: turn, from: before, total: game.score))
+        XCTAssertEqual(Set(event.cells), Set(group)); XCTAssertEqual(event.collected, 8)
+        XCTAssertTrue(event.isExceptional)
+        var ordinaryGame = ObservatoryReviewFixture.game(dense: false)
+        let ordinaryBefore = ordinaryGame, ordinaryTurn = try XCTUnwrap(ordinaryGame.clear(Cell(0, 0)))
+        let ordinary = try XCTUnwrap(StarlightCelebration(id: 2, turn: ordinaryTurn,
+            from: ordinaryBefore, total: ordinaryGame.score))
+        XCTAssertFalse(ordinary.isExceptional)
+        let sceneDeadline = ContinuousClock.now + .seconds(3)
+        while UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).isEmpty,
+              ContinuousClock.now < sceneDeadline { try await Task.sleep(for: .milliseconds(20)) }
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = scene.windows.first(where: \.isKeyWindow), window = UIWindow(windowScene: scene)
+        window.frame = CGRect(x: 0, y: 0, width: 390, height: 844)
+        let host = UIHostingController(rootView: AnyView(Color.black))
+        window.rootViewController = host; window.makeKeyAndVisible()
+        defer { window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+        let board = window.bounds, scrolled = CGRect(x: 24, y: -120, width: 342, height: 900)
+        let cases: [(String, CGRect, StarlightCelebration, Double, Bool, String?)] = [
+            ("source", board, event, 0.455, false, nil),
+            ("translated-scrolled", scrolled, event, 0.455, false, nil),
+            ("crossing-header", board, event, 0.455, false, "header"),
+            ("crossing-score", board, event, 0.455, false, "score"),
+            ("crossing-award", board, event, 0.455, false, "award"),
+            ("crossing-return", board, event, 0.455, false, "return"),
+            ("ordinary", board, ordinary, 0.455, false, nil),
+            ("quiet", board, event, 0.455, true, nil),
+            ("before-release", board, event, 0, false, nil),
+            ("expired", board, event, StarlightCelebration.duration, false, nil)
+        ]
+        let marker = CGRect(x: 4, y: window.bounds.maxY - 10, width: 6, height: 6)
+        let washRegion = CGRect(x: 0, y: 0, width: window.bounds.width, height: window.bounds.height - 16)
+        for (index, example) in cases.enumerated() {
+            let (name, canvas, receipt, age, quiet, crossing) = example
+            let mapping = LandingGeometry(size: canvas.size)
+            func point(_ cell: Cell) -> CGPoint {
+                let frame = mapping.frame(cell)
+                return CGPoint(x: canvas.minX + frame.midX, y: canvas.minY + frame.midY)
+            }
+            // Independent Core cells and shared board projection define these
+            // probes; no production source-light radius or origin helper is used.
+            let sources = group.map(point)
+            let source = CGPoint(x: sources.map(\.x).reduce(0, +) / CGFloat(sources.count),
+                                 y: sources.map(\.y).reduce(0, +) / CGFloat(sources.count))
+            let far = try XCTUnwrap(independent.map(point).max {
+                hypot($0.x - source.x, $0.y - source.y) < hypot($1.x - source.x, $1.y - source.y)
+            })
+            func probe(_ center: CGPoint) -> CGRect { CGRect(x: center.x - 4, y: center.y - 4, width: 8, height: 8) }
+            let sourceProbe = probe(source), farProbe = probe(far)
+            let oldCenter = probe(CGPoint(x: canvas.midX, y: canvas.minY + canvas.height * 0.45))
+            let covered = CGRect(x: source.x - 9, y: source.y - 9, width: 18, height: 18)
+            let header = crossing == "header" ? covered : CGRect(x: 12, y: 51, width: 366, height: 190)
+            let score = crossing == "score" ? covered : CGRect(x: 12, y: 53, width: 200, height: 44)
+            let direction: CGFloat = source.x < canvas.midX ? 1 : -1
+            let outside = probe(CGPoint(x: source.x + direction * mapping.starStep / 2, y: source.y))
+            for region in [sourceProbe, farProbe, oldCenter, outside, covered] {
+                XCTAssertTrue(washRegion.contains(region), "\(name): valid independently mapped probe \(region)")
+            }
+            XCTAssertFalse(sourceProbe.intersects(farProbe)); XCTAssertFalse(sourceProbe.intersects(oldCenter))
+            let overlay = StarlightCelebrationOverlay(event: receipt, board: canvas, score: score,
+                header: header, quiet: quiet,
+                awardBounds: crossing == "award" ? covered : nil,
+                constellationBounds: crossing == "return" ? covered : nil)
+            let markerLit = index.isMultiple(of: 2)
+            host.rootView = AnyView(Canvas { context, size in
+                overlay.drawSourceLight(in: &context, age: age, canvasSize: size)
+                context.fill(Path(marker), with: .color(markerLit ? .white : .black))
+            }.background(Color.black).ignoresSafeArea().id(name))
+            let positive = index < 6
+            var rendered: UIImage?, markerMatches = false, visibleInk = 0
+            let deadline = ContinuousClock.now + .milliseconds(900)
+            repeat {
+                await Task.yield(); host.view.layoutIfNeeded()
+                let image = windowImage(window); rendered = image
+                let markerInk = try packetInk(in: image, region: marker)
+                markerMatches = markerLit ? markerInk > 0 : markerInk == 0
+                visibleInk = try packetInk(in: image, region: washRegion)
+                if !markerMatches || positive && visibleInk <= 25 { try await Task.sleep(for: .milliseconds(20)) }
+            } while (!markerMatches || positive && visibleInk <= 25) && ContinuousClock.now < deadline
+            XCTAssertTrue(markerMatches, "\(name): capture must contain the requested Canvas")
+            let image = try XCTUnwrap(rendered)
+            if positive {
+                XCTAssertGreaterThan(try packetInk(in: image, region: crossing == nil ? sourceProbe : outside), 25,
+                    "\(name): actual source light remains visible outside protected ink")
+                if crossing != nil { XCTAssertEqual(try packetInk(in: image, region: covered), 0, name) }
+                for region in [farProbe, oldCenter, header, score] {
+                    XCTAssertEqual(try packetInk(in: image, region: region), 0, "\(name): unrelated choice or HUD ink")
+                }
+            } else { XCTAssertEqual(visibleInk, 0, "\(name): this receipt must not emit exceptional source light") }
+            let attachment = XCTAttachment(image: image)
+            attachment.name = "source-light-\(name)"; attachment.lifetime = .keepAlways; add(attachment)
+        }
+    }
+
     @MainActor func testConstellationFigureAndShadowLeaveMeasuredHUDRegionsUnpainted() async throws {
         let walk = [Cell(0,4), Cell(1,3), Cell(2,4), Cell(1,3), Cell(0,4), Cell(1,5), Cell(1,6)]
         let (store, _, _, _) = try makeStore(ConstellationFixture.overlap.game())
@@ -565,24 +669,57 @@ final class StarlightCelebrationTests: XCTestCase {
                 let store = FallingSkyStore(defaults: defaults, arguments: [], clock: ManualRainClock())
                 let window = UIWindow(windowScene: scene)
                 window.frame = CGRect(origin: .zero, size: size)
-                window.rootViewController = UIHostingController(rootView: FallingSkyView(store: store,
+                var observed: [StarlightAnchor: CGRect] = [:]
+                let host = UIHostingController(rootView: FallingSkyView(store: store,
                     flow: SkyFlowState(arguments: ["--starfalls-reset", "--technique-review"]))
                     .environment(\.scenePhase, .active)
                     .dynamicTypeSize(maximumText ? .accessibility5 : .large)
-                    .defaultAppStorage(defaults))
+                    .defaultAppStorage(defaults)
+                    .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+                        GeometryReader { geometry in
+                            let origin = geometry.frame(in: .global).origin
+                            let rects = anchors.mapValues { geometry[$0].offsetBy(dx: origin.x, dy: origin.y) }
+                            Color.clear.onAppear { observed = rects }
+                                .onChange(of: rects) { _, value in observed = value }
+                        }.allowsHitTesting(false)
+                    })
+                window.rootViewController = host
                 window.makeKeyAndVisible()
                 defer { store.setSuspended(true); window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
-                let ready = ContinuousClock.now + .seconds(3)
-                while (!store.sceneReady || store.suspended) && ContinuousClock.now < ready {
-                    try await Task.sleep(for: .milliseconds(20))
-                }
-                XCTAssertTrue(store.sceneReady); XCTAssertFalse(store.suspended)
+                try await waitForLiveAwardPlacement(store: store, window: window, host: host.view,
+                                                    anchors: { observed })
                 XCTAssertFalse(store.scene.reduceMotion, "This review requires normal SpriteKit motion")
                 let variant = "\(Int(size.width))x\(Int(size.height))-\(maximumText ? "maximum" : "default")"
                 func capture(_ phase: String) {
+                    guard let board = observed[.board], let header = observed[.header] else {
+                        XCTFail("A receipt capture requires the actual settled board and header anchors"); return
+                    }
+                    let mapping = LandingGeometry(size: board.size, largeHeader: maximumText)
+                    let marker = UIFontMetrics(forTextStyle: .caption1).scaledValue(
+                        for: SkyCeilingOverlay.baseMarkerHeight, compatibleWith: UITraitCollection(
+                            preferredContentSizeCategory: maximumText ? .accessibilityExtraExtraExtraLarge : .large))
+                    let clearance = SkyCeilingOverlay.requiredTopClearance(markerHeight: marker)
+                    let award = observed[.award] ?? StarlightCelebrationOverlay.awardRegion(
+                        board: board, header: header, accessible: maximumText, ceilingClearance: clearance)
+                    let arena = mapping.arenaFrame.offsetBy(dx: board.minX, dy: board.minY)
+                    let ceiling = CGRect(x: arena.minX, y: arena.minY - clearance,
+                                         width: arena.width, height: clearance)
+                    let facts = XCTAttachment(string: "phase=\(phase); anchors=\(observed); nativeCanvas=\(String(describing: store.scene.view.map { window.convert($0.bounds, from: $0) })); scene=\(store.scene.size); award=\(award); ceiling=\(ceiling); receiptAge=\(String(describing: store.celebration.map { Date.now.timeIntervalSince($0.started) }))")
+                    facts.name = "crowded-\(variant)-\(phase)-geometry"; facts.lifetime = .keepAlways; add(facts)
                     let attachment = XCTAttachment(image: windowImage(window))
                     attachment.name = "crowded-\(variant)-\(phase)"; attachment.lifetime = .keepAlways; add(attachment)
+                    XCTAssertTrue(award.width.isFinite && award.height.isFinite && award.width > 0 && award.height > 0)
+                    if !maximumText {
+                        let overlap = award.intersection(ceiling)
+                        XCTAssertTrue(overlap.isNull || overlap.isEmpty,
+                                      "The complete current ceiling strip must remain outside every award phase: award=\(award); ceiling=\(ceiling)")
+                    }
                 }
+                let initialBoard = try XCTUnwrap(observed[.board])
+                let initialCeiling = try XCTUnwrap(SkyCeilingSnapshot(game: store.game,
+                    mapping: LandingGeometry(size: initialBoard.size)))
+                XCTAssertTrue(initialCeiling.warnings.contains { $0.index == 3 && $0.spaces == 1 && $0.pressure == .oneSpace },
+                              "This natural crowded history must exercise the actual one-space column 4 badge")
                 capture("before")
                 store.clear(try XCTUnwrap(chosen.group.first))
                 let event = try XCTUnwrap(store.celebration)
@@ -599,9 +736,56 @@ final class StarlightCelebrationTests: XCTestCase {
                     try await Task.sleep(for: .milliseconds(20))
                 }
                 XCTAssertEqual(captured, [0, 1, 2]); XCTAssertNil(store.celebration)
+                try await waitForLiveAwardPlacement(store: store, window: window, host: host.view,
+                                                    anchors: { observed })
                 capture("after")
             }
         }
+    }
+
+    @MainActor private func waitForLiveAwardPlacement(store: FallingSkyStore, window: UIWindow,
+                                                      host: UIView, anchors: () -> [StarlightAnchor: CGRect]) async throws {
+        let scale = window.screen.scale
+        func physical(_ rect: CGRect) -> [CGFloat] {
+            [rect.minX, rect.minY, rect.maxX, rect.maxY].map { ($0 * scale).rounded() }
+        }
+        func sourcesArePlaced() -> Bool {
+            let mapping = LandingGeometry(size: store.scene.size)
+            let expected = Dictionary(uniqueKeysWithValues: store.game.board.enumerated().compactMap { index, gem in
+                gem.map { ($0.id, mapping.scenePoint(Cell(index / 7, index % 7))) }
+            })
+            let characters = store.scene.children.flatMap(\.children).compactMap { $0 as? FallingSkyCharacter }
+            return characters.count == expected.count && characters.allSatisfy { character in
+                guard let point = expected[character.gem.id] else { return false }
+                let actual = character.convert(CGPoint.zero, to: store.scene)
+                return (actual.x * scale).rounded() == (point.x * scale).rounded()
+                    && (actual.y * scale).rounded() == (point.y * scale).rounded()
+            }
+        }
+        let deadline = ContinuousClock.now + .seconds(3)
+        var previous: [StarlightAnchor: CGRect] = [:], stable = 0
+        while stable < 2 && ContinuousClock.now < deadline {
+            await Task.yield(); host.layoutIfNeeded()
+            let current = anchors()
+            if let canvas = store.scene.view, canvas.window === window,
+               store.sceneReady, !store.suspended, !store.busy,
+               let board = current[.board], current[.header] != nil, current[.score] != nil,
+               canvas.bounds.width > 0, canvas.bounds.height > 0,
+               canvas.bounds.size == store.scene.size,
+               physical(board) == physical(window.convert(canvas.bounds, from: canvas)),
+               current == previous, sourcesArePlaced() {
+                stable += 1
+            } else { stable = 0 }
+            previous = current
+            if stable < 2 { try await Task.sleep(for: .milliseconds(20)) }
+        }
+        let facts = "anchors=\(anchors()); scene=\(store.scene.size); ready=\(store.sceneReady); suspended=\(store.suspended); busy=\(store.busy)"
+        XCTAssertEqual(stable, 2, "The real anchors and actual SpriteKit characters must settle before capture: \(facts)")
+        XCTAssertTrue(store.sceneReady); XCTAssertFalse(store.suspended)
+        let canvas = try XCTUnwrap(store.scene.view)
+        XCTAssertEqual(canvas.bounds.size, store.scene.size, "The native canvas retains the shared full-size mapping")
+        XCTAssertEqual(physical(try XCTUnwrap(anchors()[.board])), physical(window.convert(canvas.bounds, from: canvas)))
+        XCTAssertTrue(sourcesArePlaced(), "Actual character origins must match their committed cells, before and after the receipt")
     }
 
     @MainActor private func windowImage(_ window: UIWindow) -> UIImage {
@@ -971,16 +1155,51 @@ final class StarlightCelebrationTests: XCTestCase {
         XCTAssertEqual(oldReceipt.level, .ordinary)
     }
 
-    @MainActor func testAwardLetteringLeavesEveryPlayableRowClear() {
+    @MainActor func testAwardLetteringLeavesEveryPlayableRowClear() async throws {
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = scene.windows.first(where: \.isKeyWindow)
         for size in [CGSize(width: 375, height: 667), CGSize(width: 390, height: 844),
                      CGSize(width: 430, height: 932), CGSize(width: 1024, height: 1366)] {
             for accessible in [false, true] {
-                let reading = FallingSkyView.readingCanvas(viewport: size, accessible: accessible)
-                let canvas = reading.size
-                let mapping = LandingGeometry(size:canvas,largeHeader:accessible)
-                let board = CGRect(origin: CGPoint(x: 13, y: 27), size: canvas)
-                let header = mapping.crownFrame.offsetBy(dx:board.minX,dy:board.minY)
-                let region = StarlightCelebrationOverlay.awardRegion(board: board, header: header, accessible: accessible)
+                let suite = "Starfall.AwardRegion.\(UUID())", defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+                defer { defaults.removePersistentDomain(forName: suite) }
+                defaults.set(try SkySaveArchive.encode(FallingSky.freshSurvival(seed: 28)), forKey: SkySaveArchive.key)
+                defaults.set(false, forKey: "calmEffects")
+                let store = FallingSkyStore(defaults: defaults, arguments: [], clock: ManualRainClock())
+                let window = UIWindow(windowScene: scene)
+                window.frame = CGRect(origin: .zero, size: size)
+                var observed: [StarlightAnchor: CGRect] = [:]
+                let host = UIHostingController(rootView: FallingSkyView(store: store,
+                    flow: SkyFlowState(arguments: ["--starfalls-reset", "--technique-review"]))
+                    .environment(\.scenePhase, .active)
+                    .dynamicTypeSize(accessible ? .accessibility5 : .large)
+                    .defaultAppStorage(defaults)
+                    .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+                        GeometryReader { geometry in
+                            let origin = geometry.frame(in: .global).origin
+                            let rects = anchors.mapValues { geometry[$0].offsetBy(dx: origin.x, dy: origin.y) }
+                            Color.clear.onAppear { observed = rects }
+                                .onChange(of: rects) { _, value in observed = value }
+                        }.allowsHitTesting(false)
+                    })
+                window.rootViewController = host; window.makeKeyAndVisible()
+                defer { store.setSuspended(true); window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+                try await waitForLiveAwardPlacement(store: store, window: window, host: host.view,
+                                                    anchors: { observed })
+                let board = try XCTUnwrap(observed[.board]), header = try XCTUnwrap(observed[.header])
+                let reading = FallingSkyView.readingCanvas(viewport: board.size, accessible: accessible)
+                let mapping = LandingGeometry(size: board.size, largeHeader: accessible)
+                let marker = UIFontMetrics(forTextStyle: .caption1).scaledValue(
+                    for: SkyCeilingOverlay.baseMarkerHeight, compatibleWith: UITraitCollection(
+                        preferredContentSizeCategory: accessible ? .accessibilityExtraExtraExtraLarge : .large))
+                let clearance = SkyCeilingOverlay.requiredTopClearance(markerHeight: marker)
+                let region = observed[.award] ?? StarlightCelebrationOverlay.awardRegion(
+                    board: board, header: header, accessible: accessible, ceilingClearance: clearance)
+                let variant = "\(Int(size.width))x\(Int(size.height))-\(accessible ? "maximum" : "default")"
+                let facts = XCTAttachment(string: "anchors=\(observed); region=\(region); clearance=\(clearance); scene=\(store.scene.size)")
+                facts.name = "award-region-\(variant)-geometry"; facts.lifetime = .keepAlways; add(facts)
+                let capture = XCTAttachment(image: windowImage(window))
+                capture.name = "award-region-\(variant)"; capture.lifetime = .keepAlways; add(capture)
                 XCTAssertGreaterThan(region.height, 20)
                 XCTAssertFalse(region.intersects(header))
                 XCTAssertTrue(board.contains(region))

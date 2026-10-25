@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "goal": 7,
+  "testedCommit": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+  "appCheckpoint": "a985c5dcb161f746618bb35419455783d17ffa38",
+  "baseMain": "5b783e473d636913f646a95b305315ebcd845888",
+  "runtimeInputFingerprint": "dev.e045b9e428",
+  "committedRuntimeInputCount": 567,
+  "workingTreeBuildDifferences": [],
+  "workingTreeTestDifferences": [],
+  "excludedDocumentationDifferences": [],
+  "changedAppOwners": [
+    "App/FallingSkyView.swift",
+    "App/StarfallTheme.swift",
+    "App/StarlightCelebration.swift"
+  ],
+  "changedTestOwners": [
+    "AppTests/StarlightCelebrationTests.swift",
+    "UITests/CascadeReturnInteractionTests.swift",
+    "UITests/ConstellationTraceNativeTests.swift"
+  ],
+  "rawInputManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-07-ceiling-oracle.json",
+    "sha256": "9f3fb3981f2f91bef275d802d3becfd1f40f1744df2eedd40fd86cd3fbb8c2b3",
+    "bytes": 145365
+  },
+  "canonicalBuildIdentityHelper": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/scripts/build_identity.py",
+    "sha256": "2f1f3cbeed1197935013045d717f34379d19b43430cdf413daa832c541a34d1b",
+    "bytes": 1063
+  },
+  "proof": "All567 current canonical runtime paths match recorded SHA256/size and committed5d/a985 Git blobs; canonical build_identity reproduces e045. No untracked runtime/test source. Current App/tests match5d except separately listed App/README.md documentation.",
+  "embeddedProducts": [
+    {
+      "configuration": "Debug",
+      "embeddedRuntime": "dev.e045b9e428",
+      "info": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+        "sha256": "dbf747a655f45f4cc4d2d74cbf210509fbd552f5c867d3f5e0baadb04941b352",
+        "bytes": 1402
+      },
+      "dialogueCatalogue": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/observatory-dialogue.json",
+        "sha256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+        "bytes": 96334
+      }
+    },
+    {
+      "configuration": "Release",
+      "embeddedRuntime": "dev.e045b9e428",
+      "info": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Release/Build/Products/Release-iphonesimulator/Starfall.app/Info.plist",
+        "sha256": "dbf747a655f45f4cc4d2d74cbf210509fbd552f5c867d3f5e0baadb04941b352",
+        "bytes": 1402
+      },
+      "dialogueCatalogue": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Release/Build/Products/Release-iphonesimulator/Starfall.app/observatory-dialogue.json",
+        "sha256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+        "bytes": 96334
+      }
+    }
+  ],
+  "inventory": {
+    "hostedMethods": 818,
+    "developmentPhoneUIMethods": 260,
+    "actualVoiceOverDeferredMethods": 6,
+    "sourceCounter": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/scripts/native_test_plan.py",
+      "sha256": "880692e979080196e4f0cd4097ea08932a3aeea3fef6bc01b66241d9414e02ff",
+      "bytes": 7480
+    },
+    "qualification": "Source discovery only; selected 18 hosted and six native executions are not a full-matrix pass."
+  },
+  "scope": "Source-local exceptional normal wash and shared ceiling-safe receipt/figure bounds; compact non-island portrait challenge-nil Survival/Dusk uses existing reading route. Actual full fonts, shared canvas/cells, one receipt lifetime, rules/saves/clocks/input unchanged. One-space pressure witness is not a reproduced full-column receipt witness."
+}

@@ -115,12 +115,16 @@ final class CascadeReturnInteractionTests: XCTestCase {
         app.revealSkyControls([source, destination])
         XCTAssertTrue(source.isEnabled && source.isHittable && destination.isEnabled && destination.isHittable)
         XCTAssertEqual(source.value as? String, "Automatic pattern play")
+        capture("\(name)-before-input", in: app)
+        let gestureStart = Date()
         source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5))
             .press(forDuration: 0.05,
                    thenDragTo: destination.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5)),
                    withVelocity: .fast, thenHoldForDuration: 0.05)
         // Capture before settlement queries consume the bounded return interval.
         capture(name, in: app)
+        let timing = XCTAttachment(string: "gestureStartEpoch=\(gestureStart.timeIntervalSince1970); captureEndEpoch=\(Date.now.timeIntervalSince1970). Passive timestamps bind the separately recorded normal motion; no latency threshold is inferred.")
+        timing.name = "\(name)-motion-timing"; timing.lifetime = .keepAlways; add(timing)
     }
 
     @MainActor private func separateClearsWithoutInterveningQueries(in app: XCUIApplication) {
