@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "issue": 387,
+  "issueURL": "https://github.com/lbeezr/starfall/issues/387",
+  "title": "Specific calm pressure feedback",
+  "status": "Historical read-ahead; activated after verified Goal 5 PR406/main1ed4a975. Concrete acceptance: goal-06-acceptance.json.",
+  "recordedUTC": "2026-10-25T00:31:52.046503+00:00",
+  "observedCommit": "87f846df3870df5d5af8740c6f5185d61bf66805",
+  "sourceLimit": "Goal 2 remains active; re-read the actual merged type/contrast/control/forecast owners at goal 6 activation. No future implementation is authorized by this record.",
+  "ownership": [
+    {
+      "owner": "SkyCeilingSnapshot / SkyCeilingOverlay",
+      "contract": "Actual column spaces come from shared SkyBoardSettling.height; passive static boundary and badges share LandingGeometry. Zero/one-space markers are suppressed for Full Board/terminal states."
+    },
+    {
+      "owner": "SkyPressureCue / FallingSkyStore.pressureCue",
+      "contract": "Persistent full-column fact in automatic Story only; manual/survival and Full Board stay outside this header warning. Current columns remains a list of full columns."
+    },
+    {
+      "owner": "SkyHeadroomFeedback / SkyDialogueLibrary.result",
+      "contract": "Compare committed before/after boards after real clears; count body spaces and named positive columns. Full Board reports real replacements. Append actual full-column recovery once; no-clear growth supplies no room promise."
+    },
+    {
+      "owner": "FallingSkyView / SkyForecastDestinations",
+      "contract": "Existing caption/protection and scaled ceiling clearance; forecast stays ordered destinations with exact source/generation admission. No animation/node-derived occupancy."
+    }
+  ],
+  "alreadyImplemented": "Goal 1 supplies caption/protection, complete scaled ceiling clearance and native mapping. Ceiling already distinguishes full/one-space; existing dialogue reports committed recovery. No new alert, aging or recovery mechanic is needed.",
+  "smallVisibleHypothesis": {
+    "outcome": "Within the existing compact instrument region, show a quiet current-room fact for one-space columns alongside the existing full-column status. This fills the header's current near-ceiling information gap while the ceiling and forecast keep their distinct jobs.",
+    "copyDirection": "A short visible grouping such as Full: 2 · 1 space: 1 is provisional; spoken text must say the complete column facts. Native density and human clarity are unproved, so adopt only after whole-screen review.",
+    "identityBoundary": "Keep sky.pressure full-only and retain existing recovery absence assertions. Any one-space fact has a distinct passive semantic identity; clearing a full column cannot leave its old warning relabeled as near-pressure.",
+    "scope": "Use current committed occupancy and shared typography. No forecast simulation, predicted-loss wording, safe/danger color for an announced star, extra clock, pulse, Store history or new framework.",
+    "rejection": "Reject an extra shelf, header domination, overlapping badges or text shrinking. If this small row cannot coexist with the current board/AX layout, revise the hypothesis in goal 6."
+  },
+  "contexts": [
+    {
+      "state": "one space",
+      "witness": "Current Kite opening has one space in columns 1/2; Lantern after four real showers has one space in column 1.",
+      "required": "Facts say current room only; no full-warning identity or loss prediction."
+    },
+    {
+      "state": "full",
+      "witness": "Current Lantern after four showers has column 2 full; current Kite points-first then one shower fills columns 1/2.",
+      "required": "Ceiling/header agree on actual full columns and stay readable with ordered Next columns."
+    },
+    {
+      "state": "matching growth",
+      "witness": "Existing invariant-valid legacy full-column test: matching small top grows, the next matching arrival blocks, later suffix is not reached. This is a mechanical fixture, not a natural production-history claim.",
+      "required": "Growing a top does not open body space, clear a full warning or promise recovery; full does not mean guaranteed next-arrival loss."
+    },
+    {
+      "state": "committed clear recovery",
+      "witness": "Kite real clear opens four spaces in column 1 while column 2 stays full; Lantern real clear changes column 2 to four spaces.",
+      "required": "Current full warning retires only for recovered columns; exact positive room and existing recovery dialogue remain once, before/independent of presentation callbacks."
+    },
+    {
+      "state": "Full Board and terminal",
+      "witness": "Current/retained Full Board refill and actual Lantern blocked/winning outcomes.",
+      "required": "Keep passive board edge, omit pressure risk; Full Board replacement never becomes temporary-room recovery. Terminal outcome retains priority."
+    }
+  ],
+  "protectedBoundaries": [
+    "Full and one-space presentation is occupancy, never a prediction of landing, growth, clear, block or time remaining.",
+    "Fresh/restored survival automatic aging remains disabled; retained historical Dusk rules remain unchanged. No Core/RNG/cadence/save/replay changes.",
+    "SkyPressureCue.recovery still compares admitted same-challenge/revision committed states. New near-room display must not change what counts as full or actual recovery.",
+    "Ceiling stays passive with unchanged common cell/column mapping and complete scaled clearance. Preserve 44/48-point controls and real ceiling/top-row taps.",
+    "Do not weaken existing native sky.pressure absence after recovery, complete-reader/final-line or actual blocked-arrival assertions to accommodate new copy."
+  ],
+  "proposedVerification": {
+    "hostedSelectors": [
+      "StarfallAppTests/SkyCeilingOverlayTests",
+      "StarfallAppTests/SkyHeadroomFeedbackTests/testHighClearReallyRecoversFourSpacesAfterTheSameShowerFillsBothLeftColumns",
+      "StarfallAppTests/SkyHeadroomFeedbackTests/testPreparationAndMatchingGrowthWithoutAnyClearHaveNoRoomAward",
+      "StarfallAppTests/SkyHeadroomFeedbackTests/testFullBoardCountsActualReplacementsAndNeverPromisesTemporaryEmptySpaces",
+      "StarfallAppTests/SkyHeadroomGuideTests/testKiteRecoveryAppendsNewRoomBeforeTheExistingFullColumnRecoveryExactlyOnce",
+      "StarfallAppTests/SkyHeadroomGuideTests/testNoClearSetupAndActualGrowthKeepTheirExistingFactsWithoutAnOpenedRoomPromise",
+      "StarfallAppTests/SkyShowerInspectionTests/testFullColumnAllowsMatchingGrowthBeforeBlockingTheNextMatchingStar"
+    ],
+    "hostedMethodCount": 10,
+    "nativeSelectors": [
+      "StarfallUITests/SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery",
+      "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable",
+      "StarfallUITests/SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival",
+      "StarfallUITests/HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay"
+    ],
+    "nativeMethodCount": 4,
+    "extension": "Extend existing room snapshot/guide and actual pressure/recovery cases with new near-fact/source correspondence while retaining every old full/recovery outcome. No new method is required by this plan.",
+    "profiles": "Default normal-motion phone; 375-point AX5 hosted native layout; actual tablet AX5 using the existing quiet pressure journey. Preserve quiet versus normal evidence separately.",
+    "actualization": "The existing hosted mechanical matching-growth fixture does not establish a natural current full-column growth route. If a visible feature starts predicting an arrival, reject it rather than treating that mechanical fixture as production proof.",
+    "counts": "Discovery observed as 815 hosted / 260 development UI; planned source extensions add 0 methods. Re-count and choose bounded serial stages at activation."
+  },
+  "visibleSuccess": "One-space/full/current-recovery facts are easy to distinguish at actual size; forecast digits remain destinations; calm hierarchy and board dominance survive the same whole native screen. Mechanical fit cannot establish recognition.",
+  "unproven": [
+    "Provisional compact copy is understandable and fits default/AX5 without crowding.",
+    "Exact placement of a separate passive near-fact identity within the existing instrument region.",
+    "Any human improvement in recognition, physical comfort or enjoyment."
+  ],
+  "verificationPerformed": "Read-only issue/source/selector audit and new planning JSON only; no App/test edits, builds, native/hosted tests, simulator operations or recursive workers.",
+  "activation": {
+    "main": "1ed4a97506dce4327ead701b2d9892979d457706",
+    "issue386": "closed/completed",
+    "sourceReadUTC": "2026-10-25T03:26:39.463960+00:00",
+    "refinement": "Reuse existing SkyCeilingSnapshot warnings; no companion occupancy model or height loop. Preserve full-only SkyPressureCue/recovery."
+  }
+}

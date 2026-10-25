@@ -14,6 +14,43 @@ final class SkyCeilingOverlayTests: XCTestCase {
         XCTAssertEqual(snapshot.columns[2].accessibilityDescription, "Column 3: full, at risk.")
         XCTAssertEqual(snapshot.columns[1].accessibilityDescription, "Column 2: 1 space left.")
         XCTAssertEqual(snapshot.columns[0].accessibilityDescription, "Column 1: 2 spaces left.")
+
+        // Natural current-rule commits supply the facts used by the header and ceiling.
+        let mapping = LandingGeometry(size: CGSize(width: 393, height: 852))
+        var lantern = FallingSky.freshChallenge(.firstLight)
+        XCTAssertEqual(lantern.challengeRevision, 4)
+        for _ in 0..<4 { _ = try XCTUnwrap(lantern.letStarsFall()) }
+        let crowded = try XCTUnwrap(SkyCeilingSnapshot(game: lantern, mapping: mapping))
+        XCTAssertEqual(crowded.columns.map(\.spaces), [1, 0, 1, 1, 1, 1, 3])
+        XCTAssertEqual(crowded.warnings.filter { $0.pressure == .full }.map(\.number), [2])
+        XCTAssertEqual(crowded.warnings.filter { $0.pressure == .oneSpace }.map(\.number), [1, 3, 4, 5, 6])
+
+        let lanternForecast = lantern.incoming
+        let recovery = try XCTUnwrap(lantern.nudge(from: Cell(0, 1), to: Cell(0, 2)))
+        XCTAssertEqual(recovery.displayAward, 5_000)
+        XCTAssertEqual(lantern.turns, 4)
+        XCTAssertEqual(lantern.incoming, lanternForecast)
+        let recovered = try XCTUnwrap(SkyCeilingSnapshot(game: lantern, mapping: mapping))
+        XCTAssertEqual(recovered.columns.map(\.spaces), [1, 4, 1, 1, 1, 1, 3])
+        XCTAssertTrue(recovered.warnings.filter { $0.pressure == .full }.isEmpty)
+        XCTAssertEqual(recovered.warnings.filter { $0.pressure == .oneSpace }.map(\.number), [1, 3, 4, 5, 6])
+
+        var kite = FallingSky.freshChallenge(.kiteHarbor)
+        XCTAssertEqual(kite.challengeRevision, 4)
+        let opening = try XCTUnwrap(SkyCeilingSnapshot(game: kite, mapping: mapping))
+        XCTAssertEqual(opening.columns.map(\.spaces), [1, 1, 4, 4, 5, 5, 5])
+        XCTAssertTrue(opening.warnings.filter { $0.pressure == .full }.isEmpty)
+        XCTAssertEqual(opening.warnings.filter { $0.pressure == .oneSpace }.map(\.number), [1, 2])
+
+        let kiteForecast = kite.incoming
+        let highClear = try XCTUnwrap(kite.nudge(from: Cell(2, 1), to: Cell(2, 0)))
+        XCTAssertEqual(highClear.displayAward, 5_000)
+        XCTAssertEqual(kite.turns, 0)
+        XCTAssertEqual(kite.incoming, kiteForecast)
+        let high = try XCTUnwrap(SkyCeilingSnapshot(game: kite, mapping: mapping))
+        XCTAssertEqual(high.columns.map(\.spaces), [5, 1, 4, 4, 5, 5, 5])
+        XCTAssertTrue(high.warnings.filter { $0.pressure == .full }.isEmpty)
+        XCTAssertEqual(high.warnings.filter { $0.pressure == .oneSpace }.map(\.number), [2])
     }
 
     func testBoundaryAndColumnMarkersShareTheTopRowMappingAcrossLayouts() throws {

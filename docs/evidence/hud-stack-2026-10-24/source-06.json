@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "testedCommit": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+  "baseMain": "1ed4a97506dce4327ead701b2d9892979d457706",
+  "runtimeInputFingerprint": "dev.606ce1efbe",
+  "committedRuntimeInputCount": 567,
+  "workingTreeBuildDifferences": [],
+  "workingTreeTestDifferences": [],
+  "changedAppOwners": [
+    "App/FallingSkyView.swift",
+    "App/StarfallTheme.swift",
+    "App/SkyForecastDestinations.swift",
+    "App/SkyCopy.swift",
+    "App/DialogueScripts/observatory-dialogue.json"
+  ],
+  "changedTestOwners": [
+    "AppTests/SkyCeilingOverlayTests.swift",
+    "AppTests/SkyReadingPlayfieldTests.swift",
+    "UITests/SkyFlowInteractionTests.swift",
+    "UITests/HeadroomFeedbackInteractionTests.swift",
+    "UITests/NativeSkyControls.swift"
+  ],
+  "rawInputManifest": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-06-final.json",
+  "rawInputManifestSHA256": "ce592aa60eee83dae3191bc16273400e3f320ed9e0bce01e4423a91bb54b0057",
+  "proof": "Every canonical runtime path equals its committed Git blob; runtime SHA256 uses canonical build_identity; no untracked runtime input.",
+  "scope": "Ordinary automatic Story near-room status and compact portrait composition in official shared components; original ceiling/common board mapping, full fonts,80ptreturn,44/48targets, score/rules/RNG/saves/replay/cadence unchanged. Guided practice/island/FullBoard/manual remain on existing routes. Shared status/forecast semantics precede decoration. No unaccepted other-task source included.",
+  "independentSourceReview": {
+    "reviewer": "/root/hud_read_ahead",
+    "result": "No genuine source issue found in0ba8de86. Representation uses visible Text(text) and same statusFont; complete prose only via accessibilityLabel, nativeIdentifier inside representation, protection outside. Compact copy covers any column count with exact ordered speech. Default nil/nil component path unchanged.",
+    "limits": "Source review does not prove native frames, visual appearance or actual VoiceOver."
+  },
+  "sdk": "iphonesimulator27.1",
+  "xcodeBuild": "27A9275",
+  "simulatorOS": "iOS27.0",
+  "environment": "macOS27.0.1/26A434; dedicated iPhone17e390x844@3x and actual iPadPro13M5 portrait1032x1376@2x; hosted narrow375x667 large/XXXL/AX5.",
+  "testCheckpoints": {
+    "hosted14": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+    "hosted2": "782158668e48221e71a4203591d78ee3b0f73314",
+    "native6": "b28321cabb405c8f01893041c321c17851d5f0bd",
+    "proof": "App/AppTests unchanged; all six native cases freshly requalified after shared helper correction, same8pans and strict target gates.",
+    "guideDelta": "Onlyfourfull exactexpectedguide literals gainalreadyacceptedscoreaccounting+FullBoard2survivors; twoindependentexistinghostedguide oracles pass. App/AppTests unchanged."
+  },
+  "tailRuntimeProof": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-06-tail.json",
+    "sha256": "e7dc44f2fd4cc1c204a320a34f1565bc50bc422d4c245e4bccf5fa9a621aadec",
+    "runtimeInputCount": 567,
+    "workingTreeRuntimeDifferences": [],
+    "workingTreeTestDifferences": []
+  },
+  "embeddedBuildIDs": {
+    "Debug": "dev.606ce1efbe",
+    "Release": "dev.606ce1efbe"
+  },
+  "finalTestRuntimeProof": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-06-b28321ca.json",
+    "sha256": "dcb882b49ace21a900effcccd3fb7ad4794e8914adc6532a925f6370955b5fba",
+    "runtimeInputCount": 567,
+    "workingTreeRuntimeDifferences": [],
+    "workingTreeTestDifferences": []
+  },
+  "testInfrastructure": "SharedUItesthelper measures and reserves nativepantravel (min32/+16) andchecksafter8thpan; no9thgesture, samecompletecontainment/hittable/heightgates/surface/coordinates/velocity/holds. Passivefailure/Settingsgeometry retained. Allsixnativecasesfreshlyrequalified atb283; noAppscrollingfixclaim."
+}

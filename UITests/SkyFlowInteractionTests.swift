@@ -213,7 +213,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         verifyRibbonIdentity(largest: true)
     }
 
-    @MainActor private func revealStoryCeiling(_ app: XCUIApplication) {
+    @MainActor private func revealStoryCeiling(_ app: XCUIApplication, oneSpaceColumns: [Int]) {
         let topStar = app.buttons["experiment.cell.6.1"]
         let ceiling = app.descendants(matching: .any).matching(identifier: "sky.ceiling").firstMatch
         let header = app.descendants(matching: .any).matching(identifier: "sky.header").firstMatch
@@ -244,6 +244,41 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertTrue(viewport.contains(ceiling.frame), "The full ceiling must be visible below the pinned header: \(ceiling.frame), viewport \(viewport)")
         XCTAssertTrue(viewport.contains(topStar.frame) && topStar.isHittable,
                       "The complete top-row star must remain visible and accept physical input")
+        let near = app.descendants(matching: .any).matching(identifier: "sky.headroom.oneSpace")
+        if near.count != 1 {
+            let identity = XCTAttachment(string: near.debugDescription + "\nHeader: " + header.debugDescription)
+            identity.name = "pressure-one-space-identity-failure"; identity.lifetime = .keepAlways; add(identity)
+            capture(app, "pressure-one-space-identity-failure")
+        }
+        XCTAssertEqual(near.count, 1, "Current one-space facts have one passive native identity")
+        XCTAssertEqual(near.firstMatch.label,
+                       oneSpaceColumns.map { "Column \($0): 1 space left." }.joined(separator: " "))
+        let nearFrame = near.firstMatch.frame, headerFrame = header.frame
+        let forecastFrame = app.descendants(matching: .any).matching(identifier: "sky.forecast.destinations").firstMatch.frame
+        let full = app.staticTexts.matching(identifier: "sky.pressure")
+        XCTAssertLessThanOrEqual(full.count, 1)
+        let fullFrame = full.firstMatch.exists ? full.firstMatch.frame : nil
+        for frame in [nearFrame] + (fullFrame.map { [$0] } ?? []) {
+            XCTAssertTrue(app.frame.contains(frame), "Every current-room fact must fit the viewport: \(frame)")
+            // AX aggregate edges use Float32 while native Text retains CGFloat.
+            // Compare each edge at their common precision without adding tolerance.
+            XCTAssertTrue(Float(frame.minX) >= Float(headerFrame.minX)
+                && Float(frame.minY) >= Float(headerFrame.minY)
+                && Float(frame.maxX) <= Float(headerFrame.maxX)
+                && Float(frame.maxY) <= Float(headerFrame.maxY),
+                "Current-room facts must fit the pinned header: fact \(frame), header \(headerFrame)")
+            XCTAssertFalse(frame.intersects(forecastFrame),
+                           "Current room and ordered destinations occupy separate space: \(frame), \(forecastFrame)")
+        }
+        if let fullFrame {
+            XCTAssertFalse(fullFrame.intersects(nearFrame),
+                           "Full and one-space facts must remain distinct: \(fullFrame), \(nearFrame)")
+        }
+        XCTAssertFalse(headerFrame.intersects(ceiling.frame), "The pinned header must leave the complete ceiling visible")
+        let ceilingFacts = ceiling.value as? String ?? ""
+        for column in oneSpaceColumns {
+            XCTAssertTrue(ceilingFacts.contains("Column \(column): 1 space left."), ceilingFacts)
+        }
     }
 
     @MainActor private func assertFifthForecast(_ app: XCUIApplication) {
@@ -270,6 +305,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         menu.tap(); tap("experiment.pause", app)
         let next = app.buttons["experiment.next"], board = app.otherElements["experiment.board"]
         XCTAssertTrue((board.value as? String)?.hasPrefix("0 showers") == true, "The pressure witness starts before any shower")
+        XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "sky.headroom.oneSpace").firstMatch.exists)
         for wave in 1...4 {
             app.revealSkyControls([next]); next.tap()
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
@@ -291,7 +327,7 @@ final class SkyFlowInteractionTests: XCTestCase {
         XCTAssertTrue((ceiling.value as? String)?.contains("Column 1: 1 space left.") == true)
         XCTAssertLessThanOrEqual(ceiling.frame.maxY, app.buttons["experiment.cell.6.0"].frame.minY + 1,
                                  "The passive ceiling description must not cover native star targets")
-        revealStoryCeiling(app)
+        revealStoryCeiling(app, oneSpaceColumns: [1, 3, 4, 5, 6])
         assertFifthForecast(app)
         capture(app, largest ? "pressure-full-largest" : "pressure-full-default")
         return app
@@ -309,6 +345,10 @@ final class SkyFlowInteractionTests: XCTestCase {
             XCTAssertTrue(pressure.waitForExistence(timeout: 5))
             XCTAssertTrue(pressure.label.contains("Column 2 is full"))
             XCTAssertTrue(app.buttons["experiment.next"].exists, "Restoring the crowded board stays paused")
+            let near = app.descendants(matching: .any).matching(identifier: "sky.headroom.oneSpace")
+            XCTAssertEqual(near.count, 1)
+            XCTAssertEqual(near.firstMatch.label,
+                           [1, 3, 4, 5, 6].map { "Column \($0): 1 space left." }.joined(separator: " "))
             assertFifthForecast(app)
         }
         let source = app.buttons["experiment.cell.0.1"], destination = app.buttons["experiment.cell.0.2"]
@@ -335,7 +375,7 @@ final class SkyFlowInteractionTests: XCTestCase {
             XCTAssertTrue(message.exists, "Deliberately paused reading must outlive the active-play receipt timer")
             app.readSkyGuideToEnd(actions: [app.buttons["experiment.next"]])
         }
-        revealStoryCeiling(app)
+        revealStoryCeiling(app, oneSpaceColumns: [1, 3, 4, 5, 6])
         assertFifthForecast(app)
         capture(app, largest ? "pressure-recovered-largest" : "pressure-recovered-default")
         let next = app.buttons["experiment.next"]
@@ -358,10 +398,12 @@ final class SkyFlowInteractionTests: XCTestCase {
 
     @MainActor func testIdleFullStoryColumnReachesTheActualBlockedArrival() {
         let app = reachFullStoryColumn(); defer { app.terminate() }
-        tap("experiment.next", app)
+        let next = app.buttons["experiment.next"]
+        app.revealSkyControls([next]); next.tap()
         let outcome = app.staticTexts["experiment.outcome"]
         XCTAssertTrue(outcome.waitForExistence(timeout: 8)); XCTAssertEqual(outcome.label, "No room to land")
         XCTAssertFalse(app.staticTexts["sky.pressure"].exists)
+        XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "sky.headroom.oneSpace").firstMatch.exists)
         XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "sky.forecast.destinations").firstMatch.exists)
         capture(app, "pressure-idle-overflow")
     }

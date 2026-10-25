@@ -1,6 +1,6 @@
 # A coherent set of native HUD instruments
 
-**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 merged in [PR #404](https://github.com/lbeezr/starfall/pull/404); goal 4 merged in [PR #405](https://github.com/lbeezr/starfall/pull/405); goal 5 verified for its development slice, merge next · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
+**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 merged in [PR #404](https://github.com/lbeezr/starfall/pull/404); goal 4 merged in [PR #405](https://github.com/lbeezr/starfall/pull/405); goal 5 merged in [PR #406](https://github.com/lbeezr/starfall/pull/406); goal 6 verified, awaiting individual merge · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
 
 The user authorized [ten ordered HUD refinements](https://github.com/lbeezr/starfall/issues/381), with each goal tested and merged before the next implementation. Each pass retains the previous accepted behavior and corrects its current presentation seam in the normal app. Existing Observatory materials, native controls, rules, saves, replay, clocks and board mapping remain authoritative.
 
@@ -16,8 +16,8 @@ The initial development-adoption verdict below is superseded. Its source identit
 | 2 | Coherent instrument typography | [#383](https://github.com/lbeezr/starfall/issues/383) | Verified and merged #403; issue completed |
 | 3 | Readability across every sky | [#384](https://github.com/lbeezr/starfall/issues/384) | Verified and merged #404; issue completed |
 | 4 | Shared control states and glyph craft | [#385](https://github.com/lbeezr/starfall/issues/385) | Verified and merged #405; issue completed |
-| 5 | One coherent forecast instrument | [#386](https://github.com/lbeezr/starfall/issues/386) | Verified native, sampled-motion and exact-export review; individual merge next |
-| 6 | Specific, calm pressure feedback | [#387](https://github.com/lbeezr/starfall/issues/387) | After goal 5 merge |
+| 5 | One coherent forecast instrument | [#386](https://github.com/lbeezr/starfall/issues/386) | Verified and merged #406; issue completed |
+| 6 | Specific, calm pressure feedback | [#387](https://github.com/lbeezr/starfall/issues/387) | Verified; awaiting individual merge |
 | 7 | Causal move-to-earned-light attention | [#388](https://github.com/lbeezr/starfall/issues/388) | After goal 6 merge |
 | 8 | Consistent optional detail readers | [#389](https://github.com/lbeezr/starfall/issues/389) | After goal 7 merge |
 | 9 | Whole-HUD adaptive layouts | [#390](https://github.com/lbeezr/starfall/issues/390) | After goal 8 merge |
@@ -124,7 +124,7 @@ Actual platform focus, native disabled-touch rejection, current Increased Contra
 
 ## Goal 5: one forecast row and a timing-only trail
 
-**Status:** Adopted for the named development slice; individual main merge next. Goal 6 remains held until that merge.
+**Status:** Adopted for the named development slice and merged in [PR #406](https://github.com/lbeezr/starfall/pull/406), main `1ed4a975`; issue #386 completed. [Publication proof](publication-05.json) confirms identical reviewed/published/main trees. Canonical Project projection is unavailable. Goal 6 follows this individual merge.
 
 The regular trail now shows time with one small pearl head. The complete ordered row remains the single family/column reading, with its original selection, locator and inspection utility. The shared Canvas keeps its 132×28 footprint, computed head, normal glow/dust, quiet updates and paused opacity. A five-point head with a one-point dark keyline remains painted at cycle start. Calibrated island followers and drawing stay unchanged; no new asset, route, clock or game state remains.
 
@@ -161,3 +161,22 @@ The normal phone cases verify complete targets, real column selection, inspector
 The dedicated iPhone 17e (`89BC6263-797D-4573-838E-E238A90D0D79`) and iPad Pro 13-inch M5 (`3C3726C1-8880-48AE-AC2D-4C9376250DF7`) run iOS 27.0. Xcode 27.1 / 27A9275 builds the iOS 17+ app. No physical-device installation or reset is authorized by verification.
 
 Human recognition, physical reading comfort, sustained performance, minimum-iOS execution and full actual VoiceOver are separate, unperformed acceptance. Existing physical contrast [#209](https://github.com/lbeezr/starfall/issues/209) remains open. Native correctness and inspected screenshots cannot establish enjoyment or learning.
+
+
+## Goal 6: specific, calm pressure facts
+
+**Status:** Verified and adopted for the named development slice; awaiting its individual merge. Goal 7 starts after that merge. [Acceptance](goal-06-acceptance.json) retains the observable contract.
+
+Ordinary automatic Story visits now show exact one-space columns through the official status instrument, separately from full-column pressure and the ordered future forecast. `SkyCeilingSnapshot` supplies the read-only column facts; Core retains occupancy. Compact portrait Story keeps the existing cropped reading canvas throughout opening, pressure and recovery; full native text, complete targets, top-row input and the 80-point return band retain their strict gates. Practice, calibrated islands, Full Board and manual routes retain their existing branches. Rules, supply, RNG, scores, saves, Replay and shower clocks are unchanged.
+
+App source is `0ba8de86` / `dev.606ce1efbe`; all six final native executions use test checkpoint `b28321ca`. [Source proof](source-06.json) verifies matching Debug and Release build IDs. [Mechanical evidence](verification-06.json) records 352 Core tests, 16 affected hosted methods and six native executions of five unique methods, all with zero failures/skips, plus Debug/Release. The hosted total carries 14 unchanged-source layout/behavior checks and two existing canonical-guide oracles; it is not a full-suite run. Hosted programmatic reveal proves extent and geometry; actual pans, reading, taps, recovery, round/world preservation and final preference restoration come from the native cases.
+
+Independent [hosted](visual-review-06-hosted-final.json), [whole-native-screen](visual-review-06-native.json) and [exact-export](visual-review-06-exports.json) reviews pass their named scopes. The [15-image index](captures-06.json) separates current default/AX5 phone/tablet pressure and recovery, Kite outcomes, Full Board refills and the historical full-only Goal5 video frame. Full Board stills show the real 15,000-point eight-refill guide and following 30,000-point clear, not 42,000. Guide-focused stills retain their actual scroll positions; expanded Lantern recovery continues below its pictured window. A still does not prove whole-board and complete-guide access together. There is no matched old recovery image.
+
+All [initial failures](verification-06-failures.json), [tail setup/oracle failures](verification-06-tail-failures.json), [physical-coordinate audit](projection-audit-06.json) and [scroll measurements](verification-06-scroll.json) remain. The old baseline failed strict semantic clearance although its badge ink was visibly complete. Native Settings restoration later failed after the gameplay gates; an unchanged diagnostic pass measured lost pan travel. The shared test helper now reserves that travel and checks after its eighth allowed pan, preserving the same eight-pan limit and strict containment/hittability. The fresh six-case batch requalifies that correction; no App scrolling fix is claimed.
+
+| Current native full-column pressure | Current native real recovery |
+| --- | --- |
+| ![Default phone with full column 2 and exact one-space columns](goal-06-captures/dev-606ce1efbe__phone-default__lantern-full.jpg) | ![Default phone after the real 5,000-point recovery, retaining exact one-space facts](goal-06-captures/dev-606ce1efbe__phone-default__lantern-recovered.jpg) |
+
+No actual VoiceOver, physical-device reading/performance, minimum-iOS or continuous-motion acceptance follows. The earlier isolated reader-pan uncertainty retains its engineering trigger. Revisit physical recognition under [#206](https://github.com/lbeezr/starfall/issues/206) or before changing the shared status/reading roles. No temporary route or asset remains.

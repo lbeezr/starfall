@@ -1,0 +1,1385 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "reviewer": "hud_goal_review",
+  "reviewType": "Independent whole native simulator PNG still review",
+  "status": "PASS — bounded final b283 whole native still visual review; final export review and overall Goal6 adoption are separate",
+  "reviewedAtUTC": "2026-10-25T05:19:38.108998+00:00",
+  "productSource": {
+    "appCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+    "runtime": "dev.606ce1efbe",
+    "finalUITestCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+    "finalRawPrefix": "native-06-b28321ca",
+    "sourcePrecision": "All six final native bundles use the same b283 UI test head with unchanged App0ba/runtime606. Earlier0ba/cbd/782tranches are retained under history. Final native PASS does not erase earlier control-reveal or exact-copy failures.",
+    "sourceRecord": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-06.json",
+      "sha256": "45704b5ed64e2e248eacd801d3e4ba4c1b51875a8ed9d05226c8ac1bb2656d92"
+    },
+    "verificationRecord": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-06.json",
+      "sha256": "4558fc45015d5cae29770296136997272f47cc3bbca9892ee9bbe895367fe877"
+    }
+  },
+  "method": {
+    "judgment": "Direct whole originals against approved middlePlay hierarchy and retainedGoal5 full-state49.985s, independently of implementer/export verdicts. Final25mappings comprise21unique hashes:19fresh unique originals directly viewed,2exactSHA matches to already viewed prior originals. No mechanical pass overrides visible failure.",
+    "imageHandling": "No crop, edit, recoloring, decoder, simulator or controller action. Native stored dimensions/EXIF retained per image.",
+    "reference": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+      "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6"
+    },
+    "hostedEvidenceSeparate": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-06-hosted.json",
+      "sha256": "dfd07e393f40b0bbd21f6cb584dbe6d6c8b918ea4bb2db34be22436ad40e0ae7"
+    },
+    "motionModes": "Normaldefaultfull and normalKite source explicitly verify systemReduceMotion off and Calm off. Largestquiet recovery uses CalmYES launch preference. FinalFullBoard method toggles actualSettings CalmOFF→ON and restores its original value; captured finalrestoration is ON. Stills do not prove motion or a finalOFFstate."
+  },
+  "remainingGates": [
+    "Independent exact final JPEG/raw export review and lead source/build/Core/Release/membership/hygiene evidence remain separate from this native raw verdict.",
+    "Lead owns overall Goal6 adoption and individual merge; this file authorizes no broader unperformed validation."
+  ],
+  "unperformedLimits": [
+    "No actual VoiceOver, physical/minimum-iOS17 device, IncreaseContrast/ReduceTransparency or exhaustive landscape/artwork matrix.",
+    "Static native stills do not establish continuous animation, timing, full packet flights, receipt lifetime, pressure perception, enjoyment or performance.",
+    "Native XCTest source/summary establish bounded interaction assertions; this reviewer did not control a device or watch an uninterrupted interaction/movie.",
+    "World/background/restore/exact-replay/canonical-save outcomes remain source-bound mechanical checks when no distinct depicted screen exists."
+  ],
+  "history": {
+    "interpretation": "Source-bound prior reviews and failures retained. Their then-held status is historical; the final b283 tranche below supplies current raw review. No prior failure is erased or relabeled as a passing run.",
+    "statusAtInitialDraft": "HELD: five completed native cases plus partial failed FullBoard bundle; diagnostic rerun pending; final exports unreviewed",
+    "series": [
+      {
+        "prefix": "native-06-0ba8de86-full",
+        "scope": "Completed native default phone recovery; bounded still visual pass",
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-full-attachments/manifest.json",
+          "sha256": "89ae87cef228a0a3911b802c459f9786883b4a1810cd9a8ccc830a602c556866"
+        },
+        "mechanicalResultSeparate": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-full-summary.json",
+          "sha256": "b6bc808e17ac45ae81cccdfdd51752731e7d98988bb156c3f1783e35c90dce66",
+          "result": "Passed",
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "runtimeWarnings": [],
+          "xcresultWallSeconds": 97.159,
+          "failures": [],
+          "devices": [
+            {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            }
+          ]
+        },
+        "PNGMappingCount": 2,
+        "byteUniquePNGCount": 2,
+        "frames": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-full-attachments/80903447-AD13-43B5-9079-13D782D4AE6D.png",
+            "sha256": "a2734bffc39e59ceaadd69092b29a52b053785dc60f9c839caae38bc310be78a",
+            "checkpoint": "pressure-recovered-default",
+            "testIdentifier": "SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery()",
+            "timestamp": 1792902786.498,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Complete5,000/150,000 and ordered forecast; full2 caption/badge retire while near1,3,4,5,6 persist. Actual stars and ceiling stay clear. Recovery guide extends below this window.",
+            "scope": "Completed native default phone recovery; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-full-attachments/BD064897-51E4-4845-B566-BCF5223BBB04.png",
+            "sha256": "71bc53c11e63a8b79195aed285102b617471d8d6f10beb1b735a985cf4b56002",
+            "checkpoint": "pressure-full-default",
+            "testIdentifier": "SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery()",
+            "timestamp": 1792902767.246,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Complete0/150,000, forecast7/6/1/2/4 and separate full2/near1,3,4,5,6 facts. Complete ceiling/badges/topAqua and substantial actual field; expanded short guide visible. Footer below current scrolling window is not reachability proof.",
+            "scope": "Completed native default phone recovery; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          }
+        ]
+      },
+      {
+        "prefix": "native-06-0ba8de86-ax-phone",
+        "scope": "Completed native AX5 quiet phone recovery; bounded still visual pass",
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-phone-attachments/manifest.json",
+          "sha256": "01f68738bf1c3316aef0dde7aa9d8bdcd68cac530494f6232429911e26c0a108"
+        },
+        "mechanicalResultSeparate": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-phone-summary.json",
+          "sha256": "e29751ea86106c59d1f45a49d1e3fd447f98d3eb84699453b1ed6ab42eda441a",
+          "result": "Passed",
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "runtimeWarnings": [],
+          "xcresultWallSeconds": 112.476,
+          "failures": [],
+          "devices": [
+            {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            }
+          ]
+        },
+        "PNGMappingCount": 2,
+        "byteUniquePNGCount": 2,
+        "frames": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-phone-attachments/B78B8460-45B3-42CC-A449-7CF39B97AEB1.png",
+            "sha256": "a4dfe39f17525087b9c2b3658ed10ac68da05c40feeaccb34b19fe3954f49adf",
+            "checkpoint": "pressure-recovered-largest",
+            "testIdentifier": "SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable()",
+            "timestamp": 1792902907.995,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "CompleteAX5 5,000/150,000 and forecast. Full2 caption/badge retire; near list remains complete and separate. Upper actual stars clear; image is not a complete-reader witness.",
+            "scope": "Completed native AX5 quiet phone recovery; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-phone-attachments/5722F3D4-0F99-401E-BAEC-F3C623DDD880.png",
+            "sha256": "da1b6be798d6b714e1e05a871f9a0a9550dd2e4e78397ba848a527c40210ac4f",
+            "checkpoint": "pressure-full-largest",
+            "testIdentifier": "SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable()",
+            "timestamp": 1792902872.026,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "CompleteAX5 score/target, all five forecast facts and full2/near list. All revealed ceiling badges, line and upper actual stars clear. Phone uses compact list; actual tablet wraps the complete sentence. Lower rows/guide may be outside the current scrolling window.",
+            "scope": "Completed native AX5 quiet phone recovery; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          }
+        ]
+      },
+      {
+        "prefix": "native-06-0ba8de86-ax-tablet",
+        "scope": "Completed native actual AX5 quiet tablet recovery; bounded still visual pass",
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-tablet-attachments/manifest.json",
+          "sha256": "b83b35e89f4712d05b8a4162959902030e18c718db442be820758254bf119891"
+        },
+        "mechanicalResultSeparate": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-tablet-summary.json",
+          "sha256": "5cbc3151c963e54deb78ad20b23f1268d1065bc5e1f4e3bf8d68825f3ea5c0e5",
+          "result": "Passed",
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "runtimeWarnings": [],
+          "xcresultWallSeconds": 114.718,
+          "failures": [],
+          "devices": [
+            {
+              "architecture": "arm64",
+              "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+              "deviceName": "Starfall HUD Stack dcf3 Tablet",
+              "modelName": "iPad Pro 13-inch (M5)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            }
+          ]
+        },
+        "PNGMappingCount": 2,
+        "byteUniquePNGCount": 2,
+        "frames": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-tablet-attachments/6A6512CB-22DD-49C5-AA15-DF5A89B0B3BF.png",
+            "sha256": "7ad9f84726c15f69877592b99ab50863db35cf10d583fb2c9bd3466a8182d300",
+            "checkpoint": "pressure-recovered-largest",
+            "testIdentifier": "SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable()",
+            "timestamp": 1792903024.383,
+            "storedPixelDimensions": [
+              2064,
+              2752
+            ],
+            "exifOrientation": 1,
+            "observation": "CompleteAX5 5,000/150,000 and forecast. Full2 caption/badge retire; near list remains complete and separate. Upper actual stars clear; image is not a complete-reader witness.",
+            "scope": "Completed native actual AX5 quiet tablet recovery; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-tablet-attachments/E18C9565-9443-481B-AAEF-C1F2E0A34711.png",
+            "sha256": "2b98ab1483368c57da2654b895f8a8d4c604dc74d6760b598936d5cd771b27ee",
+            "checkpoint": "pressure-full-largest",
+            "testIdentifier": "SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable()",
+            "timestamp": 1792902991.712,
+            "storedPixelDimensions": [
+              2064,
+              2752
+            ],
+            "exifOrientation": 1,
+            "observation": "CompleteAX5 score/target, all five forecast facts and full2/near list. All revealed ceiling badges, line and upper actual stars clear. Phone uses compact list; actual tablet wraps the complete sentence. Lower rows/guide may be outside the current scrolling window.",
+            "scope": "Completed native actual AX5 quiet tablet recovery; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          }
+        ]
+      },
+      {
+        "prefix": "native-06-cbd1bc50-blocked",
+        "scope": "Completed native blocked outcome; sameApp/runtime, test-only control reveal correction; bounded still visual pass",
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-blocked-attachments/manifest.json",
+          "sha256": "e17e5909291f0f3e9bc4c2d26da258ab3ddb41a788e73064ff84ded8fd389e8e"
+        },
+        "mechanicalResultSeparate": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-blocked-summary.json",
+          "sha256": "864d3071cf5695a817a75d93e51a112e72a464aa8371fd67aeffdff4c048dc91",
+          "result": "Passed",
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "runtimeWarnings": [],
+          "xcresultWallSeconds": 56.767,
+          "failures": [],
+          "devices": [
+            {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            }
+          ]
+        },
+        "PNGMappingCount": 2,
+        "byteUniquePNGCount": 2,
+        "frames": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-blocked-attachments/E1C595F1-89AC-45A5-8395-904EF78E4B13.png",
+            "sha256": "5c64234e66395bb36e4f7368b25d1d2ce480ffe124ce3d6a88ca1d8f86b6baaf",
+            "checkpoint": "pressure-idle-overflow",
+            "testIdentifier": "SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival()",
+            "timestamp": 1792903261.721,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Actual terminal has complete No room to land heading, column2/no-room/0of150,000 explanation and all four outcome actions. Prior full/near/forecast HUD facts absent. Dimmed board supports result hierarchy.",
+            "scope": "Completed native blocked outcome; sameApp/runtime, test-only control reveal correction; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-blocked-attachments/7468A6E3-F07C-417E-8A40-12D5618800ED.png",
+            "sha256": "a9f879fe1331b7079c3491e071fb8ce672f830b8c625da50a5f1491198f0762a",
+            "checkpoint": "pressure-full-default",
+            "testIdentifier": "SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival()",
+            "timestamp": 1792903256.575,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Complete0/150,000, forecast7/6/1/2/4 and separate full2/near1,3,4,5,6 facts. Complete ceiling/badges/topAqua and substantial actual field; expanded short guide visible. Footer below current scrolling window is not reachability proof.",
+            "scope": "Completed native blocked outcome; sameApp/runtime, test-only control reveal correction; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          }
+        ]
+      },
+      {
+        "prefix": "native-06-78215866-kite",
+        "scope": "Completed native Kite original journey; sameApp/runtime, exact guide expectations updated to existing accounting; bounded still visual pass",
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-attachments/manifest.json",
+          "sha256": "73e522d1b3a9ed14692f04eb99b3e903a0f960f029b7e318961669e0788badde"
+        },
+        "mechanicalResultSeparate": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-summary.json",
+          "sha256": "7c4dcdab13ad96956336ef41c83b0b69a877cfdd230cfe302b63b58eed899fe1",
+          "result": "Passed",
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "runtimeWarnings": [],
+          "xcresultWallSeconds": 202.67,
+          "failures": [],
+          "devices": [
+            {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            }
+          ]
+        },
+        "PNGMappingCount": 9,
+        "byteUniquePNGCount": 7,
+        "frames": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-attachments/45995EF4-9C67-4A24-BE66-DF32180B568E.png",
+            "sha256": "3a750f482bd6d4568c1ddd1a23873394a39606dc8e84783cbbe02ec818c781f7",
+            "checkpoint": "headroom-phone-immediate-earned-result",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+            "timestamp": 1792903605.706,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Complete Kite Harbor restored and18,000of17,000 result, VisitSeedMoon/Newsky/Replay/Observatory/review actions, and6,000last-clear accounting. No lingering pressure/near HUD facts. World/restore/replay are separate test assertions, not separately depicted here.",
+            "scope": "Completed native Kite original journey; sameApp/runtime, exact guide expectations updated to existing accounting; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-attachments/0534CC2B-7F44-47FA-B7F3-F9B74B528762.png",
+            "sha256": "1596932d402e39e08345ba21415ad7ddab3f8f96d4b89df8e4ddd4761d01e9ce",
+            "checkpoint": "headroom-phone-following-setup-without-stale-claim",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+            "timestamp": 1792903598.812,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Complete12,000/17,000, full2 and no near fact. Complete revealed2!badge/line/Aqua. Guide now says Star moved. What can you line up? with Close; stale recovery prose gone.",
+            "scope": "Completed native Kite original journey; sameApp/runtime, exact guide expectations updated to existing accounting; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-attachments/51591293-45DF-4DFF-8013-463320AB38D0.png",
+            "sha256": "c928133cc3e4b6087c68640e15efec416908eb335569b7d307ef44ba1709d48c",
+            "checkpoint": "headroom-phone-real-full-column-recovery-end",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+            "timestamp": 1792903574.744,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Complete same12,000score/full2/recovery prose/Close. Ceiling and most upper Aqua remain outside guide-focused viewport; no all-at-once field claim.",
+            "scope": "Completed native Kite original journey; sameApp/runtime, exact guide expectations updated to existing accounting; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-attachments/380EDAEC-1777-4F86-811B-E592FC36682B.png",
+            "sha256": "ca08f527e23d8abaf3ddadec662ceaebfe1471f606b906b5633329bcbff36c6d",
+            "checkpoint": "headroom-phone-real-full-column-recovery-start",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+            "timestamp": 1792903574.411,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Complete12,000/17,000 and new forecast3/7/6/1/2. Full2 only, no one-space summary. Complete4-star/5,000accounting plus column1-room-again guide and Close. A small upper Aqua fragment meets the intentionally cropped scrolling viewport edge.",
+            "scope": "Completed native Kite original journey; sameApp/runtime, exact guide expectations updated to existing accounting; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-attachments/6B21FE8C-A5A9-4BDF-941D-E3C8F830BE21.png",
+            "sha256": "87cce89ff7f66f673cb2acca0bce1033c8ddecf421f8d5eedad0b9865bf203f5",
+            "checkpoint": "headroom-phone-low-five-spaces-end",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+            "timestamp": 1792903559.152,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Byte-identical to low-guide start; no additional motion or pan witness.",
+            "scope": "Completed native Kite original journey; sameApp/runtime, exact guide expectations updated to existing accounting; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-attachments/A441EA38-350C-4A83-B46A-85513BB96A49.png",
+            "sha256": "87cce89ff7f66f673cb2acca0bce1033c8ddecf421f8d5eedad0b9865bf203f5",
+            "checkpoint": "headroom-phone-low-five-spaces-start",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+            "timestamp": 1792903558.824,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Complete7,000/17,000, near1/2, complete5-star/5-light/7,000accounting and five-space-columns3,4,5,6,7 guide plus Close. Ceiling is outside guide-focused viewport.",
+            "scope": "Completed native Kite original journey; sameApp/runtime, exact guide expectations updated to existing accounting; bounded still visual pass",
+            "duplicateOf": "6B21FE8C-A5A9-4BDF-941D-E3C8F830BE21.png",
+            "inspection": "Byte-identical mapping to directly viewed whole frame."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-attachments/F0B14F04-C377-4F6F-B8E9-814E75D3ED7B.png",
+            "sha256": "d9f37e8cf23426663ff4e95e38080fcda394b8b2451a10a678a36f2bf92554b5",
+            "checkpoint": "headroom-phone-high-column-four-spaces-end",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+            "timestamp": 1792903501.065,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Byte-identical to high-guide start; no additional motion or pan witness.",
+            "scope": "Completed native Kite original journey; sameApp/runtime, exact guide expectations updated to existing accounting; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-attachments/8C3BCF7F-E3F8-4340-87F6-2D2753F374A3.png",
+            "sha256": "d9f37e8cf23426663ff4e95e38080fcda394b8b2451a10a678a36f2bf92554b5",
+            "checkpoint": "headroom-phone-high-column-four-spaces-start",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+            "timestamp": 1792903500.706,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Complete5,000/17,000, near2 only and complete4-star/4-light/base/size/5,000accounting plus four-space-column1 guide and Close. Guide-focused scroll crops ceiling above viewport; this is not a full-arena witness.",
+            "scope": "Completed native Kite original journey; sameApp/runtime, exact guide expectations updated to existing accounting; bounded still visual pass",
+            "duplicateOf": "F0B14F04-C377-4F6F-B8E9-814E75D3ED7B.png",
+            "inspection": "Byte-identical mapping to directly viewed whole frame."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-attachments/B88BA4E9-E014-4FEB-95B8-AF15CD0980EC.png",
+            "sha256": "e08d89bb608b1cbc0961dc4371eea41073e7a9091eefd79a1fc3020856345a73",
+            "checkpoint": "headroom-phone-one-space-opening",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+            "timestamp": 1792903490.036,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Complete0/17,000, five forecast facts, near1/2 only, complete1/2ceiling badges and broad actual field. Start sky/Next shower controls fit.",
+            "scope": "Completed native Kite original journey; sameApp/runtime, exact guide expectations updated to existing accounting; bounded still visual pass",
+            "inspection": "Directly viewed whole PNG."
+          }
+        ]
+      },
+      {
+        "prefix": "native-06-78215866-full-board",
+        "scope": "FAILED late Settings restoration; preceding captured game/guide states only, not completed native acceptance",
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-attachments/manifest.json",
+          "sha256": "40e62410ac6c6c6d91373df03323c4a4f82454ad1d5815c376545aa90223df11"
+        },
+        "mechanicalResultSeparate": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-summary.json",
+          "sha256": "aeaf77369ed79de2d31003a0b3abbba55c4d65dc1d6dd62c8fe3cfb5add618b2",
+          "result": "Failed",
+          "passedTests": 0,
+          "failedTests": 1,
+          "skippedTests": 0,
+          "runtimeWarnings": [],
+          "xcresultWallSeconds": 164.255,
+          "failures": [
+            "failed - Sky controls did not become fully visible"
+          ],
+          "devices": [
+            {
+              "architecture": "arm64",
+              "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+              "deviceName": "Starfall HUD Stack dcf3 Tablet",
+              "modelName": "iPad Pro 13-inch (M5)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            }
+          ]
+        },
+        "PNGMappingCount": 7,
+        "byteUniquePNGCount": 5,
+        "frames": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-attachments/0EBE931E-E83A-418A-B967-76A04E08A35C.png",
+            "sha256": "52abe9d8634f69c841aa0e4f9033a1689b9604fcf279f7646f2919dd844fa451",
+            "checkpoint": "headroom-tablet-following-real-full-board-clear",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+            "timestamp": 1792903770.015,
+            "storedPixelDimensions": [
+              2064,
+              2752
+            ],
+            "exifOrientation": 1,
+            "observation": "ActualAX5tablet: complete30,000/150,000 and FullBoard mode, all49actual star bodies visible with ceiling line and+15,000receipt. No pressure/near facts; sampled figure/packet ink is below header/mode ink. Expanded guide continues below frame.",
+            "scope": "FAILED late Settings restoration; preceding captured game/guide states only, not completed native acceptance",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-attachments/020A88A9-F84B-41EA-8985-0AB8E7A03932.png",
+            "sha256": "b4d2595b9a174367bf52a7371d8f1ffb7925587704c99f897abf53271e4ae599",
+            "checkpoint": "headroom-tablet-full-board-refilled-eight-stars-end",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+            "timestamp": 1792903760.812,
+            "storedPixelDimensions": [
+              2064,
+              2752
+            ],
+            "exifOrientation": 1,
+            "observation": "Byte-identical to refill-guide start; no additional motion or pan witness.",
+            "scope": "FAILED late Settings restoration; preceding captured game/guide states only, not completed native acceptance",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-attachments/1265199F-2519-49D7-9526-125A28D25C34.png",
+            "sha256": "b4d2595b9a174367bf52a7371d8f1ffb7925587704c99f897abf53271e4ae599",
+            "checkpoint": "headroom-tablet-full-board-refilled-eight-stars-start",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+            "timestamp": 1792903760.363,
+            "storedPixelDimensions": [
+              2064,
+              2752
+            ],
+            "exifOrientation": 1,
+            "observation": "ActualAX5tablet: complete15,000/150,000 and FullBoard mode. Complete8-star/8-light/15,000accounting, two-survivor-diamond, eight-refill/board-full prose and Close. No pressure/near facts. Only upper two star rows are visible at this guide-focused position;49occupied is mechanical evidence, not simultaneous visual coverage here.",
+            "scope": "FAILED late Settings restoration; preceding captured game/guide states only, not completed native acceptance",
+            "duplicateOf": "020A88A9-F84B-41EA-8985-0AB8E7A03932.png",
+            "inspection": "Byte-identical mapping to directly viewed whole frame."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-attachments/38BC8BE1-5E6F-4A9F-9D37-60C5184B3DC0.png",
+            "sha256": "685bbb0da283fff7bc52fd0f39be85134e00ca00914435d7b9941e3cdf94a22d",
+            "checkpoint": "headroom-tablet-low-clear-full-guide-end",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+            "timestamp": 1792903707.123,
+            "storedPixelDimensions": [
+              2064,
+              2752
+            ],
+            "exifOrientation": 1,
+            "observation": "Byte-identical to low-guide start; no additional motion or pan witness.",
+            "scope": "FAILED late Settings restoration; preceding captured game/guide states only, not completed native acceptance",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-attachments/638E77B1-0310-44C3-99CB-E2BA2E74FBD0.png",
+            "sha256": "685bbb0da283fff7bc52fd0f39be85134e00ca00914435d7b9941e3cdf94a22d",
+            "checkpoint": "headroom-tablet-low-clear-full-guide-start",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+            "timestamp": 1792903706.712,
+            "storedPixelDimensions": [
+              2064,
+              2752
+            ],
+            "exifOrientation": 1,
+            "observation": "ActualAX5tablet: complete7,000/17,000/near1/2 and complete5-star/7,000/five-space guide with Close. Guide-focused scroll omits ceiling from this frame.",
+            "scope": "FAILED late Settings restoration; preceding captured game/guide states only, not completed native acceptance",
+            "duplicateOf": "38BC8BE1-5E6F-4A9F-9D37-60C5184B3DC0.png",
+            "inspection": "Byte-identical mapping to directly viewed whole frame."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-attachments/1EBA7F76-734E-485C-91AD-A0E9294ACAB9.png",
+            "sha256": "6a52ca5ac55ee46a2f92e43d36069d87205e8291e7c64ec5d6e19f58c14f634c",
+            "checkpoint": "headroom-tablet-one-space-opening-actual-calm",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+            "timestamp": 1792903694.153,
+            "storedPixelDimensions": [
+              2064,
+              2752
+            ],
+            "exifOrientation": 1,
+            "observation": "ActualAX5tablet: complete0/17,000, five forecast facts and near1/2 sentence, complete1/2ceiling badges, actual field and Startsky/Nextshower.",
+            "scope": "FAILED late Settings restoration; preceding captured game/guide states only, not completed native acceptance",
+            "inspection": "Directly viewed whole PNG."
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-attachments/8D74B58E-2C77-4FC0-B8B1-691AC0FF14DA.png",
+            "sha256": "1df6a643fd80b04ad7a88a4274979675fb914974bf82ba7caa9a4d9842d674f5",
+            "checkpoint": "headroom-tablet-actual-calm-on",
+            "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+            "timestamp": 1792903690.86,
+            "storedPixelDimensions": [
+              2064,
+              2752
+            ],
+            "exifOrientation": 1,
+            "observation": "Actual in-app Settings&help shows Calm effects toggled on, complete native label/toggle and Done. This is a resting Settings still, not animation or systemReduceMotion evidence.",
+            "scope": "FAILED late Settings restoration; preceding captured game/guide states only, not completed native acceptance",
+            "inspection": "Directly viewed whole PNG."
+          }
+        ]
+      }
+    ],
+    "retainedFailuresAndDiagnosticViews": {
+      "blockedSetup0ba": {
+        "prefix": "native-06-0ba8de86-blocked",
+        "scope": "Retained failed control-reveal setup; full-state still only, no terminal proof",
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-blocked-attachments/manifest.json",
+          "sha256": "f5262b35f50ecf8b0e7ddb639ff31365f9e5de7632dddbc096c3f178f88dbaa9"
+        },
+        "mechanicalResultSeparate": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-blocked-summary.json",
+          "sha256": "4c54653c37302bc53978b8c7599ad20bca3668c669db816373b5d1acc686dbdf",
+          "result": "Failed",
+          "passedTests": 0,
+          "failedTests": 1,
+          "skippedTests": 0,
+          "runtimeWarnings": [],
+          "xcresultWallSeconds": 53.387,
+          "failures": [
+            "XCTAssertTrue failed"
+          ],
+          "devices": [
+            {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            }
+          ]
+        },
+        "PNGMappingCount": 1,
+        "byteUniquePNGCount": 1,
+        "frames": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-blocked-attachments/0474A8D5-FCA4-4DCA-8D64-54A89CD1B916.png",
+            "sha256": "eb1e417e1041645949ba93bb1dd97a28186c4a1a4fa56eea8c9caf702e05563b",
+            "checkpoint": "pressure-full-default",
+            "testIdentifier": "SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival()",
+            "timestamp": 1792903082.543,
+            "storedPixelDimensions": [
+              1170,
+              2532
+            ],
+            "exifOrientation": 1,
+            "observation": "Complete0/150,000, forecast7/6/1/2/4 and separate full2/near1,3,4,5,6 facts. Complete ceiling/badges/topAqua and substantial actual field; expanded short guide visible. Footer below current scrolling window is not reachability proof.",
+            "scope": "Retained failed control-reveal setup; full-state still only, no terminal proof",
+            "inspection": "Directly viewed whole PNG."
+          }
+        ]
+      },
+      "kiteExpectationCbd": {
+        "mechanical": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite-summary.json",
+          "sha256": "9f8a2afcfaa3b2e194e17cf49d66f24509a251e9292a92518e006e2f3265442e",
+          "result": "Failed",
+          "passedTests": 0,
+          "failedTests": 1,
+          "skippedTests": 0,
+          "runtimeWarnings": [],
+          "xcresultWallSeconds": 67.213,
+          "failures": [
+            "XCTAssertTrue failed"
+          ],
+          "devices": [
+            {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            }
+          ]
+        },
+        "frame": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite-failure-frames/frame-0050.000.png",
+          "sha256": "c2fa56d862666a053d83e7e9dd5f003842b4eb579bf77974ab3f8400e3843727",
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": null,
+          "actualAVTimeSeconds": 49.9867,
+          "inspection": "Directly viewed whole pre-existing decoded frame; no extraction by reviewer.",
+          "observation": "Complete5k/17k/near2 and actual4-star accounting/recovery text visible. Supports the source-backed outdated exact expectation diagnosis; no final Kite acceptance assigned to this failed run."
+        }
+      },
+      "fullBoardLateSettings782": {
+        "mechanical": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-summary.json",
+          "sha256": "aeaf77369ed79de2d31003a0b3abbba55c4d65dc1d6dd62c8fe3cfb5add618b2",
+          "result": "Failed",
+          "passedTests": 0,
+          "failedTests": 1,
+          "skippedTests": 0,
+          "runtimeWarnings": [],
+          "xcresultWallSeconds": 164.255,
+          "failures": [
+            "failed - Sky controls did not become fully visible"
+          ],
+          "devices": [
+            {
+              "architecture": "arm64",
+              "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+              "deviceName": "Starfall HUD Stack dcf3 Tablet",
+              "modelName": "iPad Pro 13-inch (M5)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            }
+          ]
+        },
+        "frame": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-failure-frames/frame-0155.000.png",
+          "sha256": "7ecb24193f25fcaa57051d9a51752afb3c60b4c5ddfeef7fce84381c69729e28",
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "exifOrientation": null,
+          "actualAVTimeSeconds": 154.9667,
+          "inspection": "Directly viewed whole pre-existing decoded frame; no extraction by reviewer.",
+          "observation": "Sky menu Settings&help row is partly beneath fixed Returntosky footer at end of captured sequence. Preserve failure; no unreachable-end or product/gesture cause established by one frame."
+        }
+      },
+      "baseline": {
+        "frame": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/baseline-06-from-05-diagnostic-frames/frame-0050.000.png",
+          "sha256": "d708896cd131d69fd9806745e5e93d9155b4ddfedc24498340189bdef7c0182e",
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": null,
+          "actualAVTimeSeconds": 49.985,
+          "inspection": "Directly viewed whole pre-existing decoded frame; no extraction by reviewer.",
+          "observation": "RetainedGoal5 full2-only composition has complete badge/topAqua ink in this sample. Source-bound semantic clearance failure remains in hosted review; no painted baseline clipping is inferred."
+        },
+        "interpretation": "Goal6 reading composition adds a stable viewport/return gap and shifts the visible arena downward compared with this baseline. Current visual judgment is independent of the old strict-frame failure."
+      }
+    },
+    "boundedVisualFindingsAtInitialDraft": {
+      "verdict": "Visible HUD/fact/ceiling/guide states pass in the completed cases; partial FullBoard game states pass only within their depicted scope. Overall native/Goal6 acceptance remains held.",
+      "reasons": [
+        "Complete score/target and five future destinations remain distinct from present full/one-space facts. Natural full2 recovery retires only its full caption/badge; exact one-space list persists.",
+        "Default and AX5phone/tablet revealed ceilings/top actual stars remain separate from header; actual field is rendered. CompactAX5 is text-dominant but preserves visible playable stars and scrolling access rather than the rejected empty field.",
+        "Kite shows near-only1/2 then2, complete real-clear accounting/recovery prose, later full2-only state, stale-copy replacement and actual18k/17k earned result.",
+        "Terminal No room to land has complete explanation/actions and no stale pressure/near facts. FullBoard15k/30k shows complete mode and omits pressure/near facts."
+      ],
+      "scopeLimits": [
+        "Guide-focused frames legitimately crop ceiling/upper arena;12kKite includes a small Aqua fragment at the viewport crop. Later setup frame reveals complete ceiling/Aqua. These are not all-at-once full-arena witnesses.",
+        "Kite high/low and tablet low/refill start/end pairs are byte-identical; pan/read-to-end assertions are mechanical evidence, not independently witnessed motion.",
+        "FullBoard15k guide frame shows only upper two rows, with full prose and Close. FullBoard30k depicts all49actual bodies; the49occupied assertion at15k remains separate.",
+        "Late Settings restoration failure blocks completed FullBoard/native acceptance; its end sample shows the target row partially below the fixed footer but does not establish an exclusive cause or unreachable content end."
+      ]
+    }
+  },
+  "finalVerdict": {
+    "verdict": "PASS",
+    "scope": "Actual final defaultphone/AX5quietphone/actualAX5quiettablet pressure-recovery, blocked outcome, normalKite journey and actualAX5CalmKite/FullBoard25rawPNG mappings; composition and visible-state facts only.",
+    "PNGMappingCount": 25,
+    "byteUniquePNGCount": 21,
+    "freshDirectUniqueViews": 19,
+    "exactPriorSHAUniqueViews": 2,
+    "reasons": [
+      "Current full/one-space facts remain complete, legible and spatially distinct from all five future destinations. Actual5k recovery retires full2 only; near1,3,4,5,6 persist. Revealed ceiling badges/topactualstars remain separate from header across defaultphone and largestphone/tablet.",
+      "Kite opening near1/2, high5k near2, low7k near1/2, later12k full2-only, stale-copy replacement and earned18k/17k result are complete and coherent. High/low/recovery accounting guides and Close are completely visible in their guide-focused frames.",
+      "Terminal No room to land has complete explanation/actions and no stale pressure/forecast facts. ActualFullBoard15k/30k retains its complete mode/target and omits full/near facts;15k refill/two-survivor-diamond prose and Close are complete.",
+      "Final30kFullBoard depicts all49actual star bodies. ActualSettings&help shows CalmON/restored original and complete control/Done after the same source-bound native method finishes. No new painted collision or clipped essential HUD text found in the final unique originals."
+    ],
+    "limits": [
+      "Guide-focused scroll intentionally crops upperarena/ceiling, including partial Aqua at12kKite; following setup shows full ceiling/Aqua. FullBoard15k shows only upper two rows alongside complete guide. These are separate reading/playfield states, not proof every star is simultaneously visible in every frame.",
+      "Four start/end pair mappings are duplicate stills; static pairs do not prove movement or pan. Source-bound native XCTest results establish bounded interaction separately.",
+      "Fresh30kFullBoard has no floating receipt/packet witness; the partial expanded guide remains visible. No full animation/timing/flight/performance judgment.",
+      "FinalCalm capture is visiblyON, not an OFF-state witness. ActualsystemReduceMotion, actualVoiceOver, physical/minimumiOS17 and exhaustive layout/artwork settings remain outside this still review."
+    ]
+  },
+  "finalSeries": [
+    {
+      "prefix": "native-06-b28321ca-full",
+      "verdict": "PASS",
+      "scope": "Bounded independent whole native still composition judgment; raw mechanical result separate",
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-attachments/manifest.json",
+        "sha256": "c5cddf84b2f94a2fd65e7aed2b82345e91c77a1e66514d920a96fab6fcd9891c"
+      },
+      "mechanicalResultSeparate": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-summary.json",
+        "sha256": "aaaf1cfacf932eb453bfc52bd19080edf60a27c65eacb24bb008677d590a281f",
+        "result": "Passed",
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "xcresultWallSeconds": 95.987,
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "modelName": "iPhone 17e",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ]
+      },
+      "PNGMappingCount": 2,
+      "byteUniquePNGCount": 2,
+      "frames": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-attachments/BCF8BD39-8455-446E-939B-521B00EA3FE8.png",
+          "sha256": "d55af95664d118db1baee69a3623380bd7c5752183344e9ec6d57b84e4e4069d",
+          "checkpoint": "pressure-recovered-default",
+          "testIdentifier": "SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery()",
+          "timestamp": 1792904416.696,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Complete5,000/150,000 and ordered forecast; full2 caption/badge retire while near1,3,4,5,6 persist. Actual stars and ceiling stay clear. Recovery guide extends below this window.",
+          "inspection": "Fresh whole PNG directly viewed."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-attachments/089B63DF-E341-4BDD-AA99-57FF1881432D.png",
+          "sha256": "d256ebce140db2f1233fb66763cb4a1ffb585742b8fd046b65e48ca02f92904f",
+          "checkpoint": "pressure-full-default",
+          "testIdentifier": "SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery()",
+          "timestamp": 1792904397.486,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Complete0/150,000, forecast7/6/1/2/4 and separate full2/near1,3,4,5,6 facts. Complete ceiling/badges/topAqua and substantial actual field; expanded short guide visible. Footer below current scrolling window is not reachability proof.",
+          "inspection": "Fresh whole PNG directly viewed."
+        }
+      ],
+      "textReceipts": []
+    },
+    {
+      "prefix": "native-06-b28321ca-ax-phone",
+      "verdict": "PASS",
+      "scope": "Bounded independent whole native still composition judgment; raw mechanical result separate",
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-phone-attachments/manifest.json",
+        "sha256": "25f2db2c7324d5de7f0785d00255d5e7c533d376b34f53314e18e6345be13647"
+      },
+      "mechanicalResultSeparate": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-phone-summary.json",
+        "sha256": "5818b2805bb7c961e2cb16ffe49135ee171a1e164eb0a5027bbe534b4c8bca15",
+        "result": "Passed",
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "xcresultWallSeconds": 106.651,
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "modelName": "iPhone 17e",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ]
+      },
+      "PNGMappingCount": 2,
+      "byteUniquePNGCount": 2,
+      "frames": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-phone-attachments/CB97AF59-013D-414A-AF41-105BA2ABB166.png",
+          "sha256": "a4dfe39f17525087b9c2b3658ed10ac68da05c40feeaccb34b19fe3954f49adf",
+          "checkpoint": "pressure-recovered-largest",
+          "testIdentifier": "SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable()",
+          "timestamp": 1792904531.511,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "CompleteAX5 5,000/150,000 and forecast. Full2 caption/badge retire; near list remains complete and separate. Upper actual stars clear; image is not a complete-reader witness.",
+          "inspection": "Fresh whole PNG directly viewed.",
+          "exactPriorOriginal": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-phone-attachments/B78B8460-45B3-42CC-A449-7CF39B97AEB1.png"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-phone-attachments/E745685D-179B-4681-8C53-EEE100BE5327.png",
+          "sha256": "da1b6be798d6b714e1e05a871f9a0a9550dd2e4e78397ba848a527c40210ac4f",
+          "checkpoint": "pressure-full-largest",
+          "testIdentifier": "SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable()",
+          "timestamp": 1792904497.964,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "CompleteAX5 score/target, all five forecast facts and full2/near list. All revealed ceiling badges, line and upper actual stars clear. Phone uses compact list; actual tablet wraps the complete sentence. Lower rows/guide may be outside the current scrolling window.",
+          "inspection": "Fresh whole PNG directly viewed.",
+          "exactPriorOriginal": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-phone-attachments/5722F3D4-0F99-401E-BAEC-F3C623DDD880.png"
+        }
+      ],
+      "textReceipts": []
+    },
+    {
+      "prefix": "native-06-b28321ca-ax-tablet",
+      "verdict": "PASS",
+      "scope": "Bounded independent whole native still composition judgment; raw mechanical result separate",
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-tablet-attachments/manifest.json",
+        "sha256": "2878f3aa3cb6668ceb3310e186582c8fc73596de36cf661a813b38f78e9981d5"
+      },
+      "mechanicalResultSeparate": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-tablet-summary.json",
+        "sha256": "8c864bef1cea5b1f236f41d985805f791859eb1749a5440c86107c0a69be33f1",
+        "result": "Passed",
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "xcresultWallSeconds": 86.313,
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+            "deviceName": "Starfall HUD Stack dcf3 Tablet",
+            "modelName": "iPad Pro 13-inch (M5)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ]
+      },
+      "PNGMappingCount": 2,
+      "byteUniquePNGCount": 2,
+      "frames": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-tablet-attachments/CA0BB3BF-B07E-40FB-B733-2D64F9377732.png",
+          "sha256": "7ad9f84726c15f69877592b99ab50863db35cf10d583fb2c9bd3466a8182d300",
+          "checkpoint": "pressure-recovered-largest",
+          "testIdentifier": "SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable()",
+          "timestamp": 1792904620.214,
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "exifOrientation": 1,
+          "observation": "CompleteAX5 5,000/150,000 and forecast. Full2 caption/badge retire; near list remains complete and separate. Upper actual stars clear; image is not a complete-reader witness.",
+          "inspection": "Fresh whole PNG directly viewed.",
+          "exactPriorOriginal": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-tablet-attachments/6A6512CB-22DD-49C5-AA15-DF5A89B0B3BF.png"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-tablet-attachments/14DC2161-891F-4591-A10F-A9B8954394A2.png",
+          "sha256": "2b98ab1483368c57da2654b895f8a8d4c604dc74d6760b598936d5cd771b27ee",
+          "checkpoint": "pressure-full-largest",
+          "testIdentifier": "SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable()",
+          "timestamp": 1792904592.349,
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "exifOrientation": 1,
+          "observation": "CompleteAX5 score/target, all five forecast facts and full2/near list. All revealed ceiling badges, line and upper actual stars clear. Phone uses compact list; actual tablet wraps the complete sentence. Lower rows/guide may be outside the current scrolling window.",
+          "inspection": "Fresh whole PNG directly viewed.",
+          "exactPriorOriginal": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-tablet-attachments/E18C9565-9443-481B-AAEF-C1F2E0A34711.png"
+        }
+      ],
+      "textReceipts": []
+    },
+    {
+      "prefix": "native-06-b28321ca-blocked",
+      "verdict": "PASS",
+      "scope": "Bounded independent whole native still composition judgment; raw mechanical result separate",
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-blocked-attachments/manifest.json",
+        "sha256": "936e9d7021434b1b638fa3ecab556a264f6238575a0c73607a28b1c1b0feeac7"
+      },
+      "mechanicalResultSeparate": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-blocked-summary.json",
+        "sha256": "6235b0794ec808d5c80bd9b1c4cf351bb7004217b7c6aaa3bf6ca5918a9fd74a",
+        "result": "Passed",
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "xcresultWallSeconds": 52.123,
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "modelName": "iPhone 17e",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ]
+      },
+      "PNGMappingCount": 2,
+      "byteUniquePNGCount": 2,
+      "frames": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-blocked-attachments/CBBD0F76-541C-4376-92B3-3043986C8B2E.png",
+          "sha256": "5c64234e66395bb36e4f7368b25d1d2ce480ffe124ce3d6a88ca1d8f86b6baaf",
+          "checkpoint": "pressure-idle-overflow",
+          "testIdentifier": "SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival()",
+          "timestamp": 1792904679.471,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Actual terminal has complete No room to land heading, column2/no-room/0of150,000 explanation and all four outcome actions. Prior full/near/forecast HUD facts absent. Dimmed board supports result hierarchy.",
+          "inspection": "Fresh whole PNG directly viewed.",
+          "exactPriorOriginal": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-blocked-attachments/E1C595F1-89AC-45A5-8395-904EF78E4B13.png"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-blocked-attachments/2E4B9605-8DB0-49E3-8A51-E21D16B80642.png",
+          "sha256": "0562810a47723b05d4b9c009fc2b9042ef794bc8dcdbbba658e092e8e957b2e5",
+          "checkpoint": "pressure-full-default",
+          "testIdentifier": "SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival()",
+          "timestamp": 1792904675.223,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Complete0/150,000, forecast7/6/1/2/4 and separate full2/near1,3,4,5,6 facts. Complete ceiling/badges/topAqua and substantial actual field; expanded short guide visible. Footer below current scrolling window is not reachability proof.",
+          "inspection": "Fresh whole PNG directly viewed."
+        }
+      ],
+      "textReceipts": []
+    },
+    {
+      "prefix": "native-06-b28321ca-kite",
+      "verdict": "PASS",
+      "scope": "Bounded independent whole native still composition judgment; raw mechanical result separate",
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/manifest.json",
+        "sha256": "4718497f7afc4ef827498a83bc0015897f9d852bbf45a57fbc665a92265b0eb9"
+      },
+      "mechanicalResultSeparate": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-summary.json",
+        "sha256": "24fe2c00a540d65ccdedd9a1e6aa300c669e258260e9966b64190e062e42bdf1",
+        "result": "Passed",
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "xcresultWallSeconds": 197.604,
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "modelName": "iPhone 17e",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ]
+      },
+      "PNGMappingCount": 9,
+      "byteUniquePNGCount": 7,
+      "frames": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/ECABE527-8DC9-4C96-9125-824E254B9E0C.png",
+          "sha256": "3a750f482bd6d4568c1ddd1a23873394a39606dc8e84783cbbe02ec818c781f7",
+          "checkpoint": "headroom-phone-immediate-earned-result",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+          "timestamp": 1792904837.789,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Complete Kite Harbor restored and18,000of17,000 result, VisitSeedMoon/Newsky/Replay/Observatory/review actions, and6,000last-clear accounting. No lingering pressure/near HUD facts. World/restore/replay are separate test assertions, not separately depicted here.",
+          "inspection": "Exact SHA256 match to already directly viewed whole prior original; fresh provenance retained.",
+          "exactPriorOriginal": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-kite-attachments/45995EF4-9C67-4A24-BE66-DF32180B568E.png"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/F25B05AF-1CFB-4004-AFD7-81B7246E6F01.png",
+          "sha256": "a93fc830ed2b90f48dfdd516c1762b2b7b31593ce9c906254a47d5ec1aeb4f8a",
+          "checkpoint": "headroom-phone-following-setup-without-stale-claim",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+          "timestamp": 1792904830.873,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Complete12,000/17,000, full2 and no near fact. Complete revealed2!badge/line/Aqua. Guide now says Star moved. What can you line up? with Close; stale recovery prose gone.",
+          "inspection": "Fresh whole PNG directly viewed."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/117056C9-71A7-4BDD-8959-99463CA2A2CA.png",
+          "sha256": "cca814226672805929b20421a68ce5255bb00d2a8583bbc2ad1266d5ff51b4ed",
+          "checkpoint": "headroom-phone-real-full-column-recovery-end",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+          "timestamp": 1792904806.882,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Same complete12,000score/full2/guide/Close. Upper Aqua partly cropped at guide-focused viewport edge; following setup reveals complete badge/line/Aqua.",
+          "inspection": "Fresh whole PNG directly viewed."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/18B9344B-8894-4E7A-9F52-602DE1530A46.png",
+          "sha256": "7ef249ecfc272fb56ba353c085a6d3092fae4a8e6d0d01396e2b017cba758fab",
+          "checkpoint": "headroom-phone-real-full-column-recovery-start",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+          "timestamp": 1792904806.568,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Complete12,000/17,000 and forecast3/7/6/1/2. Full2 only, no one-space summary; complete4-star/5,000accounting/column1-room-again guide and Close. Lower fragment of upper Aqua meets intentionally cropped scrolling viewport edge.",
+          "inspection": "Fresh whole PNG directly viewed."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/3E6A56C6-C36F-450F-899A-50973131D4CE.png",
+          "sha256": "09f979a0239aa8da42c470babf4477c3e6ca10f57f58c55378f10e7c8f18efa7",
+          "checkpoint": "headroom-phone-low-five-spaces-end",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+          "timestamp": 1792904791.782,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Byte-identical to low-guide start; no additional motion or pan witness.",
+          "inspection": "Fresh whole PNG directly viewed."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/C00BEB6C-07CF-4C6B-B7FC-7F0E79F33ACA.png",
+          "sha256": "09f979a0239aa8da42c470babf4477c3e6ca10f57f58c55378f10e7c8f18efa7",
+          "checkpoint": "headroom-phone-low-five-spaces-start",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+          "timestamp": 1792904791.468,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Complete7,000/17,000, near1/2, complete5-star/5-light/7,000accounting and five-space-columns3,4,5,6,7 guide plus Close. Ceiling is outside guide-focused viewport.",
+          "inspection": "Byte-identical mapping to reviewed whole original.",
+          "duplicateOf": "3E6A56C6-C36F-450F-899A-50973131D4CE.png"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/B06EEBB6-D53F-4984-97EE-7F3515339464.png",
+          "sha256": "4d1cd0d40f867b28fe562025dfc676c8edb5347e138c6d075767bcd11134fea9",
+          "checkpoint": "headroom-phone-high-column-four-spaces-end",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+          "timestamp": 1792904737.284,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Byte-identical to high-guide start; no additional motion or pan witness.",
+          "inspection": "Fresh whole PNG directly viewed."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/2B7637AC-586F-4BC8-BA15-AE017CAED9FB.png",
+          "sha256": "4d1cd0d40f867b28fe562025dfc676c8edb5347e138c6d075767bcd11134fea9",
+          "checkpoint": "headroom-phone-high-column-four-spaces-start",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+          "timestamp": 1792904736.987,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Complete5,000/17,000, near2 only and complete4-star/4-light/base/size/5,000accounting plus four-space-column1 guide and Close. Guide-focused scroll crops ceiling above viewport; this is not a full-arena witness.",
+          "inspection": "Byte-identical mapping to reviewed whole original.",
+          "duplicateOf": "B06EEBB6-D53F-4984-97EE-7F3515339464.png"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/8801E466-5303-4955-97C0-5D287B15B1D0.png",
+          "sha256": "d33015143e967869974af31a63e71b919b1798e8b290f15691bfd335463d5137",
+          "checkpoint": "headroom-phone-one-space-opening",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+          "timestamp": 1792904727.01,
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "observation": "Complete0/17,000, five forecast facts, near1/2 only, complete1/2ceiling badges and broad actual field. Start sky/Next shower controls fit.",
+          "inspection": "Fresh whole PNG directly viewed."
+        }
+      ],
+      "textReceipts": []
+    },
+    {
+      "prefix": "native-06-b28321ca-full-board",
+      "verdict": "PASS",
+      "scope": "Bounded independent whole native still composition judgment; raw mechanical result separate",
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/manifest.json",
+        "sha256": "6a0168cffa3f838330e68870115621a6f5c58af7677014c694cf86ea39fd028f"
+      },
+      "mechanicalResultSeparate": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-summary.json",
+        "sha256": "cbb3e049c5619593d517fe3e5908bc27d48dd0f8e4a309d9823490de0e4e9a21",
+        "result": "Passed",
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "xcresultWallSeconds": 161.422,
+        "devices": [
+          {
+            "architecture": "arm64",
+            "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+            "deviceName": "Starfall HUD Stack dcf3 Tablet",
+            "modelName": "iPad Pro 13-inch (M5)",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          }
+        ]
+      },
+      "PNGMappingCount": 8,
+      "byteUniquePNGCount": 6,
+      "frames": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/35D503B4-FF9C-4482-B2B6-E43293C65B8F.png",
+          "sha256": "c104fbcbfc6c8b9447ce1c06554759321898c6ee3ba0640ec92b9e3283857c29",
+          "checkpoint": "headroom-tablet-actual-calm-on",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+          "timestamp": 1792905037.464,
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "exifOrientation": 1,
+          "observation": "ActualSettings&help: complete label/toggle/Done with Calm visibly ON. Initial image has exact prior SHA; final image is the successful restoration state on Lantern backdrop. No OFF-state image or systemReduceMotion claim.",
+          "inspection": "Fresh whole PNG directly viewed."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/1DD2E09A-37E4-41C7-B4ED-7A1A9B476BD2.png",
+          "sha256": "ce538ca34315588725c77ad480825f73606f83d59bacc34ff93d9977ef133052",
+          "checkpoint": "headroom-tablet-following-real-full-board-clear",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+          "timestamp": 1792904994.67,
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "exifOrientation": 1,
+          "observation": "ActualAX5tablet: complete30,000/150,000, FullBoard mode and all49actual star bodies with line. No full/near facts. Expanded guide continues below frame; this fresh still has no floating+15,000receipt or packet witness.",
+          "inspection": "Fresh whole PNG directly viewed."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/364C76BC-EF27-4B9E-AD51-1A104A95B7AB.png",
+          "sha256": "3db934c1def4138eebd20ee4efcd8d37949bc0d735a954bc3b0c8cb225081f0c",
+          "checkpoint": "headroom-tablet-full-board-refilled-eight-stars-end",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+          "timestamp": 1792904985.394,
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "exifOrientation": 1,
+          "observation": "Byte-identical to refill-guide start; no additional motion or pan witness.",
+          "inspection": "Fresh whole PNG directly viewed."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/631ADBBF-BC9E-4CCF-8D37-65EE0FB75913.png",
+          "sha256": "3db934c1def4138eebd20ee4efcd8d37949bc0d735a954bc3b0c8cb225081f0c",
+          "checkpoint": "headroom-tablet-full-board-refilled-eight-stars-start",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+          "timestamp": 1792904984.968,
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "exifOrientation": 1,
+          "observation": "ActualAX5tablet: complete15,000/150,000 and FullBoard mode. Complete8-star/8-light/15,000accounting, two-survivor-diamond, eight-refill/board-full prose and Close. No pressure/near facts. Only upper two star rows are visible at this guide-focused position;49occupied is mechanical evidence, not simultaneous visual coverage here.",
+          "inspection": "Byte-identical mapping to reviewed whole original.",
+          "duplicateOf": "364C76BC-EF27-4B9E-AD51-1A104A95B7AB.png"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/92ECEE9E-D27C-456C-B8D6-B31D389B8A76.png",
+          "sha256": "accf919995096163bf3c78fcceb7a74533fec4c4a22645a9d6818ccd62cd3013",
+          "checkpoint": "headroom-tablet-low-clear-full-guide-end",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+          "timestamp": 1792904936.135,
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "exifOrientation": 1,
+          "observation": "Byte-identical to low-guide start; no additional motion or pan witness.",
+          "inspection": "Fresh whole PNG directly viewed."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/145BD64B-AD8D-4819-B89E-BBC98366CB70.png",
+          "sha256": "accf919995096163bf3c78fcceb7a74533fec4c4a22645a9d6818ccd62cd3013",
+          "checkpoint": "headroom-tablet-low-clear-full-guide-start",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+          "timestamp": 1792904935.725,
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "exifOrientation": 1,
+          "observation": "ActualAX5tablet: complete7,000/17,000/near1/2 and complete5-star/7,000/five-space guide with Close. Guide-focused scroll omits ceiling from this frame.",
+          "inspection": "Byte-identical mapping to reviewed whole original.",
+          "duplicateOf": "92ECEE9E-D27C-456C-B8D6-B31D389B8A76.png"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/E5DE0C0E-8C07-4D7B-B3B7-8DCF679D842B.png",
+          "sha256": "49ff1a858d5e6284c2e2d6ccb4fd5b291a5f7907abfc71b8072216718fab511d",
+          "checkpoint": "headroom-tablet-one-space-opening-actual-calm",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+          "timestamp": 1792904924.463,
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "exifOrientation": 1,
+          "observation": "ActualAX5tablet: complete0/17,000, five forecast facts and near1/2 sentence, complete1/2ceiling badges, actual field and Startsky/Nextshower.",
+          "inspection": "Fresh whole PNG directly viewed."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/33E45FF6-F563-40E3-83D4-5A43D8600E5C.png",
+          "sha256": "1df6a643fd80b04ad7a88a4274979675fb914974bf82ba7caa9a4d9842d674f5",
+          "checkpoint": "headroom-tablet-actual-calm-on",
+          "testIdentifier": "HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely()",
+          "timestamp": 1792904921.121,
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "exifOrientation": 1,
+          "observation": "ActualSettings&help: complete label/toggle/Done with Calm visibly ON. Initial image has exact prior SHA; final image is the successful restoration state on Lantern backdrop. No OFF-state image or systemReduceMotion claim.",
+          "inspection": "Exact SHA256 match to already directly viewed whole prior original; fresh provenance retained.",
+          "exactPriorOriginal": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-attachments/8D74B58E-2C77-4FC0-B8B1-691AC0FF14DA.png"
+        }
+      ],
+      "textReceipts": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/99A34725-AB1D-49D9-95EE-AA31BCBCF2EA.txt",
+          "sha256": "c182556d1d9a05861522a9302159adc28adb64d7add105bd769d2dc133fbdecd",
+          "checkpoint": "settings-reveal-geometry"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/2FCFB187-2B07-45E6-88B3-253444A7B461.txt",
+          "sha256": "c415844dff1138fc052d42613fa4ea538bca94f7a280370f2cab4c53db7eb3cb",
+          "checkpoint": "settings-reveal-geometry"
+        }
+      ]
+    }
+  ]
+}

@@ -9,10 +9,10 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         let cells: [String]
     }
 
-    private let highGuide = "Pip. Recipe popped! +5,000 starlight. That made room. 4 more spaces above the stars in column 1."
-    private let lowGuide = "Pip. Recipe popped! +7,000 starlight. That made room. 5 more spaces above the stars in columns 3, 4, 5, 6, 7."
-    private let recoveryGuide = "Pip. Recipe popped! +5,000 starlight. That made room. 4 more spaces above the stars in column 1. Column 1 has room again."
-    private let refillGuide = "Spark. A 2-clear chain! +15,000 starlight. Falling stars kept it going. Refill added 8 stars; the board is full."
+    private let highGuide = "Pip. Recipe popped! +5,000 starlight. That made room. 4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points. 4 more spaces above the stars in column 1."
+    private let lowGuide = "Pip. Recipe popped! +7,000 starlight. That made room. 5 stars · 5 light. 5,000 base + 2,000 size = 7,000 points. 5 more spaces above the stars in columns 3, 4, 5, 6, 7."
+    private let recoveryGuide = "Pip. Recipe popped! +5,000 starlight. That made room. 4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points. 4 more spaces above the stars in column 1. Column 1 has room again."
+    private let refillGuide = "Spark. A 2-clear chain! +15,000 starlight. Falling stars kept it going. 8 stars · 8 light. 8,000 base + 2,000 size + 5,000 chain = 15,000 points. Diamond marks: 2 survivors fell into later patterns. Refill added 8 stars; the board is full."
 
     @MainActor private func tap(_ id: String, in app: XCUIApplication) {
         let control = app.buttons[id]
@@ -51,7 +51,8 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
     }
 
     @MainActor private func settled(_ points: Int, target: Int = 17_000, showers: Int = 0,
-                                    exchanges: Int? = nil, in app: XCUIApplication) {
+                                    exchanges: Int? = nil, oneSpaceColumns: [Int]? = nil,
+                                    in app: XCUIApplication) {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
             let board = app.otherElements["experiment.board"].value as? String ?? ""
             let correctCount = exchanges.map { board.hasPrefix("Exchanges: \($0). Full Board.") }
@@ -63,6 +64,17 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         }, object: nil).wait(timeout: 12))
         XCTAssertFalse(app.staticTexts["experiment.outcome"].exists)
         if exchanges != nil { XCTAssertFalse(app.buttons["experiment.next"].exists) }
+        let near = app.descendants(matching: .any).matching(identifier: "sky.headroom.oneSpace")
+        if exchanges != nil {
+            XCTAssertFalse(near.firstMatch.exists, "Full Board replacement cannot promise temporary room")
+            XCTAssertFalse(app.staticTexts["sky.pressure"].exists)
+        } else if let oneSpaceColumns {
+            XCTAssertEqual(near.count, oneSpaceColumns.isEmpty ? 0 : 1)
+            if !oneSpaceColumns.isEmpty {
+                XCTAssertEqual(near.firstMatch.label,
+                               oneSpaceColumns.map { "Column \($0): 1 space left." }.joined(separator: " "))
+            }
+        }
     }
 
     @MainActor private func pauseNewSky(in app: XCUIApplication) {
@@ -214,7 +226,22 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         XCTAssertEqual(initialWorld.count, 12)
         visit.tap(); XCTAssertEqual(app.staticTexts["sky.title"].label, "Kite Harbor")
         XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("17,000 starlight"))
-        tap("sky.begin", in: app); pauseNewSky(in: app); settled(0, in: app)
+        tap("sky.begin", in: app); pauseNewSky(in: app); settled(0, oneSpaceColumns: [1, 2], in: app)
+        XCTAssertFalse(app.staticTexts["sky.pressure"].exists, "The Kite opening has room, not a full-column warning")
+        let near = app.descendants(matching: .any).matching(identifier: "sky.headroom.oneSpace").firstMatch
+        let nearFrame = near.frame
+        let headerFrame = app.descendants(matching: .any).matching(identifier: "sky.header").firstMatch.frame
+        XCTAssertTrue(app.frame.contains(nearFrame), "The complete near-only fact must fit the viewport: \(nearFrame)")
+        // Match the aggregate AX header's Float32 edge precision, without tolerance.
+        XCTAssertTrue(Float(nearFrame.minX) >= Float(headerFrame.minX)
+            && Float(nearFrame.minY) >= Float(headerFrame.minY)
+            && Float(nearFrame.maxX) <= Float(headerFrame.maxX)
+            && Float(nearFrame.maxY) <= Float(headerFrame.maxY),
+            "Near-only facts must fit the pinned header: fact \(nearFrame), header \(headerFrame)")
+        let forecastFrame = app.descendants(matching: .any).matching(identifier: "sky.forecast.destinations").firstMatch.frame
+        XCTAssertFalse(nearFrame.intersects(forecastFrame), "Current room and future destinations have separate space")
+        let ceilingFacts = app.descendants(matching: .any).matching(identifier: "sky.ceiling").firstMatch.value as? String ?? ""
+        for column in [1, 2] { XCTAssertTrue(ceilingFacts.contains("Column \(column): 1 space left."), ceilingFacts) }
         return initialWorld
     }
 
@@ -224,7 +251,8 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         XCTAssertEqual(app.staticTexts["sky.title"].label, "Kite Harbor")
         XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("same Kite Harbor opening"))
         XCTAssertTrue(app.staticTexts["sky.subtitle"].label.contains("17,000 starlight"))
-        tap("sky.begin", in: app); pauseNewSky(in: app); settled(0, in: app)
+        tap("sky.begin", in: app); pauseNewSky(in: app); settled(0, oneSpaceColumns: [1, 2], in: app)
+        XCTAssertFalse(app.staticTexts["sky.pressure"].exists)
     }
 
     @MainActor func testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay() throws {
@@ -240,30 +268,33 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         let app = XCUIApplication(); defer { app.terminate() }
         let initialWorld = try launchKite(largest: false, in: app)
         let opening = try round(in: app), announced = forecast(in: app)
-        exchange(15, 14, in: app); settled(5_000, in: app)
+        capture("headroom-phone-one-space-opening", in: app)
+        exchange(15, 14, in: app); settled(5_000, oneSpaceColumns: [2], in: app)
+        XCTAssertFalse(app.staticTexts["sky.pressure"].exists)
         XCTAssertEqual(forecast(in: app), announced)
         try guide(highGuide, capture: "headroom-phone-high-column-four-spaces", in: app)
         let high = try round(in: app)
         XCTAssertEqual(try world(in: app), initialWorld)
-        settled(5_000, in: app); XCTAssertEqual(try round(in: app), high)
+        settled(5_000, oneSpaceColumns: [2], in: app); XCTAssertEqual(try round(in: app), high)
         XCUIDevice.shared.press(.home); app.activate()
-        settled(5_000, in: app); XCTAssertEqual(try round(in: app), high)
+        settled(5_000, oneSpaceColumns: [2], in: app); XCTAssertEqual(try round(in: app), high)
         app.terminate(); app.launchArguments = ["--sky-flow-review", "--dialogue-review", "-calmEffects", "NO"]
         app.launch(); tap("sky.resume", in: app)
-        settled(5_000, in: app); XCTAssertEqual(try round(in: app), high)
+        settled(5_000, oneSpaceColumns: [2], in: app); XCTAssertEqual(try round(in: app), high)
         noStaleRoomClaim(in: app)
         replayKite(in: app)
         XCTAssertEqual(try round(in: app), opening)
         XCTAssertEqual(forecast(in: app), announced)
-        exchange(4, 11, in: app); settled(7_000, in: app)
+        exchange(4, 11, in: app); settled(7_000, oneSpaceColumns: [1, 2], in: app)
         XCTAssertEqual(forecast(in: app), announced)
         try guide(lowGuide, capture: "headroom-phone-low-five-spaces", in: app)
-        tap("experiment.next", in: app); settled(7_000, showers: 1, in: app)
+        tap("experiment.next", in: app); settled(7_000, showers: 1, oneSpaceColumns: [], in: app)
         noStaleRoomClaim(in: app)
         let pressure = app.staticTexts["sky.pressure"]
         XCTAssertEqual(pressure.label, "Columns 1, 2 are full.")
         let nextAnnounced = forecast(in: app)
-        exchange(15, 14, in: app); settled(12_000, showers: 1, in: app)
+        exchange(15, 14, in: app); settled(12_000, showers: 1, oneSpaceColumns: [], in: app)
+        XCTAssertEqual(pressure.label, "Column 2 is full.")
         XCTAssertEqual(forecast(in: app), nextAnnounced)
         try guide(recoveryGuide, capture: "headroom-phone-real-full-column-recovery", in: app)
         // The existing points-first route has four non-clearing setup moves;
@@ -280,6 +311,8 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         let outcome = app.staticTexts["experiment.outcome"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", "Kite Harbor restored!"),
                                                 object: outcome).wait(timeout: 10))
+        XCTAssertFalse(app.staticTexts["sky.pressure"].exists)
+        XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "sky.headroom.oneSpace").firstMatch.exists)
         // The result combines its earned score with the existing ceremony text;
         // its native label differs from the in-play score instrument.
         XCTAssertEqual(app.staticTexts["experiment.score"].label,
@@ -314,12 +347,13 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         let initialWorld = try launchKite(largest: true, in: app)
         let originalCalm = setCalm(true, verifyOffToOn: true, in: app)
         let announced = forecast(in: app)
-        exchange(4, 11, in: app); settled(7_000, in: app)
+        capture("headroom-tablet-one-space-opening-actual-calm", in: app)
+        exchange(4, 11, in: app); settled(7_000, oneSpaceColumns: [1, 2], in: app)
         XCTAssertEqual(forecast(in: app), announced)
         try guide(lowGuide, capture: "headroom-tablet-low-clear-full-guide", in: app)
         let retained = try round(in: app)
         XCTAssertEqual(try world(in: app), initialWorld)
-        settled(7_000, in: app); XCTAssertEqual(try round(in: app), retained)
+        settled(7_000, oneSpaceColumns: [1, 2], in: app); XCTAssertEqual(try round(in: app), retained)
         tap("experiment.settings", in: app); tap("sky.worldMap", in: app)
         app.worldVisitControl("firstLight").tap()
         tap("sky.lanternMode.fullBoard", in: app); tap("sky.begin", in: app)
@@ -330,6 +364,7 @@ final class HeadroomFeedbackInteractionTests: XCTestCase {
         XCTAssertEqual(app.buttons.matching(NSPredicate(format:
             "identifier BEGINSWITH %@ AND NOT label BEGINSWITH %@", "experiment.cell.", "Empty,")).count, 49)
         XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "sky.pressure").firstMatch.exists)
+        XCTAssertFalse(app.descendants(matching: .any).matching(identifier: "sky.headroom.oneSpace").firstMatch.exists)
         let refilled = try round(in: app)
         XCUIDevice.shared.press(.home); app.activate()
         settled(15_000, target: 150_000, exchanges: 1, in: app)

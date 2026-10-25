@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "status": "MEASUREMENT_AUDIT_COMPLETE",
+  "verdict": "Approve the test-only shared physical-coordinate comparison in the new crowded-Story probe.",
+  "scope": "Measurement validity only. This record does not accept product geometry, visual composition, native input, reader behavior or Goal 6.",
+  "reviewer": "/root/hud_audit",
+  "source": {
+    "appCommit": "82cfc586a235558cdaa13a484a1d0cf83d1f2617",
+    "runtimeInputFingerprint": "dev.9ff6ec12fa",
+    "testCorrectionCommit": "4111bf292c5453bad9f10c1775899363d9d5b702",
+    "testOwner": "AppTests/SkyReadingPlayfieldTests.swift",
+    "testFileSHA256": "251ff1222ed13e9750a6c0bb467db3111a835a44bebd7a43bc4bf72c135b637e",
+    "selector": "StarfallAppTests/SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes",
+    "appChangeForThisMeasurementCorrection": false
+  },
+  "retainedFailure": {
+    "rawLog": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586.log",
+    "rawSummary": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-summary.json",
+    "manifest": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/manifest.json",
+    "passedMethods": 13,
+    "failedMethods": 1,
+    "skippedMethods": 0,
+    "failedAssertions": 5,
+    "failureBoundary": "The new method's initial/revealed placement readiness and final global CGRect equality. SwiftUI anchor and UIView.convert bounding-box heights differ by one or two floating-point ulps while their origins and owned local canvas dimensions agree.",
+    "preservation": "Retain this failed run and its raw numeric facts. It is not relabeled as passing after the measurement correction."
+  },
+  "coordinateBasis": {
+    "anchorPath": "Resolve StarlightAnchors in the root GeometryReader, then offset by that reader's global origin.",
+    "nativePath": "window.convert(canvas.bounds, from: canvas).",
+    "sharedSpaceEvidence": "Retained window and converted host are both (0,0,375,667). The compared board origins are exactly equal in that common window placement.",
+    "physicalScale": 3,
+    "scaleEvidence": {
+      "logicalWindowPoints": [
+        375,
+        667
+      ],
+      "rawPNG": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/A8817CAA-BC76-4ACF-A4EA-9F6EB592AEC6.png",
+      "rawPNGSHA256": "83667b80b045c1ef3f1e9aa92bcde57be87643336d671798378dd36ca81db9ea",
+      "storedPixels": [
+        1125,
+        2001
+      ],
+      "proof": "Both retained raster dimensions are exactly 3 times the window dimensions on the actual phone host. The completed 4111bf29 run independently reports actualScreenScale=3.0 in all three physical-projection TXT attachments. The reviewer read retained outputs without querying a live controller."
+    },
+    "comparison": "Require exact CGPoint origin equality. Compare four absolute edges in order minX,minY,maxX,maxY after multiplying each edge by the actual window.screen.scale and applying Swift rounded() to the physical-pixel lattice. Compare those keys exactly, with no epsilon.",
+    "localGeometry": "Keep exact canvas.bounds.size == store.scene.size. The retained local canvas and SpriteKit scene both equal (375,900); the independently reconstructed global bounding-box height is not their owned dimension.",
+    "reason": "SwiftUI anchor resolution and UIKit coordinate conversion can reconstruct the same transformed rectangle through different floating-point addition/subtraction paths. Full CGRect bit equality conflates that arithmetic with a real projection mismatch. Exact origins, exact owned local dimensions and exact physical edge placement retain separate, explicit responsibilities.",
+    "excludedAlternatives": [
+      "No accuracy tolerance or epsilon.",
+      "No CGRect.integral expansion.",
+      "No separately rounded origins and dimensions in place of absolute edges.",
+      "No production padding, geometry movement or suppression of a failing product assertion."
+    ]
+  },
+  "retainedExamples": [
+    {
+      "state": "large initial",
+      "rawTXT": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/9A8A0D39-5613-4569-BB03-77D4AA205CA4.txt",
+      "rawTXTSHA256": "65213cd949c1ced8b805c96071515d447e90f5886965ca7db6ecc154b6fb4829",
+      "anchorRect": [
+        0,
+        15.666666666666629,
+        375,
+        900.0000000000001
+      ],
+      "nativeRect": [
+        0,
+        15.666666666666629,
+        375,
+        900
+      ],
+      "heightDifferencePoints": 1.1368683772161603e-13,
+      "exactOriginMatch": true,
+      "anchorPhysicalEdges": [
+        0,
+        47,
+        1125,
+        2747
+      ],
+      "nativePhysicalEdges": [
+        0,
+        47,
+        1125,
+        2747
+      ]
+    },
+    {
+      "state": "xxxLarge ceiling revealed",
+      "rawTXT": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/5836C97D-ABC8-4E42-95D3-96C3EDC39EE6.txt",
+      "rawTXTSHA256": "8c729f95743d0740d86d8bf2af10b5ca2f174bf637d26bb3ffa3f4eee7711c36",
+      "anchorRect": [
+        0,
+        142.33333333333334,
+        375,
+        900.0000000000001
+      ],
+      "nativeRect": [
+        0,
+        142.33333333333334,
+        375,
+        899.9999999999999
+      ],
+      "heightDifferencePoints": 2.2737367544323206e-13,
+      "exactOriginMatch": true,
+      "anchorPhysicalEdges": [
+        0,
+        427,
+        1125,
+        3127
+      ],
+      "nativePhysicalEdges": [
+        0,
+        427,
+        1125,
+        3127
+      ]
+    },
+    {
+      "state": "AX5 ceiling revealed",
+      "rawTXT": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/51A9C078-95AB-473B-B59C-B535538F0919.txt",
+      "rawTXTSHA256": "af0a9c45670d0ea964ac2fcbe2795daf73aec96809dd61c007b62a0881b14835",
+      "anchorRect": [
+        0,
+        288.66666666666663,
+        375,
+        900.0000000000001
+      ],
+      "nativeRect": [
+        0,
+        288.66666666666663,
+        375,
+        899.9999999999999
+      ],
+      "heightDifferencePoints": 2.2737367544323206e-13,
+      "exactOriginMatch": true,
+      "anchorPhysicalEdges": [
+        0,
+        866,
+        1125,
+        3566
+      ],
+      "nativePhysicalEdges": [
+        0,
+        866,
+        1125,
+        3566
+      ]
+    }
+  ],
+  "independentNumericVerification": {
+    "method": "Read-only Python scalar arithmetic, separately evaluated before the corrected Swift predicate was reviewed. For each of the three retained rectangle pairs, compare the four absolute edge keys at the actual 3x scale. Then vary each one of the four edges independently by both +1/scale and -1/scale for scales 2 and 3.",
+    "positivePairsAccepted": 3,
+    "negativeCases": 48,
+    "negativeCasesRejected": 48,
+    "negativeCaseCount": "3 retained examples × 2 scales × 4 independent edges × 2 directions.",
+    "result": "All retained 3x pairs have exact matching physical keys. Every individual one-physical-pixel edge displacement is rejected.",
+    "limit": "The 2x cases are independent numeric boundary controls, not a 2x product run. This verifies the chosen measurement unit, not an actual UI layout or native hit map."
+  },
+  "implementationReview": {
+    "result": "The diff against 82cfc586 is limited to the new probe's local physicalEdges/sameCanvasProjection functions, its two readiness comparisons, final origin/edge comparisons and raw/normalized diagnostic attachment.",
+    "readiness": "Uses the same projection predicate as final verification; stable sample count, exact successive anchor/header/offset checks, existing deadlines and scroll-offset checks remain.",
+    "preservedStrictGates": [
+      "Exact local canvas.bounds.size == SpriteKit scene.size.",
+      "Unrounded complete header/window and score/header containment.",
+      "Unrounded complete scaled ceiling/viewport containment and header/ceiling nonintersection.",
+      "At least seven fully visible actual occupied cells.",
+      "Exact committed crowded board and unchanged manual clock.",
+      "Existing two-sample readiness and bounded waits."
+    ],
+    "originalMethodsByteIdenticalTo82cfc586": [
+      "testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+      "testBusySetupPreservesHeaderWhileInspectionIsMuted"
+    ]
+  },
+  "completedHostedRun": {
+    "testCommit": "4111bf292c5453bad9f10c1775899363d9d5b702",
+    "appCommit": "82cfc586a235558cdaa13a484a1d0cf83d1f2617",
+    "runtimeInputFingerprint": "dev.9ff6ec12fa",
+    "rawSummary": "/private/tmp/starfall-hud-stack-20261024/hosted-06-4111bf29-summary.json",
+    "rawReceipt": "/private/tmp/starfall-hud-stack-20261024/hosted-06-4111bf29-receipt.json",
+    "manifest": "/private/tmp/starfall-hud-stack-20261024/hosted-06-4111bf29-attachments/manifest.json",
+    "passedMethods": 14,
+    "failedMethods": 0,
+    "skippedMethods": 0,
+    "runtimeWarnings": [],
+    "stageSeconds": 14.813,
+    "scope": "Completed hosted mechanics recorded separately from the independent 48 numeric negative controls. App source is unchanged by the measurement correction; this is not a visual/native/overall acceptance verdict.",
+    "projectionAttachments": [
+      {
+        "profile": "large",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-06-4111bf29-attachments/1C68D068-9740-4352-B94C-0494137E1D86.txt",
+        "rawSHA256": "3b88944630d8fd4eba32b9a50791719eb1b53941da23569281472767c6f29079",
+        "actualScreenScale": 3,
+        "matchingPhysicalEdges": [0, 166, 1125, 2866]
+      },
+      {
+        "profile": "xxxLarge",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-06-4111bf29-attachments/04B0E09E-1E03-4F31-84FE-DDB2085437A1.txt",
+        "rawSHA256": "9a9f841dba70ae68efb119b1c53a2773483e784dcaac988ab7c100335e1b7c77",
+        "actualScreenScale": 3,
+        "matchingPhysicalEdges": [0, 427, 1125, 3127]
+      },
+      {
+        "profile": "AX5",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-06-4111bf29-attachments/65CC40DE-EF7A-4B70-BE85-44F359F1EE75.txt",
+        "rawSHA256": "40deda8c734dc1fe47edd428e216e5a55e1d32ddbb3ff1e5433d7a7dbd4f8d40",
+        "actualScreenScale": 3,
+        "matchingPhysicalEdges": [0, 866, 1125, 3566]
+      }
+    ]
+  },
+  "limits": [
+    "No build, hosted/native run, simulator controller, movie decoder or App/test edit by this reviewer.",
+    "The completed hosted result is recorded above. Six native candidate journeys and independent visual/export reviews remain separate acceptance evidence; this audit does not anticipate their results.",
+    "Physical edge equality does not claim bit-identical subpixel global bounding-box arithmetic. Meaningful one-pixel placement differences remain rejected; owned local geometry retains exact equality.",
+    "The earlier real ceiling-crop failure and original Goal 5 fixed-header overlap are distinct product failures, not excused by this measurement audit."
+  ]
+}

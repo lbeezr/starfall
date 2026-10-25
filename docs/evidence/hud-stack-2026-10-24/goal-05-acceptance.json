@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "goal": 5,
   "issue": 386,
-  "status": "Adopted for the named development slice after mechanical, independent whole-native-screen, sampled-motion and exact-export reviews; individual main merge next.",
+  "status": "Adopted for the named development slice and merged PR #406/main1ed4a975; issue #386 completed.",
   "baseMain": "bac7bcf3b609902f21e4549980f8f31f04588342",
   "branch": "codex/hud-goal-05-forecast-instrument",
   "playerOutcome": "Read the announced families and destinations once in the ordered native row; use the regular trail to judge time. Column selection and inspection retain exact current facts.",
@@ -69,7 +69,8 @@
     "currentStoryReview": "visual-review-05-current.json",
     "finalExportReview": "visual-review-05-exports.json",
     "captureIndex": "captures-05.json",
-    "result": "All required bounded gates pass; no known visible failure in named native states. Normal pixels establish Arriving; quiet samples show approach then refreshed Next without a witnessed Arriving dwell. No quiet timing/dwell was added."
+    "result": "All required bounded gates pass; no known visible failure in named native states. Normal pixels establish Arriving; quiet samples show approach then refreshed Next without a witnessed Arriving dwell. No quiet timing/dwell was added.",
+    "publication": "publication-05.json"
   },
   "coverageLimits": "Fresh native coverage: default phone normal/Calm/system Reduce Motion, current Lantern/Seed, AX5 actual-Calm tablet/Full Board. No fresh AX5 phone or native island run. Island contour/follower functions remain byte-identical to accepted main; sampler checks do not prove native painted geometry. Scrolling guide images retain actual viewport; Full Board opening precedes later mechanical42k. Sampled motion is not continuous motion/performance or physical/VoiceOver evidence."
 }

@@ -171,6 +171,7 @@ enum StarfallTheme {
         static let accessibleBoardInset: CGFloat = 6
         static let progressHeight: CGFloat = 6
         static let showerTrailWidth: CGFloat = 132
+        static let compactShowerTrailWidth: CGFloat = 96
         static let showerTrailHeadDiameter: CGFloat = 5
         static let guidePropClearance: CGFloat = 76
         static let arrivalCueWidth: CGFloat = 56
@@ -367,21 +368,45 @@ private struct StarfallSceneryProtection: ViewModifier {
     }
 }
 
-/// Read-only supporting feedback. IDs and labels remain at the call site, and
-/// each Text keeps its own measured accessibility bounds.
+/// Read-only supporting feedback. Callers supply facts and optional native IDs;
+/// the Text owns its semantics before passive decorative protection.
 struct StarfallStatusText: View {
     enum Emphasis { case supporting, positive }
     enum Role { case message, instrument }
     let text: String
     var emphasis: Emphasis = .supporting
     var role: Role = .message
+    var accessibilityText: String? = nil
+    var nativeIdentifier: String? = nil
 
-    var body: some View {
+    private var statusFont: Font {
+        role == .instrument ? StarfallTheme.Typography.instrumentLabel : StarfallTheme.Typography.status
+    }
+
+    private var styledText: some View {
         Text(text)
-            .font(role == .instrument ? StarfallTheme.Typography.instrumentLabel : StarfallTheme.Typography.status)
+            .font(statusFont)
             .foregroundStyle(emphasis == .positive ? StarfallTheme.Colors.positiveStatus : StarfallTheme.Colors.textSecondary)
             .fixedSize(horizontal: false, vertical: true)
-            .starfallSceneryProtection(role == .instrument)
+    }
+
+    @ViewBuilder private var semanticText: some View {
+        if nativeIdentifier != nil || accessibilityText != nil {
+            styledText.accessibilityRepresentation {
+                if let nativeIdentifier {
+                    Text(text).font(statusFont).accessibilityLabel(accessibilityText ?? text)
+                        .accessibilityIdentifier(nativeIdentifier)
+                } else {
+                    Text(text).font(statusFont).accessibilityLabel(accessibilityText ?? text)
+                }
+            }
+        } else {
+            styledText
+        }
+    }
+
+    var body: some View {
+        semanticText.starfallSceneryProtection(role == .instrument)
     }
 }
 

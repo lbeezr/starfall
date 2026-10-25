@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "goal": 5,
+  "issue": 386,
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/406",
+  "mergeCommit": "1ed4a97506dce4327ead701b2d9892979d457706",
+  "mergedAtUTC": "2026-10-25T03:23:34Z",
+  "publishedHead": "22d1d8912c3e920e09d91cb11c04cf737ba07dda",
+  "reviewedLocalCommit": "cd0612c0a58a78420f6b5423733c721fedd649e9",
+  "testedAppAndTestsCommit": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+  "reviewedAndPublishedTree": "295472fc2e332c8aff13cb1db33282c8038cc4a6",
+  "baseMain": "bac7bcf3b609902f21e4549980f8f31f04588342",
+  "treeVerification": {
+    "publishedHeadEqualsReviewedLocal": true,
+    "mergedMainEqualsReviewedLocal": true,
+    "method": "Fetched PR branch and main; git diff --exit-code against reviewed local commit returned zero before and after merge."
+  },
+  "issueCompletion": {
+    "state": "closed",
+    "stateReason": "completed"
+  },
+  "canonicalProject": {
+    "status": "unavailable",
+    "reason": "No connected Projects query/update tool; completed issue confirmed, canonical Project Done not claimed."
+  },
+  "remoteChecks": {
+    "prCommitStatuses": [],
+    "claim": "No remote CI pass claimed; existing workflow has no PR trigger."
+  },
+  "runtimeInputFingerprint": "dev.38edbb845c",
+  "scope": "Only verified Goal 5; the other UI root remains unpublished and excluded."
+}

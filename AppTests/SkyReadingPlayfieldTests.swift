@@ -203,6 +203,158 @@ final class SkyReadingPlayfieldTests: XCTestCase {
         }
     }
 
+    @MainActor func testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes() async throws {
+        let sceneDeadline = ContinuousClock.now + .seconds(3)
+        var availableScene = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
+        while availableScene == nil && ContinuousClock.now < sceneDeadline {
+            try await Task.sleep(for: .milliseconds(20))
+            availableScene = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
+        }
+        let scene = try XCTUnwrap(availableScene, "The crowded Story probe requires a connected window scene")
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        var crowded = FallingSky.freshChallenge(.firstLight)
+        XCTAssertEqual(crowded.challengeRevision, 4)
+        for _ in 0..<4 { _ = try XCTUnwrap(crowded.letStarsFall()) }
+        let profiles: [(DynamicTypeSize, UIContentSizeCategory, String)] = [
+            (.large, .large, "large"), (.xxxLarge, .extraExtraExtraLarge, "xxxLarge"),
+            (.accessibility5, .accessibilityExtraExtraExtraLarge, "AX5")
+        ]
+        for (textSize, category, name) in profiles {
+            let suite = "Starfall.CrowdedHeader.\(UUID())", defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            defaults.set(try SkySaveArchive.encode(crowded), forKey: SkySaveArchive.key)
+            defaults.set(false, forKey: "calmEffects"); defaults.set(false, forKey: "soundEnabled")
+            let clock = ManualRainClock()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], clock: clock)
+            let window = UIWindow(windowScene: scene)
+            window.frame = CGRect(x: 0, y: 0, width: 375, height: 667)
+            var observed: [StarlightAnchor: CGRect] = [:]
+            let host = UIHostingController(rootView: FallingSkyView(store: store,
+                flow: SkyFlowState(arguments: ["--starfalls-reset", "--technique-review"]))
+                .defaultAppStorage(defaults)
+                .environment(\.scenePhase, .active)
+                .environment(\.dynamicTypeSize, textSize)
+                .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+                    GeometryReader { geometry in
+                        let origin = geometry.frame(in: .global).origin
+                        let rects = anchors.mapValues { geometry[$0].offsetBy(dx: origin.x, dy: origin.y) }
+                        Color.clear.onAppear { observed = rects }
+                            .onChange(of: rects) { _, value in observed = value }
+                    }.allowsHitTesting(false)
+                })
+            let container = UIViewController()
+            window.rootViewController = container; container.view.frame = window.bounds
+            container.addChild(host); host.view.frame = container.view.bounds
+            host.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            container.view.addSubview(host.view); host.didMove(toParent: container)
+            window.makeKeyAndVisible()
+            defer { store.setSuspended(true); window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+            let ready = ContinuousClock.now + .seconds(3)
+            while (!store.sceneReady || store.suspended || store.scene.view == nil ||
+                   observed[.board] == nil || observed[.header] == nil || observed[.score] == nil) && ContinuousClock.now < ready {
+                try await Task.sleep(for: .milliseconds(20))
+            }
+            XCTAssertTrue(store.sceneReady); XCTAssertFalse(store.suspended)
+            let canvas = try XCTUnwrap(store.scene.view)
+            var ancestor: UIView? = canvas
+            while ancestor != nil && !(ancestor is UIScrollView) { ancestor = ancestor?.superview }
+            let scroll = ancestor as? UIScrollView
+            let physicalScale = window.screen.scale
+            func physicalEdges(_ frame: CGRect) -> [CGFloat] {
+                [frame.minX, frame.minY, frame.maxX, frame.maxY].map { ($0 * physicalScale).rounded() }
+            }
+            func sameCanvasProjection(_ frame: CGRect?) -> Bool {
+                guard let frame else { return false }
+                let actual = window.convert(canvas.bounds, from: canvas)
+                // Independent global bounding-box conversions may differ by an
+                // ulp. Placement is exact on the physical grid; local dimensions
+                // remain exact in the separate native/SpriteKit assertion.
+                return frame.origin == actual.origin && physicalEdges(frame) == physicalEdges(actual)
+            }
+            func viewport() -> CGRect {
+                window.bounds.intersection(scroll.map { window.convert($0.bounds, from: $0) } ?? window.bounds)
+            }
+            func visibleStars() -> Int {
+                guard let board = observed[.board], let header = observed[.header] else { return 0 }
+                let mapping = LandingGeometry(size: canvas.bounds.size)
+                return (0..<49).filter { index in
+                    let cell = Cell(index / 7, index % 7)
+                    let frame = mapping.frame(cell).offsetBy(dx: board.minX, dy: board.minY)
+                    return crowded.gem(at: cell) != nil && viewport().contains(frame) && !header.intersects(frame)
+                }.count
+            }
+            func capture(_ stage: String) {
+                let facts = XCTAttachment(string: "textSize=\(textSize); window=\(window.bounds); host=\(window.convert(host.view.bounds, from: host.view)); anchors=\(observed); canvas=\(window.convert(canvas.bounds, from: canvas)); canvasBounds=\(canvas.bounds); sceneSize=\(store.scene.size); viewport=\(viewport()); scrollOffset=\(String(describing: scroll?.contentOffset)); visibleOccupiedCells=\(visibleStars()); sceneReady=\(store.sceneReady); suspended=\(store.suspended); calmEffects=false; inheritedSystemReduceMotion=\(UIAccessibility.isReduceMotionEnabled); static committed four-shower Lantern, no pan or animation claim")
+                facts.name = "crowded-story-\(name)-\(stage)-frames"; facts.lifetime = .keepAlways; add(facts)
+                let image = XCTAttachment(image: windowImage(window))
+                image.name = "crowded-story-\(name)-\(stage)"; image.lifetime = .keepAlways; add(image)
+            }
+            let placementDeadline = ContinuousClock.now + .seconds(3)
+            var lastBoard: CGRect?, lastHeader: CGRect?, lastOffset: CGPoint?, stableSamples = 0
+            while stableSamples < 2 && ContinuousClock.now < placementDeadline {
+                await Task.yield(); host.view.layoutIfNeeded()
+                let board = observed[.board], header = observed[.header], offset = scroll?.contentOffset
+                if board != nil, header != nil, board == lastBoard, header == lastHeader, offset == lastOffset,
+                   sameCanvasProjection(board), visibleStars() >= 7 {
+                    stableSamples += 1
+                } else { stableSamples = 0 }
+                lastBoard = board; lastHeader = header; lastOffset = offset
+                if stableSamples < 2 { try await Task.sleep(for: .milliseconds(20)) }
+            }
+            capture("initial")
+            XCTAssertEqual(stableSamples, 2, "Initial crowded \(name) placement must settle on at least seven fully visible actual stars")
+            XCTAssertGreaterThanOrEqual(visibleStars(), 7, "Crowded \(name) must retain a playable native star field")
+
+            // Reveal the real ceiling through its existing scroll owner. This
+            // proves layout extent and separation, not native pan acceptance.
+            if let scroll {
+                scroll.setContentOffset(CGPoint(x: scroll.contentOffset.x, y: -scroll.adjustedContentInset.top), animated: false)
+                let ceilingDeadline = ContinuousClock.now + .seconds(2)
+                stableSamples = 0; lastBoard = nil; lastOffset = nil
+                while stableSamples < 2 && ContinuousClock.now < ceilingDeadline {
+                    await Task.yield(); host.view.layoutIfNeeded()
+                    let board = observed[.board], offset = scroll.contentOffset
+                    if board != nil, board == lastBoard, offset == lastOffset,
+                       offset.y == -scroll.adjustedContentInset.top,
+                       sameCanvasProjection(board) { stableSamples += 1 }
+                    else { stableSamples = 0 }
+                    lastBoard = board; lastOffset = offset
+                    if stableSamples < 2 { try await Task.sleep(for: .milliseconds(20)) }
+                }
+                XCTAssertEqual(stableSamples, 2, "The actual scroll owner must settle with the complete ceiling revealed")
+            }
+            capture("ceiling-revealed")
+            let board = try XCTUnwrap(observed[.board]), header = try XCTUnwrap(observed[.header])
+            let score = try XCTUnwrap(observed[.score])
+            let snapshot = try XCTUnwrap(SkyCeilingSnapshot(game: store.game, mapping: LandingGeometry(size: canvas.bounds.size)))
+            let markerHeight = UIFontMetrics(forTextStyle: .caption1).scaledValue(
+                for: SkyCeilingOverlay.baseMarkerHeight,
+                compatibleWith: UITraitCollection(preferredContentSizeCategory: category))
+            let clearance = SkyCeilingOverlay.requiredTopClearance(markerHeight: markerHeight)
+            let ceiling = CGRect(x: board.minX + snapshot.arena.minX,
+                                 y: board.minY + snapshot.arena.minY - clearance,
+                                 width: snapshot.arena.width, height: clearance)
+            let geometry = XCTAttachment(string: "header=\(header); score=\(score); actualCanvas=\(board); sharedCeiling=\(ceiling); scaledMarkerHeight=\(markerHeight); clearance=\(clearance); viewport=\(viewport()); fullyVisibleOccupiedCells=\(visibleStars())")
+            geometry.name = "crowded-story-\(name)-ceiling-geometry"; geometry.lifetime = .keepAlways; add(geometry)
+            XCTAssertTrue(window.bounds.contains(header), "The complete \(name) header must fit the native window")
+            XCTAssertTrue(header.contains(score), "The complete score must remain inside the crowded header")
+            XCTAssertTrue(markerHeight.isFinite && markerHeight > 0)
+            XCTAssertTrue(viewport().contains(ceiling), "The complete scaled \(name) ceiling must be reachable")
+            XCTAssertLessThanOrEqual(header.maxY, ceiling.minY, "The crowded header must not cover the actual ceiling or scaled badges")
+            XCTAssertFalse(header.intersects(ceiling))
+            XCTAssertGreaterThanOrEqual(visibleStars(), 7, "Revealing the crowded \(name) ceiling must retain seven fully visible actual stars")
+            let actualCanvas = window.convert(canvas.bounds, from: canvas)
+            XCTAssertEqual(board.origin, actualCanvas.origin)
+            XCTAssertEqual(physicalEdges(board), physicalEdges(actualCanvas))
+            let projection = XCTAttachment(string: "rawAnchor=\(board); rawNative=\(actualCanvas); actualScreenScale=\(physicalScale); anchorPixelEdges=\(physicalEdges(board)); nativePixelEdges=\(physicalEdges(actualCanvas)); exactLocalCanvas=\(canvas.bounds.size); exactLocalScene=\(store.scene.size)")
+            projection.name = "crowded-story-\(name)-physical-projection"; projection.lifetime = .keepAlways; add(projection)
+            XCTAssertEqual(canvas.bounds.size, store.scene.size, "Header reflow must retain the native SpriteKit projection")
+            XCTAssertEqual(snapshot.warnings.filter { $0.pressure == .full }.map(\.number), [2])
+            XCTAssertEqual(snapshot.warnings.filter { $0.pressure == .oneSpace }.map(\.number), [1, 3, 4, 5, 6])
+            XCTAssertEqual(store.game, crowded); XCTAssertEqual(clock.now, 0)
+        }
+    }
+
     @MainActor func testBusySetupPreservesHeaderWhileInspectionIsMuted() async throws {
         let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
         let previous = scene.windows.first(where: \.isKeyWindow)

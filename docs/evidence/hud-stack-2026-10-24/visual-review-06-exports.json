@@ -1,0 +1,548 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "reviewer": "hud_read_ahead — independent retained-export review",
+  "status": "PASS_BOUNDED_EXACT_EXPORT_REVIEW",
+  "verdict": "PASS — all15 exact JPEG/raw pairs preserve the inspected whole-screen content and state distinctions",
+  "overallGoal6Adoption": "NOT_GRANTED_BY_THIS_REVIEW",
+  "scope": "Export integrity and visible-content fidelity of all15 retained files;14 current native screenshots plus one historical decoded native-video frame. Implementation, mechanical interaction and overall adoption remain separate.",
+  "index": {
+    "path": "docs/evidence/hud-stack-2026-10-24/captures-06.json",
+    "sha256": "f859dbee0cace9af9158a4ba693e536ba3812c8eff7651cdc81e0255688e4bf3",
+    "itemCount": 15,
+    "exportBytes": 10949859
+  },
+  "source": {
+    "currentAppCommit": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+    "currentTestContinuation": "b28321cabb405c8f01893041c321c17851d5f0bd",
+    "currentEmbeddedBuildID": "dev.606ce1efbe",
+    "sourceRecordPath": "docs/evidence/hud-stack-2026-10-24/source-06.json",
+    "sourceRecordSHA256": "45704b5ed64e2e248eacd801d3e4ba4c1b51875a8ed9d05226c8ac1bb2656d92",
+    "historicalBaseline": "Goal5 App08aa30c0 / dev.38edbb845c; supplied PNG decoded at actual49.985s from H264. This reviewer performed no video decoding."
+  },
+  "method": [
+    "Independently verified every indexed raw/export SHA256, byte size, stored pixel dimension and EXIF orientation before viewing. Also verified source-record hash and six native result-group provenance chains.",
+    "Directly viewed all15 raw PNGs and all15 exact retained JPEGs, paired by index, at whole-screen context using view_image(detail:original), and re-viewed the approved reference's middle Play panel. Did not read another reviewer's native conclusion to determine this verdict.",
+    "Original phone files1170×2532 and tablet files2064×2752 remain unchanged in size. Tool presentation resized phone previews to946×2048 and tablet previews to1368×1824; this is not a physical-device or exact1:1 display inspection.",
+    "Assessed complete essential glyphs visible in each viewport, score/target and forecast order, current near/full facts, ceiling badge separation, guide scroll boundary, continuous scenery, result-state suppression and Full Board context. No pixel-equal JPEG claim: lossy texture/glow smoothing is expected."
+  ],
+  "integrity": {
+    "all30HashesAndByteSizesMatch": true,
+    "all30StoredDimensionsMatch": true,
+    "orientation": "Fourteen current pairs explicitly EXIF1; historical PNG/JPEG lack tag and use default orientation1. No orientation mismatch.",
+    "uniqueRawHashes": 15,
+    "uniqueExportHashes": 15,
+    "phonePairs1170x2532": 10,
+    "tabletPairs2064x2752": 5,
+    "allPairsDirectlyViewed": true,
+    "duplicateOrMislabelFinding": "None in this frozen index.",
+    "sixFreshNativeProvenanceGroups": [
+      {
+        "runPrefix": "native-06-b28321ca-full",
+        "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+        "counts": {
+          "totalTestCount": 1,
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "expectedFailures": 0
+        },
+        "provenanceHashesMatch": true
+      },
+      {
+        "runPrefix": "native-06-b28321ca-ax-phone",
+        "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+        "counts": {
+          "totalTestCount": 1,
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "expectedFailures": 0
+        },
+        "provenanceHashesMatch": true
+      },
+      {
+        "runPrefix": "native-06-b28321ca-ax-tablet",
+        "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+        "counts": {
+          "totalTestCount": 1,
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "expectedFailures": 0
+        },
+        "provenanceHashesMatch": true
+      },
+      {
+        "runPrefix": "native-06-b28321ca-blocked",
+        "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+        "counts": {
+          "totalTestCount": 1,
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "expectedFailures": 0
+        },
+        "provenanceHashesMatch": true
+      },
+      {
+        "runPrefix": "native-06-b28321ca-kite",
+        "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+        "counts": {
+          "totalTestCount": 1,
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "expectedFailures": 0
+        },
+        "provenanceHashesMatch": true
+      },
+      {
+        "runPrefix": "native-06-b28321ca-full-board",
+        "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+        "counts": {
+          "totalTestCount": 1,
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "expectedFailures": 0
+        },
+        "provenanceHashesMatch": true
+      }
+    ],
+    "mechanicalBoundary": "Six separately recorded current cases each1 pass/0 fail/0 skip. These results identify the captured sources and do not supply the visual verdict."
+  },
+  "approvedReference": {
+    "path": "docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "comparison": "Middle Play: continuous Observatory painting, protected compact instruments and clear actual stars. Native full-font AX layouts necessarily allocate more instrument space; reviewed exports preserve the source layout rather than simulating the concept's text scale.",
+    "officialRoles": "GAME_UI_SYSTEM registered score/forecast/passive status/utility and existing reader/result roles; no new decorative family is introduced by export."
+  },
+  "findings": [
+    "Bounded PASS for the exact retained exports. No consequential text, glyph, status/ceiling relationship or state distinction is lost to JPEG80. Fine scenic texture and glow are slightly smoothed; essential ink and star silhouettes remain recognizable.",
+    "Current full+near witnesses retain both facts; real Lantern recovery retains the near list and removes the full fact. Kite near-only, singular-near, full-only recovery and earned terminal are visibly distinct.",
+    "Default phone and AX5 phone/tablet preserve full score/target fonts and ordered forecast glyph/digit pairs. Large-text compact layout remains large by design; this verdict does not infer pan reachability from its lower-board boundary.",
+    "Full Board witnesses retain15,000 and30,000 actual scores with its mode role; no forecast or near/full warning is shown. Guide end and subsequent guide opening are different captured reading positions.",
+    "Historical full-only baseline remains labeled separately and has no matched recovery image. Its earlier strict semantic ceiling-containment failure remains a failure; visible complete painted badges do not overturn that mechanical result."
+  ],
+  "items": [
+    {
+      "id": "phone-default__lantern-full",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-attachments/089B63DF-E341-4BDD-AA99-57FF1881432D.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__lantern-full.jpg",
+      "state": "Current Lantern4, default text: after four actual showers, full column 2 and one-space columns 1,3,4,5,6; before recovery.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-full",
+      "rawSHA256": "d256ebce140db2f1233fb66763cb4a1ffb585742b8fd046b65e48ca02f92904f",
+      "rawBytes": 3435947,
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "4d2cfcbc406faaf2c03932d79467b53583f886bed2fcdd835565183c85223504",
+      "exportBytes": 552866,
+      "exportStoredPixels": [
+        1170,
+        2532
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "0 / 150,000, ordered forecast 7/6/1/2/4, Column 2 is full and columns 1,3,4,5,6 one-space facts are complete and separated from complete 1/2!/3/4/5/6 ceiling badges. Actual stars remain the dominant board objects; short Spark guide and Close match the raw."
+    },
+    {
+      "id": "phone-default__lantern-recovered",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-attachments/BCF8BD39-8455-446E-939B-521B00EA3FE8.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__lantern-recovered.jpg",
+      "state": "Current Lantern4 after the real 5000-point recovery clear: full warning absent, one-space columns 1,3,4,5,6 remain; before the fifth shower.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-full",
+      "rawSHA256": "d55af95664d118db1baee69a3623380bd7c5752183344e9ec6d57b84e4e4069d",
+      "rawBytes": 3445959,
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "78ab322ff5a8eecedd264b349bd21c6c603397eb5d0110f710fa11a0638cc901",
+      "exportBytes": 583892,
+      "exportStoredPixels": [
+        1170,
+        2532
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "5,000 / 150,000 and the same forecast survive; full-column fact and 2! badge disappear while the ordered one-space list remains. The Pip guide is captured before its tail is revealed; JPEG preserves that actual viewport rather than supplying missing text."
+    },
+    {
+      "id": "phone-ax5-quiet__lantern-full",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-phone-attachments/E745685D-179B-4681-8C53-EEE100BE5327.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-ax5-quiet__lantern-full.jpg",
+      "state": "Actual AX5 phone, legitimate calmEffects launch setting: four actual showers, full column 2 and one-space columns 1,3,4,5,6.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-ax-phone",
+      "rawSHA256": "da1b6be798d6b714e1e05a871f9a0a9550dd2e4e78397ba848a527c40210ac4f",
+      "rawBytes": 3101527,
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "284073ae3057de3ded7feab30eb23dfa437501ed41bb5b39ae0f9fb7e5e54ca7",
+      "exportBytes": 565923,
+      "exportStoredPixels": [
+        1170,
+        2532
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "AX5 score is two full-font lines with Pause/trail/Next utility column, five forecast destinations and compact '1 space: 1,3,4,5,6'. Full fact, complete large ceiling badges and visible top stars match the raw. Lower board rows continue outside this captured viewport."
+    },
+    {
+      "id": "phone-ax5-quiet__lantern-recovered",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-phone-attachments/CB97AF59-013D-414A-AF41-105BA2ABB166.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-ax5-quiet__lantern-recovered.jpg",
+      "state": "Actual AX5 phone, legitimate calmEffects launch setting: real 5000-point recovery, full warning absent and the same one-space columns remain.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-ax-phone",
+      "rawSHA256": "a4dfe39f17525087b9c2b3658ed10ac68da05c40feeaccb34b19fe3954f49adf",
+      "rawBytes": 3210061,
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "f4a1bc2be301153eb1b525bce726a2d8d71a46ad953ce92412badb7bdb05e69d",
+      "exportBytes": 576487,
+      "exportStoredPixels": [
+        1170,
+        2532
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "AX5 5,000 earned line and /150,000 target remain complete. Only compact one-space summary remains; the ceiling no longer shows 2!. JPEG preserves the larger board space after removal of the full status."
+    },
+    {
+      "id": "tablet-ax5-quiet__lantern-full",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-tablet-attachments/14DC2161-891F-4591-A10F-A9B8954394A2.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__tablet-ax5-quiet__lantern-full.jpg",
+      "state": "Actual AX5 tablet, legitimate calmEffects launch setting: four actual showers, full column 2 and one-space columns 1,3,4,5,6.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-ax-tablet",
+      "rawSHA256": "2b98ab1483368c57da2654b895f8a8d4c604dc74d6760b598936d5cd771b27ee",
+      "rawBytes": 6821876,
+      "rawStoredPixels": [
+        2064,
+        2752
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "2845444f6189074ee73436455d20378d8474f955139f71fdf6394bdca6958630",
+      "exportBytes": 1099390,
+      "exportStoredPixels": [
+        2064,
+        2752
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "Tablet AX5 retains single-line score, ordered forecast, full fact and wrapping complete one-space prose above complete ceiling badges. Large star field and continuous painting remain visible; bottom Spark guide shows only its captured opening."
+    },
+    {
+      "id": "tablet-ax5-quiet__lantern-recovered",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-tablet-attachments/CA0BB3BF-B07E-40FB-B733-2D64F9377732.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__tablet-ax5-quiet__lantern-recovered.jpg",
+      "state": "Actual AX5 tablet, legitimate calmEffects launch setting: real 5000-point recovery, full warning absent and the same one-space columns remain.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-ax-tablet",
+      "rawSHA256": "7ad9f84726c15f69877592b99ab50863db35cf10d583fb2c9bd3466a8182d300",
+      "rawBytes": 6804891,
+      "rawStoredPixels": [
+        2064,
+        2752
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "29bd1a9f0e5b11a7ef34d0dd16e05a6417b6f3590ea10bc8254dfafbc041467f",
+      "exportBytes": 1082998,
+      "exportStoredPixels": [
+        2064,
+        2752
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "Tablet 5,000 /150,000 and ordered forecast match; full status and 2! badge are absent, near prose is complete. The Pip guide opening is partially visible at the bottom exactly as in the raw."
+    },
+    {
+      "id": "phone-default__blocked-terminal",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-blocked-attachments/CBBD0F76-541C-4376-92B3-3043986C8B2E.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__blocked-terminal.jpg",
+      "state": "Actual blocked arrival terminal state from the existing idle full-column journey. This still does not establish the preceding continuous timing.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-blocked",
+      "rawSHA256": "5c64234e66395bb36e4f7368b25d1d2ce480ffe124ce3d6a88ca1d8f86b6baaf",
+      "rawBytes": 3358918,
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "ece6438fd2f3625ed578283c6d2dd0a18247409d4968b804ba3d1094072ed8b5",
+      "exportBytes": 544526,
+      "exportStoredPixels": [
+        1170,
+        2532
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "Round Over / No room to land, 0 of 150,000 factual result and all visible replay/navigation labels remain readable. Active forecast/pressure HUD is absent; faint board and marked blocked column remain behind the terminal panels."
+    },
+    {
+      "id": "phone-default__kite-near-opening",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/8801E466-5303-4955-97C0-5D287B15B1D0.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__kite-near-opening.jpg",
+      "state": "Current Kite4 opening, paused before a shower, 0 of 17000 points and one-space columns 1,2.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-kite",
+      "rawSHA256": "d33015143e967869974af31a63e71b919b1798e8b290f15691bfd335463d5137",
+      "rawBytes": 3656625,
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "051641d7e4177bde61bddc52e25b8510ccb870dd7745a700ac6ab2df1b6f7252",
+      "exportBytes": 587679,
+      "exportStoredPixels": [
+        1170,
+        2532
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "Kite 0 /17,000, ordered 6/1/2/4/5 forecast and complete columns 1,2 one-space summary match. Complete 1/2 ceiling badges, sparse high columns, Start sky and Next shower are visible; bright scenic crown remains continuous."
+    },
+    {
+      "id": "phone-default__kite-high-column-guide-end",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/B06EEBB6-D53F-4984-97EE-7F3515339464.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__kite-high-column-guide-end.jpg",
+      "state": "Current Kite4 after the real high-column clear to 5000 points: column 1 recovers four spaces and column 2 remains one space from full. Final captured guide scroll position.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-kite",
+      "rawSHA256": "4d1cd0d40f867b28fe562025dfc676c8edb5347e138c6d075767bcd11134fea9",
+      "rawBytes": 3588389,
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "77e2db5f6101bac12daecbdcc05f4e3a7babe3e2e9ddcac63fc544f1399fea44",
+      "exportBytes": 561265,
+      "exportStoredPixels": [
+        1170,
+        2532
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "Kite 5,000 /17,000, same forecast and singular Column 2: 1 space left status are complete. Actual guide end includes four more spaces above column 1 and Close, with no lost line in JPEG; the board is at the captured reading position."
+    },
+    {
+      "id": "phone-default__kite-real-recovery-guide-end",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/117056C9-71A7-4BDD-8959-99463CA2A2CA.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__kite-real-recovery-guide-end.jpg",
+      "state": "Current Kite4 real full-column recovery route at 12000 points: full column 2 remains and no one-space caption is expected. Final captured guide scroll position.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-kite",
+      "rawSHA256": "cca814226672805929b20421a68ce5255bb00d2a8583bbc2ad1266d5ff51b4ed",
+      "rawBytes": 3605853,
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "d9a5e1233d07603f210d76ddbba3454dd39085d006c0a38510c960b7c7e81a28",
+      "exportBytes": 565031,
+      "exportStoredPixels": [
+        1170,
+        2532
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "Kite 12,000 /17,000, changed forecast 3/7/6/1/2 and full-column-2-only fact match. Near status is absent; visible guide ends 'Column 1 has room again.' with Close. The partially visible upper comet is the same reading scroll boundary in both files, not an export crop."
+    },
+    {
+      "id": "phone-default__kite-earned-result",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/ECABE527-8DC9-4C96-9125-824E254B9E0C.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__kite-earned-result.jpg",
+      "state": "Current Kite4 earned result after the real 18000-point route against the 17000-point objective. Terminal near/full status absence is separately asserted by the native test.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-kite",
+      "rawSHA256": "3a750f482bd6d4568c1ddd1a23873394a39606dc8e84783cbbe02ec818c781f7",
+      "rawBytes": 2984120,
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "8d3d08f9f898fd547da936e5b3d266a9145b88a86e52586ce733f5a934c97e63",
+      "exportBytes": 526299,
+      "exportStoredPixels": [
+        1170,
+        2532
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "Kite Harbor restored result shows 18,000 of17,000, visible navigation, last-clear equation and earned-light sample. Active near/full HUD is absent. All panels and essential labels retain raw fit and hierarchy."
+    },
+    {
+      "id": "tablet-ax5-actual-calm__kite-near-opening",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/E5DE0C0E-8C07-4D7B-B3B7-8DCF679D842B.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__tablet-ax5-actual-calm__kite-near-opening.jpg",
+      "state": "Actual AX5 tablet after the real Settings Calm transition, current Kite4 opening with one-space columns 1,2.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-full-board",
+      "rawSHA256": "49ff1a858d5e6284c2e2d6ccb4fd5b291a5f7907abfc71b8072216718fab511d",
+      "rawBytes": 6507344,
+      "rawStoredPixels": [
+        2064,
+        2752
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "bf2c5321ee708e78bd309fef559bc702b8c568acd17a00296084914aa5fa24ca",
+      "exportBytes": 990578,
+      "exportStoredPixels": [
+        2064,
+        2752
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "Actual Calm tablet Kite opening shows 0 /17,000, forecast 6/1/2/4/5 and complete columns1,2 one-space summary, with complete ceiling badges and board. Start sky / Next shower remain readable on fitted material over bright clouds."
+    },
+    {
+      "id": "tablet-ax5-actual-calm__full-board-eight-refills-guide-end",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/364C76BC-EF27-4B9E-AD51-1A104A95B7AB.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__tablet-ax5-actual-calm__full-board-eight-refills-guide-end.jpg",
+      "state": "Current Lantern Full Board6 after the real 15000-point clear and eight refills. The native case asserts 49 occupied cells; this guide-end still does not independently show or count every star.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-full-board",
+      "rawSHA256": "3db934c1def4138eebd20ee4efcd8d37949bc0d735a954bc3b0c8cb225081f0c",
+      "rawBytes": 6521486,
+      "rawStoredPixels": [
+        2064,
+        2752
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "d3f54a4f9f86201d12eabc83cd0b0b9bfec641411cdd69c3d9a03e647508f06d",
+      "exportBytes": 1032128,
+      "exportStoredPixels": [
+        2064,
+        2752
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "Full Board after15,000: score/150,000 and complete 'Full Board · clears refill and cascade' role remain visible; forecast and near/full summary are absent. Actual guide end shows complete 15,000 equation, survivor/refill prose, final 'the board is full.' and Close. Only the captured upper board rows are visible at this guide reading position; this still does not display or count all49 cells."
+    },
+    {
+      "id": "tablet-ax5-actual-calm__full-board-following-clear",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/1DD2E09A-37E4-41C7-B4ED-7A1A9B476BD2.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__tablet-ax5-actual-calm__full-board-following-clear.jpg",
+      "state": "Current Lantern Full Board6 after the following real clear to 30000 points. Final captured guide scroll position; this is neither the 0-point opening nor a later 42000-point state.",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-full-board",
+      "rawSHA256": "ce538ca34315588725c77ad480825f73606f83d59bacc34ff93d9977ef133052",
+      "rawBytes": 6975569,
+      "rawStoredPixels": [
+        2064,
+        2752
+      ],
+      "rawEXIFOrientation": 1,
+      "exportSHA256": "41b5d53254ae81a9f971602c593a1f4ae46403e271e220312c97206dfc9f4c88",
+      "exportBytes": 1131548,
+      "exportStoredPixels": [
+        2064,
+        2752
+      ],
+      "exportEXIFOrientation": 1,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "Full Board following clear is30,000 /150,000, with same complete mode role and no forecast/near/full summary. Seven-by-seven visible board and the captured guide opening match; no42,000 claim is attached to this frame."
+    },
+    {
+      "id": "phone-default__baseline-goal-five-full-at-49-985s",
+      "kind": "native-motion-frame",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-06-from-05-diagnostic-frames/frame-0050.000.png",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-38edbb845c__phone-default__baseline-goal-five-full-at-49-985s.jpg",
+      "state": "Retained Goal5 baseline from the failed strict semantic ceiling-clearance diagnostic. Native-video still requested at 50.000 s, actual 49.985 s. Historical full badges have separately been reviewed as visibly complete; this export does not turn the failed frame-containment test into a pass or claim painted clipping.",
+      "appSourceCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "testSourceCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "runPrefix": "baseline-06-from-05-08aa30c0-full-phone-diagnostic",
+      "rawSHA256": "d708896cd131d69fd9806745e5e93d9155b4ddfedc24498340189bdef7c0182e",
+      "rawBytes": 2883224,
+      "rawStoredPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": null,
+      "exportSHA256": "b3e9e1c33a0e18fc2d32ab844ee9cb2f372fb527b45d0c6197240bd4bee7ee06",
+      "exportBytes": 549249,
+      "exportStoredPixels": [
+        1170,
+        2532
+      ],
+      "exportEXIFOrientation": null,
+      "pairedVisualVerdict": "PASS_BOUNDED_EXPORT_FIDELITY",
+      "observation": "Historical Goal5 full-only frame shows0 /150,000, forecast7/6/1/2/4, Column2 full fact and visibly complete ceiling badges. It is distinct from current full+near composition. JPEG preserves the actual49.985s decoded image, including Spark/Close and Resume sky / Next shower; it does not erase the separately recorded strict semantic-containment failure."
+    }
+  ],
+  "limitations": [
+    "No overall Goal6 adoption, rule/save verification or test reliability finding is granted here. Earlier failed candidates and reader/pan failures keep their recorded source scopes and unassigned causes.",
+    "Stills do not establish native touch, pan, continuous guide reading, motion or timer progression, actual VoiceOver, platform focus, physical hardware, minimum-iOS, global contrast or performance.",
+    "Guide panels show their actual captured scroll positions. Partially visible tails/openings and board rows outside the viewport are preserved, not treated as proof of complete simultaneous text/board visibility.",
+    "Full Board15k capture is the eight-refill guide end;30k is the following clear. No0/42k or all49-cell simultaneous visibility claim is made for the15k still.",
+    "Calm-effects launch context and real Settings Calm transition are separately identified by native provenance; no actual system Reduce Motion claim is added.",
+    "Historical H264 frame carries video compression before JPEG export and proves only the retained full state at49.985s. No historical recovery or continuous-animation comparison is inferred.",
+    "Review used original files with scaled tool previews; no whole-glyph contrast ratio or alpha-isolated glyph bounds were measured."
+  ],
+  "checks": {
+    "ciHygiene": "PASS — tracked-file hygiene and core UI-import guard; native validation separate",
+    "gitDiffCheck": "PASS",
+    "jsonParse": "PASS"
+  }
+}
