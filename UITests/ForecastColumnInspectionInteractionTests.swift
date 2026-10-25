@@ -371,6 +371,74 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         let opening = try round(in: app)
         let preview = assertForecast(ids: Array(0..<5), columns: [6, 1, 2, 4, 5], in: app)
         assertLanternSupport(in: app)
+        let firstChip = app.buttons["sky.forecast.star.0"]
+        let inspect = app.buttons["sky.showerInspection.open"]
+        let menu = app.buttons["experiment.settings"]
+        let chipFrame = firstChip.frame, inspectionFrame = inspect.frame, menuFrame = menu.frame
+        let headerFrame = element("sky.header", in: app).frame
+        let releaseY = max(headerFrame.maxY + 40,
+                           max(menuFrame.midY, max(chipFrame.midY, inspectionFrame.midY)) + 160)
+        XCTAssertTrue(menu.isEnabled && menu.isHittable)
+        XCTAssertTrue(firstChip.isEnabled && firstChip.isHittable)
+        XCTAssertTrue(inspect.isEnabled && inspect.isHittable)
+        XCTAssertGreaterThanOrEqual(chipFrame.maxX, chipFrame.minX + 44)
+        XCTAssertGreaterThanOrEqual(chipFrame.maxY, chipFrame.minY + 44)
+        XCTAssertGreaterThanOrEqual(inspectionFrame.maxX, inspectionFrame.minX + 48)
+        XCTAssertGreaterThanOrEqual(inspectionFrame.maxY, inspectionFrame.minY + 48)
+        XCTAssertGreaterThanOrEqual(menuFrame.maxX, menuFrame.minX + 48)
+        XCTAssertGreaterThanOrEqual(menuFrame.maxY, menuFrame.minY + 48)
+        assertNoFocus(in: app)
+        capture("hud-goal-four-controls-idle", in: app)
+        // Match the native lesson cancellation gesture. Drag down from the
+        // pinned header and release outside all of its controls, inside the viewport.
+        let menuCenter = menu.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5))
+        let menuRelease = CGPoint(x: menuFrame.midX, y: releaseY)
+        XCTAssertTrue(app.frame.contains(menuRelease))
+        XCTAssertFalse(headerFrame.contains(menuRelease))
+        menuCenter.press(forDuration: 1,
+                         thenDragTo: menuCenter.withOffset(.init(dx: 0, dy: releaseY - menuFrame.midY)),
+                         withVelocity: .slow, thenHoldForDuration: 0)
+        assertNoFocus(in: app)
+        XCTAssertFalse(element("sky.showerInspection.warning", in: app).exists)
+        XCTAssertFalse(element("sky.menu.title", in: app).exists)
+        XCTAssertEqual(try round(in: app), opening)
+        XCTAssertEqual(element("sky.forecast.destinations", in: app).value as? String, preview)
+        XCTAssertEqual(firstChip.frame, chipFrame)
+        XCTAssertEqual(inspect.frame, inspectionFrame)
+        XCTAssertEqual(menu.frame, menuFrame)
+        capture("hud-goal-four-pause-contact-cancelled", in: app)
+        let chipCenter = firstChip.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5))
+        let chipRelease = CGPoint(x: chipFrame.midX, y: releaseY)
+        XCTAssertTrue(app.frame.contains(chipRelease))
+        XCTAssertFalse(headerFrame.contains(chipRelease))
+        chipCenter.press(forDuration: 1,
+                         thenDragTo: chipCenter.withOffset(.init(dx: 0, dy: releaseY - chipFrame.midY)),
+                         withVelocity: .slow, thenHoldForDuration: 0)
+        assertNoFocus(in: app)
+        XCTAssertFalse(element("sky.showerInspection.warning", in: app).exists)
+        XCTAssertFalse(element("sky.menu.title", in: app).exists)
+        XCTAssertEqual(try round(in: app), opening)
+        XCTAssertEqual(element("sky.forecast.destinations", in: app).value as? String, preview)
+        XCTAssertEqual(firstChip.frame, chipFrame)
+        XCTAssertEqual(inspect.frame, inspectionFrame)
+        XCTAssertEqual(menu.frame, menuFrame)
+        capture("hud-goal-four-forecast-contact-cancelled", in: app)
+        let inspectionCenter = inspect.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5))
+        let inspectionRelease = CGPoint(x: inspectionFrame.midX, y: releaseY)
+        XCTAssertTrue(app.frame.contains(inspectionRelease))
+        XCTAssertFalse(headerFrame.contains(inspectionRelease))
+        inspectionCenter.press(forDuration: 1,
+                               thenDragTo: inspectionCenter.withOffset(.init(dx: 0, dy: releaseY - inspectionFrame.midY)),
+                               withVelocity: .slow, thenHoldForDuration: 0)
+        assertNoFocus(in: app)
+        XCTAssertFalse(element("sky.showerInspection.warning", in: app).exists)
+        XCTAssertFalse(element("sky.menu.title", in: app).exists)
+        XCTAssertEqual(try round(in: app), opening)
+        XCTAssertEqual(element("sky.forecast.destinations", in: app).value as? String, preview)
+        XCTAssertEqual(firstChip.frame, chipFrame)
+        XCTAssertEqual(inspect.frame, inspectionFrame)
+        XCTAssertEqual(menu.frame, menuFrame)
+        capture("hud-goal-four-inspection-contact-cancelled", in: app)
         focus(0, column: 6, capture: "hud-goal-one-phone-native-forecast-selection", in: app)
         XCTAssertEqual(try round(in: app), opening)
         tap("sky.showerInspection.open", in: app)
@@ -388,6 +456,25 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         XCTAssertEqual(try round(in: app), opening)
         XCTAssertEqual(assertForecast(ids: Array(0..<5), in: app), preview)
         assertLanternSupport(in: app)
+        XCTAssertEqual(firstChip.frame, chipFrame)
+        XCTAssertEqual(inspect.frame, inspectionFrame)
+        XCTAssertEqual(menu.frame, menuFrame)
+        tap("sky.showerInspection.open", in: app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(
+            format: "label == %@", "This announced shower"), object: title).wait(timeout: 5))
+        XCTAssertEqual(element("sky.showerInspection.warning", in: app).label,
+                       "For this sky now. A move or shower closes this view.")
+        XCTAssertEqual(element("sky.showerInspection.status", in: app).label, "Your sky is already paused.")
+        tap("experiment.done", in: app)
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"),
+            object: element("sky.showerInspection.warning", in: app)).wait(timeout: 5))
+        settled(0, target: 150_000, showers: 0, in: app)
+        XCTAssertEqual(try round(in: app), opening)
+        XCTAssertEqual(element("sky.forecast.destinations", in: app).value as? String, preview)
+        XCTAssertEqual(firstChip.frame, chipFrame)
+        XCTAssertEqual(inspect.frame, inspectionFrame)
+        XCTAssertEqual(menu.frame, menuFrame)
+        capture("hud-goal-four-controls-returned", in: app)
     }
 
     @MainActor func testNormalLanternSupportingRowPreservesBackgroundAndWorldRound() throws {

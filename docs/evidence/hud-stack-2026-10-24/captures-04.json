@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "goal": 4,
+  "status": "Prepared source-bound exports; independent final export review pending",
+  "count": 13,
+  "bytes": 7756129,
+  "environment": "Xcode27.1/27A9275, SDK27.1; native iOS27.0 iPhone17e390x844@3x and actual iPadPro13M5 portrait1032x1376@2x. Hosted375x667 windows and component canvases are separately labeled.",
+  "limits": "Native stills, sampled native contact footage, hosted state probes and physical/continuous-motion acceptance are distinct. No contrast ratios from H264/JPEG. Default hosted-before empty-star capture is excluded; its early publication limit remains in hosted review. Corrected AX5 before/busy/after are independently inspected.",
+  "contactSamplingPlan": "/private/tmp/starfall-hud-stack-20261024/contact-04-sampling-plan.json",
+  "items": [
+    {
+      "id": "phone-default__lantern-idle",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-default__lantern-idle.jpg",
+      "exportSHA256": "b1e3040fb138002affe8a1383d7925e74fb35ecf9e95beb37e23f543a135a3a9",
+      "exportBytes": 524775,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/0A3CDC62-F624-489F-ACCB-F7385AD23E97.png",
+      "rawSHA256": "ed21821ad1de70a8b629a2dcc2a5991b898b8ee913086b6b22aba2394a0d7dd8",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Current Lantern4, paused0/150000, normal effects, unselected opening; all three post-cancel captures are identical to this state.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Original PNG from native XCTest or explicitly scoped hosted production-component probe"
+    },
+    {
+      "id": "phone-default__selected-column-6",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-default__selected-column-6.jpg",
+      "exportSHA256": "942b9d79d4fd684b622c5c35ba3be1907c381009019a650316c3a32118cc4524",
+      "exportBytes": 543343,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/E744A50C-A6F4-4C10-B6AD-99BC7345F16E.png",
+      "rawSHA256": "870b798eaa9e987eb802bd36a09c342f92169276889f70a18cca282452d848e0",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Current Lantern4, paused0/150000, normal effects, selected forecast column6. Returned/reopened states retain this same selected composition.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Original PNG from native XCTest or explicitly scoped hosted production-component probe"
+    },
+    {
+      "id": "phone-contact__sample-48p900",
+      "kind": "native-contact-frame",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-contact__sample-48p900.jpg",
+      "exportSHA256": "2778bafebd917d0f461496cfc910632972bfac279f87f689080430b0412e1195",
+      "exportBytes": 504955,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0048.900.png",
+      "rawSHA256": "3ae88d824e8a5c9dd3aaf941c3945fa383079e6b56fd8be6fdead3338dcf5efa",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Real Pause contact sequence: requested48.900s, actual48.898333s in recorded H264. See independent contact review for phase classification.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Decoded original native H264 frame"
+    },
+    {
+      "id": "phone-contact__sample-53p000",
+      "kind": "native-contact-frame",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-contact__sample-53p000.jpg",
+      "exportSHA256": "d23acaf1e205424eea3740f3b6706f0fb3d158330f65e25688e504cce5d9c3ff",
+      "exportBytes": 506135,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0053.000.png",
+      "rawSHA256": "3690cd51185e3f0dd5dcbf11bcea662b5369f0fd56503f92297999d45d9b56ae",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Real forecast-chip0 contact sequence: requested53.000s, actual52.990s. No contrast measurement from compressed footage.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Decoded original native H264 frame"
+    },
+    {
+      "id": "phone-contact__sample-56p900",
+      "kind": "native-contact-frame",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-contact__sample-56p900.jpg",
+      "exportSHA256": "55a6fe57417d1dc20952042fbafdda0bfbc14633d626bb8df8191e1c6a42afc6",
+      "exportBytes": 506402,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0056.900.png",
+      "rawSHA256": "ba80e0c654d388c3f53c5ab4e5b0b6790c36b89c42f22a26f94d55661e9f95e7",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Real Help contact sequence: requested56.900s, actual56.886667s. Whole decoded frame, no crop/resize/retouch.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Decoded original native H264 frame"
+    },
+    {
+      "id": "tablet-ax5-calm__selected-column-6",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__tablet-ax5-calm__selected-column-6.jpg",
+      "exportSHA256": "f584511776c9fcbef914c6c004acfca1bda90862ea21331ed546b3eb22ad4c91",
+      "exportBytes": 1066194,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/81FA44FB-D849-4FDB-A641-184BC8D7E719.png",
+      "rawSHA256": "a6ec352d1b5ca6be8d3aee40fcaee813572c91b9fa06a95a695bc3a8c2f2954f",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        1032.0,
+        1376.0
+      ],
+      "state": "Actual AX5 tablet, real Settings Calm, current Lantern4, exact forecast column6 selected.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Original PNG from native XCTest or explicitly scoped hosted production-component probe"
+    },
+    {
+      "id": "tablet-ax5-calm__real-15000-chain",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__tablet-ax5-calm__real-15000-chain.jpg",
+      "exportSHA256": "45718f585b7051502699a2a2c518ad22f9079b54c02e56f131d86aacb1c22f74",
+      "exportBytes": 995532,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/6384A911-AED1-4476-9C47-4E5CB3DEE4EB.png",
+      "rawSHA256": "b7238f42cae32e623f417b97ae85f4b1946d57bf59a6ea4d4772d67095f6dece",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        1032.0,
+        1376.0
+      ],
+      "state": "Actual AX5 tablet, real15,000-point chain in current Lantern4/150,000 objective; receipt/guide visible only within their captured scroll positions.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Original PNG from native XCTest or explicitly scoped hosted production-component probe"
+    },
+    {
+      "id": "tablet-ax5-calm__full-board-opening",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__tablet-ax5-calm__full-board-opening.jpg",
+      "exportSHA256": "761ee0e6ea3a29a60c32f0820e460dccd560c855fd24b53bbc03dbc19e0452f6",
+      "exportBytes": 1116540,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/E07EAEEF-E942-4002-9431-A56B7DB17AC9.png",
+      "rawSHA256": "dce566eeafbbcc94605a70e95fd7f07612afb34036aeaafde72c730ab25d2861",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        1032.0,
+        1376.0
+      ],
+      "state": "Current LanternFullBoard6 opening, no shower forecast/inspection. This frame precedes the mechanically verified42,000-point refill.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Original PNG from native XCTest or explicitly scoped hosted production-component probe"
+    },
+    {
+      "id": "phone-normal__frostfruit-grown-caps",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-normal__frostfruit-grown-caps.jpg",
+      "exportSHA256": "bf664170a61bfabdfb06bfa58da17122770889a06b4f2d116c0ba1f9f270f539",
+      "exportBytes": 874183,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/D677CE92-A89F-49BA-9A75-D06DCDFF177D.png",
+      "rawSHA256": "bfe15d841a3f42621257ef610c2a6522268aad40b743b5f19529ea8607e29085",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Current Frostfruit8/15000, first actual shower has produced the two predicted grown caps; normal effects, paused.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Original PNG from native XCTest or explicitly scoped hosted production-component probe"
+    },
+    {
+      "id": "hosted-ax5__seed-before-busy",
+      "kind": "hosted-root",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__hosted-ax5__seed-before-busy.jpg",
+      "exportSHA256": "f4e922a76a040695cce9045511143b75300695a378a99819ba9fba79144be21f",
+      "exportBytes": 507027,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/00313F54-9720-4D2E-AE5D-54D1CD4A85CA.png",
+      "rawSHA256": "731d72711a72983858c8509ec5a90389a6dee823c9d24bd4b76dbd69c07b6443",
+      "storedPixels": [
+        1125,
+        2001
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1125,
+        2001
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        375.0,
+        667.0
+      ],
+      "state": "375x667 AX5 currentSeed4 before real zero-award setup; corrected actual board/scroll/visible-star placement; explicit static scene snapshot.",
+      "compiledCheckpoint": "f0005119156f982fc14b70c3aac9016850a01702",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Original PNG from native XCTest or explicitly scoped hosted production-component probe"
+    },
+    {
+      "id": "hosted-ax5__seed-busy",
+      "kind": "hosted-root",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__hosted-ax5__seed-busy.jpg",
+      "exportSHA256": "209aa84eb24e1b607bc58a1cb1d28d55eb6e81597ade6abd4e2e7adf9f35a79c",
+      "exportBytes": 506129,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/D6507B65-9940-4FF8-8585-AB424285FCE4.png",
+      "rawSHA256": "8e7c1acf42b39c931195cbc0dcf5b489e864a9b1cbc6853f68e11439b4b51120",
+      "storedPixels": [
+        1125,
+        2001
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1125,
+        2001
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        375.0,
+        667.0
+      ],
+      "state": "375x667 AX5 currentSeed4, genuine recorder-held zero-award setup, inspection muted while pause/chips retain their source-defined availability. Static snapshot, no native disabled-touch or motion claim.",
+      "compiledCheckpoint": "f0005119156f982fc14b70c3aac9016850a01702",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Original PNG from native XCTest or explicitly scoped hosted production-component probe"
+    },
+    {
+      "id": "specimen-3x-ax5__utilities",
+      "kind": "hosted-component",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__specimen-3x-ax5__utilities.jpg",
+      "exportSHA256": "22d163e68b28ef1ab82769e46666f5876d87f29998266ddde55bcafd194eaa57",
+      "exportBytes": 70083,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/C0610471-2785-48C4-AB92-F8E6E2D8B1B3.png",
+      "rawSHA256": "c36802104566d28690507e361a4a5ff412619c329ddd0320a145a83c6298fd9f",
+      "storedPixels": [
+        1040,
+        700
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1040,
+        700
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        346.6666666666667,
+        233.33333333333334
+      ],
+      "state": "Production Help24/Pause20, clear/scenery, enabled/disabled. Annotation text is test-only. Resting/disabled geometry only; not a product screen.",
+      "compiledCheckpoint": "f0005119156f982fc14b70c3aac9016850a01702",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Original PNG from native XCTest or explicitly scoped hosted production-component probe"
+    },
+    {
+      "id": "specimen-2x-default__forecast-digits",
+      "kind": "hosted-component",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__specimen-2x-default__forecast-digits.jpg",
+      "exportSHA256": "36d0b1a1ef22d9087412e6b938adb4256d7128890e9422b6794b7ee27f62cc2c",
+      "exportBytes": 34831,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/6FAAD908-C70A-4CE7-B678-9F4709890D9E.png",
+      "rawSHA256": "f79491109ad6946b761c65e19ab5e03ac01c30222d4404a69edaa22b732e2bf9",
+      "storedPixels": [
+        1536,
+        452
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1536,
+        452
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        768.0,
+        226.0
+      ],
+      "state": "Production forecast style with complete native digits1–7, selected/unselected and enabled/disabled. Test annotations; not the full native five-star forecast group.",
+      "compiledCheckpoint": "f0005119156f982fc14b70c3aac9016850a01702",
+      "embeddedBuildID": "dev.dcb267d534",
+      "format": "sips JPEG80, full original dimensions/orientation, no crop/resize/retouch",
+      "sourceEncoding": "Original PNG from native XCTest or explicitly scoped hosted production-component probe"
+    }
+  ]
+}

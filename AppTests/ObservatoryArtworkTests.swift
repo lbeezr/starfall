@@ -106,6 +106,122 @@ final class ObservatoryArtworkTests: XCTestCase {
                 }
             }
         }
+
+        func fitted<Content: View>(_ content: Content, textSize: DynamicTypeSize) -> CGSize {
+            let host = UIHostingController(rootView: content.environment(\.dynamicTypeSize, textSize))
+            host.safeAreaRegions = []
+            let result = host.sizeThatFits(in: CGSize(width: 240, height: 2_000))
+            XCTAssertTrue(result.width.isFinite && result.height.isFinite && result.width > 0 && result.height > 0,
+                          "A component measurement must be positive and finite: \(result)")
+            return result
+        }
+        func utility(_ glyph: ObservatoryGlyph, backdrop: StarfallUtilityButtonStyle.Backdrop,
+                     enabled: Bool) -> some View {
+            Button { } label: {
+                // These are the actual forecast Help and viewport Pause call sizes.
+                ObservatoryIcon(glyph, size: glyph == .help ? 24 : 20)
+            }
+            .buttonStyle(StarfallUtilityButtonStyle(backdrop: backdrop))
+            .disabled(!enabled)
+        }
+        func digit(_ column: Int) -> some View {
+            Text(String(column)).font(StarfallTheme.Typography.instrumentNumber)
+                .monospacedDigit().fixedSize(horizontal: true, vertical: false)
+        }
+        func forecast(_ column: Int, selected: Bool, enabled: Bool) -> some View {
+            Button { } label: { digit(column) }
+                .buttonStyle(StarfallGameButtonStyle(role: .forecast(selected: selected)))
+                .fixedSize(horizontal: true, vertical: false)
+                .disabled(!enabled)
+        }
+        func specimen<Content: View>(_ content: Content, textSize: DynamicTypeSize, name: String) {
+            for scale in [CGFloat(2), 3] {
+                let renderer = ImageRenderer(content: content.padding(16)
+                    .background(StarfallTheme.Colors.skyTop)
+                    .environment(\.dynamicTypeSize, textSize).environment(\.colorScheme, .dark))
+                renderer.scale = scale
+                guard let image = renderer.uiImage else {
+                    XCTFail("Could not render production HUD control states: \(name), \(scale)x")
+                    continue
+                }
+                let attachment = XCTAttachment(image: image)
+                attachment.name = "observatory-hud-\(name)-\(textSize == .large ? "default" : "AX5")-\(Int(scale))x"
+                attachment.lifetime = .keepAlways; add(attachment)
+            }
+        }
+        for textSize in [DynamicTypeSize.large, .accessibility5] {
+            for glyph in [ObservatoryGlyph.help, .pause] {
+                for backdrop in [StarfallUtilityButtonStyle.Backdrop.clear, .scenery] {
+                    for enabled in [true, false] {
+                        let measured = fitted(utility(glyph, backdrop: backdrop, enabled: enabled), textSize: textSize)
+                        XCTAssertEqual(measured, CGSize(width: 48, height: 48),
+                                       "\(glyph), \(backdrop), enabled=\(enabled), \(textSize): the visual and its state cannot change the full target")
+                    }
+                }
+            }
+            for column in 1...7 {
+                let nativeDigit = fitted(digit(column), textSize: textSize)
+                let resting = fitted(forecast(column, selected: false, enabled: true), textSize: textSize)
+                for selected in [false, true] {
+                    for enabled in [true, false] {
+                        let actual = fitted(forecast(column, selected: selected, enabled: enabled), textSize: textSize)
+                        let context = "column=\(column), selected=\(selected), enabled=\(enabled), \(textSize)"
+                        XCTAssertGreaterThanOrEqual(actual.width, 44, context)
+                        XCTAssertGreaterThanOrEqual(actual.height, 44, context)
+                        XCTAssertGreaterThanOrEqual(actual.width, nativeDigit.width, "The complete native digit must fit: \(context)")
+                        XCTAssertGreaterThanOrEqual(actual.height, nativeDigit.height, "The complete native digit must fit: \(context)")
+                        XCTAssertEqual(actual, resting, "Selection and disabled state preserve geometry: \(context)")
+                    }
+                }
+            }
+            let utilities = VStack(alignment: .leading, spacing: 16) {
+                ForEach([false, true], id: \.self) { scenic in
+                    HStack(alignment: .top, spacing: 24) {
+                        Text(scenic ? "Scenery" : "Clear").font(.system(size: 12)).frame(width: 48)
+                        ForEach([ObservatoryGlyph.help, .pause], id: \.self) { glyph in
+                            VStack(spacing: 8) {
+                                Text(glyph == .help ? "Help 24 pt" : "Pause 20 pt").font(.system(size: 12))
+                                HStack(alignment: .top, spacing: 12) {
+                                    ForEach([true, false], id: \.self) { enabled in
+                                        VStack(spacing: 8) {
+                                            Text(enabled ? "Enabled" : "Disabled").font(.system(size: 12))
+                                            utility(glyph, backdrop: scenic ? .scenery : .clear, enabled: enabled)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }.foregroundStyle(StarfallTheme.Colors.textPrimary)
+            specimen(utilities, textSize: textSize, name: "utilities-resting-disabled")
+            let forecasts = VStack(alignment: .leading, spacing: 16) {
+                ForEach([false, true], id: \.self) { selected in
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(selected ? "Selected" : "Unselected").font(.system(size: 12))
+                        HStack(alignment: .top, spacing: 24) {
+                            ForEach([true, false], id: \.self) { enabled in
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Text(enabled ? "Enabled" : "Disabled").font(.system(size: 12))
+                                    HStack(alignment: .top, spacing: 8) {
+                                        ForEach(1...7, id: \.self) { column in
+                                            forecast(column, selected: selected, enabled: enabled)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }.foregroundStyle(StarfallTheme.Colors.textPrimary)
+            specimen(forecasts, textSize: textSize, name: "forecast-style-native-digits-resting-disabled")
+        }
+        let scope = XCTAttachment(string: "Production component specimens: resting and disabled visual geometry only. "
+            + "Utility call sizes are Help 24 pt and Pause 20 pt; caption labels are test annotations. "
+            + "Forecast style specimens use complete official native digits, not the full five-star forecast composition. "
+            + "Supplied disabled environments do not establish genuine busy admission. "
+            + "Pressed/cancelled and platform-focused appearance require separate native contact/focus evidence.")
+        scope.name = "observatory-hud-control-specimen-scope"; scope.lifetime = .keepAlways; add(scope)
     }
 
     @MainActor private func assertTransparentFrameAndVisibleInk(_ image: UIImage, name: String) throws {
