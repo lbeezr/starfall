@@ -2,7 +2,7 @@
 
 **Status:** Implemented; partially verified development refinement · **Owner:** current implementer · **Updated:** October 18, 2026
 
-Refine the existing collection effect: inherit each rewarding star's family, let actual awarded points control energy, and bring exceptional announcements into the central sky. The hypothesis is that a player can connect the harvested stars to the total and notice a bigger achievement without losing their next move. Human satisfaction and physical haptics require a phone comparison.
+Refine the existing collection effect: inherit each rewarding star's family, let committed physical light control energy, and bring exceptional announcements into the central sky. Display points retain the exact award separately; the Story scale and bonus do not inflate the effect budget. The hypothesis is that a player can connect the harvested stars to the total and notice a bigger achievement without losing their next move. Human satisfaction and physical haptics require a phone comparison.
 
 **Decision:** one coordinated release, collection and resolution. Keep scoring, recipes, relay classification, saves and input ownership unchanged. No new combo or multiplier. [Native checks and source-bound evidence](../evidence/harvest-feedback-2026-10-18/README.md) pass for the sampled development scope. Next: retain or tune the named weak beat after physical player review.
 
@@ -13,7 +13,7 @@ Refine the existing collection effect: inherit each rewarding star's family, let
 ## Acceptance before implementation
 
 - Capture immutable family and positive reward per contributor from the pre-clear board. Include rewarding Opal; exclude drained/zero-reward stars. Packet color must stay attached to its source even after gravity/another clear.
-- Raise trail width, head size, release reach and counter resolution continuously with the committed award, with fixed packet/spark caps. Sample the whole selected set, not just its first six stars. Grown contributors carry more visual weight.
+- Raise trail width, head size, release reach and counter resolution continuously with committed physical light, with fixed packet/spark caps. Sample the whole selected set, not just its first six stars. Grown contributors carry more visual weight.
 - Special titles appear around the central upper terrace, below header controls, with a fast entrance, readable hold and upward dissolving exit. Ordinary awards retain their local/sky treatment. Large text keeps native sizing and the existing below-terrace award fallback.
 - Exceptional awards get one short translucent family-colored aurora, with no repeating flash. Keep board and native hit cells stationary; put impact recoil on decorative text only. Quiet modes remove travel, recoil, scale and ambient bloom.
 - Preserve replacement, expiry, interruption, zero-award and old-save behavior. The overlay never receives touches or delays a shower/action. Run existing receipt/store checks plus focused contributor, intensity and central placement regressions; inspect small/large layouts and actual timed native rendering.

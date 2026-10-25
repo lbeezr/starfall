@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "issue": 387,
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/407",
+  "mergeCommit": "5b783e473d636913f646a95b305315ebcd845888",
+  "recordedUTC": "2026-10-25T05:26:48.296042+00:00",
+  "mergeCommitTimestampUTC": "2026-10-25T05:25:14Z",
+  "timestampQualification": "Commit timestamp read from merged Git object; a separate GitHub merged_at timestamp was not independently queried for this record.",
+  "publishedHead": "32d011a9c9d198307d5b5364e2155b746cd9d708",
+  "reviewedLocalCommit": "2cc5e1509d00b952920ecb2b9b2b278ce009fe10",
+  "testedAppCommit": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+  "testedNativeTestsCommit": "b28321cabb405c8f01893041c321c17851d5f0bd",
+  "reviewedAndPublishedTree": "757f5a8cfa0443c68257d35366c0b9f72e38b1e4",
+  "baseMain": "1ed4a97506dce4327ead701b2d9892979d457706",
+  "treeVerification": {
+    "publishedHeadEqualsReviewedLocal": true,
+    "mergedMainEqualsReviewedLocal": true,
+    "reviewedLocalTree": "757f5a8cfa0443c68257d35366c0b9f72e38b1e4",
+    "publishedHeadTree": "757f5a8cfa0443c68257d35366c0b9f72e38b1e4",
+    "mergedMainTree": "757f5a8cfa0443c68257d35366c0b9f72e38b1e4",
+    "method": "Read-only git rev-parse <commit>^{tree} for all three exact commits; each returns the identical tree."
+  },
+  "issueCompletion": {
+    "state": "closed",
+    "stateReason": "completed",
+    "source": "Confirmed by the publishing coordinator before this disjoint documentation update."
+  },
+  "canonicalProject": {
+    "status": "unavailable",
+    "reason": "The canonical Project was unavailable during publication; Project Done is not claimed."
+  },
+  "remoteChecks": {
+    "prCommitStatuses": [],
+    "claim": "No remote CI pass claimed from the empty status list. Development acceptance remains bound to the recorded local checks.",
+    "source": "Empty published-head status list supplied by the publishing coordinator."
+  },
+  "runtimeInputFingerprint": "dev.606ce1efbe",
+  "sourceRecord": {
+    "path": "docs/evidence/hud-stack-2026-10-24/source-06.json",
+    "sha256": "45704b5ed64e2e248eacd801d3e4ba4c1b51875a8ed9d05226c8ac1bb2656d92"
+  },
+  "scope": "Only verified Goal6. Four untracked future-goal read-ahead files are excluded from the identical tracked trees; Goal7 activation follows this confirmed individual merge. No installation or new runtime validation is implied."
+}

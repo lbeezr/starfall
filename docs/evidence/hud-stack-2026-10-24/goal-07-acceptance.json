@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "goal": 7,
+  "issue": 388,
+  "status": "ADOPTED_FOR_NAMED_DEVELOPMENT_SLICE; all selected mechanics and independent hosted/native/sampled-motion/exact-export reviews pass; individual merge pending.",
+  "baseMain": "5b783e473d636913f646a95b305315ebcd845888",
+  "branch": "codex/hud-goal-07-causal-light",
+  "playerOutcome": "Exceptional earned light begins at the actual committed clear before following the existing flight and receiver; the next choice and native instruments stay readable.",
+  "sourceObservation": "The existing source pulse uses the actual cleared-cell centroid. Its exceptional radial wash instead uses a fixed board center and nearly whole-board radius. This is a presentation emphasis seam, not a missing receipt, score or cancellation owner.",
+  "componentContract": {
+    "owner": "StarlightCelebrationOverlay, within the one existing finite Canvas and latest-only receipt",
+    "candidate": "Source-local exceptional wash: actual committed cleared-cell centroid, cell-scale bounded radius, unchanged family tint, energy, onset and expiry. The shared native component clips its composited wash to the actual arena and outside measured header/score regions.",
+    "states": "Exceptional normal only; ordinary, quiet, before-onset and expired states draw no wash. Existing source pulse, flights, returned figures, receiver, exact award, scene timing, input and cancellation remain authoritative.",
+    "registration": "Register this transient role and cell-scale radius in GAME_UI_SYSTEM and StarfallTheme before use. Candidate pending native proof; no new asset, state, timer, screen-local substitute or preference."
+  },
+  "observableAcceptance": [
+    "Production-used fixed-age raster shows source-local positive light, no far independent match or fixed-center wash, strict empty score/header pixels, and source-following translated/scrolled geometry; ordinary, quiet and expired negatives remain empty.",
+    "Whole native normal phone and actual tablet captures and recorded samples retain exact two/three-phase sources, flight, receiving light and readable next-choice stars; quiet maximum text retains the same exact final outcome once.",
+    "Existing real separate-action, replacement, background/restore, menu, world-state and exact Replay assertions pass without changing input, save, timing or preference gates.",
+    "Appropriate Core/hosted/native checks, Debug and Release/membership if needed, hygiene and diff pass; independent whole-native and exact-export visual reviews precede this goal's individual merge."
+  ],
+  "limits": "Development slice only. Sampled recorded phases do not establish continuous performance, physical comfort, human recognition, actual VoiceOver or minimum-iOS execution. The prior reader-pan uncertainty remains separate.",
+  "sharedResourceGrant": "Explicit own-device exclusive window extended through06:25UTC; all controllers/recorders/decoders/exports stopped and window explicitly handed back at06:20UTC after process inspection. No further heavy operation without fresh grant.",
+  "delivery": "Merge only completed Goal7 closing388/Refs381 and confirm completed issue/Project availability before Goal8 implementation.",
+  "plannedChecks": {
+    "hostedMethods": 18,
+    "nativeExecutions": 6,
+    "nativeUniqueMethods": 5,
+    "nativeScope": [
+      "normal Lantern two-phase chain and separate rapid actions on phone",
+      "normal Ribbon three-phase chain, following independent action, interruption/Replay on phone and actual tablet",
+      "actual Settings Calm, maximum-text tablet, simultaneous patterns and retained-round return",
+      "Explicitnormal manual trace, immediate followingclear, background/coldrestore andReplay onphone throughnewlysharedreadingroute",
+      "Normal forecast approach-before-commit and actualPause throughcompactSurvival route onphone"
+    ],
+    "core": "swift test",
+    "builds": "Debug build-for-testing and Release; existing file membership unchanged",
+    "always": [
+      "python3 scripts/ci-hygiene.py",
+      "git diff --check"
+    ],
+    "sourceInventory": "818 hosted/260 development-phone UI methods after the one new raster oracle; selected subset, not a complete matrix pass"
+  },
+  "independentSourceReview": {
+    "reviewer": "/root/hud_read_ahead",
+    "result": "No definite source defect found. Shared actual centroid, translated arena, protected header/score/award/return masks, explicit quiet/ordinary/nonfinite/pre-onset/expiry gates; other receipt and gameplay paths unchanged.",
+    "limit": "Source review does not prove appearance, visible reading viewport clearance, motion, actual VoiceOver or physical acceptance."
+  },
+  "initialRejectedCandidate": {
+    "source": "4e4886f95a0bcf3fb29ec9a8e443c706af15c0c0",
+    "runtime": "dev.7c88a02de9",
+    "mechanics": "352Core/14hosted/4native,DebugReleasePASS,zero failure/skip",
+    "visual": "375/430 default Survival receipt/components cross one-spacecolumn4badge; AXbefore/liveplacementnotsettledproof. KeepGoal7open.",
+    "evidence": "verification-07-initial.json",
+    "independentReview": "visual-review-07-hosted.json"
+  },
+  "correctionContract": {
+    "owner": "Existing compact reading composition and shared receipt/figure fitting",
+    "route": "Compact non-island portrait challenge-nil Survival/Dusk joins existing reading canvas from opening. Keep compactStoryInstruments unchanged; no short Story header/near-copy expansion to manual play. Practice, named manual challenges and FullBoard keep existing routing.",
+    "receipt": "Non-AX fallback ends before complete actual scaled ceiling clearance plus4pt. AXbelow-board and explicit practice award bands remain. Generic manual/recipe/chronological fallback figure bands share the ceiling-safe award boundary; fixed80pt reading/practice bands stayauthoritative.",
+    "sourceInputs": "Replace obsolete synthetic crown-as-reading-header fixture with actual hosted native header/board/scene geometry; keep original >20/fullcontainment/header/guide/all49cellassertions and add strict ceiling-strip separation. Settle actualstarpositions/anchors before/after existing4crowdedprofiles; unchanged .18/.65/1.1phase thresholds and2sreceiptbound.",
+    "newNative": "Original real manual trace\u2192nextclear\u2192lifecycle\u2192Replay strengthened toexplicit normalNSArg/systemmotionownership, with no capture/wait inserted betweeninputs; actual normalforecast approach requalified.",
+    "limits": "Still no actualVO/physical/minOS/continuousperformance/humanrecognitionclaim."
+  },
+  "pressureFactQualification": "The initial review called badge4 full. Deterministic Core heights show columns1/4/5 each have one space before the8-light clear; columns4/5 retain one space afterward. The actual receipt\u2013badge overlap is unchanged by that wording error. New test oracle now requires exact column4 oneSpace/spaces1; strict geometric exclusion is unchanged.",
+  "finalSource": {
+    "app": "a985c5dcb161f746618bb35419455783d17ffa38",
+    "tests": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+    "runtime": "dev.e045b9e428",
+    "sourceProof": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-07.json",
+      "sha256": "e7abfef9aa1175f93ae483947658e7c957cc21e559ea0fb30aeebe00a813b9ac",
+      "bytes": 3597
+    },
+    "verification": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-07.json",
+      "sha256": "f0969735903d5c314d78db99a0bca1b17524b3e67a4e61753cf993971701044d",
+      "bytes": 32594
+    },
+    "adoptionDifferenceQualification": "Final adoption adds documentation, original-size evidence images and review records. App/README.md is documentation only; canonical runtime and AppTests/UITests source retain the tested5d bytes. No new runtime member or asset."
+  },
+  "finalVisualAdoption": {
+    "decisionUTC": "2026-10-25T06:40:05.656958+00:00",
+    "independentReviews": [
+      {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-07-hosted-ceiling.json",
+        "sha256": "8a096d3a93fd6825f42a9e937fe2e99ad734ab3f209d8c2d2e732178fc69cc37",
+        "bytes": 45398
+      },
+      {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-07-native.json",
+        "sha256": "019e6784bd0979a66bc23cb29f3fe98d6266e591dd2a3105cc50588cac5562f9",
+        "bytes": 92166
+      },
+      {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-07-exports.json",
+        "sha256": "98c4a8ebb2811548ae76e7a2102b5a4c746fb148265fef2ef7a3e4ba21c299fd",
+        "bytes": 23016
+      }
+    ],
+    "captureIndex": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-07.json",
+      "sha256": "c610671b03e0a9ebad3216d96afb6a53f1823d04c48b3a6185128cd250d4d8a6",
+      "bytes": 44188
+    },
+    "retainedExports": 13,
+    "rootDecision": "Adopt named source-local/ceiling-safe development slice after independent reviews; root also directly inspected baseline/current phone and tablet source phases, crowdeddefault/AX andquiettablet. Faint local wash clipping boundary is a retained visual limit; no sampled essential ink loss.",
+    "scope": "Native normal chains/actions/lifecycle/Replay, actual Calm AX5 tablet, explicitnormal manual/Pacing, hosted actual Survival clearance and source rasters. Not actualVO/physical/minOS/fullmatrix/continuousperformance/humanrecognition."
+  },
+  "exportHistory": {
+    "decodePreflightFailure": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-07-5d4a7250-manifest.json",
+      "sha256": "c767ecfee02019e107d8cb3fa7bf4d2e5909435abefcda1497e2e498a6c4ea4e",
+      "bytes": 203
+    },
+    "correctedDecode": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-07-5d4a7250-numberfix-manifest.json",
+      "sha256": "51400e020ace7b37bb53365d6f5e38c1d33e0c16255f34e0231cdbbd23b62ad0",
+      "bytes": 56043
+    },
+    "invocations": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/export-07-invocations.json",
+      "sha256": "3e4bede7e2cfe2f70879958c0e21e516bc7d2aa9fd6b391acad6a0c54359ac44",
+      "bytes": 743
+    },
+    "qualification": "Timing-number punctuation preflight failed before anydecoder/frameoutput; corrected same recordings separately. Initial JPEG helper systemPython lacked PIL metadata import before outputs; bundledPython completed13 unchanged wholeJPEG80 exports."
+  }
+}

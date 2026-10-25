@@ -173,6 +173,8 @@ enum StarfallTheme {
         static let showerTrailWidth: CGFloat = 132
         static let compactShowerTrailWidth: CGFloat = 96
         static let showerTrailHeadDiameter: CGFloat = 5
+        // Exceptional clear wash, in shared board star steps.
+        static let clearSourceLightRadius: ClosedRange<CGFloat> = 1.5...2
         static let guidePropClearance: CGFloat = 76
         static let arrivalCueWidth: CGFloat = 56
         static let arrivalCueHeight: CGFloat = 3

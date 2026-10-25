@@ -207,9 +207,10 @@ struct ConstellationReturnLayout {
         let mapping = LandingGeometry(size: board.size)
         let arena = mapping.arenaFrame.offsetBy(dx: board.minX, dy: board.minY)
         let top = max(board.minY + 8, header.maxY + 8)
+        let ceilingEdge = award.minY < arena.minY ? min(arena.minY - 10, award.maxY) : arena.minY - 10
         let band = protectedSky?.insetBy(dx: 10, dy: 0)
             ?? CGRect(x: arena.minX + 10, y: top, width: arena.width - 20,
-                      height: arena.minY - 10 - top)
+                      height: ceilingEdge - top)
         guard band.width >= 40, band.height >= 24 else { return nil }
         let sharesAwardBand = award.intersects(band)
         let width = min(120, band.width * 0.34)
@@ -410,9 +411,10 @@ struct CascadeReturnLayout {
             let mapping = LandingGeometry(size: board.size)
             let arena = mapping.arenaFrame.offsetBy(dx: board.minX, dy: board.minY)
             let top = max(board.minY + 8, header.maxY + 8)
+            let ceilingEdge = award.minY < arena.minY ? min(arena.minY - 10, award.maxY) : arena.minY - 10
             let band = protectedSky?.insetBy(dx: 10, dy: 0)
                 ?? CGRect(x: arena.minX + 10, y: top, width: arena.width - 20,
-                          height: arena.minY - 10 - top)
+                          height: ceilingEdge - top)
             let shared = award.intersects(band)
             let width = min(220, shared ? band.width * 0.56 : band.width)
             let height = min(100, band.height)
@@ -485,6 +487,7 @@ struct StarlightCelebrationOverlay: View {
     var constellationBounds: CGRect? = nil
     var restorationChallenge: StarfallChallenge? = nil
     @Environment(\.dynamicTypeSize) private var textSize
+    @ScaledMetric(relativeTo: .caption) private var ceilingMarkerHeight: CGFloat = SkyCeilingOverlay.baseMarkerHeight
 
     var body: some View {
         TimelineView(.animation(minimumInterval: 1 / 60, paused: quiet)) { timeline in
@@ -492,7 +495,8 @@ struct StarlightCelebrationOverlay: View {
             let exit = min(1, max(0, (age - 1.08) / 0.32))
             let fade = quiet ? 1 : min(1, age / 0.07) * (1 - exit)
             let entrance = min(1, max(0, age - 0.04) / 0.22)
-            let award = awardBounds ?? Self.awardRegion(board: board, header: header, accessible: textSize.isAccessibilitySize)
+            let award = awardBounds ?? Self.awardRegion(board: board, header: header, accessible: textSize.isAccessibilitySize,
+                ceilingClearance: SkyCeilingOverlay.requiredTopClearance(markerHeight: ceilingMarkerHeight))
             let constellation = ConstellationReturnLayout(path: event.constellationPath, board: board, header: header,
                                                          award: award, protectedSky: constellationBounds)
             let cascade = CascadeReturnLayout(event: event, board: board, header: header,
@@ -532,10 +536,12 @@ struct StarlightCelebrationOverlay: View {
 
     /// One protected region for every award category, independent of occupied
     /// cells or animation positions. Large text has a separate guide below the canvas.
-    static func awardRegion(board: CGRect, header: CGRect, accessible: Bool) -> CGRect {
+    static func awardRegion(board: CGRect, header: CGRect, accessible: Bool,
+                            ceilingClearance: CGFloat = SkyCeilingOverlay.topClearance) -> CGRect {
         let mapping = LandingGeometry(size: board.size, largeHeader: accessible)
         let top = accessible ? board.minY + mapping.frame(Cell(0, 3)).maxY + 8 : header.maxY + 4
-        let bottom = accessible ? board.minY + mapping.accessibleCanvasEnd - 8 : board.minY + mapping.frame(Cell(6, 3)).minY - 8
+        let bottom = accessible ? board.minY + mapping.accessibleCanvasEnd - 8
+            : board.minY + mapping.arenaFrame.minY - ceilingClearance - 4
         return CGRect(x: board.minX + mapping.arenaFrame.minX + 8, y: top,
                       width: max(0, mapping.arenaFrame.width - 16), height: max(0, bottom - top))
     }
@@ -552,24 +558,20 @@ struct StarlightCelebrationOverlay: View {
         return CGPoint(x: local.x + board.minX, y: local.y + board.minY)
     }
 
+    private var sourceOrigin: CGPoint {
+        let points = event.cells.map(location)
+        return CGPoint(x: points.map(\.x).reduce(0, +) / CGFloat(points.count),
+                       y: points.map(\.y).reduce(0, +) / CGFloat(points.count))
+    }
+
     private func draw(in context: inout GraphicsContext, age: Double, canvasSize: CGSize,
                       constellation: ConstellationReturnLayout?, cascade: CascadeReturnLayout?) {
         guard age < StarlightCelebration.duration else { return }
-        let points = event.cells.map(location)
-        let origin = CGPoint(x: points.map(\.x).reduce(0, +) / CGFloat(points.count),
-                             y: points.map(\.y).reduce(0, +) / CGFloat(points.count))
+        let origin = sourceOrigin
         let energy = event.energy
         let strong = event.level != .ordinary
         let step = LandingGeometry(size: board.size).starStep
-        if event.isExceptional, age < 0.85 {
-            let t = min(1, max(0, age - 0.06) / 0.79)
-            var aurora = context
-            aurora.opacity = sin(t * .pi) * (0.16 + 0.12 * energy)
-            let center = CGPoint(x: board.midX, y: board.minY + board.height * 0.45)
-            aurora.fill(Path(board), with: .radialGradient(
-                Gradient(colors: [accent, accent.opacity(0)]), center: center,
-                startRadius: 0, endRadius: board.width * (0.65 + 0.35 * t)))
-        }
+        drawSourceLight(in: &context, age: age, canvasSize: canvasSize)
         if age < 0.5 {
             let release = min(1, max(0, (age - 0.08) / 0.4))
             var pulse = context
@@ -592,6 +594,29 @@ struct StarlightCelebrationOverlay: View {
         if let cascade { drawCascade(in: &context, layout: cascade, age: age, canvasSize: canvasSize) }
         drawPackets(in: &context, age: age, canvasSize: canvasSize)
         drawReceiver(in: &context, age: age, canvasSize: canvasSize)
+    }
+
+    /// One source-local wash belongs to the same committed receipt as the pulse
+    /// and flight. The production pass also serves fixed-age native raster checks.
+    func drawSourceLight(in context: inout GraphicsContext, age: Double, canvasSize: CGSize) {
+        guard !quiet, event.isExceptional, age.isFinite, age > 0.06, age < 0.85,
+              !event.cells.isEmpty else { return }
+        let mapping = LandingGeometry(size: board.size)
+        let origin = sourceOrigin
+        let t = (age - 0.06) / 0.79
+        let radius = StarfallTheme.Layout.clearSourceLightRadius
+        var light = context
+        light.clip(to: Path(mapping.arenaFrame.offsetBy(dx: board.minX, dy: board.minY)))
+        for exclusion in [score.insetBy(dx: -4, dy: -4), header, awardBounds ?? .zero, constellationBounds ?? .zero]
+            where !exclusion.isEmpty && !exclusion.isNull && !exclusion.isInfinite {
+            var visible = Path(CGRect(origin: .zero, size: canvasSize))
+            visible.addRect(exclusion)
+            light.clip(to: visible, style: FillStyle(eoFill: true))
+        }
+        light.opacity = sin(t * .pi) * (0.16 + 0.12 * event.energy)
+        light.fill(Path(mapping.arenaFrame.offsetBy(dx: board.minX, dy: board.minY)), with: .radialGradient(
+            Gradient(colors: [accent, accent.opacity(0)]), center: origin,
+            startRadius: 0, endRadius: mapping.starStep * (radius.lowerBound + (radius.upperBound - radius.lowerBound) * t)))
     }
 
     /// The figure is passive ink, with no new nodes, clock or completion callback.

@@ -1,0 +1,541 @@
+{
+  "schemaVersion": 1,
+  "goal": 7,
+  "source": "4e4886f95a0bcf3fb29ec9a8e443c706af15c0c0",
+  "runtime": "dev.7c88a02de9",
+  "mechanics": "PASS selected352Core/14hosted/4native(3uniquemethods),zero fail/skip;DebugRelease exactruntime/catalogue",
+  "visual": "HOLD. Independentwholehostedreviewfindsreceipt/componentinkcrossingone-spacecolumn4badge at375/430default. Source-lightisolatedcomponentpassesbutcannotestablishwholecompositionadoption. AXsettledwholelayoutunproved.",
+  "review": {
+    "path": "visual-review-07-hosted.json",
+    "sha256": "de845b6084b0a64f38552b9be9a61db1f18f45d3e4a30713bb35d3937b03f0d9",
+    "originalAtReviewSHA256": "7ceba35449dc79d8e6c8b452660b2b6314eed18f9e738045d2c150ceb23f75af",
+    "originalAtCommit": "a985c5dcb161f746618bb35419455783d17ffa38"
+  },
+  "stages": [
+    {
+      "label": "build-07-4e4886f9-debug",
+      "boundSeconds": 180,
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.7c88a02de9",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "build-for-testing"
+      ],
+      "recordDevice": null,
+      "receipt": {
+        "stage": "build-07-4e4886f9-debug",
+        "startedUTC": "2026-10-25T05:37:38.375497+00:00",
+        "elapsedSeconds": 12.72,
+        "limitSeconds": 180.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "logPath": "/private/tmp/starfall-hud-stack-20261024/build-07-4e4886f9-debug.log",
+      "logSHA256": "d77ab9ae892f1ad2a221ce42004fb0673a323448809c1899844d2f6649725009"
+    },
+    {
+      "label": "hosted-07-4e4886f9",
+      "boundSeconds": 220,
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.7c88a02de9",
+        "-destination",
+        "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+        "-only-testing:StarfallAppTests/StarlightCelebrationTests/testExceptionalSourceLightFollowsTheCommittedGroupAndLeavesOtherChoicesAndHUDClear",
+        "-only-testing:StarfallAppTests/StarlightCelebrationTests/testCausalReceiptsUseEachPhaseBoardAndGrowTheCommittedAward",
+        "-only-testing:StarfallAppTests/StarlightCelebrationTests/testPacketInkAndShadowLeaveTheScoreReadableAtBothDestinations",
+        "-only-testing:StarfallAppTests/StarlightCelebrationTests/testConstellationFigureAndShadowLeaveMeasuredHUDRegionsUnpainted",
+        "-only-testing:StarfallAppTests/StarlightCelebrationTests/testConcurrentAwardsReplaceOnceWithoutOwningInputOrSave",
+        "-only-testing:StarfallAppTests/StarlightCelebrationTests/testInterruptionsCancelReceiptAndRejectStaleCompletion",
+        "-only-testing:StarfallAppTests/StarlightCelebrationTests/testExpiryCannotFinishGameplayPresentation",
+        "-only-testing:StarfallAppTests/StarlightCelebrationTests/testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText",
+        "-only-testing:StarfallAppTests/CascadeReturnTests/testQuietTwoAndThreePhaseReturnsShowTheSameFinalCausalPrefixOnce",
+        "-only-testing:StarfallAppTests/CascadeReturnTests/testReceiverAcknowledgesOnlyActualActivePacketArrivalAndQuietShowsSameStaticReceipt",
+        "-only-testing:StarfallAppTests/CascadeReturnTests/testRenderedChronologicalFiguresRemainVisibleAndOnlyArrivedPacketsLightTheReceiver",
+        "-only-testing:StarfallAppTests/LanternAwardResponseTests/testEnvironmentOwnsArrivalBelowHeaderAndOverlayNeverDuplicatesItsResponse",
+        "-only-testing:StarfallAppTests/RibbonAwardResponseTests/testActualSceneryOwnerDrawsThreadsBelowHeaderWithoutDuplicateOrEarlyAcknowledgement",
+        "-only-testing:StarfallAppTests/SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9.xcresult",
+        "test-without-building"
+      ],
+      "recordDevice": null,
+      "receipt": {
+        "stage": "hosted-07-4e4886f9",
+        "startedUTC": "2026-10-25T05:37:51.131275+00:00",
+        "elapsedSeconds": 32.098,
+        "limitSeconds": 220.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "logPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9.log",
+      "logSHA256": "dfb8af52a29150b67a7d79dca74227825f278c12ad195fdffe75c70a5e321e28",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 14,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792906703.177,
+        "passedTests": 14,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792906671.919,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - Starfall",
+        "topInsights": [],
+        "totalTestCount": 14
+      }
+    },
+    {
+      "label": "native-07-4e4886f9-two-phase-phone",
+      "boundSeconds": 300,
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.7c88a02de9",
+        "-destination",
+        "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+        "-only-testing:StarfallUITests/CascadeReturnInteractionTests/testNormalTwoPhaseChainSeparateActionsAndReplay",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/native-07-4e4886f9-two-phase-phone.xcresult",
+        "test-without-building"
+      ],
+      "recordDevice": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "receipt": {
+        "stage": "native-07-4e4886f9-two-phase-phone",
+        "startedUTC": "2026-10-25T05:38:23.883383+00:00",
+        "elapsedSeconds": 127.465,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "logPath": "/private/tmp/starfall-hud-stack-20261024/native-07-4e4886f9-two-phase-phone.log",
+      "logSHA256": "58c7a9b8297012f4cf96664339b3d3940d3dd87a97baa537674b29b67d3f263d",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792906831.285,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792906704.845,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - Starfall",
+        "topInsights": [],
+        "totalTestCount": 1
+      }
+    },
+    {
+      "label": "native-07-4e4886f9-three-phase-phone",
+      "boundSeconds": 300,
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.7c88a02de9",
+        "-destination",
+        "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+        "-only-testing:StarfallUITests/CascadeReturnInteractionTests/testNormalDenseThreePhaseRibbonReturnInterruptionAndReplay",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/native-07-4e4886f9-three-phase-phone.xcresult",
+        "test-without-building"
+      ],
+      "recordDevice": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "receipt": {
+        "stage": "native-07-4e4886f9-three-phase-phone",
+        "startedUTC": "2026-10-25T05:40:32.146431+00:00",
+        "elapsedSeconds": 117.447,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "logPath": "/private/tmp/starfall-hud-stack-20261024/native-07-4e4886f9-three-phase-phone.log",
+      "logSHA256": "cefb168527d254da904980e2ca4ca5c5cd059bddcb8a034542fdd4c5add4cb06",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792906949.537,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792906833.305,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - Starfall",
+        "topInsights": [],
+        "totalTestCount": 1
+      }
+    },
+    {
+      "label": "native-07-4e4886f9-three-phase-tablet",
+      "boundSeconds": 300,
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.7c88a02de9",
+        "-destination",
+        "platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "-only-testing:StarfallUITests/CascadeReturnInteractionTests/testNormalDenseThreePhaseRibbonReturnInterruptionAndReplay",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/native-07-4e4886f9-three-phase-tablet.xcresult",
+        "test-without-building"
+      ],
+      "recordDevice": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "receipt": {
+        "stage": "native-07-4e4886f9-three-phase-tablet",
+        "startedUTC": "2026-10-25T05:42:30.483214+00:00",
+        "elapsedSeconds": 129.393,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "logPath": "/private/tmp/starfall-hud-stack-20261024/native-07-4e4886f9-three-phase-tablet.log",
+      "logSHA256": "2a3bc54cff869891f50a06a85534eb04b42420f598c4fd9b2062e9b4d90e71f2",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+              "deviceName": "Starfall HUD Stack dcf3 Tablet",
+              "modelName": "iPad Pro 13-inch (M5)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792907079.809,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792906951.185,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - Starfall",
+        "topInsights": [],
+        "totalTestCount": 1
+      }
+    },
+    {
+      "label": "native-07-4e4886f9-quiet-ax5-tablet",
+      "boundSeconds": 360,
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.7c88a02de9",
+        "-destination",
+        "platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "-only-testing:StarfallUITests/CascadeReturnInteractionTests/testLargestCalmDenseChainAndSimultaneousPatternsKeepRetainedRound",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/native-07-4e4886f9-quiet-ax5-tablet.xcresult",
+        "test-without-building"
+      ],
+      "recordDevice": null,
+      "receipt": {
+        "stage": "native-07-4e4886f9-quiet-ax5-tablet",
+        "startedUTC": "2026-10-25T05:44:40.685065+00:00",
+        "elapsedSeconds": 184.813,
+        "limitSeconds": 360.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "logPath": "/private/tmp/starfall-hud-stack-20261024/native-07-4e4886f9-quiet-ax5-tablet.log",
+      "logSHA256": "7bd2e0be06ccf2c87f1b85de1cf570abf374495c94ea4b0837e7f590239dd846",
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+              "deviceName": "Starfall HUD Stack dcf3 Tablet",
+              "modelName": "iPad Pro 13-inch (M5)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1792907265.434,
+        "passedTests": 1,
+        "result": "Passed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792907081.453,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - Starfall",
+        "topInsights": [],
+        "totalTestCount": 1
+      }
+    },
+    {
+      "label": "build-07-4e4886f9-release",
+      "boundSeconds": 180,
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Release",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Release",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.7c88a02de9",
+        "build"
+      ],
+      "recordDevice": null,
+      "receipt": {
+        "stage": "build-07-4e4886f9-release",
+        "startedUTC": "2026-10-25T05:47:45.814374+00:00",
+        "elapsedSeconds": 9.056,
+        "limitSeconds": 180.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "logPath": "/private/tmp/starfall-hud-stack-20261024/build-07-4e4886f9-release.log",
+      "logSHA256": "b789bdc17770b3cbdf612633dc0491c9e4d90dcc049c02b428ff31c03b408643"
+    },
+    {
+      "label": "core-07-4e4886f9",
+      "boundSeconds": 120,
+      "command": [
+        "swift",
+        "test"
+      ],
+      "recordDevice": null,
+      "receipt": {
+        "stage": "core-07-4e4886f9",
+        "startedUTC": "2026-10-25T05:47:54.903363+00:00",
+        "elapsedSeconds": 21.443,
+        "limitSeconds": 120.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "logPath": "/private/tmp/starfall-hud-stack-20261024/core-07-4e4886f9.log",
+      "logSHA256": "2ccb15dfcd62e738a02574e6c510d9f11bf4921c0f31004ab23316ec706ec99d"
+    }
+  ],
+  "recordings": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-07-4e4886f9-two-phase-phone.mp4",
+      "processStartEpoch": 1792906703.523745,
+      "readyEpoch": 1792906703.85595,
+      "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "recorderExit": 0,
+      "bytes": 150939157,
+      "sha256": "3bc826739fbbc866b9edc37211becf0e5d32ebacdbd734150686515f6816345e"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-07-4e4886f9-three-phase-phone.mp4",
+      "processStartEpoch": 1792906831.9157581,
+      "readyEpoch": 1792906832.120374,
+      "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "recorderExit": 0,
+      "bytes": 176197484,
+      "sha256": "7bc2b8a2027408ff009bbd9599c0117ddf20bbecaa13e237486c9c7862421925"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-07-4e4886f9-three-phase-tablet.mp4",
+      "processStartEpoch": 1792906950.1145449,
+      "readyEpoch": 1792906950.443124,
+      "device": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "recorderExit": 0,
+      "bytes": 268887523,
+      "sha256": "64debad62a73519a0ec1ef61a3c32df1193afe94e6ea2a16a463474d3b93f278"
+    }
+  ],
+  "correction": "Separatefrozenrevisionwillrequalifysharedceiling-safereceipt/figurebandandcompactportraitnon-islandSurvivalreading. No4evisualadoption.",
+  "pressureQualification": "The original reviewer called the pressure badge full; exactCore heights establish oneSpace. Reviewerratum preserves originalfinding andqualifies pressuretype; the collision and HOLD remain."
+}

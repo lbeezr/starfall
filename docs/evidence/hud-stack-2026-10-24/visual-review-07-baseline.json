@@ -1,0 +1,573 @@
+{
+  "schemaVersion": 1,
+  "goal": 7,
+  "reviewer": "/root/hud_audit",
+  "recordedUTC": "2026-10-25T05:35:40.066892+00:00",
+  "status": "BASELINE_WHOLE_NATIVE_STILL_REVIEW_COMPLETE; no candidate verdict or Goal7 adoption",
+  "candidateVerdict": "NOT_EVALUATED; no candidate images or implementer visual verdict were supplied for this independent baseline review",
+  "scope": "Nineteen already-decoded whole frames from a real native normal-motion Ribbon Full Board three-phase clear on the accepted Goal6 products. This is native simulator evidence, not a mockup or a synthetic/hosted screen.",
+  "source": {
+    "appCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+    "nativeUITestCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+    "runtime": "dev.606ce1efbe",
+    "acceptedMain": "5b783e473d636913f646a95b305315ebcd845888",
+    "productIdentityManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-products.json",
+      "sha256": "d282c75a96603517cfa0b7a8dd10ce89cc3da93453960bb1ec11eea3b6784b7c",
+      "bytes": 1579
+    },
+    "recordedProductIdentities": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Starfall",
+        "bytes": 40144,
+        "sha256": "fe732830bdd6a39dcb8843406ac91a3d51f180a23a52a5a9e79da08cde29b332"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Starfall.debug.dylib",
+        "bytes": 15910864,
+        "sha256": "2d5996044140e62db79ec143d180fd9517671d359ae15cbb12215186fe1a38a3"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/PlugIns/StarfallAppTests.xctest/StarfallAppTests",
+        "bytes": 16344160,
+        "sha256": "a5c2764a2e6f800031af4afb804548abdb3ba5c9c47f83c989281c9b80120d6b"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/StarfallUITests-Runner.app/PlugIns/StarfallUITests.xctest/StarfallUITests",
+        "bytes": 5591504,
+        "sha256": "1466d87416dcd48c04e3a16771fca0987b5ddad6be77d7cd527acdc236a71abc"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Starfall_iphonesimulator27.1-arm64.xctestrun",
+        "bytes": 8942,
+        "sha256": "d6a2813072213184d7f3ee66eb8897c523acf3f8513ad4a65dd8987ccab57d80"
+      }
+    ],
+    "qualification": "Product identities are the retained baseline launch-stub/App/hosted/UI binary and xctestrun snapshot, not a new build or a claim that disposable product paths remain unchanged during later work."
+  },
+  "nativeRun": {
+    "selector": "StarfallUITests/CascadeReturnInteractionTests/testNormalDenseThreePhaseRibbonReturnInterruptionAndReplay",
+    "result": "Passed",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "stageElapsedSeconds": 125.666,
+    "exitCode": 0,
+    "runtimeWarnings": [],
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-receipt.json",
+      "sha256": "c45772fa196cd82b25ddde3934fd92ae81bcccdaf0297116175789292651e527",
+      "bytes": 176
+    },
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-summary.json",
+      "sha256": "7f0a35aa2cf6ba4acd573edef09f3e1a319ecdf9336dc19e3abf49355b72ed07",
+      "bytes": 741
+    },
+    "commands": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-commands.json",
+      "sha256": "954c1605105475c4a6e374cf5e7c572781ee7fdf039f22f6934111836895b429",
+      "bytes": 2383
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone.log",
+      "sha256": "f39c606796a822cd2e6b52287ab997ccbcb37c8faaafa0407a67fb71e39dc06c",
+      "bytes": 58680
+    },
+    "attachmentManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-attachments/manifest.json",
+      "sha256": "681596258454d04dd0707b22a6fd70ca0d012d2c8640a10ab270f76632ddf0ac",
+      "bytes": 1738
+    },
+    "mechanicalScope": "The complete existing method also exercises exact30000 three-clear outcome,49occupied cells, a separate35000 follow-up, settings/background/restore, world and exact Replay. Its mechanical pass does not supply this visual judgment."
+  },
+  "nativeMovie": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone.mp4",
+    "sha256": "564ce6abe8ecb6fc4c7f60c2795e86d5c4ee048869c6db7d208da07aa07fc05e",
+    "bytes": 178866611,
+    "recorderExit": 0,
+    "samplingManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames.json",
+      "sha256": "26dbafa338626dca038328af5a339a865866b7bf7294f97c6f1515d45d6984e8",
+      "bytes": 6969
+    },
+    "decoderProvenance": "AVAssetImageGenerator preferred transform, zero requested tolerances; actual times retained",
+    "reviewerOperations": "Only already-decoded PNGs were viewed; metadata and hashes were read. No AV decoding, export, crop, resize, retouch, build or native controller was performed."
+  },
+  "approvedReference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182,
+    "view": "Middle Play screen",
+    "meaning": "Approved visual direction: quiet instruments and a dominant readable star field over continuous scenery. The concept is not evidence of native layout, Full Board density, hit geometry or accessibility."
+  },
+  "reviewMethod": "All19 original1170x2532 PNGs directly viewed whole at original detail, plus the approved concept. Standard-library SHA256/IHDR reads verified every listed frame path, hash, byte size and dimensions against the retained sampling manifest. Actual frame times are copied exactly from that decoder manifest; nominal filenames are not treated as exact timestamps.",
+  "initialTranche": {
+    "requestedRangeSeconds": [
+      43.0,
+      45.4
+    ],
+    "frameCount": 9,
+    "originalLimitedFinding": "Opening/contact, committed30000 guide and one visible Square! +5000 receipt were witnessed. No broad central-board wash was evident in those nine samples; they did not independently show all three receipt phases. This was explicitly an early-tranche limit, not a global no-wash verdict."
+  },
+  "extendedTranche": {
+    "requestedRangeSeconds": [
+      45.7,
+      48.4
+    ],
+    "frameCount": 10,
+    "additionalFinding": "The later2 CHAIN! +15000 and3 CHAIN! +30000 samples expose broad board-center color wash, strongest among the reviewed samples at actual47.49666666666667s. This extends the first review; it does not erase or contradict its phase-limited observation.",
+    "readingPrecision": "The quoted+5000/+15000/+30000 are the displayed successive receipt labels; this review does not sum them as three independently added awards. Header and canonical guide already show the committed30000 whole action."
+  },
+  "compositionFindings": {
+    "boardEmphasis": "Cyan first-phase emphasis stays relatively local; later pink/violet and especially teal wash extends substantially beyond the exact active figure across the central star field. It reduces background quietness and specificity of attention compared with the clear inter-phase frame, while families and silhouettes remain distinguishable.",
+    "causalInk": "Current squares, prior figures, direction chevrons and survivor diamonds remain visible across the staged strip samples. The still sequence does not by itself establish a complete body trajectory or prove recognizability to an uncoached player.",
+    "nativeClearance": "The score30000/220000, Full Board mode and pause remain readable. At actual48.093333333333334s the three figures/text sit below the mode/header and above the ceiling without visible clipping. The current figure crosses the ceiling during ascent in the preceding sample; that is separately labeled movement.",
+    "completeGuide": "The current lower canonical guide and Close remain legible and visually separate from the star field in these whole frames. Visual still review does not independently certify native target size, hit acceptance or all reader interactions.",
+    "comparisonBoundary": "No candidate improvement/rejection or overall baseline-motion acceptance is granted by this record."
+  },
+  "bestCandidateComparisonMoments": [
+    {
+      "requestedSeconds": 44.2,
+      "actualSeconds": 44.195,
+      "purpose": "First+5000 active cyan paths/current square; initial local-emphasis control."
+    },
+    {
+      "requestedSeconds": 46.0,
+      "actualSeconds": 46.0,
+      "purpose": "2CHAIN/+15000 active pink wash and current figure; compare exact same topology/phase."
+    },
+    {
+      "requestedSeconds": 46.9,
+      "actualSeconds": 46.895,
+      "purpose": "Clear inter-phase field and unchanged header/guide; control for scenery and base star readability."
+    },
+    {
+      "requestedSeconds": 47.5,
+      "actualSeconds": 47.49666666666667,
+      "purpose": "Strongest sampled3CHAIN/+30000 teal field wash with current square, diamonds and prior figures."
+    },
+    {
+      "requestedSeconds": 48.1,
+      "actualSeconds": 48.093333333333334,
+      "purpose": "Complete three-figure return strip, receipt text, ceiling and native header clearance."
+    }
+  ],
+  "comparisonRule": "Match candidate by visible receipt text, topology and presentation phase, not raw movie time alone. Require the whole viewport and preservation of prior figures, diamonds, exact score/guide and star readability; a quieter color field alone cannot prove a successful candidate.",
+  "items": [
+    {
+      "id": "frame-0043.000",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0043.000.png",
+      "rawSHA256": "9641ec0b035680c2c430123665360f7f1a2b3aeecb38f99c8692bf07c6e024fa",
+      "rawBytes": 3460426,
+      "requestedSeconds": 43,
+      "actualSeconds": 42.99333333333333,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "initial-nine",
+      "visiblePhase": "opening",
+      "independentPixelObservation": "0/220000, Full Board caption and complete opening guide; dense original board with no active receipt.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0043.300",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0043.300.png",
+      "rawSHA256": "06d4796afdbf3e6ade0176f609eb46809f00216d346431407b9179c64309b783",
+      "rawBytes": 3460512,
+      "requestedSeconds": 43.3,
+      "actualSeconds": 43.275,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "initial-nine",
+      "visiblePhase": "opening",
+      "independentPixelObservation": "Same 0-point opening and settled original board; no active receipt.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0043.600",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0043.600.png",
+      "rawSHA256": "593abf0e33f21c74186fcfca1145e41eaf7b562ac598015df924443c459f447b",
+      "rawBytes": 3465540,
+      "requestedSeconds": 43.6,
+      "actualSeconds": 43.475,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "initial-nine",
+      "visiblePhase": "real-contact",
+      "independentPixelObservation": "Contact brackets around the lower-left rose star; score remains0 and no receipt has appeared.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0043.900",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0043.900.png",
+      "rawSHA256": "949b16b82978009647ffaa8d206489989505893263ef5e13c823d40eb5241f80",
+      "rawBytes": 3437034,
+      "requestedSeconds": 43.9,
+      "actualSeconds": 43.89833333333333,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "initial-nine",
+      "visiblePhase": "first-receipt-onset",
+      "independentPixelObservation": "Header already shows the committed30000/220000 and complete three-clear guide. A faint Square! +5000 equation begins above the ceiling; lower-left board is starting its clear presentation.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0044.200",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0044.200.png",
+      "rawSHA256": "68ed169a9420d2e8bc421b8c33910279cd415c02709481d3914204e10f10fd0c",
+      "rawBytes": 3509366,
+      "requestedSeconds": 44.2,
+      "actualSeconds": 44.195,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "initial-nine",
+      "visiblePhase": "first-receipt-active-paths",
+      "independentPixelObservation": "Square! +5000 with4000base+1000size, cyan left-side rising paths and lower-left square figure. Emphasis is concentrated around paths/figure; most board background remains dark.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0044.500",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0044.500.png",
+      "rawSHA256": "28495ce21825175b29c192f1fadc78541c66d7cecddef7a7e81fbb47088ef219",
+      "rawBytes": 3456032,
+      "requestedSeconds": 44.5,
+      "actualSeconds": 44.49666666666667,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "initial-nine",
+      "visiblePhase": "first-receipt-rise",
+      "independentPixelObservation": "Cyan square has risen to upper-left board; exact equation remains readable above ceiling. Refills enter from above, with bridge stitching visible separately.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0044.800",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0044.800.png",
+      "rawSHA256": "ca20da74dec88b1eef7d5a5d9dc755238e2b6a549ef13502af2cd0cad24ecc56",
+      "rawBytes": 3553463,
+      "requestedSeconds": 44.8,
+      "actualSeconds": 44.8,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "initial-nine",
+      "visiblePhase": "first-receipt-handoff-refill",
+      "independentPixelObservation": "Cyan square sits in the above-board return region while refill bodies descend and local survivor circles appear. Square! +5000 remains visible.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0045.100",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0045.100.png",
+      "rawSHA256": "a39660fb6db5a0978d7e52e591b9a4f30384e5b2bf7faf71bc198f0938589072",
+      "rawBytes": 3549228,
+      "requestedSeconds": 45.1,
+      "actualSeconds": 45.1,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "initial-nine",
+      "visiblePhase": "first-receipt-fade",
+      "independentPixelObservation": "Cyan square/equation fade above the board; local refill circles remain. No broad center wash is evident in this early tranche.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0045.400",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0045.400.png",
+      "rawSHA256": "f3d2ebb8cebf034221c7e44845b503a7046b010da0b40469fc62037875032dbe",
+      "rawBytes": 3462500,
+      "requestedSeconds": 45.4,
+      "actualSeconds": 45.39333333333333,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "initial-nine",
+      "visiblePhase": "between-first-and-second",
+      "independentPixelObservation": "Transient square/equation are absent in this sampled frame; committed30000 header and complete guide remain.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0045.700",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0045.700.png",
+      "rawSHA256": "ee462606720fb2265bfbc6dc42405df71e3d4201ef71d68187d3a7c3d295d19b",
+      "rawBytes": 3464033,
+      "requestedSeconds": 45.7,
+      "actualSeconds": 45.696666666666665,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "extended-ten",
+      "visiblePhase": "second-receipt-active-paths",
+      "independentPixelObservation": "2 CHAIN! +15000 appears with pink rising paths, a current square and two survivor diamonds; prior square is retained above board. A broad pink/violet tint is now visible through central board background.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0046.000",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0046.000.png",
+      "rawSHA256": "080a84b4478ab1b1de8b3bed4ccd64997d6c675d7881fcf722b78f992647f6f8",
+      "rawBytes": 3381143,
+      "requestedSeconds": 46,
+      "actualSeconds": 46,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "extended-ten",
+      "visiblePhase": "second-receipt-board-wash",
+      "independentPixelObservation": "2 CHAIN! +15000 remains; current pink square rises through upper-middle board. Pink/violet field tint extends beyond the square, while star silhouettes remain distinguishable.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0046.300",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0046.300.png",
+      "rawSHA256": "5bc8d07a0b442496d476a860dd6c4d71470047922f47164ec8d8a2753335f0f2",
+      "rawBytes": 3374826,
+      "requestedSeconds": 46.3,
+      "actualSeconds": 46.3,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "extended-ten",
+      "visiblePhase": "second-receipt-handoff",
+      "independentPixelObservation": "Current pink square and two diamonds reach the above-board strip beside the prior figure. Label remains2 CHAIN! +15000; refills and local landing circles are visible.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0046.600",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0046.600.png",
+      "rawSHA256": "454a764bb3eb8e436e24374982955303a4d5db67f79df2ee4d46c74cac124478",
+      "rawBytes": 3481003,
+      "requestedSeconds": 46.6,
+      "actualSeconds": 46.598333333333336,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "extended-ten",
+      "visiblePhase": "second-receipt-fade",
+      "independentPixelObservation": "2 CHAIN! +15000 and prior/current figures fade. Local comet landing circles remain, with no header or guide overlap observed.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0046.900",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0046.900.png",
+      "rawSHA256": "a3a6a664bfcae8514912f9e222ce11e87fc20f562b89fe9376a438ea8cfe3886",
+      "rawBytes": 3460615,
+      "requestedSeconds": 46.9,
+      "actualSeconds": 46.895,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "extended-ten",
+      "visiblePhase": "between-second-and-third",
+      "independentPixelObservation": "Above-board receipt figures/text are clear in this sample; central field returns to its darker baseline appearance, useful as a visual control.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0047.200",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0047.200.png",
+      "rawSHA256": "e2d1d97f221b4a7d524f2d5263867cdfe96e1d397d853309bfbda48d3c4e76ff",
+      "rawBytes": 3438142,
+      "requestedSeconds": 47.2,
+      "actualSeconds": 47.2,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "extended-ten",
+      "visiblePhase": "third-receipt-active-paths",
+      "independentPixelObservation": "3 CHAIN! +30000 appears above the ceiling with two prior figures. Mint rising paths and current lower-middle square carry two survivor diamonds; some current star bodies are transiently ghosted during the clear.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0047.500",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0047.500.png",
+      "rawSHA256": "51428937e6efe0f1966e2988b8c233e1e8b7b6899ddb8f1365c22a439bf4a7b0",
+      "rawBytes": 3305420,
+      "requestedSeconds": 47.5,
+      "actualSeconds": 47.49666666666667,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "extended-ten",
+      "visiblePhase": "third-receipt-strongest-sampled-wash",
+      "independentPixelObservation": "3 CHAIN! +30000 remains. A broad teal wash covers much of the middle board well beyond the current mint square; it is the strongest such wash among these reviewed samples. Star families/silhouettes remain distinguishable, but local figure emphasis competes with a much larger colored field.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0047.800",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0047.800.png",
+      "rawSHA256": "15a91d4f3fa1ce01b4458854ffd9b3b628987487ecff9fe1a8d474613743f571",
+      "rawBytes": 3340194,
+      "requestedSeconds": 47.8,
+      "actualSeconds": 47.8,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "extended-ten",
+      "visiblePhase": "third-receipt-ceiling-crossing",
+      "independentPixelObservation": "Current mint square crosses the ceiling during ascent; two prior figures and3 CHAIN! +30000 remain above board. Refills enter from above. This moving crossing is not a stationary header-clip finding.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0048.100",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0048.100.png",
+      "rawSHA256": "3c8cbece41040925333a06813e9155503a7f088b05d4f087b96d2f7b95ab99cd",
+      "rawBytes": 3551922,
+      "requestedSeconds": 48.1,
+      "actualSeconds": 48.093333333333334,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "extended-ten",
+      "visiblePhase": "third-receipt-complete-strip",
+      "independentPixelObservation": "Three ordered square figures, including two diamonds on the active figure, and3 CHAIN! +30000 fit above the ceiling and below the mode/header. No visible clipping of score, mode, pause, strip or guide/Close.",
+      "reviewedWholeFrame": true
+    },
+    {
+      "id": "frame-0048.400",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-07-from-06-ribbon-phone-frames/frame-0048.400.png",
+      "rawSHA256": "4630ac3645bd4541e267d369a20014e0ac5d976d6e1b052931a37b4dd7bb6855",
+      "rawBytes": 3537638,
+      "requestedSeconds": 48.4,
+      "actualSeconds": 48.39333333333333,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390,
+        844
+      ],
+      "tranche": "extended-ten",
+      "visiblePhase": "third-receipt-fade",
+      "independentPixelObservation": "Third figure strip/text are faintly fading; refill/landing presentation remains on board. No complete settled-end or continuous trajectory is inferred from this last still.",
+      "reviewedWholeFrame": true
+    }
+  ],
+  "limits": [
+    "This is a sampled native iPhone simulator normal-motion witness; not a hosted fixture, actual tablet, quiet/system-reduced, actual VoiceOver or physical-device review.",
+    "Nineteen stills do not establish continuous smoothness, true maximum wash/alpha, precise onset/arrival/expiry duration, latency, frame pacing, touch feel or sustained performance.",
+    "RGB/physical contrast, attention/comprehension/enjoyment and minimum-iOS behavior were not measured.",
+    "No candidate image or source change is adopted; candidate native/hosted, exact geometry, visual and export gates remain separate."
+  ]
+}

@@ -1,0 +1,968 @@
+{
+  "schemaVersion": 1,
+  "goal": 7,
+  "reviewer": "/root/hud_audit",
+  "recordedUTC": "2026-10-25T06:13:17.261119+00:00",
+  "status": "HOSTED_REVIEW_COMPLETE; BOUNDED_VISUAL_PASS for corrected receipt/ceiling separation; no overall adoption",
+  "verdict": {
+    "defaultCrowded": "PASS: both viewports preserve populated board dominance, complete distinct receipt/ceiling facts and readable pinned instruments. The rejected overlap is corrected in the inspected phases.",
+    "maximumText": "BOUNDED_PASS for stable visible reading crop, large score/forecast, source-local wash, remaining choices and exact +8 apron. Ceiling-badge visibility, complete scrolling reader and lower controls are outside this initial viewport; no blanket whole-HUD pass.",
+    "awardRegionSpecimens": "GEOMETRY_CONTEXT_ONLY: all eight fresh-survival images are starless and have no active receipt; excluded as populated gameplay or painted award proof.",
+    "sourceLight": "BOUNDED_PASS reused from ten byte-identical previously inspected isolated Canvas rasters.",
+    "overallGoal": "Coordinator owns final native/motion/export acceptance. This hosted review makes no Goal7 adoption or native interaction claim."
+  },
+  "independence": "Whole frames were inspected against the approved Play direction and exact rejected 4e frames before an implementer candidate visual verdict was supplied.",
+  "source": {
+    "appCheckpoint": "a985c5dcb161f746618bb35419455783d17ffa38",
+    "imageTestCheckpoint": "dc5526e68fdd4d655f90148151c3a33d2b48c17a",
+    "finalTestCheckpoint": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+    "runtime": "dev.e045b9e428",
+    "appTreeGitIdentityAcrossAllThree": {
+      "a985c5dcb161f746618bb35419455783d17ffa38": "8eb4972bc18c37e62af7efe63c6d716070923cac",
+      "dc5526e68fdd4d655f90148151c3a33d2b48c17a": "8eb4972bc18c37e62af7efe63c6d716070923cac",
+      "5d4a72504c1347ab78d5100b4845b366daf8eaaf": "8eb4972bc18c37e62af7efe63c6d716070923cac"
+    },
+    "scope": "App tree is byte-identical across a985/dc5526e6/5d4a7250. The first fix is test-only explicit CGPoint.zero; the second corrects only the new pressure precondition. Images reviewed here are dc5526e6, not falsely relabeled as the final run.",
+    "inputs": [
+      {
+        "checkpoint": "a985c5dcb161f746618bb35419455783d17ffa38",
+        "repositoryPath": "App/FallingSkyView.swift",
+        "sha256": "e60869fb27640b240ec351470e9756f2d48d9390e7c4f2b32349d953c96ca163",
+        "bytes": 62631
+      },
+      {
+        "checkpoint": "a985c5dcb161f746618bb35419455783d17ffa38",
+        "repositoryPath": "App/StarlightCelebration.swift",
+        "sha256": "80d9632eb511d1858687faf85195cc77568d15214e7e3b5dea8fc1faa1d79f31",
+        "bytes": 44189
+      },
+      {
+        "checkpoint": "a985c5dcb161f746618bb35419455783d17ffa38",
+        "repositoryPath": "App/StarfallTheme.swift",
+        "sha256": "a6b2604fc5dc11475ca2abfaa5c1c6c34b3c15c1d23a2b77335d727b4182b950",
+        "bytes": 25525
+      },
+      {
+        "checkpoint": "dc5526e68fdd4d655f90148151c3a33d2b48c17a",
+        "repositoryPath": "AppTests/StarlightCelebrationTests.swift",
+        "sha256": "9c19a0831518cef6ad33e92ad0553ff8014389c7cb90658ab5617654ac50365c",
+        "bytes": 85817
+      },
+      {
+        "checkpoint": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+        "repositoryPath": "AppTests/StarlightCelebrationTests.swift",
+        "sha256": "3d7b9e3d55e606b871c55023fbb765d3f556b3c89ffed3c2a14ae7becd980b71",
+        "bytes": 85844
+      }
+    ]
+  },
+  "mechanicalResultsSeparate": {
+    "imageRun": {
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-summary.json",
+        "sha256": "07203ba406b40a08678e180716583a1290ecf8c980097d61bbf81d72ccf66e0c",
+        "bytes": 1592
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-receipt.json",
+        "sha256": "bd918b17d50fd65b230d9ba428648a96661c070fff9258dc9202bc1916a72b08",
+        "bytes": 162
+      },
+      "passed": 17,
+      "failed": 1,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "failure": "New precondition incorrectly called column4 full; actual six-high column has one space. Geometry/separation assertions passed. This failed method is preserved, not claimed green."
+    },
+    "freshTestOnlyOracleCorrection": {
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-5d4a7250-summary.json",
+        "sha256": "4907511dd3a1263719e2f02d8f73f607d7f737c08553ff3ad586fe608816455a",
+        "bytes": 899
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-5d4a7250-receipt.json",
+        "sha256": "fa3534f3fc7d725f06ed3860ded39cdfeff17cbb79957c3216ed0beb2cddeea1",
+        "bytes": 161
+      },
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "stageElapsedSeconds": 35.837,
+      "runtimeWarnings": [],
+      "qualification": "Fresh 18/18 mechanics qualify unchanged App bytes; they do not supply the independent visual verdict."
+    },
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1"
+  },
+  "fixture": {
+    "kind": "Production FallingSkyView/store/SpriteKit in actual hosted UIWindow; deterministic survival history, not native XCTest current Story or mockup.",
+    "seed": 28,
+    "actualCoreShowers": 12,
+    "occupiedBefore": 33,
+    "clearCellCount": 6,
+    "occupiedAfter": 27,
+    "reward": 8,
+    "heightsBefore": [
+      6,
+      5,
+      4,
+      6,
+      6,
+      3,
+      3
+    ],
+    "heightsAfter": [
+      4,
+      3,
+      2,
+      6,
+      6,
+      3,
+      3
+    ],
+    "pressureTerminology": "Columns1,4,5 are one-space at opening; 4,5 remain one-space after clear. Badge4 is not full. The earlier full-column wording is explicitly qualified; its visible overlap rejection remains valid.",
+    "history": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/1C5791CF-2925-4E45-9B47-9344A6BE8CD1.txt",
+      "sha256": "4190f83f2fe7870f975ffb78e80b179e05e0ed8e5af52b68647058f5bf1b6c59",
+      "bytes": 278
+    },
+    "normalMotion": "Actual system ReduceMotion off; calmEffects false; scene.reduceMotion false; production presenter/receipt motion. ManualRainClock bounds automatic schedule only.",
+    "placement": "Actual live anchors/native canvas/common scene dimensions and actual character origins settle before before/after capture; all five raw anchor sets per profile match exactly. Visual stills also retain the same crop.",
+    "phaseAges": "Each live frame records actual receiptAge in its attached geometry TXT; exact values are included per frame. They are discrete normal-motion samples, not continuous playback.",
+    "scale": 3,
+    "occupancyLimit": "Counts are committed fixture facts. Every crowded frame is visibly populated; clipped AX5 views do not show every occupied cell."
+  },
+  "rejectedComparison": {
+    "priorReview": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-07-hosted.json",
+      "sha256": "de845b6084b0a64f38552b9be9a61db1f18f45d3e4a30713bb35d3937b03f0d9",
+      "bytes": 42534
+    },
+    "priorOriginalReviewSha256BeforeTerminologyErratum": "7ceba35449dc79d8e6c8b452660b2b6314eed18f9e738045d2c150ceb23f75af",
+    "comparisons": [
+      {
+        "id": "crowded-375x667-default-phase-1",
+        "rejectedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/5463E596-1461-4EE6-A5CF-4C3A2A04ED21.png",
+        "rejectedSha256": "e25a336e56202d8d0b976b7e05738aae18644e4ae464137181eeb172e8a319fe",
+        "correctedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/FD0EEEFB-07FF-4E7F-BE8F-7AE472E0B7B6.png",
+        "correctedSha256": "c2b512e5105923ed9db3866ad841024125a03792d944e628f7ce2d3f9632ee67",
+        "observation": "The rejected receipt touches/crosses badge 4; the corrected full-font receipt and accounting line are visibly above the complete badge strip."
+      },
+      {
+        "id": "crowded-430x932-default-phase-1",
+        "rejectedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/D2F20C1D-D3C7-4E43-9EED-DC1344E83AAD.png",
+        "rejectedSha256": "f149818533c06ac827709dc1600b3264f5c793bb17e6314a82a1b04aeeeaa553",
+        "correctedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/4D031CF0-9810-48CD-BF53-3D3A7FC0C8E4.png",
+        "correctedSha256": "1a61ccd73a796f2ed9bdecaffc1c5cafaa2ce3caff7c994b05e1d6c4e00ca73b",
+        "observation": "The rejected receipt touches/crosses badge 4; the corrected full-font receipt and accounting line are visibly above the complete badge strip."
+      }
+    ],
+    "preservation": "Original rejected imagery and verdict remain historical; only this independently inspected corrected source receives the bounded pass."
+  },
+  "approvedReference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182,
+    "view": "Middle Play concept, directly viewed in preceding independent review",
+    "comparison": "The corrected receipt occupies clear sky between quiet instruments and the ceiling, retaining the board/star field as the primary play surface. The local wash does not become a broad viewport sheet. Native Dynamic Type reading crops are evaluated within their visible scope rather than forced to duplicate the concept layout."
+  },
+  "profileGeometry": [
+    {
+      "id": "375x667-default",
+      "board": [
+        0.0,
+        15.666666666666686,
+        375.0,
+        900.0
+      ],
+      "header": [
+        12.0,
+        51.0,
+        351.0,
+        100.0
+      ],
+      "score": [
+        12.0,
+        53.0,
+        42.33333333333333,
+        44.0
+      ],
+      "award": [
+        14.0,
+        155.0,
+        347.0,
+        81.16666666666669
+      ],
+      "completeCeilingStrip": [
+        6.0,
+        240.16666666666669,
+        363.0,
+        44.0
+      ],
+      "allFiveAnchorSetsExactlyStable": true,
+      "awardToCeilingGapPoints": 4.0,
+      "visualScope": "Receipt and complete badges visually separated."
+    },
+    {
+      "id": "375x667-maximum",
+      "board": [
+        0.0,
+        -76.66666666666663,
+        375.0,
+        900.0
+      ],
+      "header": [
+        12.0,
+        51.0,
+        351.0,
+        214.0
+      ],
+      "score": [
+        12.0,
+        51.0,
+        62.66666666666666,
+        63.33333333333333
+      ],
+      "award": [
+        14.0,
+        562.8333333333334,
+        347.0,
+        96.0
+      ],
+      "completeCeilingStrip": [
+        6.0,
+        103.1666666666667,
+        363.0,
+        88.66666666666667
+      ],
+      "allFiveAnchorSetsExactlyStable": true,
+      "awardToCeilingGapPoints": null,
+      "visualScope": "Stable visible crop; ceiling/complete reader/footer not established by this initial viewport."
+    },
+    {
+      "id": "430x932-default",
+      "board": [
+        0.0,
+        50.0,
+        430.0,
+        900.0
+      ],
+      "header": [
+        12.0,
+        51.0,
+        406.0,
+        100.0
+      ],
+      "score": [
+        12.0,
+        53.0,
+        42.33333333333333,
+        44.0
+      ],
+      "award": [
+        14.0,
+        155.0,
+        402.0,
+        88.0
+      ],
+      "completeCeilingStrip": [
+        6.0,
+        247.0,
+        418.0,
+        44.0
+      ],
+      "allFiveAnchorSetsExactlyStable": true,
+      "awardToCeilingGapPoints": 4.0,
+      "visualScope": "Receipt and complete badges visually separated."
+    },
+    {
+      "id": "430x932-maximum",
+      "board": [
+        0.0,
+        127.0,
+        430.0,
+        900.0
+      ],
+      "header": [
+        12.0,
+        51.0,
+        406.0,
+        214.0
+      ],
+      "score": [
+        12.0,
+        51.0,
+        62.66666666666666,
+        63.33333333333333
+      ],
+      "award": [
+        14.0,
+        794.0,
+        402.0,
+        96.0
+      ],
+      "completeCeilingStrip": [
+        6.0,
+        279.3333333333333,
+        418.0,
+        88.66666666666667
+      ],
+      "allFiveAnchorSetsExactlyStable": true,
+      "awardToCeilingGapPoints": null,
+      "visualScope": "Stable visible crop; ceiling/complete reader/footer not established by this initial viewport."
+    }
+  ],
+  "inspectedCrowdedFrames": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/5E6F6605-90C4-4418-B6CB-2B86168FDC9A.png",
+      "sha256": "12c794457b00f550f099e267f05bdf171274cbd8a6ce13ce0ed36370217928b8",
+      "bytes": 7599859,
+      "id": "crowded-375x667-default-before",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/F227DD97-AC0F-4069-8507-9754D6B7D421.txt",
+        "sha256": "4c7e7fc2367bf98bb2a76b4690a08d5b57d18191a4f8dad2538ddb348eec8a17",
+        "bytes": 691
+      },
+      "recordedReceiptAgeSeconds": null,
+      "observation": "Populated stable board and complete ceiling, forecast and score remain distinct."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/0D3B5863-773E-4BCF-A775-9A5F427FF297.png",
+      "sha256": "f41d6af0c069446d6bd5b0184b25b0ad0912fb993adf8ea33d9ddab5a7219786",
+      "bytes": 7714990,
+      "id": "crowded-375x667-default-phase-0",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/740FB14B-4009-4E32-9523-4948940FCA1E.txt",
+        "sha256": "b43a75069122ed51535c9a6b19c0acb9d1ead987ed9f313d483463014fee3bc7",
+        "bytes": 718
+      },
+      "recordedReceiptAgeSeconds": 0.21194005012512207,
+      "observation": "Complete Brilliant! +8 and accounting line fit above one-space badges 4/5; remaining right choices stay distinguishable."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/FD0EEEFB-07FF-4E7F-BE8F-7AE472E0B7B6.png",
+      "sha256": "c2b512e5105923ed9db3866ad841024125a03792d944e628f7ce2d3f9632ee67",
+      "bytes": 7623163,
+      "id": "crowded-375x667-default-phase-1",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/CE86E4E7-491A-412C-AA94-EBE066DAE13C.txt",
+        "sha256": "453dacfbafce2f7cecf9a1ef1b0f8316aeed18779f868a52a5e229eb815aad22",
+        "bytes": 717
+      },
+      "recordedReceiptAgeSeconds": 0.6678650379180908,
+      "observation": "Complete Brilliant! +8 and accounting line fit above one-space badges 4/5; remaining right choices stay distinguishable."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/F0417610-2D97-4157-850B-8FD82D1019AC.png",
+      "sha256": "2304f69480b0fa33596aac8cfe4bed16532b30ae9b40e02e4cc05860f078d5d1",
+      "bytes": 7609469,
+      "id": "crowded-375x667-default-phase-2",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/3DE322B8-B671-49C5-B511-6867A1E3B82B.txt",
+        "sha256": "5217f93d5cf0aca44d8d159eb78cbdf7687d76a540a4a2b5b5af23e4dd641f6d",
+        "bytes": 716
+      },
+      "recordedReceiptAgeSeconds": 1.103247046470642,
+      "observation": "Complete Brilliant! +8 and accounting line fit above one-space badges 4/5; remaining right choices stay distinguishable."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/95673734-9048-4798-BCA1-1A5F8A79023B.png",
+      "sha256": "bf2a805f3264262d63081769dba92dfea3e12c7c04738444cc72a1c327b25969",
+      "bytes": 7509239,
+      "id": "crowded-375x667-default-after",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/8DCE6247-7FB0-4201-9E3F-CE327B4F228F.txt",
+        "sha256": "c966e0f51cef06252494dabe9ae8230e59f9e16d6262196d2294722a78fcad47",
+        "bytes": 690
+      },
+      "recordedReceiptAgeSeconds": null,
+      "observation": "No transient receipt; remaining board and badges retain their placement."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/F7B31FCC-B791-4502-A64C-7D8241122BA9.png",
+      "sha256": "e7eaa8e35e2b23455a08511031754589f4fa153ced605b27b56b6118d5e809cc",
+      "bytes": 7272245,
+      "id": "crowded-375x667-maximum-before",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/C97ED9B1-EB59-4D6C-A5AD-3216FFF5C02A.txt",
+        "sha256": "12202be55fac0ff4a2700f2f673673ef0783c6ad0d12f4da26a66f574f75c2bc",
+        "bytes": 715
+      },
+      "recordedReceiptAgeSeconds": null,
+      "observation": "Stable bottom-aligned reading crop, large forecast/score and visible stars; ceiling badges and lower reader/footer are not fully in this viewport."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/E9E545DD-53CC-46CE-93FA-1B407AABC99A.png",
+      "sha256": "169185d188f2ea1d06581754f631976c8d793cd7df9b9f84ad8d3306201d9486",
+      "bytes": 7310925,
+      "id": "crowded-375x667-maximum-phase-0",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/7A6E4582-03FA-4A11-A0AD-4D014E643392.txt",
+        "sha256": "ffda8b4a6674aa2441d3970b87ce1f3ffad7786443819e73fa52809f302b8c3b",
+        "bytes": 742
+      },
+      "recordedReceiptAgeSeconds": 0.18202102184295654,
+      "observation": "Stable bottom-aligned reading crop, large forecast/score and visible stars; ceiling badges and lower reader/footer are not fully in this viewport. Large +8 fits beneath visible stars."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/C27596E7-1FB6-4A80-8E9D-541F71BCA798.png",
+      "sha256": "908f5472dae4abdfbaf10e009c5af3b5d3c005986d0520bc47292ec547c3ef53",
+      "bytes": 7210972,
+      "id": "crowded-375x667-maximum-phase-1",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/8AFF3540-888C-43FD-B49F-9BFB01674C23.txt",
+        "sha256": "c7f2d8c3f1491b27ea9ac05117a655f4fb92da1cbd12316a41350610270dd0f9",
+        "bytes": 741
+      },
+      "recordedReceiptAgeSeconds": 0.6596920490264893,
+      "observation": "Stable bottom-aligned reading crop, large forecast/score and visible stars; ceiling badges and lower reader/footer are not fully in this viewport. Large +8 fits beneath visible stars."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/14F1258F-867D-4407-AF0A-259385E1E61F.png",
+      "sha256": "78050656d8bac57de779519150fd91439deddd5d766fdda0dcebb8c94049598b",
+      "bytes": 7188425,
+      "id": "crowded-375x667-maximum-phase-2",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/53A1B034-991D-4D72-8EEC-3A11D8DA9AB9.txt",
+        "sha256": "c9f8cd4ff6de8f76cc1e1f6019b3aa74c127efb334260afeb417f75bf1d33fd1",
+        "bytes": 740
+      },
+      "recordedReceiptAgeSeconds": 1.111583948135376,
+      "observation": "Stable bottom-aligned reading crop, large forecast/score and visible stars; ceiling badges and lower reader/footer are not fully in this viewport. Large +8 fits beneath visible stars."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/D0352359-6A95-4012-95D9-44365410C278.png",
+      "sha256": "836f7c6fbf8d3b401ba17f0bcb55d49e9ae5a1dd9b3f570ef039f7041932f07d",
+      "bytes": 7198570,
+      "id": "crowded-375x667-maximum-after",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/969F50E7-09B0-4123-BE45-5F888BF16228.txt",
+        "sha256": "868df8ab8dc063b1860f056866a9f7e48c32ea5b9ca356f443af7949bc1791d5",
+        "bytes": 714
+      },
+      "recordedReceiptAgeSeconds": null,
+      "observation": "Stable bottom-aligned reading crop, large forecast/score and visible stars; ceiling badges and lower reader/footer are not fully in this viewport."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/FFA48755-D56C-400C-8FDD-B87CDC41DF21.png",
+      "sha256": "47b6ca4f3d39da31eef7c397f6c682f2856ac91e37789d6d65adf950f5a2de5d",
+      "bytes": 11800723,
+      "id": "crowded-430x932-default-before",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/9CA41CC9-D200-4845-B27A-E4CB8D49A26F.txt",
+        "sha256": "7630cda5f12956f573bd8ddbcd73ebbc1e35b11927f8af21cb3eec57937acc43",
+        "bytes": 680
+      },
+      "recordedReceiptAgeSeconds": null,
+      "observation": "Populated stable board and complete ceiling, forecast and score remain distinct."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/19493DE3-468B-4F7E-96A5-28119A94DA2E.png",
+      "sha256": "288452a4adc31a0f52b2d0a31cec5ed42d88480ae9efbe0d4644d88dc9b8c620",
+      "bytes": 11570616,
+      "id": "crowded-430x932-default-phase-0",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/86938548-497E-4335-B644-E87718FA5B38.txt",
+        "sha256": "29cfa4b3e7041a20b2c1b20237fdf701475ab621f7c3ba0b4863ff66d0624b52",
+        "bytes": 707
+      },
+      "recordedReceiptAgeSeconds": 0.19451498985290527,
+      "observation": "Complete Brilliant! +8 and accounting line fit above one-space badges 4/5; remaining right choices stay distinguishable."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/4D031CF0-9810-48CD-BF53-3D3A7FC0C8E4.png",
+      "sha256": "1a61ccd73a796f2ed9bdecaffc1c5cafaa2ce3caff7c994b05e1d6c4e00ca73b",
+      "bytes": 11258890,
+      "id": "crowded-430x932-default-phase-1",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/6316B25F-6ABF-4B7D-99CF-212AD7AD27D0.txt",
+        "sha256": "31435b8d5d5dd1e5c950227e3083a919262e30eb453b308facee63c0e6dbeebd",
+        "bytes": 706
+      },
+      "recordedReceiptAgeSeconds": 0.7021900415420532,
+      "observation": "Complete Brilliant! +8 and accounting line fit above one-space badges 4/5; remaining right choices stay distinguishable."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/3CD9FCAA-83C1-4A75-ADE6-8B822D64CFD3.png",
+      "sha256": "a11474e1abf36d9f013d7282b9d04711dd247e2e8552a246d18240ee2805a294",
+      "bytes": 11195938,
+      "id": "crowded-430x932-default-phase-2",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/549C9A87-0536-46D6-8F13-163730C8D374.txt",
+        "sha256": "c4d5d9f93d0b6120d7cf7382b2b1113408bad6a595ff777c2222a4ca3811200f",
+        "bytes": 706
+      },
+      "recordedReceiptAgeSeconds": 1.1331210136413574,
+      "observation": "Complete Brilliant! +8 and accounting line fit above one-space badges 4/5; remaining right choices stay distinguishable."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/8A54587A-7771-405B-A7DC-EE1DEFA0422A.png",
+      "sha256": "40bcac48afde0a939c8ce10aaf2ab169a2073e4a993f00af22707604f50eb6b0",
+      "bytes": 11145658,
+      "id": "crowded-430x932-default-after",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/3F229182-0F3A-4A94-8068-09D893817622.txt",
+        "sha256": "f4d1561740cb81106bb9a6a2270edda9091ff0e19badd0099eafc23ee1bfecd1",
+        "bytes": 679
+      },
+      "recordedReceiptAgeSeconds": null,
+      "observation": "No transient receipt; remaining board and badges retain their placement."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/6A349361-0A1C-4E3A-A964-036FF8794ED9.png",
+      "sha256": "af9e661719d6c2b1b5b921d5565af85b00c081d110d2670389557c33165b3889",
+      "bytes": 11301667,
+      "id": "crowded-430x932-maximum-before",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/9AB79378-A047-4C08-9428-F1400F7EBA02.txt",
+        "sha256": "795381a2728e48006f39f040cd63e5ed7ddb45abb71c0f1ac0942914a96dece0",
+        "bytes": 720
+      },
+      "recordedReceiptAgeSeconds": null,
+      "observation": "Stable bottom-aligned reading crop, large forecast/score and visible stars; ceiling badges and lower reader/footer are not fully in this viewport."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/39F1FC24-DEC8-4CD3-A6B9-E5DCF16C8E33.png",
+      "sha256": "363570b1ffe60a16a80f82dc50709ba6058349f6267d39093024bb47a36cbaf3",
+      "bytes": 11251752,
+      "id": "crowded-430x932-maximum-phase-0",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/B87A0F68-F565-4672-BAC3-D4483873621F.txt",
+        "sha256": "709004dc46c21b1969a27b6e3ac90064398ca09fe909c555d2754b247f2f1b19",
+        "bytes": 747
+      },
+      "recordedReceiptAgeSeconds": 0.18795299530029297,
+      "observation": "Stable bottom-aligned reading crop, large forecast/score and visible stars; ceiling badges and lower reader/footer are not fully in this viewport. Large +8 fits beneath visible stars."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/5DF6F288-2CD7-4CD7-9366-76519052C0CB.png",
+      "sha256": "77eb805774bdc831f0ea70dfb6f4da3ec0d805702c54574437041f59b6abb9bf",
+      "bytes": 11065087,
+      "id": "crowded-430x932-maximum-phase-1",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/5CC273F5-F88A-4D5D-80B4-C69C62B2BD40.txt",
+        "sha256": "eeb4e52b53f0a5fa3afcad6bb0b5f580c1afc529052d1433c3f2244ebd305b42",
+        "bytes": 746
+      },
+      "recordedReceiptAgeSeconds": 0.6533440351486206,
+      "observation": "Stable bottom-aligned reading crop, large forecast/score and visible stars; ceiling badges and lower reader/footer are not fully in this viewport. Large +8 fits beneath visible stars."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/4759E4E2-7F54-4845-9E3F-CC471085ADB6.png",
+      "sha256": "929eb44d193756502d4bf05a853b8023d204d1bb4538e5facac2e7fe48178f36",
+      "bytes": 11056049,
+      "id": "crowded-430x932-maximum-phase-2",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/F89058E3-F2A0-47FD-8436-20907C2E06E0.txt",
+        "sha256": "84c6714e3575182c5b88f02ce465015b1abd78824dc636482abfb57df1e0840c",
+        "bytes": 745
+      },
+      "recordedReceiptAgeSeconds": 1.154552936553955,
+      "observation": "Stable bottom-aligned reading crop, large forecast/score and visible stars; ceiling badges and lower reader/footer are not fully in this viewport. Large +8 fits beneath visible stars."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/4519CF68-3115-4AF2-811E-2FE7682D2E14.png",
+      "sha256": "c4ae28c6d539154533137c2b96d1719de25a7afb198ec9a1957bd718380250fa",
+      "bytes": 11051634,
+      "id": "crowded-430x932-maximum-after",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/64D87740-F114-47BB-9C56-576300954A09.txt",
+        "sha256": "b937884debc6fdf1bb77bc9df9d21444f681fa54dfe083558ce46c5d88e6eccc",
+        "bytes": 719
+      },
+      "recordedReceiptAgeSeconds": null,
+      "observation": "Stable bottom-aligned reading crop, large forecast/score and visible stars; ceiling badges and lower reader/footer are not fully in this viewport."
+    }
+  ],
+  "inspectedAwardRegionFrames": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/2AE1CEEF-509B-45DA-A56C-3683CDDD1CFD.png",
+      "sha256": "7f2e08c420d3972c06a109a0f156f0fbd03d3f5e33fea008b1026422966d9a19",
+      "bytes": 7066555,
+      "id": "award-region-375x667-default",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/81504302-DB5E-444B-BE4B-A0AAA6A658F0.txt",
+        "sha256": "5dbfb11bc42b852a9b01e8be4b084c28ff4e9ad41cddd7f3ea66da2cec7ac4f2",
+        "bytes": 566
+      },
+      "observation": "Starless fresh-survival geometry context, no active receipt. Excluded from populated gameplay/painted-award acceptance; only the separately asserted real-anchor region is supported."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/174F2F83-EDB7-443C-8757-669308CB7E86.png",
+      "sha256": "f8802b3d46d3907332d095b308de2baec1689880e82d8a6dbdf4f5481a1bdf61",
+      "bytes": 6781309,
+      "id": "award-region-375x667-maximum",
+      "pixelDimensions": [
+        1125,
+        2001
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/F2A44D09-D3C7-4D78-896B-35839F5B8619.txt",
+        "sha256": "fcf51457e3b280ce289cf742c99fa460f444cec3d8ec376e85662cda6a6b0e35",
+        "bytes": 591
+      },
+      "observation": "Starless fresh-survival geometry context, no active receipt. Excluded from populated gameplay/painted-award acceptance; only the separately asserted real-anchor region is supported."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/FF3EB782-955B-418B-87AF-2B16B5347272.png",
+      "sha256": "98c286acc5662a8908927fac8c84b67231d0f6da1a0a908e3eb1509715960ac0",
+      "bytes": 9115561,
+      "id": "award-region-390x844-default",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/E2ED2569-3864-4254-89E9-EF15CB4A29C7.txt",
+        "sha256": "9b19276e2da5f0d01635fdf0aee2159edd3e55241f689f491c13276c37c5af3e",
+        "bytes": 527
+      },
+      "observation": "Starless fresh-survival geometry context, no active receipt. Excluded from populated gameplay/painted-award acceptance; only the separately asserted real-anchor region is supported."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/F43908B9-784B-4E7C-B775-62067B921DEA.png",
+      "sha256": "ed8ebd0f4f184a5fe1251f43f5b19fc62de9dbfe177955bb067a2f04c512b598",
+      "bytes": 8830693,
+      "id": "award-region-390x844-maximum",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/E16C61DA-7A97-4744-9159-4692CCD0C165.txt",
+        "sha256": "3c5faca42b781ef0ece099720350a4183265cf0bd72926205e8e506dea6aa60a",
+        "bytes": 565
+      },
+      "observation": "Starless fresh-survival geometry context, no active receipt. Excluded from populated gameplay/painted-award acceptance; only the separately asserted real-anchor region is supported."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/888EC954-844E-48A6-B5EA-A2FFB14E903D.png",
+      "sha256": "bb055a367237b9bef746fe48c8d643da745dd59d4e1f37d425d11a8095704505",
+      "bytes": 10810949,
+      "id": "award-region-430x932-default",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/9B5B6EC2-A048-4EDE-83BB-A5A1E638F92C.txt",
+        "sha256": "cc95407d10452d353858d643613e04e036210fcebae7a9f2e7364c75eb3ba5b3",
+        "bytes": 582
+      },
+      "observation": "Starless fresh-survival geometry context, no active receipt. Excluded from populated gameplay/painted-award acceptance; only the separately asserted real-anchor region is supported."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/B7531C33-78D1-4AA6-B310-EC36AF545CA5.png",
+      "sha256": "98965dfc8463666a1aeed9ab3c67d6fdd8c911296ae437f888d1e47b4f7b690e",
+      "bytes": 10452953,
+      "id": "award-region-430x932-maximum",
+      "pixelDimensions": [
+        1290,
+        2796
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/8F6D70A9-70DF-457C-893A-3514CC511B8C.txt",
+        "sha256": "850d0940416239e958a358e2ae97b597c8571846446386e8724f262ab5c732a6",
+        "bytes": 609
+      },
+      "observation": "Starless fresh-survival geometry context, no active receipt. Excluded from populated gameplay/painted-award acceptance; only the separately asserted real-anchor region is supported."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/A32D48DD-17DB-4D45-8184-07B19E5A5468.png",
+      "sha256": "4d8cf5b596c661fc1bd036fd79cdc3468279094478d8270af81aaa1ba0eeb35b",
+      "bytes": 26614040,
+      "id": "award-region-1024x1366-default",
+      "pixelDimensions": [
+        3072,
+        4098
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/C85FBFC4-767D-4E41-8378-5D4D0756AE30.txt",
+        "sha256": "b7b789109d7299fb67006811c82b14686247d0ff9fd9a3e68a7a26bd6f6f80d7",
+        "bytes": 604
+      },
+      "observation": "Starless fresh-survival geometry context, no active receipt. Excluded from populated gameplay/painted-award acceptance; only the separately asserted real-anchor region is supported."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/40003C0C-30CF-4AFA-91CB-4B7D3092D993.png",
+      "sha256": "768aa0daf73b8fd9e72bf1f8641eae13691d9dcff415bc5991928788e4ad6d38",
+      "bytes": 26011777,
+      "id": "award-region-1024x1366-maximum",
+      "pixelDimensions": [
+        3072,
+        4098
+      ],
+      "orientation": "portrait",
+      "geometry": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/E5945162-24FE-4392-B5C2-8B4258BF4B8A.txt",
+        "sha256": "fa5a1caf26ea0200b8bdd73f7791f10e180f54747d861e4ffbd916a24ad2ffcb",
+        "bytes": 655
+      },
+      "observation": "Starless fresh-survival geometry context, no active receipt. Excluded from populated gameplay/painted-award acceptance; only the separately asserted real-anchor region is supported."
+    }
+  ],
+  "byteIdenticalIsolatedSourceLightFrames": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/D4506F84-11F7-487A-A447-3B456B501501.png",
+      "sha256": "5485bc07b71f5199fa504763091a6d2367232b2b95cfe4c3d906e9259ba26d72",
+      "bytes": 260973,
+      "id": "source-light-source",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "byteIdenticalToPreviouslyViewedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/F0C5D1F7-F4D3-4235-822F-6B8B10DC6181.png",
+      "reviewUse": "Earlier direct raster inspection reused after exact whole-file SHA256 equality; isolated source-light Canvas only."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/BAF9C9D8-FDE1-4B9A-A46A-63922204CA00.png",
+      "sha256": "36708382540ce18ac53278c5caf03d6f722c76c895e0bf36ee20cec811987f99",
+      "bytes": 234316,
+      "id": "source-light-translated-scrolled",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "byteIdenticalToPreviouslyViewedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/77783500-3759-47AB-A923-2BAEA33B3EA8.png",
+      "reviewUse": "Earlier direct raster inspection reused after exact whole-file SHA256 equality; isolated source-light Canvas only."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/0412A184-AFDF-4AD9-990C-5FACD5C42175.png",
+      "sha256": "158d4f1bcb9ae464f989ebcba01dc24e7b0cc1e9831e0e64a56f7e036a75b74c",
+      "bytes": 258358,
+      "id": "source-light-crossing-header",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "byteIdenticalToPreviouslyViewedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/189A3835-9A52-4523-97E2-D46A8FC71ADF.png",
+      "reviewUse": "Earlier direct raster inspection reused after exact whole-file SHA256 equality; isolated source-light Canvas only."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/F773AD85-53B4-4C42-B9AD-B880B331B6FC.png",
+      "sha256": "8e340103a53b9cb296a8a38dbfe54b5375e6a03d70d5f428a1693e9528c6d29c",
+      "bytes": 254800,
+      "id": "source-light-crossing-score",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "byteIdenticalToPreviouslyViewedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/7EEE1C3E-0ADC-4A33-9042-398D8ADEAADF.png",
+      "reviewUse": "Earlier direct raster inspection reused after exact whole-file SHA256 equality; isolated source-light Canvas only."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/4EEDBE44-B5E9-4511-B942-D617EF048488.png",
+      "sha256": "158d4f1bcb9ae464f989ebcba01dc24e7b0cc1e9831e0e64a56f7e036a75b74c",
+      "bytes": 258358,
+      "id": "source-light-crossing-award",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "byteIdenticalToPreviouslyViewedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/EA73754C-363B-4827-A61C-D905E08425FA.png",
+      "reviewUse": "Earlier direct raster inspection reused after exact whole-file SHA256 equality; isolated source-light Canvas only."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/09E17778-99F4-4E38-831B-572B1274CA95.png",
+      "sha256": "bbb8d6972950f71235f4ee5c7707ec591eef00ad1f515064912219337c57d4a1",
+      "bytes": 258288,
+      "id": "source-light-crossing-return",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "byteIdenticalToPreviouslyViewedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/B650F608-8B0A-49D9-8EFE-853CA06003F2.png",
+      "reviewUse": "Earlier direct raster inspection reused after exact whole-file SHA256 equality; isolated source-light Canvas only."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/E5636604-65F0-4158-8727-075D2C17D2CB.png",
+      "sha256": "fdc1e47ab5a89dcc2d4d943c927969ea523ab704f278fe047e4cc240355be380",
+      "bytes": 113301,
+      "id": "source-light-ordinary",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "byteIdenticalToPreviouslyViewedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/B2217641-19E4-4B66-B647-14053F143ECA.png",
+      "reviewUse": "Earlier direct raster inspection reused after exact whole-file SHA256 equality; isolated source-light Canvas only."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/A2DE644A-5AA3-4B7A-9DB1-0718702DD711.png",
+      "sha256": "33428a93a08a2047719026a4f865bc071585aff00fa2b360b92137054f3539c3",
+      "bytes": 113211,
+      "id": "source-light-quiet",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "byteIdenticalToPreviouslyViewedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/4B17B00E-AEEF-48DE-A65C-8105D57BC1B0.png",
+      "reviewUse": "Earlier direct raster inspection reused after exact whole-file SHA256 equality; isolated source-light Canvas only."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/58BCF67F-1EC8-458A-943E-26D83EAD6C48.png",
+      "sha256": "fdc1e47ab5a89dcc2d4d943c927969ea523ab704f278fe047e4cc240355be380",
+      "bytes": 113301,
+      "id": "source-light-before-release",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "byteIdenticalToPreviouslyViewedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/E14B1450-CC2A-4FA6-BF0B-017E4712610B.png",
+      "reviewUse": "Earlier direct raster inspection reused after exact whole-file SHA256 equality; isolated source-light Canvas only."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/18A670F5-BEFD-4A1D-89FD-A9091DEC669C.png",
+      "sha256": "33428a93a08a2047719026a4f865bc071585aff00fa2b360b92137054f3539c3",
+      "bytes": 113211,
+      "id": "source-light-expired",
+      "pixelDimensions": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "byteIdenticalToPreviouslyViewedRawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-4e4886f9-attachments/B9A88399-8826-4F4E-9482-01A51FC6AC12.png",
+      "reviewUse": "Earlier direct raster inspection reused after exact whole-file SHA256 equality; isolated source-light Canvas only."
+    }
+  ],
+  "attachmentManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6-attachments/manifest.json",
+    "sha256": "280aad7e87eb1fe4110c31b4146975f2c3a3d56005b3098d85b15665740cab8a",
+    "bytes": 57104
+  },
+  "limits": [
+    "All20 crowded frames are star-bearing; all8 award-region context frames are starless and excluded as populated composition proof. They are a fresh-empty fixture, not evidence of an unproved late scene-painting failure.",
+    "AX5 crops include the same sharp viewport boundary across before/live/after; clipped upper cells/ceiling and offscreen reader/footer are intentional evidence limits, not proven missing or unreachable controls. No native pan or interaction verdict is inherited.",
+    "No complete-guide or footer reachability claim is made where those elements are offscreen. The 430-default guide is readable in its live still but pushes the lower controls below this capture.",
+    "No continuous motion, actual VoiceOver, human recognition/comfort, physical-device, minimum-iOS, performance or whole-font contrast acceptance.",
+    "Only existing PNGs, source and lightweight metadata/hashes were read. No build/controller/export/AV decode/image edit was performed. view_image automatically displayed the two3072x4098 images at2752x3671; original raw dimensions/hashes are preserved."
+  ]
+}

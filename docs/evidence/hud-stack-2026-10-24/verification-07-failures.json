@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "goal": 7,
+  "attempts": [
+    {
+      "source": "a985c5dcb161f746618bb35419455783d17ffa38",
+      "runtime": "dev.e045b9e428",
+      "stage": {
+        "label": "build-07-a985c5dc-debug",
+        "boundSeconds": 180,
+        "command": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.e045b9e428",
+          "-destination",
+          "generic/platform=iOS Simulator",
+          "build-for-testing"
+        ],
+        "recordDevice": null
+      },
+      "receipt": {
+        "stage": "build-07-a985c5dc-debug",
+        "startedUTC": "2026-10-25T05:54:31.252114+00:00",
+        "elapsedSeconds": 14.238,
+        "limitSeconds": 180.0,
+        "exitCode": 65,
+        "error": null
+      },
+      "logPath": "/private/tmp/starfall-hud-stack-20261024/build-07-a985c5dc-debug.log",
+      "logSHA256": "37d1055d22b4da7c6cd8618e85ca0856d47596b0fba967bb04034bffea7b8a92",
+      "classification": "Hosted test compile error; correctedApp compiled but no corrected hosted/native execution occurred.",
+      "diagnostic": "AppTests/StarlightCelebrationTests.swift:760:49 ambiguous use of zero in SKNode.convert overload.",
+      "correction": "Test-only explicit CGPoint.zero retains the same actual-node physical-pixel mapping and assertions. App/runtime unchanged; rebuild and full selected requalification follow."
+    },
+    {
+      "source": "dc5526e68fdd4d655f90148151c3a33d2b48c17a",
+      "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+      "runtime": "dev.e045b9e428",
+      "receipt": {
+        "stage": "hosted-07-dc5526e6",
+        "startedUTC": "2026-10-25T05:56:57.648273+00:00",
+        "elapsedSeconds": 36.709,
+        "limitSeconds": 220.0,
+        "exitCode": 65,
+        "error": null
+      },
+      "summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 17,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "Starfall \u00b7 Built with macOS 27.0.1",
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "finishTime": 1792907854.312,
+        "passedTests": 17,
+        "result": "Failed",
+        "runtimeWarnings": [],
+        "skippedTests": 0,
+        "startTime": 1792907818.519,
+        "statistics": [],
+        "testFailures": [
+          {
+            "failureText": "XCTAssertTrue failed - This natural crowded history must exercise the actual full column 4 badge",
+            "targetName": "StarfallAppTests",
+            "testIdentifier": 14,
+            "testIdentifierString": "StarlightCelebrationTests/testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText()",
+            "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallAppTests/StarlightCelebrationTests/testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText",
+            "testName": "testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText()"
+          }
+        ],
+        "title": "Test - Starfall",
+        "topInsights": [
+          {
+            "category": "Common Failures",
+            "impact": "100% of failures",
+            "text": "4 runs of 1 test failed with XCTAssertTrue failed - This natural crowded history must exercise the actual full column 4 badge"
+          },
+          {
+            "category": "Longest Test Runs",
+            "impact": "33% of duration",
+            "text": "1 longest test run with outlier durations exceeding 10.34s (three standard deviations)"
+          }
+        ],
+        "totalTestCount": 18
+      },
+      "logPath": "/private/tmp/starfall-hud-stack-20261024/hosted-07-dc5526e6.log",
+      "logSHA256": "832478c90c51ea3ca6ce17236d5ddae43b5a24506a2dc9c0ae3b1953b08a849a",
+      "classification": "17/18 methods passed; only new crowded precondition incorrectly named a full badge. All original assertions and new award/ceiling separation passed. No corrected native run began.",
+      "actualCoreWitness": {
+        "seed": 28,
+        "showers": 12,
+        "beforeColumnHeights": [
+          6,
+          5,
+          4,
+          6,
+          6,
+          3,
+          3
+        ],
+        "afterRealEightLightClearColumnHeights": [
+          4,
+          3,
+          2,
+          6,
+          6,
+          3,
+          3
+        ],
+        "column4": "one space, not full; same before/after real clear",
+        "diagnosticSource": "/private/tmp/starfall-hud-stack-20261024/source-light-pressure.swift",
+        "diagnosticSourceSHA256": "c356853398370cbac4ef2580ea2112cb5d4a331a685d671799f81febfbac2fe9"
+      },
+      "correction": "Correct only the new exact expected pressure to oneSpace and require spaces==1; retain zero-overlap strip, live source/anchor settlement and every prior gate. Earlier review full-badge wording was incorrect; actual badge overlap remains valid; candidate separation passed measured gates and corrected whole visual review is pending. App/runtime unchanged."
+    }
+  ]
+}
