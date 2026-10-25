@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "status": "INITIAL_CANDIDATE_QUALIFICATION_FAILED_PRESERVED",
+  "recordedUTC": "2026-10-25T12:55:28.968322+00:00",
+  "testedSource": "3d6950e6e39e7496521e73edfdbf0c7834da5668",
+  "runtime": "dev.b088afcf5e",
+  "commands": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-10-candidate-qualification-3d6950e6.json",
+    "sha256": "0f8671be63872447c9ce4e928d20c98775b9e9cd41e6de347c8704cbd2842614",
+    "bytes": 71702
+  },
+  "perFileSourceSnapshot": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-10-candidate-qualification-3d6950e6.json",
+    "sha256": "ce1175e6b89c7c76c82e35737c601ea5e3743804a59f3bb01d49760904d5058a",
+    "bytes": 187851
+  },
+  "failureSummary": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-qualification-3d6950e6-mode-practice-phone-summary.json",
+    "sha256": "4e1d458e0f8627c77d58bbf4db680dbcbc3b01bfd7657f65ed3ef6f37fa68a77",
+    "bytes": 1570
+  },
+  "failureAttachments": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-qualification-3d6950e6-mode-practice-phone-attachments/manifest.json",
+    "sha256": "93d20d52b5251b11ea1110585f0aef59e7eee96b1904b393fe8ea824ec695467",
+    "bytes": 48392
+  },
+  "counts": {
+    "hostedPassed": 17,
+    "nativePassed": 4,
+    "nativeFailed": 1,
+    "nativeExecutions": 5,
+    "nativeSkipped": 0,
+    "nativeUnrun": 2,
+    "core": "UNRUN",
+    "release": "UNRUN"
+  },
+  "failedSelector": "StarfallUITests/ModePracticeInteractionTests/testBothEntryDiscoveriesPreserveSelectedModeAndRetainedFullBoard",
+  "exactFailure": "UITests/ModePracticeInteractionTests.swift:134 retained board-summary equality; baseline contains Stars settling… while returned summary has no transient suffix. Exact49-cell identity equality immediately before it passed.",
+  "cause": "The test waits committed score and one enabled cell before capturing its retained summary. Responsive input intentionally uses receiving rather than wholeBoard/presenting readiness. Score and cell admission do not establish settled presentation; boardSummary appends the transient settling suffix while busy. No App settlement violation was demonstrated.",
+  "examined": [
+    "ModePracticeInteractionTests.score and both callers",
+    "FullBoardLanternInteractionTests.waitForRound",
+    "IdentityJourney and LastClear settlement predicates",
+    "FallingSkyView.boardSummary and cellButton",
+    "FallingSkyStore.SkyInputPolicy, commit/save and guarded presenter completion"
+  ],
+  "correction": "Strengthen the existing second10-second condition wait with a present board value without Stars settling, retaining the original enabled-cell check. Keep first exact-score wait, every exact49-cell/summary/mode/practice/return assertion,360-second method allowance and full normal motion. No text stripping, retry, suppression, fixed delay or App/clock/rule change.",
+  "nextAcceptance": "Fresh separately frozen committed source and all11 selected stages, independent native/hosted/motion/export reviews before any merge; this failed manifest stays failed. Earlier bounded App visual passes remain their source-bound history."
+}

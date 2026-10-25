@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "phase": "accepted-main-baseline",
+  "status": "BASELINE_MECHANICAL_PASS; independent visual judgments remain separate",
+  "testedSource": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+  "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+  "runtime": "dev.06a3229203",
+  "sourceSnapshot": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-10-baseline-journeys-faed226d.json",
+    "sha256": "7863cf3dd2c9fd39d172ffcb47262b850b0b806f96d00391dcc636fdeb1ad52e",
+    "bytes": 187449
+  },
+  "sourceScope": "All568runtime+167testfiles are committed and equal accepted main. Activation differences are documentation/evidence only.",
+  "counts": {
+    "hosted": 0,
+    "nativeExecutions": 2,
+    "nativeUniqueMethods": 2,
+    "nativePassed": 2,
+    "nativeFailed": 0,
+    "nativeSkipped": 0,
+    "runtimeWarnings": [],
+    "core": 0
+  },
+  "checks": [
+    {
+      "kind": "debug",
+      "name": "debug",
+      "nominalBoundSeconds": 180,
+      "receipt": {
+        "stage": "build-10-baseline-faed226d-debug",
+        "startedUTC": "2026-10-25T12:00:24.025617+00:00",
+        "elapsedSeconds": 6.778,
+        "limitSeconds": 180.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "receiptFile": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/build-10-baseline-faed226d-debug-receipt.json",
+        "sha256": "b1980c23441892473733358ecf92fb6bff4ff07655c0b55b6d4e9adc88493770",
+        "bytes": 174
+      },
+      "log": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/build-10-baseline-faed226d-debug.log",
+        "sha256": "e9b6532de6be66568ade3f9810462ce7d6af13f85b614690a21f133237fd26f6",
+        "bytes": 13447
+      }
+    },
+    {
+      "kind": "native",
+      "name": "identity-phone",
+      "nominalBoundSeconds": 300,
+      "receipt": {
+        "stage": "native-10-baseline-faed226d-identity-phone",
+        "startedUTC": "2026-10-25T12:00:34.255163+00:00",
+        "elapsedSeconds": 156.116,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "receiptFile": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-receipt.json",
+        "sha256": "bec0bbd330e49428243fa39450168abe3fc52d9d9924a8aed9548a5cf23e566c",
+        "bytes": 186
+      },
+      "log": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone.log",
+        "sha256": "3ac7445b3f47c3febb159aa746e748134e586db638d454357b081c885d49c2a2",
+        "bytes": 137498
+      },
+      "selector": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+      "deviceUDID": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "methodAllowanceSeconds": 240,
+      "startupAllowanceSeconds": 60,
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-summary.json",
+        "sha256": "8e7e6b90438ea6758c4ed4e912f34bd06ef6d5bc249283b46d2d59649c8e266b",
+        "bytes": 741,
+        "counts": {
+          "totalTestCount": 1,
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0
+        },
+        "runtimeWarnings": []
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-attachments/manifest.json",
+        "sha256": "ba16c0ca1dc2b2fd5e85fa3fc1df04bb88107fe6dae50cf8673c9576cb4e100b",
+        "bytes": 6389
+      },
+      "export": {
+        "exitCode": 0,
+        "command": [
+          "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+          "/private/tmp/starfall-hud-stack-20261024/export-completed-04.py",
+          "native-10-baseline-faed226d-identity-phone"
+        ],
+        "wrapperCommand": [
+          "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/scripts/simulator-command.py",
+          "--receipt",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-export-receipt.json",
+          "native-10-baseline-faed226d-identity-phone-export",
+          "90",
+          "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+          "/private/tmp/starfall-hud-stack-20261024/export-completed-04.py",
+          "native-10-baseline-faed226d-identity-phone"
+        ],
+        "wrapperPID": 11398,
+        "receipt": {
+          "stage": "native-10-baseline-faed226d-identity-phone-export",
+          "startedUTC": "2026-10-25T12:03:11.660404+00:00",
+          "elapsedSeconds": 0.294,
+          "limitSeconds": 90.0,
+          "exitCode": 0,
+          "error": null
+        },
+        "receiptFile": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-export-receipt.json",
+          "sha256": "428816f001ab1ba11349c79b9a2f28c2439bfc646616c8dd0b2680240e1064b9",
+          "bytes": 190
+        },
+        "log": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-export.log",
+          "sha256": "e8d599796c4fc515b57c7514a390a8c70f62d3af528b4c213f79fbdb1684cacb",
+          "bytes": 554
+        }
+      }
+    },
+    {
+      "kind": "native",
+      "name": "last-clear-tablet",
+      "nominalBoundSeconds": 660,
+      "receipt": {
+        "stage": "native-10-baseline-faed226d-last-clear-tablet",
+        "startedUTC": "2026-10-25T12:03:13.087172+00:00",
+        "elapsedSeconds": 428.485,
+        "limitSeconds": 660.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "receiptFile": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-receipt.json",
+        "sha256": "b7f7ea1e026741997dbe75f1b9d0136e9db73cb5da7a8b3753f0f5edcedf06e1",
+        "bytes": 189
+      },
+      "log": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet.log",
+        "sha256": "b2a2255d8be9c8e12f1c66a9c5bfdc6002acd6a5dc1bea78c0d93001677ad534",
+        "bytes": 369432
+      },
+      "selector": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+      "deviceUDID": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "methodAllowanceSeconds": 600,
+      "startupAllowanceSeconds": 60,
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-summary.json",
+        "sha256": "993a1333c1bcfd34d6babdc624d64bb624d10c904d04ff68eddcdfcba7ee3b79",
+        "bytes": 753,
+        "counts": {
+          "totalTestCount": 1,
+          "passedTests": 1,
+          "failedTests": 0,
+          "skippedTests": 0
+        },
+        "runtimeWarnings": []
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/manifest.json",
+        "sha256": "23826123440c4a7cff254cdc36fec17a7fa29c0d535b50e7e4b753fb52911052",
+        "bytes": 17133
+      },
+      "export": {
+        "exitCode": 0,
+        "command": [
+          "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+          "/private/tmp/starfall-hud-stack-20261024/export-completed-04.py",
+          "native-10-baseline-faed226d-last-clear-tablet"
+        ],
+        "wrapperCommand": [
+          "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/scripts/simulator-command.py",
+          "--receipt",
+          "/private/tmp/starfall-hud-stack-20261024/export-10-baseline-faed226d-tablet-completion-receipt.json",
+          "export-10-baseline-faed226d-tablet-completion",
+          "90",
+          "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+          "/private/tmp/starfall-hud-stack-20261024/export-completed-04.py",
+          "native-10-baseline-faed226d-last-clear-tablet"
+        ],
+        "wrapperPID": 28226,
+        "receipt": {
+          "stage": "export-10-baseline-faed226d-tablet-completion",
+          "startedUTC": "2026-10-25T12:20:16.485492+00:00",
+          "elapsedSeconds": 1.264,
+          "limitSeconds": 90.0,
+          "exitCode": 0,
+          "error": null
+        },
+        "receiptFile": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/export-10-baseline-faed226d-tablet-completion-receipt.json",
+          "sha256": "a1b4b5af9093a3b15f2c7bc539c57548d8fc7da2d4fb24122d86413d21fdd453",
+          "bytes": 186
+        },
+        "log": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/export-10-baseline-faed226d-tablet-completion.log",
+          "sha256": "9f3c7506e31f77641ef05d36ff8e6377986fec6c49854a393a5a39bb57fbff3d",
+          "bytes": 555
+        }
+      }
+    }
+  ],
+  "originalStoppedManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-10-baseline-faed226d.json",
+    "sha256": "64c0c879a39c0c941d15ae0315a7b7e66b7c9e1983ac9795bb3bf19e6f982890",
+    "bytes": 20719
+  },
+  "exportOnlyCompletion": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-10-baseline-faed226d-tablet-export-completion.json",
+    "sha256": "a0d1e143f128fc5d2d9f10af942cf99bd5600d6ac4ca5b55aa99c89a7ec4a5a2",
+    "bytes": 22168
+  },
+  "grant": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/grant-10-1200-1320.json",
+    "sha256": "a9ebadac1b6e52c53d800e8ae8590e7d3204e9c25e42d15f9f84dc1e210987f7",
+    "bytes": 2623
+  },
+  "resourceHistory": "An unrelated controller appeared late in the tablet run and its pre-export guard refused admission. Further preflights also refused new foreign build queues. Both original native controllers exited0; after host idle, the original finalized tablet bundle exported successfully with1pass/0fail/0skip. No native or build was rerun. This is not exclusive-host or performance evidence. Foreign command details remain private in the source-bound raw record.",
+  "separateVisuals": {
+    "phone": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-baseline-phone.json",
+      "sha256": "55e89c3cda814e501506ec852cd57c25c4fe656af1816054f9d4b171ce69f465",
+      "bytes": 21790
+    },
+    "tablet": "Remaining whole-original review is being sealed; key complete round and this-clear originals were independently inspected before the role decision."
+  },
+  "predecessorProductMetadataRetained": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/sealed-goal09-product-metadata/manifest.json",
+    "sha256": "f710c90176e57216a3ac802246bb50b9da925ae8031971d8031c099a23afb526",
+    "bytes": 2600
+  },
+  "limits": [
+    "Baseline mechanics and source only; no candidate acceptance.",
+    "Core/hosted/Release not rerun for this unchanged-source baseline; candidate has its own required selection.",
+    "No motion, actualVoiceOver, physical-device or full matrix claim."
+  ]
+}

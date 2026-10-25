@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "status": "VERIFIED_COMMITTED_CANDIDATE_SOURCE_AND_PRODUCTS",
+  "recordedUTC": "2026-10-25T13:41:42.830777+00:00",
+  "testedSource": "fff03063ddd02ed947e7524a090a599ee20fd063",
+  "runtime": "dev.b088afcf5e",
+  "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+  "baselineHead": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+  "perFileSourceSnapshot": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-10-candidate-requalified-fff03063.json",
+    "sha256": "a4a5637622f7867a04a344280b6b185378db9e486f551fa7aaed8f777d3c0195",
+    "bytes": 187955
+  },
+  "sourceSpecification": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/goal10-requalified-source-spec.json",
+    "sha256": "d58dfd2f72b86a2476cebddb97496ae3bb0c0be99f634578530d865c2856cce7",
+    "bytes": 668
+  },
+  "plan": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/goal10-requalified-plan.json",
+    "sha256": "a8c6dcad6e4b088aeca3adda8b4f7b4d356484c711eeac928c4a0c6b7e752d9e",
+    "bytes": 6931
+  },
+  "grant": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/grant-10-requalification-1200-1400.json",
+    "sha256": "5a837a3793d95166cf46cbdfd18ff88cfefbf088db1b9dbf6e6a02db2211224f",
+    "bytes": 1124
+  },
+  "canonicalRuntimeInputCount": 568,
+  "nonMarkdownTestInputCount": 167,
+  "sourceInventory": {
+    "hostedMethods": 823,
+    "developmentPhoneUIMethods": 262,
+    "actualVoiceOverDeferredMethods": 6
+  },
+  "workingTreeRuntimeDifferences": [],
+  "workingTreeTestDifferences": [],
+  "excludedDocumentationDifferences": [],
+  "changedRuntimeOwners": [
+    "App/FallingSkyHUD.swift",
+    "App/SkyFlowCeremony.swift"
+  ],
+  "changedTestOwners": [
+    "AppTests/SkyScorePresentationTests.swift",
+    "UITests/ModePracticeInteractionTests.swift"
+  ],
+  "scope": "Pure terminal result-text presentation: one existing native Text emphasizes one unique complete committed scoreLabel; full plain/spoken copy, ID/fallback/context remain. One existing test readiness predicate now waits whole-board settlement; no rules/RNG/save/clock/assets/project-membership owner change.",
+  "products": {
+    "debug": {
+      "configuration": "Debug",
+      "runtime": "dev.b088afcf5e",
+      "info": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+        "sha256": "54f9d9834e94c2e9363b6065e531a8b4ee9baf6adb74434c015cb1f0a1edf853",
+        "bytes": 1402
+      },
+      "catalogue": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/observatory-dialogue.json",
+        "sha256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+        "bytes": 96334
+      },
+      "executable": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Starfall",
+        "sha256": "ac05a9cde8a4ffb4939e2d28fe9d8d63d45ab17e9495c27c5c7067e8a66d7da1",
+        "bytes": 40144
+      },
+      "currentDebugDylib": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Starfall.debug.dylib",
+        "sha256": "19ae9e8dab23ee152c84219fef5479d13598dd76561060e614a07ee9ff5b6fbc",
+        "bytes": 15939104
+      },
+      "currentDebugDylibQualification": "Current product metadata read at finalization; the original runner bound the executable/Info/catalogue and735 source before each test."
+    },
+    "release": {
+      "configuration": "Release",
+      "runtime": "dev.b088afcf5e",
+      "info": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Release/Build/Products/Release-iphonesimulator/Starfall.app/Info.plist",
+        "sha256": "54f9d9834e94c2e9363b6065e531a8b4ee9baf6adb74434c015cb1f0a1edf853",
+        "bytes": 1402
+      },
+      "catalogue": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Release/Build/Products/Release-iphonesimulator/Starfall.app/observatory-dialogue.json",
+        "sha256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+        "bytes": 96334
+      },
+      "executable": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Release/Build/Products/Release-iphonesimulator/Starfall.app/Starfall",
+        "sha256": "86e3618d5a6480fd10742609c2f8b32881d2910b789793d241c20b2f4c446a9d",
+        "bytes": 8685728
+      }
+    }
+  },
+  "sealedCommandManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-10-candidate-requalified-fff03063-completion.json",
+    "sha256": "7d888b0ad24265d1a62b1bc27768ff84f90736f5269f48807439ed4ade224f08",
+    "bytes": 100645
+  },
+  "continuationManifests": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-10-candidate-requalified-fff03063.json",
+      "sha256": "7859c06948fd7c049e7e2be86045219ae5f79cea7b3f26666fa7a5f5b71c8d4e",
+      "bytes": 49508
+    }
+  ],
+  "separateBaselineVerification": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-10-baseline.json",
+    "sha256": "98ac6350f4b3bed347210e03274ee555adfa3b6e573ab3340093ee335868fd79",
+    "bytes": 10955
+  },
+  "history": {
+    "initialCandidateFailure": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/failure-10-3d6950e6-practice-settlement.json",
+      "sha256": "34801bd71e4c769bdf00acdb7da2b78fe17ea45fb5ee207cf763a331730f4ad0",
+      "bytes": 3185
+    },
+    "initialSealedProductMetadata": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/sealed-goal10-initial-product-metadata/manifest.json",
+      "sha256": "3364ff31700841df6e99b1facb9c3bf7242ca6010c46ac177af5d83de063b5c7",
+      "bytes": 2149
+    },
+    "initialProductQualification": "Exact original Info/catalogue/executable bytes retained before mutable DerivedData replacement; original product paths are historical, not required to remain3d.",
+    "freshAdmissionStop": {
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-10-candidate-requalified-fff03063.json",
+        "sha256": "7859c06948fd7c049e7e2be86045219ae5f79cea7b3f26666fa7a5f5b71c8d4e",
+        "bytes": 49508
+      },
+      "originalStatus": "stopped-failure",
+      "originalStopType": "RuntimeError",
+      "normalizedClassification": "Unrelated Core controller active before Silver; three completed checks preserved, eight never-started originals executed once by the exact completion helper. No primary Starfall failure in this predecessor."
+    }
+  },
+  "lightChecks": {
+    "status": "PENDING_ROOT_FINAL_HYGIENE_AND_DIFF_CHECK_AFTER_EVIDENCE_CREATION",
+    "requiredCommands": [
+      [
+        "python3",
+        "scripts/ci-hygiene.py"
+      ],
+      [
+        "git",
+        "diff",
+        "--check"
+      ]
+    ],
+    "qualification": "This helper executes neither check; root records their actual results after creating these evidence files and final prose."
+  },
+  "limits": "Source/build product identity only. Whole-native visuals, retained-image fidelity, sampled motion, actualVoiceOver, minimum-iOS17 and physical acceptance are separate."
+}

@@ -1,6 +1,6 @@
 # A coherent set of native HUD instruments
 
-**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 merged in [PR #404](https://github.com/lbeezr/starfall/pull/404); goal 4 merged in [PR #405](https://github.com/lbeezr/starfall/pull/405); goal 5 merged in [PR #406](https://github.com/lbeezr/starfall/pull/406); goal 6 merged in [PR #407](https://github.com/lbeezr/starfall/pull/407); goal 7 merged in [PR #408](https://github.com/lbeezr/starfall/pull/408); goal 8 merged in [PR #409](https://github.com/lbeezr/starfall/pull/409) as `6a2acb17`; goal 9 qualified for bounded development, individual merge pending · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
+**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 merged in [PR #404](https://github.com/lbeezr/starfall/pull/404); goal 4 merged in [PR #405](https://github.com/lbeezr/starfall/pull/405); goal 5 merged in [PR #406](https://github.com/lbeezr/starfall/pull/406); goal 6 merged in [PR #407](https://github.com/lbeezr/starfall/pull/407); goal 7 merged in [PR #408](https://github.com/lbeezr/starfall/pull/408); goal 8 merged in [PR #409](https://github.com/lbeezr/starfall/pull/409) as `6a2acb17`; goal 9 merged in [PR #410](https://github.com/lbeezr/starfall/pull/410) as `0fa65a7a`; goal 10 qualified, merge pending · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
 
 The user authorized [ten ordered HUD refinements](https://github.com/lbeezr/starfall/issues/381), with each goal tested and merged before the next implementation. Each pass retains the previous accepted behavior and corrects its current presentation seam in the normal app. Existing Observatory materials, native controls, rules, saves, replay, clocks and board mapping remain authoritative.
 
@@ -20,8 +20,8 @@ The initial development-adoption verdict below is superseded. Its source identit
 | 6 | Specific, calm pressure feedback | [#387](https://github.com/lbeezr/starfall/issues/387) | Merged #407; issue completed |
 | 7 | Causal move-to-earned-light attention | [#388](https://github.com/lbeezr/starfall/issues/388) | Merged #408 as `c81b59ee`; issue completed |
 | 8 | Consistent optional detail readers | [#389](https://github.com/lbeezr/starfall/issues/389) | Verified and merged [#409](https://github.com/lbeezr/starfall/pull/409) as `6a2acb17`; issue completed |
-| 9 | Whole-HUD adaptive layouts | [#390](https://github.com/lbeezr/starfall/issues/390) | Adopted named `5c05ecef` / `dev.06a3229203` development slice; [source and bounded evidence](#goal-9-local-adaptive-composition), individual merge pending |
-| 10 | Complete native journey cohesion | [#391](https://github.com/lbeezr/starfall/issues/391) | After goal 9 merge |
+| 9 | Whole-HUD adaptive layouts | [#390](https://github.com/lbeezr/starfall/issues/390) | Verified and merged [#410](https://github.com/lbeezr/starfall/pull/410) as `0fa65a7a`; issue completed |
+| 10 | Complete native journey cohesion | [#391](https://github.com/lbeezr/starfall/issues/391) | Native, hosted, sampled-motion and exact-export reviews passed at `fff03063`; individual merge pending |
 
 ## Goal 1 correction: native and visual acceptance
 
@@ -223,7 +223,7 @@ No actual VoiceOver, physical-device, minimum-iOS, continuous-motion/performance
 
 ## Goal 9: local adaptive composition
 
-**Status:** Adopted for the named development slice at `5c05ecef` / `dev.06a3229203`; individual PR merge remains pending. Goal 10 stays queued until Goal 9 merges.
+**Status:** Adopted for the named development slice at `5c05ecef` / `dev.06a3229203`; merged in [PR #410](https://github.com/lbeezr/starfall/pull/410) as `0fa65a7a`, completing #390. [Publication proof](publication-09.json) binds identical reviewed/published/main trees and all735 tested inputs; canonical Project Done is unavailable. Goal 10 follows this verified individual merge.
 
 The accepted-main short-landscape baseline reproduced a zero-height AX5 board viewport. Shared `SkyReadingPlayfield` now allocates adjacent instruments and play from the local viewport: complete score/Pause stay fixed, forecast/pressure facts scroll separately, the existing 80-point return and one common board/hit/receipt mapping remain. Native fonts and targets stay full-sized; contextual play/next glyph actions keep their 45-point gameplay targets and complete spoken names. Essential pause-menu navigation precedes optional Mastery reading.
 
@@ -244,3 +244,25 @@ Actual iPhone 17e, iOS 27, AX5, paused Story pressure. The historical `a8377c2c`
 Same corrected source, default text, actual 5,000/150,000 Story recovery and complete Line! +5,000 accounting. This whole still establishes the captured composition; normal motion has its separate sampled review.
 
 Historical initial/correction records retain their measured Debug product hashes, but their reused DerivedData `Info.plist` paths now contain the final product; those old product files were not separately retained. Their frozen source, logs and captures remain historical evidence. All referenced current final products and source files match their sealed records.
+
+## Goal 10: native journey cohesion
+
+**Status:** Adopted for the named development slice at `fff03063` / `dev.b088afcf5e`; individual PR merge pending. Parent #381 stays open until this verified main merge.
+
+`SkyResultSummary` applies existing `instrumentScore` only to one exact complete committed score label in the original native sentence. Reason/coda stay supporting; complete speech, outcome, decisions, surfaces and native scrolling remain. Missing, repeated or embedded partial matches keep the original readable copy. The accepted-Goal9 baseline was legible: this is a hierarchy refinement.
+
+Fresh qualification: 352 Core, seventeen hosted and seven native executions/seven unique methods, zero failures/skips, Debug/Release and exact runtime/catalogue identity. All eleven stages qualified on `fff03063`. A foreign Core process blocked controller admission after Debug, the repaired phone mode and hosted17 had passed; that exact admission-only record retains those three passes. A separate completion ran only the eight never-started original commands. No result from the initial failed `3d6950e6` qualification was reused, and no test was retried to turn a failure green. The Silver movie belongs to its existing fresh native execution, adding no supplemental execution.
+
+History stays separate. The accepted-Goal9 baseline ran two native methods. Initial `3d6950e6` passed seventeen hosted and four native methods before its fifth native execution failed: its retained-summary baseline included the transient “Stars settling…” suffix, although exact 49-cell equality later passed. The [failure record](failure-10-3d6950e6-practice-settlement.json) retains that failed qualification, two native cases unrun and Core/Release unrun. The test-only [requalification](goal-10-requalification.json) adds settled whole-board readiness to the existing bounded wait, preserving exact retained-state assertions, full normal motion and allowances. App/runtime bytes remain `b088`; the failed source and all initial bounded visual passes remain frozen history. Baseline 2 + initial 5 + fresh 7 equals14 actual native executions of7methods across those separate scopes; fresh coverage is7 only.
+
+[fresh source](source-10.json), [fresh mechanics](verification-10.json), [fresh whole-native review](visual-review-10-native.json), [fresh hosted review](visual-review-10-requalified-hosted.json), [fresh exact-export review](visual-review-10-exports.json), [fresh sampled-motion review](visual-review-10-requalified-motion.json), [actual retained capture index](captures-10.json), [separate accepted9 baseline](verification-10-baseline.json), [initial3d failed qualification](failure-10-3d6950e6-practice-settlement.json), [frozen requalification packet](goal-10-requalification.json), Historical initial bounded visual reviews: [eight selected hosted specimens; seventeen mechanical passes](visual-review-10-candidate-hosted.json), [normal-silver-phone](visual-review-10-candidate-silver-phone.json), [last-clear-full-board-tablet](visual-review-10-candidate-last-clear-tablet.json), [open-sky-phone / full-board-phone](visual-review-10-candidate-ending-native.json), Separate accepted9 baseline visual reviews: [normal-silver-phone](visual-review-10-baseline-phone.json), [last-clear-full-board-tablet](visual-review-10-baseline-tablet.json).
+
+![Actual native Silver playfield with the shared score and pause instruments over continuous scenery](goal-10-captures/dev-fff03063__silver-clear-hud__iphone-17e__default-text-normal-effects.jpg)
+
+Actual normal-phone Silver clear still:19,000/12,000 live HUD over continuous scenery and the shown board before ceremony. No steady-density,49-occupied, exact-onset or continuous-motion claim. Source `fff03063` / `dev.b088afcf5e`; the actual pictured scroll position bounds visible content.
+
+![Actual native earned Silver result with official summary typography and existing journey actions](goal-10-captures/dev-fff03063__silver-round-summary__iphone-17e__default-text-normal-effects.jpg)
+
+Actual normal-phone Silver earned result: exact19,000 of12,000 span uses the shared static result role inside the complete sentence. Separate19,000 this-clear accounting remains distinct; outcome and primary next decision remain dominant. Source `fff03063` / `dev.b088afcf5e`; the actual pictured scroll position bounds visible content.
+
+Named simulator checks and inspected still/motion samples are development evidence. Actual VoiceOver, physical-device/minimum-iOS execution, human recognition and continuous performance remain separate. Actual pictured scroll positions bound visible facts. All frozen history stays unchanged. No new asset, target, rule, save or cadence is introduced.

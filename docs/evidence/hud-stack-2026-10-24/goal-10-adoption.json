@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "status": "ADOPTED_FOR_NAMED_DEVELOPMENT_SLICE_MERGE_PENDING",
+  "recordedUTC": "2026-10-25T13:59:48.263590+00:00",
+  "testedSource": "fff03063ddd02ed947e7524a090a599ee20fd063",
+  "runtime": "dev.b088afcf5e",
+  "acceptedBase": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+  "outcome": "Registered static SkyResultSummary uses existing instrumentScore only for one exact complete authoritative score label inside the same native terminal sentence. Complete copy, spoken identity, native sizing, surfaces, decisions and scrolling remain.",
+  "references": [
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-10.json",
+      "sha256": "2c3876b2e3ab16f2432c71ac2ce91a3d589729df59fe207681288a563e710a2e",
+      "bytes": 7188
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-10.json",
+      "sha256": "c3dd0bcbbf4367dcee69b7c6198243f40f395be011c1694c13973e0c9213c748",
+      "bytes": 32635
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-native.json",
+      "sha256": "303823a3fc2b5977b177ac0c85b592454a1cf6c1375c5fe58159e4048c2d303d",
+      "bytes": 33705
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-requalified-hosted.json",
+      "sha256": "a71bc85c73d5afbd9950b582203ddb8316b1a503ba6e3101b71ae97159a5d9f0",
+      "bytes": 16817
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-requalified-motion.json",
+      "sha256": "b3ae2ece7d32c6663cd5774ba7be1662e05d254504003903302be04a95a062db",
+      "bytes": 35526
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports.json",
+      "sha256": "46aeb16b5074bd621b1c309f84bc5a07ed5030410d70df9dcfbb95696136e99a",
+      "bytes": 17075
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-10.json",
+      "sha256": "002db82d198321124ff1eda3679f733d013c019f2ffa42f424e59f66aecd1b8e",
+      "bytes": 84254
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-10-baseline.json",
+      "sha256": "98ac6350f4b3bed347210e03274ee555adfa3b6e573ab3340093ee335868fd79",
+      "bytes": 10955
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/failure-10-3d6950e6-practice-settlement.json",
+      "sha256": "34801bd71e4c769bdf00acdb7da2b78fe17ea45fb5ee207cf763a331730f4ad0",
+      "bytes": 3185
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-requalification.json",
+      "sha256": "07bd5f7b333b8f8a58bd88d74cd35c4490671bfd8c88ba1bee3cbc57e00f2887",
+      "bytes": 3018
+    }
+  ],
+  "finalLightChecks": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/final-light-checks-10.json",
+    "sha256": "cffce2c1be9ac01f3c956b0a8e11698023e5c8a42f8333028322aded3a5f8dae",
+    "bytes": 1008
+  },
+  "lightChecksResolution": "Resolves verification-10.json /lightChecks pending-at-creation via actual post-evidence/prose hygiene, diff and staged-diff commands; frozen record stays unchanged.",
+  "counts": {
+    "corePassed": 352,
+    "hostedPassed": 17,
+    "nativeExecutions": 7,
+    "nativeMethods": 7,
+    "failed": 0,
+    "skipped": 0,
+    "nativeWholePNGsReviewed": 93,
+    "hostedSpecimensReviewed": 8,
+    "wholeMotionSamplesReviewed": 16,
+    "exactExportPairsReviewed": 11
+  },
+  "history": {
+    "baselineNativeExecutions": 2,
+    "initialCandidateNativeExecutions": 5,
+    "initialCandidateNativePassed": 4,
+    "initialCandidateNativeFailed": 1,
+    "freshNativeExecutions": 7,
+    "totalAcrossSeparateScopes": 14,
+    "uniqueMethodsAcrossSeparateScopes": 7,
+    "failedInitialNotReused": true
+  },
+  "sourceAndProductsAudit": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/audit-goal10-final-acceptance-after-docs.json",
+    "sha256": "dc989bcf441ac01a0dcf4a8d7e52fd48924b9b5b60703b9e24d94ae46a3093c7",
+    "bytes": 310595
+  },
+  "sealedFinalProductMetadata": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/sealed-goal10-final-product-metadata/manifest.json",
+    "sha256": "b03b948c3b6fd537eec0493e21c12a5b85fb94876339054f549939d947c08b20",
+    "bytes": 4637
+  },
+  "maintainedDocs": [
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/README.md",
+      "sha256": "b4cdf35dfe57b03cca93a1e516b0466985ec7e891d13d3d2f3aac8d68f611831",
+      "bytes": 42889
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/App/README.md",
+      "sha256": "5779adfce4d811389189c18e12a4a6e06a6951b7ea931f2ad7abb11218e18afb",
+      "bytes": 57724
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/README.md",
+      "sha256": "5a94626ee992c66bd04c0174d0d744c1f8acf75f7effde31301c85c9f441e72b",
+      "bytes": 17512
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/hud/README.md",
+      "sha256": "09e55e8612d1090f953cb88d0cefcc448623c6606f929c5028f4b7b21f096c50",
+      "bytes": 6277
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/ROADMAP.md",
+      "sha256": "56d0b2a6dd372f8dac3090519f404369fc3b439ae6c1ddb2a96f05c6092ace9d",
+      "bytes": 48437
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/EXPERIMENTS.md",
+      "sha256": "fb31f06b14a0de76f37ebf127dd3d1500954d8e42d644cd0d4932a4b66557469",
+      "bytes": 126116
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/GAME_UI_SYSTEM.md",
+      "sha256": "8fc4cbae1f8e6f7217abe069fd8b9a618400cef46c7a6df5726f360307f7b18d",
+      "bytes": 45644
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/ENGINEERING.md",
+      "sha256": "263631c78f661c95d43b4c01cb7b1415c84ca72af3119c60c82ec33962c23135",
+      "bytes": 186161
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/README.md",
+      "sha256": "7611944a1dea5f92fed0df89f052d7feea00be40f4024a75375a058c9dde390e",
+      "bytes": 53761
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/VISUAL_REFERENCE.md",
+      "sha256": "95559527a1cc6cd7e233cb10b831522589bc8459ce3b1fbed097ce91139d2d63",
+      "bytes": 92224
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/README.md",
+      "sha256": "78005632c51d5a1bec8ce1204550dfdbdfa3f621c2dc1c364a91f01c40dbc78e",
+      "bytes": 4964
+    }
+  ],
+  "reviewSeparation": "Independent native, hosted, sampled-motion, exact-export and documentation reviews precede publication. Root aggregates their explicit bounded passes and validates exact bytes/coverage; passing mechanics alone never establish visual acceptance.",
+  "testReadinessCorrection": "Initial3d practice failure preserved. Existing ten-second wait now requires whole-board settlement before retained snapshot; all exact cell/summary assertions, method limits and normal effects remain. No App/rule/clock change.",
+  "limits": [
+    "Selected iOS27 Simulator phone/tablet development evidence; no full source-inventory matrix execution claim.",
+    "Actual scroll positions bound visible content; practice post-completion bottom-row max-scroll/next-finish actions not separately exercised. Existing top-right exits and exact round restoration were exercised.",
+    "Sampled Silver clear-to-result evidence establishes shown phases only; continuous smoothness, onset/latency, incoming refill performance and human recognition are unverified.",
+    "Actual VoiceOver, physical-device/minimum-iOS execution and physical comfort remain outside this acceptance. No phone installation performed."
+  ],
+  "integration": "Individual Goal10 PR and default-main tree/input equality still required; issues391/381 remain open until verified merge."
+}

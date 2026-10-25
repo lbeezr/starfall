@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "status": "PASS_BOUNDED_EXACT_EXPORT_MODE_CONTEXTS",
+  "verdict": "PASS",
+  "reviewer": "Independent /root/hud_read_ahead",
+  "reviewedUTC": "2026-10-25T13:51:23.326234+00:00",
+  "captureIndex": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-10.json",
+    "sha256": "002db82d198321124ff1eda3679f733d013c019f2ffa42f424e59f66aecd1b8e",
+    "bytes": 84254
+  },
+  "source": {
+    "commit": "fff03063ddd02ed947e7524a090a599ee20fd063",
+    "runtime": "dev.b088afcf5e",
+    "prebuildSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-10-candidate-requalified-fff03063.json",
+      "sha256": "a4a5637622f7867a04a344280b6b185378db9e486f551fa7aaed8f777d3c0195",
+      "bytes": 187955
+    }
+  },
+  "scope": {
+    "pairIDs": [
+      "06-silver-live",
+      "07-silver-home-return",
+      "08-silver-entry",
+      "11-places-retained-full-board"
+    ],
+    "indexPositions1Based": [
+      6,
+      7,
+      8,
+      11
+    ],
+    "pairsDirectlyInspected": 4,
+    "wholeImagesDirectlyViewed": 8,
+    "otherSevenRows": "Not inspected in this shard; named peers own their separate pair reviews."
+  },
+  "method": "Direct view_image original-detail whole raw PNG and final retained JPEG for every assigned pair, after reading the index. Read-only SHA256/byte/dimension/actual EXIF metadata checks and attachment provenance cross-check. No image generation, modification, resize, crop, export or new codec invocation by reviewer.",
+  "overallFindings": [
+    "All8 hashes/byte sizes match the bound index. All8 original stored/display dimensions and actual EXIF274=1 match:6 phone files1170\u00d72532 and2 tablet files2064\u00d72752.",
+    "JPEG80 adds slight smoothing in fine scenery/glow but no consequential essential text, numeric glyph, target, control boundary, painting hierarchy or state-context loss in these4 pairs.",
+    "Captions match the actual visible native states and preserve whole-viewport versus whole-page limits. No duplicate assigned raw state or mislabel found."
+  ],
+  "pairs": [
+    {
+      "id": "06-silver-live",
+      "indexPosition1Based": 6,
+      "status": "PASS_BOUNDED_EXACT_RAW_JPEG_PAIR",
+      "verdict": "PASS",
+      "kind": "candidate-native",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "stage": "native-10-candidate-requalified-fff03063-normal-silver-phone",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "variant": "default-text-normal-effects",
+      "captionReviewedVerbatim": "Actual normal-phone Silver clear still:19,000/12,000 live HUD over continuous scenery and the shown board before ceremony. No steady-density,49-occupied, exact-onset or continuous-motion claim.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/95737B7E-9C35-4844-81B3-E71C8512256B.png",
+        "sha256": "92541080445106327a9fbde3bc8ea5d98e8ae67b01e929f971278244b7371cd8",
+        "bytes": 4846644,
+        "metadata": {
+          "format": "PNG",
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 1,
+          "effectiveOrientation": 1,
+          "displayPixelDimensions": [
+            1170,
+            2532
+          ],
+          "parser": "Read-only Python standard-library PNG IHDR/eXIf and JPEG SOF/APP1 TIFF fields; no raster transform or decoder/export invocation."
+        },
+        "directWholeOriginalViewed": true
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-clear-hud__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "199a8d775d0cad033ef8ed8a2c761e4ac865debb7414f1f39c0ca56c8a31c003",
+        "bytes": 891543,
+        "metadata": {
+          "format": "JPEG",
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 1,
+          "effectiveOrientation": 1,
+          "displayPixelDimensions": [
+            1170,
+            2532
+          ],
+          "parser": "Read-only Python standard-library PNG IHDR/eXIf and JPEG SOF/APP1 TIFF fields; no raster transform or decoder/export invocation."
+        },
+        "directWholeJPEGViewed": true
+      },
+      "provenance": {
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/manifest.json",
+          "sha256": "6110ff93765ee22cabc6baea5856b129ac0fcfdc63b0aaaae0319f70848b589e",
+          "bytes": 6387
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "95737B7E-9C35-4844-81B3-E71C8512256B.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-phone-story-automatic-pattern-return_0_D9F854F2-4EC5-4C95-B9ED-06831950C696.png",
+          "timestamp": 1792934003.998
+        },
+        "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-summary.json",
+          "sha256": "1c8722408ad10dd4f5f65f462e3503bf3ba6a8c64e3893df656348bdbfa36c72",
+          "bytes": 740,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-receipt.json",
+          "sha256": "19158d4ea7b708c337f603de626dba63948eed442110bdcd486cd2d7cd16dfbd",
+          "bytes": 204
+        }
+      },
+      "conversion": {
+        "format": "JPEG",
+        "quality": 80,
+        "wholeOriginalDimensionsPreserved": true,
+        "cropResizeRetouch": false,
+        "orientationPreserved": true
+      },
+      "findings": [
+        "Both whole images show exact19,000/12,000 with pearl earned value/brass glyph over local dark protection, trailing timing head and Pause, complete ceiling and the same shown occupied-star arrangement over one Silver painting. All visible numeral/glyph/control ink survives JPEG80.",
+        "Caption matches actual live HUD before ceremony; it is not a terminal-result card or49-occupied/steady-density specimen. No exact onset or continuous-motion inference."
+      ]
+    },
+    {
+      "id": "07-silver-home-return",
+      "indexPosition1Based": 7,
+      "status": "PASS_BOUNDED_EXACT_RAW_JPEG_PAIR",
+      "verdict": "PASS",
+      "kind": "candidate-native",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "stage": "native-10-candidate-requalified-fff03063-normal-silver-phone",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "variant": "default-text-normal-effects",
+      "captionReviewedVerbatim": "Actual Home after the real Silver repair: retained19,000/12,000 completion and View last sky. This visible menu portion does not depict all places.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/38ED6B46-764C-429D-9EF7-14F705A720EB.png",
+        "sha256": "d2d0d893a163a8495e49f6a1d64683084820b70a3c626ab06984face6d24fbec",
+        "bytes": 3985916,
+        "metadata": {
+          "format": "PNG",
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 1,
+          "effectiveOrientation": 1,
+          "displayPixelDimensions": [
+            1170,
+            2532
+          ],
+          "parser": "Read-only Python standard-library PNG IHDR/eXIf and JPEG SOF/APP1 TIFF fields; no raster transform or decoder/export invocation."
+        },
+        "directWholeOriginalViewed": true
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__home-retained-silver__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "c94bc8c5c048b28f5b222fc9ac4da15ea27e4511becbabddefb60586aa3f06ad",
+        "bytes": 725421,
+        "metadata": {
+          "format": "JPEG",
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 1,
+          "effectiveOrientation": 1,
+          "displayPixelDimensions": [
+            1170,
+            2532
+          ],
+          "parser": "Read-only Python standard-library PNG IHDR/eXIf and JPEG SOF/APP1 TIFF fields; no raster transform or decoder/export invocation."
+        },
+        "directWholeJPEGViewed": true
+      },
+      "provenance": {
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/manifest.json",
+          "sha256": "6110ff93765ee22cabc6baea5856b129ac0fcfdc63b0aaaae0319f70848b589e",
+          "bytes": 6387
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "38ED6B46-764C-429D-9EF7-14F705A720EB.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-phone-home-retained-silver-ending_0_DF3C0738-5CF9-4957-BB0C-0EF37606D3E1.png",
+          "timestamp": 1792934022.053
+        },
+        "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-summary.json",
+          "sha256": "1c8722408ad10dd4f5f65f462e3503bf3ba6a8c64e3893df656348bdbfa36c72",
+          "bytes": 740,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-receipt.json",
+          "sha256": "19158d4ea7b708c337f603de626dba63948eed442110bdcd486cd2d7cd16dfbd",
+          "bytes": 204
+        }
+      },
+      "conversion": {
+        "format": "JPEG",
+        "quality": 80,
+        "wholeOriginalDimensionsPreserved": true,
+        "cropResizeRetouch": false,
+        "orientationPreserved": true
+      },
+      "findings": [
+        "Both whole images preserve Home Story/Free Play/Tutorial cards, characters and the fully visible View last sky with Silver Pools19,000 of12,000 starlight\u00b7Complete. Menu font roles remain distinct from live/terminal instrument values.",
+        "Caption fits actual retained ending context. It shows the displayed Home portion, not all places, return animation or complete scroll coverage."
+      ]
+    },
+    {
+      "id": "08-silver-entry",
+      "indexPosition1Based": 8,
+      "status": "PASS_BOUNDED_EXACT_RAW_JPEG_PAIR",
+      "verdict": "PASS",
+      "kind": "candidate-native",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "stage": "native-10-candidate-requalified-fff03063-normal-silver-phone",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "variant": "default-text-normal-effects",
+      "captionReviewedVerbatim": "Actual concise current Silver Entry and Begin at normal phone text, with the12,000 objective. Longer Help remains in its existing native reader; terminal score styling does not leak into Entry.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/C5F2BBD3-74F6-4BE0-9B5B-FABF22363996.png",
+        "sha256": "57e56252f5cb5d16193daa61d8ae08ca48baec4d3336faff75d8c554e76f0c65",
+        "bytes": 4562666,
+        "metadata": {
+          "format": "PNG",
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 1,
+          "effectiveOrientation": 1,
+          "displayPixelDimensions": [
+            1170,
+            2532
+          ],
+          "parser": "Read-only Python standard-library PNG IHDR/eXIf and JPEG SOF/APP1 TIFF fields; no raster transform or decoder/export invocation."
+        },
+        "directWholeOriginalViewed": true
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-entry__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "ef80d6bfcaf165b13104d1578f36a438a7a42626f32d0015c1a5ebf3927ff51b",
+        "bytes": 854104,
+        "metadata": {
+          "format": "JPEG",
+          "storedPixelDimensions": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 1,
+          "effectiveOrientation": 1,
+          "displayPixelDimensions": [
+            1170,
+            2532
+          ],
+          "parser": "Read-only Python standard-library PNG IHDR/eXIf and JPEG SOF/APP1 TIFF fields; no raster transform or decoder/export invocation."
+        },
+        "directWholeJPEGViewed": true
+      },
+      "provenance": {
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/manifest.json",
+          "sha256": "6110ff93765ee22cabc6baea5856b129ac0fcfdc63b0aaaae0319f70848b589e",
+          "bytes": 6387
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "C5F2BBD3-74F6-4BE0-9B5B-FABF22363996.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-phone-current-silver-help-entry-start_0_A5F60432-E497-46D6-BE3D-1E9703F12841.png",
+          "timestamp": 1792933984.045
+        },
+        "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-summary.json",
+          "sha256": "1c8722408ad10dd4f5f65f462e3503bf3ba6a8c64e3893df656348bdbfa36c72",
+          "bytes": 740,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-receipt.json",
+          "sha256": "19158d4ea7b708c337f603de626dba63948eed442110bdcd486cd2d7cd16dfbd",
+          "bytes": 204
+        }
+      },
+      "conversion": {
+        "format": "JPEG",
+        "quality": 80,
+        "wholeOriginalDimensionsPreserved": true,
+        "cropResizeRetouch": false,
+        "orientationPreserved": true
+      },
+      "findings": [
+        "Both images preserve the exact12,000 objective, complete concise Silver Entry prose and full Begin control with Back/Settings above. Native Entry content retains its existing role; no terminal-score styling appears here.",
+        "Longer Help is not depicted or certified by this Entry screenshot. Slight scenic fine-texture smoothing from JPEG does not alter the complete visible prose or Begin boundary."
+      ]
+    },
+    {
+      "id": "11-places-retained-full-board",
+      "indexPosition1Based": 11,
+      "status": "PASS_BOUNDED_EXACT_RAW_JPEG_PAIR",
+      "verdict": "PASS",
+      "kind": "candidate-native",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "stage": "native-10-candidate-requalified-fff03063-mode-guidance-tablet",
+      "testIdentifier": "IdentityJourneyInteractionTests/testLargestCalmModeGuidanceCancellationAndExactContinue()",
+      "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "variant": "ax5-calm-effects",
+      "captionReviewedVerbatim": "Actual iPad Pro13 M5/iOS27,AX5 with real Settings Calm. After Replay/New previews were cancelled, Places retains Full Board42,000/150,000 beside the distinct new-visit150,000 objective; Continue and Start again are fully visible. Actual scrolled list position; later places and whole-page coverage are not shown.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/B90A24D5-AAF9-4BC6-8CFC-25238DF7E93B.png",
+        "sha256": "fcf51fe78570736561b3a1379dc51f01b7519e8cec63711b85bef701cfc90c6f",
+        "bytes": 5061963,
+        "metadata": {
+          "format": "PNG",
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "effectiveOrientation": 1,
+          "displayPixelDimensions": [
+            2064,
+            2752
+          ],
+          "parser": "Read-only Python standard-library PNG IHDR/eXIf and JPEG SOF/APP1 TIFF fields; no raster transform or decoder/export invocation."
+        },
+        "directWholeOriginalViewed": true
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__places-retained-full-board__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "b9bbe9da1d88b2854a2efb1e7f2c8e4454ecf15c17309aaa8f178b9c039db642",
+        "bytes": 952354,
+        "metadata": {
+          "format": "JPEG",
+          "storedPixelDimensions": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "effectiveOrientation": 1,
+          "displayPixelDimensions": [
+            2064,
+            2752
+          ],
+          "parser": "Read-only Python standard-library PNG IHDR/eXIf and JPEG SOF/APP1 TIFF fields; no raster transform or decoder/export invocation."
+        },
+        "directWholeJPEGViewed": true
+      },
+      "provenance": {
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/manifest.json",
+          "sha256": "6161fe91bc1dd1e6052fc094aef1f78da366a4cb751718638d1b916754f16da4",
+          "bytes": 11146
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "B90A24D5-AAF9-4BC6-8CFC-25238DF7E93B.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-tablet-map-back-retains-full-board-mode_0_55E7F492-4284-4325-BA1A-E3BAE621EA73.png",
+          "timestamp": 1792935169.475
+        },
+        "testIdentifier": "IdentityJourneyInteractionTests/testLargestCalmModeGuidanceCancellationAndExactContinue()",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-summary.json",
+          "sha256": "9688352ac0761722c5bce0ae3e95add01a063f5416946d6470ce72a3f5f8ba71",
+          "bytes": 752,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-receipt.json",
+          "sha256": "36aadf0807db4aacfe862e17918c217f23c7fbacfc34ed3a427b8cc615bb546b",
+          "bytes": 205
+        }
+      },
+      "conversion": {
+        "format": "JPEG",
+        "quality": 80,
+        "wholeOriginalDimensionsPreserved": true,
+        "cropResizeRetouch": false,
+        "orientationPreserved": true
+      },
+      "findings": [
+        "Both whole images preserve Places/Choose a place, complete saved Full Board42,000/150,000, distinct new-visit150,000, complete Continue and Start again, selected Lantern and the visible locked Ribbon row. Wrapping/spacing and all essential native ink match the raw.",
+        "Caption correctly identifies AX5 real Settings Calm context and actual scrolled list position after cancelled previews. Later places/full-page coverage remain outside scope."
+      ]
+    }
+  ],
+  "limits": [
+    "Exact4-pair static export fidelity/context verdict only, not overall Goal10 adoption or terminal-result typography acceptance by this shard.",
+    "Mechanical native passes are provenance, not substitutes for visual inspection; full Help/pages/later Places/offscreen controls are not claimed visible.",
+    "No continuous motion, exact latency/onset, whole device matrix, actual VoiceOver, physical hardware, minimum-iOS, human readability study, measured contrast or performance claim."
+  ]
+}

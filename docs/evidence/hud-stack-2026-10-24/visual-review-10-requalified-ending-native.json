@@ -1,0 +1,620 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "reviewer": "/root/hud_goal_review",
+  "reviewedUTC": "2026-10-25T13:32:30.563250+00:00",
+  "status": "PASS_BOUNDED_REQUALIFIED_NATIVE_ENDING_SIBLINGS",
+  "findings": [],
+  "decision": "Both fresh source-bound normal-phone ending siblings pass their bounded whole-view visual scope. Complete terminal copy, exact authoritative score emphasis and surrounding result/Replay context remain clear. No older source image was relabeled as fresh. Full candidate mechanical/adoption and actual retained-JPEG fidelity are separate decisions.",
+  "sourceIdentity": {
+    "candidateHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+    "runtime": "dev.b088afcf5e",
+    "acceptedBaseMain": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+    "baselineHead": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+    "perFileSourceSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-10-candidate-requalified-fff03063.json",
+      "sha256": "a4a5637622f7867a04a344280b6b185378db9e486f551fa7aaed8f777d3c0195",
+      "bytes": 187955
+    },
+    "runtimeInputCount": 568,
+    "testInputCount": 167,
+    "sourceInventory": {
+      "hostedMethods": 823,
+      "developmentPhoneUIMethods": 262,
+      "actualVoiceOverDeferredMethods": 6
+    },
+    "changedRuntimeOwners": [
+      "App/FallingSkyHUD.swift",
+      "App/SkyFlowCeremony.swift"
+    ],
+    "changedTestOwners": [
+      "AppTests/SkyScorePresentationTests.swift",
+      "UITests/ModePracticeInteractionTests.swift"
+    ],
+    "sourceSpecification": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/goal10-requalified-source-spec.json",
+      "sha256": "d58dfd2f72b86a2476cebddb97496ae3bb0c0be99f634578530d865c2856cce7",
+      "bytes": 668
+    },
+    "plan": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/goal10-requalified-plan.json",
+      "sha256": "a8c6dcad6e4b088aeca3adda8b4f7b4d356484c711eeac928c4a0c6b7e752d9e",
+      "bytes": 6931
+    },
+    "grant": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/grant-10-requalification-1200-1400.json",
+      "sha256": "5a837a3793d95166cf46cbdfd18ff88cfefbf088db1b9dbf6e6a02db2211224f",
+      "bytes": 1124
+    },
+    "mutableTopCommandsManifestSHAIntentionallyNotBound": true
+  },
+  "visualMethod": {
+    "freshWholeOriginalPNGsDirectlyViewed": 17,
+    "openSkyPNGs": 11,
+    "fullBoardPNGs": 6,
+    "uniquePNGByteHashes": 14,
+    "roleContract": "One complete authoritative scoreLabel uses existing instrumentScore emphasis within the original native primary-ink summary. Reason/coda, title, actions and nonterminal Entry/Home contexts remain readable; source/mechanical semantics are separate from actualVoiceOver.",
+    "runtimeAndVisualEvidenceSeparate": true,
+    "conversionCropResizeRetouchOrVideoDecodePerformed": false
+  },
+  "leaves": [
+    {
+      "label": "native-10-candidate-requalified-fff03063-open-sky-phone",
+      "selector": "StarfallUITests/IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay",
+      "status": "PASS_BOUNDED_REQUALIFIED_NATIVE_WHOLE_VIEWS",
+      "sourceContext": "Historical authored-Dusk horizontalFive via real Home; actual five-star trace earns 5, then later showers block column 1. No modern random-supply or earned Story-campaign claim.",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "mechanicalResult": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "methodAllowanceSeconds": 420,
+        "supervisorLimitSeconds": 480,
+        "stageElapsedSeconds": 278.832
+      },
+      "immutableArtifacts": {
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-receipt.json",
+          "sha256": "c5e702a3c9bfc63ac7ae1ec035fa87db694c4713f4bb2a14e2e4242e5ed49992",
+          "bytes": 199
+        },
+        "log": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone.log",
+          "sha256": "5b1574f44849590144f347c4cd82049c42e98e66004def2c99a33f31100e5f20",
+          "bytes": 163115
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-summary.json",
+          "sha256": "2b0fe137662a777a855edd609062b5c21a400adb10d8db8d768dee862ee3ca19",
+          "bytes": 741
+        },
+        "exportReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-export-receipt.json",
+          "sha256": "00b15b5baa6d164ec404fd7e87cdc57072ea8e29dd4b072b061cf24f51c2eb69",
+          "bytes": 203
+        },
+        "exportLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-export.log",
+          "sha256": "e3dfce903c104314b0cc19208f475c880ecc8cb3b98d1f7487034bc07c295a8a",
+          "bytes": 619
+        },
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/manifest.json",
+          "sha256": "16f17feb19020232cad69920c45bb8d1057b42ca1594f89a345ecbda9a85d93b",
+          "bytes": 5397
+        }
+      },
+      "wholeOriginalPNGsViewed": 11,
+      "uniquePNGByteHashes": 9,
+      "images": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/9883D353-A9A3-48C3-95B8-0B56C2D608B1.png",
+          "sha256": "72971ca921387252984cba05d71da92c39cce44ba31ec4ef25d26f796352dbe8",
+          "bytes": 3327582,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "9883D353-A9A3-48C3-95B8-0B56C2D608B1.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "identity10-phone-open-sky-replay-zero_0_7FF64666-F393-43C2-A22C-DA2AB63D849A.png",
+            "timestamp": 1792934769.375
+          },
+          "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Begin Replay shows 0 score, ordered forecast, native ceiling, stars and Resume/Next controls. Source asserts reconstruction from saved seed/rules, not equality with authored horizontalFive input."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/9337C6CB-B9A1-4587-A09E-DF3C3F3A4C5C.png",
+          "sha256": "7fb0c97785e3a5657334c12a5d5fca88cba12eea381905f5a49e5b2086e7c325",
+          "bytes": 2950551,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "9337C6CB-B9A1-4587-A09E-DF3C3F3A4C5C.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "identity10-phone-open-sky-replay-back_0_A61DFBD5-D1D2-4600-9B11-33D00DA27802.png",
+            "timestamp": 1792934739.99
+          },
+          "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Returning from Replay preview restores the complete same 5-point ending, all decisions and passive receipt; no duplicate numeric row or lost result text is visible."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/A601B092-0C6B-4201-AA52-C56EC2BB7F24.png",
+          "sha256": "f8637c9db300b79ed0dae8f1d1a6611bb2cc903bb9ff4dd72e7b8867d5980870",
+          "bytes": 3475110,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "A601B092-0C6B-4201-AA52-C56EC2BB7F24.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "identity10-phone-open-sky-replay-entry-end_0_1A1AC24F-DAE3-4781-AEE2-BB96759DC888.png",
+            "timestamp": 1792934735.032
+          },
+          "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Replay promise remains complete at the end checkpoint; no clipping of its coda or Begin."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/660E1D77-A342-46BA-8DB6-0BAA433C455C.png",
+          "sha256": "f8637c9db300b79ed0dae8f1d1a6611bb2cc903bb9ff4dd72e7b8867d5980870",
+          "bytes": 3475110,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "660E1D77-A342-46BA-8DB6-0BAA433C455C.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "identity10-phone-open-sky-replay-entry-start_0_936DA45F-C92E-4374-B248-4E4265AC7217.png",
+            "timestamp": 1792934734.717
+          },
+          "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Replay Entry has complete unchanged starting-sky/shower-rules and saved-round-until-Begin promise, plus Begin; no terminal emphasis."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/F2432840-C120-4DC6-B430-46F290C2090B.png",
+          "sha256": "ca832ab81f2b8badd0dd0bc4340e4a1d52c426140bb6a1cc0150a7f66cea634b",
+          "bytes": 2950320,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "F2432840-C120-4DC6-B430-46F290C2090B.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "identity10-phone-open-sky-earned-ending_0_37038E6F-4157-4986-8B9B-AE4F518B269D.png",
+            "timestamp": 1792934722.535
+          },
+          "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Whole terminal: No room to land; complete Column 1 blocked reason, emphasized 5 starlight collected, and complete Ready for another sky coda. New sky, Replay, Return to world map, Observatory, Review last clear and passive 5-point receipt are readable with clear separation."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/3FC3C17C-D5B6-4FB6-8706-63E03DF56DBB.png",
+          "sha256": "8466cf3f99570fdf6adeb868b6d6ee731cb94370f9bf846b173f6891d47ed8ae",
+          "bytes": 3395753,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "3FC3C17C-D5B6-4FB6-8706-63E03DF56DBB.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "identity10-phone-open-sky-exact-trace-return_0_979D445E-77DB-441F-8AEB-DF3947DEE36C.png",
+            "timestamp": 1792934577.651
+          },
+          "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Real trace checkpoint: score 5, Constellation +5 and5-light/5-point explanation remain distinct from the forecast. Transient trail/packet artwork is sampled in flight. Guide body is readable; Close is partly below the image viewport, so no complete-Close/settled-motion claim is made."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/289CBBDB-90E3-412E-B1F7-F98326E267AC.png",
+          "sha256": "33eac33b4715e5147697c55d8d1db867d753952ee61d6418380e490bb84c301b",
+          "bytes": 3478766,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "289CBBDB-90E3-412E-B1F7-F98326E267AC.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "identity10-phone-open-sky-help-entry-end_0_38C8D6B0-D50E-44AF-A5E8-F073BD16FA4C.png",
+            "timestamp": 1792934557.297
+          },
+          "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Returned Entry retains the complete Open Sky promise and Begin; summary emphasis is absent from this nonterminal context."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/9FFC6F83-01D0-4D9D-B3C3-21756FFE5FEF.png",
+          "sha256": "33eac33b4715e5147697c55d8d1db867d753952ee61d6418380e490bb84c301b",
+          "bytes": 3478766,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "9FFC6F83-01D0-4D9D-B3C3-21756FFE5FEF.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "identity10-phone-open-sky-help-entry-start_0_DEB970B2-1C17-434B-A416-EDA6F7E51564.png",
+            "timestamp": 1792934556.995
+          },
+          "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Open Sky Entry: complete normal promise and Begin, with separate back/settings utilities and unchanged supporting prose."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/70AFD052-F58E-404A-9F4B-96BFCFDF64D9.png",
+          "sha256": "64bb71526d409a5c8d238adc4784e7627794f1764ef5c9735d41934f11368af2",
+          "bytes": 2659450,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "70AFD052-F58E-404A-9F4B-96BFCFDF64D9.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "identity10-phone-open-sky-help-end_0_FD354273-221E-441F-9F72-2B87232B4AE9.png",
+            "timestamp": 1792934551.426
+          },
+          "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Same requested complete constellation Help paragraph and Done remain visible at the ending checkpoint; upper prior paragraph is intentionally outside the scroll viewport."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/682B3895-3EF6-4F5E-9073-939B1D216D6B.png",
+          "sha256": "0de6c45447ce8f3d7e2effa868da3cf730e3c4a775bc952842de5e38778e1109",
+          "bytes": 2659338,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "682B3895-3EF6-4F5E-9073-939B1D216D6B.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "identity10-phone-open-sky-help-start_0_526D30DF-397B-4009-99F2-A13231355E22.png",
+            "timestamp": 1792934550.815
+          },
+          "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "How-to-play reader at its retained scroll position: full Draw a constellation paragraph and Done are readable. Previous paragraph begins above the reader viewport; this is not whole-page-at-once evidence."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/D6E81A75-3CEA-49BB-B2B8-D063D5AE6A79.png",
+          "sha256": "f7a9928c48890c4cd492d5b3a1ef6cafff4b3ba2b88428b407a8d9251360e913",
+          "bytes": 3415248,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "D6E81A75-3CEA-49BB-B2B8-D063D5AE6A79.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "identity10-phone-home-open-sky-promise_0_ED179F7D-8B85-48B0-B3E9-6C5E00509F2D.png",
+            "timestamp": 1792934527.81
+          },
+          "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Whole Home: Story Mode and Free Play promises plus Tutorial remain readable; no terminal score role leaks into Home."
+        }
+      ]
+    },
+    {
+      "label": "native-10-candidate-requalified-fff03063-full-board-phone",
+      "selector": "StarfallUITests/FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay",
+      "status": "PASS_BOUNDED_REQUALIFIED_NATIVE_WHOLE_VIEWS",
+      "sourceContext": "Current ordinary Lantern Full Board revision 6 through actual Entry: 42k refill/settings/background/cold restore, ten-exchange 156k/150k real win and same-round Replay; no practice or score injection.",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "mechanicalResult": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "methodAllowanceSeconds": 300,
+        "supervisorLimitSeconds": 360,
+        "stageElapsedSeconds": 189.087
+      },
+      "immutableArtifacts": {
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-receipt.json",
+          "sha256": "812ab6df7d9737b449b6743a610014972f71bec352b6a162686426232c316262",
+          "bytes": 201
+        },
+        "log": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone.log",
+          "sha256": "a7ccb6555888915b8b33a843577d554919414edfc5a9b036e71f7e5daaa9d596",
+          "bytes": 82082
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-summary.json",
+          "sha256": "6d4f0be45a0b879fa13abcf557f7705b46faf6cc631cece119fcc847f5886025",
+          "bytes": 741
+        },
+        "exportReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-export-receipt.json",
+          "sha256": "1a194109d74f384f6e4d8223ada5aa6b70d9d6ba861a0f0c9d41c6b8ceed82d5",
+          "bytes": 205
+        },
+        "exportLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-export.log",
+          "sha256": "2a97883b6e2070a948b7d3e8e355df04bf07e6a4c5c052003cb7b629a7a1c80f",
+          "bytes": 627
+        },
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/manifest.json",
+          "sha256": "d82eeb513f3bb89c838eff61c7f1fb969826da05db5ea4baa9bf9bb457b3fc2f",
+          "bytes": 3019
+        }
+      },
+      "wholeOriginalPNGsViewed": 6,
+      "uniquePNGByteHashes": 5,
+      "images": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/719118AF-A7BC-46FE-90A5-A470BB15E813.png",
+          "sha256": "eea80e49950bb67e2fb62fdaeb72d9677ae79d799cce147f664f01fd452886a3",
+          "bytes": 3583243,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "719118AF-A7BC-46FE-90A5-A470BB15E813.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "full-board-default-replayed-refill_0_8432D500-83AE-418D-9F1A-0F3ADC9A69CA.png",
+            "timestamp": 1792934961.335
+          },
+          "testIdentifier": "FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "After exact same-round Replay and first real exchange, complete 42,000/150,000, settled visible 7x7 refill and full chain/survivor/refill guide are readable."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/ACDCE604-8B4A-4B7B-ABCB-7C539F57E68D.png",
+          "sha256": "a930788bffa15f495f4607c744ad581ec54d861831cae5dfb82ee1c5e65ac35a",
+          "bytes": 2570849,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "ACDCE604-8B4A-4B7B-ABCB-7C539F57E68D.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "full-board-default-won_0_802FCF09-F5AC-4723-B90D-5CD485C217F4.png",
+            "timestamp": 1792934935.918
+          },
+          "testIdentifier": "FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Actual normal completion: complete Lantern Landing restored title and full result sentence. The entire 156,000 of 150,000 starlight-collected phrase is emphasized; reason/coda retain supporting text. Visit Ribbon Crossing, New sky, Replay First Light, Observatory and Review last clear are complete. Optional mastery description continues below the viewport."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/2616665B-B0C3-42F9-BA79-70B6E3687979.png",
+          "sha256": "dc1a3de4fcd108797b84089508cde965ea4b024c6140bb371f39eea2c34506e7",
+          "bytes": 3553137,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "2616665B-B0C3-42F9-BA79-70B6E3687979.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "full-board-default-restored_0_544AC3AC-3A25-4316-9841-9F617A169D54.png",
+            "timestamp": 1792934870.546
+          },
+          "testIdentifier": "FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Cold-restored42,000 round retains the same visible refilled field and score; retained Full Board/no-timed-showers guide and Close are readable."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/2C089D38-0346-405A-968E-3D8E215624C7.png",
+          "sha256": "eea80e49950bb67e2fb62fdaeb72d9677ae79d799cce147f664f01fd452886a3",
+          "bytes": 3583243,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "2C089D38-0346-405A-968E-3D8E215624C7.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "full-board-default-refill_0_E4794AA2-D537-48B3-B206-A532F78DD8DD.png",
+            "timestamp": 1792934841.54
+          },
+          "testIdentifier": "FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Actual first clear/refill: complete 42,000/150,000 and full settled7x7 field; complete three-clear-chain 42,000 accounting, survivor/refill facts and Close remain readable."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/EE35B234-D5C6-4E50-9AE5-C8F4A588A3CB.png",
+          "sha256": "8894f8db0e13213f51934eb4e5acbc061f759ba2fad13fc3dbe2d638e8ac2c92",
+          "bytes": 3618700,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "EE35B234-D5C6-4E50-9AE5-C8F4A588A3CB.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "full-board-default-opening_0_812FA13B-8ED8-4FF9-9A52-B181FAEE5C46.png",
+            "timestamp": 1792934831.434
+          },
+          "testIdentifier": "FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Normal Full Board opening: complete 0/150,000 score, mode fact, ceiling and visible 7x7 star field. Guide copy and Close are readable below the board."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/53CF808F-FB10-4B3C-9D10-EA58023D5018.png",
+          "sha256": "7559981e79f6ac799da75f4631d4477feb2c48b922b4cc4c34bff96f1d860dd8",
+          "bytes": 3576687,
+          "pixels": [
+            1170,
+            2532
+          ],
+          "format": "PNG",
+          "wholeOriginalDirectlyViewed": true,
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "53CF808F-FB10-4B3C-9D10-EA58023D5018.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "full-board-default-choice_0_0C1301BD-568C-452E-BF40-80BE7AE14305.png",
+            "timestamp": 1792934822.211
+          },
+          "testIdentifier": "FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay()",
+          "verdict": "PASS_BOUNDED_CURRENT_NATIVE_WHOLE_VIEW",
+          "observation": "Scrolled Full Board Entry: complete150,000 objective/refill/no-timed-showers promise, optional-goal copy, selected Full Board choice and Begin. Upper Entry heading is outside the current scroll position; no all-Entry-at-once claim."
+        }
+      ]
+    }
+  ],
+  "recommendedRetainedExports": [
+    {
+      "kind": "candidate-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/F2432840-C120-4DC6-B430-46F290C2090B.png",
+      "rawSHA256": "ca832ab81f2b8badd0dd0bc4340e4a1d52c426140bb6a1cc0150a7f66cea634b",
+      "state": "Normal iPhone17e, retained historical-Dusk horizontalFive fixture: a real five-star trace earns 5; later showers end with column 1 blocked. Complete 5-starlight result, ending decisions and passive last-clear signature. Not modern random-supply or earned Story progression evidence.",
+      "stage": "native-10-candidate-requalified-fff03063-open-sky-phone",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+      "attachmentName": "identity10-phone-open-sky-earned-ending_0_37038E6F-4157-4986-8B9B-AE4F518B269D.png",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "reviewedWholeOriginal": true
+    },
+    {
+      "kind": "candidate-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/ACDCE604-8B4A-4B7B-ABCB-7C539F57E68D.png",
+      "rawSHA256": "a930788bffa15f495f4607c744ad581ec54d861831cae5dfb82ee1c5e65ac35a",
+      "state": "Normal iPhone17e, current Lantern Full Board revision 6: real ten-exchange 156,000/150,000 completion. Complete round-result sentence and next-location/New sky/Replay decisions; optional mastery reading continues below the viewport.",
+      "stage": "native-10-candidate-requalified-fff03063-full-board-phone",
+      "testIdentifier": "FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay()",
+      "attachmentName": "full-board-default-won_0_802FCF09-F5AC-4723-B90D-5CD485C217F4.png",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "reviewedWholeOriginal": true
+    }
+  ],
+  "history": {
+    "initialCandidateReview": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-candidate-ending-native.json",
+      "sha256": "9926165ef3a022142abb7428206979e33ccc99e48c97bbfb54ab6d13c5578792",
+      "bytes": 34424
+    },
+    "qualification": "Earlier3d passed visual leaves remain separate historical evidence inside an actually failed candidate qualification. Only these freshly viewed fff originals establish the current report."
+  },
+  "limits": [
+    "Normal phone portrait/iPhone17e simulator only here. Default Silver, AX5 tablet and practice siblings have separate reviewers.",
+    "Trace checkpoint is visibly transient; guide Close is partly below the viewport. No complete-Close, settled-motion, continuous-animation or latency claim.",
+    "Help/Entry and optional mastery are actual scroll viewports. Complete terminal summary and main decisions are visible in recommended frames; not every optional row is visible at once.",
+    "Historical Open Sky input and current Lantern Full Board6 remain distinct; no campaign progression is inferred from debug fixture access.",
+    "No actualVoiceOver, numerical contrast, minimum-iOS17, human-recognition or physical-device claim. Exact retained-JPEG/raw review remains required."
+  ]
+}

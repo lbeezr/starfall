@@ -4,7 +4,7 @@
   "issue": 390,
   "issueURL": "https://github.com/lbeezr/starfall/issues/390",
   "title": "Whole-HUD adaptive layouts",
-  "status": "ADOPTED_BOUNDED_DEVELOPMENT_SLICE_INDIVIDUAL_MERGE_PENDING",
+  "status": "MERGED_VERIFIED_BOUNDED_DEVELOPMENT_SLICE",
   "recordedUTC": "2026-10-25T09:08:07.547640+00:00",
   "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
   "baseRuntime": "dev.2c4e822ca7",
@@ -240,7 +240,7 @@
     }
   },
   "freezeRequirements": {
-    "status": "FROZEN_SOURCE_SELECTED_CHECKS_AND_INDEPENDENT_REVIEW_PASSED; INDIVIDUAL_MERGE_PENDING",
+    "status": "FROZEN_SOURCE_CHECKS_AND_INDEPENDENT_REVIEW_PASSED; INDIVIDUAL_MERGE_VERIFIED",
     "source": {
       "head": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
       "runtime": "dev.06a3229203",
@@ -443,16 +443,24 @@
     "originalCandidateStatus": "NOT_IMPLEMENTED; precise local fit rule and role contract follow baseline",
     "proposalQualification": "Initial13-existing-hosted/six-native proposals were source selections, not completed checks. Final selected18hosted/seven main executions/six unique methods supersede those proposals only as current results; original lists remain in the exact Git snapshot."
   },
-  "updatedUTC": "2026-10-25T11:45:33.562995+00:00",
+  "updatedUTC": "2026-10-25T11:54:49Z",
   "publication": {
-    "status": "INDIVIDUAL_PR_MERGE_PENDING",
-    "goal10": "QUEUED_UNTIL_GOAL9_INDIVIDUAL_VERIFIED_MERGE",
-    "issue390": "No new closure/ProjectDone assertion; root confirms after merge"
+    "status": "INDIVIDUAL_PR_MERGED_TREE_AND_ISSUE_VERIFIED",
+    "proof": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/publication-09.json",
+      "sha256": "251359a09a3d1110b652dd4223ea43a2a9c0f476dc4b84c40a44257d7f5a8a42",
+      "bytes": 2537
+    },
+    "pullRequest": 410,
+    "main": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+    "issue390": "closed/completed",
+    "projectDone": "unavailable; not inferred",
+    "goal10": "ACTIVE_AFTER_THIS_INDIVIDUAL_MERGE; FRESH_BASELINE_PENDING"
   },
   "acceptanceAssessment": {
     "originalCriteriaPreserved": true,
-    "developmentSlice": "Named source/input/interaction/still/sampled-motion and exact13-export reviews pass. Original merge/publication criterion remains pending; this is bounded development adoption, not completion or a full matrix.",
-    "mergeCriterion": "PENDING: original final criterion remains unfulfilled until individual PR merge/issue confirmation."
+    "developmentSlice": "Named source/input/interaction/still/sampled-motion and exact13-export reviews pass for the bounded development slice; original criteria remain preserved.",
+    "mergeCriterion": "PASS: PR410 individually merged; issue390 closed/completed; reviewed/published/main trees and735 original tested inputs match. Project projection remains unavailable."
   },
   "limits": [
     "Named selected hosted/native/sampled-motion/exact-export scopes only, no full matrix, continuous motion/performance, actualVoiceOver, physical-device, minimum-iOS or human-recognition claim.",

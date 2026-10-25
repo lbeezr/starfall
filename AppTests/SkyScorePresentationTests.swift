@@ -18,6 +18,70 @@ import UIKit
 }
 
 final class SkyScorePresentationTests: XCTestCase {
+    @MainActor func testTerminalSummarySelectsOnlyOneCompleteCommittedScoreAndPreservesAllCopy() throws {
+        var game = FallingSky.freshChallenge(.silverPools)
+        _ = try XCTUnwrap(game.nudge(from: Cell(1,2), to: Cell(1,3)))
+        let result = try XCTUnwrap(SkyResultSnapshot(game: game))
+        let line = SkyDialogueLibrary.line("ceremony.result", values: ["reason": result.reason, "score": result.scoreLabel])
+        let range = try XCTUnwrap(SkyResultSummary.scoreRange(in: line.text, scoreLabel: result.scoreLabel))
+        XCTAssertEqual(String(line.text[range]), result.scoreLabel)
+        XCTAssertEqual(result.score, 19_000)
+        XCTAssertEqual(result.target, 12_000)
+        XCTAssertEqual(String(SkyResultSummary.content(line.text, scoreLabel: result.scoreLabel).characters), line.text)
+
+        let openScore = SkyCopy.text(.resultScore, values: ["score": SkyCopy.score(5)])
+        let historicalScore = SkyCopy.text(.resultChallengeScore, values: ["score": "18", "target": "18"])
+        for score in [openScore, historicalScore] {
+            let copy = "A retained ending. \(score). Ready for another sky?"
+            XCTAssertEqual(String(copy[try XCTUnwrap(SkyResultSummary.scoreRange(in: copy, scoreLabel: score))]), score)
+            XCTAssertEqual(String(SkyResultSummary.content(copy, scoreLabel: score).characters), copy)
+        }
+        let fallbacks: [(String, String?)] = [
+            (line.text, nil), (line.text, ""), (line.text, "Unknown score"),
+            ("\(result.scoreLabel). Again: \(result.scoreLabel).", result.scoreLabel),
+            ("15 starlight.", "5 starlight"), ("\(openScore)More", openScore)
+        ]
+        for (copy, score) in fallbacks {
+            XCTAssertNil(SkyResultSummary.scoreRange(in: copy, scoreLabel: score))
+            XCTAssertEqual(String(SkyResultSummary.content(copy, scoreLabel: score).characters), copy)
+        }
+    }
+
+    @MainActor func testTerminalSummaryKeepsNativeLargestTextReflowForTargetAndOpenSkyResults() throws {
+        let fixtures: [(String, String, String, String)] = [
+            ("silver", "ceremony.result", "Silver Pools complete! One silver cascade now flows through every pool.",
+             SkyCopy.text(.resultChallengeScore, values: ["score": "19,000", "target": "12,000"])),
+            ("full-board", "ceremony.result", "First Light complete! Lantern Landing is restored.",
+             SkyCopy.text(.resultChallengeScore, values: ["score": "156,000", "target": "150,000"])),
+            ("open-sky", "ceremony.full", "Column 1 has no room for the next star.",
+             SkyCopy.text(.resultScore, values: ["score": "5"]))
+        ]
+        for (name, key, reason, score) in fixtures {
+            let line = SkyDialogueLibrary.line(key, values: ["reason": reason, "score": score])
+            let content = SkyResultSummary.content(line.text, scoreLabel: score)
+            XCTAssertEqual(String(content.characters), line.text)
+            for width: CGFloat in [330, 420] {
+                func reading(_ size: DynamicTypeSize) -> some View {
+                    Text(content).font(StarfallTheme.Typography.supporting)
+                        .foregroundStyle(StarfallTheme.Colors.textPrimary)
+                        .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+                        .accessibilityLabel(line.spokenText).environment(\.dynamicTypeSize, size)
+                }
+                let normal = UIHostingController(rootView: reading(.large)).sizeThatFits(in: CGSize(width: width, height: 4_000))
+                let largest = UIHostingController(rootView: reading(.accessibility5)).sizeThatFits(in: CGSize(width: width, height: 4_000))
+                XCTAssertLessThanOrEqual(normal.width, width)
+                XCTAssertLessThanOrEqual(largest.width, width)
+                XCTAssertGreaterThan(largest.height, normal.height, "Full native type must grow instead of shrinking")
+                XCTAssertLessThan(largest.height, 2_000, "The unchanged result reader owns scrolling")
+                let renderer = ImageRenderer(content: reading(.accessibility5).padding(16)
+                    .frame(width: width + 32).background(StarfallTheme.Colors.skyTop))
+                let attachment = XCTAttachment(image: try XCTUnwrap(renderer.uiImage))
+                attachment.name = "hosted-terminal-summary-\(name)-AX5-width-\(Int(width))-content-fixture"
+                attachment.lifetime = .keepAlways; add(attachment)
+            }
+        }
+    }
+
     @MainActor func testSessionCapturesWinningWholeActionBeforeCallbacksAndCancellationKeepsIt() throws {
         let old = FallingSky.freshChallenge(.silverPools)
         var game = old

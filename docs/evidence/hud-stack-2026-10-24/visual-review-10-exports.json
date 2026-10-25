@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "status": "PASS_BOUNDED_EXACT_EXPORT_REVIEW_CONJUNCTION",
+  "verdict": "PASS",
+  "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+  "runtime": "dev.b088afcf5e",
+  "recordedUTC": "2026-10-25T13:56:56.423750+00:00",
+  "captureIndex": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-10.json",
+    "sha256": "002db82d198321124ff1eda3679f733d013c019f2ffa42f424e59f66aecd1b8e",
+    "bytes": 84254
+  },
+  "counts": {
+    "exactPairs": 11,
+    "directWholeImageViews": 22,
+    "baselinePairs": 2,
+    "candidatePairs": 9
+  },
+  "method": "Root conjunction of three disjoint independent direct whole-raw/whole-JPEG reviews. Hash, bytes, source, caption and exact11 coverage validated; no additional root pixel verdict or conversion.",
+  "reviews": [
+    {
+      "reference": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-silver-tablet.json",
+        "sha256": "6693fdf168e70c9730a8ec87f613d3e3c922d3ce336b47fbcd2e7f83bd1eb472",
+        "bytes": 24739
+      },
+      "coverage": [
+        "01-baseline-silver-summary",
+        "02-silver-summary",
+        "03-baseline-lantern-summary",
+        "04-lantern-summary",
+        "05-lantern-last-clear-return"
+      ]
+    },
+    {
+      "reference": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-mode-context.json",
+        "sha256": "3cc16c18ff0c56c94e203cf7bf4247729ecfc9f7efa8ad4ca933798d40ad2a8c",
+        "bytes": 21869
+      },
+      "coverage": [
+        "06-silver-live",
+        "07-silver-home-return",
+        "08-silver-entry",
+        "11-places-retained-full-board"
+      ]
+    },
+    {
+      "reference": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-endings.json",
+        "sha256": "09042e31cc46693c00d907436960911dc79ed9fb46efa09d519a9b83cf3a5d37",
+        "bytes": 14209
+      },
+      "coverage": [
+        "09-open-sky-ending",
+        "10-full-board-result"
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "id": "01-baseline-silver-summary",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-attachments/538E91F2-5A10-4D94-9DD6-C444245A9E33.png",
+        "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+        "bytes": 3093282
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-faed226d__silver-round-summary__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "67e31d728b39b188a2d9ec0f8514e02295e5a766a4b2fd42c21281a9829ed080",
+        "bytes": 642450
+      },
+      "sourceHead": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+      "runtime": "dev.06a3229203",
+      "state": "Accepted-Goal9 baseline: actual normal-phone Silver earned result,19,000 of12,000 round summary with separate19,000 this-clear accounting. Already legible; retained as hierarchy comparison.",
+      "independentReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-silver-tablet.json",
+        "sha256": "6693fdf168e70c9730a8ec87f613d3e3c922d3ce336b47fbcd2e7f83bd1eb472",
+        "bytes": 24739
+      }
+    },
+    {
+      "id": "02-silver-summary",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/1FB7A384-42BF-4D0A-B562-19318A8ACB81.png",
+        "sha256": "6cd99bb976edb93061161f6e03571c6c8d918c815d9dd9ae6a73fe260784135d",
+        "bytes": 3095838
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-round-summary__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "1a612293fa537e6e0a4f3d95d3c127d3fa54db6d4361fc62a12747cf3e86c85c",
+        "bytes": 646627
+      },
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual normal-phone Silver earned result: exact19,000 of12,000 span uses the shared static result role inside the complete sentence. Separate19,000 this-clear accounting remains distinct; outcome and primary next decision remain dominant.",
+      "independentReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-silver-tablet.json",
+        "sha256": "6693fdf168e70c9730a8ec87f613d3e3c922d3ce336b47fbcd2e7f83bd1eb472",
+        "bytes": 24739
+      }
+    },
+    {
+      "id": "03-baseline-lantern-summary",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/0042A869-E606-4CBD-BE4D-8BFAF636C8CB.png",
+        "sha256": "60e548027ffdebc2930ddbf9e15a02d018be107c983e704ea13dba5648503cba",
+        "bytes": 5983863
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-faed226d__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "8f01f6ccd52fe8574622213609a1e85610eb1f9e2f2c531e9a0d90aa79715245",
+        "bytes": 1005397
+      },
+      "sourceHead": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+      "runtime": "dev.06a3229203",
+      "state": "Accepted-Goal9 AX5 actual-Calm tablet baseline: complete156,000/150,000 round sentence at this native scroll position. The title is partly above the viewport; later result accounting occupies other positions. Already legible.",
+      "independentReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-silver-tablet.json",
+        "sha256": "6693fdf168e70c9730a8ec87f613d3e3c922d3ce336b47fbcd2e7f83bd1eb472",
+        "bytes": 24739
+      }
+    },
+    {
+      "id": "04-lantern-summary",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/43C66955-6CE6-418A-9CAD-F2301C776F98.png",
+        "sha256": "556fc99a54dba556e7952c77f75b50226b201f3b749ffee16f25e3aec21b2f03",
+        "bytes": 5962785
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "558a1942b0b04062f183d35a436a409404e5afc04245138db58f22ba6fab9eb6",
+        "bytes": 997950
+      },
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual AX5 Calm tablet: complete156,000/150,000 round sentence receives native instrument emphasis with natural wrapping. Title partly above this viewport; later optional content continues. Separate58,000 this-clear is a different context.",
+      "independentReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-silver-tablet.json",
+        "sha256": "6693fdf168e70c9730a8ec87f613d3e3c922d3ce336b47fbcd2e7f83bd1eb472",
+        "bytes": 24739
+      }
+    },
+    {
+      "id": "05-lantern-last-clear-return",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/FC328EFA-D410-4F83-AD21-107506A60A89.png",
+        "sha256": "2f4e1f86e9b0acd5efed5a4e309647c056d7e246abfe3247db42bdf2021f3c21",
+        "bytes": 4815484
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-last-clear-return__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "c16365e4b0ffc6bb8c2c33c379836eba870bf77bb6ce47d21956072a67ea795b",
+        "bytes": 889323
+      },
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual AX5 Calm Last-clear reader end with58,000 this-clear, six survivors,22 refills,49 occupied and Return. This is a separate native reader position from the156,000/150,000 round summary, not a whole-page composition.",
+      "independentReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-silver-tablet.json",
+        "sha256": "6693fdf168e70c9730a8ec87f613d3e3c922d3ce336b47fbcd2e7f83bd1eb472",
+        "bytes": 24739
+      }
+    },
+    {
+      "id": "06-silver-live",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/95737B7E-9C35-4844-81B3-E71C8512256B.png",
+        "sha256": "92541080445106327a9fbde3bc8ea5d98e8ae67b01e929f971278244b7371cd8",
+        "bytes": 4846644
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-clear-hud__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "199a8d775d0cad033ef8ed8a2c761e4ac865debb7414f1f39c0ca56c8a31c003",
+        "bytes": 891543
+      },
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual normal-phone Silver clear still:19,000/12,000 live HUD over continuous scenery and the shown board before ceremony. No steady-density,49-occupied, exact-onset or continuous-motion claim.",
+      "independentReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-mode-context.json",
+        "sha256": "3cc16c18ff0c56c94e203cf7bf4247729ecfc9f7efa8ad4ca933798d40ad2a8c",
+        "bytes": 21869
+      }
+    },
+    {
+      "id": "07-silver-home-return",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/38ED6B46-764C-429D-9EF7-14F705A720EB.png",
+        "sha256": "d2d0d893a163a8495e49f6a1d64683084820b70a3c626ab06984face6d24fbec",
+        "bytes": 3985916
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__home-retained-silver__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "c94bc8c5c048b28f5b222fc9ac4da15ea27e4511becbabddefb60586aa3f06ad",
+        "bytes": 725421
+      },
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual Home after the real Silver repair: retained19,000/12,000 completion and View last sky. This visible menu portion does not depict all places.",
+      "independentReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-mode-context.json",
+        "sha256": "3cc16c18ff0c56c94e203cf7bf4247729ecfc9f7efa8ad4ca933798d40ad2a8c",
+        "bytes": 21869
+      }
+    },
+    {
+      "id": "08-silver-entry",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/C5F2BBD3-74F6-4BE0-9B5B-FABF22363996.png",
+        "sha256": "57e56252f5cb5d16193daa61d8ae08ca48baec4d3336faff75d8c554e76f0c65",
+        "bytes": 4562666
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-entry__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "ef80d6bfcaf165b13104d1578f36a438a7a42626f32d0015c1a5ebf3927ff51b",
+        "bytes": 854104
+      },
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual concise current Silver Entry and Begin at normal phone text, with the12,000 objective. Longer Help remains in its existing native reader; terminal score styling does not leak into Entry.",
+      "independentReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-mode-context.json",
+        "sha256": "3cc16c18ff0c56c94e203cf7bf4247729ecfc9f7efa8ad4ca933798d40ad2a8c",
+        "bytes": 21869
+      }
+    },
+    {
+      "id": "11-places-retained-full-board",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/B90A24D5-AAF9-4BC6-8CFC-25238DF7E93B.png",
+        "sha256": "fcf51fe78570736561b3a1379dc51f01b7519e8cec63711b85bef701cfc90c6f",
+        "bytes": 5061963
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__places-retained-full-board__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "b9bbe9da1d88b2854a2efb1e7f2c8e4454ecf15c17309aaa8f178b9c039db642",
+        "bytes": 952354
+      },
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual iPad Pro13 M5/iOS27,AX5 with real Settings Calm. After Replay/New previews were cancelled, Places retains Full Board42,000/150,000 beside the distinct new-visit150,000 objective; Continue and Start again are fully visible. Actual scrolled list position; later places and whole-page coverage are not shown.",
+      "independentReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-mode-context.json",
+        "sha256": "3cc16c18ff0c56c94e203cf7bf4247729ecfc9f7efa8ad4ca933798d40ad2a8c",
+        "bytes": 21869
+      }
+    },
+    {
+      "id": "09-open-sky-ending",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/F2432840-C120-4DC6-B430-46F290C2090B.png",
+        "sha256": "ca832ab81f2b8badd0dd0bc4340e4a1d52c426140bb6a1cc0150a7f66cea634b",
+        "bytes": 2950320
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__open-sky-ending__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "fe7166caaf70b4a4152e82f5152cc9039bc7183a743045fe6e3b353f3a9654aa",
+        "bytes": 501136
+      },
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Normal phone historical authored-Dusk horizontalFive fixture: a real five-star trace earns5, then later showers block column1. Complete5-starlight result and ending decisions. This is not current random-supply or campaign evidence.",
+      "independentReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-endings.json",
+        "sha256": "09042e31cc46693c00d907436960911dc79ed9fb46efa09d519a9b83cf3a5d37",
+        "bytes": 14209
+      }
+    },
+    {
+      "id": "10-full-board-result",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/ACDCE604-8B4A-4B7B-ABCB-7C539F57E68D.png",
+        "sha256": "a930788bffa15f495f4607c744ad581ec54d861831cae5dfb82ee1c5e65ac35a",
+        "bytes": 2570849
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-full-board-result__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "5bc8c7760be97bb3610fae6ce2be23f61078b2682752e8be572e24c4c47678af",
+        "bytes": 544421
+      },
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual current Lantern Full Board6 ten-exchange156,000/150,000 win on normal phone. Full committed round sentence and next-location/New sky/Replay decisions; optional mastery continues below the viewport.",
+      "independentReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-exports-endings.json",
+        "sha256": "09042e31cc46693c00d907436960911dc79ed9fb46efa09d519a9b83cf3a5d37",
+        "bytes": 14209
+      }
+    }
+  ],
+  "limits": [
+    "Whole JPEG80 exports without crop/resize/retouch; minor scenery compression is described in individual reviews.",
+    "Baselinefaed/runtime06a pairs remain baseline only;9currentfff/b088 pairs are exact fresh native captures. Source-specific captions/scroll positions bound visible content.",
+    "No hosted or movie frame substituted for native screenshots. No actual VoiceOver, physical reading, minimum-iOS or continuous-motion/performance claim."
+  ]
+}
