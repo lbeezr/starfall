@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "goal": 4,
+  "testedCommit": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+  "baseMain": "47b0b5e9f6e60bfb428a3e776e272a113ef34e7a",
+  "runtimeInputFingerprint": "dev.dcb267d534",
+  "committedRuntimeInputCount": 567,
+  "workingTreeBuildDifferences": [],
+  "workingTreeTestDifferences": [],
+  "changedAppOwners": [
+    "App/StarfallTheme.swift"
+  ],
+  "changedTestOwners": [
+    "AppTests/ObservatoryArtworkTests.swift",
+    "AppTests/SkyReadingPlayfieldTests.swift",
+    "UITests/ForecastColumnInspectionInteractionTests.swift"
+  ],
+  "sourceScope": "Only shared utility contact material and glyph stability change. One busy-state hosted regression is added in an existing member file, with two existing test-method extensions. Original assertions and sibling methods remain. Core, rules, saves, clock, resources, routing and project membership are unchanged.",
+  "rawInputManifest": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-04-candidate.json",
+  "rawInputManifestSHA256": "53f7c1d06d18cbb1a8aa4f6ae859530c43719b1d483347ebd1b00a29c5344dec",
+  "proof": "Every canonical runtime path equals its committed Git blob; runtime SHA256 uses canonical build_identity; no untracked runtime input.",
+  "sdk": "iphonesimulator27.1",
+  "xcodeBuild": "27A9275",
+  "simulatorOS": "iOS27.0",
+  "environment": "macOS27.0.1/26A434; dedicated iPhone17e390x844@3x and actual iPadPro13M5 portrait1032x1376/wide1376x1032@2x simulators",
+  "embeddedBuildIDs": {
+    "Debug": "dev.dcb267d534",
+    "Release": "dev.dcb267d534"
+  },
+  "unacceptedOtherBranch": "The other root’s shared glyph hit-test change, guided-practice context and flow remain unpublished and excluded. This candidate changes only StarfallTheme in App code.",
+  "finalHostedTestCommit": "f0005119156f982fc14b70c3aac9016850a01702",
+  "testOnlyCaptureCorrection": {
+    "scope": "Only the new busy-state hosted method gains initial AX5 board/canvas/scroll/visible-cell readiness. App/runtime, native UI tests and Core remain unchanged.",
+    "runtimeProof": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-04-placement.json",
+    "runtimeProofSHA256": "f42cac22369d21a2762c784ac9b91b2496aadc2dd907ba882826e9f99be78565",
+    "correctionCommit": "f0005119156f982fc14b70c3aac9016850a01702"
+  }
+}

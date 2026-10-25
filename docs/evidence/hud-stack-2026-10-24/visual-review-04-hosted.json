@@ -1,0 +1,513 @@
+{
+  "schemaVersion": 1,
+  "goal": 4,
+  "issue": 385,
+  "reviewer": "hud_audit; independent hosted visual inspection before coordinator visual verdict",
+  "overallGoalStatus": "HOSTED_REVIEW_COMPLETE; overall decision belongs to goal-04-acceptance.json and separate native/export records",
+  "hostedSliceVerdict": "BOUNDED_PASS_FOR_CONTROLS_AND_CORRECTED_STAR_BEARING_AX5_HEADER_STATES; FRESH_DEFAULT_BEFORE_EXCLUDED",
+  "summary": "The corrected test-only f0005119 tranche visibly settles the AX5 star-bearing crop before, during and after genuine busy state while retaining the complete header and Help enabled→muted→enabled distinction. Eight control specimens are byte-identical to the previously inspected PNGs. The fresh default-before field still contains no visible stars and is excluded from retained product/comparison exports. Five fresh full-root states support bounded header/disabled appearance; no all-six settled-board, production-motion or overall adoption claim follows.",
+  "source": {
+    "commit": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+    "baseMain": "47b0b5e9f6e60bfb428a3e776e272a113ef34e7a",
+    "runtimeInputFingerprint": "dev.dcb267d534",
+    "embeddedDebugBuildID": "dev.dcb267d534",
+    "proof": "source-04-final.json",
+    "manifest": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/manifest.json",
+    "manifestSHA256": "0e3107ac6f270cb9e5a770a03fe88d49fbb8a556fe7c94cb11ce4a32355350db",
+    "bindingLimit": "Coordinator-supplied source/runtime binding is recorded in the source proof. This reviewer independently read the raw attachment manifest, inspected the named PNGs and recomputed their hashes/dimensions; no runtime/build inputs were changed."
+  },
+  "scope": {
+    "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "deviceName": "Starfall HUD Stack dcf3 Phone",
+    "simulatorOS": "iOS27.0",
+    "componentSpecimens": "Eight ImageRenderer PNGs: utility Help 24pt/Pause 20pt in clear/scenery enabled/disabled states, and forecast-style native digits 1–7 in selected/unselected enabled/disabled states; default/AX5 at requested 2×/3× render scales. Labels are test annotations, not product UI. These are not actual tablet captures or full five-star forecast compositions.",
+    "fullRoot": "Six actual production FallingSkyView hosted captures at 375×667 points/3×: current Seed Moon revision 4, score 0/11000, before/during/after a genuine zero-award setup with existing held FallingSkyRecorder and ManualRainClock. Explicit scene.render(actual committed snapshot) supplies static scene evidence; it is not a production-animation sample.",
+    "viewing": "All 14 whole PNGs were inspected. Utilities and 1125×2001 full-root images were delivered at original dimensions. Forecast 3× originals 2304×676 and 2304×768 were tool-resized to 2048×601 and 2048×683; their 2× counterparts 1536×452 and 1536×514 were viewed without resizing. No original-resolution global glyph/contrast audit is claimed for the resized images."
+  },
+  "findings": [
+    {
+      "criterion": "Actual-size utility recognition and mute",
+      "verdict": "PASS_IN_DEPICTED_STATES",
+      "observation": "Help keeps its question-mark curve and separate dot; Pause retains two complete bars. Enabled pearl/brass artwork is clearly distinct from the muted gray treatment without a position/shape change. Disabled Help remains recognizable rather than disappearing. Fixed-size utility specimens intentionally remain the same at default and AX5; this does not assert text should stop scaling."
+    },
+    {
+      "criterion": "Complete forecast digits and persistent selection",
+      "verdict": "PASS_IN_DEPICTED_SPECIMENS",
+      "observation": "Every 1–7 glyph is complete at default and AX5, with stable alignment across enabled/disabled pairs. Selected rows have a separate short underline; unselected rows do not. The muted selected row retains that mark. The enlarged AX5 digits are not compressed into default-size text."
+    },
+    {
+      "criterion": "Genuine busy inspection appearance",
+      "verdict": "PASS_FOR_HOSTED_HEADER",
+      "observation": "In both text sizes the same contextual Help becomes muted during the real held setup and bright again after presenter completion. Pause and the five ordered forecast stars/digits 6,1,2,4,5 remain present and visibly available; only inspection is muted. Complete 0/11000, label, digits and utility contours remain unclipped."
+    },
+    {
+      "criterion": "Header hierarchy and footprint",
+      "verdict": "PASS_FOR_DEPICTED_HEADER",
+      "observation": "Exact score, ordered forecast and small utilities remain distinct over continuous Seed scenery. AX5 uses complete native earned/target lines and all five forecast entries in one row. No new idle utility bezel, header displacement or header-content clipping is visible. Retained facts report identical header frames within each before/busy/after sequence: default (12,51,351,114.33333333333331), AX5 (12,51,351,281.3333333333333)."
+    },
+    {
+      "criterion": "Whole-root board visibility",
+      "verdict": "LIMITED_NOT_A_SETTLED_BOARD_COMPARISON",
+      "observation": "Default captures include stars before/busy/after. AX5 before and busy show no visible board stars; after shows stars entering the foreground scroll crop, including partial bodies at its upper boundary. The early harness captures do not establish settled initial scroll/scene visibility. This is neither a whole-board pass nor evidence of a current product regression. Stable-header proof remains separate."
+    },
+    {
+      "criterion": "Focus versus selection",
+      "verdict": "SOURCE_REVIEW_ONLY_FOR_FOCUS",
+      "observation": "Source retains the platform isFocused circle for utilities and rounded outline for forecast controls, independent from the persistent forecast underline. Shared focusWidth replaces the same prior 2-point utility width; decoration is passive. No focused screenshot or genuine platform-focus witness is present, so this review does not pass focus appearance."
+    }
+  ],
+  "mechanicalSeparation": {
+    "reportedRun": "Coordinator reports build and 8 hosted methods passed with 0 failures/0 skips and no runtime warnings at the named source. Those results do not replace this visual verdict.",
+    "disabledTouch": "The real busy Store phase establishes honest disabled rendering/admission source. These images do not prove native disabled-touch rejection.",
+    "contact": "Specimens and busy frames contain no held native contact. They cannot prove the new pressed material, drag-out cancellation, rapid Return/reopen or stable glyph size during press."
+  },
+  "captures": [
+    {
+      "name": "observatory-hud-forecast-style-native-digits-resting-disabled-AX5-3x",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/0130C972-D2CD-4678-A754-8C323C0F6F61.png",
+      "sha256": "d0e5f02dd51b65db418f3f8632acb6c7a22900a0fda9fb1a94d15913f13c2185",
+      "pixels": [
+        2304,
+        768
+      ],
+      "test": "ObservatoryArtworkTests/testActionsGrowForLargeTextWithoutShrinkingTheirLabel()"
+    },
+    {
+      "name": "observatory-hud-forecast-style-native-digits-resting-disabled-AX5-2x",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/01BFA6D7-2B4F-4077-80B2-26061B8ACB50.png",
+      "sha256": "6e5a5cddf00e33e0f254370fe7a9038ca0ee2f5713d4c9081e1da06ed5c50a87",
+      "pixels": [
+        1536,
+        514
+      ],
+      "test": "ObservatoryArtworkTests/testActionsGrowForLargeTextWithoutShrinkingTheirLabel()"
+    },
+    {
+      "name": "observatory-hud-utilities-resting-disabled-AX5-3x",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/28614561-ABA1-4ED0-8125-44F8C40A038F.png",
+      "sha256": "c36802104566d28690507e361a4a5ff412619c329ddd0320a145a83c6298fd9f",
+      "pixels": [
+        1040,
+        700
+      ],
+      "test": "ObservatoryArtworkTests/testActionsGrowForLargeTextWithoutShrinkingTheirLabel()"
+    },
+    {
+      "name": "observatory-hud-utilities-resting-disabled-AX5-2x",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/3222812E-0E49-48EB-A468-9F7DF1696EAF.png",
+      "sha256": "9fe2bdc36ed96eb46f9ac20b42b6e85e7ea48457ef33453436d439a6b836ae98",
+      "pixels": [
+        694,
+        468
+      ],
+      "test": "ObservatoryArtworkTests/testActionsGrowForLargeTextWithoutShrinkingTheirLabel()"
+    },
+    {
+      "name": "observatory-hud-forecast-style-native-digits-resting-disabled-default-3x",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/57B96ABD-0F00-4FE5-BCD1-C5B324E20964.png",
+      "sha256": "6c1b74102d210d27226c65bec0541baf33a7cae8787f8918bc5334535790db94",
+      "pixels": [
+        2304,
+        676
+      ],
+      "test": "ObservatoryArtworkTests/testActionsGrowForLargeTextWithoutShrinkingTheirLabel()"
+    },
+    {
+      "name": "observatory-hud-forecast-style-native-digits-resting-disabled-default-2x",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/D0DF2354-5312-49F3-8F8C-0AD72D638174.png",
+      "sha256": "f79491109ad6946b761c65e19ab5e03ac01c30222d4404a69edaa22b732e2bf9",
+      "pixels": [
+        1536,
+        452
+      ],
+      "test": "ObservatoryArtworkTests/testActionsGrowForLargeTextWithoutShrinkingTheirLabel()"
+    },
+    {
+      "name": "observatory-hud-utilities-resting-disabled-default-3x",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/97E38F49-0FF1-4A54-9888-7CD812B68E78.png",
+      "sha256": "c36802104566d28690507e361a4a5ff412619c329ddd0320a145a83c6298fd9f",
+      "pixels": [
+        1040,
+        700
+      ],
+      "test": "ObservatoryArtworkTests/testActionsGrowForLargeTextWithoutShrinkingTheirLabel()"
+    },
+    {
+      "name": "observatory-hud-utilities-resting-disabled-default-2x",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/CC84C932-FE98-4D72-9EF0-9F15E0DA660B.png",
+      "sha256": "9fe2bdc36ed96eb46f9ac20b42b6e85e7ea48457ef33453436d439a6b836ae98",
+      "pixels": [
+        694,
+        468
+      ],
+      "test": "ObservatoryArtworkTests/testActionsGrowForLargeTextWithoutShrinkingTheirLabel()"
+    },
+    {
+      "name": "busy-hud-held-presenter-static-AX5-after",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/A8A5D713-2E92-40BF-B191-AEF8FACDD426.png",
+      "sha256": "caccd66fc3c51ed051eb915a9f59e61739abfa4510cf276bf71de7716b1f5084",
+      "pixels": [
+        1125,
+        2001
+      ],
+      "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()"
+    },
+    {
+      "name": "busy-hud-held-presenter-static-AX5-busy",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/9CA6F993-7363-4121-8217-736A1224A91F.png",
+      "sha256": "ed6cc21035a521731cb013532295cf3fe32d016fb6e9b69edf9fc8ef2400b77d",
+      "pixels": [
+        1125,
+        2001
+      ],
+      "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()"
+    },
+    {
+      "name": "busy-hud-held-presenter-static-AX5-before",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/CD821D45-8E04-4343-A38A-B47B9571850A.png",
+      "sha256": "e30427aa1a5b5ac20b64faccfab7c04f13e2f369b311a4427f0e0448aa927dab",
+      "pixels": [
+        1125,
+        2001
+      ],
+      "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()"
+    },
+    {
+      "name": "busy-hud-held-presenter-static-default-after",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/B335AE91-14A0-42B3-BA5D-D7411BCC82BA.png",
+      "sha256": "094b1c814d6d2294365e53481ec40ca021fa070cd688bdff7ac1304e076ba3c1",
+      "pixels": [
+        1125,
+        2001
+      ],
+      "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()"
+    },
+    {
+      "name": "busy-hud-held-presenter-static-default-busy",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/0DC3BD0B-2BAF-4FA6-99DE-DC9EBA204B5C.png",
+      "sha256": "c2c38124965fc428884eb2fabcbed04ecf4a06b57d05bcc76d23071f3bbcb7ab",
+      "pixels": [
+        1125,
+        2001
+      ],
+      "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()"
+    },
+    {
+      "name": "busy-hud-held-presenter-static-default-before",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/3F5BE0F3-99DB-443C-8F2F-08B189D70E79.png",
+      "sha256": "27e7b41b69acad8277aae07afd6c9312caf6b82708e0b71b8302c84d306b4da8",
+      "pixels": [
+        1125,
+        2001
+      ],
+      "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()"
+    }
+  ],
+  "supportingFacts": [
+    {
+      "name": "observatory-hud-control-specimen-scope",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/B6DB32E3-7B7E-436B-93F2-88EBF8984223.txt",
+      "sha256": "d02ec974958fd908bd996289b691707e01214988e639b5c102c2745528090291"
+    },
+    {
+      "name": "busy-hud-state-AX5-after",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/A1ECD77F-8FA7-4124-8750-A5F4B2D1830B.txt",
+      "sha256": "44dcc2b57b69f06f615e536a7adf2ab9160debfb689b11b8f9186dff8568b75c"
+    },
+    {
+      "name": "busy-hud-state-AX5-busy",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/ACF851BB-94A2-497F-A145-3E019DF2A0CF.txt",
+      "sha256": "161a08958ab72aee7ca2f9c7c620db5187c72b9a9c0276588641f8987536fd03"
+    },
+    {
+      "name": "busy-hud-state-AX5-before",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/03B4609E-A4A1-406E-B361-C132EFC83181.txt",
+      "sha256": "546460c2fe75e9b71132749275f9001f35b1ffabbad4f8507a1b60b7c9481f09"
+    },
+    {
+      "name": "busy-hud-state-default-after",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/2B09F331-460A-4918-A614-BF1EDD516A84.txt",
+      "sha256": "fba722704743132a045d440df415972889ca2fddcb3b58b0bf8e3862539e0008"
+    },
+    {
+      "name": "busy-hud-state-default-busy",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/4A78B0B0-2E0C-42F4-94DF-E0F7C1899039.txt",
+      "sha256": "09cdf9203a81a76d32e3ac7983f77f58f69c1d441244af786b2235cb202b67fc"
+    },
+    {
+      "name": "busy-hud-state-default-before",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/FF2215A4-9134-4523-958E-3D6E131756D7.txt",
+      "sha256": "b26dc1ad1b36ba12757f4538544777672c125fc1896b8cad7a35fd5c142cd1e6"
+    }
+  ],
+  "limits": [
+    "Overall goal 4 remains held; no adoption/merge claim follows from this bounded hosted review. Actual native contact footage and whole-phone/relevant actual-tablet review remain required.",
+    "AX5 before/busy board crop is not settled. Do not infer a product defect or certify whole-board visibility from these early harness frames; root will decide any capture-only settling repair after the active batch.",
+    "The long Sunny instruction in the default before frame is a partial native reader viewport. These frames do not establish complete final-line reading, pan behavior or dismissal input.",
+    "Static explicit scene snapshots do not establish normal production motion, animation continuity, next-input performance or interruption behavior.",
+    "No Increased Contrast/Reduced Transparency appearance, actual platform focus, actual VoiceOver, physical-device reading/contrast/comfort or human recognition study was performed.",
+    "No new quantitative contrast ratio, every-glyph-edge or all-scenery certification is supplied. Test annotations are not proposed product UI; forecast digit specimens do not replace the complete native forecast composition."
+  ],
+  "performed": "Read-only source/manifest and raw-image inspection, hash/dimension verification, and this new review JSON only. No App/test changes, build, simulator/controller operation or other document edits.",
+  "historyInterpretation": "The original4218c877 source,14 captures,7 facts, findings and limits below remain unchanged historical evidence. Only its named AX5 initial-placement limitation is superseded by the visually inspected corrected tranche. The corrected source is test-only; runtime App remains dev.dcb267d534. The new default-before capture limitation is explicit, not a current-product failure.",
+  "correctedHostedSlice": {
+    "source": {
+      "commit": "f0005119156f982fc14b70c3aac9016850a01702",
+      "runtimeInputFingerprint": "dev.dcb267d534",
+      "appRuntimeDelta": "None. Read-only Git comparison4218c877→f0005119 changes only AppTests/SkyReadingPlayfieldTests.swift. Coordinator source proof retains identical567 canonical runtime/build inputs.",
+      "testCorrection": "Wait for two stable AX5 board/scroll samples using the existing common-space board==canvas mapping and at least7 fully visible actual occupied cells before the first capture. No App layout, scene, clock, input or performance fix.",
+      "manifest": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/manifest.json",
+      "manifestSHA256": "a0ef6203424e8a3cb5a7dedac7791ec174b0c02b68fbc0a61f58635a5acfe66c",
+      "sourceProof": "source-04-final.json",
+      "reportedDebugBuild": "Corrected Debug build passed; no build/controller operation performed by this reviewer.",
+      "hostedLog": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement.log",
+      "hostedReceipt": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-receipt.json",
+      "hostedCounts": {
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "modifyingStateDuringViewUpdateWarnings": 0,
+        "testSeconds": 3.257,
+        "suiteElapsedSeconds": 3.261,
+        "stageSeconds": 6.896
+      }
+    },
+    "reviewMethod": "Independently viewed all six fresh1125×2001 full-root PNGs at original delivered dimensions. Recomputed hashes/dimensions for all six and byte-compared all eight control specimens with their previously inspected originals; all eight are identical. The20-PNG export also includes six existing menu-action specimens outside this requested correction review.",
+    "verdict": "BOUNDED_VISUAL_PASS_FOR_THE_FIVE_NAMED_USABLE_HEADER_STATES; NOT_WHOLE_BOARD_OR_OVERALL_ACCEPTANCE",
+    "findings": [
+      {
+        "criterion": "AX5 initial placement correction",
+        "verdict": "VISUALLY_CORRECTED_IN_THIS_TRANCHE",
+        "observation": "Before, busy and after all visibly retain the same foreground scroll crop with two complete star-bearing rows and partial bodies at its upper clipping boundary. No empty AX5 before/busy field remains. Original exact score/target, all five ordered forecast entries, Pause and contextual Help remain complete. Actual changed ingredient placement follows the zero-award setup; this is not identical-board-content evidence."
+      },
+      {
+        "criterion": "Honest busy material state and stable header",
+        "verdict": "PASS_IN_FIVE_USABLE_FRESH_STATES",
+        "observation": "Default busy/after and all three AX5 frames retain the same header footprint/scenic hierarchy. Help alone becomes recognizably gray during busy and returns bright afterward. Pause, forecast families/digits6,1,2,4,5 and exact0/11000 remain visible with no new header clipping, ring or idle bezel."
+      },
+      {
+        "criterion": "Fresh default initial scene capture",
+        "verdict": "CAPTURE_LIMIT_RETAINED_AND_EXCLUDED",
+        "observation": "39E3A255-B38D-490A-BA54-24F543ACDF9B.png visibly has no board stars, while default busy and after contain stars. This early scene-image readiness limit prevents an all-six settled-board claim. Coordinator will exclude this image from retained product/comparison exports. No product failure, normal-motion or performance correction is inferred; no third test/build is requested by this review."
+      },
+      {
+        "criterion": "Control specimen continuity",
+        "verdict": "UNCHANGED_BYTE_IDENTICAL",
+        "observation": "All eight resting/disabled utility and selected/unselected digit specimens match original SHA256 and dimensions exactly. Earlier independent recognition, complete1–7 and separate-selection observations carry forward. No pressed, focused or disabled-native-touch state is fabricated by these specimens."
+      }
+    ],
+    "placementFacts": {
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/104A1982-4C63-4355-A32B-C9DE4566E256.txt",
+      "sha256": "c48874472d65c9fc6eebf3f7c634484a24c724fd44a0cec5437802932377515e",
+      "text": "board=Optional((0.0, -76.66666666666669, 375.0, 900.3333333333333)); canvas=(0.0, -76.66666666666669, 375.0, 900.3333333333333); viewport=(0.0, 428.3333333333333, 375.0, 238.66666666666669); offset=(0.0, 325.0); fullyVisibleOccupiedCells=14",
+      "meaning": "The retained fact reports common-space board==canvas, stable offset325 and14 fully visible occupied cells. Visual inspection separately confirms a star-bearing AX5 crop; this fact is not substituted for image review or a49-cell/full-board claim."
+    },
+    "supersedes": "Only original4218c877 AX5-before/busy unsettled-crop limitation, for the corrected three AX5 images. Original bytes/history remain; the fresh default-before limit remains separate.",
+    "freshFullRootCaptures": [
+      {
+        "name": "busy-hud-held-presenter-static-AX5-after",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/A8220615-71B9-4283-8043-6302BD4A337F.png",
+        "sha256": "eec1072ad47384e094944d1bc31a04c9c61fc666c98418c1901ba80b3b55a250",
+        "pixels": [
+          1125,
+          2001
+        ],
+        "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "use": "Bounded header/disabled-state evidence; static scene snapshot, not production motion"
+      },
+      {
+        "name": "busy-hud-held-presenter-static-AX5-busy",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/D6507B65-9940-4FF8-8585-AB424285FCE4.png",
+        "sha256": "8e7c1acf42b39c931195cbc0dcf5b489e864a9b1cbc6853f68e11439b4b51120",
+        "pixels": [
+          1125,
+          2001
+        ],
+        "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "use": "Bounded header/disabled-state evidence; static scene snapshot, not production motion"
+      },
+      {
+        "name": "busy-hud-held-presenter-static-AX5-before",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/00313F54-9720-4D2E-AE5D-54D1CD4A85CA.png",
+        "sha256": "731d72711a72983858c8509ec5a90389a6dee823c9d24bd4b76dbd69c07b6443",
+        "pixels": [
+          1125,
+          2001
+        ],
+        "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "use": "Bounded header/disabled-state evidence; static scene snapshot, not production motion"
+      },
+      {
+        "name": "busy-hud-held-presenter-static-default-after",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/0E6B7A78-7D72-4907-AC9C-10C0CF604640.png",
+        "sha256": "317eb196325bd23c1e99642544aac97edc6fbd5f4bd2a5ed04392eda5316e1e6",
+        "pixels": [
+          1125,
+          2001
+        ],
+        "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "use": "Bounded header/disabled-state evidence; static scene snapshot, not production motion"
+      },
+      {
+        "name": "busy-hud-held-presenter-static-default-busy",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/E407920C-AF42-47E3-AD18-60B781132B2B.png",
+        "sha256": "cd2f3e15ca075d49d9232648e971f9c367960d74cec13024183f57b6429b77d5",
+        "pixels": [
+          1125,
+          2001
+        ],
+        "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "use": "Bounded header/disabled-state evidence; static scene snapshot, not production motion"
+      },
+      {
+        "name": "busy-hud-held-presenter-static-default-before",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/39E3A255-B38D-490A-BA54-24F543ACDF9B.png",
+        "sha256": "9551e3091c58900ba5544d9a54c059acecf9f0baa13c8b9be523e8e04ef9de29",
+        "pixels": [
+          1125,
+          2001
+        ],
+        "test": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "use": "Excluded from retained product/comparison exports: initial default field has no visible stars"
+      }
+    ],
+    "byteIdenticalControlSpecimens": [
+      {
+        "name": "observatory-hud-forecast-style-native-digits-resting-disabled-AX5-3x",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/13BFE13D-215F-4B0C-879C-12BAD471B15E.png",
+        "sha256": "d0e5f02dd51b65db418f3f8632acb6c7a22900a0fda9fb1a94d15913f13c2185",
+        "pixels": [
+          2304,
+          768
+        ],
+        "byteIdenticalTo": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/0130C972-D2CD-4678-A754-8C323C0F6F61.png",
+        "viewing": "Earlier independent image inspection reused because all source PNG bytes match"
+      },
+      {
+        "name": "observatory-hud-forecast-style-native-digits-resting-disabled-AX5-2x",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/531A6662-CE70-4794-96C9-BA30C087CA81.png",
+        "sha256": "6e5a5cddf00e33e0f254370fe7a9038ca0ee2f5713d4c9081e1da06ed5c50a87",
+        "pixels": [
+          1536,
+          514
+        ],
+        "byteIdenticalTo": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/01BFA6D7-2B4F-4077-80B2-26061B8ACB50.png",
+        "viewing": "Earlier independent image inspection reused because all source PNG bytes match"
+      },
+      {
+        "name": "observatory-hud-utilities-resting-disabled-AX5-3x",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/C0610471-2785-48C4-AB92-F8E6E2D8B1B3.png",
+        "sha256": "c36802104566d28690507e361a4a5ff412619c329ddd0320a145a83c6298fd9f",
+        "pixels": [
+          1040,
+          700
+        ],
+        "byteIdenticalTo": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/28614561-ABA1-4ED0-8125-44F8C40A038F.png",
+        "viewing": "Earlier independent image inspection reused because all source PNG bytes match"
+      },
+      {
+        "name": "observatory-hud-utilities-resting-disabled-AX5-2x",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/DA35A8BB-0EC9-4459-98DF-5198C7BDDB13.png",
+        "sha256": "9fe2bdc36ed96eb46f9ac20b42b6e85e7ea48457ef33453436d439a6b836ae98",
+        "pixels": [
+          694,
+          468
+        ],
+        "byteIdenticalTo": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/3222812E-0E49-48EB-A468-9F7DF1696EAF.png",
+        "viewing": "Earlier independent image inspection reused because all source PNG bytes match"
+      },
+      {
+        "name": "observatory-hud-forecast-style-native-digits-resting-disabled-default-3x",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/47589CBD-7387-42B9-8869-459F24A5161F.png",
+        "sha256": "6c1b74102d210d27226c65bec0541baf33a7cae8787f8918bc5334535790db94",
+        "pixels": [
+          2304,
+          676
+        ],
+        "byteIdenticalTo": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/57B96ABD-0F00-4FE5-BCD1-C5B324E20964.png",
+        "viewing": "Earlier independent image inspection reused because all source PNG bytes match"
+      },
+      {
+        "name": "observatory-hud-forecast-style-native-digits-resting-disabled-default-2x",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/6FAAD908-C70A-4CE7-B678-9F4709890D9E.png",
+        "sha256": "f79491109ad6946b761c65e19ab5e03ac01c30222d4404a69edaa22b732e2bf9",
+        "pixels": [
+          1536,
+          452
+        ],
+        "byteIdenticalTo": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/D0DF2354-5312-49F3-8F8C-0AD72D638174.png",
+        "viewing": "Earlier independent image inspection reused because all source PNG bytes match"
+      },
+      {
+        "name": "observatory-hud-utilities-resting-disabled-default-3x",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/8FD766E9-AC05-418D-9558-211F8D63C1C8.png",
+        "sha256": "c36802104566d28690507e361a4a5ff412619c329ddd0320a145a83c6298fd9f",
+        "pixels": [
+          1040,
+          700
+        ],
+        "byteIdenticalTo": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/97E38F49-0FF1-4A54-9888-7CD812B68E78.png",
+        "viewing": "Earlier independent image inspection reused because all source PNG bytes match"
+      },
+      {
+        "name": "observatory-hud-utilities-resting-disabled-default-2x",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/6F15B8B6-AC5C-41ED-8C9D-54E750E4E9F7.png",
+        "sha256": "9fe2bdc36ed96eb46f9ac20b42b6e85e7ea48457ef33453436d439a6b836ae98",
+        "pixels": [
+          694,
+          468
+        ],
+        "byteIdenticalTo": "/private/tmp/starfall-hud-stack-20261024/hosted-04-4218c877-attachments/CC84C932-FE98-4D72-9EF0-9F15E0DA660B.png",
+        "viewing": "Earlier independent image inspection reused because all source PNG bytes match"
+      }
+    ],
+    "supportingFacts": [
+      {
+        "name": "observatory-hud-control-specimen-scope",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/E90EE7C1-A54C-41D5-BC28-0358900574F1.txt",
+        "sha256": "d02ec974958fd908bd996289b691707e01214988e639b5c102c2745528090291"
+      },
+      {
+        "name": "busy-hud-state-AX5-after",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/289F3799-FBD6-44ED-9B10-A5170DA85339.txt",
+        "sha256": "7a3c3955740cab6892a84124da78d071d8b30fce607216df2985d2c6dfd97952"
+      },
+      {
+        "name": "busy-hud-state-AX5-busy",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/49FB7A45-3752-4BD8-AD52-92AA86B23A29.txt",
+        "sha256": "a47ee4cda25b5af313a023ec232dd35847e14d6e40defd62e10a5d5e65d2a960"
+      },
+      {
+        "name": "busy-hud-state-AX5-before",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/E6546765-B7E0-4A3B-B097-46D9F1039B62.txt",
+        "sha256": "df2eb128010f1f1cc71e292cc6d22609a338940dafd66e9295a8be19c8d2667b"
+      },
+      {
+        "name": "busy-hud-initial-AX5-placement",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/104A1982-4C63-4355-A32B-C9DE4566E256.txt",
+        "sha256": "c48874472d65c9fc6eebf3f7c634484a24c724fd44a0cec5437802932377515e"
+      },
+      {
+        "name": "busy-hud-state-default-after",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/C92DF58C-52D8-4619-8801-E4E5E4E7251C.txt",
+        "sha256": "d39cd2cea675c2daffaf5b31687f44ae0a41b636bf2b78e97fe7a3f2dc7a9a25"
+      },
+      {
+        "name": "busy-hud-state-default-busy",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/51F5EBE6-B5BB-4988-BABA-D4C2552CB6E2.txt",
+        "sha256": "333d463baa871a9e4eb564f98daaaa943ecb589b9f72a8d6e26c5c97a009613f"
+      },
+      {
+        "name": "busy-hud-state-default-before",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/96613417-7E3B-4529-8D1C-5CB7838255AE.txt",
+        "sha256": "06636e57fff1693fea8fa068be6d703e994efb4153ea3161138f35826f259721"
+      }
+    ],
+    "limits": [
+      "Five fresh images are usable bounded header/disabled-state evidence; fresh default-before is excluded. Neither corrected AX5 scroll crops nor default images certify every board cell or complete guide reading.",
+      "Held presenter and explicit scene.render(actual committed snapshot) remain static harness evidence, not production motion, native contact, pan or performance acceptance.",
+      "Actual phone/native-contact and actual-tablet evidence are separate records, not re-reviewed or inherited here. Overall remaining gates are decided by the coordinator; this JSON does not adopt or merge goal4.",
+      "Genuine platform focus, disabled native-touch rejection, Increased Contrast/Reduced Transparency, actual VoiceOver, physical-device comfort/contrast and human recognition remain outside this hosted visual review."
+    ]
+  }
+}

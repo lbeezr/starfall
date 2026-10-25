@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "goal": 3,
   "issue": 384,
-  "status": "Adopted for the named development slice: mechanical, whole-native-screen and final retained-export reviews pass; individual merge next.",
+  "status": "Adopted for the named development slice and merged PR404/main47b0b5e9; issue384 completed. Publication proof is publication-03.json.",
   "baseCommit": "1ed733bb8e38d309576867618a52186cb9e0e58d",
   "branch": "codex/hud-goal-03-scenic-readability",
   "playerOutcome": "The viewport pause symbol stays distinct over bright scenery while remaining small beside the playable stars.",
@@ -118,6 +118,7 @@
     "nativeReview": "visual-review-03.json",
     "exportReview": "visual-review-03-exports.json",
     "captureIndex": "captures-03.json",
-    "adoption": "Only the viewport pause utility opts into the shared scenery backdrop. Known visible failure found: none in named current states. Clear default/tutorial Close/Help, original targets and existing state treatments remain."
+    "adoption": "Only the viewport pause utility opts into the shared scenery backdrop. Known visible failure found: none in named current states. Clear default/tutorial Close/Help, original targets and existing state treatments remain.",
+    "publication": "publication-03.json"
   }
 }

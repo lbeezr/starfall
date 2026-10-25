@@ -1,0 +1,1135 @@
+{
+  "schemaVersion": 1,
+  "goal": 4,
+  "reviewer": "hud_goal_review, independent native visual reviewer",
+  "verdicts": {
+    "wholePhoneStillComposition": "PASS for the nine named default-phone raw captures",
+    "transientContact": "PASS for sampled actual default-phone Pause/chip/Help contact material and clean cancelled restoration",
+    "additionalNativeContexts": "PASS within named actual AX5 Calm tablet and current Frostfruit phone states",
+    "overallGoal4VisualAcceptance": "PASS within this reviewed native scope; hosted specimens, mechanical acceptance and publication remain separately owned",
+    "wholeTabletStillComposition": "PASS for the nine named actual AX5 Calm tablet raw captures",
+    "wholeFrostfruitStillComposition": "PASS for nineteen named current-encounter phone PNGs / eight distinct states"
+  },
+  "knownVisibleFailureFound": false,
+  "scope": "Independent direct whole-native-screen review against approved middle Play direction and official roles: nine default-phone PNGs, nine actual AX5 Calm tablet PNGs, nineteen current Frostfruit PNGs (eight distinct pixel states), and fifteen whole decoded H264 contact samples correlated with the XCTest log. No implementer visual verdict supplied. No builds, controllers, App/test edits, image/video extraction or alteration performed by reviewer.",
+  "sourceBinding": {
+    "commit": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+    "embeddedBuildID": "dev.dcb267d534",
+    "identityLimit": "Commit/build identity is supplied by the source-bound run; appearance alone does not establish an embedded ID.",
+    "manifestPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/manifest.json",
+    "manifestSHA256": "eb93daa6172e41e355604282fe9f29d27519b0b38ced342d3e0dc6fb396df7e3",
+    "testSelector": "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+    "deviceID": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "deviceName": "Starfall HUD Stack dcf3 Phone",
+    "logicalViewportPoints": [
+      390,
+      844
+    ],
+    "reportedMechanicalResult": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "stageSeconds": 101.353,
+      "caseSeconds": 97.075,
+      "status": "reported separately; not the basis of the visual verdict"
+    }
+  },
+  "reference": {
+    "path": "docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "panel": "middle Play",
+    "status": "approved concept direction; native evidence remains independent"
+  },
+  "contracts": [
+    "docs/design/GAME_UI_SYSTEM.md: gameplay utility and forecast roles, distinct pressed/selected states",
+    "docs/design/hud/README.md: readable exact instruments over continuous scenery and a dominant star field"
+  ],
+  "integrity": {
+    "method": "SHA-256 recomputed with hashlib; Pillow inspected stored/display dimensions and EXIF. Every whole PNG was opened at original resolution.",
+    "rawCount": 9,
+    "allUprightPixels": [
+      1170,
+      2532
+    ],
+    "uniqueRawHashes": 3,
+    "intentionalStateEquivalence": "Initial support, idle and all three cancelled images are byte-identical. Deliberate selection, supporting HUD after return and returned controls are byte-identical. Repeated captures establish the shown return state, not nine distinct visual compositions."
+  },
+  "visualReasons": [
+    "The sparse 24-star opening remains the dominant interactive field against continuous scenery. The small exact instruments and native footer retain the approved Play hierarchy; there is no new persistent press bezel.",
+    "Unselected and cancelled states retain complete 0 / 150,000, Next columns and all five ordered destinations 6, 1, 2, 4, 5. The native digits and miniature silhouettes remain distinct, with no control overlap or clipping.",
+    "The warm two-bar Pause and question-mark Help remain complete, recognizable and subordinate to the board. Pause retains its fitted local scenery protection; Help remains within the forecast group. The stills reveal no new glyph deformation or displaced control.",
+    "The later deliberate selection has a visible underline and a full dashed column-six locator while neighboring destinations stay clear. The same persistent state remains after reader return. Its visual meaning does not depend on AX selection alone.",
+    "The inspection uses the established menu reading role with a clear Return to sky action. Visible warning and paused facts are complete; continuation beyond the body viewport is recorded as a coverage limit."
+  ],
+  "contactGate": {
+    "status": "PASS within sampled default-phone native scope",
+    "moviePath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-actual-contact.mp4",
+    "inspected": true,
+    "requiredEvidence": "Time-correlate the three real 1-second presses and downward release-out gestures to idle, interior-held, drag-out and released frames. Judge glyph position/extent separately from surrounding material; compare persistent selection only after the later deliberate tap. Post-cancel stills alone cannot establish transient response.",
+    "evidence": "See contactReview for fifteen independently classified whole decoded frames, exact requested/actual movie timestamps, matching native log and limits"
+  },
+  "findings": [],
+  "limits": [
+    "Acceptance is bounded to the named default-phone, actual AX5 Calm tablet and current Frostfruit states. It does not establish all devices, paintings or states.",
+    "Sampled default-phone pressed/cancelled appearance now passes in contactReview. Exact event latency, unseen movie frames, AX5 contact, physical touch and performance remain unverified.",
+    "Platform focus, disabled touch/admission, Increased Contrast, Reduced Transparency, actual VoiceOver and physical-device acceptance are not established.",
+    "Complete 20-point Pause and 24-point Help source allocations are not alpha-ink bounding-box measurements. This still review does not prove 44/48-point hit targets; those have separate native/hosted geometry checks.",
+    "The reader opening crops the fifth detail at its scroll boundary. No full final-line visibility, reachability or pan conclusion is inferred from this capture.",
+    "No contrast ratio, save/clock invariant or current-state provenance is derived from pixels. The reported mechanical result and existing outcome assertions remain separate evidence."
+  ],
+  "items": [
+    {
+      "attachmentName": "lantern-support-before-containment_0_8EB9B097-5393-4D46-B1D2-C37942862271.png",
+      "state": "initial supporting HUD",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/E79A669C-451A-4BB1-91FD-C9ACD143988E.png",
+      "timestampUnix": 1792894843.685,
+      "sha256": "ed21821ad1de70a8b629a2dcc2a5991b898b8ee913086b6b22aba2394a0d7dd8",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "EXIFOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "wholeScreenVerdict": "PASS within depicted state",
+      "observation": "Complete score, target and ordered destinations; Pause and Help are separate recognizable utilities. No selected underline or column locator."
+    },
+    {
+      "attachmentName": "hud-goal-four-controls-idle_0_7EBFB39D-49D6-41A5-8788-4CC6E00428C9.png",
+      "state": "idle before contact",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/0A3CDC62-F624-489F-ACCB-F7385AD23E97.png",
+      "timestampUnix": 1792894845.493,
+      "sha256": "ed21821ad1de70a8b629a2dcc2a5991b898b8ee913086b6b22aba2394a0d7dd8",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "EXIFOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "wholeScreenVerdict": "PASS within depicted state",
+      "observation": "Same whole screen as initial support; no transient press or persistent selection is depicted."
+    },
+    {
+      "attachmentName": "hud-goal-four-pause-contact-cancelled_0_34DAE167-E863-4873-B99B-11A3D37D5C1F.png",
+      "state": "after Pause cancellation",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/519D2B8D-4CDB-42ED-871A-E9302B8E0B5D.png",
+      "timestampUnix": 1792894849.596,
+      "sha256": "ed21821ad1de70a8b629a2dcc2a5991b898b8ee913086b6b22aba2394a0d7dd8",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "EXIFOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "wholeScreenVerdict": "PASS within depicted state",
+      "observation": "Restored idle composition is byte-identical to the pre-contact state. This still is not held-contact proof."
+    },
+    {
+      "attachmentName": "hud-goal-four-forecast-contact-cancelled_0_6AB6F098-4EFD-4A0F-BE98-AE723C5B79D0.png",
+      "state": "after forecast cancellation",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/31CD52F5-05E3-4EE9-8E43-0B5A1BCAA82F.png",
+      "timestampUnix": 1792894853.485,
+      "sha256": "ed21821ad1de70a8b629a2dcc2a5991b898b8ee913086b6b22aba2394a0d7dd8",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "EXIFOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "wholeScreenVerdict": "PASS within depicted state",
+      "observation": "Restored idle composition is byte-identical to the pre-contact state; no underline or column locator."
+    },
+    {
+      "attachmentName": "hud-goal-four-inspection-contact-cancelled_0_7B18A580-40F4-4642-907B-7DB484EB9EA6.png",
+      "state": "after Help cancellation",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/B37E615E-0B63-4E1F-865A-9E73F8A42616.png",
+      "timestampUnix": 1792894857.429,
+      "sha256": "ed21821ad1de70a8b629a2dcc2a5991b898b8ee913086b6b22aba2394a0d7dd8",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "EXIFOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "wholeScreenVerdict": "PASS within depicted state",
+      "observation": "Restored idle composition is byte-identical to the pre-contact state; no reader is open."
+    },
+    {
+      "attachmentName": "hud-goal-one-phone-native-forecast-selection_0_AF2D6D59-268F-4585-ADB4-DF3E848BBE19.png",
+      "state": "after deliberate forecast selection",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/E744A50C-A6F4-4C10-B6AD-99BC7345F16E.png",
+      "timestampUnix": 1792894861.886,
+      "sha256": "870b798eaa9e987eb802bd36a09c342f92169276889f70a18cca282452d848e0",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "EXIFOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "wholeScreenVerdict": "PASS within depicted state",
+      "observation": "The first destination visibly retains its underline and the complete dashed column-six locator. Digits, artwork and neighboring controls remain intact; this is persistent selection, not platform focus or a held press."
+    },
+    {
+      "attachmentName": "hud-goal-one-phone-inspection-reading_0_7B8BE0BF-22C6-4671-8453-EA95EB8BAC4E.png",
+      "state": "inspection reader opening",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/8D3394D1-D14E-494F-92E8-555D981DFCBA.png",
+      "timestampUnix": 1792894866.61,
+      "sha256": "670e4e6eca8178a459e7b764e40ce68b32ad670e479cc8f939a7e06d34299d04",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "EXIFOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "wholeScreenVerdict": "PASS within depicted state",
+      "observation": "Menu-role reading surface has a complete title, warning, paused fact, first four destination details and Return to sky. The fifth detail continues below the scroll viewport; this frame does not establish the complete final line or reader end."
+    },
+    {
+      "attachmentName": "lantern-support-before-containment_0_0186C03E-FB0F-448A-A7D2-CDDB4B47E867.png",
+      "state": "supporting HUD after reader return",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/110BFDCC-0770-4EFA-A546-34326C20C8F6.png",
+      "timestampUnix": 1792894874.553,
+      "sha256": "870b798eaa9e987eb802bd36a09c342f92169276889f70a18cca282452d848e0",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "EXIFOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "wholeScreenVerdict": "PASS within depicted state",
+      "observation": "Same selected whole-screen composition as the deliberate selection image, with no extra held material or shifted instruments."
+    },
+    {
+      "attachmentName": "hud-goal-four-controls-returned_0_C6ACF891-423E-40D3-A2FC-27EC7F3169F7.png",
+      "state": "returned controls",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/12234F7F-EBF4-48BC-B4FA-FC926D5A6E59.png",
+      "timestampUnix": 1792894885.426,
+      "sha256": "870b798eaa9e987eb802bd36a09c342f92169276889f70a18cca282452d848e0",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "EXIFOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "wholeScreenVerdict": "PASS within depicted state",
+      "observation": "Same selected whole-screen composition after the remaining reader round trip; exact score, forecast and original star arrangement remain visibly unchanged."
+    }
+  ],
+  "tabletReview": {
+    "wholeScreenVerdict": "PASS within the nine depicted states; no known visible failure found",
+    "sourceCommit": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+    "embeddedBuildID": "dev.dcb267d534",
+    "manifestPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/manifest.json",
+    "manifestSHA256": "232e0e66ea05dcb3ddb64d47b57937cdc6ede774386570714d8ffc3400700b36",
+    "deviceID": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+    "deviceName": "Starfall HUD Stack dcf3 Tablet",
+    "logicalViewportPoints": [
+      1032,
+      1376
+    ],
+    "scale": 2,
+    "textContext": "Actual native accessibility XXXL / AX5",
+    "effectsContext": "Calm enabled and restored through actual Settings, without an argument override",
+    "currentEncounterContext": "Lantern Falling Sky revision 4 to an explicit fresh Lantern Full Board revision 6",
+    "testSelector": "StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+    "reportedMechanicalResult": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "stageSeconds": 189.843,
+      "status": "reported separately; not a visual verdict"
+    },
+    "integrity": {
+      "method": "All nine original whole PNGs opened at original resolution; hashes, dimensions and EXIF independently read with hashlib/Pillow.",
+      "rawCount": 9,
+      "uniqueRawHashes": 8,
+      "allUprightPixels": [
+        2064,
+        2752
+      ]
+    },
+    "visualReasons": [
+      "The complete largest native score/objective remains separate from small utilities. The exact 15,000-point change fits without altering the established header/board composition.",
+      "All five family/destination pairs are complete at AX5. Selection is visibly expressed by an underline and a full column locator for columns six, one and two, with no overlap or lingering previous locator.",
+      "The playfield remains the central focus below fitted header protection. The utilities retain their original silhouettes and do not add a persistent competing face or compress the visible stars.",
+      "Full Board clearly replaces the shower instrument with its complete mode context and a dense 49-star field. No shower-specific selection or Help utility leaks into that state.",
+      "The two actual Settings captures distinguish enabled and restored-off Calm state through thumb position/check as well as appearance; menu typography and Done are complete."
+    ],
+    "limits": [
+      "These are settled largest-text stills, not AX5 held-contact or animation proof. Actual platform focus, disabled touch, Increased Contrast, Reduced Transparency, VoiceOver and physical-device perception remain unperformed here.",
+      "The real 15,000-point and Full Board opening captures show guide content continuing below the viewport; they do not establish every guide line or its end reachability.",
+      "The Full Board capture is before the subsequent actual 42,000-point refill. That refill remains mechanical evidence only, and the later covered Settings frame is not a refill capture.",
+      "Outcome, rule revision and actual Settings provenance are bound by the existing source/test run; raw pixels alone do not establish saves, clocks or Core correctness."
+    ],
+    "items": [
+      {
+        "attachmentName": "forecast-inspection-tablet-actual-calm-on_0_87E5FF66-4BB6-4D6E-B129-E36C22293A0C.png",
+        "state": "actual Settings Calm on",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/EFD66046-63CE-4ED9-9345-A2D7D42D4872.png",
+        "timestampUnix": 1792895031.261,
+        "sha256": "26200728ffc000118274a9f1ff6aa10c744bb22ad486702b823af52b3621136c",
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "wholeScreenVerdict": "PASS within depicted state",
+        "observation": "Settings shows Calm effects enabled with its thumb/check on the right; full Sound, Haptics, Calm effects and Done labels are intact. This is preference-state evidence, not a forced reduced-motion specimen."
+      },
+      {
+        "attachmentName": "lantern-support-before-containment_0_3D96AB28-19BF-4BD1-A834-9CAEBFFC3928.png",
+        "state": "largest-text supporting HUD",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/0133931C-77D8-42BE-B073-11FBC42B94A5.png",
+        "timestampUnix": 1792895036.546,
+        "sha256": "901be51f939c88b8f60e7e116f6a64b0ec3061ff32344996727b7b6c234308a3",
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "wholeScreenVerdict": "PASS within depicted state",
+        "observation": "Complete 0 / 150,000 score/objective, five ordered 6/1/2/4/5 destinations and separated Pause/Help. The native star field remains clear below the header, with complete bottom actions."
+      },
+      {
+        "attachmentName": "hud-goal-one-tablet-largest-stacked-support_0_06DC1197-18FF-4A96-AE73-A35BAD1F6FB3.png",
+        "state": "largest-text stacked support",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/F2390E70-50C6-41EE-8AF6-C7942035EF84.png",
+        "timestampUnix": 1792895036.937,
+        "sha256": "901be51f939c88b8f60e7e116f6a64b0ec3061ff32344996727b7b6c234308a3",
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "wholeScreenVerdict": "PASS within depicted state",
+        "observation": "Same largest-text opening composition as the support frame. Complete digits and native utilities remain visible; no persistent selection mark."
+      },
+      {
+        "attachmentName": "forecast-inspection-tablet-column-six_0_F133E154-7C4A-4DC5-A47A-41F97BCBDAC6.png",
+        "state": "selected column six",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/81FA44FB-D849-4FDB-A641-184BC8D7E719.png",
+        "timestampUnix": 1792895041.808,
+        "sha256": "a6ec352d1b5ca6be8d3aee40fcaee813572c91b9fa06a95a695bc3a8c2f2954f",
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "wholeScreenVerdict": "PASS within depicted state",
+        "observation": "Underline is under destination 6 and the entire dashed sixth-column locator fits from the ceiling to the lower board edge. Other destinations and glyphs remain legible."
+      },
+      {
+        "attachmentName": "forecast-inspection-tablet-column-one_0_39898B48-2B06-4A68-AF21-0B838DB783AE.png",
+        "state": "selected column one",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/5651D254-B677-4E4F-9186-89E08A1B2196.png",
+        "timestampUnix": 1792895046.773,
+        "sha256": "33fd549b8565b1953465a80849d194beca08d7327b82b8a4a793738325db61bc",
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "wholeScreenVerdict": "PASS within depicted state",
+        "observation": "Persistent underline moves to destination 1 and its entire leftmost-column locator is visible. The previous sixth-column locator is absent; there is no pressed material claim."
+      },
+      {
+        "attachmentName": "forecast-inspection-tablet-before-real-chain_0_6DF93CB2-6972-422B-8162-DDA78D125EEF.png",
+        "state": "before real chain with column two selected",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/F5517109-7F00-460F-916F-9B483B6E56F3.png",
+        "timestampUnix": 1792895051.918,
+        "sha256": "fb60169d670e1f7f2a9e26f51383da7b3280f574dfddd2bd63f3f2ab6d6f96d3",
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "wholeScreenVerdict": "PASS within depicted state",
+        "observation": "Destination 2 is underlined and the complete second-column locator remains distinct from stars. Full score, forecast and bottom actions are unchanged before the physical exchange."
+      },
+      {
+        "attachmentName": "forecast-inspection-tablet-real-automatic-chain_0_5FEBD60E-E7DC-4C71-B184-74B775A336D6.png",
+        "state": "after real 15,000-point chain",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/6384A911-AED1-4476-9C47-4E5CB3DEE4EB.png",
+        "timestampUnix": 1792895057.905,
+        "sha256": "b7238f42cae32e623f417b97ae85f4b1946d57bf59a6ea4d4772d67095f6dece",
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "wholeScreenVerdict": "PASS within depicted state",
+        "observation": "Complete 15,000 / 150,000 and all five forecast digits remain intact; underline/locator have retired. Changed stars and visible A 2-clear chain / +15,000 starlight feedback identify the depicted outcome. The guide continues below the viewport, so complete guide-tail reachability is not inferred."
+      },
+      {
+        "attachmentName": "forecast-inspection-tablet-full-board-has-no-shower-focus_0_291CB665-DAD2-4F0C-A1D6-290C172EDBA6.png",
+        "state": "fresh Lantern Full Board opening",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/E07EAEEF-E942-4002-9431-A56B7DB17AC9.png",
+        "timestampUnix": 1792895113.4,
+        "sha256": "dce566eeafbbcc94605a70e95fd7f07612afb34036aeaafde72c730ab25d2861",
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "wholeScreenVerdict": "PASS within depicted state",
+        "observation": "Complete 0 / 150,000 and Full Board \u00b7 clears refill and cascade mode text. Shower trail, destination row, inspection utility and selected-column locator are absent. The complete 49-star opening remains the dominant field. This precedes the later mechanical 42,000-point refill."
+      },
+      {
+        "attachmentName": "forecast-inspection-tablet-actual-calm-off_0_8BB1938F-C7D1-4B93-ABD6-4CB8BFDB3785.png",
+        "state": "actual Settings Calm restored off",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/64AB3F7F-E22B-4F29-9413-FD72EB96C275.png",
+        "timestampUnix": 1792895164.179,
+        "sha256": "260256ac8b6dc1c2b9b3930d8b72ce2b3862f37573e7feb7358e8a36319a75b3",
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "wholeScreenVerdict": "PASS within depicted state",
+        "observation": "Settings shows Calm effects off with the thumb on the left, while Sound/Haptics remain enabled. Full labels and Done remain readable; this covered frame is not an image of the 42,000-point refill."
+      }
+    ]
+  },
+  "frostReview": {
+    "wholeScreenVerdict": "PASS within the nineteen named captures and eight distinct states; no known visible failure found",
+    "sourceCommit": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+    "embeddedBuildID": "dev.dcb267d534",
+    "encounter": "Current Frostfruit Orchard revision 8, 15,000-point objective; not historical 18-light tooling",
+    "effects": "Normal motion and live automatic clock, bound by the actual run; stills do not establish continuous motion",
+    "manifestPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/manifest.json",
+    "manifestSHA256": "5f4f725046ab413ef68fd71fc5ae4c0a3050024a65d24cfc21d78bc9e05026ee",
+    "deviceID": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "logicalViewportPoints": [
+      390,
+      844
+    ],
+    "testSelector": "StarfallUITests/ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning",
+    "reportedMechanicalResult": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "stageSeconds": 211.764,
+      "status": "reported separately; not a visual verdict"
+    },
+    "integrity": {
+      "rawCount": 19,
+      "uniqueRawHashes": 8,
+      "allUprightPixels": [
+        1170,
+        2532
+      ],
+      "method": "All nineteen hashes/dimensions/EXIF read with hashlib/Pillow. Opened all eight distinct whole original pixel states; byte-identical captures explicitly map to the inspected state."
+    },
+    "visualReasons": [
+      "Exact score, forecast, utilities and pressure fact remain locally separated from dark-blue scenery and bright snowy highlights without covering stars.",
+      "Actual grown bodies and full cap markers remain distinct from the header, including two full columns after the automatic arrival.",
+      "Menu title and Return remain clear; opening/prepared end captures genuinely depict their final factual lines.",
+      "Paused and running reader copy is visibly different; the later whole HUD has no stale reader. The native test owns their causal sequence."
+    ],
+    "limits": [
+      "Running-reader opening crops the fifth row; complete running-reader end coverage is not inferred.",
+      "Stills do not establish intermediate arrivals, exact animation pacing, physical perception, hit targets, saves or deadlines.",
+      "Focus, disabled touch, Increased Contrast, Reduced Transparency, VoiceOver and physical-device review remain unperformed."
+    ],
+    "distinctStates": [
+      {
+        "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+        "state": "opening paused reader",
+        "verdict": "PASS within depicted state",
+        "observation": "Complete title, warning, paused fact and all five ordered arrival descriptions fit above Return to sky.",
+        "byteIdenticalFiles": [
+          "ECF6F03A-4108-4E3B-99DF-8F8A9E5D28F9.png",
+          "D25EF43D-4567-4DAD-A436-C44DF4844117.png",
+          "8F044665-4412-43E2-AE06-1E9BAA245E24.png",
+          "B2FE3C6D-D8B2-465B-89D7-E2DD1C4B66E9.png",
+          "0AE2DAE9-004C-416A-93AA-65C0D749801A.png",
+          "8699ABD0-915E-43DF-8AC5-99A6A729A284.png",
+          "1644B9F8-DB34-4554-80AA-6EFB9A8FC3FE.png"
+        ]
+      },
+      {
+        "sha256": "fc25f340a98fca878f3795e06b7f65ae8db035f313a4b5ff23da29e2db9ad087",
+        "state": "opening reader end",
+        "verdict": "PASS within depicted state",
+        "observation": "Complete fifth arrival detail and No automatic pattern clear in this snapshot fit above Return; earlier copy is outside the upper scroll edge.",
+        "byteIdenticalFiles": [
+          "BC3AF430-755E-4DEB-A2C3-C3147D7221DB.png"
+        ]
+      },
+      {
+        "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+        "state": "prepared paused reader",
+        "verdict": "PASS within depicted state",
+        "observation": "Warning, paused fact and two complete growth descriptions are readable; fifth-row detail continues below this initial body viewport.",
+        "byteIdenticalFiles": [
+          "EE65A119-A13F-48D1-AF06-490F96FC5E02.png",
+          "A724603C-F3BF-46E0-83E1-1A7181DE4532.png",
+          "3E2AC284-5FE7-44A3-861E-2EB773FF630D.png",
+          "8DFD8077-7FA3-473B-9B1C-55D6AD39869C.png",
+          "CFF3521D-440D-4916-A415-88981BB54A02.png",
+          "E5F56697-45EB-4533-82C2-B0FC858C0E63.png"
+        ]
+      },
+      {
+        "sha256": "b294c7f0d361822df49ce1b080f269de52f56755a4ce5a49f378db3ced891d05",
+        "state": "prepared fifth arrival revealed",
+        "verdict": "PASS within depicted state",
+        "observation": "Full fifth arrival detail, Would add a star at row 3, column 5, is visible above Return; earlier text is scrolled past the top.",
+        "byteIdenticalFiles": [
+          "B0A4FA78-8D9D-4DA0-B57C-E6D98FCAA0AD.png"
+        ]
+      },
+      {
+        "sha256": "79993b435fadbb4e563bae6d654bd5234a54c851086d06f05f611748616aca82",
+        "state": "prepared reader end",
+        "verdict": "PASS within depicted state",
+        "observation": "Complete fifth detail and No automatic pattern clear in this snapshot fit above Return; growth and addition descriptions remain distinct.",
+        "byteIdenticalFiles": [
+          "39FD1350-2372-4420-9A4E-1413A3DFBA2C.png"
+        ]
+      },
+      {
+        "sha256": "bfe15d841a3f42621257ef610c2a6522268aad40b743b5f19529ea8607e29085",
+        "state": "real grown caps",
+        "verdict": "PASS within depicted state",
+        "observation": "Whole HUD has complete 0 / 15,000, destinations 3/7/6/1/2, Pause/Help and first/second cap markers. Two grown bodies, the full growth guide and footer remain separate from utilities.",
+        "byteIdenticalFiles": [
+          "D677CE92-A89F-49BA-9A75-D06DCDFF177D.png"
+        ]
+      },
+      {
+        "sha256": "c54a65a84129f5221e73526b90ba5cdf4c11b595b9f38250d94cbeeae19db66d",
+        "state": "running reader",
+        "verdict": "PASS within depicted state",
+        "observation": "Complete The sky keeps running unless you pause it first and visible growth/addition rows. Fifth-row continuation is outside this initial body viewport.",
+        "byteIdenticalFiles": [
+          "C39CA888-4F6C-49F7-8F6A-CBF0E9CE7D7D.png"
+        ]
+      },
+      {
+        "sha256": "f0afe188ba7a82c2405ea6b36a1315c8811d6ea4e73ed75fe8b1c15774a9e2e4",
+        "state": "automatic reader retirement",
+        "verdict": "PASS within depicted state",
+        "observation": "Reader is absent. Complete 0 / 15,000, refreshed destinations 4/5/3/7/6, Columns 1, 2 are full, ceiling markers, Pause/Help and native footer are clear. The dense star field dominates.",
+        "byteIdenticalFiles": [
+          "FA78820A-2392-4278-BB17-628154BE9E9B.png"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "attachmentName": "shower-inspection-phone-opening-warning_0_FA266DC0-5EBC-41E7-B1D0-B66889EBB89F.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/ECF6F03A-4108-4E3B-99DF-8F8A9E5D28F9.png",
+        "timestampUnix": 1792895223.668,
+        "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-opening-paused_0_99B35E95-62C0-4369-BEF0-3EF4A29526F9.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/D25EF43D-4567-4DAD-A436-C44DF4844117.png",
+        "timestampUnix": 1792895226.499,
+        "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-opening-arrival-0_0_6BA53536-3526-464C-AA3A-A0830369E9AE.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/8F044665-4412-43E2-AE06-1E9BAA245E24.png",
+        "timestampUnix": 1792895229.237,
+        "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-opening-arrival-1_0_0A1D12BA-76C5-45CE-AA53-EB36761C0BC4.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/B2FE3C6D-D8B2-465B-89D7-E2DD1C4B66E9.png",
+        "timestampUnix": 1792895231.852,
+        "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-opening-arrival-2_0_7711D1FE-865B-4C8A-9BDE-334A0780B33E.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/0AE2DAE9-004C-416A-93AA-65C0D749801A.png",
+        "timestampUnix": 1792895234.683,
+        "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-opening-arrival-3_0_70E84BB2-41E3-4749-B3EE-FE481B75D4F2.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/8699ABD0-915E-43DF-8AC5-99A6A729A284.png",
+        "timestampUnix": 1792895239.107,
+        "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-opening-arrival-4_0_1083B1FC-1538-46CA-AD98-D49EB2C33160.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/1644B9F8-DB34-4554-80AA-6EFB9A8FC3FE.png",
+        "timestampUnix": 1792895246.036,
+        "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-opening-patterns_0_768B2593-EC97-47DB-A64E-8EEA69F7B918.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/BC3AF430-755E-4DEB-A2C3-C3147D7221DB.png",
+        "timestampUnix": 1792895253.314,
+        "sha256": "fc25f340a98fca878f3795e06b7f65ae8db035f313a4b5ff23da29e2db9ad087",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-prepared-warning_0_343531AC-3F06-455D-998C-99CD9DFC011B.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/EE65A119-A13F-48D1-AF06-490F96FC5E02.png",
+        "timestampUnix": 1792895277.25,
+        "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-prepared-paused_0_6A390230-3549-4EBA-89B9-C5979B4251FE.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/A724603C-F3BF-46E0-83E1-1A7181DE4532.png",
+        "timestampUnix": 1792895287.481,
+        "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-prepared-arrival-0_0_3D7CA912-0EDC-4648-87E7-A29FA1AA6957.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/3E2AC284-5FE7-44A3-861E-2EB773FF630D.png",
+        "timestampUnix": 1792895291.215,
+        "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-prepared-arrival-1_0_5BB7D49E-68DB-465B-B5E3-F8DCB3905E4B.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/8DFD8077-7FA3-473B-9B1C-55D6AD39869C.png",
+        "timestampUnix": 1792895294.817,
+        "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-prepared-arrival-2_0_0A25627C-8BC6-45E2-87AF-B1443102155E.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/CFF3521D-440D-4916-A415-88981BB54A02.png",
+        "timestampUnix": 1792895297.843,
+        "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-prepared-arrival-3_0_B2F79CF0-A236-4E14-99A5-0CF42E78E941.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/E5F56697-45EB-4533-82C2-B0FC858C0E63.png",
+        "timestampUnix": 1792895301.15,
+        "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-prepared-arrival-4_0_525FE483-8ECA-4DAB-98D0-70FA8B646F1B.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/B0A4FA78-8D9D-4DA0-B57C-E6D98FCAA0AD.png",
+        "timestampUnix": 1792895306.228,
+        "sha256": "b294c7f0d361822df49ce1b080f269de52f56755a4ce5a49f378db3ced891d05",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-prepared-patterns_0_0226B438-D2BE-40F6-A4C6-728B35B0AF73.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/39FD1350-2372-4420-9A4E-1413A3DFBA2C.png",
+        "timestampUnix": 1792895311.737,
+        "sha256": "79993b435fadbb4e563bae6d654bd5234a54c851086d06f05f611748616aca82",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-real-grown-caps_0_EB422F63-2C80-4A2B-8F3F-D4B61BBD48EE.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/D677CE92-A89F-49BA-9A75-D06DCDFF177D.png",
+        "timestampUnix": 1792895332.152,
+        "sha256": "bfe15d841a3f42621257ef610c2a6522268aad40b743b5f19529ea8607e29085",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-running-before-automatic-arrival_0_F88BAFB3-59FD-4D1D-9699-A7AB8B1C6B03.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/C39CA888-4F6C-49F7-8F6A-CBF0E9CE7D7D.png",
+        "timestampUnix": 1792895344.331,
+        "sha256": "c54a65a84129f5221e73526b90ba5cdf4c11b595b9f38250d94cbeeae19db66d",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "attachmentName": "shower-inspection-phone-automatic-arrival-retired-copy_0_A41CBF49-B6FB-4EB3-AA5A-C255DF651DC6.png",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/FA78820A-2392-4278-BB17-628154BE9E9B.png",
+        "timestampUnix": 1792895355.848,
+        "sha256": "f0afe188ba7a82c2405ea6b36a1315c8811d6ea4e73ed75fe8b1c15774a9e2e4",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      }
+    ]
+  },
+  "contactReview": {
+    "verdict": "PASS for sampled real default-phone press response and restoration after the three cancel gestures; no known visible failure found",
+    "sourceCommit": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+    "embeddedBuildID": "dev.dcb267d534",
+    "movie": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-actual-contact.mp4",
+      "bytes": 104950890,
+      "sha256": "c493feabb8848ac1b348a0b53f5abb2a4612c532a03aea787123ff4f55499e44",
+      "hashIndependentlyVerified": true,
+      "durationSeconds": 101.475,
+      "encoding": "H264"
+    },
+    "samplingPlan": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-sampling-plan.json",
+      "sha256": "13cbd5e767a7d2f511e4166d59290ab07133ba68d1bd0fe5a5ccc17efaf6ec97",
+      "recordingReadyUTC": "2026-10-25T02:19:57.084724+00:00",
+      "testSuiteStartLocal": "2026-10-24T22:20:00.984-04:00",
+      "approximateTestToMovieOffsetSeconds": 3.899276
+    },
+    "extractionReceipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-extract.log",
+      "sha256": "667301effbf5fbff8e4ad28a58468ee3208e7101d86d8610b77d3d1ab3e62f05",
+      "elapsedSeconds": 12.964,
+      "exit": 0,
+      "count": 15,
+      "geometry": "Uncropped, unresized whole 1170x2532 AVAsset-decoded PNG samples supplied by root; reviewer did not extract or alter them"
+    },
+    "nativeLog": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact.log",
+      "sha256": "7dc0391ba38bf415e0502c066d3acb2396fedd4262af3f9a92c300bcd59f3c4a",
+      "reviewedLines": [
+        358,
+        444
+      ],
+      "gestures": {
+        "pause": {
+          "testPressStartSeconds": 44.52,
+          "lastCoordinateQuery": 44.65,
+          "postEventIdle": 46.8,
+          "postCancelCapture": 48.61
+        },
+        "chip0": {
+          "testPressStartSeconds": 48.63,
+          "lastCoordinateQuery": 48.76,
+          "postEventIdle": 50.64,
+          "postCancelCapture": 52.5
+        },
+        "help": {
+          "testPressStartSeconds": 52.51,
+          "lastCoordinateQuery": 52.64,
+          "postEventIdle": 54.59,
+          "postCancelCapture": 56.44
+        }
+      },
+      "correlation": "Inspected source log for actual 1-second press / downward drag-out synthesis and subsequent no-selection/no-menu/unchanged-round checks. Recorder-ready offset is approximate; visible classifications are independent of nominal sample labels."
+    },
+    "visualReasons": [
+      "Pause has distinct circular contact material at actual movie48.8983 and49.1867, absent before48.0 and after51.2883. Its original two-bar silhouette and center remain stable.",
+      "Forecast chip0 has a rounded contact face at52.99 and53.2833, absent52.1867,54.1867 and55.29. Its complete miniature/digit6 stay stable; no underline or column locator appears. Later persistent selection is separately depicted in the raw selected still.",
+      "Help has distinct circular material at56.8867 and57.1867, absent56.2,58.1817 and59.285. The original question-mark silhouette and center remain stable, and cancellation does not open the reader.",
+      "The visible control response comes from surrounding material, without an apparent glyph enlargement, shift or loss of proportion. Source20/24-point artwork allocations remain separate from 48-point targets; no alpha-ink bounding-box measurement is claimed.",
+      "Every whole sampled viewport retains complete0 /150,000, five destinations6/1/2/4/5, clear neighboring controls and the unchanged24-star field/footer. Temporary faces stay local and do not become persistent competing panels."
+    ],
+    "limits": [
+      "No visible finger/pointer marker is present. Gesture identity/phase is correlated with XCTest and approximate recorder-ready timing; no exact touch-down/up instant or measured feedback latency is claimed.",
+      "The nominal Pause drag sample49.99 still shows pressed material. It does not prove the pointer has already crossed the target boundary. Later restoration is clear; instantaneous exit response is not inferred.",
+      "Only fifteen decoded samples were reviewed, not every frame of the101.475-second movie. This is bounded press/cancel sampling, not continuous animation, performance, exact RGB contrast or physical-device proof.",
+      "AX5 held contact, platform focus, genuine disabled touch/admission, Increased Contrast, Reduced Transparency, actual VoiceOver and physical touch remain outside this native contact review."
+    ],
+    "frames": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0048.000.png",
+        "sha256": "834fb5c0dfe997556f2089587524324a6252c86411dffcc5e3dc20d053455f9b",
+        "requestedMovieSeconds": 48.0,
+        "actualMovieSeconds": 48.0,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "Pause",
+        "independentVisibleClassification": "idle"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0048.900.png",
+        "sha256": "3ae88d824e8a5c9dd3aaf941c3945fa383079e6b56fd8be6fdead3338dcf5efa",
+        "requestedMovieSeconds": 48.9,
+        "actualMovieSeconds": 48.89833333333333,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "Pause",
+        "independentVisibleClassification": "pressed circle visible"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0049.200.png",
+        "sha256": "db9144ed70808aef80a346184e9130707c578ff65f975bbc06b7cfb66e969ddf",
+        "requestedMovieSeconds": 49.2,
+        "actualMovieSeconds": 49.18666666666667,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "Pause",
+        "independentVisibleClassification": "pressed circle visible"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0050.000.png",
+        "sha256": "db9144ed70808aef80a346184e9130707c578ff65f975bbc06b7cfb66e969ddf",
+        "requestedMovieSeconds": 50.0,
+        "actualMovieSeconds": 49.99,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "Pause",
+        "independentVisibleClassification": "pressed circle still visible in nominal drag interval"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0051.300.png",
+        "sha256": "fc6fc5f19d84d79dc491c2befccc09b6f1f63302c4ef1858789b8088ff041cc0",
+        "requestedMovieSeconds": 51.3,
+        "actualMovieSeconds": 51.288333333333334,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "Pause",
+        "independentVisibleClassification": "restored after gesture"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0052.300.png",
+        "sha256": "834fb5c0dfe997556f2089587524324a6252c86411dffcc5e3dc20d053455f9b",
+        "requestedMovieSeconds": 52.3,
+        "actualMovieSeconds": 52.18666666666667,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "forecast chip 0",
+        "independentVisibleClassification": "idle before chip gesture"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0053.000.png",
+        "sha256": "3690cd51185e3f0dd5dcbf11bcea662b5369f0fd56503f92297999d45d9b56ae",
+        "requestedMovieSeconds": 53.0,
+        "actualMovieSeconds": 52.99,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "forecast chip 0",
+        "independentVisibleClassification": "pressed rounded face visible"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0053.300.png",
+        "sha256": "4a97f2c8c814abad3d46048c885030fb28093173ebaacd0e142176e2abb2e829",
+        "requestedMovieSeconds": 53.3,
+        "actualMovieSeconds": 53.28333333333333,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "forecast chip 0",
+        "independentVisibleClassification": "pressed rounded face visible"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0054.200.png",
+        "sha256": "d138a861e01343ddaf967a055e845d06e1c2348f75016e7f821c3ee95d656f8f",
+        "requestedMovieSeconds": 54.2,
+        "actualMovieSeconds": 54.18666666666667,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "forecast chip 0",
+        "independentVisibleClassification": "temporary face absent in nominal drag interval"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0055.300.png",
+        "sha256": "834fb5c0dfe997556f2089587524324a6252c86411dffcc5e3dc20d053455f9b",
+        "requestedMovieSeconds": 55.3,
+        "actualMovieSeconds": 55.29,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "forecast chip 0",
+        "independentVisibleClassification": "restored after gesture"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0056.200.png",
+        "sha256": "834fb5c0dfe997556f2089587524324a6252c86411dffcc5e3dc20d053455f9b",
+        "requestedMovieSeconds": 56.2,
+        "actualMovieSeconds": 56.2,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "Help",
+        "independentVisibleClassification": "idle before Help gesture"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0056.900.png",
+        "sha256": "ba80e0c654d388c3f53c5ab4e5b0b6790c36b89c42f22a26f94d55661e9f95e7",
+        "requestedMovieSeconds": 56.9,
+        "actualMovieSeconds": 56.88666666666666,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "Help",
+        "independentVisibleClassification": "pressed circle visible"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0057.200.png",
+        "sha256": "3ab8871f5199ba4409c0d57ca51a2497a51f697c88cc5fe628b9f0f8d77ad0b9",
+        "requestedMovieSeconds": 57.2,
+        "actualMovieSeconds": 57.18666666666667,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "Help",
+        "independentVisibleClassification": "pressed circle visible"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0058.200.png",
+        "sha256": "8664de8909d614d486de0e6812934ce60af7d745780f94a0a676de973b884b4a",
+        "requestedMovieSeconds": 58.2,
+        "actualMovieSeconds": 58.181666666666665,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "Help",
+        "independentVisibleClassification": "temporary circle absent in nominal drag interval"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0059.300.png",
+        "sha256": "64fa532b36c36d20f02517bdca6516313aa92b48992d57761c5d03fb14df2471",
+        "requestedMovieSeconds": 59.3,
+        "actualMovieSeconds": 59.285,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "control": "Help",
+        "independentVisibleClassification": "restored after gesture"
+      }
+    ]
+  },
+  "checkpointHistory": [
+    {
+      "scope": "default-phone raw stills",
+      "verdict": "PASS; overall/contact initially held pending evidence"
+    },
+    {
+      "scope": "actual AX5 tablet raw stills",
+      "verdict": "PASS; darker Frostfruit and contact initially pending"
+    },
+    {
+      "scope": "current Frostfruit raw stills and fifteen time-correlated contact samples",
+      "verdict": "PASS within bounded native scope; prior pending gates fulfilled by the appended evidence"
+    }
+  ]
+}

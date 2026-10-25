@@ -203,6 +203,136 @@ final class SkyReadingPlayfieldTests: XCTestCase {
         }
     }
 
+    @MainActor func testBusySetupPreservesHeaderWhileInspectionIsMuted() async throws {
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        for textSize in [DynamicTypeSize.large, .accessibility5] {
+            let suite = "Starfall.BusyHUD.\(UUID())", defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            let opening = FallingSky.freshChallenge(.seedMoon)
+            defaults.set(try SkySaveArchive.encode(opening), forKey: SkySaveArchive.key)
+            defaults.set(false, forKey: "calmEffects"); defaults.set(false, forKey: "soundEnabled")
+            let presenter = FallingSkyRecorder(), clock = ManualRainClock()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], presenter: presenter, clock: clock)
+            let initialForecast = store.forecast
+            let window = UIWindow(windowScene: scene)
+            window.frame = CGRect(x: 0, y: 0, width: 375, height: 667)
+            var observedHeader: CGRect?, observedBoard: CGRect?
+            let host = UIHostingController(rootView: FallingSkyView(store: store,
+                flow: SkyFlowState(arguments: ["--starfalls-reset", "--technique-review"]))
+                .defaultAppStorage(defaults)
+                .environment(\.scenePhase, .active)
+                .environment(\.dynamicTypeSize, textSize)
+                .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+                    GeometryReader { geometry in
+                        let rect = anchors[.header].map { geometry[$0].offsetBy(
+                            dx: geometry.frame(in: .global).minX, dy: geometry.frame(in: .global).minY) }
+                        let boardRect = anchors[.board].map { geometry[$0].offsetBy(
+                            dx: geometry.frame(in: .global).minX, dy: geometry.frame(in: .global).minY) }
+                        Color.clear.onAppear { observedHeader = rect; observedBoard = boardRect }
+                            .onChange(of: rect) { _, value in observedHeader = value }
+                            .onChange(of: boardRect) { _, value in observedBoard = value }
+                    }.allowsHitTesting(false)
+                })
+            let container = UIViewController()
+            window.rootViewController = container; container.view.frame = window.bounds
+            container.addChild(host); host.view.frame = container.view.bounds
+            host.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            container.view.addSubview(host.view); host.didMove(toParent: container); window.makeKeyAndVisible()
+            defer { store.setSuspended(true); window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+            let ready = ContinuousClock.now + .seconds(3)
+            var lastHeader: CGRect?, stableSamples = 0
+            while stableSamples < 2 && ContinuousClock.now < ready {
+                await Task.yield(); host.view.layoutIfNeeded()
+                if store.sceneReady, !store.suspended, store.isPaused { store.togglePause() }
+                if store.sceneReady, !store.suspended, let header = observedHeader, header == lastHeader {
+                    stableSamples += 1
+                } else { stableSamples = 0 }
+                lastHeader = observedHeader
+                if stableSamples < 2 { try await Task.sleep(for: .milliseconds(20)) }
+            }
+            XCTAssertEqual(stableSamples, 2); XCTAssertFalse(store.busy)
+            XCTAssertEqual(store.game, opening); XCTAssertEqual(store.forecast, initialForecast)
+            XCTAssertFalse(store.isPaused)
+            let initialDeadline = try XCTUnwrap(clock.deadline, "The admitted, explicitly started sky owns a real deadline")
+            let header = try XCTUnwrap(observedHeader)
+            XCTAssertTrue(window.bounds.contains(header))
+            // The recorder holds completion; draw the real committed snapshot
+            // through the existing scene owner rather than claiming motion.
+            store.scene.render(store.game)
+            if textSize.isAccessibilitySize {
+                let canvas = try XCTUnwrap(store.scene.view)
+                var ancestor: UIView? = canvas
+                while ancestor != nil && !(ancestor is UIScrollView) { ancestor = ancestor?.superview }
+                let scroll = try XCTUnwrap(ancestor as? UIScrollView)
+                let placementDeadline = ContinuousClock.now + .seconds(2)
+                var previousBoard: CGRect?, previousOffset: CGPoint?, placementSamples = 0, visible = 0
+                while placementSamples < 2 && ContinuousClock.now < placementDeadline {
+                    await Task.yield(); host.view.layoutIfNeeded()
+                    let board = observedBoard, offset = scroll.contentOffset
+                    let viewport = window.convert(scroll.bounds, from: scroll)
+                    visible = board.map { bounds in
+                        let mapping = LandingGeometry(size: bounds.size)
+                        return (0..<49).filter { index in
+                            let cell = Cell(index / 7, index % 7)
+                            return opening.gem(at: cell) != nil && viewport.contains(mapping.frame(cell)
+                                .offsetBy(dx: bounds.minX, dy: bounds.minY))
+                        }.count
+                    } ?? 0
+                    if board == previousBoard, offset == previousOffset,
+                       board == window.convert(canvas.bounds, from: canvas), visible >= 7 {
+                        placementSamples += 1
+                    } else { placementSamples = 0 }
+                    previousBoard = board; previousOffset = offset
+                    if placementSamples < 2 { try await Task.sleep(for: .milliseconds(20)) }
+                }
+                XCTAssertEqual(placementSamples, 2,
+                    "Initial AX5 placement must settle on actual opening stars: board=\(String(describing: observedBoard)); offset=\(scroll.contentOffset); visible=\(visible)")
+                let placement = XCTAttachment(string: "board=\(String(describing: observedBoard)); canvas=\(window.convert(canvas.bounds, from: canvas)); viewport=\(window.convert(scroll.bounds, from: scroll)); offset=\(scroll.contentOffset); fullyVisibleOccupiedCells=\(visible)")
+                placement.name = "busy-hud-initial-AX5-placement"; placement.lifetime = .keepAlways; add(placement)
+            }
+            func capture(_ phase: String, busy: Bool) async throws {
+                let game = store.game, forecast = store.forecast, generation = store.constellationInputGeneration
+                let deadline = clock.deadline, now = clock.now, saved = defaults.data(forKey: SkySaveArchive.key)
+                let source = try XCTUnwrap(SkyForecastInspection.Source(game: game, generation: generation,
+                    forecast: forecast, arriving: store.showerCountdown.arriving))
+                await Task.yield(); host.view.layoutIfNeeded()
+                let image = windowImage(window)
+                XCTAssertEqual(store.busy, busy); XCTAssertFalse(store.suspended)
+                XCTAssertEqual(observedHeader, header, "Busy state must preserve the actual full-root header")
+                XCTAssertEqual(store.game, game); XCTAssertEqual(store.forecast, forecast)
+                XCTAssertEqual(store.constellationInputGeneration, generation)
+                XCTAssertEqual(SkyForecastInspection.Source(game: store.game, generation: store.constellationInputGeneration,
+                    forecast: store.forecast, arriving: store.showerCountdown.arriving), source)
+                XCTAssertEqual(clock.deadline, deadline); XCTAssertEqual(clock.now, now)
+                XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), saved)
+                let category = textSize == .large ? "default" : "AX5"
+                let attachment = XCTAttachment(image: image)
+                attachment.name = "busy-hud-held-presenter-static-\(category)-\(phase)"
+                attachment.lifetime = .keepAlways; add(attachment)
+                let facts = XCTAttachment(string: "busy=\(store.busy); header=\(header); source=\(source); deadline=\(String(describing: deadline)); pauseGlyph=20pt; helpGlyph=24pt; source disables inspection only; native disabled touch/focus unperformed")
+                facts.name = "busy-hud-state-\(category)-\(phase)"; facts.lifetime = .keepAlways; add(facts)
+            }
+            try await capture("before", busy: false)
+            var expected = opening
+            let turn = try XCTUnwrap(expected.nudge(from: Cell(0, 1), to: Cell(1, 1)))
+            XCTAssertTrue(turn.resolutionPhases.isEmpty); XCTAssertEqual(turn.displayAward, 0)
+            XCTAssertTrue(store.requestInput(.swap(Cell(0, 1), Cell(1, 1)), snapshot: store.game,
+                                             generation: store.constellationInputGeneration))
+            XCTAssertEqual(store.game, expected); XCTAssertEqual(store.game.displayScore, 0)
+            XCTAssertEqual(store.game.displayTarget, 11_000); XCTAssertEqual(store.forecast, initialForecast)
+            XCTAssertFalse(store.showerCountdown.arriving); XCTAssertTrue(store.busy)
+            XCTAssertEqual(presenter.completions.count, 1)
+            store.scene.render(store.game)
+            try await capture("busy", busy: true)
+            presenter.finish()
+            XCTAssertFalse(store.busy); XCTAssertEqual(store.game, expected)
+            store.scene.render(store.game)
+            try await capture("after", busy: false)
+            XCTAssertEqual(presenter.completions.count, 1); XCTAssertEqual(clock.deadline, initialDeadline)
+        }
+    }
+
     @MainActor private func windowImage(_ window: UIWindow) -> UIImage {
         UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
             window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)

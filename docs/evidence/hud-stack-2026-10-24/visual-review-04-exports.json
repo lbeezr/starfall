@@ -1,0 +1,498 @@
+{
+  "schemaVersion": 1,
+  "goal": 4,
+  "reviewer": "hud_read_ahead, independent of App style implementation; earlier authored the hosted busy test seam",
+  "verdict": "BOUNDED PASS for all thirteen indexed raw/export pairs and their separately stated native, contact-sample, hosted-root and component contexts.",
+  "knownVisibleFailureFound": false,
+  "recordedUTC": "2026-10-25T02:40:01.822Z",
+  "captureIndex": {
+    "path": "docs/evidence/hud-stack-2026-10-24/captures-04.json",
+    "SHA256AtReview": "d80811b5b72284a34ec99349045fc21c5a7a42ac9a36cc2d18a945ef020ec7eb",
+    "count": 13,
+    "retainedBytes": 7756129
+  },
+  "scope": "Opened all 13 retained whole images and all 13 exact named PNGs, compared complete compositions and essential ink, and independently recomputed 26 hashes plus original dimensions/EXIF. Did not read the pending peer native visual verdict or operate controllers/build tools. This export review does not claim independent authorship/review of the hosted test implementation.",
+  "reference": {
+    "path": "docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "panel": "Middle Play",
+    "meaning": "Restrained instruments, continuous painting and dominant actual stars. Used with GAME_UI_SYSTEM, UI_PRODUCTION and the HUD guide; component canvases remain distinct from a native product viewport."
+  },
+  "sourceBinding": {
+    "nativeCommit": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+    "hostedCorrectionCommit": "f0005119156f982fc14b70c3aac9016850a01702",
+    "embeddedBuildID": "dev.dcb267d534",
+    "sourceRecord": "docs/evidence/hud-stack-2026-10-24/source-04-final.json",
+    "meaning": "The f000 correction changes only hosted capture readiness in the new busy method. App/runtime/native-test bytes remain the 4218 candidate. Source and embedded IDs are bound by the index/source record; screenshot appearance alone does not prove a build ID."
+  },
+  "integrity": {
+    "rawHashMatches": "13 of 13",
+    "exportHashMatches": "13 of 13",
+    "storedGeometryAndNormalizedOrientationMatches": "26 of 26",
+    "uniqueRawImages": 13,
+    "uniqueRetainedImages": 13,
+    "duplicatesFound": [],
+    "method": "SHA-256 via Python hashlib. Read original PNG IHDR/eXIf and JPEG SOF/Exif directly with standard-library binary parsing; no decode/re-encode or image file modification.",
+    "orientation": "All thirteen display upright in portrait or the explicitly labeled component canvas. Native phone originals/exports are 1170 x 2532; tablet 2064 x 2752; hosted roots 1125 x 2001. Component canvases retain 1040 x 700 and 1536 x 452. EXIF absent in decoded H264 samples is recorded as absent and normalized to upright 1, rather than claiming an explicit tag.",
+    "encodingLimit": "JPEG80 is the supplied/indexed export setting. This review independently checks bytes/hashes, dimensions, EXIF and visible correspondence; it does not reconstruct the encoder quality setting. Tool previews may be resized for display, while integrity reads original file bytes."
+  },
+  "visualReasons": [
+    "Each retained JPEG preserves its exact raw composition and essential native score, target, forecast, locator, control or specimen ink. Compression modestly smooths fine scenic texture and glow, with no consequential missing stroke, clipped value or altered state observed.",
+    "Native phone and tablet images preserve the approved Play hierarchy: continuous scenery, readable localized instruments, small utilities and distinct actual stars. Busy/selected/context changes remain visibly distinguishable within their own owners.",
+    "The three contact samples have visibly different material responses, not merely different timestamps: circles around Pause and Help, and a rounded filled first forecast chip. The exported artwork/text stays complete and apparently stable in proportion.",
+    "The corrected hosted AX5 before/busy pair is star-bearing in both images, preserves its complete exact facts and visibly mutes Help only. It remains a static held-presenter test context; no production movement or disabled-touch assurance is derived from it.",
+    "Both specimen exports preserve the registered caller sizes and complete digits, with test annotations and selected/disabled roles plainly labeled. They are not passed off as native screens or platform focus evidence.",
+    "No duplicate, misleading opening/selected substitution, orientation error, context mismatch or export-specific visible failure was found in these final thirteen entries."
+  ],
+  "contactAppearance": {
+    "observedFromPixels": [
+      "48.900 requested / 48.898333 actual frame: filled Pause circle",
+      "53.000 requested / 52.990 actual frame: rounded first-chip fill",
+      "56.900 requested / 56.886667 actual frame: filled Help circle"
+    ],
+    "sourceCrosscheck": "4218 StarfallUtilityButtonStyle draws its Circle surface only for configuration.isPressed && isEnabled; native chip style supplies its own rounded pressed surface. This supports the visible appearance interpretation, not an inferred exact hold duration.",
+    "classificationBoundary": "Single retained frames do not by themselves classify the full press/drag-out/release/cancel sequence. Full native contact classification and unchanged-round assertions belong to visual-review-04-native.json and its source-bound native evidence. No contrast or physical/performance measurement is taken from H264 or JPEG."
+  },
+  "hostedPublicationHistory": "The earlier default hosted-before starless frame is excluded from this index. Its early scene publication/capture-readiness limit remains recorded in visual-review-04-hosted.json; it is not reclassified here as a product failure. Corrected AX5 before/busy are separately accepted only for their visible static state.",
+  "items": [
+    {
+      "id": "phone-default__lantern-idle",
+      "kind": "native-screen",
+      "state": "Current Lantern4, paused0/150000, normal effects, unselected opening; all three post-cancel captures are identical to this state.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/0A3CDC62-F624-489F-ACCB-F7385AD23E97.png",
+        "SHA256": "ed21821ad1de70a8b629a2dcc2a5991b898b8ee913086b6b22aba2394a0d7dd8",
+        "bytes": 3448962,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-default__lantern-idle.jpg",
+        "SHA256": "b1e3040fb138002affe8a1383d7925e74fb35ecf9e95beb37e23f543a135a3a9",
+        "bytes": 524775,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Genuine unselected native Lantern opening: complete 0 / 150,000, ordered 6/1/2/4/5 destinations, Help, Pause and full footer labels remain clear. No selected underline or dashed column locator is present."
+    },
+    {
+      "id": "phone-default__selected-column-6",
+      "kind": "native-screen",
+      "state": "Current Lantern4, paused0/150000, normal effects, selected forecast column6. Returned/reopened states retain this same selected composition.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/E744A50C-A6F4-4C10-B6AD-99BC7345F16E.png",
+        "SHA256": "870b798eaa9e987eb802bd36a09c342f92169276889f70a18cca282452d848e0",
+        "bytes": 3455394,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-default__selected-column-6.jpg",
+        "SHA256": "942b9d79d4fd684b622c5c35ba3be1907c381009019a650316c3a32118cc4524",
+        "bytes": 543343,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Native selected-column-6 frame: underline and unfilled dashed locator are distinct while all five destinations, exact score/target, actual stars and controls remain readable. This image is distinct from the unselected opening."
+    },
+    {
+      "id": "phone-contact__sample-48p900",
+      "kind": "native-contact-frame",
+      "state": "Real Pause contact sequence: requested48.900s, actual48.898333s in recorded H264. See independent contact review for phase classification.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0048.900.png",
+        "SHA256": "3ae88d824e8a5c9dd3aaf941c3945fa383079e6b56fd8be6fdead3338dcf5efa",
+        "bytes": 2970444,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": null,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-contact__sample-48p900.jpg",
+        "SHA256": "2778bafebd917d0f461496cfc910632972bfac279f87f689080430b0412e1195",
+        "bytes": 504955,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": null,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Decoded contact sample visibly shows a filled circular material around the original two Pause bars, unlike the idle fitted protection. The JPEG preserves that visible appearance without an obvious glyph-size change. This alone establishes neither contact duration nor cancellation outcome."
+    },
+    {
+      "id": "phone-contact__sample-53p000",
+      "kind": "native-contact-frame",
+      "state": "Real forecast-chip0 contact sequence: requested53.000s, actual52.990s. No contrast measurement from compressed footage.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0053.000.png",
+        "SHA256": "3690cd51185e3f0dd5dcbf11bcea662b5369f0fd56503f92297999d45d9b56ae",
+        "bytes": 2975493,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": null,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-contact__sample-53p000.jpg",
+        "SHA256": "d23acaf1e205424eea3740f3b6706f0fb3d158330f65e25688e504cce5d9c3ff",
+        "bytes": 506135,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": null,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Decoded contact sample visibly shows the first forecast chip on a rounded filled surface, with Aqua and 6 still complete. No persistent selected underline or column locator appears in this sample. The JPEG retains the visible transient material."
+    },
+    {
+      "id": "phone-contact__sample-56p900",
+      "kind": "native-contact-frame",
+      "state": "Real Help contact sequence: requested56.900s, actual56.886667s. Whole decoded frame, no crop/resize/retouch.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames/frame-0056.900.png",
+        "SHA256": "ba80e0c654d388c3f53c5ab4e5b0b6790c36b89c42f22a26f94d55661e9f95e7",
+        "bytes": 2980264,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": null,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-contact__sample-56p900.jpg",
+        "SHA256": "55a6fe57417d1dc20952042fbafdda0bfbc14633d626bb8df8191e1c6a42afc6",
+        "bytes": 506402,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": null,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Decoded contact sample visibly shows a filled circle around Help; the question-mark artwork and all surrounding forecast facts remain complete. The JPEG preserves this appearance. Timestamp alone is not used as proof that the control was held."
+    },
+    {
+      "id": "tablet-ax5-calm__selected-column-6",
+      "kind": "native-screen",
+      "state": "Actual AX5 tablet, real Settings Calm, current Lantern4, exact forecast column6 selected.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/81FA44FB-D849-4FDB-A641-184BC8D7E719.png",
+        "SHA256": "a6ec352d1b5ca6be8d3aee40fcaee813572c91b9fa06a95a695bc3a8c2f2954f",
+        "bytes": 6856408,
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__tablet-ax5-calm__selected-column-6.jpg",
+        "SHA256": "f584511776c9fcbef914c6c004acfca1bda90862ea21331ed546b3eb22ad4c91",
+        "bytes": 1066194,
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Actual AX5 tablet frame retains complete 0 / 150,000, all five destinations, selected underline/column-6 locator, small Pause/Help and full Start sky/Next shower labels. The connected painting and actual stars keep the accepted Play hierarchy."
+    },
+    {
+      "id": "tablet-ax5-calm__real-15000-chain",
+      "kind": "native-screen",
+      "state": "Actual AX5 tablet, real15,000-point chain in current Lantern4/150,000 objective; receipt/guide visible only within their captured scroll positions.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/6384A911-AED1-4476-9C47-4E5CB3DEE4EB.png",
+        "SHA256": "b7238f42cae32e623f417b97ae85f4b1946d57bf59a6ea4d4772d67095f6dece",
+        "bytes": 6643804,
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__tablet-ax5-calm__real-15000-chain.jpg",
+        "SHA256": "45718f585b7051502699a2a2c518ad22f9079b54c02e56f131d86aacb1c22f74",
+        "bytes": 995532,
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Actual AX5 tablet shows complete 15,000 / 150,000 and five destinations, with selected cue retired. The visible Spark excerpt names a 2-clear chain and +15,000 starlight. Only the captured guide excerpt is accepted; this still alone proves neither the input provenance nor every guide line."
+    },
+    {
+      "id": "tablet-ax5-calm__full-board-opening",
+      "kind": "native-screen",
+      "state": "Current LanternFullBoard6 opening, no shower forecast/inspection. This frame precedes the mechanically verified42,000-point refill.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/E07EAEEF-E942-4002-9431-A56B7DB17AC9.png",
+        "SHA256": "dce566eeafbbcc94605a70e95fd7f07612afb34036aeaafde72c730ab25d2861",
+        "bytes": 6956575,
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__tablet-ax5-calm__full-board-opening.jpg",
+        "SHA256": "761ee0e6ea3a29a60c32f0820e460dccd560c855fd24b53bbc03dbc19e0452f6",
+        "bytes": 1116540,
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Actual AX5 Full Board opening shows complete 0 / 150,000, the full Full Board clears refill and cascade context, small Pause and dense actual stars. Shower forecast and inspection are absent. This is the opening, not a 42,000-point refill capture; the lower guide excerpt is scoped to the visible viewport."
+    },
+    {
+      "id": "phone-normal__frostfruit-grown-caps",
+      "kind": "native-screen",
+      "state": "Current Frostfruit8/15000, first actual shower has produced the two predicted grown caps; normal effects, paused.",
+      "compiledCheckpoint": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost-attachments/D677CE92-A89F-49BA-9A75-D06DCDFF177D.png",
+        "SHA256": "bfe15d841a3f42621257ef610c2a6522268aad40b743b5f19529ea8607e29085",
+        "bytes": 4476527,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__phone-normal__frostfruit-grown-caps.jpg",
+        "SHA256": "bf664170a61bfabdfb06bfa58da17122770889a06b4f2d116c0ba1f9f270f539",
+        "bytes": 874183,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Current Frostfruit frame shows complete 0 / 15,000, ordered 3/7/6/1/2 forecast, two enlarged top stars and complete visible growth explanation/Close/footer actions. The JPEG retains the actual piece silhouettes and native ink over the busier painting."
+    },
+    {
+      "id": "hosted-ax5__seed-before-busy",
+      "kind": "hosted-root",
+      "state": "375x667 AX5 currentSeed4 before real zero-award setup; corrected actual board/scroll/visible-star placement; explicit static scene snapshot.",
+      "compiledCheckpoint": "f0005119156f982fc14b70c3aac9016850a01702",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/00313F54-9720-4D2E-AE5D-54D1CD4A85CA.png",
+        "SHA256": "731d72711a72983858c8509ec5a90389a6dee823c9d24bd4b76dbd69c07b6443",
+        "bytes": 7633962,
+        "storedPixels": [
+          1125,
+          2001
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__hosted-ax5__seed-before-busy.jpg",
+        "SHA256": "f4e922a76a040695cce9045511143b75300695a378a99819ba9fba79144be21f",
+        "bytes": 507027,
+        "storedPixels": [
+          1125,
+          2001
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Corrected 375 x 667 AX5 hosted root visibly has actual stars before the setup, complete 0 / 11,000 and 6/1/2/4/5 destinations, bright Pause and enabled Help. The partial upper star row is the real scroll-viewport boundary; full lower stars are visible. This is a held-presenter static host, not actual device or motion proof."
+    },
+    {
+      "id": "hosted-ax5__seed-busy",
+      "kind": "hosted-root",
+      "state": "375x667 AX5 currentSeed4, genuine recorder-held zero-award setup, inspection muted while pause/chips retain their source-defined availability. Static snapshot, no native disabled-touch or motion claim.",
+      "compiledCheckpoint": "f0005119156f982fc14b70c3aac9016850a01702",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/D6507B65-9940-4FF8-8585-AB424285FCE4.png",
+        "SHA256": "8e7c1acf42b39c931195cbc0dcf5b489e864a9b1cbc6853f68e11439b4b51120",
+        "bytes": 7629125,
+        "storedPixels": [
+          1125,
+          2001
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__hosted-ax5__seed-busy.jpg",
+        "SHA256": "209aa84eb24e1b607bc58a1cb1d28d55eb6e81597ade6abd4e2e7adf9f35a79c",
+        "bytes": 506129,
+        "storedPixels": [
+          1125,
+          2001
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Corrected AX5 hosted busy root retains the same complete header and star-bearing viewport while Help becomes muted. Pause and forecast content retain their visible enabled appearance. The JPEG preserves the disabled artwork contour; native disabled-touch rejection is not inferred."
+    },
+    {
+      "id": "specimen-3x-ax5__utilities",
+      "kind": "hosted-component",
+      "state": "Production Help24/Pause20, clear/scenery, enabled/disabled. Annotation text is test-only. Resting/disabled geometry only; not a product screen.",
+      "compiledCheckpoint": "f0005119156f982fc14b70c3aac9016850a01702",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/C0610471-2785-48C4-AB92-F8E6E2D8B1B3.png",
+        "SHA256": "c36802104566d28690507e361a4a5ff412619c329ddd0320a145a83c6298fd9f",
+        "bytes": 121084,
+        "storedPixels": [
+          1040,
+          700
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__specimen-3x-ax5__utilities.jpg",
+        "SHA256": "22d163e68b28ef1ab82769e46666f5876d87f29998266ddde55bcafd194eaa57",
+        "bytes": 70083,
+        "storedPixels": [
+          1040,
+          700
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Utility specimen correctly labels Help 24-point and Pause 20-point artwork with clear/scenery and enabled/disabled variants. Muted glyphs remain recognizable and proportionate. These annotations and the canvas are test-only; they are not a product screen, focused state or contact proof."
+    },
+    {
+      "id": "specimen-2x-default__forecast-digits",
+      "kind": "hosted-component",
+      "state": "Production forecast style with complete native digits1–7, selected/unselected and enabled/disabled. Test annotations; not the full native five-star forecast group.",
+      "compiledCheckpoint": "f0005119156f982fc14b70c3aac9016850a01702",
+      "embeddedBuildID": "dev.dcb267d534",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-04-f0005119-placement-attachments/6FAAD908-C70A-4CE7-B678-9F4709890D9E.png",
+        "SHA256": "f79491109ad6946b761c65e19ab5e03ac01c30222d4404a69edaa22b732e2bf9",
+        "bytes": 44355,
+        "storedPixels": [
+          1536,
+          452
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "export": {
+        "path": "docs/evidence/hud-stack-2026-10-24/goal-04-captures/dev-dcb267d534__specimen-2x-default__forecast-digits.jpg",
+        "SHA256": "36d0b1a1ef22d9087412e6b938adb4256d7128890e9422b6794b7ee27f62cc2c",
+        "bytes": 34831,
+        "storedPixels": [
+          1536,
+          452
+        ],
+        "EXIFOrientationTag": 1,
+        "normalizedOrientation": 1,
+        "matchesIndex": true
+      },
+      "visualVerdict": "PASS for visible state and raw/export fidelity",
+      "observation": "Forecast-style specimen retains complete native digits 1–7 in enabled/disabled and selected/unselected rows. Selected underlines remain distinct from the quieter disabled treatment. This is a component canvas, not the live five-star forecast group."
+    }
+  ],
+  "limits": [
+    "This is bounded static raw/export acceptance. Native interaction, exact saved round, hit-target floor, clocks and earned-event provenance remain separate mechanical evidence.",
+    "Contact raw PNGs were decoded from compressed native H264 footage. The retained JPEG adds a second encoding step. Visible materials survive, but no pixel-exact glyph geometry, contrast ratio, continuous animation, finger latency or physical recognition claim is made.",
+    "The selected underline/column locator is persistent selection, not platform focus. Platform focus, actual native disabled-touch rejection, actual VoiceOver, Increased Contrast, Reduced Transparency, minimum-iOS and physical-device states are unperformed here.",
+    "Hosted roots explicitly render committed scene snapshots while the real Store presenter callback is held. They establish visible busy treatment and stable header only within that test; they do not establish a production animation pose or actual native disabled contact.",
+    "Utility and forecast canvases contain test-only annotation/layout and supplied disabled variants. Their resting/disabled appearance is not native focus, press/cancel or every live control-state proof.",
+    "Tablet guide excerpts are reviewed only where captured. Partial content at the viewport edge does not claim simultaneous visibility of every line or independent scroll reachability.",
+    "Full Board frame is at zero before the later 42,000 refill; no refill screenshot is substituted. Current Seed4/Frostfruit8 labels retain their current 11,000/15,000-point context and are not historical 18-light fixtures.",
+    "Source-bound passes do not cover every backdrop, viewport or user preference. Prior intermittent reader-pan failures remain source-bound residuals with cause unassigned; this export work does not fix or diagnose them."
+  ],
+  "verificationPerformed": "Read-only original file/source/index inspection and one new JSON review record only. No App/test edits, controller operations, builds, image transformations or exports."
+}

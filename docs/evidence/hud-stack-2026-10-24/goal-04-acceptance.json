@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "goal": 4,
+  "issue": 385,
+  "baseMain": "47b0b5e9f6e60bfb428a3e776e272a113ef34e7a",
+  "branch": "codex/hud-goal-04-control-states",
+  "status": "Adopted for the named development slice after mechanical, independent native/contact, hosted and final export reviews; individual merge next.",
+  "playerOutcome": "Help and pause keep their original glyph size during contact and answer with the same immediate pressed material as forecast controls. Selection, platform focus and disabled ink retain distinct meanings.",
+  "sourceObservation": "Utility scales its24ptallocation by0.92 onpress: Pause20→18.4pt, forecastHelp24→22.08pt. ForecastinsteadusesstablesurfacePressed. No newinputdefect/glyphrecognitionfailure established.",
+  "componentContract": {
+    "owner": "StarfallUtilityButtonStyle",
+    "resting": "Original caller glyph: Pause20pt and forecast Help24pt; fixed24pt style allocation and48pt target. Clear default; Goal3 viewport pause keeps scenery protection.",
+    "pressed": "Enabled native contact paints the shared surfacePressed material in a40pt circle. No glyph shrink, shift or brightness transform. Passive decoration; original native input/cancellation.",
+    "selected": "Forecast underline and selected trait remain independent. Utilities acquire no selected state.",
+    "disabled": "ObservatoryIcon retains its single disabled desaturation/opacity. No double-dimming or pressed surface. Hosted state appearance reviewed; native disabled-touch proof remains separate.",
+    "focused": "Shared focusWidth token, existing circular footprint and passive decoration. Actual platform focus appearance unperformed."
+  },
+  "observableAcceptance": [
+    "Real normalLantern chip andInspect drag-out releases cancel without changing exact round/forecast or opening a reader; immediate inside taps and Return/reopen work. Preserve all original gates.",
+    "Actual native contact footage contains a held press and shows stable glyph/targets; post-release still alone is insufficient.",
+    "Default andAX5 actualphone/tablet complete composition remains legible; existing AX5realCalm chain/FullBoard and normalFrostfruit liveclock preserved.",
+    "Hosted registeredglyphs/defaultAX5 enabled-disabled utility/forecast size comparisons; optional realbusy Store phase only via existing presenter, no fabricatedproductionstate.",
+    "Independent whole-native-screen and final retained-export review before adoption/merge."
+  ],
+  "plannedChecks": {
+    "core": "swift test",
+    "hosted": [
+      "StarfallAppTests/ObservatoryArtworkTests",
+      "StarfallAppTests/SkyForecastInspectionTests/testSelectionRejectsChangedBoardGenerationOrderMaterialDestinationAndArrivalState",
+      "StarfallAppTests/SkyForecastInspectionTests/testRealExchangeSuspensionAndSameOpeningReplayRetireOldSelections",
+      "StarfallAppTests/SkyShowerInspectionTests/testSnapshotMatchRetiresOnExchangeGenerationOrderArrivalOrUnavailableState",
+      "StarfallAppTests/SkyShowerInspectionTests/testRepeatedInspectionPreservesLiveDeadlineSaveWorldAndActualSeededContinuation",
+      "StarfallAppTests/SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted"
+    ],
+    "native": [
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound",
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+      "StarfallUITests/ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning"
+    ],
+    "builds": "Debug/test and bounded Release build; existing file membership, no resource/routing changes",
+    "always": [
+      "python3 scripts/ci-hygiene.py",
+      "git diff --check"
+    ],
+    "nativeContactRecording": "Startowned simctlH264recorder before normalLanternmethod; waitRecordingstarted; stoponlyownedPIDwithSIGINT aftermethod; sourceboundnativevideoframesincludeheldpress/cancel forPause20,chip,Help24. No alteredfixture/motion.",
+    "artworkScope": "Existing3artworkmethods; extensionrendersresting/disabled, nativeglyphsize20Pause/24Help,44forecaststyle/digits atdefaultAX5 and2x/3x. Testannotationsnotproduct UI. These are component specimens, not genuinebusyorfullforecastnativeproof.",
+    "hostedExpectedMethods": 8,
+    "nativeExpectedMethods": 4,
+    "inventory": {
+      "StarfallAppTests": 816,
+      "StarfallUITests": 260,
+      "limit": "Source discovery only, not a fullmatrix executed pass. One new meaningful busy-state hostedmethod in existingmemberfile; originalmethods unchanged."
+    }
+  },
+  "limits": "No fake ButtonStyle.Configuration, no production state/screenshot API or gesture wrapper. Platform focus, native disabled-touch, contrast/transparency modes, actualVoiceOver, physicalcomfort and continuousperformance are separate/unperformed unless genuinely exercised. Earlier reader-pan cause remains unassigned.",
+  "ownership": "RootStyle/docs/hostedbusy; hud_audit oneForecastUITest; hud_goal_review ObservatoryArtworkTests; hud_read_ahead read-onlybusyplan. No heavy/controllers until explicitshared-resourcegrant.",
+  "delivery": "Merge verified Goal4 alone closing385/Refs381, confirm completed issue and Project availability, then activate5.",
+  "sourcePrecisionErratum": "Read-ahead and earlier Goal3 narrative called Help20pt; direct call-site inspection finds forecastHelp uses hudSymbolSide24pt. Goal3onlychangesPause20pt backing and allpixel/nativefindings remain unchanged. Goal4specimens useactualPause20/Help24.",
+  "busyProofScope": "CurrentSeed0/11000 zeroawardsetup heldbyexistingFallingSkyRecorder; explicit scene.render ofactualcommittedsnapshot suppliesstar-bearingfullroot before/busy/after atdefault/AX5. This testsstableheader/exactstate andrenderssource-definedmutedInspect. It doesnotestablishproductionmotion or nativedisabledtouch/focus.",
+  "completedEvidence": {
+    "initialTestedCommit": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+    "finalHostedTestCommit": "f0005119156f982fc14b70c3aac9016850a01702",
+    "embeddedBuildID": "dev.dcb267d534",
+    "source": "source-04-final.json",
+    "verification": "verification-04.json",
+    "nativeReview": "visual-review-04-native.json",
+    "hostedReview": "visual-review-04-hosted.json",
+    "exportReview": "visual-review-04-exports.json",
+    "captureIndex": "captures-04.json",
+    "result": "All required bounded gates pass; no known current visible failure found in the named native states. Capture limits and unperformed states remain explicit."
+  },
+  "captureCorrection": "Only the new hosted method gained a bounded AX5 initial board/scroll/visible-star readiness check. App/runtime and native tests remain unchanged. Fresh default-before remains an early starless header probe and is excluded from retained exports; no all-six settled-board claim."
+}

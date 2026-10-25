@@ -1,6 +1,6 @@
 # A coherent set of native HUD instruments
 
-**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 verified for its development slice, merge next · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
+**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 merged in [PR #404](https://github.com/lbeezr/starfall/pull/404); goal 4 verified for its development slice, merge next · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
 
 The user authorized [ten ordered HUD refinements](https://github.com/lbeezr/starfall/issues/381), with each goal tested and merged before the next implementation. Each pass retains the previous accepted behavior and corrects its current presentation seam in the normal app. Existing Observatory materials, native controls, rules, saves, replay, clocks and board mapping remain authoritative.
 
@@ -14,8 +14,8 @@ The initial development-adoption verdict below is superseded. Its source identit
 | --- | --- | --- | --- |
 | 1 | Expanded HUD reading order | [#382](https://github.com/lbeezr/starfall/issues/382) | Corrected native slice reviewed; merged #402, issue completed |
 | 2 | Coherent instrument typography | [#383](https://github.com/lbeezr/starfall/issues/383) | Verified and merged #403; issue completed |
-| 3 | Readability across every sky | [#384](https://github.com/lbeezr/starfall/issues/384) | Verified pause-only scenic separation and independent native/export review; individual merge next |
-| 4 | Shared control states and glyph craft | [#385](https://github.com/lbeezr/starfall/issues/385) | After goal 3 merge |
+| 3 | Readability across every sky | [#384](https://github.com/lbeezr/starfall/issues/384) | Verified and merged #404; issue completed |
+| 4 | Shared control states and glyph craft | [#385](https://github.com/lbeezr/starfall/issues/385) | Verified native/contact/state and final export review; individual merge next |
 | 5 | One coherent forecast instrument | [#386](https://github.com/lbeezr/starfall/issues/386) | After goal 4 merge |
 | 6 | Specific, calm pressure feedback | [#387](https://github.com/lbeezr/starfall/issues/387) | After goal 5 merge |
 | 7 | Causal move-to-earned-light attention | [#388](https://github.com/lbeezr/starfall/issues/388) | After goal 6 merge |
@@ -71,7 +71,7 @@ Native iPhone 17e, iOS 27.0, normal effects, actual paused Lantern opening. Sour
 
 ## Goal 3: pause separation over scenery
 
-**Status:** Adopted for the named development slice; individual main merge next. Goal 4 remains held until that merge.
+**Status:** Adopted for the named development slice and merged in [PR #404](https://github.com/lbeezr/starfall/pull/404), main `47b0b5e9`; issue #384 is completed. [Publication proof](publication-03.json) confirms identical reviewed/published/main trees; the canonical Project projection is unavailable. Goal 4 follows this individual merge.
 
 The viewport pause now opts into the official utility style’s fitted scenery backdrop. Its actual glyph stays 20 points within the existing 24-point visual allocation and 48-point target. The existing 82% nightglass, 8-point visual-only outset and 3-point feather follow the visual before the outer target. Help stays clear within its protected forecast group; tutorial Close and other utilities retain clear defaults. Existing pressed, disabled and focused treatments remain. No trail, board, rule, save, clock, resource or membership owner changes.
 
@@ -95,6 +95,32 @@ The unchanged isolated Sunny/Spark method passes again with its original 12-pan 
 | Bright native Seed, preceding accepted source | Same state, shared pause protection |
 | --- | --- |
 | ![Baseline Seed wide viewport](goal-03-captures/dev-f4ecc1c437__tablet-wide__seed-0-baseline.jpg) | ![Candidate Seed wide viewport](goal-03-captures/dev-189706f888__tablet-wide__seed-0.jpg) |
+
+## Goal 4: stable glyphs and shared contact material
+
+**Status:** Adopted for the named development slice; individual main merge next. Goal 5 stays held until that merge.
+
+Help and pause now retain their original glyph sizes during contact and use the same pressed material as forecast controls. The shared utility style paints a passive 40-point circle inside its existing 48-point target. Pause remains 20 points, forecast Help 24 points, and the style allocation 24 points. The old shrink/dim transforms are removed. Forecast selection keeps its separate underline; disabled artwork keeps one muted treatment, and the existing focus circle uses the shared width token. Clear/scenery resting roles and native input ownership remain.
+
+Actual native contacts hold and drag outside pause, a forecast target and Help. Each cancellation preserves the exact round, forecast, target frames and absence of a sheet/selection; immediate valid selection, inspection, Return and reopening pass. Independent review of fifteen whole video frames observes pressed material around stable glyphs and the later clean states. Timing correlation is approximate: the nominal drag sample still contains Pause’s material, so no exact pointer-exit or release-latency claim follows. These are sampled contact states, not continuous-animation or physical-touch acceptance.
+
+App/native test source is `4218c877`, based on main `47b0b5e9`, embedded `dev.dcb267d534`. [Source proof](source-04-final.json) matches all 567 runtime inputs. A new hosted probe holds a genuine zero-award Seed setup to inspect the muted Help state. Review found its initial AX5 capture premature; test-only `f0005119` waits for actual board/canvas/scroll placement and seven visible occupied cells. App/runtime and native tests remain unchanged. The corrected AX5 frames show stars; the remaining early default-before header probe is excluded from retained exports. No all-six settled-board claim is made.
+
+| Evidence | Result and scope |
+| --- | --- |
+| Core | 352 passed; zero failures/skips |
+| Affected hosted | Same eight methods passed initially and after the test-only capture correction; complete digits1–7, 2×/3× resting/disabled utility geometry and genuine busy header states |
+| Native phone/tablet | Four passed: real contact/cancel/Return/reopen; background/world preservation; actual AX5 Calm selection, real15k chain and Full Board; current Frostfruit complete forecast reading and real automatic dismissal |
+| Builds | Debug/test, corrected test-only Debug and Release passed; both App configurations embed the same source fingerprint |
+| Visual | Independent whole-native-screen/contact, bounded hosted and all thirteen final retained-export reviews pass; no known current visible failure in named native states |
+
+[Acceptance](goal-04-acceptance.json), [verification and commands](verification-04.json), [captures](captures-04.json), [native/contact review](visual-review-04-native.json), [hosted review](visual-review-04-hosted.json) and [final export review](visual-review-04-exports.json) preserve their distinct scopes. Full Board’s retained image precedes the mechanically verified42k refill. Optional reader captures retain their actual scroll positions. Current encounter rules, Core, saves, clock, board mapping, resources and membership are unchanged. Earlier reader-pan uncertainty remains with its existing recurrence trigger.
+
+Actual platform focus, native disabled-touch rejection, current Increased Contrast/Reduced Transparency, actual VoiceOver, minimum-iOS execution and physical comfort/performance remain unperformed. No temporary route, state framework or new asset remains.
+
+| Resting native utilities | Actual recorded Help contact sample |
+| --- | --- |
+| ![Complete idle native phone HUD](goal-04-captures/dev-dcb267d534__phone-default__lantern-idle.jpg) | ![Whole native phone during Help contact](goal-04-captures/dev-dcb267d534__phone-contact__sample-56p900.jpg) |
 
 ## Goal 1 initial implementation: mechanical results retained
 

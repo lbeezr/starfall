@@ -311,16 +311,24 @@ struct StarfallUtilityButtonStyle: ButtonStyle {
     @Environment(\.isFocused) private var isFocused
 
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
+        let pressed = configuration.isPressed && isEnabled
+        return configuration.label
             .foregroundStyle(isEnabled ? StarfallTheme.Colors.textPrimary : StarfallTheme.Colors.textDisabled)
             .frame(width: 24, height: 24)
-            .brightness(configuration.isPressed ? -0.14 : 0)
-            .scaleEffect(configuration.isPressed ? 0.92 : 1)
             .shadow(color: .black.opacity(0.5), radius: 1.5, y: 1)
+            .background {
+                if pressed {
+                    Circle().fill(StarfallTheme.Colors.surfacePressed).padding(-StarfallTheme.Spacing.small)
+                        .allowsHitTesting(false).accessibilityHidden(true)
+                }
+            }
             .starfallSceneryProtection(backdrop == .scenery)
             .frame(width: StarfallTheme.Layout.preferenceTarget, height: StarfallTheme.Layout.preferenceTarget)
             .overlay {
-                if isFocused { Circle().strokeBorder(StarfallTheme.Colors.focus, lineWidth: 2).padding(4) }
+                if isFocused {
+                    Circle().strokeBorder(StarfallTheme.Colors.focus, lineWidth: StarfallTheme.Layout.focusWidth)
+                        .padding(StarfallTheme.Spacing.compact).allowsHitTesting(false).accessibilityHidden(true)
+                }
             }
             .contentShape(Rectangle())
             .transaction { $0.animation = nil }

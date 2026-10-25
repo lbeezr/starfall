@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "goal": 4,
+  "issue": 385,
+  "status": "Mechanical verification complete; independent native/contact, bounded hosted and final exact-export reviews pass for the named development slice.",
+  "recordedUTC": "2026-10-25T02:32:20.469915+00:00",
+  "source": "source-04-final.json",
+  "commandsManifest": "/private/tmp/starfall-hud-stack-20261024/commands-04-4218c877.json",
+  "captureCorrectionCommands": "/private/tmp/starfall-hud-stack-20261024/commands-04-f0005119-placement.json",
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "testSeconds": 21.063,
+    "suiteSeconds": 21.082,
+    "stageSeconds": 22.758,
+    "newCoreChanges": false
+  },
+  "hosted": {
+    "initial": {
+      "source": "4218c877",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": []
+    },
+    "final": {
+      "source": "f0005119",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": []
+    },
+    "uniqueSelectedMethods": 8,
+    "countLimit": "Two executions of the same eight methods, not sixteen unique checks. Final busy-state method has stronger initial placement gates; original methods and assertions remain.",
+    "selectors": "goal-04-acceptance.json plannedChecks.hosted"
+  },
+  "native": {
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "methods": [
+      {
+        "label": "native-04-4218c877-contact",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "bundle": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact.xcresult"
+      },
+      {
+        "label": "native-04-4218c877-background",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "bundle": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-background.xcresult"
+      },
+      {
+        "label": "native-04-4218c877-tablet",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "bundle": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet.xcresult"
+      },
+      {
+        "label": "native-04-4218c877-frost",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "bundle": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-frost.xcresult"
+      }
+    ],
+    "source": "4218c877; App and native UI-test bytes are unchanged by f0005119."
+  },
+  "builds": {
+    "initialDebug": "Passed in 6.676 seconds",
+    "finalTestOnlyDebug": "Passed in 5.921 seconds",
+    "Release": "Passed in 3.993 seconds",
+    "embeddedID": "dev.dcb267d534",
+    "membership": "All files are existing members. Discovery: 816 hosted and 260 development UI methods, not a full executed matrix."
+  },
+  "diagnostics": {
+    "runtimeWarnings": [],
+    "compilerDiagnostics": [],
+    "expectedBuildWarnings": {
+      "AppIntentsMetadataExtractionSkipped": 5,
+      "scope": "Initial Debug: three; Release: one; final test-only Debug: one. No AppIntents dependency introduced."
+    }
+  },
+  "captureReadinessHistory": {
+    "original": "Independent review found AX5 before/busy captures starless and after star-bearing; header and source checks passed. Only header readiness was awaited.",
+    "causeBoundary": "The initial capture lacked a placement/readiness contract. Original images have no board/scroll metrics, so first SpriteKit publication versus deferred scroll is not exclusively assigned. No lasting product failure or performance fix is claimed.",
+    "correction": "After all initial stages finished, the new hosted method renders the opening and waits at most two seconds for canvas/board equality, stable actual UIScrollView offset and at least seven fully visible occupied opening cells. Existing 20ms polls and two samples; no generic delay, retry, quiet flag or production change.",
+    "verification": "Rebuilt and reran the same eight hosted methods: all passed. Independent review of six fresh full-root captures keeps the remaining default-before publication limit explicit.",
+    "finalLimit": "Corrected AX5 before/busy/after show a settled star-bearing crop. The fresh default-before image is still early and starless; it is excluded from retained exports. Default busy/after and actual native phone states remain separately reviewed. No claim that all six hosted frames show settled board pixels."
+  },
+  "contactEvidence": {
+    "sourceRecordingPlan": "/private/tmp/starfall-hud-stack-20261024/contact-04-sampling-plan.json",
+    "frames": "/private/tmp/starfall-hud-stack-20261024/contact-04-frames",
+    "extractionLog": "/private/tmp/starfall-hud-stack-20261024/contact-04-extract.log",
+    "scope": "Fifteen full-size PNGs decoded from the actual native H264 contact movie, with requested/actual timestamps. Sampled states do not establish continuous motion, contrast or physical quality. Real press/drag-out cancellation, valid selection, inspection and Return/reopen assertions passed.",
+    "recorderOwnership": "Only owned PID 48537 started/stopped; recording exited zero. Other simulators were untouched."
+  },
+  "controllerOwnership": {
+    "grantedWindow": "Other UI root explicitly granted a window at 02:18:09 UTC, then an extension through 02:33 for the capture test and extraction.",
+    "returnedUTC": "2026-10-25T02:31:18Z",
+    "result": "All owned xcodebuild/native/Core/recording/extraction processes finalized; heavy/controller ownership explicitly returned at 02:31:18 UTC."
+  },
+  "assertionsAndMotion": "No assertion weakened, blanket retry or forced quiet to obtain a pass. Phone normal motion and system Reduce Motion off; tablet AX5 Calm toggled and restored through actual Settings. Full Board image precedes 42,000-point refill; refill evidence is mechanical only.",
+  "limits": [
+    "Actual platform focus ring unperformed; VoiceOver focus is a separate mechanism.",
+    "Hosted busy inspection appearance is not native disabled-touch proof.",
+    "Current Increased Contrast and Reduced Transparency states unperformed.",
+    "Actual VoiceOver, physical reading/comfort, minimum-iOS execution and continuous animation/performance unperformed.",
+    "Earlier Sunny reader-pan failures retain their unassigned cause and ENGINEERING recurrence trigger. This goal does not change that ownership."
+  ],
+  "receipts": [
+    {
+      "stage": "build-04-4218c877-debug",
+      "startedUTC": "2026-10-25T02:19:43.061595+00:00",
+      "elapsedSeconds": 6.676,
+      "limitSeconds": 150.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted-04-4218c877",
+      "startedUTC": "2026-10-25T02:19:49.770604+00:00",
+      "elapsedSeconds": 7.092,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "native-04-4218c877-contact",
+      "startedUTC": "2026-10-25T02:19:57.114075+00:00",
+      "elapsedSeconds": 101.353,
+      "limitSeconds": 240.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "native-04-4218c877-background",
+      "startedUTC": "2026-10-25T02:21:38.713555+00:00",
+      "elapsedSeconds": 80.729,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "native-04-4218c877-tablet",
+      "startedUTC": "2026-10-25T02:22:59.487423+00:00",
+      "elapsedSeconds": 189.843,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "native-04-4218c877-frost",
+      "startedUTC": "2026-10-25T02:26:09.364307+00:00",
+      "elapsedSeconds": 211.764,
+      "limitSeconds": 240.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-04-4218c877-release",
+      "startedUTC": "2026-10-25T02:29:41.167848+00:00",
+      "elapsedSeconds": 3.993,
+      "limitSeconds": 86.89720616700004,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "core-04-4218c877",
+      "startedUTC": "2026-10-25T02:29:45.188059+00:00",
+      "elapsedSeconds": 22.758,
+      "limitSeconds": 82.86571220899998,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "additionalReceipts": [
+    {
+      "stage": "build-04-f0005119-debug-placement",
+      "startedUTC": "2026-10-25T02:30:31.417585+00:00",
+      "elapsedSeconds": 5.921,
+      "limitSeconds": 60.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted-04-f0005119-placement",
+      "startedUTC": "2026-10-25T02:30:37.381622+00:00",
+      "elapsedSeconds": 6.896,
+      "limitSeconds": 60.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "contact-04-extract",
+      "startedUTC": "2026-10-25T02:31:01.029489+00:00",
+      "elapsedSeconds": 12.964,
+      "limitSeconds": 90.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "finalChecks": {
+    "ciHygiene": "Passed after staging final evidence",
+    "diffCheck": "Passed on final staged evidence",
+    "source": "App/runtime and native UI tests unchanged after4218c877; final hosted test source f0005119 is committed and verified. Later differences are documentation/evidence only."
+  },
+  "visual": {
+    "native": "visual-review-04-native.json",
+    "hosted": "visual-review-04-hosted.json",
+    "exactExports": "visual-review-04-exports.json",
+    "result": "Bounded PASS for named native screens and sampled contact states; hosted scope and excluded early default-before capture remain explicit. No physical or continuous-animation acceptance."
+  }
+}

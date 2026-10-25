@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "goal": 4,
+  "issue": 385,
+  "issueURL": "https://github.com/lbeezr/starfall/issues/385",
+  "title": "One physical language for HUD controls",
+  "status": "Historical read-ahead; activated only after Goal3 merged404/main47b0b5e9. Concrete acceptance/source decisions now in goal-04-acceptance.json.",
+  "recordedUTC": "2026-10-25T00:26:13.335984+00:00",
+  "observedCommit": "87f846df3870df5d5af8740c6f5185d61bf66805",
+  "sourceLimit": "Goal 2 is active. FallingSkyHUD has a separate dirty score-reservation correction; this review reads the current shared control owners only. Re-read the actual merged source at goal 4 activation.",
+  "owners": {
+    "physicalStates": "App/StarfallTheme.swift:StarfallUtilityButtonStyle and StarfallGameButtonStyle",
+    "glyphRegistrationAndDisabledArtwork": "App/ObservatoryArtwork.swift:ObservatoryIcon",
+    "forecastSelectionAndInspection": "App/SkyForecastDestinations.swift",
+    "admissionAndSourceInvalidation": "App/FallingSkyView.swift; SkyForecastInspection; SkyShowerInspection"
+  },
+  "alreadyImplemented": [
+    "Forecast targets have 44-point minimums, reserved underline space, selected trait, disabled ink/desaturation, focus outline and immediate pressed surface.",
+    "Inspection is one native 48-point utility in the forecast group with complete spoken name, busy gating and source-bound Return.",
+    "Utility controls already retain full hit regions, focus circles and native button cancellation. ObservatoryIcon owns registered original-color artwork and disabled desaturation/opacity.",
+    "Existing selected-column, live inspector, background/world, Full Board absence and exact round/save/clock outcomes remain required."
+  ],
+  "concreteResidual": {
+    "utilityPressed": "Utility applies0.92 to the24-point style allocation, yielding22.08 points; actual HUD ObservatoryIcon callers request20 points, so their image frame becomes18.4 during press. Preserve each caller-selected original size rather than assuming every glyph renders at24 points.",
+    "forecastPressed": "Forecast/gameplay content keeps its size and gains surfacePressed material on its existing shape.",
+    "focus": "Both use moonlight focus, but utility hard-codes 2-point stroke while forecast uses the shared focusWidth token; circle and rounded target shapes serve their current contexts.",
+    "disabled": "ObservatoryIcon already uses saturation 0.25 and opacity 0.5; forecast content uses disabled ink and saturation 0.25. Applying a second shared opacity to utilities would double-dim their glyphs.",
+    "evidenceScope": "Source-observed differences; no new native visual defect or input failure is claimed."
+  },
+  "smallestVisibleCandidate": [
+    "Give inspection/pause utilities the same immediate pressed-surface material response as forecast controls while preserving each original caller-selected glyph size (20-point pause/help inside24-point allocation) and fixed targets.",
+    "Keep state constants in the shared theme/styles: pressed material, enabled/disabled ink and focus weight. A narrow shared visual modifier is appropriate only if both owners need the same change; no generic input/state framework.",
+    "Retain selected forecast underline as persistent selection, distinct from transient press and platform focus. Keep all decoration passive and preserve native Button gesture/action ownership.",
+    "Use the existing registered glyphs and materials; prove actual-size help/pause detail at 2×/3× before considering any asset change."
+  ],
+  "stateContracts": [
+    {
+      "state": "resting",
+      "visible": "Original glyph and readable label over current fitted protection; no new permanent utility bezel.",
+      "mechanical": "One native target/semantic element; exact 44/48-point floor and existing group containment."
+    },
+    {
+      "state": "pressed",
+      "visible": "Immediate common material response; glyph/text do not shrink or shift.",
+      "mechanical": "Target/content frames stay fixed. Release inside activates once; drag/release outside cancels without action or stale pressed appearance."
+    },
+    {
+      "state": "selected",
+      "visible": "Forecast underline and selected ink persist independently of press; inspection does not gain a false selected state.",
+      "mechanical": "Exactly the chosen ordered star isSelected; a different chip replaces it and current source invalidation retires it."
+    },
+    {
+      "state": "focused",
+      "visible": "Shared moonlight weight outlines the appropriate control shape while content stays legible.",
+      "mechanical": "Real platform focus remains separate from selection and press. Hosted visual focus evidence is not actual VoiceOver acceptance."
+    },
+    {
+      "state": "disabled",
+      "visible": "One coherent muted treatment with no duplicate opacity application; no pressed response.",
+      "mechanical": "Same target geometry and complete label, native disabled state and no activation. Disabled artwork remains recognizably the same glyph."
+    }
+  ],
+  "nativeAcceptance": [
+    "Paused normal-phone Lantern: drag a forecast chip outside its target and release; no selected column or game/score/archive change. A subsequent inside tap selects the exact actual column.",
+    "Drag the inspection utility outside and release; no sheet opens. Then tap normally, inspect exact source facts, Return and reopen once without a retry. Preserve unchanged round/world and complete 44/48-point gates.",
+    "Selected+pressed and selected+focused remain distinguishable; background/replacement/real exchange retire the old selection with unchanged source/generation checks.",
+    "Actual AX5 Calm tablet retains all five targets, native column contact, real 15,000 chain and Full Board absence. Normal-motion Frostfruit inspector still leaves the existing live clock running.",
+    "Inspect source-bound actual contact footage for press/depress and release/cancel appearance. A post-release still alone does not prove the transient pressed state.",
+    "For real-busy disabled state, first use existing real Store/presenter ownership to hold a genuine busy phase and prove unchanged admission. Native touch acceptance is recorded only when the actual disabled state is observed; a supplied preview flag is visual evidence only."
+  ],
+  "smallestExistingTestExtensions": [
+    {
+      "selector": "StarfallAppTests/ObservatoryArtworkTests/testActionsGrowForLargeTextWithoutShrinkingTheirLabel",
+      "proposal": "Keep current menu action checks. Add actual utility and forecast selected/unselected enabled/disabled siblings at default/AX5 to compare native size stability and bounded state captures. Retain original glyph registration/density tests. Do not fabricate ButtonStyle.Configuration or expose a production API solely to force a screenshot."
+    },
+    {
+      "selector": "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+      "proposal": "Add one bounded native drag-out cancellation per forecast/inspection control and one immediate valid return/reopen to the existing paused source-preservation journey. Preserve every original outcome and method bound."
+    },
+    {
+      "selector": "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound",
+      "proposal": "Retain actual background/world cancellation and geometry, checking selected/pressed appearance returns to the legitimate current state."
+    },
+    {
+      "selector": "StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+      "proposal": "Reuse existing AX5 real-Calm target/selection/chain/Full Board coverage; capture current control states without stretching this long journey into a state matrix."
+    }
+  ],
+  "plannedSelections": {
+    "hostedSelectors": [
+      "StarfallAppTests/ObservatoryArtworkTests",
+      "StarfallAppTests/SkyForecastInspectionTests/testSelectionRejectsChangedBoardGenerationOrderMaterialDestinationAndArrivalState",
+      "StarfallAppTests/SkyForecastInspectionTests/testRealExchangeSuspensionAndSameOpeningReplayRetireOldSelections",
+      "StarfallAppTests/SkyShowerInspectionTests/testSnapshotMatchRetiresOnExchangeGenerationOrderArrivalOrUnavailableState",
+      "StarfallAppTests/SkyShowerInspectionTests/testRepeatedInspectionPreservesLiveDeadlineSaveWorldAndActualSeededContinuation"
+    ],
+    "hostedMethods": 7,
+    "nativeSelectors": [
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound",
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+      "StarfallUITests/ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning"
+    ],
+    "nativeMethods": 4,
+    "inventoryAtReadAhead": {
+      "StarfallUITests": 260,
+      "StarfallAppTests": 815
+    },
+    "proposedNewMethods": 0,
+    "limit": "Selectors resolve in inspected source; counts are plans, not executed passes. Re-count after prior-goal merges; tablet-only execution remains explicit."
+  },
+  "acceptanceMatrix": [
+    "Phone default normal motion: resting/press/cancel/selected and immediate inspector Return.",
+    "Phone AX5: complete numbers/labels, unchanged target geometry and no decorative shrink.",
+    "Actual tablet AX5 with real Calm: selected/disabled/focused visual roles where legitimately observed, real chain and Full Board transition.",
+    "Dark/bright scenery plus Increased Contrast/Reduced Transparency: same material states remain legible without changing the hit shape."
+  ],
+  "openProofBoundary": "A legitimate native focus driver and transient busy-state capture must be settled from existing capabilities at activation. Do not claim actual focus/disabled interaction from static previews; actual VoiceOver remains its separate stage contract.",
+  "delivery": "After goal 3 merges, implement one visible native slice, verify source-bound mechanical/visual outcomes and merge the individual PR closing #385 before goal 5. This read-ahead does not activate or complete goal 4.",
+  "verificationPerformed": "Source/issue/selector inspection only. No App/test edits, builds, hosted/native tests, simulator operations or recursive workers.",
+  "preActivationFollowup": {
+    "inspectedCandidate": "Goal3 unaccepted4d7cfa21; no Goal4 implementation",
+    "goal3Context": "Optional utilityBackdrop.scenery backs only pause; tutorialClose and forecastHelp/defaults remain.clear. Re-read actual accepted Goal3 before activating4.",
+    "transientProof": "Extend existing normalLantern case with1-second press/drag-out/release for chip andInspect, using existing SkyLessonInteractionTests native gesture shape. Check unchanged round/forecast/no selection/no sheet, then immediate valid inside taps. Record this same selectedrun with owned simctl recordVideo started beforetest and SIGINT only its ownedPID afterexit; post-release stills alone do not establish pressed appearance.",
+    "busyProof": "Existing FallingSkyRecorder/ManualRainClock and supported plain-parent full-root host can hold an actual setup presentation until finish(). Busy disablesInspect only; chips andpause keep their source-defined availability. A genuine hosted screenshot does not establish native disabled-touch rejection.",
+    "focusLimit": "Actual AX focus/speech via existing VoiceOver capabilities does not establish the style environment isFocused ring. No existing keyboard/platform-focus witness was found; keep that state explicitly unperformed unless genuinely observed."
+  },
+  "activation": {
+    "baseMain": "47b0b5e9f6e60bfb428a3e776e272a113ef34e7a",
+    "priorIssue384": "closed/completed",
+    "sourceRereadUTC": "2026-10-25T02:12:23.010887+00:00"
+  }
+}
