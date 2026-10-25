@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "reviewer": "/root/hud_read_ahead",
+  "recordedUTC": "2026-10-25T04:39:20Z",
+  "verdict": "PASS_BOUNDED_HOSTED_VISUAL_TRANCHE",
+  "overallGoal6Adoption": "PENDING_SEPARATE_NATIVE_AND_FINAL_EXPORT_ACCEPTANCE",
+  "knownVisibleFailureFoundInReviewedFinalTranche": false,
+  "outcome": "The six final crowded375×667 large/xxxLarge/AX5 initial/revealed windows retain complete readable header facts; all three programmatically revealed ceilings retain complete badges and top stars. Two additional compact AX5 opening/receipt frames preserve essential header ink. This is a hosted static appearance judgment only.",
+  "sourceBinding": {
+    "testAndAppCommit": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+    "runtime": "dev.606ce1efbe",
+    "qualification": "Parent-supplied source/runtime binding; exact raw image bytes and metadata independently read here. No build, native run or embedded-ID measurement performed by this reviewer."
+  },
+  "manifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-attachments/manifest.json",
+    "sha256": "a180524e91b459c569383fe10db72eba61c752ce21f1f8923f9647bf94024197",
+    "inventoryPNGs": 16,
+    "reviewedPNGs": 9,
+    "primaryCrowdedPNGs": 6,
+    "additionalOpeningReceiptPNGs": 2,
+    "contextOnlyBusyBeforePNGs": 1
+  },
+  "scope": {
+    "environment": "Actual UIHostingController windows on dedicated iPhone17e simulator context; synthetic375×667pt whole windows rendered1125×2001px@3×. This is not a native XCTest journey or actual iPad witness.",
+    "state": "Crowded snapshots are the same committed current Lantern revision4 after four real Core showers, held in the existing store/window harness. Calmfalse and inherited system Reduce Motionfalse are recorded by setup/receipts; stills cannot prove motion.",
+    "methods": "Original-resolution view_image inspection of nine named whole PNGs, plus three directly re-viewed raw82 revealed comparators. Python standard-library SHA256, PNG IHDR and eXIf parsing verified the named current hashes/dimensions/orientation. No image transforms, editing or video decoding.",
+    "reference": "Approved middle Play concept docs/design/interface/observatory-game-ui-concept-2026-10-19.png and registered Goal6 compact Story status/forecast roles in GAME_UI_SYSTEM.",
+    "visualComparison": "The shared fitted protection, exact native fonts and continuous scene remain coherent. Current three revealed profiles visually match their raw82 composition; the later semantic-owner changes introduce no observed extra visual shelf, glyph clip or badge/upper-star occlusion. AX5 has a dense header and limited field viewport, retained explicitly as the native large-text tradeoff rather than a whole-board or human-comfort pass."
+  },
+  "priorHistory": {
+    "frozenReport": "docs/evidence/hud-stack-2026-10-24/visual-review-06-hosted.json",
+    "sha256": "dfd07e393f40b0bbd21f6cb584dbe6d6c8b918ea4bb2db34be22436ad40e0ae7",
+    "unchanged": true,
+    "scope": "Raw82 review and prior rejected candidate/baseline history remain separate; their source-bound failures are not rewritten as final0ba results.",
+    "directlyReViewedComparators": [
+      {
+        "state": "large ceiling revealed",
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/6A2ACD37-6B9C-4943-99E8-B7AF3CB9DBBF.png"
+      },
+      {
+        "state": "xxxLarge ceiling revealed",
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/087D9B89-89B4-4193-9694-C9C7A6541F7E.png"
+      },
+      {
+        "state": "AX5 ceiling revealed",
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/3330EB83-8BDF-4DC6-A13C-8A82E10970C7.png"
+      }
+    ]
+  },
+  "geometryReceipts": {
+    "qualification": "Reported by existing actual hosted-window geometry attachments, separate from the whole-image visual verdict.",
+    "large": {
+      "headerHeight": 132.66666666666666,
+      "readingViewportHeight": 387.33333333333337,
+      "revealedFullyVisibleOccupiedCells": 34
+    },
+    "xxxLarge": {
+      "headerHeight": 217,
+      "readingViewportHeight": 303,
+      "revealedFullyVisibleOccupiedCells": 20
+    },
+    "AX5": {
+      "headerHeight": 321.3333333333333,
+      "readingViewportHeight": 198.66666666666669,
+      "initialFullyVisibleOccupiedCells": 7,
+      "revealedFullyVisibleOccupiedCells": 7
+    },
+    "common": "All profiles keep the local375×900 canvas and same local scene dimensions; reveal sets the existing UIScrollView offset to its top. Exact physical-projection assertions are mechanical evidence owned by the runner."
+  },
+  "items": [
+    {
+      "checkpoint": "crowded large initial",
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-attachments/D6747736-873D-4C18-AF62-593BA3D1B6B9.png",
+      "sha256": "bb0c99781909f24f2e50658492d4af9e07f3cc1d5657dbc56601a78d3ac700db",
+      "storedPixelDimensions": [
+        1125,
+        2001
+      ],
+      "exifOrientation": 1,
+      "logicalCanvasPoints": [
+        375,
+        667
+      ],
+      "scale": 3,
+      "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+      "reviewedWholeFrame": true,
+      "verdict": "PASS_BOUNDED_HOSTED_VISUAL",
+      "observation": "Complete0/150,000; Next columns Mint7/Rose6/Aqua1/Rose2/Amber4; full column2 and one-space1,3,4,5,6 fit as separate readable facts. Current lower star field is visible. Ceiling warning badges are outside this initial scrolled crop; absence here is not absence from the game."
+    },
+    {
+      "checkpoint": "crowded large programmatic ceiling reveal",
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-attachments/A1C15956-A566-4947-BB2F-138D290842E4.png",
+      "sha256": "b783509ba5c95e73a6e57cc28687b7cae481f64f58fd975483f88f6281d412cd",
+      "storedPixelDimensions": [
+        1125,
+        2001
+      ],
+      "exifOrientation": 1,
+      "logicalCanvasPoints": [
+        375,
+        667
+      ],
+      "scale": 3,
+      "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+      "reviewedWholeFrame": true,
+      "verdict": "PASS_BOUNDED_HOSTED_VISUAL",
+      "observation": "Complete warning badges1,2!,3,4,5,6, top boundary and upper Aqua are visible below the unchanged header. Forecast and both room facts remain complete; no visible badge/glyph intersection. Lower board continues below viewport."
+    },
+    {
+      "checkpoint": "crowded xxxLarge initial",
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-attachments/807D35AF-B4D9-433C-A793-90A200B97C13.png",
+      "sha256": "ac96522de398dc0b0e01aea18df038e590faaa611189845fd8cbd6dbdc328674",
+      "storedPixelDimensions": [
+        1125,
+        2001
+      ],
+      "exifOrientation": 1,
+      "logicalCanvasPoints": [
+        375,
+        667
+      ],
+      "scale": 3,
+      "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+      "reviewedWholeFrame": true,
+      "verdict": "PASS_BOUNDED_HOSTED_VISUAL",
+      "observation": "Complete score/target, five forecast entries and separate full2/near1,3,4,5,6 facts remain readable at full font. The initial viewport deliberately clips part of its top star row while retaining many complete lower stars. This is scroll clipping, not header ink covering the row."
+    },
+    {
+      "checkpoint": "crowded xxxLarge programmatic ceiling reveal",
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-attachments/30FED4F2-F2EA-46CF-857F-C767F07F582A.png",
+      "sha256": "89a5db5b56021051a8152a99b20943ebb36aa270efd0b01e439dde1216d660b3",
+      "storedPixelDimensions": [
+        1125,
+        2001
+      ],
+      "exifOrientation": 1,
+      "logicalCanvasPoints": [
+        375,
+        667
+      ],
+      "scale": 3,
+      "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+      "reviewedWholeFrame": true,
+      "verdict": "PASS_BOUNDED_HOSTED_VISUAL",
+      "observation": "All six badges including full2!, ceiling and upper Aqua are complete. Full and near text remain distinct above them. Same visible arrangement as the re-viewed raw82 counterpart; no new crop or glyph-fit defect observed."
+    },
+    {
+      "checkpoint": "crowded AX5 initial",
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-attachments/9616D9CD-00B9-4366-9517-EE96AC8D749F.png",
+      "sha256": "f9ee87ece1440d2b331331ec6285c04a3e96d13319ee67aae9225953ceb7898d",
+      "storedPixelDimensions": [
+        1125,
+        2001
+      ],
+      "exifOrientation": 1,
+      "logicalCanvasPoints": [
+        375,
+        667
+      ],
+      "scale": 3,
+      "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+      "reviewedWholeFrame": true,
+      "verdict": "PASS_BOUNDED_HOSTED_VISUAL",
+      "observation": "Full-size stacked0/150,000 and compact Pause/trail/Next column remain complete. Forecast7/6/1/2/4 and Help fit; Column2 is full and compact1space:1,3,4,5,6 remain legible. The short reading viewport initially shows one partial upper row plus seven complete lower occupied cells; badges are not in this scroll crop."
+    },
+    {
+      "checkpoint": "crowded AX5 programmatic ceiling reveal",
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-attachments/5DEA047E-1942-4B7A-AD1B-F4FE40B20583.png",
+      "sha256": "a72908a2534ba6b6c5388eadbfb7377a1f8acbb1984eca9d48a6fad2c75ed430",
+      "storedPixelDimensions": [
+        1125,
+        2001
+      ],
+      "exifOrientation": 1,
+      "logicalCanvasPoints": [
+        375,
+        667
+      ],
+      "scale": 3,
+      "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+      "reviewedWholeFrame": true,
+      "verdict": "PASS_BOUNDED_HOSTED_VISUAL",
+      "observation": "All badges1,2!,3,4,5,6 have complete painted outlines and digits; top boundary and upper Aqua are complete below them. Seven occupied cells are wholly visible. Header is dense at this text size, but none of these essential labels or badge glyphs clip or paint over one another. The198.667pt reading viewport is a limited scroll window, not a whole-board view."
+    },
+    {
+      "checkpoint": "compact AX5 opening reading-window state",
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-attachments/2B121566-4531-477D-B26A-58F538F2A978.png",
+      "sha256": "269634d7b5e976a69d500cf6ce00c2c876e4a9152331766aeb1498aeb0582b27",
+      "storedPixelDimensions": [
+        1125,
+        2001
+      ],
+      "exifOrientation": 1,
+      "logicalCanvasPoints": [
+        375,
+        667
+      ],
+      "scale": 3,
+      "testIdentifier": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()",
+      "reviewedWholeFrame": true,
+      "verdict": "PASS_BOUNDED_HOSTED_VISUAL",
+      "observation": "Complete0/150,000, compact Next/trail/Pause and ordered6/1/2/4/5 forecast with Help are visible above the opening stars. Room facts are absent for this uncrowded opening. Continuous painting and full-sized star bodies remain visible."
+    },
+    {
+      "checkpoint": "compact AX5 actual live receipt reading-window sample",
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-attachments/DB0C70B5-3FBF-44EE-B89B-A98621BC155D.png",
+      "sha256": "a17bb9a5219c056952c5b114812c4165b3a9b982af5b0124183471d44bcd590b",
+      "storedPixelDimensions": [
+        1125,
+        2001
+      ],
+      "exifOrientation": 1,
+      "logicalCanvasPoints": [
+        375,
+        667
+      ],
+      "scale": 3,
+      "testIdentifier": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()",
+      "reviewedWholeFrame": true,
+      "verdict": "PASS_BOUNDED_HOSTED_VISUAL",
+      "observation": "Committed15,000/150,000 and forecast6/1/2/4/5 remain legible with busy-muted Help. Cyan packets/figure and+5,000 receipt are visible outside essential header ink. This is a sampled live chain phase, not a full animation or final aggregate-award claim. The Spark guide begins below and continues beyond the screenshot; its complete text is not proved."
+    },
+    {
+      "checkpoint": "default Seed busy-before witness; outside crowded/receipt acceptance",
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-attachments/0C0AFC20-FB8D-41D6-A70A-5F4A5F8E4C29.png",
+      "sha256": "257e7fe7a531da745cc2ebb58306838ab5491f19baefdcf5573bfdd7abdb404d",
+      "storedPixelDimensions": [
+        1125,
+        2001
+      ],
+      "exifOrientation": 1,
+      "logicalCanvasPoints": [
+        375,
+        667
+      ],
+      "scale": 3,
+      "testIdentifier": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+      "reviewedWholeFrame": true,
+      "verdict": "CONTEXT_ONLY_STAR_BEARING",
+      "observation": "Direct inspection shows actual Seed opening stars,0/11,000, full ordered6/1/2/4/5 forecast and clear utilities. This current0ba frame is not starless. It is not used to accept the before/busy/after sequence or pressure layout; historical early starless captures remain distinct."
+    }
+  ],
+  "limits": [
+    "Programmatic ceiling reveal is not native pan admission or gesture reachability. Initial partial top-row clipping reflects the selected scroll position; revealed stills show complete top badges/upper star, not every board row at once.",
+    "No final native phone/tablet touch, actual accessibility traversal, structural identity/count, focus, actual VoiceOver, physical-device, minimum-iOS or whole Goal6 adoption follows from these hosted stills.",
+    "The eight primary/additional frames are1125×2001 originals inspected at original detail; source metadata establishes375×667@3×. This is not a calibrated physical-size/contrast inspection.",
+    "No complete guide/final-line acceptance from the bottom-clipped Spark receipt; no continuous animation, timing, phase duration or performance acceptance from its one live frame.",
+    "The default Seed busy-before context image is visibly star-bearing and must not be labeled as a historical early starless frame. No complete busy-state-sequence verdict was performed in this tranche.",
+    "The other seven PNGs in the16-item manifest were inventoried but not independently visually accepted here, including synthetic1024×1366 windows. No actual-iPad claim.",
+    "Existing raw82 mechanical failure and earlier rejected crop/semantic-layout histories retain their own exact scopes. A parent-reported14-pass result is separate mechanics, not the basis of this visual verdict."
+  ],
+  "verificationPerformed": [
+    "Named current9 SHA256/dimensions/EXIF checks",
+    "Six crowded complete-window visual reviews",
+    "Two additional compact AX5 opening/receipt complete-window visual reviews",
+    "One separate Seed busy-before context inspection",
+    "Three prior raw82 revealed complete-window comparisons",
+    "JSON parse and9 raw hash/dimension/orientation recheck PASS; prior frozen report hash unchanged",
+    "python3 scripts/ci-hygiene.py PASS: tracked-file hygiene and core UI-import guard; native validation remains separate",
+    "git diff --check PASS; only this new review file written by this reviewer"
+  ]
+}

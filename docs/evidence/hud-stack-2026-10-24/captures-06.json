@@ -1,0 +1,767 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "status": "Source-bound exports prepared; exact-export independent visual review and overall Goal6 decision remain separate.",
+  "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+  "embeddedBuildID": "dev.606ce1efbe",
+  "testContinuationCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+  "selectionMode": "All six native cases freshly requalified at one test checkpoint",
+  "testSourceCheckpoints": {
+    "allSixNative": "b28321cabb405c8f01893041c321c17851d5f0bd"
+  },
+  "carriedUnchangedChecks": {
+    "initial14": "hosted-06-0ba8de86",
+    "additional2": "hosted-06-78215866-guide-facts",
+    "runtime": "dev.606ce1efbe",
+    "proof": "App/AppTests byte-unchanged; onlyUItesthelper/expectedliteral/setupchanges. Sixnativecasesallrequalifiedatthisheadaftermeasuredhelpercorrection.",
+    "appSourceProofPath": "/private/tmp/starfall-hud-stack-20261024/source-06-prepared.json",
+    "appSourceProofSHA256": "fb2e9168f2acec017ef1028f4232a0fb00f74bc3b85ad9991f25e22ecc35bcd0"
+  },
+  "carriedHostedResults": [
+    {
+      "runPrefix": "hosted-06-0ba8de86",
+      "testSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "stageElapsedSeconds": 14.663,
+      "commandsPath": "/private/tmp/starfall-hud-stack-20261024/commands-06-0ba8de86.json",
+      "commandsSHA256": "943d2b5bc1a045280a2261f5c322aa01425070fe73a3f08dd596a46e8c29e99d",
+      "receiptPath": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-receipt.json",
+      "receiptSHA256": "b15687822444cb341f8d412ff9a2531dd3bdc90790bc55843fcf28f25f563894",
+      "summaryPath": "/private/tmp/starfall-hud-stack-20261024/hosted-06-0ba8de86-summary.json",
+      "summarySHA256": "cd8fb621ec77597c7aaff0a452ff19b74d20ef9d89c356d9c44383745e55e7e7"
+    },
+    {
+      "runPrefix": "hosted-06-78215866-guide-facts",
+      "testSourceCheckpoint": "782158668e48221e71a4203591d78ee3b0f73314",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "stageElapsedSeconds": 3.418,
+      "commandsPath": "/private/tmp/starfall-hud-stack-20261024/commands-06-78215866.json",
+      "commandsSHA256": "6d4eed468f51318aecb63add45989d63557fd97477c7f900b041d04210ac61e1",
+      "receiptPath": "/private/tmp/starfall-hud-stack-20261024/hosted-06-78215866-guide-facts-receipt.json",
+      "receiptSHA256": "823f86890cd64a7b763e04bdb7fc586d63860f49d1ca2f391c529a9a9a323016",
+      "summaryPath": "/private/tmp/starfall-hud-stack-20261024/hosted-06-78215866-guide-facts-summary.json",
+      "summarySHA256": "bf88bf3374d69f26f0538acb1129bf3e3fb96c9386979dd310ace61089d9d901"
+    }
+  ],
+  "count": 15,
+  "bytes": 10949859,
+  "nativeResultGroups": [
+    {
+      "runPrefix": "native-06-b28321ca-full",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "selector": "StarfallUITests/SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "stageElapsedSeconds": 97.136,
+      "counts": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "runtimeWarnings": [],
+      "commandsPath": "/private/tmp/starfall-hud-stack-20261024/commands-06-b28321ca.json",
+      "commandsSHA256": "3848c561e7310b80cb63f39fe7a9a08992799960a1b2daa245243151fbcdad3c",
+      "receiptPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-receipt.json",
+      "receiptSHA256": "bad542bbcd81f0be4bf3ec1c71be10874bf601a82a176ea3094d4fae3d0e90d9",
+      "summaryPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-summary.json",
+      "summarySHA256": "aaaf1cfacf932eb453bfc52bd19080edf60a27c65eacb24bb008677d590a281f",
+      "attachmentManifestPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-attachments/manifest.json",
+      "attachmentManifestSHA256": "c5cddf84b2f94a2fd65e7aed2b82345e91c77a1e66514d920a96fab6fcd9891c"
+    },
+    {
+      "runPrefix": "native-06-b28321ca-ax-phone",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "selector": "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "stageElapsedSeconds": 107.52,
+      "counts": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "runtimeWarnings": [],
+      "commandsPath": "/private/tmp/starfall-hud-stack-20261024/commands-06-b28321ca.json",
+      "commandsSHA256": "3848c561e7310b80cb63f39fe7a9a08992799960a1b2daa245243151fbcdad3c",
+      "receiptPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-phone-receipt.json",
+      "receiptSHA256": "8442d1f9eab7f055f92d75780c807f03b937be3597b616d8ff3e42aa0de19260",
+      "summaryPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-phone-summary.json",
+      "summarySHA256": "5818b2805bb7c961e2cb16ffe49135ee171a1e164eb0a5027bbe534b4c8bca15",
+      "attachmentManifestPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-phone-attachments/manifest.json",
+      "attachmentManifestSHA256": "25f2db2c7324d5de7f0785d00255d5e7c533d376b34f53314e18e6345be13647"
+    },
+    {
+      "runPrefix": "native-06-b28321ca-ax-tablet",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "selector": "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "modelName": "iPad Pro 13-inch (M5)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "stageElapsedSeconds": 87.4,
+      "counts": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "runtimeWarnings": [],
+      "commandsPath": "/private/tmp/starfall-hud-stack-20261024/commands-06-b28321ca.json",
+      "commandsSHA256": "3848c561e7310b80cb63f39fe7a9a08992799960a1b2daa245243151fbcdad3c",
+      "receiptPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-tablet-receipt.json",
+      "receiptSHA256": "d87a64009b04627fedcdb5a7003788e34f2f436605abb9ff0fcc2c0c262a13b8",
+      "summaryPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-tablet-summary.json",
+      "summarySHA256": "8c864bef1cea5b1f236f41d985805f791859eb1749a5440c86107c0a69be33f1",
+      "attachmentManifestPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-tablet-attachments/manifest.json",
+      "attachmentManifestSHA256": "2878f3aa3cb6668ceb3310e186582c8fc73596de36cf661a813b38f78e9981d5"
+    },
+    {
+      "runPrefix": "native-06-b28321ca-blocked",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "selector": "StarfallUITests/SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "stageElapsedSeconds": 52.932,
+      "counts": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "runtimeWarnings": [],
+      "commandsPath": "/private/tmp/starfall-hud-stack-20261024/commands-06-b28321ca.json",
+      "commandsSHA256": "3848c561e7310b80cb63f39fe7a9a08992799960a1b2daa245243151fbcdad3c",
+      "receiptPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-blocked-receipt.json",
+      "receiptSHA256": "06edd615c35f3065feb3f1a476a38d0554d2a14384193ab18ca3e06161f12cb6",
+      "summaryPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-blocked-summary.json",
+      "summarySHA256": "6235b0794ec808d5c80bd9b1c4cf351bb7004217b7c6aaa3bf6ca5918a9fd74a",
+      "attachmentManifestPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-blocked-attachments/manifest.json",
+      "attachmentManifestSHA256": "936e9d7021434b1b638fa3ecab556a264f6238575a0c73607a28b1c1b0feeac7"
+    },
+    {
+      "runPrefix": "native-06-b28321ca-kite",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "selector": "StarfallUITests/HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "stageElapsedSeconds": 198.387,
+      "counts": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "runtimeWarnings": [],
+      "commandsPath": "/private/tmp/starfall-hud-stack-20261024/commands-06-b28321ca.json",
+      "commandsSHA256": "3848c561e7310b80cb63f39fe7a9a08992799960a1b2daa245243151fbcdad3c",
+      "receiptPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-receipt.json",
+      "receiptSHA256": "dbc3ade831f03670cbb4d1ec68b8accfbee19ac575fabd76041b5728ed9be0c5",
+      "summaryPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-summary.json",
+      "summarySHA256": "24fe2c00a540d65ccdedd9a1e6aa300c669e258260e9966b64190e062e42bdf1",
+      "attachmentManifestPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/manifest.json",
+      "attachmentManifestSHA256": "4718497f7afc4ef827498a83bc0015897f9d852bbf45a57fbc665a92265b0eb9"
+    },
+    {
+      "runPrefix": "native-06-b28321ca-full-board",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "selector": "StarfallUITests/HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "modelName": "iPad Pro 13-inch (M5)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "stageElapsedSeconds": 162.581,
+      "counts": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "expectedFailures": 0
+      },
+      "runtimeWarnings": [],
+      "commandsPath": "/private/tmp/starfall-hud-stack-20261024/commands-06-b28321ca.json",
+      "commandsSHA256": "3848c561e7310b80cb63f39fe7a9a08992799960a1b2daa245243151fbcdad3c",
+      "receiptPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-receipt.json",
+      "receiptSHA256": "c2afe2e51ba9a3e8fbbb673fc68ce7d2bde9d6ef30d089a65336453bc18b3cf5",
+      "summaryPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-summary.json",
+      "summarySHA256": "cbb3e049c5619593d517fe3e5908bc27d48dd0f8e4a309d9823490de0e4e9a21",
+      "attachmentManifestPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/manifest.json",
+      "attachmentManifestSHA256": "6a0168cffa3f838330e68870115621a6f5c58af7677014c694cf86ea39fd028f"
+    }
+  ],
+  "historicalFailuresPreserved": [
+    "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-blocked-summary.json",
+    "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite-summary.json",
+    "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-summary.json"
+  ],
+  "unchangedDiagnosticResult": "/private/tmp/starfall-hud-stack-20261024/native-06-8b63bfe6-full-board-summary.json",
+  "environment": "Xcode27.1/27A9275, SDK27.1; actual iOS27.0 iPhone17e390x844@3x and iPadPro13M5portrait1032x1376@2x. Exact per-run device/OS provenance is retained above.",
+  "limits": "Whole native stills preserve actual captured scroll positions. A guide-end screenshot does not display all canonical guide content simultaneously or prove continuous scrolling. Quiet launch settings and actual Settings Calm transitions are separately labeled. The historical Goal5 video frame remains a failed-baseline diagnostic. No continuous animation, actual VoiceOver, physical-device, global contrast or whole-goal acceptance follows from these exports.",
+  "items": [
+    {
+      "id": "phone-default__lantern-full",
+      "state": "Current Lantern4, default text: after four actual showers, full column 2 and one-space columns 1,3,4,5,6; before recovery.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-full",
+      "nativeAttachmentName": "pressure-full-default_0_9BFDB74D-9E6B-468F-B496-F8802EECD465.png",
+      "nativeAttachmentTimestamp": 1792904397.486,
+      "rawSHA256": "d256ebce140db2f1233fb66763cb4a1ffb585742b8fd046b65e48ca02f92904f",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__lantern-full.jpg",
+      "exportSHA256": "4d2cfcbc406faaf2c03932d79467b53583f886bed2fcdd835565183c85223504",
+      "exportBytes": 552866,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-attachments/089B63DF-E341-4BDD-AA99-57FF1881432D.png",
+      "rawBytes": 3435947,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-default__lantern-recovered",
+      "state": "Current Lantern4 after the real 5000-point recovery clear: full warning absent, one-space columns 1,3,4,5,6 remain; before the fifth shower.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-full",
+      "nativeAttachmentName": "pressure-recovered-default_0_459FB375-44AB-4CB7-B5D7-51B0209EBDB1.png",
+      "nativeAttachmentTimestamp": 1792904416.696,
+      "rawSHA256": "d55af95664d118db1baee69a3623380bd7c5752183344e9ec6d57b84e4e4069d",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__lantern-recovered.jpg",
+      "exportSHA256": "78ab322ff5a8eecedd264b349bd21c6c603397eb5d0110f710fa11a0638cc901",
+      "exportBytes": 583892,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-attachments/BCF8BD39-8455-446E-939B-521B00EA3FE8.png",
+      "rawBytes": 3445959,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-ax5-quiet__lantern-full",
+      "state": "Actual AX5 phone, legitimate calmEffects launch setting: four actual showers, full column 2 and one-space columns 1,3,4,5,6.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-ax-phone",
+      "nativeAttachmentName": "pressure-full-largest_0_E7A816E7-FBC7-40BD-B178-100042B5BD06.png",
+      "nativeAttachmentTimestamp": 1792904497.964,
+      "rawSHA256": "da1b6be798d6b714e1e05a871f9a0a9550dd2e4e78397ba848a527c40210ac4f",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-ax5-quiet__lantern-full.jpg",
+      "exportSHA256": "284073ae3057de3ded7feab30eb23dfa437501ed41bb5b39ae0f9fb7e5e54ca7",
+      "exportBytes": 565923,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-phone-attachments/E745685D-179B-4681-8C53-EEE100BE5327.png",
+      "rawBytes": 3101527,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-ax5-quiet__lantern-recovered",
+      "state": "Actual AX5 phone, legitimate calmEffects launch setting: real 5000-point recovery, full warning absent and the same one-space columns remain.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-ax-phone",
+      "nativeAttachmentName": "pressure-recovered-largest_0_A2F3DBCB-8676-4D2A-BE73-118F28904DA2.png",
+      "nativeAttachmentTimestamp": 1792904531.511,
+      "rawSHA256": "a4dfe39f17525087b9c2b3658ed10ac68da05c40feeaccb34b19fe3954f49adf",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-ax5-quiet__lantern-recovered.jpg",
+      "exportSHA256": "f4a1bc2be301153eb1b525bce726a2d8d71a46ad953ce92412badb7bdb05e69d",
+      "exportBytes": 576487,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-phone-attachments/CB97AF59-013D-414A-AF41-105BA2ABB166.png",
+      "rawBytes": 3210061,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "tablet-ax5-quiet__lantern-full",
+      "state": "Actual AX5 tablet, legitimate calmEffects launch setting: four actual showers, full column 2 and one-space columns 1,3,4,5,6.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-ax-tablet",
+      "nativeAttachmentName": "pressure-full-largest_0_14212945-E1B1-4A1B-82A9-5EBD860E9CD0.png",
+      "nativeAttachmentTimestamp": 1792904592.349,
+      "rawSHA256": "2b98ab1483368c57da2654b895f8a8d4c604dc74d6760b598936d5cd771b27ee",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        1032.0,
+        1376.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__tablet-ax5-quiet__lantern-full.jpg",
+      "exportSHA256": "2845444f6189074ee73436455d20378d8474f955139f71fdf6394bdca6958630",
+      "exportBytes": 1099390,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-tablet-attachments/14DC2161-891F-4591-A10F-A9B8954394A2.png",
+      "rawBytes": 6821876,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "tablet-ax5-quiet__lantern-recovered",
+      "state": "Actual AX5 tablet, legitimate calmEffects launch setting: real 5000-point recovery, full warning absent and the same one-space columns remain.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-ax-tablet",
+      "nativeAttachmentName": "pressure-recovered-largest_0_A7A78A0D-E8A7-4919-A860-7063C8D8C16E.png",
+      "nativeAttachmentTimestamp": 1792904620.214,
+      "rawSHA256": "7ad9f84726c15f69877592b99ab50863db35cf10d583fb2c9bd3466a8182d300",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        1032.0,
+        1376.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__tablet-ax5-quiet__lantern-recovered.jpg",
+      "exportSHA256": "29bd1a9f0e5b11a7ef34d0dd16e05a6417b6f3590ea10bc8254dfafbc041467f",
+      "exportBytes": 1082998,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-ax-tablet-attachments/CA0BB3BF-B07E-40FB-B733-2D64F9377732.png",
+      "rawBytes": 6804891,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-default__blocked-terminal",
+      "state": "Actual blocked arrival terminal state from the existing idle full-column journey. This still does not establish the preceding continuous timing.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-blocked",
+      "nativeAttachmentName": "pressure-idle-overflow_0_E41B938C-C861-4D24-91F0-8B3289F5EBB3.png",
+      "nativeAttachmentTimestamp": 1792904679.471,
+      "rawSHA256": "5c64234e66395bb36e4f7368b25d1d2ce480ffe124ce3d6a88ca1d8f86b6baaf",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__blocked-terminal.jpg",
+      "exportSHA256": "ece6438fd2f3625ed578283c6d2dd0a18247409d4968b804ba3d1094072ed8b5",
+      "exportBytes": 544526,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-blocked-attachments/CBBD0F76-541C-4376-92B3-3043986C8B2E.png",
+      "rawBytes": 3358918,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-default__kite-near-opening",
+      "state": "Current Kite4 opening, paused before a shower, 0 of 17000 points and one-space columns 1,2.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-kite",
+      "nativeAttachmentName": "headroom-phone-one-space-opening_0_29E4254F-FF99-4B59-ABFC-04BD090C5384.png",
+      "nativeAttachmentTimestamp": 1792904727.01,
+      "rawSHA256": "d33015143e967869974af31a63e71b919b1798e8b290f15691bfd335463d5137",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__kite-near-opening.jpg",
+      "exportSHA256": "051641d7e4177bde61bddc52e25b8510ccb870dd7745a700ac6ab2df1b6f7252",
+      "exportBytes": 587679,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/8801E466-5303-4955-97C0-5D287B15B1D0.png",
+      "rawBytes": 3656625,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-default__kite-high-column-guide-end",
+      "state": "Current Kite4 after the real high-column clear to 5000 points: column 1 recovers four spaces and column 2 remains one space from full. Final captured guide scroll position.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-kite",
+      "nativeAttachmentName": "headroom-phone-high-column-four-spaces-end_0_182F3DFE-2BE4-4AAA-AC55-47175FF621AB.png",
+      "nativeAttachmentTimestamp": 1792904737.284,
+      "rawSHA256": "4d1cd0d40f867b28fe562025dfc676c8edb5347e138c6d075767bcd11134fea9",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__kite-high-column-guide-end.jpg",
+      "exportSHA256": "77e2db5f6101bac12daecbdcc05f4e3a7babe3e2e9ddcac63fc544f1399fea44",
+      "exportBytes": 561265,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/B06EEBB6-D53F-4984-97EE-7F3515339464.png",
+      "rawBytes": 3588389,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-default__kite-real-recovery-guide-end",
+      "state": "Current Kite4 real full-column recovery route at 12000 points: full column 2 remains and no one-space caption is expected. Final captured guide scroll position.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-kite",
+      "nativeAttachmentName": "headroom-phone-real-full-column-recovery-end_0_ED10DEF9-CD3E-45EC-B26D-D8CEA89024B3.png",
+      "nativeAttachmentTimestamp": 1792904806.882,
+      "rawSHA256": "cca814226672805929b20421a68ce5255bb00d2a8583bbc2ad1266d5ff51b4ed",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__kite-real-recovery-guide-end.jpg",
+      "exportSHA256": "d9a5e1233d07603f210d76ddbba3454dd39085d006c0a38510c960b7c7e81a28",
+      "exportBytes": 565031,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/117056C9-71A7-4BDD-8959-99463CA2A2CA.png",
+      "rawBytes": 3605853,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-default__kite-earned-result",
+      "state": "Current Kite4 earned result after the real 18000-point route against the 17000-point objective. Terminal near/full status absence is separately asserted by the native test.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-kite",
+      "nativeAttachmentName": "headroom-phone-immediate-earned-result_0_554E3357-3B46-4DD1-9656-F95F73034563.png",
+      "nativeAttachmentTimestamp": 1792904837.789,
+      "rawSHA256": "3a750f482bd6d4568c1ddd1a23873394a39606dc8e84783cbbe02ec818c781f7",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__phone-default__kite-earned-result.jpg",
+      "exportSHA256": "8d3d08f9f898fd547da936e5b3d266a9145b88a86e52586ce733f5a934c97e63",
+      "exportBytes": 526299,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-kite-attachments/ECABE527-8DC9-4C96-9125-824E254B9E0C.png",
+      "rawBytes": 2984120,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "tablet-ax5-actual-calm__kite-near-opening",
+      "state": "Actual AX5 tablet after the real Settings Calm transition, current Kite4 opening with one-space columns 1,2.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-full-board",
+      "nativeAttachmentName": "headroom-tablet-one-space-opening-actual-calm_0_62C3D11C-9FB6-4F78-AE93-776348BB2224.png",
+      "nativeAttachmentTimestamp": 1792904924.463,
+      "rawSHA256": "49ff1a858d5e6284c2e2d6ccb4fd5b291a5f7907abfc71b8072216718fab511d",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        1032.0,
+        1376.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__tablet-ax5-actual-calm__kite-near-opening.jpg",
+      "exportSHA256": "bf2c5321ee708e78bd309fef559bc702b8c568acd17a00296084914aa5fa24ca",
+      "exportBytes": 990578,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/E5DE0C0E-8C07-4D7B-B3B7-8DCF679D842B.png",
+      "rawBytes": 6507344,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "tablet-ax5-actual-calm__full-board-eight-refills-guide-end",
+      "state": "Current Lantern Full Board6 after the real 15000-point clear and eight refills. The native case asserts 49 occupied cells; this guide-end still does not independently show or count every star.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-full-board",
+      "nativeAttachmentName": "headroom-tablet-full-board-refilled-eight-stars-end_0_095DE77C-2838-46C1-8FFF-8B5AB22F260C.png",
+      "nativeAttachmentTimestamp": 1792904985.394,
+      "rawSHA256": "3db934c1def4138eebd20ee4efcd8d37949bc0d735a954bc3b0c8cb225081f0c",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        1032.0,
+        1376.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__tablet-ax5-actual-calm__full-board-eight-refills-guide-end.jpg",
+      "exportSHA256": "d3f54a4f9f86201d12eabc83cd0b0b9bfec641411cdd69c3d9a03e647508f06d",
+      "exportBytes": 1032128,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/364C76BC-EF27-4B9E-AD51-1A104A95B7AB.png",
+      "rawBytes": 6521486,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "tablet-ax5-actual-calm__full-board-following-clear",
+      "state": "Current Lantern Full Board6 after the following real clear to 30000 points. Final captured guide scroll position; this is neither the 0-point opening nor a later 42000-point state.",
+      "kind": "native-screen",
+      "testSourceCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "runPrefix": "native-06-b28321ca-full-board",
+      "nativeAttachmentName": "headroom-tablet-following-real-full-board-clear_0_AAFBD6CC-0E84-4728-8213-5050667A8995.png",
+      "nativeAttachmentTimestamp": 1792904994.67,
+      "rawSHA256": "ce538ca34315588725c77ad480825f73606f83d59bacc34ff93d9977ef133052",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        1032.0,
+        1376.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-606ce1efbe__tablet-ax5-actual-calm__full-board-following-clear.jpg",
+      "exportSHA256": "41b5d53254ae81a9f971602c593a1f4ae46403e271e220312c97206dfc9f4c88",
+      "exportBytes": 1131548,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-06-b28321ca-full-board-attachments/1DD2E09A-37E4-41C7-B4ED-7A1A9B476BD2.png",
+      "rawBytes": 6975569,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-default__baseline-goal-five-full-at-49-985s",
+      "kind": "native-motion-frame",
+      "testSourceCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "appSourceCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "runPrefix": "baseline-06-from-05-08aa30c0-full-phone-diagnostic",
+      "state": "Retained Goal5 baseline from the failed strict semantic ceiling-clearance diagnostic. Native-video still requested at 50.000 s, actual 49.985 s. Historical full badges have separately been reviewed as visibly complete; this export does not turn the failed frame-containment test into a pass or claim painted clipping.",
+      "rawSHA256": "d708896cd131d69fd9806745e5e93d9155b4ddfedc24498340189bdef7c0182e",
+      "motionSource": {
+        "moviePath": "/private/tmp/starfall-hud-stack-20261024/baseline-06-from-05-08aa30c0-full-phone-diagnostic.mp4",
+        "movieSHA256": "c782d63fb66bcba3e08c4bb2642831718947f40ce81980357b24412ca49940a3",
+        "requestedSeconds": 50.0,
+        "actualSeconds": 49.985,
+        "provenancePath": "/private/tmp/starfall-hud-stack-20261024/baseline-06-from-05-08aa30c0-full-phone-diagnostic-provenance.json",
+        "provenanceSHA256": "1ec35bb680df11735ca663d3cb82cf6ccbb0dc0c5bb30ffcf314d335dcd172c5"
+      },
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-06-captures/dev-38edbb845c__phone-default__baseline-goal-five-full-at-49-985s.jpg",
+      "exportSHA256": "b3e9e1c33a0e18fc2d32ab844ee9cb2f372fb527b45d0c6197240bd4bee7ee06",
+      "exportBytes": 549249,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/baseline-06-from-05-diagnostic-frames/frame-0050.000.png",
+      "rawBytes": 2883224,
+      "format": "sips JPEG80; full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Decoded original native H264 frame"
+    }
+  ]
+}

@@ -213,6 +213,16 @@ extension XCUIApplication {
     /// Physical input needs visible targets. Scroll through the non-playing edge so
     /// revealing a control cannot be interpreted as a swap or held constellation.
     @MainActor func revealSkyControls(_ controls: [XCUIElement], file: StaticString = #filePath, line: UInt = #line) {
+        var observations: [String] = []
+        defer {
+            if controls.contains(where: { $0.identifier == "experiment.preferences" }), !observations.isEmpty {
+                XCTContext.runActivity(named: "Settings reveal geometry") { activity in
+                    let attachment = XCTAttachment(string: observations.joined(separator: "\n"))
+                    attachment.name = "settings-reveal-geometry"; attachment.lifetime = .keepAlways
+                    activity.add(attachment)
+                }
+            }
+        }
         for control in controls {
             guard control.waitForExistence(timeout: 5) else {
                 XCTFail("Missing sky control: \(control.identifier)", file: file, line: line); return
@@ -240,8 +250,11 @@ extension XCUIApplication {
             let top = max(viewport.minY, bar.frame.maxY - 1)
             viewport = CGRect(x: viewport.minX, y: top, width: viewport.width, height: max(0, viewport.maxY - top))
         }
-        for _ in 0..<8 {
+        // Inspect the result of the eighth allowed pan too; inspecting a final
+        // position does not grant another gesture.
+        for attempt in 0...8 {
             let bounds = controls.map(\.frame).reduce(CGRect.null) { $0.union($1) }
+            observations.append("Attempt \(attempt + 1): bounds=\(bounds); viewport=\(viewport); scroll=\(String(describing: scroll?.frame))")
             if viewport.contains(bounds) {
                 XCTAssertTrue(controls.allSatisfy(\.isHittable), "Visible sky controls must accept physical input", file: file, line: line)
                 return
@@ -249,14 +262,25 @@ extension XCUIApplication {
             guard bounds.height <= viewport.height else {
                 XCTFail("Requested sky targets cannot fit together", file: file, line: line); return
             }
+            guard attempt < 8 else { break }
             let up = bounds.maxY > viewport.maxY
-            let distance = min(frame.height * 0.45, max(24, up ? bounds.maxY - viewport.maxY + 8 : viewport.minY - bounds.minY + 8))
+            // Like world-map reveal, reserve travel for native pan recognition.
+            // The Settings trace measured only 6pt of scroll from a 24pt drag.
+            let distance = min(frame.height * 0.45, max(32, up ? bounds.maxY - viewport.maxY + 16 : viewport.minY - bounds.minY + 16))
             let surface = scroll ?? self
             let containsBoard = scroll?.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "experiment.cell.")).firstMatch.exists ?? true
             let scrollX = !containsBoard || visibleBar != nil ? 0.12 : 0.002
+            observations.append("Pan: upward=\(up); distance=\(distance); xFraction=\(scrollX); yFraction=\(up ? 0.75 : 0.25)")
             let start = surface.coordinate(withNormalizedOffset: CGVector(dx: scrollX, dy: up ? 0.75 : 0.25))
             start.press(forDuration: 0.05, thenDragTo: start.withOffset(CGVector(dx: 0, dy: up ? -distance : distance)),
                         withVelocity: .slow, thenHoldForDuration: 0.1)
+        }
+        observations.append("After final pan: bounds=\(controls.map(\.frame).reduce(CGRect.null) { $0.union($1) }); viewport=\(viewport)")
+        XCTContext.runActivity(named: "Failed sky control reveal") { activity in
+            let text = XCTAttachment(string: observations.joined(separator: "\n") + "\n" + (scroll?.debugDescription ?? debugDescription))
+            text.name = "sky-control-reveal-failure"; text.lifetime = .keepAlways; activity.add(text)
+            let screenshot = XCTAttachment(screenshot: self.screenshot())
+            screenshot.name = "sky-control-reveal-failure"; screenshot.lifetime = .keepAlways; activity.add(screenshot)
         }
         XCTFail("Sky controls did not become fully visible", file: file, line: line)
     }

@@ -1,0 +1,526 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "preparedUTC": "2026-10-25T04:46:35.676362+00:00",
+  "status": "Retained tail failure/correction history; final Kite and Full Board acceptance pending at preparation. No overall adoption claim.",
+  "overallDecisionOwner": "goal-06-acceptance.json and separate final verification/visual/export records",
+  "scope": "Preserves the two native tail failures and test-only corrections. Earlier Goal6 failure history remains in verification-06-failures.json unchanged.",
+  "sources": {
+    "initial": {
+      "checkpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe"
+    },
+    "blockedCorrection": {
+      "checkpoint": "cbd1bc5017c80c1952917647d7cdf52183ea9087",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe"
+    },
+    "guideExpectationCorrection": {
+      "checkpoint": "782158668e48221e71a4203591d78ee3b0f73314",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe"
+    },
+    "runtimeBoundary": "App and AppTests paths are byte-identical between initial and final test checkpoints; git diff --name-only 0ba8de86..78215866 -- App AppTests returned no paths. This is source comparison, not fresh runtime execution.",
+    "commandManifests": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-06-0ba8de86.json",
+        "sha256": "943d2b5bc1a045280a2261f5c322aa01425070fe73a3f08dd596a46e8c29e99d",
+        "bytes": 9268
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-06-cbd1bc50.json",
+        "sha256": "d295bed1509ded6185122aa71e5be03c22b5fdcc9835875739a13235b48de19b",
+        "bytes": 4904
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-06-78215866.json",
+        "sha256": "6d4eed468f51318aecb63add45989d63557fd97477c7f900b041d04210ac61e1",
+        "bytes": 5218
+      }
+    ],
+    "carriedUnchangedChecks": {
+      "initialSource": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "blockedSource": "cbd1bc5017c80c1952917647d7cdf52183ea9087",
+      "runtime": "dev.606ce1efbe",
+      "hosted": 14,
+      "native": [
+        "full",
+        "ax-phone",
+        "ax-tablet",
+        "blocked"
+      ],
+      "testDelta": "Only four full exact expectedGuide literals now include existing committed accounting+survivor facts, independently asserted in two existing hosted methods. No App/AppTests change; no equality, pan, outcome or timing assertion removed."
+    }
+  },
+  "blockedArrival": {
+    "failedRun": {
+      "prefix": "native-06-0ba8de86-blocked",
+      "testSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "result": "Failed",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "stageElapsedSeconds": 54.717,
+      "stageExitCode": 65,
+      "runtimeWarnings": [],
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      ],
+      "receipts": {
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-blocked-receipt.json",
+          "sha256": "21aae8d60c49ea625e66826e20b9dc8816996bccbe5712b34f6dc00231180dd0",
+          "bytes": 170
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-blocked-summary.json",
+          "sha256": "4c54653c37302bc53978b8c7599ad20bca3668c669db816373b5d1acc686dbdf",
+          "bytes": 1151
+        },
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-blocked-attachments/manifest.json",
+          "sha256": "f5262b35f50ecf8b0e7ddb639ff31365f9e5de7632dddbc096c3f178f88dbaa9",
+          "bytes": 22899
+        },
+        "log": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-blocked.log",
+          "sha256": "9ef6a9cd41ede7a6c2d36d10cb844f75f1aaf85c794837e749f702ea0dab6198",
+          "bytes": 38410
+        }
+      }
+    },
+    "observedFailure": "Before the fifth Next shower action, the generic tap helper performed eight app.swipeUp attempts and experiment.next remained unhittable; the test failed its existing hittability assertion at SkyFlowInteractionTests.swift:35. No terminal outcome was reached in this failed run.",
+    "correction": {
+      "checkpoint": "cbd1bc5017c80c1952917647d7cdf52183ea9087",
+      "path": "UITests/SkyFlowInteractionTests.swift",
+      "selector": "StarfallUITests/SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival",
+      "change": "Replace only tap(\"experiment.next\", app) in this method with the existing native reading-owner helper: let next = app.buttons[\"experiment.next\"]; app.revealSkyControls([next]); next.tap(). The same helper already serves its four setup waves and the successful recovery route.",
+      "preserved": "Existing terminal No room to land, pressure/one-space/forecast suppression, outcomes, targets, round/save assertions, waits and method count are retained. No App change, blanket retry, motion override or timing-policy change."
+    },
+    "correctedRun": {
+      "prefix": "native-06-cbd1bc50-blocked",
+      "testSourceCheckpoint": "cbd1bc5017c80c1952917647d7cdf52183ea9087",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "result": "Passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "stageElapsedSeconds": 57.604,
+      "stageExitCode": 0,
+      "runtimeWarnings": [],
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      ],
+      "receipts": {
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-blocked-receipt.json",
+          "sha256": "275af9eb9bdd61d76a5a585afa234361c5bc2eb0d8563b34b66e53c983941843",
+          "bytes": 169
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-blocked-summary.json",
+          "sha256": "864d3071cf5695a817a75d93e51a112e72a464aa8371fd67aeffdff4c048dc91",
+          "bytes": 741
+        },
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-blocked-attachments/manifest.json",
+          "sha256": "e17e5909291f0f3e9bc4c2d26da258ab3ddb41a788e73064ff84ded8fd389e8e",
+          "bytes": 1192
+        },
+        "log": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-blocked.log",
+          "sha256": "e66f162c6d86a9471da49825a415be7cb70719529f22b3aa83febeb61f259855",
+          "bytes": 40567
+        }
+      }
+    }
+  },
+  "kiteGuideExpectation": {
+    "failedRun": {
+      "prefix": "native-06-cbd1bc50-kite",
+      "testSourceCheckpoint": "cbd1bc5017c80c1952917647d7cdf52183ea9087",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "result": "Failed",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "stageElapsedSeconds": 68.366,
+      "stageExitCode": 65,
+      "runtimeWarnings": [],
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      ],
+      "receipts": {
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite-receipt.json",
+          "sha256": "ebca0161309d18638e05c6651fad4a4f294bd7237ce33f17bd94fdb97d85689c",
+          "bytes": 167
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite-summary.json",
+          "sha256": "9f8a2afcfaa3b2e194e17cf49d66f24509a251e9292a92518e006e2f3265442e",
+          "bytes": 1190
+        },
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite-attachments/manifest.json",
+          "sha256": "49b0bb7912f639beded9a505db22a4febe0d94707fdba87a09b4c57ee361308e",
+          "bytes": 20296
+        },
+        "log": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite.log",
+          "sha256": "841796a0f796991bfaf07b8020ba8befdeb91669d0ff38c6e40d35583e1fea9b",
+          "bytes": 34085
+        }
+      }
+    },
+    "observedFailure": "The real first high-column clear reached exactly 5000/17000 and one-space column 2. The full label equality prerequisite at HeadroomFeedbackInteractionTests.swift:119 failed before guide reading pans, because the old expected literal omitted existing committed accounting prose.",
+    "oldExpectedHighGuide": "Pip. Recipe popped! +5,000 starlight. That made room. 4 more spaces above the stars in column 1.",
+    "actualNativeHighGuide": "Pip. Recipe popped! +5,000 starlight. That made room. 4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points. 4 more spaces above the stars in column 1.",
+    "nativeDebugDescription": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite-attachments/9B5D18AD-7BCC-4296-AE19-F4A303CA93B3.txt",
+      "sha256": "8ebfb6d0bd2d59b4602c6702cd8210421992ce4ee2d473a642b1a42ee9b7ed5b",
+      "bytes": 3321,
+      "attachmentName": "Debug description for `\"experiment.message\" StaticText`_0_D0264C78-03CD-401A-A045-6BB8E8A4B12A.txt",
+      "facts": "Debug query includes experiment.score 5,000 of 17,000 starlight collected, sky.headroom.oneSpace Column 2: 1 space left., and the full accounting-bearing experiment.message label."
+    },
+    "retainedNativeMovie": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite-attachments/A64BD24A-774C-459C-B8BA-AA491D81A40A.mp4",
+      "sha256": "ed3e59a96350078f517df45ca01a6edc89f791ca1a68cfa2378c2ab45ac5d3cb",
+      "bytes": 60583011,
+      "attachmentName": "Screen Recording 2026-10-25 at 12.41.08 AM.mp4",
+      "samplingLimit": "Three already-decoded full frames are retained below. No additional decoding or continuous-animation inference was performed for this record."
+    },
+    "retainedDecodedFrames": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite-failure-frames/frame-0040.000.png",
+        "sha256": "1931bf4f964cee0fa632803e89d84fd3abb6fff4b81f7ebd05d9c6a763b433ac",
+        "bytes": 3427560,
+        "requestedSeconds": 40.0,
+        "actualSecondsReportedByCoordinator": 39.985,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "scale": 3,
+        "pixelReview": "Only the coordinator reports inspecting the 50-second sample; this history record does not claim independent pixel review of these samples."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite-failure-frames/frame-0045.000.png",
+        "sha256": "1931bf4f964cee0fa632803e89d84fd3abb6fff4b81f7ebd05d9c6a763b433ac",
+        "bytes": 3427560,
+        "requestedSeconds": 45.0,
+        "actualSecondsReportedByCoordinator": 44.9516667,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "scale": 3,
+        "pixelReview": "Only the coordinator reports inspecting the 50-second sample; this history record does not claim independent pixel review of these samples."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-cbd1bc50-kite-failure-frames/frame-0050.000.png",
+        "sha256": "c2fa56d862666a053d83e7e9dd5f003842b4eb579bf77974ab3f8400e3843727",
+        "bytes": 3274796,
+        "requestedSeconds": 50.0,
+        "actualSecondsReportedByCoordinator": 49.9866667,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "scale": 3,
+        "pixelReview": "Only the coordinator reports inspecting the 50-second sample; this history record does not claim independent pixel review of these samples."
+      }
+    ],
+    "correction": {
+      "checkpoint": "782158668e48221e71a4203591d78ee3b0f73314",
+      "path": "UITests/HeadroomFeedbackInteractionTests.swift",
+      "change": "Only four complete expectedGuide literals were updated to include already accepted 4-star, 5-star and 8-star accounting, including the Full Board two-survivor diamond statement.",
+      "exactUpdatedLiterals": {
+        "highGuide": "Pip. Recipe popped! +5,000 starlight. That made room. 4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points. 4 more spaces above the stars in column 1.",
+        "lowGuide": "Pip. Recipe popped! +7,000 starlight. That made room. 5 stars · 5 light. 5,000 base + 2,000 size = 7,000 points. 5 more spaces above the stars in columns 3, 4, 5, 6, 7.",
+        "recoveryGuide": "Pip. Recipe popped! +5,000 starlight. That made room. 4 stars · 4 light. 4,000 base + 1,000 size = 5,000 points. 4 more spaces above the stars in column 1. Column 1 has room again.",
+        "refillGuide": "Spark. A 2-clear chain! +15,000 starlight. Falling stars kept it going. 8 stars · 8 light. 8,000 base + 2,000 size + 5,000 chain = 15,000 points. Diamond marks: 2 survivors fell into later patterns. Refill added 8 stars; the board is full."
+      },
+      "preserved": "Full label equality remains in both the bounded prerequisite and final assertion. Every pan-overlap/read-through/final-line, hittability, close containment, exact round, world/save/replay, shower/clock and outcome assertion and wait remains unchanged. No contains-match substitution, assertion removal, App or AppTests edit."
+    }
+  },
+  "independentExistingHostedOracles": {
+    "source": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyHeadroomGuideTests.swift",
+      "sha256": "db73a284addda4ceb11719c0f1dcab1792c79351f4a04e7e5a400cb32de1f71f",
+      "bytes": 21013,
+      "checkpoint": "782158668e48221e71a4203591d78ee3b0f73314",
+      "unchangedFrom": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf"
+    },
+    "existingMethods": [
+      {
+        "selector": "StarfallAppTests/SkyHeadroomGuideTests/testKiteChoicesPublishTheirExactDifferentRoomBeforeMotionWithoutChangingTheClockOrSupply",
+        "contract": "Independently committed high/low moves produce exact 4-star/4000+1000=5000 and 5-star/5000+2000=7000 accounting and exact room facts while preserving forecast, supply, clock, saves and journey."
+      },
+      {
+        "selector": "StarfallAppTests/SkyHeadroomGuideTests/testKiteRecoveryAppendsNewRoomBeforeTheExistingFullColumnRecoveryExactlyOnce",
+        "contract": "Independently committed points-first/shower/high-clear recovery reaches 12000, retains full column 2, appends exact 4-star accounting and column 1 room recovery once. Included in the carried original 14-hosted selection; not counted again in the additional pair."
+      },
+      {
+        "selector": "StarfallAppTests/SkyHeadroomGuideTests/testFullBoardReportsEightActualRefillsInsteadOfTemporaryRoomAndRetainsCoreMastery",
+        "contract": "Independently committed two-phase clear produces 15000, 8 cleared/refilled stars, full occupancy, exact 8000+2000+5000 accounting and two actual survivor diamonds, with no shower clock or temporary-room promise."
+      }
+    ],
+    "additionalExecutedRun": {
+      "prefix": "hosted-06-78215866-guide-facts",
+      "testSourceCheckpoint": "782158668e48221e71a4203591d78ee3b0f73314",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "result": "Passed",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "stageElapsedSeconds": 3.418,
+      "stageExitCode": 0,
+      "runtimeWarnings": [],
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      ],
+      "receipts": {
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-78215866-guide-facts-receipt.json",
+          "sha256": "823f86890cd64a7b763e04bdb7fc586d63860f49d1ca2f391c529a9a9a323016",
+          "bytes": 172
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-78215866-guide-facts-summary.json",
+          "sha256": "bf88bf3374d69f26f0538acb1129bf3e3fb96c9386979dd310ace61089d9d901",
+          "bytes": 740
+        },
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-78215866-guide-facts-attachments/manifest.json",
+          "sha256": "ace810d7e2cbb4f8c40ce09dc8e191ae466adb4e1a7d49c59f2215b411d38b05",
+          "bytes": 4
+        },
+        "log": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-78215866-guide-facts.log",
+          "sha256": "1baed84f29b21f567a9703dae62381dfdc5bd659c5b9828cb3653a6aa2584921",
+          "bytes": 4247
+        }
+      }
+    },
+    "additionalSelectors": [
+      "StarfallAppTests/SkyHeadroomGuideTests/testKiteChoicesPublishTheirExactDifferentRoomBeforeMotionWithoutChangingTheClockOrSupply",
+      "StarfallAppTests/SkyHeadroomGuideTests/testFullBoardReportsEightActualRefillsInsteadOfTemporaryRoomAndRetainsCoreMastery"
+    ],
+    "additionalSuiteSeconds": 0.137,
+    "additionalSuiteWallSeconds": 0.139,
+    "countBoundary": "This is 2 additional existing hosted methods, not a rerun of all 14 or a larger complete-suite claim."
+  },
+  "retainedSuccessfulNativeChecks": [
+    {
+      "prefix": "native-06-0ba8de86-full",
+      "testSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "result": "Passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "stageElapsedSeconds": 97.949,
+      "stageExitCode": 0,
+      "runtimeWarnings": [],
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      ],
+      "receipts": {
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-full-receipt.json",
+          "sha256": "ba4eafccb34b43d07d5e831efc0da254e5e18032cf35246d60b59d282abab812",
+          "bytes": 166
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-full-summary.json",
+          "sha256": "b6bc808e17ac45ae81cccdfdd51752731e7d98988bb156c3f1783e35c90dce66",
+          "bytes": 740
+        },
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-full-attachments/manifest.json",
+          "sha256": "89ae87cef228a0a3911b802c459f9786883b4a1810cd9a8ccc830a602c556866",
+          "bytes": 1194
+        },
+        "log": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-full.log",
+          "sha256": "02471bab0d14c32c56b94c1b2d031de4435e18ee07be3e972bc66268e5e79e6f",
+          "bytes": 54592
+        }
+      }
+    },
+    {
+      "prefix": "native-06-0ba8de86-ax-phone",
+      "testSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "result": "Passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "stageElapsedSeconds": 113.281,
+      "stageExitCode": 0,
+      "runtimeWarnings": [],
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      ],
+      "receipts": {
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-phone-receipt.json",
+          "sha256": "5878e7c973e43258f17c646ab3379f73adfbe6341ce69a9d3bad2bd205325864",
+          "bytes": 171
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-phone-summary.json",
+          "sha256": "e29751ea86106c59d1f45a49d1e3fd447f98d3eb84699453b1ed6ab42eda441a",
+          "bytes": 740
+        },
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-phone-attachments/manifest.json",
+          "sha256": "01f68738bf1c3316aef0dde7aa9d8bdcd68cac530494f6232429911e26c0a108",
+          "bytes": 1198
+        },
+        "log": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-phone.log",
+          "sha256": "f49dc91e74fbb2b0ca4d519ca04ceba323df71f82f7d8a116ecfb91f0c9544cf",
+          "bytes": 71248
+        }
+      }
+    },
+    {
+      "prefix": "native-06-0ba8de86-ax-tablet",
+      "testSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "result": "Passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "expectedFailures": 0,
+      "stageElapsedSeconds": 116.248,
+      "stageExitCode": 0,
+      "runtimeWarnings": [],
+      "devices": [
+        {
+          "architecture": "arm64",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "modelName": "iPad Pro 13-inch (M5)",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        }
+      ],
+      "receipts": {
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-tablet-receipt.json",
+          "sha256": "a536fb956612aaa72ef5eebadf9e1c55de359ee756d8f6f0fd79f6271ba5133a",
+          "bytes": 172
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-tablet-summary.json",
+          "sha256": "5cbc3151c963e54deb78ad20b23f1268d1065bc5e1f4e3bf8d68825f3ea5c0e5",
+          "bytes": 752
+        },
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-tablet-attachments/manifest.json",
+          "sha256": "b83b35e89f4712d05b8a4162959902030e18c718db442be820758254bf119891",
+          "bytes": 1200
+        },
+        "log": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-06-0ba8de86-ax-tablet.log",
+          "sha256": "2155b9b66eac71b384ec2bbcda4e05e1862726cf3ef4b135d5f2c3c68700122d",
+          "bytes": 67875
+        }
+      }
+    },
+    {
+      "prefix": "native-06-cbd1bc50-blocked",
+      "testSourceCheckpoint": "cbd1bc5017c80c1952917647d7cdf52183ea9087",
+      "result": "Passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "stageElapsedSeconds": 57.604,
+      "evidenceOwner": "blockedArrival.correctedRun in this record"
+    }
+  ],
+  "pendingAtPreparation": [
+    {
+      "prefix": "native-06-78215866-kite",
+      "testCheckpoint": "782158668e48221e71a4203591d78ee3b0f73314",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "status": "Pending; no pass inherited from failed cbd Kite."
+    },
+    {
+      "prefix": "native-06-78215866-full-board",
+      "testCheckpoint": "782158668e48221e71a4203591d78ee3b0f73314",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "status": "Pending; no pass inferred from hosted canonical guide checks."
+    }
+  ],
+  "limits": "This record establishes source-bound mechanical history and the precise test corrections. It does not establish final tail interaction, exact-export visual review, continuous motion, actual VoiceOver, physical-device performance or overall Goal6 adoption."
+}

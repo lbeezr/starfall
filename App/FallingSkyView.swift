@@ -27,6 +27,8 @@ import StarfallCore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.displayScale) private var displayScale
     @ScaledMetric(relativeTo: .caption) private var ceilingMarkerHeight: CGFloat = SkyCeilingOverlay.baseMarkerHeight
     private var largeText: Bool { dynamicTypeSize.isAccessibilitySize }
     @Namespace private var matchingGroups
@@ -148,6 +150,11 @@ import StarfallCore
         return (size, LandingGeometry(size: size, largeHeader: accessible).accessibleCanvasEnd)
     }
 
+    private var compactStoryInstruments: Bool {
+        horizontalSizeClass == .compact && store.tutorial == nil && store.game.challenge != nil
+            && !store.game.supportsManualClears && !store.game.usesFullBoardRefill
+    }
+
     private var gameContent: some View {
         ZStack {
             SkyBackdrop().ignoresSafeArea()
@@ -157,7 +164,10 @@ import StarfallCore
                     let landscape = safeViewport.size.width > canvasHeight
                     if store.tutorial != nil && !largeText && !landscape {
                         tutorialPlayfield(viewport: safeViewport.size)
-                    } else if largeText || (landscape && canvasHeight < 700) || store.tutorial != nil {
+                    } else if largeText || (landscape && canvasHeight < 700) || store.tutorial != nil
+                        || (compactStoryInstruments && !landscape
+                            && !usesIslandTimer(size: CGSize(width: safeViewport.size.width, height: canvasHeight),
+                                                topInset: safeViewport.safeAreaInsets.top)) {
                         readingPlayfield(viewport: safeViewport.size, landscape: landscape)
                     } else {
                         playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750,
@@ -217,13 +227,17 @@ import StarfallCore
     /// native cells, ceiling and receipt sources on their original common mapping.
     private func readingPlayfield(viewport: CGSize, landscape: Bool) -> some View {
         let canvas = Self.readingCanvas(viewport: viewport, accessible: largeText)
+        let mapping = LandingGeometry(size: canvas.size)
         let clearance = SkyCeilingOverlay.requiredTopClearance(markerHeight: ceilingMarkerHeight)
-        let crop = max(0, LandingGeometry(size: canvas.size).arenaFrame.minY - clearance)
+        // Cropping can never consume part of the reserved ceiling strip when
+        // UIKit aligns the shared canvas to physical pixels.
+        let crop = max(0, ((mapping.arenaFrame.minY - clearance) * displayScale).rounded(.down) / displayScale)
         return ZStack {
             scenery(landscape: landscape).ignoresSafeArea()
             VStack(spacing: 0) {
                 if !showingCeremony && !settings {
-                    edgeHeader(island: false)
+                    edgeHeader(island: false, ceiling: SkyCeilingSnapshot(game: store.game, mapping: mapping),
+                               compactReading: compactStoryInstruments && !landscape)
                         .padding(.horizontal, StarfallTheme.Spacing.medium)
                         .padding(.top, StarfallTheme.Spacing.compact)
                     // Exact figure returns need fixed sky while the cells scroll.
@@ -313,7 +327,7 @@ import StarfallCore
                 board(expanded: false, landscape: landscape).allowsHitTesting(!settings && !showingCeremony)
                 if !showingCeremony && !settings {
                     VStack(spacing: 0) {
-                        edgeHeader(island: island)
+                        edgeHeader(island: island, ceiling: SkyCeilingSnapshot(game: store.game, mapping: mapping))
                             .padding(.top, insets.top + StarfallTheme.Spacing.compact)
                         Spacer(minLength: 0)
                         guide(compact: compact, maximumHeight: readingHeight, narrow: viewport.size.width < 390)
@@ -346,12 +360,26 @@ import StarfallCore
         }
     }
 
-    private func edgeHeader(island: Bool, stacked: Bool = false) -> some View {
+    private func edgeHeader(island: Bool, stacked: Bool = false, ceiling: SkyCeilingSnapshot? = nil, compactReading: Bool = false) -> some View {
         let renderedForecastSource = forecastSource
         let inspectionSource = headerInspectionSource(renderedForecastSource)
         let showsMode = store.game.challenge == .firstLight || store.game.challenge == .ribbonCrossing
+        let compactHeader = compactReading && largeText
         return VStack(spacing: StarfallTheme.Spacing.compact) {
-            if largeText || stacked {
+            if compactHeader {
+                HStack(alignment: .top, spacing: StarfallTheme.Spacing.small) {
+                    scoreLabel
+                    VStack(spacing: StarfallTheme.Spacing.compact) {
+                        skyMenuButton
+                        showerTrail(island: false, width: StarfallTheme.Layout.compactShowerTrailWidth)
+                        Text(SkyCopy.text(store.showerCountdown.arriving ? .forecastCompactNow : .forecastCompactNext))
+                            .font(StarfallTheme.Typography.instrumentLabel)
+                            .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                            .starfallSceneryProtection()
+                            .accessibilityHidden(true)
+                    }
+                }
+            } else if largeText || stacked {
                 stackedHeader(island: island)
             } else {
                 ViewThatFits(in: .horizontal) {
@@ -372,15 +400,10 @@ import StarfallCore
                                         selectedID: forecastInspection?.entry(in: forecastSource)?.id,
                                         select: { inspectForecast($0, source: renderedForecastSource) },
                                         inspectShower: inspectionSource.map { source in { inspectShower(source: source) } },
-                                        inspectionEnabled: !store.busy)
+                                        inspectionEnabled: !store.busy, showsTitle: !compactHeader)
                     .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
             }
-            if let pressure = store.pressureCue {
-                StarfallStatusText(text: pressure.text, role: .instrument)
-                    .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
-                    .accessibilityIdentifier("sky.pressure")
-                    .allowsHitTesting(false)
-            }
+            occupiedSpaceStatus(ceiling, compact: compactHeader)
         }
         // The reading viewport may scroll, but its pinned instruments must
         // retain the complete native text height under a finite height proposal.
@@ -391,6 +414,57 @@ import StarfallCore
         .accessibilityElement(children: .contain)
         .accessibilityValue(showsMode ? SkyCopy.text(store.game.usesFullBoardRefill ? .fullBoardRefill : .fallingSkyMode) : "")
         .accessibilityIdentifier("sky.header")
+    }
+
+    private func oneSpaceColumns(in ceiling: SkyCeilingSnapshot?) -> [SkyCeilingSnapshot.Column] {
+        // Practice owns its threatened-column lesson. This summary belongs to
+        // ordinary Story visits; the ceiling retains its broader native role.
+        guard store.tutorial == nil, store.game.challenge != nil,
+              !store.game.supportsManualClears, let ceiling else { return [] }
+        return ceiling.warnings.filter { $0.pressure == .oneSpace }
+    }
+
+    @ViewBuilder private func occupiedSpaceStatus(_ ceiling: SkyCeilingSnapshot?, compact: Bool) -> some View {
+        let near = oneSpaceColumns(in: ceiling)
+        if let pressure = store.pressureCue {
+            if near.isEmpty {
+                fullColumnStatus(pressure)
+            } else {
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: StarfallTheme.Spacing.large) {
+                        fullColumnStatus(pressure)
+                        oneSpaceStatus(near, compact: compact)
+                    }
+                    .fixedSize(horizontal: true, vertical: false)
+                    VStack(spacing: StarfallTheme.Spacing.large) {
+                        fullColumnStatus(pressure)
+                        oneSpaceStatus(near, compact: compact)
+                    }
+                }
+            }
+        } else if !near.isEmpty {
+            oneSpaceStatus(near, compact: compact)
+        }
+    }
+
+    private func fullColumnStatus(_ pressure: SkyPressureCue) -> some View {
+        StarfallStatusText(text: pressure.text, role: .instrument, nativeIdentifier: "sky.pressure")
+            .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+            .allowsHitTesting(false)
+    }
+
+    private func oneSpaceStatus(_ columns: [SkyCeilingSnapshot.Column], compact: Bool) -> some View {
+        let text = compact
+            ? SkyCopy.text(.pressureOneSpaceCompactMany,
+                           values: ["columns": columns.map { String($0.number) }.joined(separator: ",")])
+            : columns.count == 1 ? columns[0].accessibilityDescription
+                : SkyCopy.text(.pressureOneSpaceMany,
+                               values: ["columns": columns.map { String($0.number) }.joined(separator: ", ")])
+        return StarfallStatusText(text: text, role: .instrument,
+                                  accessibilityText: columns.map(\.accessibilityDescription).joined(separator: " "),
+                                  nativeIdentifier: "sky.headroom.oneSpace")
+            .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+            .allowsHitTesting(false)
     }
 
     private func headerInspectionSource(_ source: SkyForecastInspection.Source?) -> SkyForecastInspection.Source? {
@@ -502,10 +576,10 @@ import StarfallCore
             .accessibilityIdentifier("experiment.settings").accessibilityFocused($menuFocused)
     }
 
-    @ViewBuilder private func showerTrail(island: Bool) -> some View {
+    @ViewBuilder private func showerTrail(island: Bool, width: CGFloat = StarfallTheme.Layout.showerTrailWidth) -> some View {
         if !store.game.usesFullBoardRefill {
             SkyShowerTrail(readCountdown: { store.showerCountdown },
-                           quiet: quietMotion, island: island, forecast: store.forecast)
+                           quiet: quietMotion, island: island, width: width, forecast: store.forecast)
         }
     }
 

@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "preparedUTC": "2026-10-25T05:00:34.279699+00:00",
+  "status": "Measured native test-helper correction prepared; all six fresh b28321ca native cases pending at preparation. No overall adoption.",
+  "overallDecisionOwner": "goal-06-acceptance.json and separate final verification/visual/export records",
+  "sources": {
+    "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+    "runtime": "dev.606ce1efbe",
+    "failedTestCheckpoint": "782158668e48221e71a4203591d78ee3b0f73314",
+    "passiveDiagnosticCheckpoint": "8b63bfe645f053effe34d1291b3ade3711c9e568",
+    "correctedUITestCheckpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+    "runtimeBoundary": "git diff --name-only 0ba8de86..b28321ca -- App AppTests returned no paths. App/AppTests are unchanged; the correction is UITest helper behavior. Runtime input identity remains dev.606ce1efbe.",
+    "appSourceProof": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/source-06-prepared.json",
+      "sha256": "fb2e9168f2acec017ef1028f4232a0fb00f74bc3b85ad9991f25e22ecc35bcd0",
+      "bytes": 2232
+    },
+    "sourceSnapshots": [
+      {
+        "checkpoint": "782158668e48221e71a4203591d78ee3b0f73314",
+        "path": "UITests/NativeSkyControls.swift",
+        "gitBlob": "d75fd56a1c59764b4bed8efd269cdb1026b97255",
+        "sha256": "6563d02190a3a9279b75ba5d5951b32653fb49ec60d5c1827057ca94beb507f9",
+        "bytes": 18393
+      },
+      {
+        "checkpoint": "8b63bfe645f053effe34d1291b3ade3711c9e568",
+        "path": "UITests/NativeSkyControls.swift",
+        "gitBlob": "d4c6090a26da2c42c823467c44e8d2e93f352ae2",
+        "sha256": "9e066332ac063c4577ee9a5941569cfe95831d52754aa505290e972be9095578",
+        "bytes": 19875
+      },
+      {
+        "checkpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+        "path": "UITests/NativeSkyControls.swift",
+        "gitBlob": "707fdb610e77ead286f476fa60d1b90569ecebe6",
+        "sha256": "ae576383c72850787a22e5aa4df0be985ccb103350a5ab549140ac125913bbb2",
+        "bytes": 20215
+      },
+      {
+        "checkpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+        "path": "UITests/HeadroomFeedbackInteractionTests.swift",
+        "gitBlob": "07f97c96e29a32dee37e2924dc6e030d8dee5094",
+        "sha256": "5d4160683ae2b3f652cdf8ab026809897414f763ba2cd35f6e689f9ba37c6912",
+        "bytes": 23527
+      },
+      {
+        "checkpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+        "path": "App/FallingSkyMenu.swift",
+        "gitBlob": "94957f993f8bfa19620eb03297729444e0b90afe",
+        "sha256": "569f12009288c94ee15f2f49175cb15b9cd9533c4fcca363a7309c2d9915fc09",
+        "bytes": 12443
+      },
+      {
+        "checkpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+        "path": "App/SkyPreferences.swift",
+        "gitBlob": "65838f3b1ec963a34ed2c33efb6fefcbea4d3db1",
+        "sha256": "59124f1b220b50d4286ff0d999b91f1cf50d939e1d568d0d9410a8f9fc3a315e",
+        "bytes": 19655
+      }
+    ],
+    "commandManifests": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-06-78215866.json",
+        "sha256": "6d4eed468f51318aecb63add45989d63557fd97477c7f900b041d04210ac61e1",
+        "bytes": 5218
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-06-8b63bfe6.json",
+        "sha256": "a2d9ba5bcb477fa0a32c10c684f94c36a3791b507a66085f23ff3c2597f6cac9",
+        "bytes": 1869
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-06-b28321ca.json",
+        "sha256": "3848c561e7310b80cb63f39fe7a9a08992799960a1b2daa245243151fbcdad3c",
+        "bytes": 7665
+      }
+    ]
+  },
+  "originalFailure": {
+    "run": {
+      "prefix": "native-06-78215866-full-board",
+      "testSourceCheckpoint": "782158668e48221e71a4203591d78ee3b0f73314",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "result": "Failed",
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "stageElapsedSeconds": 165.261,
+      "exitCode": 65,
+      "runtimeWarnings": [],
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "modelName": "iPad Pro 13-inch (M5)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-receipt.json",
+        "sha256": "4d1b8cc3edc467e2dae2385e3952f38a3df9b87ccb4269531dff1185435f8dbd",
+        "bytes": 174
+      },
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-summary.json",
+        "sha256": "aeaf77369ed79de2d31003a0b3abbba55c4d65dc1d6dd62c8fe3cfb5add618b2",
+        "bytes": 1217
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-attachments/manifest.json",
+        "sha256": "40e62410ac6c6c6d91373df03323c4a4f82454ad1d5815c376545aa90223df11",
+        "bytes": 65906
+      },
+      "log": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board.log",
+        "sha256": "8aadf4ae0acc11300f3bee5926e3b0df2324602fc3e7e3a453a0721c376d1be6",
+        "bytes": 110503
+      }
+    },
+    "observation": "All preceding gameplay, exact canonical reader, real eight-refill/following-clear, full-board/near-status absence, background restore, world/save and round checks reached their asserted states, producing seven named whole captures. The case still FAILED at its final actual Settings restoration reveal: experiment.preferences did not become fully contained after the bounded helper. Completed earlier checks do not make the method pass.",
+    "location": "HeadroomFeedbackInteractionTests.testLargestCalmHeadroomAndFullBoardRefillReadCompletely final setCalm(originalCalm), via tap helper and revealSkyControls.",
+    "namedCaptureCount": 7,
+    "oldRequestedFinalPanDistancesPoints": [
+      619.2,
+      619.2,
+      619.2,
+      53.5,
+      30.5,
+      24,
+      24,
+      24
+    ],
+    "nativeMovie": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-attachments/B2DDD7FC-A79C-4DAE-819A-4AFE0A253A48.mp4",
+      "sha256": "a1e7816d02d8e2e5f09ea568ff2fe60b7ec53d92a60d163bae03b783d393bdc6",
+      "bytes": 415498259,
+      "attachmentName": "Screen Recording 2026-10-25 at 12.47.32 AM.mp4"
+    },
+    "alreadyDecodedFrames": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-failure-frames/frame-0145.000.png",
+        "sha256": "dbd88333981964af2c816ac1f6bac306831f787721e044da2471ca2d64ad1eaa",
+        "bytes": 4842107,
+        "requestedSeconds": 145,
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "scale": 2,
+        "independentPixelReview": "Not inspected by this reviewer; retained as a source-bound sample only. Actual decoded time is not independently established here."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-78215866-full-board-failure-frames/frame-0155.000.png",
+        "sha256": "7ecb24193f25fcaa57051d9a51752afb3c60b4c5ddfeef7fce84381c69729e28",
+        "bytes": 4897590,
+        "requestedSeconds": 155,
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "scale": 2,
+        "actualSecondsReportedByCoordinator": 154.9667,
+        "independentPixelReview": "The /root/hud_audit reviewer inspected this already-decoded whole frame: lower Settings caption is clipped by body viewport above pinned Return; no fully contained-target success is inferred."
+      }
+    ],
+    "limits": "Original failed run lacks per-pan target coordinates. Its decreasing requested distances establish progress but do not independently quantify the last three actual content movements or prove that pan eight would have passed containment."
+  },
+  "unchangedPassiveDiagnostic": {
+    "run": {
+      "prefix": "native-06-8b63bfe6-full-board",
+      "testSourceCheckpoint": "8b63bfe645f053effe34d1291b3ade3711c9e568",
+      "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+      "embeddedBuildID": "dev.606ce1efbe",
+      "result": "Passed",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "stageElapsedSeconds": 171.294,
+      "exitCode": 0,
+      "runtimeWarnings": [],
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "modelName": "iPad Pro 13-inch (M5)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-8b63bfe6-full-board-receipt.json",
+        "sha256": "a258cbcc24969f2e77c9eb3e63944a07288b3eba374ebed6ae0fec432063867a",
+        "bytes": 173
+      },
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-8b63bfe6-full-board-summary.json",
+        "sha256": "24bd5c9c2285fc235fc069b42a2697178f0a981eaad723253ee71d488c501514",
+        "bytes": 753
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-8b63bfe6-full-board-attachments/manifest.json",
+        "sha256": "bf222d34f2cc50d77ad6f4a1b30fcc5ba76bbc1dc0f245f50802b1e9630a7b97",
+        "bytes": 4967
+      },
+      "log": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-8b63bfe6-full-board.log",
+        "sha256": "5794d9ada3fd2b30558edf76b94ad9b40bcd572ada06baa261111ff0d3160524",
+        "bytes": 120925
+      }
+    },
+    "change": "8b63bfe6 adds retained target/viewport/scroll and requested-pan observations, plus whole screenshot and hierarchy on failure. The original eight-pan count, 24-point minimum, +8 clearance, scroll selection, direction, coordinates, velocity, holds and assertions are unchanged.",
+    "interpretation": "PASS171.294 is an unchanged-behavior diagnostic sample, not the correction and not erasure of the failed original case. Additional AX observations can alter execution timing; no deterministic recurrence or complete causal explanation of the between-run difference is claimed.",
+    "metricsAttachment": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-06-8b63bfe6-full-board-attachments/EFFAD0D0-2F9B-4DA3-86F5-9E2868B541EF.txt",
+      "sha256": "ac8a6d767a273d063e84c5b1bd15943b4ada8579b4c11ef1587eaf047a7820d5",
+      "bytes": 1338
+    },
+    "viewport": {
+      "x": 276,
+      "y": 112.5,
+      "width": 480,
+      "height": 1074.5,
+      "minY": 112.5,
+      "maxY": 1187
+    },
+    "target": {
+      "x": 308,
+      "width": 416,
+      "height": 133.5,
+      "successiveY": [
+        2911,
+        2310.5,
+        1706.5,
+        1102.5,
+        1061.5,
+        1055.5,
+        1049.5
+      ],
+      "finalMaxY": 1183
+    },
+    "panTransitions": [
+      {
+        "pan": 1,
+        "targetYBefore": 2911,
+        "targetYAfter": 2310.5,
+        "requestedTravelPoints": 619.2,
+        "observedContentTravelPoints": 600.5,
+        "travelShortfallPoints": 18.7
+      },
+      {
+        "pan": 2,
+        "targetYBefore": 2310.5,
+        "targetYAfter": 1706.5,
+        "requestedTravelPoints": 619.2,
+        "observedContentTravelPoints": 604.0,
+        "travelShortfallPoints": 15.2
+      },
+      {
+        "pan": 3,
+        "targetYBefore": 1706.5,
+        "targetYAfter": 1102.5,
+        "requestedTravelPoints": 619.2,
+        "observedContentTravelPoints": 604.0,
+        "travelShortfallPoints": 15.2
+      },
+      {
+        "pan": 4,
+        "targetYBefore": 1102.5,
+        "targetYAfter": 1061.5,
+        "requestedTravelPoints": 57,
+        "observedContentTravelPoints": 41.0,
+        "travelShortfallPoints": 16.0
+      },
+      {
+        "pan": 5,
+        "targetYBefore": 1061.5,
+        "targetYAfter": 1055.5,
+        "requestedTravelPoints": 24,
+        "observedContentTravelPoints": 6.0,
+        "travelShortfallPoints": 18.0
+      },
+      {
+        "pan": 6,
+        "targetYBefore": 1055.5,
+        "targetYAfter": 1049.5,
+        "requestedTravelPoints": 24,
+        "observedContentTravelPoints": 6.0,
+        "travelShortfallPoints": 18.0
+      }
+    ],
+    "completion": "The target is fully inside the unchanged viewport at attempt 7, before a seventh pan; six pans were performed. The normal hittability assertion then passed.",
+    "measuredBoundary": "Finger displacement exceeded actual content travel by 15.2–18.7 points. A 24-point final drag moved content only 6 points twice; +8 requested clearance is smaller than this measured loss."
+  },
+  "independentReview": {
+    "reviewer": "/root/hud_audit",
+    "kind": "Read-only source, retained whole-frame and finalized metric review before correction adoption",
+    "verdict": "The bounded helper correction is justified by measured finger-versus-content travel; source provides no evidence of an App scrolling/rules/clock defect.",
+    "ownership": "FallingSkyMenu has a regular Settings NavigationLink below optional mastery, Last clear and Find a move sections. SkyMenuSurface owns one body ScrollView with pinned header/Return; the diagnostic selected that fixed viewport and used its interior x12% path. No board gesture-recognizer or nested canonical reader ownership is established in this menu.",
+    "sibling": "The existing world-map helper already reserves max32 minimum and +16 edge clearance for pan recognition and checks its final allowed gesture. Its older comment estimates about10pt; this Settings sample directly measures15.2–18.7pt, so the comment is not treated as this run’s evidence.",
+    "causalLimit": "The measurements justify improving the small-travel boundary. They do not prove why the old run failed while the unchanged passive diagnostic passed, or prove that only the missing post-final check caused the old failure."
+  },
+  "correction": {
+    "checkpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+    "owner": "UITests/NativeSkyControls.swift",
+    "changedContract": "Use existing sibling minimum32 and +16 edge clearance, then evaluate the result after the eighth allowed pan. for attempt in 0...8 plus guard attempt <8 preserves eight gestures and permits the final ninth observation, never a ninth pan.",
+    "preserved": [
+      "Exact owning viewport.contains(bounds)",
+      "Every requested control must exist and remain hittable",
+      "Combined target height must fit the viewport",
+      "Same nearest owning scroll selection and navigation-bar clipping",
+      "Same up/down decision, x12% or nonplaying x0.2% path, y75%/25%, velocity.slow, 0.05-second press and 0.1-second hold",
+      "Same original maximum distance frame.height*0.45, existence deadlines and method bounds",
+      "All exact guide, physical target, outcome, clock, world/save/Replay and round assertions"
+    ],
+    "scope": "No App, AppTests, gesture budget, blanket retry, tolerance, quiet override, product clock or gameplay change."
+  },
+  "freshRequalification": {
+    "checkpoint": "b28321cabb405c8f01893041c321c17851d5f0bd",
+    "appSourceCheckpoint": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+    "runtime": "dev.606ce1efbe",
+    "status": "All six selected native executions pending at preparation; none inherits diagnostic success.",
+    "reason": "The corrected helper is shared by all six native cases, so all six are requalified at one test checkpoint.",
+    "selectorsByRunPrefix": {
+      "native-06-b28321ca-full": [
+        "StarfallUITests/SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery"
+      ],
+      "native-06-b28321ca-ax-phone": [
+        "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable"
+      ],
+      "native-06-b28321ca-ax-tablet": [
+        "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable"
+      ],
+      "native-06-b28321ca-blocked": [
+        "StarfallUITests/SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival"
+      ],
+      "native-06-b28321ca-kite": [
+        "StarfallUITests/HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay"
+      ],
+      "native-06-b28321ca-full-board": [
+        "StarfallUITests/HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely"
+      ]
+    },
+    "carriedUnchangedHosted": {
+      "initial14": "hosted-06-0ba8de86",
+      "additional2": "hosted-06-78215866-guide-facts",
+      "runtime": "dev.606ce1efbe",
+      "proof": "App/AppTests byte-unchanged; onlyUItesthelper/expectedliteral/setupchanges. Sixnativecasesallrequalifiedatthisheadaftermeasuredhelpercorrection."
+    },
+    "hostedBoundary": "14 original plus2 additional existing hosted checks remain source-valid because App/AppTests are unchanged; these are not relabeled as freshly reexecuted at b28321ca."
+  },
+  "limits": "This is source-bound failure/measurement/correction history. Final native success, fresh Debug/Core/Release completion, independent exact-export review, actual VoiceOver, continuous animation, physical performance and overall Goal6 adoption are separate."
+}

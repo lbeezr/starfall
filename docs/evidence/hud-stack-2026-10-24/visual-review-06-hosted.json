@@ -1,0 +1,493 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "reviewer": "hud_goal_review",
+  "reviewType": "Independent whole hosted-window visual judgment; raw stills",
+  "status": "bounded_hosted_visual_pass_with_capture_limit; goal_06_native_and_final_export_acceptance_not_established",
+  "reviewedAtUTC": "2026-10-25T04:16:09.186535+00:00",
+  "productSource": {
+    "checkpoint": "82cfc586a235558cdaa13a484a1d0cf83d1f2617",
+    "runtime": "dev.9ff6ec12fa",
+    "acceptedMainBeforeGoal": "1ed4a97506dce4327ead701b2d9892979d457706",
+    "finalTestOnlyCheckpointReportedByParent": "4111bf29",
+    "reviewedRawCheckpoint": "82cfc586"
+  },
+  "method": {
+    "images": "Direct whole-frame view of all16 current PNGs, all6 rejected PNGs and the one baseline decoded frame. No image editing, crop, recoloring or new extraction. The two3072x4098 files were automatically displayed2752x3671 by the image viewer; stored dimensions below remain original.",
+    "judgment": "Complete visible facts, official role hierarchy, actual star visibility and header/ceiling/receipt separation; mechanical passes do not decide visual acceptance. Initial viewport crops are distinguished from header ink covering actual bodies.",
+    "reference": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+      "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+      "comparison": "Approved middle Play hierarchy: score/utility/forecast support a continuous scenic playfield. Compact AX5 necessarily allocates more height to full native text; seven actual star bodies remain rendered rather than the rejected empty field."
+    },
+    "host": "Actual FallingSkyView in real UIWindow/plain UIKit parent, owned iPhone17e iOS27.0 simulator; 375x667 profiles and synthetic1024x1366 window. No actual iPad native run is represented."
+  },
+  "current": {
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/manifest.json",
+      "sha256": "a8590cc7d01851bde952a2bd1b72602f810dce6a5db300371549f9861a839588"
+    },
+    "reviewedPNGCount": 16,
+    "settledBoardAcceptedPNGCount": 15,
+    "excludedPrematureBoardCaptureCount": 1,
+    "verdict": "pass_for_reviewed_settled_hosted_stills",
+    "reasons": [
+      "Across large, XXX large and AX5, the complete score/target, all five forecast facts and full/near facts are legible. Revealed ceiling badges and line are complete and separate from fixed header.",
+      "Compact AX5 retains seven complete actual star bodies in initial and revealed states; continuous scenery remains behind the whole composition. Whole arena visibility is not claimed.",
+      "Complete real15,000 score/target and receipt are visible in both original reading-window sizes; sampled packet/figure ink stays outside essential header ink. Busy Help visibly mutes and returns to gold without header displacement.",
+      "The default busy-helper before frame is starless and excluded from settled-board acceptance. Other default busy/after and all three AX5 busy frames contain actual stars."
+    ],
+    "frames": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/2F1FE10E-CFEA-486C-9326-E4ED6037F9B0.png",
+        "sha256": "77a0bad53ab57e3de6513abb4b2e88fb66faf58708b1b538247e2fa5920bb232",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "busy-hud-held-presenter-static-AX5-after",
+        "testIdentifier": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "captureTimestamp": 1792901169.493,
+        "verdict": "pass",
+        "observation": "AX5 after state retains actual stars and complete fixed header; Help returns to gold."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/F13470F2-ED1F-42A7-8843-11AFC7DDF89B.png",
+        "sha256": "8c3a3a04b354feb19c687f5c0a6011665ac9f0873657f17f325b172058df980f",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "busy-hud-held-presenter-static-AX5-busy",
+        "testIdentifier": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "captureTimestamp": 1792901169.113,
+        "verdict": "pass",
+        "observation": "AX5 busy state retains actual stars and complete fixed header; Help is visibly muted."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/C296377A-B7D2-481B-90B0-DD33E5953243.png",
+        "sha256": "dfc7158b13abc81feb31a5286f975300e67b7dc06bd339fd55fad0d9aa4c0fc9",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "busy-hud-held-presenter-static-AX5-before",
+        "testIdentifier": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "captureTimestamp": 1792901168.715,
+        "verdict": "pass",
+        "observation": "AX5 before state keeps complete two-line 0/11,000, five forecast facts, gold Help and real Seed stars."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/336A3D87-F442-4568-8B05-042B54272098.png",
+        "sha256": "632c22dc95f5e48959454591a7c24a7153db78fc7c697035f4c5f99a3171cf2c",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "busy-hud-held-presenter-static-default-after",
+        "testIdentifier": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "captureTimestamp": 1792901168.155,
+        "verdict": "pass",
+        "observation": "Default after state keeps complete score/forecast and real Seed stars; Help returns to gold."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/A25F6A23-6910-4713-8E76-143EF4F31CF5.png",
+        "sha256": "2013a27fa7f0889614e3a261b51a5564a9a764e00a9a809849f9ce9127dcb496",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "busy-hud-held-presenter-static-default-busy",
+        "testIdentifier": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "captureTimestamp": 1792901167.771,
+        "verdict": "pass",
+        "observation": "Default held-presenter busy state keeps complete score/forecast and real Seed stars; Help is visibly muted."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/2FD1651D-D3DE-4E1C-B630-F065D94C64C2.png",
+        "sha256": "4d6e24375dad45c8250dc15791334bf9fc81e20a1d9d2300155db7e3c77fe4b1",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "busy-hud-held-presenter-static-default-before",
+        "testIdentifier": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+        "captureTimestamp": 1792901167.357,
+        "verdict": "excluded_from_settled_board_acceptance",
+        "observation": "Default busy-helper before capture has complete 0/11,000 header but no rendered stars. Later busy and after frames contain the actual field. Retain this early capture limitation; it proves neither a settled-board pass nor a reproduced persistent layout failure."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/3330EB83-8BDF-4DC6-A13C-8A82E10970C7.png",
+        "sha256": "a72908a2534ba6b6c5388eadbfb7377a1f8acbb1984eca9d48a6fad2c75ed430",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-AX5-ceiling-revealed",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792901179.854,
+        "verdict": "pass",
+        "observation": "AX5 revealed six complete ceiling badges and line are separate from header; upper Aqua plus the next six actual star bodies remain fully rendered."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/D0FBDD9F-8DE3-423D-8FF6-E50234F66C8C.png",
+        "sha256": "f9ee87ece1440d2b331331ec6285c04a3e96d13319ee67aae9225953ceb7898d",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-AX5-initial",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792901177.553,
+        "verdict": "pass",
+        "observation": "AX5 complete two-line score/target, five forecast digits and compact full/near facts; a full row of seven actual star bodies remains visible. Upper partial row is at the viewport crop."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/087D9B89-89B4-4193-9694-C9C7A6541F7E.png",
+        "sha256": "a0b5dbb6d3b961c17ad2f67af4491f717f9c90b78f3a7b1fe900337aa5fab00a",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-xxxLarge-ceiling-revealed",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792901176.714,
+        "verdict": "pass",
+        "observation": "XXX large revealed ceiling badges and line are complete and separate from header; actual star bodies remain below them."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/A7E9FAA4-698F-48C6-824D-C45D19943FC9.png",
+        "sha256": "b93a1c28ade6946cd68da90783276ef5d267cec2fc2a3a8a61587f4d78dfe85b",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-xxxLarge-initial",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792901174.376,
+        "verdict": "pass",
+        "observation": "XXX large score/target, forecast and stacked full/near facts are complete. Upper partial star row meets the scrolling viewport edge; many complete lower stars remain."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/6A2ACD37-6B9C-4943-99E8-B7AF3CB9DBBF.png",
+        "sha256": "c07f9f6ad20afd2287acd7c26506f2cfbd0afd33f5f032962f22775eb7e1095d",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-large-ceiling-revealed",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792901173.584,
+        "verdict": "pass",
+        "observation": "All six ceiling badges and line are complete below the fixed header; real upper Aqua and lower stars remain visible."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/A8817CAA-BC76-4ACF-A4EA-9F6EB592AEC6.png",
+        "sha256": "83667b80b045c1ef3f1e9aa92bcde57be87643336d671798378dd36ca81db9ea",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-large-initial",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792901173.23,
+        "verdict": "pass",
+        "observation": "Complete default score, five forecast facts, full/near captions and a substantial actual star field; initial scroll position does not show all numbered ceiling badges."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/2ADA3856-A8A0-44AF-ADDF-FCEFE0DB43DD.png",
+        "sha256": "811ada0a7f0f4f1c844ac1b73e3291d7cf709ef130568daac01edceca2d75fe2",
+        "storedPixelDimensions": [
+          3072,
+          4098
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "reading-anchors-1024x1366-maximum-text",
+        "testIdentifier": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()",
+        "captureTimestamp": 1792901185.285,
+        "verdict": "pass",
+        "observation": "Synthetic 1024x1366 real 15,000/150,000, five forecast facts, pink packets/figures and receipt remain separate from essential header ink. Expanded Spark reader extends below this still; it is not complete-reader evidence."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/E084CC3A-C08F-47A6-85CF-D0BE9F606B3E.png",
+        "sha256": "c64d2c994f69a219bcae706dacf103f1b4c63ddb25e1c58c88f7f27658a29acc",
+        "storedPixelDimensions": [
+          3072,
+          4098
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "reading-before-assertions-1024x1366-maximum-text",
+        "testIdentifier": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()",
+        "captureTimestamp": 1792901183.649,
+        "verdict": "pass",
+        "observation": "Synthetic 1024x1366 AX5 window keeps complete one-line 0/150,000, five forecast facts, ceiling line, actual opening stars and footer on one continuous painting."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/60BD08A4-3C43-4E67-9072-1666E2B36F6A.png",
+        "sha256": "8cf38d66334d21d21daae207416e93e4653556eceb19becfa3088a3be7a2f77c",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "reading-anchors-375x667-maximum-text",
+        "testIdentifier": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()",
+        "captureTimestamp": 1792901181.503,
+        "verdict": "pass",
+        "observation": "Compact real 15,000/150,000 is complete; visible receipt, cyan packet ink and figure avoid essential header ink. Upper stars and lower expanded reader are intentionally outside the scrolled viewport; no full-guide claim."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/0D9C6111-F58B-455A-884F-EFAE1EAFD1F3.png",
+        "sha256": "269634d7b5e976a69d500cf6ce00c2c876e4a9152331766aeb1498aeb0582b27",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "reading-before-assertions-375x667-maximum-text",
+        "testIdentifier": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()",
+        "captureTimestamp": 1792901180.538,
+        "verdict": "pass",
+        "observation": "Compact AX5 opening keeps complete 0/150,000 and five forecast facts with the actual opening star field below."
+      }
+    ],
+    "crowdedGeometryReceipts": [
+      {
+        "profile": "large",
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/21FCBD33-4558-4406-A7DD-C6190441CFA8.txt",
+        "sha256": "cfddae73d4f409633684083438339fea71688723c9a8c9b6c0a8d16f9372f8a5",
+        "verbatimGeometryReceipt": "header=(12.0, 51.0, 351.0, 132.66666666666666); score=(12.0, 53.0, 118.33333333333331, 44.0); actualCanvas=(0.0, 55.333333333333314, 375.0, 900.0); sharedCeiling=(6.0, 279.8333333333333, 363.0, 44.0); scaledMarkerHeight=24.0; clearance=44.0; viewport=(0.0, 279.66666666666663, 375.0, 387.33333333333337); fullyVisibleOccupiedCells=34"
+      },
+      {
+        "profile": "xxxLarge",
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/8738A1A8-8B45-499C-8F3B-2213666C0486.txt",
+        "sha256": "f4129dad592e54799dedcdbed1c3d148152cf342cf48d1a3b20a01b22d02a933",
+        "verbatimGeometryReceipt": "header=(12.0, 51.0, 351.0, 217.0); score=(12.0, 51.0, 146.66666666666666, 44.0); actualCanvas=(0.0, 142.33333333333334, 375.0, 900.0000000000001); sharedCeiling=(6.0, 364.1666666666667, 363.0, 46.666666666666664); scaledMarkerHeight=34.666666666666664; clearance=46.666666666666664; viewport=(0.0, 364.0, 375.0, 303.0); fullyVisibleOccupiedCells=20"
+      },
+      {
+        "profile": "AX5",
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/30A78F49-8D7C-4411-85F2-44D303D954B1.txt",
+        "sha256": "2607fedf9b03e407cf494f39b6005203c405727fcef47911c058446721813ca5",
+        "verbatimGeometryReceipt": "header=(12.0, 51.0, 351.0, 321.3333333333333); score=(13.333333333333332, 51.0, 244.3333333333333, 130.66666666666666); actualCanvas=(0.0, 288.66666666666663, 375.0, 900.0000000000001); sharedCeiling=(6.0, 468.49999999999994, 363.0, 88.66666666666667); scaledMarkerHeight=76.66666666666667; clearance=88.66666666666667; viewport=(0.0, 468.3333333333333, 375.0, 198.66666666666669); fullyVisibleOccupiedCells=7"
+      }
+    ],
+    "realReceiptReceipts": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/85925FF6-5A58-4B43-88DA-265BA42ECA3A.txt",
+        "sha256": "f9f64ae2b9a2b69074bb52daa16a0134064330fabc03fe62e009f96072a639d8",
+        "verbatimReceipt": "receipt=1; age=0.2114729881286621; scrollOffset=(0.0, 322.6666666666667); viewport=(0.0, 345.66666666666663, 375.0, 321.33333333333337); board=(0.0, -156.66666666666674, 375.0, 900.0); openingStarsFullyVisible=14"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-attachments/0DF86AEE-5565-4996-8B57-B1681A07586E.txt",
+        "sha256": "79a758d30e7c803c30c242172ac31e27233dc968849fc7e900d52a6486979ba4",
+        "verbatimReceipt": "receipt=2; age=0.20150399208068848; scrollOffset=(0.0, 0.0); viewport=(0.0, 345.66666666666663, 1024.0, 1020.3333333333334); board=(0.0, 101.99999999999997, 1024.0, 1285.0); openingStarsFullyVisible=24"
+      }
+    ]
+  },
+  "rejectedPriorCandidate": {
+    "testCheckpoint": "9a152be345b3e25423c8b62078e60771afe245a9",
+    "appCheckpoint": "9109835d",
+    "runtime": "dev.abb8f2da83",
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-9a152be3-attachments/manifest.json",
+      "sha256": "060ea1f4668f0e651d56e747b5060e983458b2c8da9d2b6512a844a6bf7bb95b"
+    },
+    "verdict": "reject",
+    "reason": "Real painted header/badge and upper-star occlusion at large/XXX large, and zero visible stars at AX5; complete labels or lower-field stars cannot excuse these failures.",
+    "frames": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-9a152be3-attachments/510FE370-7B0C-419C-A641-5F647940279A.png",
+        "sha256": "60dd4072bacd0f50986e4f07d53400d6dd482198f1a9168f3c36d06f68ff569e",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-AX5-ceiling-revealed",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792900598.733,
+        "verdict": "reject",
+        "observation": "AX5 reveal exposes only clipped badge portions at the lower boundary and still no actual star field."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-9a152be3-attachments/E3CDF307-B46B-4398-A207-CE052919EFB1.png",
+        "sha256": "4701e7c084200f3b8688ceb9528f8d28640c3518a6eb5b434660ac80ec2d2c69",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-AX5-initial",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792900598.439,
+        "verdict": "reject",
+        "observation": "AX5 header dominates the window and leaves zero actual stars visible."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-9a152be3-attachments/488D7057-E994-47FD-A7F1-7F6004051F33.png",
+        "sha256": "fb4344d426fa258647fcdeb6a109fba7eef4b422918dd20b8f729cd1dcd14654",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-xxxLarge-ceiling-revealed",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792900594.663,
+        "verdict": "reject",
+        "observation": "XXX large revealed state retains the same unacceptable header/field encroachment."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-9a152be3-attachments/E225C11B-76E4-4EB7-AB80-29C1C1819432.png",
+        "sha256": "fb4344d426fa258647fcdeb6a109fba7eef4b422918dd20b8f729cd1dcd14654",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-xxxLarge-initial",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792900594.41,
+        "verdict": "reject",
+        "observation": "XXX large header/status surfaces cover ceiling badges and upper actual star rows."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-9a152be3-attachments/5D4D08A9-A184-428B-961E-57E66800A6DA.png",
+        "sha256": "8670c7de1bd48ba0ad9b89f358b703096723a6c7e77b6a34e695b9c1d438fd51",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-large-ceiling-revealed",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792900593.497,
+        "verdict": "reject",
+        "observation": "Revealing the ceiling does not repair default header/badge and upper-star occlusion."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-9a152be3-attachments/C6C6C3AB-B1A4-4BC7-9BFF-0606F7C78C8C.png",
+        "sha256": "8670c7de1bd48ba0ad9b89f358b703096723a6c7e77b6a34e695b9c1d438fd51",
+        "storedPixelDimensions": [
+          1125,
+          2001
+        ],
+        "exifOrientation": 1,
+        "reviewedWholeFrame": true,
+        "checkpoint": "crowded-story-large-initial",
+        "testIdentifier": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+        "captureTimestamp": 1792900593.232,
+        "verdict": "reject",
+        "observation": "Default header/status protection obscures numbered ceiling badges and the upper Aqua body."
+      }
+    ]
+  },
+  "retainedGoal5Baseline": {
+    "checkpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+    "runtime": "dev.38edbb845c",
+    "frame": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-06-from-05-diagnostic-frames/frame-0050.000.png",
+      "sha256": "d708896cd131d69fd9806745e5e93d9155b4ddfedc24498340189bdef7c0182e",
+      "storedPixelDimensions": [
+        1170,
+        2532
+      ],
+      "exifOrientation": null,
+      "reviewedWholeFrame": true
+    },
+    "requestedAVTimeSeconds": 50.0,
+    "actualAVTimeSeconds": 49.985,
+    "scope": "Whole native390x844 paused current Lantern full-column state, sampled H264 decode; not current Goal6 hosted candidate.",
+    "mechanicalFailure": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-06-from-05-08aa30c0-full-phone-summary.json",
+      "sha256": "31816346989c7e1f64817eaf5e3b2401d381bbcbec160e5498a8f9017946b355",
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "ceilingRect": [
+        6,
+        189,
+        378,
+        44
+      ],
+      "belowHeaderViewport": [
+        0,
+        195.6666717529297,
+        390,
+        648.3333282470703
+      ],
+      "distinction": "Strict contains gate fails6.6667pt, composed of approximately2.6667pt semantic header overlap plus the4pt guard. Preserve this failure."
+    },
+    "visualObservation": "All six warning badges, the line and upper Aqua ink are complete in this49.985s frame. No actual badge-ink clipping was observed here; the strict semantic-frame failure does not itself prove the rejected Goal6 painted occlusion."
+  },
+  "mechanicalEvidenceSeparateFromVisualVerdict": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-82cfc586-summary.json",
+      "sha256": "a853b4ac395653b186b12ae7f0c917e33c906ffa48d2e14e630c3e35c52fea88",
+      "checkpoint": "82cfc586",
+      "result": "Failed",
+      "passedTests": 13,
+      "failedTests": 1,
+      "skippedTests": 0,
+      "totalTestCount": 14,
+      "runtimeWarnings": [],
+      "rawFailures": [
+        "XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial crowded large placement must settle on at least seven fully visible actual stars"
+      ],
+      "scope": "Reviewed captures belong to this run. Raw failed assertion is the placement-stability gate; the independently reported numeric cause was global board projection differing by one floating-point ULP."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-06-4111bf29-summary.json",
+      "sha256": "f1ed8fe020fe84242d5d8733aca0b69f7ca1b023b31a5107786ade844d00e808",
+      "checkpoint": "4111bf29",
+      "result": "Passed",
+      "passedTests": 14,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "totalTestCount": 14,
+      "runtimeWarnings": [],
+      "rawFailures": [],
+      "scope": "Test-only physical measurement correction; same App82/runtime9ff reported by parent. Summary checked; new images are not visually adopted by this review."
+    }
+  ],
+  "limits": [
+    "Final4111 raw images and final JPEG exports have not been reviewed here; final14/0/0 summary is mechanical evidence only.",
+    "No final actual-phone interaction, actual-iPad native composition, practice/FullBoard boundary, near-fact accessibility traversal/uniqueness or whole Goal6 acceptance is granted by these hosted stills.",
+    "Programmatic ceiling reveal does not prove pan admission, touch targets, VoiceOver use or reachability of every row. Cropped lower guide text does not prove complete-reader/final-line behavior.",
+    "Normal effects are recorded by source/test setup, but static stills do not establish full animation, timing, flight path, receipt lifetime, continuous motion or performance.",
+    "No physical-device, actual VoiceOver, Increase Contrast, Reduce Transparency, minimum-iOS17 or exhaustive landscape/artwork matrix evidence. No pixel contrast ratios inferred."
+  ]
+}

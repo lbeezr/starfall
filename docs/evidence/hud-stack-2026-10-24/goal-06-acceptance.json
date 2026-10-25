@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "issue": 387,
+  "branch": "codex/hud-goal-06-pressure-facts",
+  "baseMain": "1ed4a97506dce4327ead701b2d9892979d457706",
+  "status": "ADOPTED_FOR_NAMED_DEVELOPMENT_SLICE; verified and independently visually reviewed; individual merge pending.",
+  "playerOutcome": "Read current one-space columns alongside actual full columns, calmly and distinctly from the ordered next-star forecast. A real clear retires only the recovered full warning.",
+  "sourceObservation": "Accepted Goal5 baseline: the ceiling already marks full/one-space columns, while the header shows only full-column facts. Near-only Kite and mixed Lantern states lack a persistent native text summary. No rule/scheduler bug is claimed.",
+  "componentContract": {
+    "ownership": "FallingSkyView composes existing StarfallStatusText.instrument from SkyCeilingSnapshot warnings using each caller’s real LandingGeometry. No new Store/model/height scan or board/ceiling geometry.",
+    "eligibility": "New near fact only in ordinary automatic Story visits: store.tutorial == nil, challenge != nil, !supportsManualClears; derive only snapshot.warnings == .oneSpace. Full Board/terminal suppression comes from the existing snapshot. Full-only SkyPressureCue/recovery stay unchanged.",
+    "content": "Regularsinglecolumn uses existing completeceilingdescription; regularmultiplecolumns use catalogued Columns {columns}:1spaceeach. CompactAX header uses short1space:{columns} forallcounts. Completeorderedspoken descriptions always come fromsnapshot columns. No prediction/time-to-loss/safety promise/newdangercolor/pulse.",
+    "composition": "Single status directly when one exists; mixed full/near uses natural-width horizontal ViewThatFits then wrapping vertical fallback, with shared large (16-point) spacing so each 8-point protective outset stays separate. Full fonts, separate native identities and natural header height remain.",
+    "practice": "Scope clarified before App implementation: Core reuses current Story boards for guided practice, but the near-room summary belongs to ordinary Story play. Practice retains its existing lesson guide and full-only status, with no new header fact or clearance change. Reject the earlier broadened practice candidate rather than expanding a context-specific instrument into the lesson.",
+    "compactCorrection": "Register before correction: compact portrait ordinaryStory uses existing reading owner throughout round, excluding island/practice/FullBoard/manual. AX compact compound header reserves exact score plus96x28 trail/48ptPause/Next-or-Now label column; forecast title is externally supplied visually but retains canonical AX label/value/buttons. Compact near summary names1space with comma-ordered columns and complete spoken facts. Keep full fonts,80ptreturn, nativecellmapping and original7-visible-star/ceiling gates.",
+    "nativeHelperCorrection": "TestonlyrevealSkyControls reservesminimum32ptpan and16ptclearance likeexistingworldhelper, pluscheckspositionafterfinal8thgesture. Exacttarget/viewport/hittable/heightgates,surface/coordinates/velocity/holds unchanged. RequalifyallsixnativecasesatonefrozenUI source;App/AppTests unchangedand16hostedcarryexactearliersources."
+  },
+  "observableAcceptance": [
+    "Current Kite opening shows only near columns 1/2; a real high clear leaves near column2. Current Lantern after four real showers shows full2 and near1/3/4/5/6; after actual5k recovery full status disappears while near facts remain exact.",
+    "Top ceiling/badges/forecast/header agree on committed occupancy. The same fifth shower fits after real recovery; idle pressure still reaches actual blocked terminal outcome. No precomputed loss/growth prediction.",
+    "Default normal phone, largest quiet phone and actual largest quiet tablet retain complete text, targets, top-row input and board dominance; no new shelf/collision/clip/shrink. Inspect whole native frames and final exports independently.",
+    "Full Board/refill and terminal omit both pressure facts; survival/manual omit new header fact. Existing per-column ceiling can retain its broader role. Matching growth opens no room and cannot retire full facts.",
+    "Read actual clears/recovery, foreground/background/restore/replay and complete guide paths with original assertions/waits. Each bounded mechanical/visual result remains separately labeled before individual merge."
+  ],
+  "plannedChecks": {
+    "always": [
+      "python3 scripts/ci-hygiene.py",
+      "git diff --check"
+    ],
+    "core": "swift test",
+    "hosted": [
+      "StarfallAppTests/SkyCeilingOverlayTests",
+      "StarfallAppTests/SkyHeadroomFeedbackTests/testHighClearReallyRecoversFourSpacesAfterTheSameShowerFillsBothLeftColumns",
+      "StarfallAppTests/SkyHeadroomFeedbackTests/testPreparationAndMatchingGrowthWithoutAnyClearHaveNoRoomAward",
+      "StarfallAppTests/SkyHeadroomFeedbackTests/testFullBoardCountsActualReplacementsAndNeverPromisesTemporaryEmptySpaces",
+      "StarfallAppTests/SkyHeadroomGuideTests/testKiteRecoveryAppendsNewRoomBeforeTheExistingFullColumnRecoveryExactlyOnce",
+      "StarfallAppTests/SkyHeadroomGuideTests/testNoClearSetupAndActualGrowthKeepTheirExistingFactsWithoutAnOpenedRoomPromise",
+      "StarfallAppTests/SkyShowerInspectionTests/testFullColumnAllowsMatchingGrowthBeforeBlockingTheNextMatchingStar",
+      "StarfallAppTests/SkyDialogueTests/testTypedInterfaceInventoryAndTemplatesRejectMissingExtraAndInjectedValues",
+      "StarfallAppTests/SkyReadingPlayfieldTests"
+    ],
+    "native": [
+      {
+        "label": "full",
+        "device": "phone",
+        "selector": "StarfallUITests/SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery"
+      },
+      {
+        "label": "ax-phone",
+        "device": "phone",
+        "selector": "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable"
+      },
+      {
+        "label": "ax-tablet",
+        "device": "tablet",
+        "selector": "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable"
+      },
+      {
+        "label": "blocked",
+        "device": "phone",
+        "selector": "StarfallUITests/SkyFlowInteractionTests/testIdleFullStoryColumnReachesTheActualBlockedArrival"
+      },
+      {
+        "label": "kite",
+        "device": "phone",
+        "selector": "StarfallUITests/HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay"
+      },
+      {
+        "label": "full-board",
+        "device": "tablet",
+        "selector": "StarfallUITests/HeadroomFeedbackInteractionTests/testLargestCalmHeadroomAndFullBoardRefillReadCompletely"
+      }
+    ],
+    "baseline": "Before candidate build, use retained verified Goal5 Debug/test products08aa30c0/dev.38edbb845c for the unchanged original full Story recovery method, recording actual product identity and candidate working-tree differences. Same source-bound natural Lantern state enables matched comparison.",
+    "builds": "Debug/test and Release; existing dialogue resource catalog requires source/bundle membership and new copy-key checks. No new file/member/fixture/route planned.",
+    "inventory": "Canonical source-counted development plan:817 hosted/260 phone-development UI;6 actual VoiceOver methods remain RC and28 tablet-only methods remain explicitly selected separately. Goal6 adds one hosted method; existing snapshot/native methods retain original assertions. Planned12 hosted and6 candidate native executions/5 unique methods, plus1 retained Goal5 baseline. Corrected composition selects all3 ReadingPlayfield methods, so14hosted expected,6candidate native unchanged.",
+    "additionalHostedAfterStaleOracleCorrection": [
+      "StarfallAppTests/SkyHeadroomGuideTests/testKiteChoicesPublishTheirExactDifferentRoomBeforeMotionWithoutChangingTheClockOrSupply",
+      "StarfallAppTests/SkyHeadroomGuideTests/testFullBoardReportsEightActualRefillsInsteadOfTemporaryRoomAndRetainsCoreMastery"
+    ]
+  },
+  "ownership": "Root App/docs/copy; hud_audit owns only two existing UI test files; hud_goal_review owns SkyCeilingOverlayTests existing-method extensions plus one bounded actual-root layout method in SkyReadingPlayfieldTests; hud_read_ahead read-only source review.",
+  "resources": "Allownedcontrollers/builds/recorders/video-decoders/exports stopped; heavywindowhandedback afterprocesscheck. No furtherheavyoperationswithoutfreshgrant.",
+  "delivery": "Merge complete verified Goal6 alone closing #387/Refs #381, confirm issue/completed and Project availability, then activate7.",
+  "limits": "Development slice; no actual VoiceOver, physical/minimum-iOS, continuous animation/performance or human recognition/enjoyment claim. Existing reader-pan uncertainty remains with recurrence trigger.",
+  "scopeDecision": "The initial data-based eligibility also admitted storyRoom practice. Before App implementation, narrow the new role to real Story visits, where full column facts coordinate with the persistent forecast. Guided practice already owns its explicit threatened-column lesson. No native test/assertion was removed or weakened.",
+  "sourceAuditCorrection": "Independent review found medium is12 points, while each existing status has an8-point protective outset. Before native execution, use the existing large16-point token for both mixed candidates; no new spacing token or material.",
+  "sourceReview": {
+    "reviewer": "/root/hud_read_ahead",
+    "result": "Bounded App diff source audit passes after large16pt correction. Tutorial playfield, full pressure/recovery, Store, ceiling, theme and forecast owners remain unchanged; existing full-status modifier sequence is identical. Exact single new catalogue leaf, complete ordered speech and snapshot-based suppression. Native geometry remains pending.",
+    "scope": "Historicalinitialcandidate eligibility/16ptmaterialspacingaudit, before latersemanticcorrections. Final0ba sourceaudit is bound in source-06.json."
+  },
+  "observedFailures": {
+    "baseline": "RetainedGoal5 original fullStory fails strict ceiling clearance twice, second run solely adds passive recording: ceilingtop189/headermax191.6667+existing4gap=195.6667; original assertions unchanged. Painted badge clipping not inferred from aggregate overlap.",
+    "candidate": "9a152be3 builds with exactcatalogue, hosted11pass/1fail/0skip. New375probe proves defaultheader183.667>ceiling135.5 andXXX268>132.833;AX5 header455/80return leaves65ptviewport and0fullyvisiblecells. Allfailures retained; no assertion relaxed.",
+    "corrected5575": "14hosted=13pass/1fail/0skip; all3profiles retain>=7actualoccupiedcells, AX5header321.333/viewport198.667 with7afterceilingrevealed. OnlyXXXstrictceilingtop363.833 vsviewport364 fails: half physicalpixel clipped by fractional source crop/native alignment. Correct shared crop by rounding down to physicalpixel, preserving original strict containment assertion and one mapping; no badge offset/tolerance.",
+    "corrected82": "14hosted=13pass/1fail/0skip. All unrounded completeceiling/header/>=7star checks pass in375large/XXX/AX. Newprobe cross-framework globalbbox heights differ2.2737e-13pt at identicalorigins; readiness/final rawCGRectbit-equality fails. Independent audit approves exactorigins+exactlocalcanvas/scene sizes+exactfourabsolutephysicalpixel edges atactualscreen scale, not tolerance. Allretainedpairs match;48independent +/-onepixel boundarymutations reject at2x/3x. Onlynewprobe measurement fixed; original2methods/header/ceiling/star/offset assertions retained.",
+    "native4111": "Final14hostedpass/0skip; firstnativefull reachesvisibleceiling/top-row but fails newoneSpace query count2vs1 beforefullcapture/recovery. Retainfailure. Explicitlygroup nearstatus childrenignore beforecompletecustomlabel/identity, andaddfailure-only whole-screen/querydiagnostics; no assertioncount or wait change. Nativecause remains subject to next exactgate, not claimedfixedfromsourcealone.",
+    "native3bf": "14hostedpass/0skip;nativefullsingleidentitynowPASS. NextgatefailsnearAXframe30.333highintersectforecast78.333high: outer.ignore includesdecorative8ptoutsets, breakingText-sizedstatusboundary. MoveoptionalcompleteaccessibilityTextoverrideintosharedStarfallStatusText.innerText beforebackground; removeouterignore/label. Keepseparation/count/waits/targetsunchanged. NoFixclaimeduntilnativeproof.",
+    "nativef7": "14hostedpass/0skip. Failure-onlydebugDescriptionprovestwostructuralmatches:Other+StaticTextinheritingoneouterID; semanticStaticTextlabelcomplete. FullIDlikewiseduplicatedstructurally, and bothAXframesinclude8ptdecorativeoutsets. FixnativeidentifieratsharedTextbeforebacking andforecastsemanticgroup/IDbeforebacking. No spacing/font/assertionchange; verifyoriginalexactcount/label/nonintersectionagain.",
+    "native19ea": "14hostedpass/0skip; firstnativefull singleidentity/exactspeech/forecastsparation/wholefullcapture/real5k/fullretirement pass. Laternear-only AXframe(95.833,169.333,355.333,64.333) extendspast390viewport: representationusedspokenproseasTextcontentwithdifferentintrinsics. Reuse exactstyledvisibleText inaccessibilityRepresentation, withcompleteproseonlyasaccessibilityLabel, preservingvisual/semanticmeasurements. Compactvisualsummaryappliestoallcolumncounts, matchingregisteredshortsummaryrole. Allnativegatesretained; noacceptance.",
+    "blocked0ba": "Nativeblocked stage54.717s/1failure/0skip stops before fifthshower: originalgeneric tap helper runs8wholeappswipeUp thenNext remains unhittable. CurrentdefaultcompactStory usesexistingnative reading scroll. Replace onlythismethod setup with existingrevealSkyControls([next]);next.tap(), exactlyalreadyusedfor4setupwaves andsuccessfulrecoveryfifthshower. Outcome/suppression/waits/counts unchanged. App/runtime unchanged;14hosted+first3native retained0ba, test-onlyrebuild thenblocked/Kite/FullBoard/CoreRelease atnewhead. No blanketretry or productfixclaim.",
+    "kitecbd": "NativeKite stage68.366s/1failure/0skip: reachesreal5k/near2 correctly, then exactguide equalityfails because oldUIliteral omits current score-accounting prose. Actualdebuglabel includes4stars/4light/4000base+1000size=5000points, matching existing hosted SkyHeadroomGuideTests exact oracle andunchangedacceptedApp. Updateonly4full expectedGuide literals to include existing4star/5star/8star accounting and FullBoard2survivordiamonds; nocontainsmatching/removal, all exactequality/pan/round/world/replay/clockgates retained. Add existingKiteChoices andFullBoardGuidehosted methods to validate independent committedturn expectations. Preservefailedlabel/movie and bounded3decodedframes40/45/50; no newproductchange.",
+    "fullBoard782": "Finaltablet stage165.261s/1failure/0skip completesKite7k+guide, FullBoard15k/eightrefills/49occupied/backgroundrestore+30k. FailsfinalsetCalm restorationbeforeSettingsnavigation: originalsharedrevealSkyControls8pans cannotfullyrevealpreferencesrow. Retain7PNG+native movie; actual154.9667sframe showsSettings partlybelowbody/fixedReturnfooter. Latepans30.5then24repeat; cause notyetproved. Addpassivebefore/aftertarget/viewport/pangeometryandfailurehierarchy/wholePNG diagnosticsinexistingUIhelper, preserving8pans/alltargets/hittability/round/preferencesassertions; noAppchange. Runoriginalfinalmethodtoobtainactualscroll/inputevidencebeforefixingowner.",
+    "scrollDiagnostic8b": "Diagnostic-only8b finalcasePASS171.294s/0skip withsameoriginalpans/bounds. This isnotafix. Settingsmetrics EFFAD0D0: viewportY112.5..1187 fixed,targetheight133.5;619.2ptdrags deliver600.5/604/604,57delivers41,24delivers6twice. Existing8ptmargin undershoots15–19ptconsumedtravel. Independenthud_audit supports test-helper-only min32/+16 siblingworldallowance andactualpost-eighth-pan containmentcheck, withno ninthgesture/no weakerpredicate. NoAppscrollingdefectclaimed; original782failure andunchanged8bpassremainseparate."
+  },
+  "adoption": {
+    "recordedUTC": "2026-10-25T05:20:42.947220+00:00",
+    "appSource": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+    "nativeSource": "b28321cabb405c8f01893041c321c17851d5f0bd",
+    "runtime": "dev.606ce1efbe",
+    "core": 352,
+    "hosted": 16,
+    "freshNativeExecutions": 6,
+    "nativeUniqueMethods": 5,
+    "failed": 0,
+    "skipped": 0,
+    "Debug": "PASS",
+    "Release": "PASS",
+    "visual": "Independent finalrawnative andall15exactexportpairs PASS within namedscopes; no knowncurrent visiblefailure found. Priorfailed/diagnosticruns remainhistorical.",
+    "evidence": {
+      "source-06.json": "45704b5ed64e2e248eacd801d3e4ba4c1b51875a8ed9d05226c8ac1bb2656d92",
+      "verification-06.json": "4558fc45015d5cae29770296136997272f47cc3bbca9892ee9bbe895367fe877",
+      "captures-06.json": "f859dbee0cace9af9158a4ba693e536ba3812c8eff7651cdc81e0255688e4bf3",
+      "visual-review-06-native.json": "a34722d6379750f954c0825c5a276e545c07129c2c7b66acd8303f3671fb9902",
+      "visual-review-06-exports.json": "e67a14aee1671fd16377b86d82fb5e6408e34c6d65ca5ffec338a3f576c6539e",
+      "visual-review-06-hosted-final.json": "49a912e14563ec4fd91b98c24946ba405dc5a28ec6aa93dc4d1f9347e9b248b9",
+      "verification-06-failures.json": "b252ff0ab210028af7ba98b34d74e51c153ccac8e1edd5ebf4ed3f0e9e64905c",
+      "verification-06-tail-failures.json": "344dd46479ea7c78763ab5caf85ce70e896a88cdb86874cda20608b3d784a97b",
+      "verification-06-scroll.json": "cb459334c562aaacbba451f8f811ef9d1f9ebffdb3124f5c7084ea10311f4b8b",
+      "projection-audit-06.json": "d7150244d8f313fd339dc03737f7b040561a569f2bd5948e5ee03560e0af5c1a"
+    },
+    "merge": "Pending individual main merge closing387/Refs381. Do not activateGoal7implementation untilconfirmed.",
+    "limits": "Development native-simulator slice. ActualVO/physical/minimumiOS/continuousmotion/humanrecognition notaccepted. CompactNowcaption source/semanticsguarded butnotcaptured in finalstills. Earliernestedreaderpanuncertainty unchanged."
+  }
+}

@@ -39,6 +39,7 @@ struct SkyForecastSnapshot: Equatable, Sendable {
     var select: (Int) -> Void = { _ in }
     var inspectShower: (() -> Void)? = nil
     var inspectionEnabled = true
+    var showsTitle = true
     @ScaledMetric(relativeTo: .caption) private var minimumChipWidth: CGFloat = 32
 
     var stateLabel: String {
@@ -51,17 +52,17 @@ struct SkyForecastSnapshot: Equatable, Sendable {
             HStack(alignment: .top, spacing: StarfallTheme.Spacing.small) {
                 ViewThatFits(in: .horizontal) {
                     HStack(spacing: StarfallTheme.Spacing.small) {
-                        title
+                        if showsTitle { title }
                         HStack(spacing: StarfallTheme.Spacing.small) { chips(snapshot) }
                     }
                     .fixedSize(horizontal: true, vertical: false)
                     VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
-                        title
+                        if showsTitle { title }
                         HStack(spacing: StarfallTheme.Spacing.small) { chips(snapshot) }
                     }
                     .fixedSize(horizontal: true, vertical: false)
                     VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
-                        title
+                        if showsTitle { title }
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: max(44, minimumChipWidth)),
                                                       spacing: StarfallTheme.Spacing.small,
                                                       alignment: .leading)],
@@ -82,12 +83,12 @@ struct SkyForecastSnapshot: Equatable, Sendable {
             }
             .font(StarfallTheme.Typography.instrumentLabel)
             .foregroundStyle(StarfallTheme.Colors.textSecondary)
-            .starfallSceneryProtection()
             .accessibilityElement(children: .contain)
             .accessibilityLabel(stateLabel)
             .accessibilityValue(snapshot.accessibilityValue)
             .accessibilityHint(SkyCopy.text(.forecastColumnsHint))
             .accessibilityIdentifier("sky.forecast.destinations")
+            .starfallSceneryProtection()
         }
     }
 

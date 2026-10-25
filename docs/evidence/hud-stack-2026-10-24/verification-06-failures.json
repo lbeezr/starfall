@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "goal": 6,
+  "issue": 387,
+  "status": "RETAINED_FAILURE_HISTORY_COMPLETE; current candidate acceptance remains separate",
+  "currentCandidate": {
+    "commit": "0ba8de86d4c72f2f11972491bfbeb9dcfe26aeaf",
+    "runtime": "dev.606ce1efbe",
+    "debugBuildSeconds": 7.844,
+    "debugBuildExitCode": 0,
+    "debugBuildReceiptSHA256": "a1304942c09972c85552472e873062ed1f84121af4ed1f87a8f1403d263dccdb",
+    "statusAtPreparation": "Pending native/Core/Release and independent visual/export acceptance; not adopted or merged.",
+    "hosted": {
+      "prefix": "hosted-06-0ba8de86",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "stageSeconds": 14.663,
+      "stageExitCode": 0,
+      "receiptSHA256": "b15687822444cb341f8d412ff9a2531dd3bdc90790bc55843fcf28f25f563894",
+      "summarySHA256": "cd8fb621ec77597c7aaff0a452ff19b74d20ef9d89c356d9c44383745e55e7e7",
+      "runtimeWarnings": [],
+      "assertionFailureLines": 0,
+      "manifestSHA256": "a180524e91b459c569383fe10db72eba61c752ce21f1f8923f9647bf94024197"
+    },
+    "authoritativeDecision": "goal-06-acceptance.json"
+  },
+  "scope": "Preserve the distinct product-layout, coordinate-measurement and native-structure failures that preceded the current candidate. Later passing subsets do not erase earlier failures or establish overall acceptance.",
+  "inputs": {
+    "observedFailureRegister": "goal-06-acceptance.json#observedFailures",
+    "measurementAudit": "projection-audit-06.json",
+    "peerVisualRecord": "visual-review-06-hosted.json",
+    "reviewer": "/root/hud_audit"
+  },
+  "rawEvidence": {
+    "base": "/private/tmp/starfall-hud-stack-20261024",
+    "pathRule": "For each run prefix: <base>/<prefix>.log, <base>/<prefix>-receipt.json, <base>/<prefix>-summary.json, <base>/<prefix>.xcresult and <base>/<prefix>-attachments/manifest.json. Stored SHA256 fields bind the named receipt, summary and manifest. Build records use <base>/build-06-<short head>-debug.log and its -receipt.json.",
+    "durations": "All stageSeconds and debugBuildSeconds are bounded-stage receipt elapsed seconds, not individual XCTest method durations.",
+    "counts": "Each run reports its own passed/failed/skipped method counts. No cumulative candidate-pass total is formed across different products.",
+    "warnings": "runtimeWarnings arrays are the structured result fields; they do not certify that all system/compiler logs were warning-free."
+  },
+  "history": [
+    {
+      "id": "retained-goal5-baseline",
+      "classification": "Native semantic-frame clearance failure; painted clipping not established",
+      "compiledCommit": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "runtime": "dev.38edbb845c",
+      "selector": "StarfallUITests/SkyFlowInteractionTests/testFullStoryColumnShowsPressureAndCommittedRecovery",
+      "runs": [
+        {
+          "prefix": "baseline-06-from-05-08aa30c0-full-phone",
+          "passed": 0,
+          "failed": 1,
+          "skipped": 0,
+          "stageSeconds": 71.36,
+          "stageExitCode": 65,
+          "receiptSHA256": "d2f4713ffc6a5081027676850a23cc8d2453d88cbb22b575d07772f0836bb2b8",
+          "summarySHA256": "31816346989c7e1f64817eaf5e3b2401d381bbcbec160e5498a8f9017946b355",
+          "runtimeWarnings": [],
+          "assertionFailureLines": 1,
+          "manifestSHA256": "98f13d09231bf973dde37fa8ba7828e1f7ffeba2ac8716285ef3ea2cabb81377"
+        },
+        {
+          "prefix": "baseline-06-from-05-08aa30c0-full-phone-diagnostic",
+          "passed": 0,
+          "failed": 1,
+          "skipped": 0,
+          "stageSeconds": 65.922,
+          "stageExitCode": 65,
+          "receiptSHA256": "55b97dc98ca3d5be0ebf271cad6bfa004c6df4fa9f603289f8156fab69eedb2e",
+          "summarySHA256": "751f67663e5356c85aa5ca38181ec790b1e73622158c898dfe657a14879d913d",
+          "runtimeWarnings": [],
+          "assertionFailureLines": 1,
+          "manifestSHA256": "644788bfc4e5e9c4b98845504eff2668bed6fd85484886af07f200c2bbe33062"
+        }
+      ],
+      "finding": "The unchanged original Goal5 method fails strict complete ceiling containment. Native ceiling=(6,189,378,44); below-header viewport=(0,195.6666717529297,390,648.3333282470703). The deficit is about2.6667pt of reported header/semantic-strip overlap plus the existing4pt guard.",
+      "diagnosticPurpose": "The second unchanged baseline invocation adds only passive recording to inspect the failure; it is not a retry to green. Both runs remain failed with0 skips.",
+      "productProvenance": "/private/tmp/starfall-hud-stack-20261024/baseline-06-9a152be3-products.json",
+      "recordingProvenance": "/private/tmp/starfall-hud-stack-20261024/baseline-06-from-05-08aa30c0-full-phone-diagnostic-provenance.json",
+      "visualDistinction": {
+        "attribution": "Independent peer's direct whole-frame inspection in visual-review-06-hosted.json; this failure-history author did not decode or review the movie.",
+        "movie": "/private/tmp/starfall-hud-stack-20261024/baseline-06-from-05-08aa30c0-full-phone-diagnostic.mp4",
+        "movieSHA256FromProvenance": "c782d63fb66bcba3e08c4bb2642831718947f40ce81980357b24412ca49940a3",
+        "sample": "/private/tmp/starfall-hud-stack-20261024/baseline-06-from-05-diagnostic-frames/frame-0050.000.png",
+        "sampleSHA256": "d708896cd131d69fd9806745e5e93d9155b4ddfedc24498340189bdef7c0182e",
+        "requestedAVTimeSeconds": 50,
+        "actualAVTimeSeconds": 49.985,
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "observation": "All six warning badges, ceiling line and upper Aqua ink are complete in this sampled frame. Preserve the strict semantic-frame failure without claiming that this baseline had the later candidate's painted badge clipping."
+      }
+    },
+    {
+      "id": "initial-candidate-9a",
+      "classification": "Actual crowded-header layout and visible composition failure",
+      "commit": "9a152be345b3e25423c8b62078e60771afe245a9",
+      "runtime": "dev.abb8f2da83",
+      "debugBuildSeconds": 12.783,
+      "debugBuildExitCode": 0,
+      "debugBuildReceiptSHA256": "ec82f11a786d7829b8a704b58e402dc627b36a469d7b1579f9638baba0ff0a28",
+      "hosted": {
+        "prefix": "hosted-06-9a152be3",
+        "passed": 11,
+        "failed": 1,
+        "skipped": 0,
+        "stageSeconds": 9.708,
+        "stageExitCode": 65,
+        "receiptSHA256": "744aacc127f63c85e1d9145748161c9653df655ee59829b3f3e91dfeceec12e1",
+        "summarySHA256": "f2416a8b38aa35a279171542fc177c9f9df62b97aac48fec5d80121c812834d3",
+        "runtimeWarnings": [],
+        "assertionFailureLines": 8,
+        "manifestSHA256": "060ea1f4668f0e651d56e747b5060e983458b2c8da9d2b6512a844a6bf7bb95b"
+      },
+      "finding": "The375-point crowded Story probe exposes header/ceiling overlap: default headermax183.6667 versus ceilingtop135.5; XXX headermax268 versus ceilingtop132.8333. AX5 headerheight455 plus the80pt return leaves about65pt viewport and0 fully visible occupied cells.",
+      "visualEvidence": "The independent peer review records six rejected whole hosted PNGs: default/XXX status protection obscures badges/upper stars, and AX5 fails to retain a useful actual star field. These are distinct from the retained Goal5 semantic-strip failure.",
+      "correctionDirection": "Use the registered compact Story reading composition and natural content ownership, preserving full fonts, common mapping,80pt return, complete ceiling and at least7 actual visible cells. No acceptance follows from the successful build or11 other hosted methods."
+    },
+    {
+      "id": "corrected-layout-5575",
+      "classification": "Strict complete-ceiling fractional crop failure",
+      "commit": "5575ea147456a0737303a8f22a7f1029c6394b1a",
+      "runtime": "dev.9b6a62acef",
+      "debugBuildSeconds": 14.313,
+      "debugBuildExitCode": 0,
+      "debugBuildReceiptSHA256": "47060178a7eac938873de36988a885760d3d7024c69875ea8a631b8e234aae39",
+      "hosted": {
+        "prefix": "hosted-06-5575ea14",
+        "passed": 13,
+        "failed": 1,
+        "skipped": 0,
+        "stageSeconds": 15.303,
+        "stageExitCode": 65,
+        "receiptSHA256": "c100ee317c564fce891c57ead82661e245271c7ddd2125952429b0b7cee4a261",
+        "summarySHA256": "01d7d000c29d89bf43df9032bc7e575fdccb5b94b67876fd786bc74e2926c4ae",
+        "runtimeWarnings": [],
+        "assertionFailureLines": 1,
+        "manifestSHA256": "260e97c3dff20be2234bbb869e864ba43d7aef1fd1ddaed65c0f39fe925b3696"
+      },
+      "finding": "All three text profiles retain at least7 fully visible occupied cells. AX5 headerheight321.3333 and viewportheight198.6667 retain7 after ceiling reveal. XXX alone still fails strict complete-ceiling containment: ceilingtop363.8333 versus viewporttop364, a half physical pixel at3x.",
+      "responsibleCorrection": "Round the shared reading crop down on the actual display-scale lattice. Preserve the original unrounded containment assertion, the whole common canvas mapping and marker geometry; add no badge offset or tolerance."
+    },
+    {
+      "id": "physical-crop-82",
+      "classification": "Product strict layout gates pass; new probe's cross-framework CGRect measurement fails",
+      "commit": "82cfc586a235558cdaa13a484a1d0cf83d1f2617",
+      "runtime": "dev.9ff6ec12fa",
+      "debugBuildSeconds": 8.023,
+      "debugBuildExitCode": 0,
+      "debugBuildReceiptSHA256": "a505fea6d98cf3f41b2f0122184841a16b3e53efa561114278076653b30252ee",
+      "hosted": {
+        "prefix": "hosted-06-82cfc586",
+        "passed": 13,
+        "failed": 1,
+        "skipped": 0,
+        "stageSeconds": 21.568,
+        "stageExitCode": 65,
+        "receiptSHA256": "490ece6a3571ee93eabd4a0063a5e9d59ffbcb06b0dc995b8d35ccb4ffc6f2f4",
+        "summarySHA256": "a853b4ac395653b186b12ae7f0c917e33c906ffa48d2e14e630c3e35c52fea88",
+        "runtimeWarnings": [],
+        "assertionFailureLines": 5,
+        "manifestSHA256": "a8590cc7d01851bde952a2bd1b72602f810dce6a5db300371549f9861a839588"
+      },
+      "finding": "375-point large/XXX/AX5 complete unrounded header/ceiling containment and at least7 actual occupied-cell gates pass. One new method still fails5 readiness/global-bounding-box equality assertions because independently converted global heights differ by up to2.2737367544323206e-13pt at exactly matching origins.",
+      "measurementBoundary": "Local native canvas and SpriteKit scene remain exactly375x900. The corrected crop and the independent bounding-box arithmetic problem are separate findings.",
+      "measurementAudit": "projection-audit-06.json"
+    },
+    {
+      "id": "physical-measurement-4111",
+      "classification": "Test-only measurement correction passes hosted; native query count fails",
+      "commit": "4111bf292c5453bad9f10c1775899363d9d5b702",
+      "runtime": "dev.9ff6ec12fa",
+      "debugBuildSeconds": 5.984,
+      "debugBuildExitCode": 0,
+      "debugBuildReceiptSHA256": "8c51dcf827fc76c784f8169d8a2dbe8bbbe179a3e24b65a0ae20233c93e1f9b5",
+      "hosted": {
+        "prefix": "hosted-06-4111bf29",
+        "passed": 14,
+        "failed": 0,
+        "skipped": 0,
+        "stageSeconds": 14.813,
+        "stageExitCode": 0,
+        "receiptSHA256": "20d7f360016115a78a7cfb987712d44fe2b8cda2f0d20a4d0c58fd70040cb8d2",
+        "summarySHA256": "f1ed8fe020fe84242d5d8733aca0b69f7ca1b023b31a5107786ade844d00e808",
+        "runtimeWarnings": [],
+        "assertionFailureLines": 0,
+        "manifestSHA256": "338337c7b08fd28c043b75ca3da36bc80f3f5fd8dada0860ab2c8adf9908338d"
+      },
+      "native": {
+        "prefix": "native-06-4111bf29-full",
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "stageSeconds": 76.341,
+        "stageExitCode": 65,
+        "receiptSHA256": "9529cd43cb1a9800894e740f23f3bd012f7f16ce2bb98bf6bd3a687ed1fac7f3",
+        "summarySHA256": "7b0379ebfabf7a1b43b316558cd45534b8887e5542b4df194ae4e7843b2e379b",
+        "runtimeWarnings": [],
+        "assertionFailureLines": 1,
+        "manifestSHA256": "f6bb312a84aa0bcb7d70400cb5f3751d82188958242e795acfc7ce6aa7a9860d"
+      },
+      "measurementCorrection": "Only the new hosted probe changes: exact origins plus exact four absolute physical-pixel edge keys at actual screen scale; exact local canvas/scene equality, unrounded ceiling/header gates, seven cells, offsets and both original methods remain.",
+      "independentProof": {
+        "record": "projection-audit-06.json",
+        "acceptedRetainedPairs": 3,
+        "negativeChecks": 48,
+        "rejectedNegativeChecks": 48,
+        "boundary": "Three retained examples x2 scales(2x/3x) x4 independent edges x2 directions(+/-1physical pixel). Numeric controls, not extra UI runs."
+      },
+      "nativeFinding": "The first native full-column method reaches the complete ceiling/top-row checks but fails the new near identity count2 versus1, before full-state capture or recovery. Initial count failure alone does not identify duplicated spoken announcements.",
+      "nextAttempt": "Explicit children-ignore grouping before the complete custom label/identity is attempted in3bf645f8. Its correctness remains subject to the unchanged native count and separation gates."
+    },
+    {
+      "id": "native-outsets-3bf",
+      "classification": "Native near status bounding frame includes decorative outsets",
+      "commit": "3bf645f8fa5866c09f978a1ab126194b7aa24743",
+      "runtime": "dev.5f9c1be5e6",
+      "debugBuildSeconds": 8.844,
+      "debugBuildExitCode": 0,
+      "debugBuildReceiptSHA256": "6a981c88226c4b68895107d3cf1c18b855505461b90b62fb6d4b6619a3fb9c7a",
+      "hosted": {
+        "prefix": "hosted-06-3bf645f8",
+        "passed": 14,
+        "failed": 0,
+        "skipped": 0,
+        "stageSeconds": 14.62,
+        "stageExitCode": 0,
+        "receiptSHA256": "4608fac21d35f66f4f28946290dab6c95e71665fed6db7b907dee664c16a6ce5",
+        "summarySHA256": "54159254d742ada3c005b7da350333302ba8ca7efef161c62fb69569ef32c305",
+        "runtimeWarnings": [],
+        "assertionFailureLines": 0,
+        "manifestSHA256": "760a5203036af92652a51e3d674adc3d4d299431caa6f721ec61ab6afb4bd729"
+      },
+      "native": {
+        "prefix": "native-06-3bf645f8-full",
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "stageSeconds": 69.083,
+        "stageExitCode": 65,
+        "receiptSHA256": "4c45c36ad461854f4bd65d94205a8161a67d808e0c48554b7c61d37d84fd162c",
+        "summarySHA256": "cc5cfcf27abb1b716121988589f4ceed53219ea96f9aa0f06976f33190d203d1",
+        "runtimeWarnings": [],
+        "assertionFailureLines": 1,
+        "manifestSHA256": "0f3c1a1d1521d393b07226cc908c3e40bd7020f3ce9ca63aa09329594bfda2cb"
+      },
+      "beforeFailureProgress": "Near identity count and exact speech pass in this invocation; the method remains0pass/1fail overall.",
+      "nativeFinding": "The near AX rectangle=(141.6667,161.3333,214.3333,30.3333) intersects forecast rectangle=(33,95,324,78.3333). The outer ignored element includes8pt protective outsets rather than preserving Text-sized semantics.",
+      "nextAttempt": "Move the optional complete accessibility text override into shared StarfallStatusText's inner Text before the background, removing the outer ignore/label. Preserve count, separation, waits and targets; no native success is inferred from source or14 hosted passes."
+    },
+    {
+      "id": "native-structure-f7",
+      "classification": "Two structural query matches: Other plus StaticText",
+      "commit": "f7c97d026d3ce5cd47cefec65741992fb49e3615",
+      "runtime": "dev.4446f54e29",
+      "debugBuildSeconds": 8.03,
+      "debugBuildExitCode": 0,
+      "debugBuildReceiptSHA256": "73ee83a34d9b6aa9a6fb8433c6c5e713c8fd6752c0f7a4e51ee14863d67dd6de",
+      "hosted": {
+        "prefix": "hosted-06-f7c97d02",
+        "passed": 14,
+        "failed": 0,
+        "skipped": 0,
+        "stageSeconds": 15.188,
+        "stageExitCode": 0,
+        "receiptSHA256": "948bed4792e334443398c38927cc94b64b8d7256f774438f629ed6180a7b6337",
+        "summarySHA256": "fa9e244ebf3d91a789f673c35f143fd7e59835223fc24b6a6f18462208ba0c8e",
+        "runtimeWarnings": [],
+        "assertionFailureLines": 0,
+        "manifestSHA256": "9f3c0f14ae8f639d03df5f0c4ec6612ff1a9e2acc30147ac9d8b7d57d5ac7444"
+      },
+      "native": {
+        "prefix": "native-06-f7c97d02-full",
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "stageSeconds": 72.414,
+        "stageExitCode": 65,
+        "receiptSHA256": "50d65046313789a131a75980fe384e531b3b658a72db5b10387a0e8dc173d55a",
+        "summarySHA256": "6439ffd2b4009d2ec9ad9c0c0ebe9be5b0fcf676a9053a72e5af8c5f2fdddf54",
+        "runtimeWarnings": [],
+        "assertionFailureLines": 1,
+        "manifestSHA256": "31f6729e2d57e90f6631b122fb1458274943e81fd3ed503ec85846576eedfb52"
+      },
+      "nativeFinding": "Failure-only debugDescription proves Other and StaticText inherit the same outer sky.headroom.oneSpace identifier; the StaticText label contains all complete per-column facts. The full status also has two structural matches. Their reported frames still include8pt backing outsets.",
+      "diagnostic": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-f7c97d02-full-attachments/6C0BCDF3-1D9F-4F14-BAF7-1FE1899C8678.txt",
+        "sha256": "fea40028d4c2b53ae2d280c988a55660cdd7e7dc78a2a7cd5e68a312cf66e8c9"
+      },
+      "speechLimit": "This is an XCUI structural-query observation. No actual VoiceOver session ran; duplicated VoiceOver speech is not established.",
+      "nextAttempt": "Place the native identifier on the shared semantic Text before backing, and place forecast semantic grouping/identity before backing. No spacing, font or native assertion is changed to obtain the next result."
+    },
+    {
+      "id": "native-near-only-19ea",
+      "classification": "Near-only accessibility representation uses spoken prose as differently measured content",
+      "commit": "19ea855efc7be695ecdee1b6edd16a8687e1eec0",
+      "runtime": "dev.9a925f5915",
+      "debugBuildSeconds": 8.328,
+      "debugBuildExitCode": 0,
+      "debugBuildReceiptSHA256": "56f075be90c0738b31b3b4d3d64246fb4a016f7287c9aeb7e89e1968ce375efe",
+      "hosted": {
+        "prefix": "hosted-06-19ea855e",
+        "passed": 14,
+        "failed": 0,
+        "skipped": 0,
+        "stageSeconds": 14.863,
+        "stageExitCode": 0,
+        "receiptSHA256": "d10ce812a3ef0fa03f8c4a5c7253f5816b3f8841a11fcd6ed4bb5678894b8175",
+        "summarySHA256": "ff7d3984e0bad2a78075a4ec0ac2afbc5b2c48097246017441c15113b885fb06",
+        "runtimeWarnings": [],
+        "assertionFailureLines": 0,
+        "manifestSHA256": "d45c691c7a751872ae7d0a167a14c6b98723489dfb78c3622a0ce2d9df316cd5"
+      },
+      "native": {
+        "prefix": "native-06-19ea855e-full",
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "stageSeconds": 88.522,
+        "stageExitCode": 65,
+        "receiptSHA256": "4bfa4ad7c6f57396a35143f97c4cdb64c61a7418e7f1b1c264e3d3ae335236d2",
+        "summarySHA256": "fe21b772698d55097d76eaa4f883a0243838debfb7797ee106c474f1849078b6",
+        "runtimeWarnings": [],
+        "assertionFailureLines": 1,
+        "manifestSHA256": "9466befbf1ea4b15fe247b23a6b1bf96681772303dc1d07af719190fce1b0537"
+      },
+      "beforeFailureProgress": "Single identity, complete speech, forecast separation, complete full-column capture, the real5,000-point clear and full-warning retirement pass before the later near-only viewport check. The entire native method remains failed, not partially counted as passing.",
+      "fullStateCapture": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-06-19ea855e-full-attachments/17B5F6D5-37DE-4FCE-ACEA-9D7AEA022605.png",
+        "sha256": "6423ebc9873659efdb6bcda91201bcce5f20bf45e9cb793872776ad4b7b0cf47"
+      },
+      "nativeFinding": "After recovery, near-only represented prose reports frame=(95.83333333333333,169.33333333333331,355.33333333333337,64.33333333333331); its right edge is451.1666666666667 outside the390pt viewport. The represented Text content has different intrinsic measurements from the compact visible summary.",
+      "currentCorrection": "0ba8de86 reuses the exact styled visible Text in accessibilityRepresentation and puts complete prose only in accessibilityLabel, preserving the visible/semantic measurement contract. The registered compact summary applies to all near-column counts. Its native acceptance remains pending in this record."
+    }
+  ],
+  "preservedBoundaries": [
+    "Every failed result, its compiled/runtime source and selected count remains explicit; later hosted passes do not replace failed native methods.",
+    "No assertion weakening, new blanket retry, forced quiet mode or deadline increase is used to label these failures as accepted.",
+    "Full-column identity and recovery remain distinct from current one-space facts. Native query structure is not actual VoiceOver speech evidence.",
+    "The failure-history author performs only read-only source/result inspection and writes this JSON. No App/test changes, build, controller, Core run or movie decoding.",
+    "Current candidate0ba8de86/dev.606ce1efbe is pending. Root owns current mechanics, independent visual/export gates, adoption and individual merge records."
+  ]
+}
