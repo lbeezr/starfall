@@ -1,6 +1,6 @@
 # A coherent set of native HUD instruments
 
-**Status:** Goal 1 visually rejected by the user on October 24; correction active and goal 2 held · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
+**Status:** Goal 1 correction accepted for the documented development slice; publication pending, then goal 2 · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
 
 The user authorized [ten ordered HUD refinements](https://github.com/lbeezr/starfall/issues/381), with each goal tested and merged before the next implementation. Each pass retains the previous accepted behavior and corrects its current presentation seam in the normal app. Existing Observatory materials, native controls, rules, saves, replay, clocks and board mapping remain authoritative.
 
@@ -12,7 +12,7 @@ The initial development-adoption verdict below is superseded. Its source identit
 
 | Order | Outcome | Issue | Integration |
 | --- | --- | --- | --- |
-| 1 | Expanded HUD reading order | [#382](https://github.com/lbeezr/starfall/issues/382) | Initial merge rejected visually; issue reopened, correction active |
+| 1 | Expanded HUD reading order | [#382](https://github.com/lbeezr/starfall/issues/382) | Corrected native slice independently reviewed; correction merge pending |
 | 2 | Coherent instrument typography | [#383](https://github.com/lbeezr/starfall/issues/383) | Held pending goal 1 correction and acceptance |
 | 3 | Readability across every sky | [#384](https://github.com/lbeezr/starfall/issues/384) | After goal 2 merge |
 | 4 | Shared control states and glyph craft | [#385](https://github.com/lbeezr/starfall/issues/385) | After goal 3 merge |
@@ -22,6 +22,27 @@ The initial development-adoption verdict below is superseded. Its source identit
 | 8 | Consistent optional detail readers | [#389](https://github.com/lbeezr/starfall/issues/389) | After goal 7 merge |
 | 9 | Whole-HUD adaptive layouts | [#390](https://github.com/lbeezr/starfall/issues/390) | After goal 8 merge |
 | 10 | Complete native journey cohesion | [#391](https://github.com/lbeezr/starfall/issues/391) | After goal 9 merge |
+
+## Goal 1 correction: native and visual acceptance
+
+The corrected normal-app HUD uses one existing 48-point help utility beside the complete forecast, shared 44-point forecast controls and instrument text roles. The oversized menu action and redundant Falling Sky heading are removed. One continuous painting backs the pinned instruments and scrolling board. Exact score/target text keeps its complete native size; largest text reflows while the board, hit cells and receipt anchors retain one projection. Full Board keeps its mode context and omits shower forecast/inspection.
+
+The missing scenery-protection role is now part of `StarfallTheme`: fitted nightglass behind measured instruments and explicitly scenic gameplay actions, with visual-only outsets and opaque contrast/transparency fallbacks. Sunny's earlier sampled contrast failure is retained; selected corrected RGB pairs measure 6.39:1–15.29:1, without a whole-font or physical contrast claim. Packet ink and shadow now respect the measured complete header as well as the score; existing paths, arrivals and lifetime remain.
+
+Rendered App source is `bf5e6d23`, runtime `dev.3ebf052fca`; test checkpoint `3fe9f9a8` adds the exact reader hit/extent regression. Main `271fd925` is integrated. [Clean archive identity](source-01-correction.json) matches all 567 runtime/build inputs. Later evidence-only edits do not change that runtime. [Mechanical history](verification-01-correction.json), [retained captures](captures-01-correction.json), [independent whole-screen review](visual-review-01-correction.json) and [packet review](visual-review-01-packet.json) preserve their exact scopes.
+
+| Evidence | Result and scope |
+| --- | --- |
+| Core | 352 passed; Core bytes unchanged through the App-only integration |
+| Affected hosted checks | Current integrated 228 passed; phone packet/reading pair passed; new complete-reader extent/hit case passed at the exact failed native position |
+| Native phone | Default selection/inspection and background/world preservation passed at `ec40c9a3`; unchanged largest-text Sunny/Studio reader passed alone at `3fe9f9a8` in 64.788 seconds |
+| Actual tablet | Largest-text real-Calm selection, real 15,000-point chain and Full Board journey passed at `d5d02a7b`; settled HUD geometry/material is unchanged by the later readiness and packet-only changes |
+| Build and membership | Debug/test builds and current integrated Release passed; focused-suite membership explicit; discovery is 815 hosted/260 UI, not a full executed-pass count |
+| Visual | Independent comparison with the approved Play concept passes the identified whole native phone/tablet states and retained exports; separate compact live-packet review passes |
+
+Two earlier native runs stalled before Sunny's final line during overlapping simulator UI work. Their frames and failure image remain failures. The same unchanged case passed with one native controller active; an eight-second sample mostly waited for events. The cause is unproved, and neither an assertion nor performance fix is claimed. [Engineering](../../ENGINEERING.md) records the recurrence trigger and passive pan/offset investigation. All 12-pan, overlap, full-final-line, target and fixed-control gates remain. Visual acceptance does not erase this interaction uncertainty.
+
+No actual VoiceOver, minimum-iOS execution, physical reading/comfort, human enjoyment or sustained-performance acceptance is claimed. The corrected components are adopted for this development slice; goal 2 implementation starts only after the correction's individual main merge. Original PR #392 evidence below remains historical and visually rejected.
 
 ## Goal 1 initial implementation: mechanical results retained
 

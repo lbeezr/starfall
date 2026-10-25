@@ -126,14 +126,41 @@ final class SkyDialogueInteractionTests: XCTestCase {
         let initialText = message.label
         let initialHeight = message.frame.height
         let actionFrames = actions.map(\.frame)
+        func attachReadingFrames(_ name: String, iteration: Int, before: CGRect, after: CGRect) {
+            func describe(_ frame: CGRect) -> String {
+                "\(frame); minY=\(frame.minY); maxY=\(frame.maxY); height=\(frame.height)"
+            }
+            let currentReading = reading.frame
+            let currentApp = app.frame
+            let measurements = [
+                "iteration=\(iteration)",
+                "cachedViewport=\(describe(viewport))",
+                "currentReading=\(describe(currentReading))",
+                "currentApp=\(describe(currentApp))",
+                "currentViewport=\(describe(currentReading.intersection(currentApp)))",
+                "beforeMessage=\(describe(before))",
+                "afterMessage=\(describe(after))",
+                "initialMessageHeight=\(initialHeight)"
+            ] + zip(actions, actionFrames).map { action, initial in
+                "action=\(action.identifier); initial=\(describe(initial)); current=\(describe(action.frame))"
+            }
+            let attachment = XCTAttachment(string: measurements.joined(separator: "\n"))
+            attachment.name = name; attachment.lifetime = .keepAlways; add(attachment)
+        }
+        let initialFrame = message.frame
+        attachReadingFrames(capturePrefix + "-reading-initial-frames", iteration: 0,
+                            before: initialFrame, after: initialFrame)
         XCTAssertGreaterThan(viewport.height, 44, "The reader must expose usable text space")
         XCTAssertGreaterThanOrEqual(message.frame.minY, viewport.minY - 1)
         XCTAssertLessThan(message.frame.minY, viewport.maxY,
                           "The message's beginning must be visibly readable before scrolling")
         capture(app, capturePrefix + "-reading-beginning")
 
-        for _ in 0..<12 where message.frame.maxY > viewport.maxY + 1 {
+        for iteration in 0..<12 {
             let before = message.frame
+            // Use the same native snapshot to decide whether a pan is needed
+            // and to measure its progress as the preceding pan settles.
+            guard before.maxY > viewport.maxY + 1 else { break }
             // A drag shortened to the remaining few points can stay inside the
             // native scroll view's pan slop. Keep a real drag; the scroll view
             // itself clamps at the content's end.
@@ -142,6 +169,11 @@ final class SkyDialogueInteractionTests: XCTestCase {
             start.press(forDuration: 0.05, thenDragTo: start.withOffset(CGVector(dx: 0, dy: -distance)),
                         withVelocity: .slow, thenHoldForDuration: 0.1)
             let after = message.frame
+            if !(after.minY < before.minY) {
+                attachReadingFrames(capturePrefix + "-reading-nonmoving-frames", iteration: iteration + 1,
+                                    before: before, after: after)
+                capture(app, capturePrefix + "-reading-nonmoving-pan")
+            }
             XCTAssertLessThan(after.minY, before.minY, "The reading pane must scroll its text")
             XCTAssertLessThanOrEqual(before.minY - after.minY, viewport.height * 0.7,
                                     "Successive reading positions must overlap instead of skipping text")

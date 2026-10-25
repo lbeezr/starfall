@@ -327,36 +327,54 @@ extension TraceInputPolishTests {
 extension TraceInputPolishTests {
     @MainActor func testLogicalContactReleasesExactlyOnceBeforeReentrantAcquisition() throws {
         let session = SkyInteractionSession(), game = SkyTechniqueExample.nudge.game()
+        let replacement = ConstellationFixture.diagonalSix.game()
         var releases: [UInt64] = []
         var acquired = 0
-        XCTAssertTrue(session.acquireHold(at: Cell(0,0)) { _ in acquired += 1; return 7 })
-        XCTAssertTrue(session.acquireHold(at: Cell(0,0)) { _ in acquired += 1; return 8 })
+        XCTAssertTrue(session.acquireHold(at: Cell(0,0), snapshot: game) { _ in
+            XCTAssertNil(session.inputSnapshot, "Capture the source only after hold admission")
+            acquired += 1; return 7
+        })
+        XCTAssertTrue(session.acquireHold(at: Cell(0,0), snapshot: replacement) { _ in acquired += 1; return 8 })
         XCTAssertEqual(acquired, 1)
+        XCTAssertEqual(session.inputSnapshot, game, "Repeated acquisition cannot replace a live contact's source")
         let pair = try XCTUnwrap((0..<7).flatMap { row in (0..<6).map { (Cell(row,$0),Cell(row,$0+1)) } }
             .first { game.canNudge(from: $0.0, to: $0.1) })
         XCTAssertEqual(session.holdTicket, 7)
         session.endContact(ticket: 7) { ticket in
             XCTAssertNil(session.holdTicket)
+            XCTAssertNil(session.inputSnapshot)
             XCTAssertNil(session.trace.snapshot)
             releases.append(ticket!)
+            XCTAssertTrue(session.acquireHold(at: pair.0, snapshot: replacement) { _ in 8 })
         }
         session.endContact(ticket: 7) { releases.append($0!) }
         XCTAssertEqual(releases, [7])
         XCTAssertTrue(session.acquireHold(at: pair.0) { _ in 8 })
         session.endContact(ticket: 7) { releases.append($0!) }
         XCTAssertEqual(session.holdTicket, 8, "A late terminal event cannot release the next session")
-        session.invalidate { releases.append($0!) }
+        XCTAssertEqual(session.inputSnapshot, replacement, "A stale terminal event cannot clear the next source")
+        session.invalidate {
+            XCTAssertNil(session.holdTicket)
+            XCTAssertNil(session.inputSnapshot)
+            releases.append($0!)
+        }
         XCTAssertEqual(releases, [7,8])
+        XCTAssertNil(session.inputSnapshot)
     }
 
     @MainActor func testLogicalCancellationClearsTraceEvenWhenHoldAdmissionFails() {
         let session = SkyInteractionSession(), game = ConstellationFixture.diagonalSix.game()
         _ = session.trace.begin(Cell(0,0), game: game, generation: 1, enabled: true)
-        XCTAssertFalse(session.acquireHold(at: Cell(0,0)) { _ in nil })
+        XCTAssertFalse(session.acquireHold(at: Cell(0,0), snapshot: game) { _ in
+            XCTAssertNil(session.inputSnapshot)
+            return nil
+        })
+        XCTAssertNil(session.inputSnapshot, "Rejected holds cannot retain a contact source")
         XCTAssertNil(session.trace.snapshot)
         session.cancelContact { _ in XCTFail("No owned hold") }
         session.invalidate { _ in XCTFail("No owned hold") }
         XCTAssertNil(session.trace.snapshot)
+        XCTAssertNil(session.inputSnapshot)
     }
 }
 
@@ -556,14 +574,22 @@ extension TraceInputPolishTests {
     @MainActor func testPendingHoldCannotSurviveSurfaceReconfiguration() {
         for boundary in ["generation", "size", "disabled", "detach", "multitouch"] {
             let size = CGSize(width:390,height:844), surface = ConstellationTraceSurface.Surface()
+            let interaction = SkyInteractionSession(), game = ConstellationFixture.diagonalSix.game()
             let origin = LandingGeometry(size:size).viewPoint(Cell(0,0))
-            var drawings = 0
+            var drawings = 0, releases: [UInt64] = []
             func input(size:CGSize = CGSize(width:390,height:844), enabled:Bool = true, generation:UInt64 = 1) -> ConstellationTraceSurface {
                 .init(size:size,enabled:enabled,generation:generation,traceStart:{ _ in Cell(0,0) },
-                    tap:{ _ in XCTFail("Interrupted holds cannot tap") },begin:{ _ in drawings += 1 },move:{ _ in },end:{},cancel:{})
+                    tap:{ _ in XCTFail("Interrupted holds cannot tap") },begin:{ _ in drawings += 1 },move:{ _ in },end:{},
+                    cancel:{ interaction.cancelContact { ticket in
+                        XCTAssertNil(interaction.holdTicket)
+                        XCTAssertNil(interaction.inputSnapshot)
+                        releases.append(ticket!)
+                    } },
+                    contact:{ _ in interaction.acquireHold(at:Cell(0,0),snapshot:game) { _ in 7 } })
             }
             surface.updateInput(input()); surface.beginInput(at:origin,timestamp:100)
             let ticket = surface.session.sequence
+            XCTAssertEqual(interaction.inputSnapshot, game)
             switch boundary {
             case "generation": surface.updateInput(input(generation:2))
             case "size": surface.updateInput(input(size:CGSize(width:844,height:390)))
@@ -574,6 +600,9 @@ extension TraceInputPolishTests {
             surface.armDrawing(ticket:ticket,generation:1,timestamp:101)
             surface.endInput(at:origin,timestamp:101)
             XCTAssertEqual(drawings,0,boundary)
+            XCTAssertNil(interaction.holdTicket,boundary)
+            XCTAssertNil(interaction.inputSnapshot,boundary)
+            XCTAssertEqual(releases,[7],boundary)
         }
     }
 }

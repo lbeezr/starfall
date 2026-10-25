@@ -118,8 +118,10 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
             let chip = app.buttons["sky.forecast.star.\(id)"]
             XCTAssertTrue(chip.exists && chip.isEnabled)
             let chipFrame = chip.frame
-            XCTAssertGreaterThanOrEqual(chipFrame.width, 44)
-            XCTAssertGreaterThanOrEqual(chipFrame.height, 44)
+            // Compare native edges: subtracting fractional coordinates can
+            // report a complete 44-point target as 43.999999999999986.
+            XCTAssertGreaterThanOrEqual(chipFrame.maxX, chipFrame.minX + 44, "Full-width target: \(chipFrame)")
+            XCTAssertGreaterThanOrEqual(chipFrame.maxY, chipFrame.minY + 44, "Full-height target: \(chipFrame)")
             XCTAssertTrue(viewport.contains(chipFrame), "Every complete target must fit the screen")
             XCTAssertTrue(forecastFrame.contains(chipFrame), "Every complete target must fit its actual reading surface")
             if index < descriptions.count { XCTAssertEqual(chip.label, descriptions[index]) }
@@ -139,32 +141,59 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         }
     }
 
-    @MainActor private func assertLanternSupport(stacked: Bool, in app: XCUIApplication) {
-        let mode = app.staticTexts["lantern.mode"]
+    @MainActor private func assertLanternSupport(in app: XCUIApplication) {
         let inspect = app.buttons["sky.showerInspection.open"]
         let header = element("sky.header", in: app)
         let forecast = element("sky.forecast.destinations", in: app)
-        XCTAssertEqual(mode.label, "Falling Sky")
+        XCTAssertFalse(app.staticTexts["lantern.mode"].exists)
+        XCTAssertEqual(header.value as? String, "Falling Sky")
+        XCTAssertEqual(app.buttons.matching(identifier: "sky.showerInspection.open").count, 1)
         XCTAssertEqual(inspect.label, "Inspect next shower")
         XCTAssertTrue(inspect.isEnabled && inspect.isHittable)
-        let modeFrame = mode.frame, inspectionFrame = inspect.frame
+        let inspectionFrame = inspect.frame
         let headerFrame = header.frame, forecastFrame = forecast.frame, viewport = app.frame
-        XCTAssertGreaterThanOrEqual(inspectionFrame.width, 48)
-        XCTAssertGreaterThanOrEqual(inspectionFrame.height, 48)
-        for frame in [modeFrame, inspectionFrame, forecastFrame] {
-            XCTAssertTrue(viewport.contains(frame), "Supporting facts and actions must fit the actual viewport")
-            XCTAssertTrue(headerFrame.contains(frame), "Supporting facts and actions must fit the pinned header")
+        func frameDetails(_ name: String, _ frame: CGRect) -> String {
+            "\(name): minX=\(frame.minX), minY=\(frame.minY), maxX=\(frame.maxX), maxY=\(frame.maxY), width=\(frame.width), height=\(frame.height)"
         }
-        if stacked {
-            XCTAssertLessThanOrEqual(modeFrame.maxY, inspectionFrame.minY,
-                                     "Largest text keeps the complete mode above the inspection action")
-        } else {
-            XCTAssertEqual(modeFrame.midY, inspectionFrame.midY, accuracy: 1,
-                           "Default text shares one supporting row")
-            XCTAssertLessThanOrEqual(modeFrame.maxX, inspectionFrame.minX)
+        func nativeHeaderContains(_ frame: CGRect) -> Bool {
+            // The AX header aggregate reports Float32 edges while descendants
+            // retain CGFloat precision. Compare individual edges at their common precision.
+            Float(frame.minX) >= Float(headerFrame.minX)
+                && Float(frame.minY) >= Float(headerFrame.minY)
+                && Float(frame.maxX) <= Float(headerFrame.maxX)
+                && Float(frame.maxY) <= Float(headerFrame.maxY)
         }
-        XCTAssertLessThanOrEqual(max(modeFrame.maxY, inspectionFrame.maxY), forecastFrame.minY,
-                                 "The ordered forecast keeps its own complete reading row")
+        let frames = [frameDetails("inspection", inspectionFrame), frameDetails("header", headerFrame),
+                      frameDetails("forecast", forecastFrame), frameDetails("viewport", viewport),
+                      "headerContainsInspection=\(headerFrame.contains(inspectionFrame)), headerContainsForecast=\(headerFrame.contains(forecastFrame)), forecastContainsInspection=\(forecastFrame.contains(inspectionFrame))",
+                      "nativeHeaderContainsInspection=\(nativeHeaderContains(inspectionFrame)), nativeHeaderContainsForecast=\(nativeHeaderContains(forecastFrame))"]
+            .joined(separator: "\n")
+        let frameAttachment = XCTAttachment(string: frames)
+        frameAttachment.name = "lantern-support-native-frames"
+        frameAttachment.lifetime = .keepAlways; add(frameAttachment)
+        capture("lantern-support-before-containment", in: app)
+        XCTAssertGreaterThanOrEqual(inspectionFrame.maxX, inspectionFrame.minX + 48)
+        XCTAssertGreaterThanOrEqual(inspectionFrame.maxY, inspectionFrame.minY + 48)
+        for frame in [inspectionFrame, forecastFrame] {
+            XCTAssertTrue(viewport.contains(frame), "Supporting facts and actions must fit the actual viewport: \(frame)\n\(frames)")
+            XCTAssertTrue(nativeHeaderContains(frame), "Supporting facts and actions must fit the pinned header: \(frame)\n\(frames)")
+        }
+        XCTAssertTrue(forecastFrame.contains(inspectionFrame), "Inspection belongs to the announced forecast: \(inspectionFrame)\n\(frames)")
+        let chips = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "sky.forecast.star."))
+            .allElementsBoundByIndex.map(\.frame)
+        XCTAssertEqual(chips.count, 5)
+        for (index, frame) in chips.enumerated() {
+            XCTAssertFalse(frame.intersects(inspectionFrame), "Inspection must not cover a forecast target")
+            for other in chips.dropFirst(index + 1) {
+                XCTAssertFalse(frame.intersects(other), "Each announced star keeps a distinct native target")
+            }
+        }
+        let topControl = app.buttons["experiment.cell.6.0"]
+        let topCell = topControl.frame
+        if viewport.contains(topCell) && topControl.isHittable {
+            XCTAssertLessThanOrEqual(headerFrame.maxY, topCell.minY,
+                                     "The pinned instruments leave a visible top playable row clear")
+        }
     }
 
     @MainActor private func focus(_ id: Int, column: Int, capture name: String,
@@ -341,7 +370,7 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         settled(0, target: 150_000, showers: 0, in: app)
         let opening = try round(in: app)
         let preview = assertForecast(ids: Array(0..<5), columns: [6, 1, 2, 4, 5], in: app)
-        assertLanternSupport(stacked: false, in: app)
+        assertLanternSupport(in: app)
         focus(0, column: 6, capture: "hud-goal-one-phone-native-forecast-selection", in: app)
         XCTAssertEqual(try round(in: app), opening)
         tap("sky.showerInspection.open", in: app)
@@ -358,7 +387,7 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         settled(0, target: 150_000, showers: 0, in: app)
         XCTAssertEqual(try round(in: app), opening)
         XCTAssertEqual(assertForecast(ids: Array(0..<5), in: app), preview)
-        assertLanternSupport(stacked: false, in: app)
+        assertLanternSupport(in: app)
     }
 
     @MainActor func testNormalLanternSupportingRowPreservesBackgroundAndWorldRound() throws {
@@ -373,14 +402,14 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         settled(0, target: 150_000, showers: 0, in: app)
         let opening = try round(in: app)
         let preview = assertForecast(ids: Array(0..<5), columns: [6, 1, 2, 4, 5], in: app)
-        assertLanternSupport(stacked: false, in: app)
+        assertLanternSupport(in: app)
         focus(0, column: 6, capture: "hud-goal-one-phone-native-selection-before-background", in: app)
         XCTAssertEqual(try round(in: app), opening)
         XCUIDevice.shared.press(.home); app.activate()
         settled(0, target: 150_000, showers: 0, in: app); assertNoFocus(in: app)
         XCTAssertEqual(try round(in: app), opening)
         XCTAssertEqual(assertForecast(ids: Array(0..<5), in: app), preview)
-        assertLanternSupport(stacked: false, in: app)
+        assertLanternSupport(in: app)
         capture("hud-goal-one-phone-supporting-row-after-background", in: app)
         try assertWorld(initialWorld, in: app)
         settled(0, target: 150_000, showers: 0, in: app)
@@ -403,7 +432,7 @@ final class ForecastColumnInspectionInteractionTests: XCTestCase {
         let originalCalm = setCalm(true, verifyOffToOn: true, in: app)
         let opening = try round(in: app)
         let preview = assertForecast(ids: Array(0..<5), columns: [6, 1, 2, 4, 5], in: app)
-        assertLanternSupport(stacked: true, in: app)
+        assertLanternSupport(in: app)
         capture("hud-goal-one-tablet-largest-stacked-support", in: app)
         focus(0, column: 6, capture: "forecast-inspection-tablet-column-six", in: app)
         XCTAssertEqual(try round(in: app), opening)

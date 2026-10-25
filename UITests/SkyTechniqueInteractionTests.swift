@@ -295,7 +295,11 @@ extension SkyTechniqueInteractionTests {
                 }
                 return value.hasPrefix("0 showers") && app.buttons["experiment.next"].isEnabled
             }, object: nil).wait(timeout: 10), "Expected current \(mode), score \(score), exchange \(exchanges)")
-            XCTAssertEqual(app.staticTexts["lantern.mode"].label, fullBoard ? "Full Board · clears refill and cascade" : "Falling Sky")
+            if fullBoard {
+                XCTAssertEqual(app.staticTexts["lantern.mode"].label, "Full Board · clears refill and cascade")
+            } else {
+                XCTAssertEqual(app.otherElements["sky.header"].value as? String, "Falling Sky")
+            }
         }
         func cells() throws -> [String] {
             var result: [String] = []

@@ -546,7 +546,7 @@ final class IdentityJourneyInteractionTests: XCTestCase {
         tap("sky.begin", in: app); pauseRunningSky(showers: 0, in: app)
         paused(0, target: 150_000, showers: 0, in: app)
         XCTAssertNotEqual(try round(in: app), retained, "Only Begin commits the chosen replacement")
-        XCTAssertEqual(app.staticTexts["lantern.mode"].label, "Falling Sky")
+        XCTAssertEqual(app.otherElements["sky.header"].value as? String, "Falling Sky")
         exchange(8, 9, capture: "identity10-tablet-explicit-sky-pattern-return", in: app)
         paused(15_000, target: 150_000, showers: 0, in: app)
         let switched = try round(in: app)

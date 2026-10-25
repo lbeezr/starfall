@@ -96,18 +96,27 @@ extension StarRecipe {
 @MainActor @Observable final class SkyInteractionSession {
     let trace = ConstellationTraceIntent()
     private(set) var holdTicket: UInt64?
+    // Contact callbacks consume this source; it never drives rendering.
+    @ObservationIgnored private(set) var inputSnapshot: FallingSky?
 
-    @discardableResult func acquireHold(at cell: Cell?, using acquire: (Cell?) -> UInt64?) -> Bool {
+    @discardableResult func acquireHold(at cell: Cell?, snapshot: FallingSky? = nil,
+                                       using acquire: (Cell?) -> UInt64?) -> Bool {
         if holdTicket != nil { return true }
-        holdTicket = acquire(cell)
-        if holdTicket == nil { trace.cancel() }
-        return holdTicket != nil
+        guard let ticket = acquire(cell) else {
+            inputSnapshot = nil
+            trace.cancel()
+            return false
+        }
+        holdTicket = ticket
+        inputSnapshot = snapshot
+        return true
     }
 
     func endContact(ticket: UInt64?, release: (UInt64?) -> Void) {
         guard ticket == holdTicket else { return }
         let owned = holdTicket
         holdTicket = nil
+        inputSnapshot = nil
         trace.cancel()
         if let owned { release(owned) }
     }

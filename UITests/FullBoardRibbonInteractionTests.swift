@@ -221,7 +221,7 @@ final class FullBoardRibbonInteractionTests: XCTestCase {
         tap("sky.begin",app)
         tap("experiment.settings",app)
         tap("experiment.pause",app)
-        XCTAssertEqual(app.staticTexts["ribbon.mode"].label,"Falling Sky")
+        XCTAssertEqual(app.otherElements["sky.header"].value as? String,"Falling Sky")
         XCTAssertTrue(app.buttons["experiment.next"].exists)
         XCTAssertEqual(ceiling(app).label,"Sky ceiling")
         XCTAssertEqual(app.staticTexts["experiment.score"].label,"0 of 220,000 starlight collected")

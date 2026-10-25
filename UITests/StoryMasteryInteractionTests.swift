@@ -207,8 +207,11 @@ final class StoryMasteryInteractionTests: RestorationInteractionScenarios {
             XCTAssertEqual(element("sky.ceiling", in: app).label, "Sky ceiling")
             XCTAssertTrue((element("sky.ceiling", in: app).value as? String ?? "").contains("spaces left"))
         }
-        XCTAssertEqual(app.staticTexts["lantern.mode"].label,
-                       fullBoard ? "Full Board · clears refill and cascade" : "Falling Sky")
+        if fullBoard {
+            XCTAssertEqual(app.staticTexts["lantern.mode"].label, "Full Board · clears refill and cascade")
+        } else {
+            XCTAssertEqual(app.otherElements["sky.header"].value as? String, "Falling Sky")
+        }
     }
 
     @MainActor private func chooseAlternateMode(fromFullBoard: Bool, in app: XCUIApplication) {

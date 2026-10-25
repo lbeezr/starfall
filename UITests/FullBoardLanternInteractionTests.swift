@@ -211,7 +211,7 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         tap("experiment.pause", app)
         let board = app.otherElements["experiment.board"]
         XCTAssertTrue((board.value as? String)?.hasPrefix("0 showers") == true)
-        XCTAssertEqual(app.staticTexts["lantern.mode"].label, "Falling Sky")
+        XCTAssertEqual(app.otherElements["sky.header"].value as? String, "Falling Sky")
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "0 of 150,000 starlight collected")
         XCTAssertTrue(app.buttons["experiment.next"].exists)
         XCTAssertEqual(ceiling(app).label, "Sky ceiling")

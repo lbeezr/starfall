@@ -435,7 +435,12 @@ final class CascadeReturnTests: XCTestCase {
             (CGRect(x: 0, y: 0, width: 390, height: 844), CGRect(x: 20, y: 20, width: 350, height: 96), nil),
             (CGRect(x: 0, y: 0, width: 834, height: 1194), CGRect(x: 24, y: 24, width: 786, height: 88), nil),
             (CGRect(x: 0, y: -140, width: 390, height: 900), CGRect(x: 20, y: 20, width: 350, height: 96),
-             CGRect(x: 20, y: 124, width: 350, height: 80))
+             CGRect(x: 20, y: 124, width: 350, height: 80)),
+            // Actual 3x hosted reading coordinates retain the full-height band's
+            // edges without recentering through a rounded midpoint.
+            (CGRect(x: 0, y: 61.66666666666663, width: 1024, height: 1285.3333333333335),
+             CGRect(x: 12, y: 51, width: 1000, height: 158.66666666666666),
+             CGRect(x: 0, y: 217.66666666666666, width: 1024, height: 79.99999999999997))
         ]
         for (board, header, protectedSky) in examples {
             let award = protectedSky == nil
@@ -450,6 +455,10 @@ final class CascadeReturnTests: XCTestCase {
                 let patterns = phases[index].recipes.map { StarlightCelebration.Pattern(recipe: $0) }
                 let original = try XCTUnwrap(PatternReturnLayout(patterns: patterns, board: board,
                     header: header, award: award, protectedSky: protectedSky))
+                if let protectedSky {
+                    XCTAssertTrue(protectedSky.contains(original.skyBounds),
+                                  "The single-figure fit must remain contained before fitting the cascade strip")
+                }
                 XCTAssertEqual(slot.patterns, patterns)
                 XCTAssertEqual(slot.sourcePaths, original.sourcePaths,
                                "A prior return retains its own phase's pre-clear coordinates")

@@ -1,9 +1,161 @@
 import XCTest
+import SwiftUI
 import UIKit
 import StarfallCore
 @testable import Starfall
 
 final class SkyDialogueTests: XCTestCase {
+    @MainActor func testSunnyMaximumTextReaderOwnsItsHitRegionAndFullNativeContentExtent() async throws {
+        let sceneDeadline = ContinuousClock.now + .seconds(3)
+        var availableScene = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
+        while availableScene == nil && ContinuousClock.now < sceneDeadline {
+            try await Task.sleep(for: .milliseconds(20))
+            availableScene = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
+        }
+        let scene = try XCTUnwrap(availableScene), previous = scene.windows.first(where: \.isKeyWindow)
+        let suite = "Starfall.SunnyReaderExtent.\(UUID())", defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        defaults.set(false, forKey: "calmEffects"); defaults.set(false, forKey: "soundEnabled")
+        let clock = ManualRainClock()
+        let store = FallingSkyStore(defaults: defaults,
+            arguments: ["--starfalls-reset", "--dialogue-review", "--observatory-review"], clock: clock)
+        let window = UIWindow(windowScene: scene)
+        window.frame = CGRect(x: 0, y: 0, width: 390, height: 844)
+        let pixel = 1 / window.screen.scale
+        let host = UIHostingController(rootView: FallingSkyView(store: store,
+            flow: SkyFlowState(arguments: ["--starfalls-reset", "--technique-review"]))
+            .defaultAppStorage(defaults)
+            .environment(\.scenePhase, .active).environment(\.dynamicTypeSize, .accessibility5))
+        let container = UIViewController()
+        window.rootViewController = container; container.view.frame = window.bounds
+        container.addChild(host); host.view.frame = container.view.bounds
+        host.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        container.view.addSubview(host.view); host.didMove(toParent: container); window.makeKeyAndVisible()
+        defer { store.setSuspended(true); window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+        let readyDeadline = ContinuousClock.now + .seconds(3)
+        while (!store.sceneReady || store.suspended) && ContinuousClock.now < readyDeadline {
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        XCTAssertTrue(store.sceneReady); XCTAssertFalse(store.suspended); XCTAssertTrue(store.isPaused)
+        let line = store.pausedGuideLine
+        XCTAssertEqual(line.speaker, .sunny)
+        XCTAssertTrue(line.text.contains("with a touching star"), "Retain the complete contextual Dusk tail")
+        store.dialogue.show(line)
+        let game = store.game, generation = store.constellationInputGeneration
+        let archive = defaults.data(forKey: SkySaveArchive.key), deadline = clock.deadline
+        let canvas = try XCTUnwrap(store.scene.view)
+        var ancestor: UIView? = canvas
+        while ancestor != nil && !(ancestor is UIScrollView) { ancestor = ancestor?.superview }
+        let outer = try XCTUnwrap(ancestor as? UIScrollView)
+        func descendants(_ view: UIView) -> [UIView] { view.subviews.flatMap { [$0] + descendants($0) } }
+        func maximumOffset(_ scroll: UIScrollView) -> CGFloat {
+            max(-scroll.adjustedContentInset.top,
+                scroll.contentSize.height - scroll.bounds.height + scroll.adjustedContentInset.bottom)
+        }
+        func scrollMetrics(_ scroll: UIScrollView) -> String {
+            "type=\(type(of: scroll)); id=\(scroll.accessibilityIdentifier ?? "nil"); windowFrame=\(window.convert(scroll.bounds, from: scroll)); bounds=\(scroll.bounds); contentSize=\(scroll.contentSize); offset=\(scroll.contentOffset); inset=\(scroll.contentInset); adjustedInset=\(scroll.adjustedContentInset); maximumOffset=\(maximumOffset(scroll)); panState=\(scroll.panGestureRecognizer.state.rawValue); panEnabled=\(scroll.panGestureRecognizer.isEnabled)"
+        }
+        let layoutDeadline = ContinuousClock.now + .seconds(3)
+        var innerScrolls: [UIScrollView] = [], previousLayout = "", stableSamples = 0
+        while stableSamples < 2 && ContinuousClock.now < layoutDeadline {
+            await Task.yield(); host.view.layoutIfNeeded()
+            outer.setContentOffset(CGPoint(x: outer.contentOffset.x, y: maximumOffset(outer)), animated: false)
+            innerScrolls = descendants(outer).compactMap { $0 as? UIScrollView }
+            let layout = ([scrollMetrics(outer)] + innerScrolls.map(scrollMetrics)).joined(separator: "\n")
+            if !innerScrolls.isEmpty, layout == previousLayout { stableSamples += 1 } else { stableSamples = 0 }
+            previousLayout = layout
+            if stableSamples < 2 { try await Task.sleep(for: .milliseconds(20)) }
+        }
+        func attach(_ text: String, name: String) {
+            let attachment = XCTAttachment(string: text); attachment.name = name
+            attachment.lifetime = .keepAlways; add(attachment)
+        }
+        func capture(_ name: String) {
+            let image = UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
+                window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+            }
+            let attachment = XCTAttachment(image: image); attachment.name = name
+            attachment.lifetime = .keepAlways; add(attachment)
+        }
+        attach(previousLayout, name: "sunny-reader-native-scrolls-before")
+        capture("sunny-reader-before-programmatic-scroll")
+        XCTAssertEqual(stableSamples, 2, "Actual nested-reader geometry must settle")
+        XCTAssertEqual(innerScrolls.count, 1, "Identify the real guide reader independently of SwiftUI accessibility aggregation")
+        let inner = try XCTUnwrap(innerScrolls.first)
+        let readerFrame = window.convert(inner.bounds, from: inner)
+        XCTAssertTrue(window.bounds.contains(readerFrame), "The real reader must be exposed at the outer scroll's bottom")
+        func checkReaderHit(_ point: CGPoint, name: String) {
+            let hit = window.hitTest(point, with: nil)
+            var hitAncestry: [String] = [], hitAncestor = hit
+            while let view = hitAncestor { hitAncestry.append(String(describing: type(of: view))); hitAncestor = view.superview }
+            let surfaces = descendants(host.view).compactMap { $0 as? ConstellationTraceSurface.Surface }
+            let surfaceFacts = surfaces.map { surface in
+                let local = surface.convert(point, from: window)
+                return "frame=\(window.convert(surface.bounds, from: surface)); localPoint=\(local); accepts=\(surface.point(inside: local, with: nil)); enabled=\(surface.input?.enabled == true)"
+            }
+            attach("point=\(point); readerFrame=\(window.convert(inner.bounds, from: inner)); hitAncestry=\(hitAncestry); surfaces=\(surfaceFacts)", name: name)
+            XCTAssertTrue(window.convert(inner.bounds, from: inner).contains(point))
+            XCTAssertTrue(hit === inner || hit?.isDescendant(of: inner) == true, "The reader owns its actual pan-start point")
+            XCTAssertFalse(surfaces.isEmpty, "Exercise the actual board trace surface")
+            for surface in surfaces {
+                XCTAssertFalse(hit === surface || hit?.isDescendant(of: surface) == true)
+                XCTAssertFalse(surface.point(inside: surface.convert(point, from: window), with: nil),
+                               "The cropped board's native receiver cannot admit a guide-reader contact")
+            }
+        }
+        checkReaderHit(CGPoint(x: readerFrame.midX, y: readerFrame.minY + readerFrame.height * 0.75),
+                       name: "sunny-reader-hit-ownership-true-bottom")
+        let failureOuterOffset = maximumOffset(outer) - 34
+        outer.setContentOffset(CGPoint(x: outer.contentOffset.x, y: failureOuterOffset), animated: false)
+        let failureLayoutDeadline = ContinuousClock.now + .seconds(2)
+        var previousFailureLayout = "", failureStableSamples = 0
+        while failureStableSamples < 2 && ContinuousClock.now < failureLayoutDeadline {
+            await Task.yield(); host.view.layoutIfNeeded()
+            let layout = scrollMetrics(outer) + "\n" + scrollMetrics(inner)
+            if layout == previousFailureLayout { failureStableSamples += 1 } else { failureStableSamples = 0 }
+            previousFailureLayout = layout
+            if failureStableSamples < 2 { try await Task.sleep(for: .milliseconds(20)) }
+        }
+        attach(previousFailureLayout, name: "sunny-reader-native-failure-position")
+        capture("sunny-reader-before-programmatic-scroll-native-failure-position")
+        XCTAssertEqual(failureStableSamples, 2)
+        XCTAssertEqual(outer.contentOffset.y, failureOuterOffset, accuracy: pixel)
+        XCTAssertEqual(window.convert(inner.bounds, from: inner).minY, 419, accuracy: pixel,
+                       "Reproduce the failed native reader position independently of true-bottom inset placement")
+        checkReaderHit(CGPoint(x: 195, y: 560.25), name: "sunny-reader-hit-ownership-native-failure-position")
+        let width = inner.bounds.width - inner.adjustedContentInset.left - inner.adjustedContentInset.right
+        let measure = UIHostingController(rootView: Text("\(Text(line.speaker.name).bold()). \(line.text)")
+            .font(StarfallTheme.Typography.supporting).frame(maxWidth: .infinity, alignment: .leading)
+            .fixedSize(horizontal: false, vertical: true).environment(\.dynamicTypeSize, .accessibility5))
+        measure.safeAreaRegions = []
+        container.addChild(measure); measure.view.frame = CGRect(x: 0, y: 0, width: width, height: window.bounds.height)
+        measure.view.isHidden = true; container.view.addSubview(measure.view); measure.didMove(toParent: container)
+        defer { measure.willMove(toParent: nil); measure.view.removeFromSuperview(); measure.removeFromParent() }
+        measure.view.layoutIfNeeded()
+        let required = measure.sizeThatFits(in: CGSize(width: width, height: .greatestFiniteMagnitude))
+        attach("line=\(line.spokenText); allocatedWidth=\(width); requiredCompactText=\(required); liveSafeArea=\(host.view.safeAreaInsets); measurementSafeArea=\(measure.view.safeAreaInsets); parentTraits=\(container.traitCollection); measurementTraits=\(measure.traitCollection); \(scrollMetrics(inner))", name: "sunny-reader-complete-text-extent")
+        XCTAssertTrue(width.isFinite && width > 0)
+        XCTAssertTrue(required.width.isFinite && required.height.isFinite && required.width > 0 && required.height > 0)
+        XCTAssertGreaterThan(required.height, inner.bounds.height, "This actual Sunny AX5 copy must exercise inner-reader overflow")
+        XCTAssertGreaterThanOrEqual(inner.contentSize.height + pixel, required.height,
+                                    "The native reader must contain every line of the complete official-font text")
+        let maximum = maximumOffset(inner), originalOffset = inner.contentOffset.y
+        inner.setContentOffset(CGPoint(x: inner.contentOffset.x, y: maximum), animated: false)
+        let endDeadline = ContinuousClock.now + .seconds(2)
+        while abs(inner.contentOffset.y - maximum) > pixel && ContinuousClock.now < endDeadline {
+            await Task.yield(); host.view.layoutIfNeeded(); try await Task.sleep(for: .milliseconds(20))
+        }
+        attach("programmaticExtentProbeOnly=true; originalOffset=\(originalOffset); expectedEndOffset=\(maximum); \(scrollMetrics(inner)); outer=\(scrollMetrics(outer))", name: "sunny-reader-native-scrolls-at-end")
+        capture("sunny-reader-after-programmatic-scroll")
+        XCTAssertGreaterThan(maximum, originalOffset)
+        XCTAssertEqual(inner.contentOffset.y, maximum, accuracy: pixel)
+        XCTAssertGreaterThanOrEqual(inner.contentOffset.y + inner.bounds.height - inner.adjustedContentInset.bottom + pixel,
+                                    required.height, "The actual end offset exposes the complete text's final line")
+        XCTAssertEqual(store.game, game); XCTAssertEqual(store.constellationInputGeneration, generation)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), archive)
+        XCTAssertEqual(clock.now, 0); XCTAssertEqual(clock.deadline, deadline); XCTAssertTrue(store.isPaused)
+    }
+
     func testHomeAndOpenSkyGuidanceConnectModeActionsToTheReturnedDrawing() {
         XCTAssertEqual(SkyCopy.text(.homeStoryMode), "Story Mode")
         XCTAssertEqual(SkyCopy.text(.homeFreePlay), "Free Play")

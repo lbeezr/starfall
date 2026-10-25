@@ -61,7 +61,7 @@ final class OpenSkyPracticeInteractionTests: XCTestCase {
         let board = app.otherElements["experiment.board"]
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: app.buttons["experiment.next"]).wait(timeout: 5))
         XCTAssertTrue((board.value as? String)?.hasPrefix("0 showers") == true)
-        XCTAssertEqual(app.staticTexts["lantern.mode"].label, "Falling Sky")
+        XCTAssertEqual(app.otherElements["sky.header"].value as? String, "Falling Sky")
         let source = app.buttons["experiment.cell.1.1"], target = app.buttons["experiment.cell.1.2"]
         app.revealSkyControls([source, target])
         source.coordinate(withNormalizedOffset: .init(dx: 0.5, dy: 0.5))

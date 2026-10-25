@@ -1,0 +1,2667 @@
+{
+  "schemaVersion": 1,
+  "status": "DEVELOPMENT_SLICE_ACCEPTED; publication pending",
+  "recordedUTC": "2026-10-24T22:49:15.821865+00:00",
+  "goal": 1,
+  "issue": 382,
+  "nextGoal": {
+    "issue": 383,
+    "status": "pending individual goal1 main merge"
+  },
+  "scope": "Mechanical correction evidence only. Earlier passes, failed iterations and rejected candidates remain historical; no final development, visual or delivery acceptance is claimed.",
+  "historicalEvidence": {
+    "initialPR": "https://github.com/lbeezr/starfall/pull/392",
+    "status": "User-rejected on 2026-10-24; original mechanical results retained",
+    "unchangedFiles": {
+      "verification-01.json": "58f6c57d3f94cc156cb1b6ba998787bfd1ff511aad292f1d5bc47eaaaa4bd583",
+      "captures-01.json": "14d58af74e19c960e8b19a777e57780bf4fd95b33e043ba681ff3709754cf490"
+    },
+    "reason": "Oversized optional action used a menu component role; tablet instruments disconnected from scenery. Later goals cannot postpone the known goal 1 failure.",
+    "preservation": "This record is additive; verification-01.json, captures-01.json and originalPR392 capture bytes are not rewritten."
+  },
+  "rawArtifactRoot": "/private/tmp/starfall-hud-stack-20261024",
+  "environment": {
+    "host": "macOS27.0.1/26A434",
+    "Xcode": "27.1/27A9275",
+    "SDK": "iPhoneSimulator27.1",
+    "minimumDeployment": "iOS17",
+    "stage": "development",
+    "configuration": "Debug",
+    "scheme": "Starfall",
+    "physicalDeviceInstallation": "Not performed by this verification",
+    "dedicatedSimulators": [
+      {
+        "architecture": "arm64",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "modelName": "iPad Pro 13-inch (M5)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      {
+        "architecture": "arm64",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      }
+    ]
+  },
+  "sources": {
+    "initial": {
+      "snapshot": "source-01-correction-initial.json",
+      "snapshotSHA256": "3c132f95fa91e2227de9fb6b0007ffb5cdb2ead77406283a3317e06db5550d09",
+      "base": "80f7f3296fae4abc324255d401c0985943fb7e03",
+      "runtimeFingerprint": "dev.26054e77b1",
+      "buildInputCount": 7
+    },
+    "layout-v1": {
+      "snapshot": "source-01-correction.json",
+      "snapshotSHA256": "efa5118a8c19985609ad7021dbc0d855bb712ee208dc49af01e1eabc49dc8858",
+      "base": "80f7f3296fae4abc324255d401c0985943fb7e03",
+      "runtimeFingerprint": "dev.26054e77b1",
+      "buildInputCount": 7
+    },
+    "scaled": {
+      "snapshot": "source-01-correction-scaled.json",
+      "snapshotSHA256": "29c2bfdb968a1306e35e267197f4cd07d8efb76388b1a47dedfd8d485b9bf61b",
+      "base": "80f7f3296fae4abc324255d401c0985943fb7e03",
+      "runtimeFingerprint": "dev.4429e6b889",
+      "buildInputCount": 8
+    },
+    "composition-v2": {
+      "snapshot": "source-01-correction-composition-v2.json",
+      "snapshotSHA256": "4cdf3ec608c11c1228e28fbc9c8583bcb92d53aafb42ff04c554cabaa565e0b8",
+      "base": "80f7f3296fae4abc324255d401c0985943fb7e03",
+      "runtimeFingerprint": "dev.9807b70b6f",
+      "buildInputCount": 9
+    },
+    "instrument": {
+      "snapshot": "source-01-correction-instrument.json",
+      "snapshotSHA256": "c9748d7c1889da1a9298c705c59ebc9607d04465f259df681d9e44fac506748f",
+      "base": "80f7f3296fae4abc324255d401c0985943fb7e03",
+      "runtimeFingerprint": "dev.d319d9e311",
+      "buildInputCount": 7
+    },
+    "d319": {
+      "snapshot": "source-01-correction-final.json",
+      "snapshotSHA256": "63a346b4288ff2505229389b0112a07a1156e505198d10a48db0a96d96706bc4",
+      "base": "80f7f3296fae4abc324255d401c0985943fb7e03",
+      "runtimeFingerprint": "dev.d319d9e311",
+      "buildInputCount": 13
+    },
+    "role-trail": {
+      "snapshot": "source-01-correction-role-trail.json",
+      "snapshotSHA256": "79e4a171ce25b700afc12d01325adfec64dedfa216e14de936fcc15004768013",
+      "base": "80f7f3296fae4abc324255d401c0985943fb7e03",
+      "runtimeFingerprint": "dev.32fc4c0055",
+      "buildInputCount": 13
+    },
+    "integrated": {
+      "snapshot": "source-01-correction-integrated.json",
+      "snapshotSHA256": "bd749bc6b5b232ce9142a3c3a1ba9ba1f081746dea58c02c42a1eace4d52e8b3",
+      "base": "ac7de9cb9ce37e8ea9ff9879f05f55857b678b68",
+      "sourceCommit": "03e1f73941f7a245eed0117c475af75e26bd3b53",
+      "runtimeFingerprint": "dev.c8ff0528d7",
+      "workingTree": "",
+      "buildInputCount": 13
+    },
+    "contact": {
+      "snapshot": "source-01-correction-contact.json",
+      "snapshotSHA256": "d66e69a8a235f2ef7875f385df0d8033c41e6c6aa6585b2790db773053ffb673",
+      "base": "ac7de9cb9ce37e8ea9ff9879f05f55857b678b68",
+      "sourceCommit": "6b94e7555722eda7fedcffd98ec6d1fe9f9520b3",
+      "runtimeFingerprint": "dev.de668f8e0a",
+      "buildInputs": {
+        "App/FallingSkyHUD.swift": "bf6b9e86afa4e7c2d1cb986728a1f06138901cca3d7c52cb34cee9033bc09aac",
+        "App/FallingSkyView.swift": "9db4b4bc04cecf41b624b6496e9b1207ffb4eb9f927ca9ab4b0545c07710b3f9",
+        "App/SkyCeilingOverlay.swift": "cee25b84fc2a20d94230e910e393eee25c4887277205e3e5fbe30d01daccda97",
+        "App/SkyForecastDestinations.swift": "4320595e3253ce50ad84649948b031ee70cd40fb134a7def1b4d5126523f01f3",
+        "App/SkyTechniqueIntent.swift": "9cae71adfb64f82f69a5745861db1aea815d96f965220122f99d73f67d1707f8",
+        "App/StarfallTheme.swift": "d234a684902ade7cdb3d6de64f07e6c6f688f866f3942e6dafcd8218f69beecc",
+        "AppTests/StarlightCelebrationTests.swift": "bc1a1147003deb583d9690e3c9f94c39755ca0e83dd2adb14c190b5c160a511e",
+        "AppTests/TraceInputPolishTests.swift": "f91f6ce6d70e7cc02207c9622450e5f4755dc23c7eca6dddd0835f70a383d5ed",
+        "UITests/ForecastColumnInspectionInteractionTests.swift": "756b6993c07f56c4268f7f13fdd7c90feb707c656cbe38ea1447b8a06293370f",
+        "UITests/FullBoardLanternInteractionTests.swift": "18202071d824096b61773f501d0ce4a775eba4696bcbe7de6b918ab69028e8c9",
+        "UITests/FullBoardRibbonInteractionTests.swift": "02ffc30e9f8c59f7dea1a77006a8e57a5051c2d59cf70db1cb0f74b06fb08325",
+        "UITests/IdentityJourneyInteractionTests.swift": "3d859f3cca764b70fbeeae3d0647d61625ee1d73f77811ce89e7fa8cdad1dcbe",
+        "UITests/OpenSkyPracticeInteractionTests.swift": "864006957f8563974c5b18628ab1ad290f51663a2b5469fe9f05b4b47b4d2f84",
+        "UITests/SkyTechniqueInteractionTests.swift": "b6618faa8a3a6d4e1d61fa2de259e96cfd8c9c743e939f2703d821dc295015f7",
+        "UITests/StoryMasteryInteractionTests.swift": "9441d408c2bbba713fd6cdab3abde9cdebc3c0a38449776ef00f724c76030aa6"
+      },
+      "workingTree": ""
+    },
+    "scenic-product": {
+      "snapshot": "source-01-correction-scenic.json",
+      "snapshotSHA256": "b080600aaf4937910937185159e8bbae39ad36c66b3bf29508d868dfb68a0527",
+      "commit": "6b94e7555722eda7fedcffd98ec6d1fe9f9520b3",
+      "runtime": "dev.bca571394e",
+      "dirtyBuildInputs": {
+        "App/FallingSkyHUD.swift": "28a130dc84b20ecf1ba36a379e8a8b1bdbd2912cd4a9fc702561b49b114d052b",
+        "App/FallingSkyView.swift": "8af11fb9e5f47bae73da154be9ee880b36daef58125eb9da13ba93c2ce7f9427",
+        "App/SkyForecastDestinations.swift": "50342b1a425a43bb0cec2a219a76f1f901bfccb1d7081c4e6e61d3ecc5516e46",
+        "App/StarfallTheme.swift": "fa3674494912653b4faa6867aeec6424bccbb223a023f7afa3db12d0796acc80",
+        "App/StarlightCelebration.swift": "ed0e359ddafacb26ad4bc022d0a60cc99fd2fb9161840e927becba8cef74db13",
+        "AppTests/CascadeReturnTests.swift": "b02b4a26b848f93888f826c4c63e7b5eb939a2c01ce736f5ba3783a1c546dd4e",
+        "AppTests/StarlightCelebrationTests.swift": "eb75efd2de23bbb9f80a177f3403d71ad72951e8329333869494bcdbd9610282"
+      },
+      "buildLog": "build-01-correction-scenic.log"
+    },
+    "scenic-extracted": {
+      "snapshot": "source-01-correction-scenic-extracted.json",
+      "snapshotSHA256": "c3eeaf78d7cbd54a81201a7a1253ac27c18bfcd7c87630c4a194e2d0f82407d7",
+      "commit": "6d03857ed8fbf2eba867c25c95fe361872283242",
+      "runtime": "dev.2761763ed2",
+      "buildInputHashes": {
+        "App/FallingSkyHUD.swift": "28a130dc84b20ecf1ba36a379e8a8b1bdbd2912cd4a9fc702561b49b114d052b",
+        "App/FallingSkyView.swift": "8af11fb9e5f47bae73da154be9ee880b36daef58125eb9da13ba93c2ce7f9427",
+        "App/SkyCeilingOverlay.swift": "cee25b84fc2a20d94230e910e393eee25c4887277205e3e5fbe30d01daccda97",
+        "App/SkyForecastDestinations.swift": "50342b1a425a43bb0cec2a219a76f1f901bfccb1d7081c4e6e61d3ecc5516e46",
+        "App/SkyTechniqueIntent.swift": "9cae71adfb64f82f69a5745861db1aea815d96f965220122f99d73f67d1707f8",
+        "App/StarfallTheme.swift": "fa3674494912653b4faa6867aeec6424bccbb223a023f7afa3db12d0796acc80",
+        "App/StarlightCelebration.swift": "ed0e359ddafacb26ad4bc022d0a60cc99fd2fb9161840e927becba8cef74db13",
+        "AppTests/CascadeReturnTests.swift": "b02b4a26b848f93888f826c4c63e7b5eb939a2c01ce736f5ba3783a1c546dd4e",
+        "AppTests/README.md": "2d7570d2625b4de238d3ee71b840eb5d2fd2254ec6c9efddae03b6b949735502",
+        "AppTests/SkyReadingPlayfieldTests.swift": "f51bed986428283ae18610e62dccf527cb3615cd369d6cc9b6202f59e95a921a",
+        "AppTests/TraceInputPolishTests.swift": "f91f6ce6d70e7cc02207c9622450e5f4755dc23c7eca6dddd0835f70a383d5ed",
+        "Starfall.xcodeproj/project.pbxproj": "7ab9792f573d99a911ceeda6c6e16f9c28d5896a5a004dd3a1fe1af8e36eb71e",
+        "UITests/ForecastColumnInspectionInteractionTests.swift": "756b6993c07f56c4268f7f13fdd7c90feb707c656cbe38ea1447b8a06293370f",
+        "UITests/FullBoardLanternInteractionTests.swift": "18202071d824096b61773f501d0ce4a775eba4696bcbe7de6b918ab69028e8c9",
+        "UITests/FullBoardRibbonInteractionTests.swift": "02ffc30e9f8c59f7dea1a77006a8e57a5051c2d59cf70db1cb0f74b06fb08325",
+        "UITests/IdentityJourneyInteractionTests.swift": "3d859f3cca764b70fbeeae3d0647d61625ee1d73f77811ce89e7fa8cdad1dcbe",
+        "UITests/OpenSkyPracticeInteractionTests.swift": "864006957f8563974c5b18628ab1ad290f51663a2b5469fe9f05b4b47b4d2f84",
+        "UITests/SkyTechniqueInteractionTests.swift": "b6618faa8a3a6d4e1d61fa2de259e96cfd8c9c743e939f2703d821dc295015f7",
+        "UITests/StoryMasteryInteractionTests.swift": "9441d408c2bbba713fd6cdab3abde9cdebc3c0a38449776ef00f724c76030aa6"
+      }
+    },
+    "natural-header": {
+      "snapshot": "source-01-correction-natural-header.json",
+      "snapshotSHA256": "7e148e3e6819e4a505b6bf040e5e9a25338496d0d660bbea2f04df779426272a",
+      "commit": "d5d02a7bebe934dd56d14ea2893ff2da7f571844",
+      "runtime": "dev.402680814f",
+      "snapshotBaseCommit": "6d03857ed8fbf2eba867c25c95fe361872283242",
+      "workingTreeDifferences": {
+        "App/FallingSkyView.swift": "676e9497b2a6b03fd9ed7e757a9529cf77d4f27c0a2c4ce3654c3839b4d37679",
+        "AppTests/SkyReadingPlayfieldTests.swift": "e13881d44ac799ff4ec1afe77c7d144c0f78328bfcec5e50cdd7dd4b366a424b"
+      },
+      "buildInputHashes": {
+        "App/FallingSkyHUD.swift": "28a130dc84b20ecf1ba36a379e8a8b1bdbd2912cd4a9fc702561b49b114d052b",
+        "App/FallingSkyView.swift": "676e9497b2a6b03fd9ed7e757a9529cf77d4f27c0a2c4ce3654c3839b4d37679",
+        "App/SkyCeilingOverlay.swift": "cee25b84fc2a20d94230e910e393eee25c4887277205e3e5fbe30d01daccda97",
+        "App/SkyForecastDestinations.swift": "50342b1a425a43bb0cec2a219a76f1f901bfccb1d7081c4e6e61d3ecc5516e46",
+        "App/SkyTechniqueIntent.swift": "9cae71adfb64f82f69a5745861db1aea815d96f965220122f99d73f67d1707f8",
+        "App/StarfallTheme.swift": "fa3674494912653b4faa6867aeec6424bccbb223a023f7afa3db12d0796acc80",
+        "App/StarlightCelebration.swift": "ed0e359ddafacb26ad4bc022d0a60cc99fd2fb9161840e927becba8cef74db13",
+        "AppTests/CascadeReturnTests.swift": "b02b4a26b848f93888f826c4c63e7b5eb939a2c01ce736f5ba3783a1c546dd4e",
+        "AppTests/README.md": "2d7570d2625b4de238d3ee71b840eb5d2fd2254ec6c9efddae03b6b949735502",
+        "AppTests/SkyReadingPlayfieldTests.swift": "e13881d44ac799ff4ec1afe77c7d144c0f78328bfcec5e50cdd7dd4b366a424b",
+        "AppTests/TraceInputPolishTests.swift": "f91f6ce6d70e7cc02207c9622450e5f4755dc23c7eca6dddd0835f70a383d5ed",
+        "Starfall.xcodeproj/project.pbxproj": "7ab9792f573d99a911ceeda6c6e16f9c28d5896a5a004dd3a1fe1af8e36eb71e",
+        "UITests/ForecastColumnInspectionInteractionTests.swift": "756b6993c07f56c4268f7f13fdd7c90feb707c656cbe38ea1447b8a06293370f",
+        "UITests/FullBoardLanternInteractionTests.swift": "18202071d824096b61773f501d0ce4a775eba4696bcbe7de6b918ab69028e8c9",
+        "UITests/FullBoardRibbonInteractionTests.swift": "02ffc30e9f8c59f7dea1a77006a8e57a5051c2d59cf70db1cb0f74b06fb08325",
+        "UITests/IdentityJourneyInteractionTests.swift": "3d859f3cca764b70fbeeae3d0647d61625ee1d73f77811ce89e7fa8cdad1dcbe",
+        "UITests/OpenSkyPracticeInteractionTests.swift": "864006957f8563974c5b18628ab1ad290f51663a2b5469fe9f05b4b47b4d2f84",
+        "UITests/SkyTechniqueInteractionTests.swift": "b6618faa8a3a6d4e1d61fa2de259e96cfd8c9c743e939f2703d821dc295015f7",
+        "UITests/StoryMasteryInteractionTests.swift": "9441d408c2bbba713fd6cdab3abde9cdebc3c0a38449776ef00f724c76030aa6"
+      },
+      "sourceBinding": "The raw snapshot identifies the scenic-extracted base plus the exact two dirty build inputs later committed at d5d02a7b. All retained input hashes match the current frozen source; documentation-only changes are outside these inputs."
+    },
+    "packet-integrated": {
+      "snapshot": "source-01-packet-integrated.json",
+      "snapshotSHA256": "e99a2afa89afac0fa1566a75edc86d824b8a15ddd981772de27e8da696dacb25",
+      "commit": "bf5e6d235936dad65ef445b249f97f766ad4433b",
+      "runtime": "dev.3ebf052fca",
+      "snapshotBaseCommit": "b7aa58f79fd40ca79487908dcc4d94dd23a900b3",
+      "workingTreeDifferences": {
+        "App/StarlightCelebration.swift": "e2cca7158a1bf91cd5c4d740a76532753afd00b7402c3e88458c0c914b399339",
+        "AppTests/StarlightCelebrationTests.swift": "ac7f4dec7e6ed5a1cdf3f1d8649b0e500e7e5b28c0a4a2b8ca395f40ed02c3cd",
+        "UITests/ForecastColumnInspectionInteractionTests.swift": "c3290ebf6ec7657ad0c16b008b81e2ad320bb70c6ed204ef6aca43f84ba8ac9d"
+      },
+      "sourceBinding": "All three dirty input hashes match their bytes in bf5e6d23. b7aa58f7 integrates main271fd9258 before the packet clipping correction.",
+      "mainIntegrated": "271fd925843fe99d11763b9eaa23ea020565827d",
+      "integrationCommit": "b7aa58f79fd40ca79487908dcc4d94dd23a900b3"
+    },
+    "native-precision": {
+      "commit": "ec40c9a3a8c90db689725b0c00e9af6cb573d132",
+      "parent": "bf5e6d235936dad65ef445b249f97f766ad4433b",
+      "runtime": "dev.3ebf052fca",
+      "changedPaths": [
+        "UITests/ForecastColumnInspectionInteractionTests.swift",
+        "UITests/SkyDialogueInteractionTests.swift"
+      ],
+      "productSourceComparison": "git diff bf5e6d23 ec40c9a3 -- App is empty; test-only native comparison/admission changes preserve the packet-corrected App bytes.",
+      "testChanges": [
+        "Compare header/descendant containment at their common Float precision; complete44/48-point target edge checks remain CGFloat comparisons.",
+        "Use one immutable message-frame sample for each reader-pan admission and progress comparison; retain every movement, overlap, fixed action and final reading assertion."
+      ]
+    },
+    "reader-extent-v1": {
+      "testBaseCommit": "ec40c9a3a8c90db689725b0c00e9af6cb573d132",
+      "productCommit": "bf5e6d235936dad65ef445b249f97f766ad4433b",
+      "runtime": "dev.3ebf052fca",
+      "dirtyBuildInputs": {
+        "AppTests/SkyDialogueTests.swift": "aafe17e0f0ce4e1374930635ceea9b258cd3c58f64e82c1c65d207b61315ebc9"
+      },
+      "sourceBinding": "Test-only working tree at the first extent build/run; no production changes."
+    },
+    "reader-extent-native-position": {
+      "testBaseCommit": "ec40c9a3a8c90db689725b0c00e9af6cb573d132",
+      "productCommit": "bf5e6d235936dad65ef445b249f97f766ad4433b",
+      "runtime": "dev.3ebf052fca",
+      "dirtyBuildInputs": {
+        "AppTests/SkyDialogueTests.swift": "9d7f644902aa4ae52b94c1b82ffa78d071ffc5e24712588862154b37bf4a77d7"
+      },
+      "sourceBinding": "Test-only working tree at build/run; identical test bytes subsequently committed in3fe9f9a8.",
+      "subsequentTestCommit": "3fe9f9a89d2529297e9dccbbfa3ae890fb97bf56"
+    }
+  },
+  "currentCandidate": {
+    "source": "packet-integrated product with test-only native comparison and hosted reader extent diagnostics",
+    "productCommit": "bf5e6d235936dad65ef445b249f97f766ad4433b",
+    "testCommit": "3fe9f9a89d2529297e9dccbbfa3ae890fb97bf56",
+    "runtimeFingerprint": "dev.3ebf052fca",
+    "base": "b7aa58f79fd40ca79487908dcc4d94dd23a900b3",
+    "mainIntegrated": "271fd925843fe99d11763b9eaa23ea020565827d",
+    "status": "Source-bound selected native gates and independent whole-screen/export visual review passed; prior pan failures remain an explicit residual",
+    "productChanges": [
+      "Shared fitted nightglass protection:82% opacity,8pt visual-only outsets and3pt feather; opaque/no feather under Reduced Transparency or Increased Contrast",
+      "Protection applied to exact score, complete forecast group, instrument status and explicitly scenic gameplay actions; clear default gameplay backdrop and existing utility targets preserved",
+      "Return-slot fitting uses edge-preserving placement for fractional full-height protected bands",
+      "Pinned edgeHeader requests natural vertical size before outer width frames and header anchoring, preventing measured native score content from being compressed by the finite reading layout.",
+      "Composited packet heads/tails/shadow are excluded from actual measured header and score; path math/flight/arrivals/lifetime/receiver bloom are preserved."
+    ],
+    "testAndProjectChanges": "Existing packet raster method extended without method-count changes; focused reading suite remains explicit hosted membership. Test-only ec40c9a3 corrects common-precision header comparison and immutable pan admission sampling. One actual-root Sunny AX5 extent/hit method added; exact failure-position checks retain the same method count.",
+    "sourceDiscovery": {
+      "appHostedDiscovered": 815,
+      "nativeUIDiscovered": 260,
+      "priorFocusedExtractionTotals": {
+        "appHostedDiscovered": 799,
+        "nativeUIDiscovered": 259
+      },
+      "changeReason": "Main271fd integration yielded814 hosted/260 UI; the one reader-extent method adds1 hosted only. Discovery totals are not executed-pass counts.",
+      "planLog": "native-plan-integrated-271fd.log",
+      "planLogSHA256": "9bc84ed819a5ddf739846aa6ee4472295c9f725699d9c1914593c8b22d75e098",
+      "priorPacketIntegrationTotals": {
+        "appHostedDiscovered": 814,
+        "nativeUIDiscovered": 260
+      },
+      "planLogScope": "The retained integrated plan log records814/260 before the new single hosted method; current source-counted inventory is815/260."
+    },
+    "build": {
+      "status": "passed",
+      "stage": "build-01-packet-integrated",
+      "commandWallSeconds": 51.706
+    },
+    "integratedHosted": {
+      "status": "passed",
+      "passed": 228,
+      "failed": 0,
+      "skipped": 0,
+      "commandWallSeconds": 60.662,
+      "selectedTests": [
+        "StarfallAppTests/SkyForecastDestinationsTests",
+        "StarfallAppTests/SkyForecastInspectionTests",
+        "StarfallAppTests/SkyShowerInspectionTests",
+        "StarfallAppTests/StarlightCelebrationTests",
+        "StarfallAppTests/SkyReadingPlayfieldTests",
+        "StarfallAppTests/SkyDialogueTests",
+        "StarfallAppTests/ObservatoryArtworkTests",
+        "StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking",
+        "StarfallAppTests/SkyTechniqueStoreTests",
+        "StarfallAppTests/TraceInputPolishTests",
+        "StarfallAppTests/CascadeReturnTests",
+        "StarfallAppTests/SkyFlowStateTests",
+        "StarfallAppTests/RestorationFlowTests",
+        "StarfallAppTests/SkyRestoredPlacePresentationTests",
+        "StarfallAppTests/SkyRestoredPlaceSnapshotTests",
+        "StarfallAppTests/SkyRestoredPlaceStoreTests"
+      ],
+      "runtimeWarnings": 0
+    },
+    "phonePacketReading": {
+      "status": "passed",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "commandWallSeconds": 42.207,
+      "selectedTests": [
+        "StarfallAppTests/SkyReadingPlayfieldTests",
+        "StarfallAppTests/StarlightCelebrationTests/testPacketInkAndShadowLeaveTheScoreReadableAtBothDestinations"
+      ],
+      "runtimeWarnings": 0
+    },
+    "release": {
+      "status": "passed",
+      "stage": "release-01-bf5e6d23",
+      "commandWallSeconds": 35.458
+    },
+    "native": {
+      "status": "ec40 default/background cases passed; isolated 3fe9 reader passed. Earlier Sunny failure remains source-bound history with unresolved cause.",
+      "earlierNaturalHeaderPhone": {
+        "passed": 1,
+        "failed": 2,
+        "skipped": 0,
+        "commandWallSeconds": 310.652
+      },
+      "earlierNaturalHeaderTablet": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "commandWallSeconds": 322.219,
+        "caseSeconds": 288.127,
+        "scope": "Native tablet d5 source; separate from current product-native acceptance."
+      },
+      "ec40c9a3": {
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0,
+        "commandWallSeconds": 276.966,
+        "testCommit": "ec40c9a3a8c90db689725b0c00e9af6cb573d132",
+        "runtimeFingerprint": "dev.3ebf052fca",
+        "failure": "Second Sunny pan remained at message minY404.6667 with its maxY1101.3333 beyond reader maxY607.3333."
+      },
+      "isolatedReader": {
+        "stage": "phone-01-3fe9f9a8-serial",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "commandWallSeconds": 70.019,
+        "caseSeconds": 64.788,
+        "testCommit": "3fe9f9a89d2529297e9dccbbfa3ae890fb97bf56",
+        "runtimeFingerprint": "dev.3ebf052fca",
+        "runtimeWarnings": 0
+      },
+      "coverage": {
+        "runtimeFingerprint": "dev.3ebf052fca",
+        "defaultAndBackgroundStage": "phone-01-ec40c9a3",
+        "defaultAndBackgroundPassedMethods": [
+          "testNormalLanternSupportingRowKeepsForecastInspectionRound",
+          "testNormalLanternSupportingRowPreservesBackgroundAndWorldRound"
+        ],
+        "readerStage": "phone-01-3fe9f9a8-serial",
+        "readerPassedMethod": "testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+        "sourceBinding": "ec40c9a3..3fe9f9a8 changes only the hosted test file; App and UITest bytes are identical. Separate stages remain separate results; no all-green aggregate of the earlier failed run is claimed."
+      },
+      "residualReaderFailure": {
+        "condition": "Earlier ec40 native run:second Sunny pan stopped at message minY404.6667 with text maxY1101.3333 beyond viewport maxY607.3333. The isolated case now passes with unchanged pan gates.",
+        "cause": "Unresolved; content extent and stable hit tests pass. Serial success does not prove exclusive concurrency causation.",
+        "followup": "If the stall recurs under isolated native ownership, capture inner/outer offsets and recognizer state at the first failed pan before changing production ownership. Preserve movement/final-line/12-pan gates; no blanket retry."
+      }
+    },
+    "visual": {
+      "boundedPacketVerdict": "passed identified2x/3x before/live samples",
+      "record": "visual-review-01-packet.json",
+      "wholeGoal": "Awaiting independent review of current native complete-screen/reading captures; no overall acceptance claimed"
+    },
+    "scope": "No final adoption, merge, phone installation, actual VoiceOver or whole-frame-timeline claim. App bytes remain bf5e6d23/dev.3ebf052fca through3fe9f9a8; later changes are tests only.",
+    "readerExtentDiagnostics": {
+      "passedRuns": 2,
+      "methodsPerRun": 1,
+      "skipped": 0,
+      "runtimeWarnings": 0,
+      "stages": [
+        "hosted-01-reader-extent",
+        "hosted-01-reader-extent-native-position"
+      ],
+      "scope": "Complete content extent and stable hit ownership pass at true bottom and exact failed native geometry. Programmatic end scrolling does not establish real-pan acceptance or an exclusive cause."
+    }
+  },
+  "runs": [
+    {
+      "stage": "core-01-correction",
+      "source": "initial",
+      "result": "passed",
+      "log": "core-01-correction.log",
+      "logSHA256": "c5553cfa133ca6d900f0a08fd5a8d61f1ba356997e2a9077699469a4f0bdeb9a",
+      "command": null,
+      "commandEvidence": "The retained Core log does not print the full invocation; flags are not inferred.",
+      "lastLoggedSummary": {
+        "executed": 352,
+        "failures": 0,
+        "testSeconds": 24.774,
+        "suiteWallSeconds": 24.796
+      },
+      "methodsPassed": 352,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "receiptFile": "core-01-correction-receipt.json",
+      "startedUTC": "2026-10-24T21:52:19.566952+00:00",
+      "commandWallSeconds": 26.271,
+      "limitSeconds": 240.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "hosted-01-correction",
+      "source": "initial",
+      "result": "passed on an earlier candidate; not adoption",
+      "log": "hosted-01-correction.log",
+      "logSHA256": "92285ad4c0e81e50f65fa13072303d8bc526fcdc1c5907a4ab3595dd955453d2",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" \"-only-testing:StarfallAppTests/SkyForecastDestinationsTests\" \"-only-testing:StarfallAppTests/SkyForecastInspectionTests\" \"-only-testing:StarfallAppTests/SkyShowerInspectionTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/ObservatoryArtworkTests\" \"-only-testing:StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 84,
+        "failures": 0,
+        "testSeconds": 32.043,
+        "suiteWallSeconds": 32.062
+      },
+      "methodsPassed": 84,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "receiptFile": "hosted-01-correction-receipt.json",
+      "startedUTC": "2026-10-24T21:53:14.187228+00:00",
+      "commandWallSeconds": 38.146,
+      "limitSeconds": 240.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "hosted-01-correction-layout",
+      "source": "layout-v1",
+      "result": "failed: one method, two assertions",
+      "log": "hosted-01-correction-layout.log",
+      "logSHA256": "de04a971632d0c96a51ba07a223072209313820e8ebce8717e82987f2ebbb3f8",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-layout.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 1,
+        "failures": 2,
+        "testSeconds": 1.807,
+        "suiteWallSeconds": 1.811
+      },
+      "methodsPassed": 0,
+      "methodsFailed": 1,
+      "skippedMethods": 0,
+      "failures": [
+        "XCTAssertTrue failed",
+        "XCTUnwrap failed: expected non-nil value of type \"StarlightCelebration\""
+      ],
+      "receiptFile": "hosted-01-correction-layout-receipt.json",
+      "startedUTC": "2026-10-24T21:55:12.485847+00:00",
+      "commandWallSeconds": 63.68,
+      "limitSeconds": 120.0,
+      "exitCode": 65
+    },
+    {
+      "stage": "hosted-01-correction-layout-v2",
+      "source": "scaled",
+      "result": "failed: real score/header clipping",
+      "log": "hosted-01-correction-layout-v2.log",
+      "logSHA256": "c19e409046c57b6ea8f900d4fc05a4422571933bbc7107a94c5f83eb0090b0ca",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -parallel-testing-enabled NO -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-layout-v2.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 1,
+        "failures": 1,
+        "testSeconds": 5.266,
+        "suiteWallSeconds": 5.268
+      },
+      "methodsPassed": 0,
+      "methodsFailed": 1,
+      "skippedMethods": 0,
+      "failures": [
+        "XCTAssertTrue failed - The score must fit its measured header: window=(0.0, 0.0, 375.0, 667.0); host=(0.0, 0.0, 375.0, 667.0); header=(12.0, 4.0, 351.0, 379.5); score=(12.0, -3.5, 286.5, 63.5); return=(0.0, 391.5, 375.0, 80.0); board=(0.0, 299.5, 375.0, 900.0); light=(34.0, 40.0, 25.0, 25.0); scenery=(2.5, 16.5, 85.0, 80.0)"
+      ],
+      "receiptFile": "hosted-01-correction-layout-v2-receipt.json",
+      "startedUTC": "2026-10-24T21:58:12.448979+00:00",
+      "commandWallSeconds": 49.483,
+      "limitSeconds": 120.0,
+      "exitCode": 65
+    },
+    {
+      "stage": "hosted-01-correction-layout-v3",
+      "source": "composition-v2",
+      "result": "failed: UIWindowScene not ready",
+      "log": "hosted-01-correction-layout-v3.log",
+      "logSHA256": "eda06e578df1f84f5dfee97233a872c6b9dd6fc13b17ea373c74d5445ff61658",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-layout-v3.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 1,
+        "failures": 1,
+        "testSeconds": 0.508,
+        "suiteWallSeconds": 0.51
+      },
+      "methodsPassed": 0,
+      "methodsFailed": 1,
+      "skippedMethods": 0,
+      "failures": [
+        "XCTUnwrap failed: expected non-nil value of type \"UIWindowScene\""
+      ],
+      "sourceLimit": "The composition snapshot binds runtime inputs; scene-readiness/test-harness edits continued before v4. No exact later test-file hash is invented.",
+      "receiptFile": "hosted-01-correction-layout-v3-receipt.json",
+      "startedUTC": "2026-10-24T22:06:58.292552+00:00",
+      "commandWallSeconds": 11.781,
+      "limitSeconds": 120.0,
+      "exitCode": 65
+    },
+    {
+      "stage": "hosted-01-correction-layout-v4",
+      "source": "composition-v2",
+      "result": "mechanically passed; visual clipping remained",
+      "log": "hosted-01-correction-layout-v4.log",
+      "logSHA256": "482d0f5c948271c33741ad722c561fcf7700c949cd73ce12ad63488a44f2b65e",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-layout-v4.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 1,
+        "failures": 0,
+        "testSeconds": 4.542,
+        "suiteWallSeconds": 4.544
+      },
+      "methodsPassed": 1,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "sourceLimit": "The composition snapshot binds runtime inputs; scene-readiness/test-harness edits continued before v4. No exact later test-file hash is invented.",
+      "receiptFile": "hosted-01-correction-layout-v4-receipt.json",
+      "startedUTC": "2026-10-24T22:12:34.955899+00:00",
+      "commandWallSeconds": 17.397,
+      "limitSeconds": 120.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "hosted-01-correction-layout-v5",
+      "source": "instrument",
+      "result": "passed isolated strengthened reading-layout regression",
+      "log": "hosted-01-correction-layout-v5.log",
+      "logSHA256": "6ea5294ac2ca5a7a035d3218ca86502c64f90700238f74ed68402fccfa4c71f4",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/StarlightCelebrationTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-layout-v5.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 1,
+        "failures": 0,
+        "testSeconds": 4.781,
+        "suiteWallSeconds": 4.784
+      },
+      "methodsPassed": 1,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "receiptFile": "hosted-01-correction-layout-v5-receipt.json",
+      "startedUTC": "2026-10-24T22:23:11.439298+00:00",
+      "commandWallSeconds": 11.644,
+      "limitSeconds": 120.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "phone-01-correction-inspection",
+      "source": "composition-v2",
+      "result": "passed earlier inspection journey; later layout superseded",
+      "log": "phone-01-correction-inspection.log",
+      "logSHA256": "4e79e18fd40d82a7f61e4cf722efa7eb4d1305f233e7ca75b153a30862253b8e",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/phone-01-correction-inspection.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 1,
+        "failures": 0,
+        "testSeconds": 110.761,
+        "suiteWallSeconds": 110.765
+      },
+      "methodsPassed": 1,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "completedMethods": [
+        {
+          "method": "StarfallUITests.ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+          "seconds": 110.761
+        }
+      ],
+      "receiptFile": "phone-01-correction-inspection-receipt.json",
+      "startedUTC": "2026-10-24T22:08:25.273321+00:00",
+      "commandWallSeconds": 159.293,
+      "limitSeconds": 420.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "tablet-01-correction",
+      "source": "instrument",
+      "result": "passed earlier tablet journey; later source superseded",
+      "log": "tablet-01-correction.log",
+      "logSHA256": "bca002865dee0a0c43e5eadac4f385a34657b4d099fb12f49f0e77baaac3b5fc",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/tablet-01-correction.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 1,
+        "failures": 0,
+        "testSeconds": 236.151,
+        "suiteWallSeconds": 236.157
+      },
+      "methodsPassed": 1,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "completedMethods": [
+        {
+          "method": "StarfallUITests.ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+          "seconds": 236.151
+        }
+      ],
+      "receiptFile": "tablet-01-correction-receipt.json",
+      "startedUTC": "2026-10-24T22:13:40.900214+00:00",
+      "commandWallSeconds": 249.326,
+      "limitSeconds": 420.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "phone-01-correction-pressure-dialogue",
+      "source": "d319",
+      "result": "two native methods passed; pressure component-role verdict rejected separately",
+      "log": "phone-01-correction-pressure-dialogue.log",
+      "logSHA256": "cc97788583121005b500ed2f82d33dd394c12f66b823838b572c424d64670d39",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable\" \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/phone-01-correction-pressure-dialogue.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 2,
+        "failures": 0,
+        "testSeconds": 239.803,
+        "suiteWallSeconds": 239.812
+      },
+      "methodsPassed": 2,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "completedMethods": [
+        {
+          "method": "StarfallUITests.SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+          "seconds": 71.642
+        },
+        {
+          "method": "StarfallUITests.SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable",
+          "seconds": 168.161
+        }
+      ],
+      "receiptFile": "phone-01-correction-pressure-dialogue-receipt.json",
+      "startedUTC": "2026-10-24T22:24:40.081729+00:00",
+      "commandWallSeconds": 246.755,
+      "limitSeconds": 600.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "hosted-01-correction-final",
+      "source": "d319",
+      "result": "85 passed; superseded candidate, not final acceptance",
+      "log": "hosted-01-correction-final.log",
+      "logSHA256": "e0c9ab11efe42f1275a4ea2b5557b3f3e1012f4f4ed9b560cdb46ab8cd76f1e0",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyForecastDestinationsTests\" \"-only-testing:StarfallAppTests/SkyForecastInspectionTests\" \"-only-testing:StarfallAppTests/SkyShowerInspectionTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/ObservatoryArtworkTests\" \"-only-testing:StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-final.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 85,
+        "failures": 0,
+        "testSeconds": 47.211,
+        "suiteWallSeconds": 47.425
+      },
+      "methodsPassed": 85,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "receiptFile": "hosted-01-correction-final-receipt.json",
+      "startedUTC": "2026-10-24T22:29:56.191747+00:00",
+      "commandWallSeconds": 64.116,
+      "limitSeconds": 180.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "phone-01-correction-final",
+      "source": "d319",
+      "result": "two native methods failed exact target-size assertions",
+      "log": "phone-01-correction-final.log",
+      "logSHA256": "199b91b567cff96bd137d6512421cb4fd6bd54407bbb5b051c1ba8ee1bf45c09",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound\" \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/phone-01-correction-final.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 2,
+        "failures": 2,
+        "testSeconds": 267.129,
+        "suiteWallSeconds": 267.215
+      },
+      "methodsPassed": 0,
+      "methodsFailed": 2,
+      "skippedMethods": 0,
+      "completedMethods": [
+        {
+          "method": "StarfallUITests.ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+          "seconds": 94.263
+        },
+        {
+          "method": "StarfallUITests.ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound",
+          "seconds": 172.866
+        }
+      ],
+      "failures": [
+        "XCTAssertGreaterThanOrEqual failed: (\"43.999999999999986\") is less than (\"44.0\")",
+        "XCTAssertGreaterThanOrEqual failed: (\"43.999999999999986\") is less than (\"44.0\")"
+      ],
+      "receiptFile": "phone-01-correction-final-receipt.json",
+      "startedUTC": "2026-10-24T22:29:59.565554+00:00",
+      "commandWallSeconds": 292.216,
+      "limitSeconds": 600.0,
+      "exitCode": 65
+    },
+    {
+      "stage": "core-01-correction-integrated",
+      "source": "integrated",
+      "result": "352 passed",
+      "log": "core-01-correction-integrated.log",
+      "logSHA256": "57813932a8f906e8f95a1a513c4e01fd9bcccd0851931fd3390d40165b19bdc1",
+      "command": null,
+      "commandEvidence": "The retained Core log does not print the full invocation; flags are not inferred.",
+      "lastLoggedSummary": {
+        "executed": 352,
+        "failures": 0,
+        "testSeconds": 36.392,
+        "suiteWallSeconds": 36.433
+      },
+      "methodsPassed": 352,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "receiptFile": "core-01-correction-integrated-receipt.json",
+      "startedUTC": "2026-10-24T22:40:00.753032+00:00",
+      "commandWallSeconds": 42.234,
+      "limitSeconds": 180.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "build-01-correction-integrated",
+      "source": "integrated",
+      "result": "build-for-testing passed",
+      "log": "build-01-correction-integrated.log",
+      "logSHA256": "576611be43d8676793a54efe48c5a2c01789221da52341ba5fdc5fffa295264d",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+      "receiptFile": "build-01-correction-integrated-receipt.json",
+      "startedUTC": "2026-10-24T22:39:57.998947+00:00",
+      "commandWallSeconds": 34.299,
+      "limitSeconds": 240.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "hosted-01-correction-integrated",
+      "source": "integrated",
+      "result": "121 passed with 53 runtime warnings; correction required",
+      "log": "hosted-01-correction-integrated.log",
+      "logSHA256": "116fd4bf7265c94f347a14c8b75673d1463215e108c699106bc879c5b85e5ad1",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyForecastDestinationsTests\" \"-only-testing:StarfallAppTests/SkyForecastInspectionTests\" \"-only-testing:StarfallAppTests/SkyShowerInspectionTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/ObservatoryArtworkTests\" \"-only-testing:StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-integrated.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 121,
+        "failures": 0,
+        "testSeconds": 43.347,
+        "suiteWallSeconds": 43.391
+      },
+      "methodsPassed": 119,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "receiptFile": "hosted-01-correction-integrated-receipt.json",
+      "startedUTC": "2026-10-24T22:41:03.382146+00:00",
+      "commandWallSeconds": 48.363,
+      "limitSeconds": 240.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "phone-01-correction-integrated",
+      "source": "integrated",
+      "result": "passed intermediate c8ff candidate with runtime warnings; not final contact-candidate acceptance",
+      "log": "phone-01-correction-integrated.log",
+      "logSHA256": "6483037bb8235acfbdb73f85fd56c7d74e37be6500601e5dad5dd61bfde772e6",
+      "receiptFile": "phone-01-correction-integrated-receipt.json",
+      "startedUTC": "2026-10-24T22:41:07.340990+00:00",
+      "commandWallSeconds": 454.165,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound\" \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable\" \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable\" \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/phone-01-correction-integrated.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 5,
+        "failures": 0,
+        "testSeconds": 445.342,
+        "suiteWallSeconds": 445.364
+      },
+      "methodsPassed": 5,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "completedMethods": [
+        {
+          "method": "StarfallUITests.ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+          "seconds": 82.533
+        },
+        {
+          "method": "StarfallUITests.ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound",
+          "seconds": 92.401
+        },
+        {
+          "method": "StarfallUITests.SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+          "seconds": 69.437
+        },
+        {
+          "method": "StarfallUITests.SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles",
+          "seconds": 78.57
+        },
+        {
+          "method": "StarfallUITests.SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable",
+          "seconds": 122.4
+        }
+      ],
+      "stateUpdateWarningMatchingLines": 4,
+      "summaryFile": "phone-01-correction-integrated-summary.json",
+      "summarySHA256": "145ba269a4a69c8ff20f645876ecd6e4e18183aaaa436d1ee7e300a629d68e47",
+      "structuredSummary": {
+        "result": "Passed",
+        "totalTestCount": 5,
+        "passedTests": 5,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarningCount": 4
+      }
+    },
+    {
+      "stage": "tablet-01-correction-integrated",
+      "source": "integrated",
+      "result": "passed intermediate c8ff candidate with runtime warnings; not final contact-candidate acceptance",
+      "log": "tablet-01-correction-integrated.log",
+      "logSHA256": "53894bc9183ceeac1c1f9f5067d61f6f4ebf7c152c59d96e2a0ebb42fec9c293",
+      "receiptFile": "tablet-01-correction-integrated-receipt.json",
+      "startedUTC": "2026-10-24T22:43:13.608046+00:00",
+      "commandWallSeconds": 419.154,
+      "limitSeconds": 780.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Debug -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard\" \"-only-testing:StarfallUITests/AutomaticPatternReturnInteractionTests/testLargestCalmFullBoardAndPairedPatternPracticeKeepRetainedRound\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/tablet-01-correction-integrated.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 2,
+        "failures": 0,
+        "testSeconds": 405.852,
+        "suiteWallSeconds": 405.877
+      },
+      "methodsPassed": 2,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "completedMethods": [
+        {
+          "method": "StarfallUITests.AutomaticPatternReturnInteractionTests/testLargestCalmFullBoardAndPairedPatternPracticeKeepRetainedRound",
+          "seconds": 172.569
+        },
+        {
+          "method": "StarfallUITests.ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+          "seconds": 233.283
+        }
+      ],
+      "stateUpdateWarningMatchingLines": 2,
+      "summaryFile": "tablet-01-correction-integrated-summary.json",
+      "summarySHA256": "614d6911a2067206f446ff228a5b8c3335c4f6e5e3681f8cc55f06aa22a634c0",
+      "structuredSummary": {
+        "result": "Passed",
+        "totalTestCount": 2,
+        "passedTests": 2,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarningCount": 2
+      }
+    },
+    {
+      "stage": "build-01-correction-contact",
+      "source": "contact",
+      "result": "build-for-testing passed; hosted acceptance subsequently passed in the separately recorded contact run",
+      "log": "build-01-correction-contact.log",
+      "logSHA256": "b6afa3746fd49216f6393e75d7341e1bfc86c41f52b7123b848c3559d643e6bb",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+      "receiptFile": "build-01-correction-contact-receipt.json",
+      "startedUTC": "2026-10-24T22:46:24.905192+00:00",
+      "commandWallSeconds": 61.539,
+      "limitSeconds": 300.0,
+      "exitCode": 0
+    },
+    {
+      "stage": "hosted-01-correction-contact",
+      "source": "contact",
+      "result": "passed on final contact candidate",
+      "log": "hosted-01-correction-contact.log",
+      "logSHA256": "a8b27d95f2cc16d890bd84f713642f5c3eb5ea7a31f076a128f2b8eff112cefe",
+      "receiptFile": "hosted-01-correction-contact-receipt.json",
+      "startedUTC": "2026-10-24T22:50:34.987637+00:00",
+      "commandWallSeconds": 59.512,
+      "limitSeconds": 240.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyForecastDestinationsTests\" \"-only-testing:StarfallAppTests/SkyForecastInspectionTests\" \"-only-testing:StarfallAppTests/SkyShowerInspectionTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/ObservatoryArtworkTests\" \"-only-testing:StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallAppTests/TraceInputPolishTests\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-contact.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 153,
+        "failures": 0,
+        "testSeconds": 47.047,
+        "suiteWallSeconds": 47.182
+      },
+      "methodsPassed": 153,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "stateUpdateWarningMatchingLines": 0,
+      "summaryFile": "hosted-01-correction-contact-summary.json",
+      "summarySHA256": "4bf47dd196b40ce6c77b4d51cf0c230d07f802c9cd1d58be687956f1213a0dbb",
+      "structuredSummary": {
+        "result": "Passed",
+        "totalTestCount": 153,
+        "passedTests": 153,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarningCount": 0
+      }
+    },
+    {
+      "stage": "phone-01-correction-contact",
+      "source": "contact",
+      "result": "passed on final contact candidate",
+      "log": "phone-01-correction-contact.log",
+      "receiptFile": "phone-01-correction-contact-receipt.json",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/phone-01-correction-contact.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 2,
+        "failures": 0,
+        "testSeconds": 263.149,
+        "suiteWallSeconds": 263.169
+      },
+      "completedMethods": [
+        {
+          "method": "StarfallUITests.ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+          "seconds": 145.554
+        },
+        {
+          "method": "StarfallUITests.SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable",
+          "seconds": 117.595
+        }
+      ],
+      "stateUpdateWarningMatchingLines": 0,
+      "expectedSelectedCount": 2,
+      "logSHA256": "43bcb543d9548c3e4f745a71e68f22136c3f1046b6c5586befea78db5c69f134",
+      "startedUTC": "2026-10-24T22:49:21.462076+00:00",
+      "commandWallSeconds": 275.988,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "methodsPassed": 2,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "summaryFile": "phone-01-correction-contact-summary.json",
+      "summarySHA256": "24e8ee0da310b188c10ddbfcd6d3ca72a34926ff92fb8d63c2060a4004e4475d",
+      "structuredSummary": {
+        "result": "Passed",
+        "totalTestCount": 2,
+        "passedTests": 2,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarningCount": 0
+      }
+    },
+    {
+      "stage": "tablet-01-correction-contact",
+      "source": "contact",
+      "result": "passed on final contact candidate",
+      "log": "tablet-01-correction-contact.log",
+      "receiptFile": "tablet-01-correction-contact-receipt.json",
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/tablet-01-correction-contact.xcresult test-without-building",
+      "completedMethods": [
+        {
+          "method": "StarfallUITests.ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+          "seconds": 226.456
+        }
+      ],
+      "stateUpdateWarningMatchingLines": 0,
+      "expectedSelectedCount": 1,
+      "logSHA256": "40bbb1f889081ee9d198f3da0903431226e1d1e08db07763dcfd39df17f86185",
+      "startedUTC": "2026-10-24T22:51:53.949932+00:00",
+      "commandWallSeconds": 244.672,
+      "limitSeconds": 420.0,
+      "exitCode": 0,
+      "methodsPassed": 1,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "summaryFile": "tablet-01-correction-contact-summary.json",
+      "summarySHA256": "057473e7411ceb570e272596696565404db7aba8eb4b302fefe7fc65838b60f4",
+      "structuredSummary": {
+        "result": "Passed",
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarningCount": 0
+      },
+      "lastLoggedSummary": {
+        "executed": 1,
+        "failures": 0,
+        "testSeconds": 226.456,
+        "suiteWallSeconds": 226.462
+      }
+    },
+    {
+      "stage": "hosted-01-correction-phone-proposal",
+      "source": "contact",
+      "result": "failed unchanged original probe on the dedicated 3x phone:1 method,5 assertions",
+      "log": "hosted-01-correction-phone-proposal.log",
+      "logSHA256": "ff01390dcb0125099ec4bb3a9d0c667c3c6d35e4d7f2156766258d21f3a60785",
+      "receiptFile": "hosted-01-correction-phone-proposal-receipt.json",
+      "startedUTC": "2026-10-24T23:03:05.739944+00:00",
+      "commandWallSeconds": 13.115,
+      "limitSeconds": 120.0,
+      "exitCode": 65,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/StarlightCelebrationTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-phone-proposal.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 1,
+        "reportedFailures": 5,
+        "testSeconds": 6.501,
+        "suiteWallSeconds": 6.503
+      },
+      "methodsPassed": 0,
+      "methodsFailed": 1,
+      "skippedMethods": 0,
+      "completedMethods": [
+        {
+          "method": "StarfallAppTests.StarlightCelebrationTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+          "seconds": 6.501
+        }
+      ],
+      "failures": [
+        "XCTAssertGreaterThanOrEqual failed: (\"107.66666666666664\") is less than (\"130.49609375\") - The actual score must reserve complete native headline lines",
+        "XCTAssertGreaterThanOrEqual failed: (\"107.66666666666664\") is less than (\"130.66666666666666\") - The native score's complete content must fit its allocated width and height",
+        "XCTAssertLessThanOrEqual failed: (\"0.8411159515380859\") is greater than (\"0.6\")",
+        "XCTAssertEqual failed: (\"(1024.0, 1285.3333333333335)\") is not equal to (\"(1024.0, 1285.3333333333333)\") - Receipt sources retain the complete native canvas",
+        "XCTAssertTrue failed"
+      ]
+    },
+    {
+      "stage": "build-01-correction-scenic",
+      "source": "scenic-product",
+      "result": "prototype build-for-testing passed; not adoption",
+      "log": "build-01-correction-scenic.log",
+      "logSHA256": "b1e3a74d11704775b296fefd54de1ed6d9a2b81b0a6cef5e95c95455ecf74706",
+      "receiptFile": "build-01-correction-scenic-receipt.json",
+      "startedUTC": "2026-10-24T23:10:23.699138+00:00",
+      "commandWallSeconds": 15.697,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing"
+    },
+    {
+      "stage": "sunny-01-correction-scenic",
+      "source": "scenic-product",
+      "result": "1 native Sunny method passed; independent contrast/visual acceptance pending",
+      "log": "sunny-01-correction-scenic.log",
+      "logSHA256": "8ead91493dc43c570b7dcdd9caadccf2ee15c40ea0d01b0e7b44277b0beeedff",
+      "receiptFile": "sunny-01-correction-scenic-receipt.json",
+      "startedUTC": "2026-10-24T23:13:00.790191+00:00",
+      "commandWallSeconds": 108.042,
+      "limitSeconds": 420.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/sunny-01-correction-scenic.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 1,
+        "reportedFailures": 0,
+        "testSeconds": 98.631,
+        "suiteWallSeconds": 98.647
+      },
+      "methodsPassed": 1,
+      "methodsFailed": 0,
+      "skippedMethods": 0,
+      "completedMethods": [
+        {
+          "method": "StarfallUITests.SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+          "seconds": 98.631
+        }
+      ]
+    },
+    {
+      "stage": "release-01-correction-scenic",
+      "source": "scenic-product",
+      "result": "Release build passed before test/project-only extraction; not final extracted-source acceptance",
+      "log": "release-01-correction-scenic.log",
+      "logSHA256": "a53bb181451f99c120ed55fc13be50653d6f4d43c5ced7d20af3c1f7a76e3c13",
+      "receiptFile": "release-01-correction-scenic-receipt.json",
+      "startedUTC": "2026-10-24T23:14:26.615754+00:00",
+      "commandWallSeconds": 51.581,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Release -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build"
+    },
+    {
+      "stage": "hosted-01-correction-phone-attached",
+      "source": "scenic-extracted",
+      "result": "1 of2 methods failed; Cascade regression passed; nested-host measurement diagnostic invalid",
+      "log": "hosted-01-correction-phone-attached.log",
+      "logSHA256": "3d705499f2d7a4075006f340bb3a02800404d883fc07f4459d7d66ae8353181e",
+      "receiptFile": "hosted-01-correction-phone-attached-receipt.json",
+      "startedUTC": "2026-10-24T23:15:33.292818+00:00",
+      "commandWallSeconds": 11.02,
+      "limitSeconds": 120.0,
+      "exitCode": 65,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyReadingPlayfieldTests\" \"-only-testing:StarfallAppTests/CascadeReturnTests/testChronologicalSlotsKeepEachExactTopologyAndReserveSeparateLabelAndHUDSpace\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-phone-attached.xcresult test-without-building",
+      "lastLoggedSummary": {
+        "executed": 2,
+        "reportedFailures": 4,
+        "testSeconds": 5.784,
+        "suiteWallSeconds": 5.786
+      },
+      "methodsPassed": 1,
+      "methodsFailed": 1,
+      "skippedMethods": 0,
+      "completedMethods": [
+        {
+          "method": "StarfallAppTests.CascadeReturnTests/testChronologicalSlotsKeepEachExactTopologyAndReserveSeparateLabelAndHUDSpace",
+          "seconds": 0.006
+        },
+        {
+          "method": "StarfallAppTests.SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+          "seconds": 5.777
+        }
+      ],
+      "failures": [
+        "XCTAssertGreaterThanOrEqual failed: (\"107.66666666666664\") is less than (\"224.66666666666666\") - The actual score must reserve complete official native serif lines",
+        "XCTAssertGreaterThanOrEqual failed: (\"107.66666666666664\") is less than (\"177.66666666666666\") - The native score's complete content must fit its allocated width and height",
+        "XCTAssertGreaterThanOrEqual failed: (\"63.666666666666664\") is less than (\"144.33333333333331\") - The actual score must reserve complete official native serif lines",
+        "XCTAssertGreaterThanOrEqual failed: (\"63.666666666666664\") is less than (\"144.33333333333331\") - The native score's complete content must fit its allocated width and height"
+      ],
+      "swiftUIWarnings": {
+        "count": 4,
+        "distinctMessages": [
+          "Adding '_UIHostingView<ModifiedContent<Text, _EnvironmentKeyWritingModifier<DynamicTypeSize>>>' as a subview of UIHostingController.view is not supported and may result in a broken view hierarchy. Add your view above UIHostingController.view in a common superview or insert it into your SwiftUI content in a UIViewRepresentable instead.",
+          "Adding '_UIHostingView<ModifiedContent<SkyScoreInstrument, _EnvironmentKeyWritingModifier<DynamicTypeSize>>>' as a subview of UIHostingController.view is not supported and may result in a broken view hierarchy. Add your view above UIHostingController.view in a common superview or insert it into your SwiftUI content in a UIViewRepresentable instead."
+        ]
+      }
+    },
+    {
+      "stage": "build-01-correction-sibling-probe",
+      "source": "scenic-extracted plus later test-harness working-tree changes",
+      "result": "build-for-testing passed; valid sibling-harness rerun pending",
+      "log": "build-01-correction-sibling-probe.log",
+      "logSHA256": "39930f6764406c3c5620365b9df2a8c09c0116d341235c95c48583932c3e42dd",
+      "receiptFile": "build-01-correction-sibling-probe-receipt.json",
+      "startedUTC": "2026-10-24T23:16:49.763191+00:00",
+      "commandWallSeconds": 7.44,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing"
+    },
+    {
+      "stage": "hosted-01-correction-phone-siblings",
+      "source": "scenic-extracted with valid plain-parent sibling measurement harness",
+      "result": "failed real production score-height regression; two score gates failed, no nested-host warning",
+      "log": "hosted-01-correction-phone-siblings.log",
+      "logSHA256": "25083e4aecc87e9fd932bece0d01bcc9b8e2befb20014b0b83f25fc4db96f13b",
+      "receiptFile": "hosted-01-correction-phone-siblings-receipt.json",
+      "startedUTC": "2026-10-24T23:17:15.937711+00:00",
+      "commandWallSeconds": 12.361,
+      "limitSeconds": 120.0,
+      "exitCode": 65,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyReadingPlayfieldTests\" \"-only-testing:StarfallAppTests/CascadeReturnTests/testChronologicalSlotsKeepEachExactTopologyAndReserveSeparateLabelAndHUDSpace\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-phone-siblings.xcresult test-without-building",
+      "xcresult": {
+        "totalTestCount": 2,
+        "passedTests": 1,
+        "failedTests": 1,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "testFailures": [
+          {
+            "failureText": "XCTAssertGreaterThanOrEqual failed: (\"107.66666666666664\") is less than (\"130.66666666666666\") - The actual score must reserve complete official native serif lines",
+            "targetName": "StarfallAppTests",
+            "testIdentifier": 2,
+            "testIdentifierString": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()",
+            "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallAppTests/SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+            "testName": "testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()"
+          }
+        ]
+      },
+      "selectedTests": [
+        "StarfallAppTests/SkyReadingPlayfieldTests",
+        "StarfallAppTests/CascadeReturnTests/testChronologicalSlotsKeepEachExactTopologyAndReserveSeparateLabelAndHUDSpace"
+      ],
+      "warningLogCounts": {
+        "Modifying state during view update": 0,
+        "Publishing changes from within view updates": 0,
+        "SwiftUI does not support adding": 0
+      },
+      "methodFailures": 1,
+      "assertionFailures": 2,
+      "measuredFailure": {
+        "allocatedScoreHeight": 107.33333333333331,
+        "allocatedPlusPhysicalPixel": 107.66666666666664,
+        "requiredOfficialSerifLines": 130.66666666666666,
+        "requiredCompleteScore": 130.66666666666666,
+        "setup": "Plain UIViewController owns live and sibling hosting controllers. Measurement hosts alone use safeAreaRegions=[]; live layout retains native safe areas. No inset subtraction or detached-font assumption."
+      }
+    },
+    {
+      "stage": "build-01-correction-natural-header",
+      "source": "natural-header",
+      "result": "Debug build-for-testing passed",
+      "log": "build-01-correction-natural-header.log",
+      "logSHA256": "205b9fa4553169f3bb50458453be1c0885b3a66d7e1c5bf8e0ae0df7560402b4",
+      "receiptFile": "build-01-correction-natural-header-receipt.json",
+      "startedUTC": "2026-10-24T23:18:35.610570+00:00",
+      "commandWallSeconds": 14.354,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing"
+    },
+    {
+      "stage": "hosted-01-correction-natural-header",
+      "source": "natural-header",
+      "result": "passed the unchanged real reading-playfield and fractional cascade regressions on the 3x phone",
+      "log": "hosted-01-correction-natural-header.log",
+      "logSHA256": "ee4d02aa093ce605fccf42fd17cb887dfdbf9de2d97a32c0ea5c46f148bc962c",
+      "receiptFile": "hosted-01-correction-natural-header-receipt.json",
+      "startedUTC": "2026-10-24T23:18:58.111065+00:00",
+      "commandWallSeconds": 12.54,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyReadingPlayfieldTests\" \"-only-testing:StarfallAppTests/CascadeReturnTests/testChronologicalSlotsKeepEachExactTopologyAndReserveSeparateLabelAndHUDSpace\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-correction-natural-header.xcresult test-without-building",
+      "xcresult": {
+        "totalTestCount": 2,
+        "passedTests": 2,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 2,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "testFailures": []
+      },
+      "selectedTests": [
+        "StarfallAppTests/SkyReadingPlayfieldTests",
+        "StarfallAppTests/CascadeReturnTests/testChronologicalSlotsKeepEachExactTopologyAndReserveSeparateLabelAndHUDSpace"
+      ],
+      "warningLogCounts": {
+        "Modifying state during view update": 0,
+        "Publishing changes from within view updates": 0,
+        "SwiftUI does not support adding": 0
+      }
+    },
+    {
+      "stage": "release-01-correction-final",
+      "source": "natural-header",
+      "result": "Release simulator build passed",
+      "log": "release-01-correction-final.log",
+      "logSHA256": "7efc1ead6c1cbc46ca28f6ff7048e418e392231b2e9ca983cd26f8ecdfdcb273",
+      "receiptFile": "release-01-correction-final-receipt.json",
+      "startedUTC": "2026-10-24T23:19:48.917659+00:00",
+      "commandWallSeconds": 12.468,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Release -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build"
+    },
+    {
+      "stage": "hosted-01-d5d02a7b",
+      "source": "natural-header",
+      "result": "168 selected hosted checks passed on the tablet with zero failures/skips/runtime warnings",
+      "log": "hosted-01-d5d02a7b.log",
+      "logSHA256": "d3ced0f10948c3963f7348ea3ebf6d773cf7ea6391756db793009293105fb7aa",
+      "receiptFile": "hosted-01-d5d02a7b-receipt.json",
+      "startedUTC": "2026-10-24T23:20:13.343563+00:00",
+      "commandWallSeconds": 62.531,
+      "limitSeconds": 240.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyForecastDestinationsTests\" \"-only-testing:StarfallAppTests/SkyForecastInspectionTests\" \"-only-testing:StarfallAppTests/SkyShowerInspectionTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/SkyReadingPlayfieldTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/ObservatoryArtworkTests\" \"-only-testing:StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallAppTests/TraceInputPolishTests\" \"-only-testing:StarfallAppTests/CascadeReturnTests\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-d5d02a7b.xcresult test-without-building",
+      "xcresult": {
+        "totalTestCount": 168,
+        "passedTests": 168,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+              "deviceName": "Starfall HUD Stack dcf3 Tablet",
+              "modelName": "iPad Pro 13-inch (M5)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 168,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "testFailures": []
+      },
+      "selectedTests": [
+        "StarfallAppTests/SkyForecastDestinationsTests",
+        "StarfallAppTests/SkyForecastInspectionTests",
+        "StarfallAppTests/SkyShowerInspectionTests",
+        "StarfallAppTests/StarlightCelebrationTests",
+        "StarfallAppTests/SkyReadingPlayfieldTests",
+        "StarfallAppTests/SkyDialogueTests",
+        "StarfallAppTests/ObservatoryArtworkTests",
+        "StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking",
+        "StarfallAppTests/SkyTechniqueStoreTests",
+        "StarfallAppTests/TraceInputPolishTests",
+        "StarfallAppTests/CascadeReturnTests"
+      ],
+      "warningLogCounts": {
+        "Modifying state during view update": 0,
+        "Publishing changes from within view updates": 0,
+        "SwiftUI does not support adding": 0
+      }
+    },
+    {
+      "stage": "core-01-d5d02a7b",
+      "source": "natural-header",
+      "result": "passed",
+      "command": "swift test",
+      "log": "core-01-d5d02a7b.log",
+      "logSHA256": "1e93b66dcccdf86b9117bf86a8635a1191f4c1a714cf473a94a1dc7bff86ddaa",
+      "passed": 352,
+      "failed": 0,
+      "skipped": 0,
+      "testSuiteWallSeconds": 41.146,
+      "testExecutionSeconds": 41.088,
+      "scope": "Final Core run; package-framework warnings about unhandled repository Markdown remain separate from test outcomes."
+    },
+    {
+      "stage": "core-01-correction-final-sandbox-preflight",
+      "source": "natural-header",
+      "result": "stopped before package tests",
+      "classification": "host cache permission / sandbox setup",
+      "command": "swift test",
+      "log": "core-01-correction-final.log",
+      "logSHA256": "15aea6d169b1d0bf5fd6ea6e0c26236e1200248c6361df7213b66aa2e916e0ec",
+      "executedTests": 0,
+      "productFailure": false,
+      "error": "Clang ModuleCache output under /Users/lbeezr/.cache was not permitted, preventing manifest/standard-library loading. The later authorized Core run passed352 tests; this setup failure is retained."
+    },
+    {
+      "stage": "hosted-01-correction-final-existing-result-preflight",
+      "source": "natural-header",
+      "result": "stopped before tests",
+      "classification": "existing result-bundle output path",
+      "log": "hosted-01-correction-final.log",
+      "logSHA256": "4bcced20603a8fd53a8299d5c3978fb6fd42f73ae3c73f548cb3046aad1605b5",
+      "receiptFile": "hosted-01-correction-final-receipt.json",
+      "receiptLine": 2,
+      "startedUTC": "2026-10-24T23:19:49.598890+00:00",
+      "commandWallSeconds": 0.291,
+      "exitCode": 64,
+      "executedTests": 0,
+      "productFailure": false,
+      "preservation": "This attempted stage re-used an existing result path. The prior result bundle, earlier receipt line and recorded outcomes/hashes remain historical; the raw log filename now contains this later preflight rejection. Distinct d5d02a7b run names avoid another collision."
+    },
+    {
+      "stage": "phone-01-correction-final-existing-result-preflight",
+      "source": "natural-header",
+      "result": "stopped before tests",
+      "classification": "existing result-bundle output path",
+      "log": "phone-01-correction-final.log",
+      "logSHA256": "53d494a8f9d0a789dd810c056f28e14ba9eb741e6a157fd4fae0df587ece5944",
+      "receiptFile": "phone-01-correction-final-receipt.json",
+      "receiptLine": 2,
+      "startedUTC": "2026-10-24T23:19:50.622164+00:00",
+      "commandWallSeconds": 0.349,
+      "exitCode": 64,
+      "executedTests": 0,
+      "productFailure": false,
+      "preservation": "This attempted stage re-used an existing result path. The prior result bundle, earlier receipt line and recorded outcomes/hashes remain historical; the raw log filename now contains this later preflight rejection. Distinct d5d02a7b run names avoid another collision."
+    },
+    {
+      "stage": "phone-01-d5d02a7b",
+      "source": "natural-header",
+      "result": "3 methods:1 pressure pass and2 native assertion failures; retained as failed acceptance",
+      "log": "phone-01-d5d02a7b.log",
+      "logSHA256": "8bd97192137735cfbc08a9b83aa7684b420c0e213bf6bf05fd91c8267c04cbd6",
+      "receiptFile": "phone-01-d5d02a7b-receipt.json",
+      "startedUTC": "2026-10-24T23:20:13.395945+00:00",
+      "commandWallSeconds": 310.652,
+      "limitSeconds": 600.0,
+      "exitCode": 65,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound\" \"-only-testing:StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable\" \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/phone-01-d5d02a7b.xcresult test-without-building",
+      "selectedTests": [
+        "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+        "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable",
+        "StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable"
+      ],
+      "xcresult": {
+        "totalTestCount": 3,
+        "passedTests": 1,
+        "failedTests": 2,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 2,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "testFailures": [
+          {
+            "failureText": "XCTAssertLessThan failed: (\"18.333333333333314\") is not less than (\"18.333333333333314\") - The reading pane must scroll its text",
+            "targetName": "StarfallUITests",
+            "testIdentifier": 2,
+            "testIdentifierString": "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable()",
+            "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+            "testName": "testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable()"
+          },
+          {
+            "failureText": "XCTAssertTrue failed - Supporting facts and actions must fit the pinned header",
+            "targetName": "StarfallUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound()",
+            "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+            "testName": "testNormalLanternSupportingRowKeepsForecastInspectionRound()"
+          }
+        ]
+      },
+      "methodResults": [
+        {
+          "class": "ForecastColumnInspectionInteractionTests",
+          "method": "testNormalLanternSupportingRowKeepsForecastInspectionRound",
+          "result": "failed",
+          "caseSeconds": 63.809
+        },
+        {
+          "class": "SkyDialogueInteractionTests",
+          "method": "testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+          "result": "failed",
+          "caseSeconds": 54.733
+        },
+        {
+          "class": "SkyFlowInteractionTests",
+          "method": "testLargestQuietStoryPressureAndRecoveryRemainReadable",
+          "result": "passed",
+          "caseSeconds": 186.187
+        }
+      ],
+      "warningLogCounts": {
+        "Modifying state during view update": 0,
+        "Publishing changes from within view updates": 0,
+        "SwiftUI does not support adding": 0
+      },
+      "failureClassification": {
+        "forecastHeader": "Header AX aggregate maxY173.3333282470703 versus descendant forecast maxY173.33333333333334; later precise diagnostic established mixed Float/CGFloat representation. Complete44/48-point target gates did not fail.",
+        "sunnyReader": "The seventh pan reported minY18.333333333333314 unchanged. Its strict movement assertion failed; the later diagnostic pass does not erase this failure or establish an exclusive native cause.",
+        "pressureCaseSeconds": 186.187
+      }
+    },
+    {
+      "stage": "tablet-01-d5d02a7b",
+      "source": "natural-header",
+      "result": "Actual tablet1 method passed; AX5 actual-Calm forecast/chain/FullBoard journey remains separately source-bound",
+      "log": "tablet-01-d5d02a7b.log",
+      "logSHA256": "3112957822bbccc35691e67a58b0ac33de8920de7783d02d3494aab199c162a0",
+      "receiptFile": "tablet-01-d5d02a7b-receipt.json",
+      "startedUTC": "2026-10-24T23:21:25.765916+00:00",
+      "commandWallSeconds": 322.219,
+      "limitSeconds": 420.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Contact -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/tablet-01-d5d02a7b.xcresult test-without-building",
+      "selectedTests": [
+        "StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard"
+      ],
+      "xcresult": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+              "deviceName": "Starfall HUD Stack dcf3 Tablet",
+              "modelName": "iPad Pro 13-inch (M5)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "testFailures": []
+      },
+      "methodResults": [
+        {
+          "class": "ForecastColumnInspectionInteractionTests",
+          "method": "testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+          "result": "passed",
+          "caseSeconds": 288.127
+        }
+      ],
+      "warningLogCounts": {
+        "Modifying state during view update": 0,
+        "Publishing changes from within view updates": 0,
+        "SwiftUI does not support adding": 0
+      }
+    },
+    {
+      "stage": "build-01-packet-integrated",
+      "source": "packet-integrated",
+      "result": "Debug build-for-testing passed after integration of main271fd and packet/header clipping",
+      "log": "build-01-packet-integrated.log",
+      "logSHA256": "e5f3ac9d8767cb03d15f50ebc0c14545db6c2f76e02042037d0d8cba97fed0c7",
+      "receiptFile": "build-01-packet-integrated-receipt.json",
+      "startedUTC": "2026-10-24T23:29:16.999527+00:00",
+      "commandWallSeconds": 51.706,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+      "selectedTests": []
+    },
+    {
+      "stage": "hosted-01-packet-integrated",
+      "source": "packet-integrated",
+      "result": "228 selected integrated hosted checks passed, zero failures/skips/runtime warnings",
+      "log": "hosted-01-packet-integrated.log",
+      "logSHA256": "834eac7148f1a33b348de93ae8de4acbf87b729c5da71d8eecf687e657c08aaf",
+      "receiptFile": "hosted-01-packet-integrated-receipt.json",
+      "startedUTC": "2026-10-24T23:30:37.909995+00:00",
+      "commandWallSeconds": 60.662,
+      "limitSeconds": 240.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -destination \"platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyForecastDestinationsTests\" \"-only-testing:StarfallAppTests/SkyForecastInspectionTests\" \"-only-testing:StarfallAppTests/SkyShowerInspectionTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests\" \"-only-testing:StarfallAppTests/SkyReadingPlayfieldTests\" \"-only-testing:StarfallAppTests/SkyDialogueTests\" \"-only-testing:StarfallAppTests/ObservatoryArtworkTests\" \"-only-testing:StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking\" \"-only-testing:StarfallAppTests/SkyTechniqueStoreTests\" \"-only-testing:StarfallAppTests/TraceInputPolishTests\" \"-only-testing:StarfallAppTests/CascadeReturnTests\" \"-only-testing:StarfallAppTests/SkyFlowStateTests\" \"-only-testing:StarfallAppTests/RestorationFlowTests\" \"-only-testing:StarfallAppTests/SkyRestoredPlacePresentationTests\" \"-only-testing:StarfallAppTests/SkyRestoredPlaceSnapshotTests\" \"-only-testing:StarfallAppTests/SkyRestoredPlaceStoreTests\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-packet-integrated.xcresult test-without-building",
+      "selectedTests": [
+        "StarfallAppTests/SkyForecastDestinationsTests",
+        "StarfallAppTests/SkyForecastInspectionTests",
+        "StarfallAppTests/SkyShowerInspectionTests",
+        "StarfallAppTests/StarlightCelebrationTests",
+        "StarfallAppTests/SkyReadingPlayfieldTests",
+        "StarfallAppTests/SkyDialogueTests",
+        "StarfallAppTests/ObservatoryArtworkTests",
+        "StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking",
+        "StarfallAppTests/SkyTechniqueStoreTests",
+        "StarfallAppTests/TraceInputPolishTests",
+        "StarfallAppTests/CascadeReturnTests",
+        "StarfallAppTests/SkyFlowStateTests",
+        "StarfallAppTests/RestorationFlowTests",
+        "StarfallAppTests/SkyRestoredPlacePresentationTests",
+        "StarfallAppTests/SkyRestoredPlaceSnapshotTests",
+        "StarfallAppTests/SkyRestoredPlaceStoreTests"
+      ],
+      "xcresult": {
+        "totalTestCount": 228,
+        "passedTests": 228,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+              "deviceName": "Starfall HUD Stack dcf3 Tablet",
+              "modelName": "iPad Pro 13-inch (M5)",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 228,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "testFailures": []
+      },
+      "methodResults": [
+        {
+          "class": "SkyReadingPlayfieldTests",
+          "method": "testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+          "result": "passed",
+          "caseSeconds": 5.128
+        },
+        {
+          "class": "StarlightCelebrationTests",
+          "method": "testPacketInkAndShadowLeaveTheScoreReadableAtBothDestinations",
+          "result": "passed",
+          "caseSeconds": 2.519
+        }
+      ],
+      "warningLogCounts": {
+        "Modifying state during view update": 0,
+        "Publishing changes from within view updates": 0,
+        "SwiftUI does not support adding": 0
+      }
+    },
+    {
+      "stage": "hosted-01-phone-packet",
+      "source": "packet-integrated",
+      "result": "3x phone packet raster and real reading/receipt probe both passed, zero failures/skips/runtime warnings",
+      "log": "hosted-01-phone-packet.log",
+      "logSHA256": "67a81a4bad7aeb3e078098932b57e6d3fa6fa096e7fb4c1fee470ade500c8bd6",
+      "receiptFile": "hosted-01-phone-packet-receipt.json",
+      "startedUTC": "2026-10-24T23:33:42.068598+00:00",
+      "commandWallSeconds": 42.207,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyReadingPlayfieldTests\" \"-only-testing:StarfallAppTests/StarlightCelebrationTests/testPacketInkAndShadowLeaveTheScoreReadableAtBothDestinations\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-phone-packet.xcresult test-without-building",
+      "selectedTests": [
+        "StarfallAppTests/SkyReadingPlayfieldTests",
+        "StarfallAppTests/StarlightCelebrationTests/testPacketInkAndShadowLeaveTheScoreReadableAtBothDestinations"
+      ],
+      "xcresult": {
+        "totalTestCount": 2,
+        "passedTests": 2,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 2,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "testFailures": []
+      },
+      "methodResults": [
+        {
+          "class": "SkyReadingPlayfieldTests",
+          "method": "testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+          "result": "passed",
+          "caseSeconds": 8.231
+        },
+        {
+          "class": "StarlightCelebrationTests",
+          "method": "testPacketInkAndShadowLeaveTheScoreReadableAtBothDestinations",
+          "result": "passed",
+          "caseSeconds": 4.669
+        }
+      ],
+      "warningLogCounts": {
+        "Modifying state during view update": 0,
+        "Publishing changes from within view updates": 0,
+        "SwiftUI does not support adding": 0
+      }
+    },
+    {
+      "stage": "phone-01-frame-diagnostic",
+      "source": "packet-integrated",
+      "result": "precise native frame diagnostic failed the retained raw containment assertion; no actual target-size failure",
+      "log": "phone-01-frame-diagnostic.log",
+      "logSHA256": "89125ea5a89cc15c511db86e979a81a2d156f53ad22a1879616809e6d4f5133d",
+      "receiptFile": "phone-01-frame-diagnostic-receipt.json",
+      "startedUTC": "2026-10-24T23:30:36.004068+00:00",
+      "commandWallSeconds": 88.098,
+      "limitSeconds": 420.0,
+      "exitCode": 65,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/phone-01-frame-diagnostic.xcresult test-without-building",
+      "selectedTests": [
+        "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound"
+      ],
+      "xcresult": {
+        "totalTestCount": 1,
+        "passedTests": 0,
+        "failedTests": 1,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 1,
+            "passedTests": 0,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "testFailures": [
+          {
+            "failureText": "XCTAssertTrue failed - Supporting facts and actions must fit the pinned header: (33.0, 95.0, 324.0, 78.33333333333334)\ninspection: minX=301.0, minY=103.0, maxX=349.0, maxY=151.0, width=48.0, height=48.0\nheader: minX=4.0, minY=45.0, maxX=378.0, maxY=173.3333282470703, width=374.0, height=128.3333282470703\nforecast: minX=33.0, minY=95.0, maxX=357.0, maxY=173.33333333333334, width=324.0, height=78.33333333333334\nviewport: minX=0.0, minY=0.0, maxX=390.0, maxY=844.0, width=390.0, height=844.0\nheaderContainsInspection=true, headerContainsForecast=false, forecastContainsInspection=true",
+            "targetName": "StarfallUITests",
+            "testIdentifier": 1,
+            "testIdentifierString": "ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound()",
+            "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+            "testName": "testNormalLanternSupportingRowKeepsForecastInspectionRound()"
+          }
+        ]
+      },
+      "methodResults": [
+        {
+          "class": "ForecastColumnInspectionInteractionTests",
+          "method": "testNormalLanternSupportingRowKeepsForecastInspectionRound",
+          "result": "failed",
+          "caseSeconds": 80.424
+        }
+      ],
+      "warningLogCounts": {
+        "Modifying state during view update": 0,
+        "Publishing changes from within view updates": 0,
+        "SwiftUI does not support adding": 0
+      },
+      "measuredFrames": {
+        "headerMaxY": 173.3333282470703,
+        "forecastMaxY": 173.33333333333334,
+        "inspectionSize": [
+          48,
+          48
+        ],
+        "headerContainsInspection": true,
+        "headerContainsForecastAtRawCGFloat": false,
+        "forecastContainsInspection": true
+      }
+    },
+    {
+      "stage": "phone-01-reader-diagnostic",
+      "source": "packet-integrated plus test-only diagnostic sampling",
+      "result": "Sunny reader diagnostic passed without changing its loop or assertion; prior failure retained, exclusive cause unproved",
+      "log": "phone-01-reader-diagnostic.log",
+      "logSHA256": "93d63ff7452e279c6e532f8258ce50884ea23c788e8419d427e78ec25395cdb3",
+      "receiptFile": "phone-01-reader-diagnostic-receipt.json",
+      "startedUTC": "2026-10-24T23:36:51.845276+00:00",
+      "commandWallSeconds": 90.097,
+      "limitSeconds": 420.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/phone-01-reader-diagnostic.xcresult test-without-building",
+      "selectedTests": [
+        "StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable"
+      ],
+      "xcresult": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+              "deviceName": "Starfall HUD Stack dcf3 Phone",
+              "modelName": "iPhone 17e",
+              "osBuildNumber": "24A434",
+              "osVersion": "27.0",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "testFailures": []
+      },
+      "methodResults": [
+        {
+          "class": "SkyDialogueInteractionTests",
+          "method": "testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+          "result": "passed",
+          "caseSeconds": 80.946
+        }
+      ],
+      "warningLogCounts": {
+        "Modifying state during view update": 0,
+        "Publishing changes from within view updates": 0,
+        "SwiftUI does not support adding": 0
+      },
+      "readingEvidenceQualification": {
+        "olderD5FailedClip": "The older d5 failed clip ended at Dusk will eat4 / stars after5 / more showers. Exact d5 copy continues with a touching star; that clip did not prove the complete final phrase or a reachable reading end.",
+        "bf5DiagnosticPass": "The90.097s diagnostic pass screenshots genuinely show the complete tail: more showers / with a touching / star. This supports that specific passed reading scenario and does not erase the older failure.",
+        "cause": "Older failure cause remains unassigned. One immutable native frame sample removes the demonstrated admission-versus-progress query race surface; no exclusive native cause is established.",
+        "preservedGates": "Complete final line, overlapping reading positions, fixed native actions and12-pan limit remain unchanged."
+      }
+    },
+    {
+      "stage": "build-01-native-precision",
+      "source": "packet-integrated plus test-only native diagnostic changes",
+      "result": "Debug build-for-testing passed for the diagnostic/native comparison preparation",
+      "log": "build-01-native-precision.log",
+      "logSHA256": "dbbb1a2509a4a87cb4f463b991bec7c77d707d5299620773d4160bb0c15600f1",
+      "receiptFile": "build-01-native-precision-receipt.json",
+      "startedUTC": "2026-10-24T23:35:54.676997+00:00",
+      "commandWallSeconds": 7.44,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+      "selectedTests": []
+    },
+    {
+      "stage": "release-01-bf5e6d23",
+      "source": "packet-integrated",
+      "result": "Release simulator build passed",
+      "log": "release-01-bf5e6d23.log",
+      "logSHA256": "b53b9e6ab0d1a10af32772e8b9a4e38b2f4fa8656602301518e31ed1c68cb062",
+      "receiptFile": "release-01-bf5e6d23-receipt.json",
+      "startedUTC": "2026-10-24T23:38:56.966423+00:00",
+      "commandWallSeconds": 35.458,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Release -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Release -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build",
+      "selectedTests": []
+    },
+    {
+      "stage": "phone-01-ec40c9a3",
+      "source": "native-precision",
+      "result": "Failed native acceptance:2 passed,1 Sunny reader failure; zero skips.",
+      "log": "phone-01-ec40c9a3.log",
+      "logSHA256": "df659c41b09301a4750549fe97fc494f34a51d74faccd6ec697a810f7517a1ea",
+      "receiptFile": "phone-01-ec40c9a3-receipt.json",
+      "startedUTC": "2026-10-24T23:40:49.292895+00:00",
+      "commandWallSeconds": 276.966,
+      "limitSeconds": 600.0,
+      "exitCode": 65,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound\" \"-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound\" \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3.xcresult test-without-building",
+      "selectedTests": [
+        "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+        "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowPreservesBackgroundAndWorldRound",
+        "StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable"
+      ],
+      "xcresult": {
+        "totalTestCount": 3,
+        "passedTests": 2,
+        "failedTests": 1,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "testFailures": [
+          {
+            "failureText": "XCTAssertLessThan failed: (\"404.6666666666667\") is not less than (\"404.6666666666667\") - The reading pane must scroll its text",
+            "targetName": "StarfallUITests",
+            "testIdentifier": 3,
+            "testIdentifierString": "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable()",
+            "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+            "testName": "testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable()"
+          }
+        ]
+      },
+      "methodResults": [
+        {
+          "class": "ForecastColumnInspectionInteractionTests",
+          "method": "testNormalLanternSupportingRowKeepsForecastInspectionRound",
+          "result": "passed",
+          "caseSeconds": 101.472
+        },
+        {
+          "class": "ForecastColumnInspectionInteractionTests",
+          "method": "testNormalLanternSupportingRowPreservesBackgroundAndWorldRound",
+          "result": "passed",
+          "caseSeconds": 112.35
+        },
+        {
+          "class": "SkyDialogueInteractionTests",
+          "method": "testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+          "result": "failed",
+          "caseSeconds": 47.853
+        }
+      ],
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "failureMetrics": {
+        "iteration": 2,
+        "readerFrame": [
+          24,
+          419,
+          342,
+          188.33333333333326
+        ],
+        "beforeMessageFrame": [
+          24,
+          404.6666666666667,
+          342,
+          696.6666666666667
+        ],
+        "afterMessageFrame": [
+          24,
+          404.6666666666667,
+          342,
+          696.6666666666667
+        ],
+        "messageMaxY": 1101.3333333333335,
+        "readerMaxY": 607.3333333333333,
+        "firstPanMovement": 14.333333333333314,
+        "actionsStationary": true,
+        "attachment": "phone-01-ec40c9a3-attachments/15800770-87C6-4ADC-903A-6638B065E322.txt",
+        "classification": "Second real pan made no progress with substantial text remaining; content end does not explain this failure. Cause unresolved."
+      }
+    },
+    {
+      "stage": "build-01-reader-extent",
+      "source": "reader-extent-v1",
+      "result": "Debug build-for-testing passed.",
+      "log": "build-01-reader-extent.log",
+      "logSHA256": "3b1bc4bb7d262bf7b6c5ea105318c5e4be813618a23778da24f1bf490aa6ae9a",
+      "receiptFile": "build-01-reader-extent-receipt.json",
+      "startedUTC": "2026-10-24T23:53:55.936690+00:00",
+      "commandWallSeconds": 15.093,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+      "selectedTests": []
+    },
+    {
+      "stage": "hosted-01-reader-extent",
+      "source": "reader-extent-v1",
+      "result": "One actual-root reader extent/hit diagnostic passed; programmatic scrolling is not real-pan acceptance.",
+      "log": "hosted-01-reader-extent.log",
+      "logSHA256": "8fd09037cc60574b0ed9e32b1f1b9957215cb103c4f908dda4780baa65ea2497",
+      "receiptFile": "hosted-01-reader-extent-receipt.json",
+      "startedUTC": "2026-10-24T23:54:21.054815+00:00",
+      "commandWallSeconds": 8.958,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyDialogueTests/testSunnyMaximumTextReaderOwnsItsHitRegionAndFullNativeContentExtent\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-reader-extent.xcresult test-without-building",
+      "selectedTests": [
+        "StarfallAppTests/SkyDialogueTests/testSunnyMaximumTextReaderOwnsItsHitRegionAndFullNativeContentExtent"
+      ],
+      "xcresult": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "testFailures": []
+      },
+      "methodResults": [
+        {
+          "class": "SkyDialogueTests",
+          "method": "testSunnyMaximumTextReaderOwnsItsHitRegionAndFullNativeContentExtent",
+          "result": "passed",
+          "caseSeconds": 1.27
+        }
+      ],
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "extentMetrics": {
+        "readerFrame": [
+          24,
+          385,
+          342,
+          188.33333333333326
+        ],
+        "outerOffset": 574.6666666666666,
+        "outerMaximumOffset": 574.6666666666666,
+        "innerContentHeight": 696.6666666666666,
+        "officialSupportingAX5TextHeight": 696.6666666666666,
+        "innerViewportHeight": 188.33333333333331,
+        "innerMaximumOffset": 508.3333333333333,
+        "observedEndOffset": 508.3333333333333,
+        "hitPoint": [
+          195,
+          526.25
+        ],
+        "hitOwner": "Descendant of inner HostingScrollView",
+        "traceSurfaceEnabled": true,
+        "traceSurfacePointInside": false,
+        "traceLocalPoint": [
+          195,
+          912.25
+        ],
+        "stateAndClockArchiveUnchanged": true,
+        "captureTail": "more showers / with a touching / star."
+      },
+      "attachments": "hosted-01-reader-extent-attachments/manifest.json",
+      "afterCapture": "hosted-01-reader-extent-attachments/DC62CE58-A0D6-48A2-BE46-904E0FF2E1F4.png"
+    },
+    {
+      "stage": "build-01-reader-extent-native-position",
+      "source": "reader-extent-native-position",
+      "result": "Debug build-for-testing passed.",
+      "log": "build-01-reader-extent-native-position.log",
+      "logSHA256": "8b1b1005f8ce971252a3de0b0ae8e5148a25ce8e5f9ce37547af07ea6949098a",
+      "receiptFile": "build-01-reader-extent-native-position-receipt.json",
+      "startedUTC": "2026-10-24T23:59:01.564953+00:00",
+      "commandWallSeconds": 19.737,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -sdk iphonesimulator -destination \"generic/platform=iOS Simulator\" -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES build-for-testing",
+      "selectedTests": []
+    },
+    {
+      "stage": "hosted-01-reader-extent-native-position",
+      "source": "reader-extent-native-position",
+      "result": "One actual-root reader extent/hit diagnostic passed; programmatic scrolling is not real-pan acceptance.",
+      "log": "hosted-01-reader-extent-native-position.log",
+      "logSHA256": "e43538b30d15d7c053864b9236d03fb520cb3941b10a5f0ca710721cbd8bcfb6",
+      "receiptFile": "hosted-01-reader-extent-native-position-receipt.json",
+      "startedUTC": "2026-10-24T23:59:28.603342+00:00",
+      "commandWallSeconds": 11.833,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallAppTests/SkyDialogueTests/testSunnyMaximumTextReaderOwnsItsHitRegionAndFullNativeContentExtent\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/hosted-01-reader-extent-native-position.xcresult test-without-building",
+      "selectedTests": [
+        "StarfallAppTests/SkyDialogueTests/testSunnyMaximumTextReaderOwnsItsHitRegionAndFullNativeContentExtent"
+      ],
+      "xcresult": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "testFailures": []
+      },
+      "methodResults": [
+        {
+          "class": "SkyDialogueTests",
+          "method": "testSunnyMaximumTextReaderOwnsItsHitRegionAndFullNativeContentExtent",
+          "result": "passed",
+          "caseSeconds": 2.149
+        }
+      ],
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "extentMetrics": {
+        "readerFrame": [
+          24,
+          419,
+          342,
+          188.33333333333326
+        ],
+        "outerOffset": 540.6666666666666,
+        "outerMaximumOffset": 574.6666666666666,
+        "innerContentHeight": 696.6666666666666,
+        "officialSupportingAX5TextHeight": 696.6666666666666,
+        "innerViewportHeight": 188.33333333333331,
+        "innerMaximumOffset": 508.3333333333333,
+        "observedEndOffset": 508.3333333333333,
+        "hitPoint": [
+          195,
+          560.25
+        ],
+        "hitOwner": "Descendant of inner HostingScrollView",
+        "traceSurfaceEnabled": true,
+        "traceSurfacePointInside": false,
+        "traceLocalPoint": [
+          195,
+          912.25
+        ],
+        "stateAndClockArchiveUnchanged": true,
+        "captureTail": "more showers / with a touching / star."
+      },
+      "attachments": "hosted-01-reader-extent-native-position-attachments/manifest.json",
+      "afterCapture": "hosted-01-reader-extent-native-position-attachments/7B2CC089-2C76-488D-A81A-F9AFE2BEF2EC.png"
+    },
+    {
+      "stage": "phone-01-3fe9f9a8-serial",
+      "source": "reader-extent-native-position committed3fe9f9a8; unchanged packet-integrated App",
+      "result": "Isolated native reader case passed; prior failures retained, no assertion/performance correction or exclusive concurrency cause claimed.",
+      "testCommit": "3fe9f9a89d2529297e9dccbbfa3ae890fb97bf56",
+      "productCommit": "bf5e6d235936dad65ef445b249f97f766ad4433b",
+      "runtimeFingerprint": "dev.3ebf052fca",
+      "log": "phone-01-3fe9f9a8-serial.log",
+      "logSHA256": "37fc2061e7ae06177f38f5669094bcb721903ccfe5881093366122a23c6ec2b4",
+      "receiptFile": "phone-01-3fe9f9a8-serial-receipt.json",
+      "startedUTC": "2026-10-25T00:01:10.376499+00:00",
+      "commandWallSeconds": 70.019,
+      "limitSeconds": 420.0,
+      "exitCode": 0,
+      "command": "/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Starfall.xcodeproj -scheme Starfall -configuration Debug -derivedDataPath /private/tmp/starfall-hud-stack-20261024/Integration -destination \"platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79\" -parallel-testing-enabled NO -collect-test-diagnostics never -jobs 4 ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \"-only-testing:StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable\" -resultBundlePath /private/tmp/starfall-hud-stack-20261024/phone-01-3fe9f9a8-serial.xcresult test-without-building",
+      "selectedTests": [
+        "StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable"
+      ],
+      "xcresult": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "runtimeWarnings": [],
+        "testFailures": []
+      },
+      "methodResults": [
+        {
+          "class": "SkyDialogueInteractionTests",
+          "method": "testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+          "result": "passed",
+          "caseSeconds": 64.788
+        }
+      ],
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "preservedGates": "Unchanged 12-pan bound, strict movement/overlap, complete final-line visibility and fixed native controls. Existing normal-motion launch requests -calmEffects NO; no forced quiet override.",
+      "attachments": "phone-01-3fe9f9a8-serial-attachments/manifest.json",
+      "scope": "One isolated native case at unchanged App/UI-test bytes. This pass does not erase the ec40 second-pan failure or prove its cause.",
+      "boundedProcessSample": {
+        "sample": "phone-01-3fe9f9a8-reader.sample.txt",
+        "sampleSHA256": "91cfa970229cbf0f308bfa0abc910e4d788159639ac6937a1f9ce143907a2bef",
+        "status": "phone-01-3fe9f9a8-reader.sample.status.txt",
+        "statusSHA256": "72f188dbc6bba899260a39c16ca148dcbc3d71313d00d28242908706d990f2e7",
+        "processProof": "phone-01-3fe9f9a8-reader.sample.process.txt",
+        "processProofSHA256": "319a38f89ba1e1c8a37093a3524f0cbd93a908ea9c7a2231633f786b964bf838",
+        "ownedPID": 34081,
+        "durationSeconds": 8,
+        "requestedIntervalMilliseconds": 1,
+        "mainThreadSamples": 5593,
+        "eventWaitSamples": 3992,
+        "eventWaitPercent": 71.4,
+        "processBinding": "Owned simulator App PID 34081; executable path is under the assigned 89BC6263 simulator and arguments match reset/dialogue/Observatory review, calmEffects NO and AX5.",
+        "observation": "Run-loop event waiting predominates; no growth/aura hot path identified in this bounded sample. Sparse refreshGrowthMotion frames are present.",
+        "limit": "Sample belongs to the isolated passing run; no performance fix, full-session baseline or exclusive cause of the earlier failure is established."
+      }
+    }
+  ],
+  "iterationFindings": [
+    {
+      "candidate": "layout-v1",
+      "status": "rejected",
+      "finding": "Real compact-layout clipping; the first reading method also lacked a real phase receipt. Keep both assertion failures visible.",
+      "evidence": "hosted-01-correction-layout.log",
+      "correction": "Inspect actual compact score/header allocation and wait for actual committed presentation instead of accepting a synthetic still."
+    },
+    {
+      "candidate": "scaled",
+      "status": "rejected",
+      "finding": "Real score/header clipping: score y=-3.5 and height63.5 while the header begins at y4.0 on375x667.",
+      "evidence": "hosted-01-correction-layout-v2.log",
+      "correction": "Correct score fitting and composition; preserve native fonts and targets."
+    },
+    {
+      "candidate": "composition-v2",
+      "stage": "layout-v3",
+      "status": "setup failure",
+      "finding": "UIWindowScene was nil before view assertions.",
+      "correction": "Use bounded condition-based scene/readiness admission; no blanket retry."
+    },
+    {
+      "candidate": "composition-v2",
+      "stage": "layout-v4",
+      "status": "mechanical pass, visually rejected",
+      "finding": "The one test passed while compact score content remained clipped: allocation was48pt, with later exact-content measurement exposing the missing native lines.",
+      "correction": "Natural vertical score sizing and meaningful native fit assertions; v5 phone allocation131pt. Mechanical containment alone did not establish visible legibility."
+    },
+    {
+      "candidate": "d319",
+      "status": "rejected component context",
+      "finding": "Persistent active-play pressure still used the message role. The independent context audit required the official instrument role.",
+      "correction": "Use StarfallStatusText(role:.instrument); restore the original132pt shower trail on its own trailing row without a miniature rendering variant."
+    },
+    {
+      "candidate": "d319",
+      "stage": "phone-01-correction-final",
+      "status": "two failed methods retained",
+      "finding": "Both methods failed because subtracting fractional native coordinates reported target height43.999999999999986 against44.0.",
+      "correction": "Compare exact native edges: maxX >= minX+44 and maxY >= minY+44; the inspection utility uses the same edge checks at48. No epsilon, target reduction or weakened containment/order assertions."
+    },
+    {
+      "candidate": "contact",
+      "status": "source-equivalent Sunny contrast failure; goal1 held",
+      "finding": "Independent adjacent RGB samples reproduced the Sunny AX5 reading failure on the prior HUD product, also seen on c8ff/de668. Footer contrast samples were1.003:1,1.083:1 and1.126:1; Next columns samples were2.13:1\u20132.55:1. Earlier layout/interaction passes did not establish this reading contract.",
+      "evidenceScope": "Reviewer measurements reported to the coordinator from actual native Sunny captures; this record does not claim a fresh sampling exercise or global/physical contrast acceptance.",
+      "correction": "Prototype fitted scenery protection in the existing shared theme; independent review of source-bound native Sunny captures remains required."
+    },
+    {
+      "candidate": "contact",
+      "stage": "hosted-01-correction-phone-proposal",
+      "status": "failed:five assertions preserved",
+      "finding": "Unchanged reading probe reproduced on the dedicated3x phone: compact score107.33333333333331pt (107.66666666666664 including one pixel) versus headline minimum130.49609375 and standalone requirement130.66666666666666; receipt capture age0.8411159515380859 exceeded0.6; converted global canvas height1285.3333333333335 differed from local scene height1285.3333333333333; strict return-band containment failed.",
+      "diagnosis": "The canvas assertion mixed a globally converted rectangle with local scene size. The return fitter centered a full-height band via midY-height/2: band y217.66666666666666,height79.99999999999997 produced slot y217.66666666666663,2.842170943040401e-14 outside. The score probe also compared generic UIFont headline and an unattached host against the shared serif score. Score clipping/required fit remains unresolved until a valid matching-trait measurement; it is not dismissed from a screenshot.",
+      "correction": "Compare native canvas bounds with local scene size while retaining converted global anchor equality; preserve exact edges when fitting the full-height return slot; use a supported same-trait score measurement and retain complete score/figure/timing gates. No epsilon or lowered thresholds."
+    },
+    {
+      "candidate": "scenic-extracted",
+      "stage": "hosted-01-correction-phone-attached",
+      "status": "failed diagnostic; not valid score acceptance",
+      "finding": "CascadeReturnTests passed; the reading test failed four assertions. SwiftUI reported that adding measurement _UIHostingViews beneath UIHostingController.view was unsupported. Nested hosting and inherited safe-area layout inflated expected compact serif lines to224.66666666666666 and complete score to177.66666666666666; tablet expectations were144.33333333333331.",
+      "correction": "Move measurement hosts into supported sibling controller/view containment with explicit measurement safe-area policy, leaving the live game layout intact. Capture the resulting proposal/traits and rerun the unchanged fit/containment gates. The failed nested-host result remains visible."
+    },
+    {
+      "candidate": "scenic-extracted valid sibling harness",
+      "stage": "hosted-01-correction-phone-siblings",
+      "status": "real production failure reproduced",
+      "finding": "With supported plain-parent sibling containment and measurement-only empty safeAreaRegions, actual compact score allocation107.33333333333331 failed both official-serif multiline and complete-score130.66666666666666 content gates. The synthetic wide profile and exact return/receipt checks were separate; nested-host warnings were absent.",
+      "correction": "The pinned edgeHeader VStack must report its complete natural vertical size before width frames/anchor. Score internals already preserve their ideal sizing; the finite reading layout had compressed the containing header. No font clamp, target shrink, fixed height or relaxed content gate was introduced.",
+      "verifiedBy": "hosted-01-correction-natural-header:2 passed, zero failures/skips; hosted-01-d5d02a7b:168 passed, zero failures/skips/runtime warnings."
+    },
+    {
+      "candidate": "natural-header d5d02a7b",
+      "status": "native and live-visual failures retained",
+      "finding": "Final old-source phone3 produced one pressure pass and two failures; the actual tablet AX5 Calm method passed. Independent whole-frame review also found cyan packet ink across forecast digit6/Next columns at receipt age0.203686. Goal1 stayed held; known packet occlusion was corrected in the same goal rather than deferred to goal7.",
+      "evidence": [
+        "phone-01-d5d02a7b",
+        "tablet-01-d5d02a7b",
+        "visual-review-01-packet.json"
+      ]
+    },
+    {
+      "candidate": "packet-integrated bf5e6d23",
+      "status": "bounded packet correction verified; whole-goal acceptance held",
+      "finding": "Clip the composited packet layer and shadow outside the measured header as well as score. Separate masks preserve union exclusion; flight/path math, arrivals, lifetime and receiver bloom remain unchanged. Existing raster method retains its original two cases and adds actual compact reading geometry for score/restoration destinations with positive outside ink and zero header/score ink.",
+      "executedEvidence": {
+        "integratedHosted": 228,
+        "phonePacketReading": 2,
+        "skipped": 0
+      },
+      "visualEvidence": "visual-review-01-packet.json independently passes identified2x/3x before/live frames only; it explicitly holds overall goal1."
+    },
+    {
+      "candidate": "native-precision ec40c9a3",
+      "status": "test-only comparison correction; native run completed with one unresolved Sunny failure",
+      "finding": "Precise diagnostic confirmed header aggregate Float32 edges versus descendant CGFloat edges. Header containment now compares edges at common Float precision; exact44/48-point CGFloat target gates are unchanged. Arithmetic verification accepts the observed equal edge and rejects0.01-point escapes at all four edges. Reader pan admission/progress now share one immutable native frame sample; movement/overlap assertions and12-pan bound remain.",
+      "exclusiveCauseClaim": false,
+      "readerEvidence": "The diagnostic method passed90.097s before the loop/assertion correction and its screenshots show the full tail more showers / with a touching / star. The older failed d5 clip omitted the final phrase and did not establish a reachable reading end; its cause remains unassigned. Shared-sample pan admission removes a demonstrated query-race surface without proving an exclusive cause.",
+      "arithmeticVerification": {
+        "observedForecastContainedAtCommonPrecision": true,
+        "rejectedOutsideDistance": 0.01,
+        "rejectedEdges": [
+          "minX",
+          "minY",
+          "maxX",
+          "maxY"
+        ],
+        "scope": "Direct coordinate arithmetic, not a native interaction pass."
+      }
+    },
+    {
+      "candidate": "reader-extent diagnostics on unchanged packet-integrated App",
+      "status": "extent/stable hit verified; real-pan cause unresolved",
+      "finding": "Native ec40c9a3 stalls on pan2 with text still below its viewport. Both actual-root hosted probes contain all696.6667pt of official AX5 text and reach508.3333pt programmatically. At exact failed reader y419/contact(195,560.25), hit belongs to the inner reader and enabled trace Surface rejects it. No content truncation or stable hit interception reproduced; transient gesture/state ownership remains unproved.",
+      "evidence": [
+        "phone-01-ec40c9a3",
+        "hosted-01-reader-extent",
+        "hosted-01-reader-extent-native-position"
+      ],
+      "exclusiveCauseClaim": false
+    },
+    {
+      "candidate": "isolated3fe9f9a8 reader on unchanged App3eb",
+      "status": "native case passed; independent visual review pending",
+      "finding": "One isolated reader case passed 70.019s with unchanged normal-motion reading gates. Bounded 8s sampling of owned PID 34081 shows 3992/5593 main samples (71.4%) in run-loop event wait, without an identified growth/aura hot path. No assertion/performance fix or exclusive cause is claimed; earlier failures and recurrence followup remain.",
+      "evidence": [
+        "phone-01-3fe9f9a8-serial",
+        "phone-01-3fe9f9a8-reader.sample.txt"
+      ],
+      "exclusiveCauseClaim": false
+    }
+  ],
+  "integratedRuntimeWarning": {
+    "source": "integrated",
+    "commit": "03e1f73941f7a245eed0117c475af75e26bd3b53",
+    "runtimeFingerprint": "dev.c8ff0528d7",
+    "hostedPassed": 121,
+    "message": "Modifying state during view update, this will cause undefined behavior.",
+    "runtimeEmissions": 53,
+    "diagnosticEchoes": 4,
+    "matchingLogLines": 57,
+    "byMethod": {
+      "testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText": {
+        "runtime": 16,
+        "diagnosticEchoes": 1
+      },
+      "testFullGameRendersOrdinaryRecipeTraceAndRelayAwards": {
+        "runtime": 17,
+        "diagnosticEchoes": 1
+      },
+      "testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls": {
+        "runtime": 8,
+        "diagnosticEchoes": 1
+      },
+      "testRealPracticeAwardBandSurvivesGrowingScoreWithoutMovingStars": {
+        "runtime": 12,
+        "diagnosticEchoes": 1
+      }
+    },
+    "comparison": {
+      "hosted-01-correction-final.log": {
+        "runtimeEmissions": 0,
+        "selectedPassed": 85,
+        "sameFourActualViewMethodsRan": true
+      },
+      "hosted-01-correction-layout-v5.log": {
+        "runtimeEmissions": 0,
+        "selectedPassed": 1
+      }
+    },
+    "sourceDerivedCause": "UIViewRepresentable.updateUIView -> Surface.updateInput -> cancelInput -> input.cancel -> FallingSkyView.cancelConstellation -> unconditional contactInputSnapshot=nil @State write. Configuration/disabled cancellation can execute synchronously during view update even without an active contact. The snapshot/state clear arrived in merged FIFO commit592e67fa, not the03e1 HUD correction. No runtime backtrace was captured.",
+    "correction": {
+      "source": "contact",
+      "owner": "existing SkyInteractionSession in App/SkyTechniqueIntent.swift",
+      "change": "Move the non-rendered source out of FallingSkyView @State into @ObservationIgnored private(set) inputSnapshot. acquireHold(at:snapshot:using:) captures only after successful admission. Terminal release clears snapshot before releasing the hold; stale tickets preserve replacement contacts. Synchronous cancellation remains intact.",
+      "testChanges": "Three existing TraceInputPolishTests methods extended;32 methods retained, count delta0. Successful/failed admission, reentrant acquisition, stale release and generation/size/disabled/detachment cancellation preserve original assertions.",
+      "runtimeVerdict": "Historical contact6b94e755-source hosted153/153 and native3/3 passed, with zero failures/skips and zero reproduced state-update warnings. The original c8ff hosted53 runtime emissions plus4 diagnostic echoes and c8ff native warnings remain historical intermediate-source evidence."
+    }
+  },
+  "pendingAndUnperformed": {
+    "requiredBeforeAdoption": [],
+    "separateUnperformed": [
+      "Physical-device installation",
+      "Actual VoiceOver session",
+      "Physical contrast/reading comfort",
+      "Minimum-iOS execution",
+      "Human learning/enjoyment and sustained performance"
+    ],
+    "releaseBuild": "Packet-integrated bf5e6d23/dev.3ebf052fca Release simulator build passed35.458s; ec40c9a3 changes UI tests only.",
+    "noRelaxation": "No warning suppression, blanket retry, reduced target, epsilon tolerance, forced quiet override or gameplay clock/rule/save change was introduced to obtain green results. Named Calm native cases use the real preference; they do not establish normal-motion acceptance.",
+    "completedGates": [
+      "Historical contact6b94e755 build-for-testing passed61.539s.",
+      "Historical contact6b94e755 hosted153 passed59.512s; zero failures/skips/runtime warnings.",
+      "Historical contact6b94e755 native phone2 passed275.988s and tablet1 passed244.672s; intermediate c8ff evidence remains separate.",
+      "Historical natural-header d5d02a7b phone hosted2 passed12.54s; official serif/content/return/receipt gates unchanged.",
+      "Historical natural-header d5d02a7b tablet hosted168 passed62.531s; zero failures/skips/runtime warnings.",
+      "Historical natural-header d5d02a7b Release passed12.468s; Core352 passed41.146s, zero failures/skips.",
+      "Packet-integrated bf5e6d23 build-for-testing passed51.706s.",
+      "Packet-integrated bf5e6d23 selected hosted228 passed60.662s; phone packet/reading2 passed42.207s, zero failures/skips/runtime warnings.",
+      "Packet-integrated bf5e6d23 Release passed35.458s; pre-diagnostic source discovery814 hosted/260 UI.",
+      "Test-only reader extent builds passed15.093s and19.737s; single hosted probes passed8.958s and11.833s stage wall times, zero skips/runtime warnings. Current discovery815 hosted/260 UI.",
+      "Isolated 3fe9f9a8 native reader passed 70.019s stage / 64.788s case, zero failures/skips/runtime warnings; same App dev.3eb and unchanged 12-pan/final-line/fixed-control gates."
+    ],
+    "supersedingHold": "Earlier native failures remain failures. Current source-bound checks and independent visual review establish this scoped development adoption; no exclusive failure cause or complete reliability claim.",
+    "completedGatesScope": "Source-bound check history only; these passes do not override the retained ec40c9a3 real-pan failure."
+  },
+  "sourceEvidenceNote": "Historical source entries preserve snapshot file identities/hashes and input counts; their exact path/hash maps remain in the named raw snapshots. All15 current contact-candidate input hashes are copied below. Reported visual rejections are retained as history; this mechanical record supplies no independent visual verdict. The natural-header entry preserves its exact base-plus-two-dirty-input snapshot and binds those verified input hashes to d5d02a7b/dev.402680814f. Reused preflight output paths are separately classified; earlier results are not re-counted as product failures. Packet snapshot records b7aa58f7 plus three exact dirty inputs matching bf5e6d23. ec40c9a3 changes only two UITest files and retains identical App bytes. Updated814/260 discovery derives from the integrated main271fd source; historical799/259 extraction counts remain unchanged. Reader extent runs add only AppTests/SkyDialogueTests.swift at recorded dirty hashes on ec40c9a3; the second bytes match subsequent commit3fe9f9a8. App diff bf5e6d23..3fe9f9a8 is empty; current discovery815/260 does not change earlier run counts.",
+  "updatedUTC": "2026-10-25T00:03:57.011613+00:00",
+  "visualStatus": "BOUNDED_VISUAL_PASS for identified native states/exports; see independent visual record",
+  "integrationStatus": "Main271fd integrated locally; correction publication pending",
+  "candidateHistory": [
+    {
+      "statusAtPriorHandoff": "mechanically-verified",
+      "candidate": {
+        "source": "contact",
+        "commit": "6b94e7555722eda7fedcffd98ec6d1fe9f9520b3",
+        "base": "ac7de9cb9ce37e8ea9ff9879f05f55857b678b68",
+        "runtimeFingerprint": "dev.de668f8e0a",
+        "sourceCheckout": "Clean in source-01-correction-contact.json before this documentation-only record",
+        "build": "Passed after dispatch of this evidence task; receipt wall time 61.539s",
+        "hosted": {
+          "status": "passed",
+          "selectedCount": 153,
+          "passed": 153,
+          "failed": 0,
+          "skipped": 0,
+          "commandWallSeconds": 59.512,
+          "testSeconds": 47.047,
+          "runtimeWarningCount": 0,
+          "actualViewMethodsPassedWithoutStateUpdateWarnings": [
+            "testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText",
+            "testFullGameRendersOrdinaryRecipeTraceAndRelayAwards",
+            "testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+            "testRealPracticeAwardBandSurvivesGrowingScoreWithoutMovingStars"
+          ]
+        },
+        "native": {
+          "status": "passed",
+          "finalSourceMethods": 3,
+          "phone": {
+            "passed": 2,
+            "failed": 0,
+            "skipped": 0,
+            "commandWallSeconds": 275.988
+          },
+          "tablet": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "commandWallSeconds": 244.672
+          },
+          "runtimeWarnings": 0,
+          "scope": "Three native methods on dev.de668f8e0a. Earlier c8ff five-phone/two-tablet methods remain separate intermediate-source evidence; no combined ten-method final-source claim."
+        },
+        "visual": "Pending final independent tablet verdict and coordinator reconciliation; not established by passing tests",
+        "hygieneAndDiff": "Final documentation/integration checks not recorded here yet",
+        "sourceDelta": "Non-rendered contact ownership only after c8ff: source snapshot moves from FallingSkyView @State into the existing SkyInteractionSession @ObservationIgnored inputSnapshot. Acquisition captures it only with a successfully owned hold; terminal cancellation clears it before release; stale tickets cannot clear a newer source. No input timing, FIFO, clock, rule, save or visible layout policy changes.",
+        "coreReuse": {
+          "testedSource": "03e1f73941f7a245eed0117c475af75e26bd3b53",
+          "currentSource": "6b94e7555722eda7fedcffd98ec6d1fe9f9520b3",
+          "passed": 352,
+          "failed": 0,
+          "skipped": 0,
+          "commandWallSeconds": 42.234,
+          "basis": "Coordinator confirmed identical Core inputs from03e1 to6b94; the subsequent contact correction is App-only. This reuses the source-bound Core run rather than claiming a new run.",
+          "postIntegratedChangedInputs": [
+            "App/FallingSkyView.swift",
+            "App/SkyTechniqueIntent.swift",
+            "AppTests/TraceInputPolishTests.swift"
+          ]
+        }
+      },
+      "supersedingFinding": "Later source-equivalent Sunny contrast and 3x phone-hosted reproduction prevent adoption. Earlier source-bound passing results remain factual."
+    },
+    {
+      "statusAtPriorHandoff": "scenic-extracted prototype; supported sibling rerun pending",
+      "candidate": {
+        "source": "scenic-extracted",
+        "commit": "6d03857ed8fbf2eba867c25c95fe361872283242",
+        "runtimeFingerprint": "dev.2761763ed2",
+        "base": "ac7de9cb9ce37e8ea9ff9879f05f55857b678b68",
+        "precedingContactSource": "6b94e7555722eda7fedcffd98ec6d1fe9f9520b3",
+        "status": "prototype; HOLD/PENDING",
+        "productChanges": [
+          "Shared fitted nightglass protection:82% opacity,8pt visual-only outsets and3pt feather; opaque/no feather under Reduced Transparency or Increased Contrast",
+          "Protection applied to exact score, complete forecast group, instrument status and explicitly scenic gameplay actions; clear default gameplay backdrop and existing utility targets preserved",
+          "Return-slot fitting uses edge-preserving placement for fractional full-height protected bands"
+        ],
+        "testAndProjectChanges": "Reading probe extracted into SkyReadingPlayfieldTests; registered in the existing hosted target with focused ownership. Local/native canvas checks and official serif measurement remain behavioral fit gates.",
+        "focusedSuiteExtraction": {
+          "appHostedDiscovered": 799,
+          "nativeUIDiscovered": 259,
+          "countDelta": 0,
+          "basis": "Coordinator confirmed extraction preserves discovery counts; retained baseline inventory is native-plan-integrated.json. These are discovery counts, not executed-pass totals."
+        },
+        "sunnyNative": {
+          "source": "scenic-product",
+          "runtimeFingerprint": "dev.bca571394e",
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "commandWallSeconds": 108.042,
+          "scope": "Sunny product was built from source-01-correction-scenic.json before test/project-only extraction; common App source hashes match the extracted snapshot. No final extracted-source native aggregate is claimed."
+        },
+        "release": {
+          "source": "scenic-product",
+          "runtimeFingerprint": "dev.bca571394e",
+          "status": "passed",
+          "commandWallSeconds": 51.581,
+          "scope": "Before test/project-only extraction; source-bound build result only"
+        },
+        "hostedDiagnostic": {
+          "stage": "hosted-01-correction-phone-attached",
+          "executed": 2,
+          "methodsPassed": 1,
+          "methodsFailed": 1,
+          "skipped": 0,
+          "assertionFailures": 4,
+          "commandWallSeconds": 11.02,
+          "verdict": "Invalid nested-host measurement setup; score acceptance remains pending"
+        },
+        "latestHarness": {
+          "stage": "build-01-correction-sibling-probe",
+          "buildStatus": "passed",
+          "commandWallSeconds": 7.44,
+          "sourceLimit": "Sibling harness is a test-only working-tree change after the6d038 snapshot; no unrecorded later test hash is invented.",
+          "validRerun": "pending",
+          "independentVisualReview": "pending"
+        },
+        "scope": "Prototype native slice only. Core rules, clocks, FIFO policy and saves are unchanged; no global contrast, physical-device or adoption claim."
+      },
+      "pendingAtPriorHandoff": {
+        "requiredBeforeAdoption": [
+          "Valid supported sibling-host reading-probe rerun on the dedicated3x phone, preserving exact score/figure/native-mapping/timing gates",
+          "Independent source-bound Sunny contrast and complete-screen visual verdict for the fitted protection prototype",
+          "Reconcile extracted-target build/Release/membership evidence, required checks and final source inputs before any acceptance or merge"
+        ],
+        "separateUnperformed": [
+          "Physical-device installation",
+          "Actual VoiceOver session",
+          "Physical contrast/reading comfort",
+          "Minimum-iOS execution",
+          "Human learning/enjoyment and sustained performance"
+        ],
+        "releaseBuild": "Not recorded for this layout/input-ownership correction; no routes, resources or membership changes are asserted",
+        "noRelaxation": "No warning suppression, blanket retry, reduced target, epsilon tolerance, forced quiet override or gameplay clock/rule/save change was introduced to obtain green results. Named Calm native cases use the real preference; they do not establish normal-motion acceptance.",
+        "completedGates": [
+          "Contact build-for-testing passed in 61.539s",
+          "Final-source hosted:153 passed, zero failures/skips/runtime warnings,59.512s; all four previously affected real-view methods passed",
+          "Final-source native:phone2 passed in275.988s and tablet1 passed in244.672s, each zero failures/skips/runtime warnings; intermediate seven native methods remain separately bound to c8ff"
+        ],
+        "supersedingHold": "Earlier completed gates remain historical for their exact sources. Sunny contrast failure and3x probe failures require this prototype and supported harness to pass before adoption."
+      }
+    },
+    {
+      "statusAtPriorHandoff": "natural-header mechanical gates passed; native and whole-screen visual acceptance held",
+      "candidate": {
+        "source": "natural-header",
+        "commit": "d5d02a7bebe934dd56d14ea2893ff2da7f571844",
+        "runtimeFingerprint": "dev.402680814f",
+        "base": "6d03857ed8fbf2eba867c25c95fe361872283242",
+        "status": "mechanical final-source checks passed; HOLD pending final native/visual acceptance",
+        "productChanges": [
+          "Shared fitted nightglass protection:82% opacity,8pt visual-only outsets and3pt feather; opaque/no feather under Reduced Transparency or Increased Contrast",
+          "Protection applied to exact score, complete forecast group, instrument status and explicitly scenic gameplay actions; clear default gameplay backdrop and existing utility targets preserved",
+          "Return-slot fitting uses edge-preserving placement for fractional full-height protected bands",
+          "Pinned edgeHeader requests natural vertical size before outer width frames and header anchoring, preventing measured native score content from being compressed by the finite reading layout."
+        ],
+        "testAndProjectChanges": "Reading probe extracted into SkyReadingPlayfieldTests; registered in the existing hosted target with focused ownership. Local/native canvas checks and official serif measurement remain behavioral fit gates.",
+        "focusedSuiteExtraction": {
+          "appHostedDiscovered": 799,
+          "nativeUIDiscovered": 259,
+          "countDelta": 0,
+          "basis": "Source-counted discovery preserved across the focused SkyReadingPlayfieldTests extraction; these totals are not executed-pass claims."
+        },
+        "build": {
+          "status": "passed",
+          "stage": "build-01-correction-natural-header",
+          "commandWallSeconds": 14.354
+        },
+        "phoneHosted": {
+          "status": "passed",
+          "passed": 2,
+          "failed": 0,
+          "skipped": 0,
+          "commandWallSeconds": 12.54,
+          "selectedTests": [
+            "StarfallAppTests/SkyReadingPlayfieldTests",
+            "StarfallAppTests/CascadeReturnTests/testChronologicalSlotsKeepEachExactTopologyAndReserveSeparateLabelAndHUDSpace"
+          ],
+          "runtimeWarnings": 0
+        },
+        "tabletHosted": {
+          "status": "passed",
+          "passed": 168,
+          "failed": 0,
+          "skipped": 0,
+          "commandWallSeconds": 62.531,
+          "selectedTests": [
+            "StarfallAppTests/SkyForecastDestinationsTests",
+            "StarfallAppTests/SkyForecastInspectionTests",
+            "StarfallAppTests/SkyShowerInspectionTests",
+            "StarfallAppTests/StarlightCelebrationTests",
+            "StarfallAppTests/SkyReadingPlayfieldTests",
+            "StarfallAppTests/SkyDialogueTests",
+            "StarfallAppTests/ObservatoryArtworkTests",
+            "StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking",
+            "StarfallAppTests/SkyTechniqueStoreTests",
+            "StarfallAppTests/TraceInputPolishTests",
+            "StarfallAppTests/CascadeReturnTests"
+          ],
+          "runtimeWarnings": 0,
+          "reproducedStateUpdateWarnings": 0,
+          "nestedHostingWarnings": 0
+        },
+        "release": {
+          "status": "passed",
+          "stage": "release-01-correction-final",
+          "commandWallSeconds": 12.468
+        },
+        "core": {
+          "status": "passed",
+          "passed": 352,
+          "failed": 0,
+          "skipped": 0,
+          "testSuiteWallSeconds": 41.146
+        },
+        "native": {
+          "status": "final phone3 and tablet1 native methods running at evidence handoff; not yet accepted"
+        },
+        "visual": {
+          "status": "held until final source-bound native captures and independent review"
+        },
+        "scope": "Mechanical correctness/build evidence only. Final native interaction, independent complete-screen visual acceptance and integration remain pending; no physical-device, actual VoiceOver or global contrast claim."
+      },
+      "pendingAtPriorHandoff": {
+        "requiredBeforeAdoption": [
+          "Final-source phone3 and tablet1 native methods must finish with exact counts, no failures/skips and source-bound captures",
+          "Independent complete-screen visual verdict on the final native evidence, including Sunny fitted protection",
+          "Reconcile final source inputs, required hygiene/membership checks and native/visual outcomes before acceptance or merge"
+        ],
+        "separateUnperformed": [
+          "Physical-device installation",
+          "Actual VoiceOver session",
+          "Physical contrast/reading comfort",
+          "Minimum-iOS execution",
+          "Human learning/enjoyment and sustained performance"
+        ],
+        "releaseBuild": "Final natural-header source passed the Release simulator build in12.468s; explicit extracted hosted membership remains recorded.",
+        "noRelaxation": "No warning suppression, blanket retry, reduced target, epsilon tolerance, forced quiet override or gameplay clock/rule/save change was introduced to obtain green results. Named Calm native cases use the real preference; they do not establish normal-motion acceptance.",
+        "completedGates": [
+          "Contact build-for-testing passed in 61.539s",
+          "Final-source hosted:153 passed, zero failures/skips/runtime warnings,59.512s; all four previously affected real-view methods passed",
+          "Final-source native:phone2 passed in275.988s and tablet1 passed in244.672s, each zero failures/skips/runtime warnings; intermediate seven native methods remain separately bound to c8ff",
+          "Natural-header3x phone hosted:2 passed in12.54s; official serif/content height and exact return/receipt gates unchanged",
+          "Final d5d02a7b tablet hosted:168 passed in62.531s; zero failures/skips/runtime warnings, including no reproduced state-update or nested-host warnings",
+          "Final natural-header Release:passed12.468s; final Core:352 passed, zero failures/skips,41.146s test-suite wall time"
+        ],
+        "supersedingHold": "Earlier failures and source-bound passes remain historical. Final mechanical checks now pass, but native/visual acceptance is still held and is not established by the hosted or build results."
+      }
+    }
+  ],
+  "adoptionDecision": {
+    "scope": "Official-role HUD correction and identified native phone/tablet composition; retained exports independently reviewed",
+    "mechanical": "Selected gates only, exact-source scopes stated; prior native failures preserved",
+    "residual": "Earlier unfinished Sunny pan stalls under overlapping simulator UI work have unproved cause. Unchanged isolated native case passes; recurrence instrumentation is recorded in ENGINEERING.",
+    "publication": "pending; next goal cannot implement before individual main merge"
+  }
+}

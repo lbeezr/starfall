@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "goal": 1,
+  "status": "BOUNDED_VISUAL_PASS for current identified source/states; prior failed states retained separately",
+  "conversion": "sips JPEG quality80 at original pixel dimensions; no crop, retouch or status-bar changes. Raw PNG hashes retained.",
+  "limits": "Exact source-bound native and hosted scopes differ. Earlier pan failures remain failures; serial pass does not prove their cause. Tablet settled states are d5 and rendered-equivalent under current changed readiness/packet paths, not fresh current-runtime tablet runs.",
+  "captures": [
+    {
+      "path": "correction-captures/dev-3ebf052fca__hud-selected-column-6__iphone-17e__default-text.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/378EEA20-994C-4625-8971-8E9D373B2236.png",
+      "rawSHA256": "8487aa706a22b86189500830bea6ab000918908400b95cc0c3c557b47f73d590",
+      "rawBytes": 3463465,
+      "sha256": "b0864c1ac4bb72f240ddb324396af63914c486ef4398e5e121d5265048655a25",
+      "bytes": 545248,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "runtime": "dev.3ebf052fca",
+      "source": "ec40c9a3 tests; bf5e6d23 rendered App",
+      "role": "Default phone hierarchy, complete forecast and selected-column correspondence",
+      "status": "bounded visual pass; overall held"
+    },
+    {
+      "path": "correction-captures/dev-3ebf052fca__shower-inspection__iphone-17e__default-text.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/6DF258E1-55FE-44D7-894E-71D84068016C.png",
+      "rawSHA256": "e1785dd1cbed5d0d5b5e1f9e8f6574771760ffdb6fe4ae03338743753dc23bc0",
+      "rawBytes": 1554329,
+      "sha256": "5dacaf886720e739e20439c7f25a7c9613d22f28b8b819319d1ec10e87622d36",
+      "bytes": 460333,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "runtime": "dev.3ebf052fca",
+      "source": "ec40c9a3 tests; bf5e6d23 rendered App",
+      "role": "Contextual inspection destination and complete Return action",
+      "status": "bounded visual pass; whole inspector reading not inferred"
+    },
+    {
+      "path": "correction-captures/dev-3ebf052fca__hud-after-background__iphone-17e__default-text.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/CE535284-4CAD-4C04-8B3F-21A59219BBEB.png",
+      "rawSHA256": "d10dc1e3e44d6d2ea93a5fc44e65c7e7169f532f35ed6c64e8229f50915418a0",
+      "rawBytes": 3456518,
+      "sha256": "499368954eb4cd0b7a569add0deaf7d5c5c842783c87938225e51ffb1a20c3eb",
+      "bytes": 526713,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "runtime": "dev.3ebf052fca",
+      "source": "ec40c9a3 tests; bf5e6d23 rendered App",
+      "role": "Unselected return after background/world journey",
+      "status": "bounded visual pass"
+    },
+    {
+      "path": "correction-captures/dev-d5d02a7b__hud-selected-column-6__ipad__ax5-calm.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-01-d5d02a7b-attachments/D9BA2E34-4442-48D1-9040-4BFE762AE07D.png",
+      "rawSHA256": "6fa54f5db45ac5894e18fdf374f7f19a0c45e21cd0aa2171b192457e7aa9154b",
+      "rawBytes": 6860192,
+      "sha256": "f787d125d9118f1c1b0731bb82649975f55397fbb07e298646de76be01eb8e2c",
+      "bytes": 1067008,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "runtime": "dev.402680814f",
+      "source": "d5d02a7b",
+      "role": "Actual tablet AX5 local instruments, 24 stars, ceiling and selection in one frame",
+      "status": "bounded settled visual pass; not fresh bf5 tablet execution"
+    },
+    {
+      "path": "correction-captures/dev-d5d02a7b__hud-settled-15000__ipad__ax5-calm.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-01-d5d02a7b-attachments/C20A3747-44B4-4AD2-82B9-9CB3804F288D.png",
+      "rawSHA256": "c50c8736d7f2444703598e716c12274866d2f3894f6b66af50e5c8a50d6755a4",
+      "rawBytes": 6647533,
+      "sha256": "23b7c823335d6a215766b3d301775f99f15d52f5b55d5b4ce343489cfffd9de8",
+      "bytes": 996334,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "runtime": "dev.402680814f",
+      "source": "d5d02a7b",
+      "role": "Exact nonzero score/goal and settled star field",
+      "status": "bounded settled visual pass; not live receipt/complete guide reading"
+    },
+    {
+      "path": "correction-captures/dev-d5d02a7b__full-board__ipad__ax5-calm.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-01-d5d02a7b-attachments/A1119312-E415-4205-93B5-ED772885072B.png",
+      "rawSHA256": "ba7f00de8b9ab0bc0e4934de1bef10cea4c49e7efe2bc86d68d8a706f71a3685",
+      "rawBytes": 6959314,
+      "sha256": "f22b6925a5acac0651d6428a59f96abe943d7289a1ad3f5f51b66ca69bc2abbf",
+      "bytes": 1117060,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "runtime": "dev.402680814f",
+      "source": "d5d02a7b",
+      "role": "49 stars and contextual Full Board without shower instruments",
+      "status": "bounded settled visual pass; not fresh bf5 tablet execution"
+    },
+    {
+      "path": "correction-captures/dev-3ebf052fca__hosted-reading-before__phone-traits__375x667-ax5.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-01-phone-packet-attachments/405CB3D7-2078-4CB7-9A59-0385D6BF6D0A.png",
+      "rawSHA256": "a06e42b2184218b3459d3ff5362f0cd678669b7411eb34e507657d31df76d1f6",
+      "rawBytes": 6433066,
+      "sha256": "fed70007e03a21b862c867e0f5ecc9bd9b54211e3f9aff0e0e021d9024f1a2a0",
+      "bytes": 391703,
+      "pixels": [
+        1125,
+        2001
+      ],
+      "runtime": "dev.3ebf052fca",
+      "source": "bf5e6d23;source-01-packet-integrated.json",
+      "role": "Compact 3x hosted before-state for live receipt comparison",
+      "status": "bounded pass recorded by hud_audit"
+    },
+    {
+      "path": "correction-captures/dev-3ebf052fca__hosted-reading-receipt__phone-traits__375x667-ax5.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-01-phone-packet-attachments/3FC6B14F-F36F-4FD1-806D-F6D05EB43E67.png",
+      "rawSHA256": "e4899711ec0e8b35bd7db40dc16edc4d343402f10e446c46ffd1a92f295c47a9",
+      "rawBytes": 6110352,
+      "sha256": "e57a19ee5ea987700043f34b9d91d551e278147986d0f4e8595355e44f9c8ab1",
+      "bytes": 361473,
+      "pixels": [
+        1125,
+        2001
+      ],
+      "runtime": "dev.3ebf052fca",
+      "source": "bf5e6d23;source-01-packet-integrated.json",
+      "role": "Actual midlife compact packet/forecast separation, age 0.202424 seconds",
+      "status": "bounded phase pass recorded by hud_audit"
+    },
+    {
+      "path": "correction-captures/dev-3ebf052fca__sunny-reading-beginning__iphone-17e__ax5.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-3fe9f9a8-serial-attachments/028D0F13-8873-4655-A1F1-6879A8CEADB1.png",
+      "rawSHA256": "82e91137099767966ade48649c43e488aca0f1be789dc978f70737273fc19d6a",
+      "rawBytes": 3025645,
+      "sha256": "54fd47a420ac55893ae4c88ba12b5d40cfa665fda45ae1d7334aab018a28a7ba",
+      "bytes": 472395,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "runtime": "dev.3ebf052fca",
+      "source": "3fe9f9a8 tests; bf5e6d23 App",
+      "role": "sunny-reading-beginning",
+      "status": "current bounded visual pass; isolated native interaction pass"
+    },
+    {
+      "path": "correction-captures/dev-3ebf052fca__sunny-reading-end__iphone-17e__ax5.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-3fe9f9a8-serial-attachments/2334BAD1-C32E-4867-B700-EA30D1FC821C.png",
+      "rawSHA256": "1eec575c1067dec94cf920f7b2f292d48f36b460fb02960780148a21586393ec",
+      "rawBytes": 3034118,
+      "sha256": "5278ab81410c38546a2fc4fdad32fbb6c5ee271af8ab19dce0f2a0dd1da37f84",
+      "bytes": 458593,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "runtime": "dev.3ebf052fca",
+      "source": "3fe9f9a8 tests; bf5e6d23 App",
+      "role": "sunny-reading-end",
+      "status": "current bounded visual pass; isolated native interaction pass"
+    },
+    {
+      "path": "correction-captures/dev-3ebf052fca__studio-reading-end__iphone-17e__ax5.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-3fe9f9a8-serial-attachments/E37C92AE-1278-4E4E-969A-734A06C5C4CF.png",
+      "rawSHA256": "6431367cf4952c032121e1094dfcf0c2c40734c357baea413c9f1c111260dfa3",
+      "rawBytes": 2527693,
+      "sha256": "37f961b6bf8b394445aef4cc84c5c2e525db848bd9b99ada58907e2eed500816",
+      "bytes": 380867,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "runtime": "dev.3ebf052fca",
+      "source": "3fe9f9a8 tests; bf5e6d23 App",
+      "role": "studio-reading-end",
+      "status": "current bounded visual pass; isolated native interaction pass"
+    },
+    {
+      "path": "correction-captures/dev-3ebf052fca__sunny-reader-stalled__iphone-17e__ax5.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/311619EB-1839-47A2-94CA-B9D59A8460EB.png",
+      "rawSHA256": "429c7ede75b6fab2b2795a4a9d81a4e109ff7891a70d0918fcf5f1cca9ba259e",
+      "rawBytes": 3027978,
+      "sha256": "1b8385e132f81d7ce49b8f0bf4a1677923c34f15be80244da978a81551bcfd85",
+      "bytes": 483020,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "runtime": "dev.3ebf052fca",
+      "source": "ec40c9a3 tests; bf5e6d23 rendered App",
+      "role": "Visible overflowing reader failure; do not conflate with Sunny end pass",
+      "status": "recorded failed run, cause unassigned; unchanged isolated pass separately recorded"
+    },
+    {
+      "path": "correction-captures/ec40c9a3__sunny-reader-stalled__native-frames.txt",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/15800770-87C6-4ADC-903A-6638B065E322.txt",
+      "rawSHA256": "2942ce54f5f7a43653d6878dad76862ef3db70a026c3421329bb683abe46e5bd",
+      "rawBytes": 1802,
+      "sha256": "2942ce54f5f7a43653d6878dad76862ef3db70a026c3421329bb683abe46e5bd",
+      "bytes": 1802,
+      "pixels": null,
+      "runtime": "dev.3ebf052fca",
+      "source": "ec40c9a3 tests; bf5e6d23 rendered App",
+      "role": "Exact unchanged reader/text/action frame diagnostics",
+      "status": "recorded failed run, cause unassigned; unchanged isolated pass separately recorded"
+    },
+    {
+      "path": "correction-captures/dev-c8ff0528d7__sunny-contrast-failure__iphone-17e__ax5.jpg",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-correction-integrated-attachments/C5D3798B-9A61-4375-A296-4E3368E3AE88.png",
+      "rawSHA256": "a0b33e3cc8b8b2fe3bede5cd3df06a6807543bf9d16fbc0b816630ade1aa3371",
+      "rawBytes": 3483554,
+      "sha256": "b6dedb0b8ec16df399792038e923e7fe30969a2bc3d418415663eb2a1e448ce4",
+      "bytes": 551254,
+      "pixels": [
+        1170,
+        2532
+      ],
+      "runtime": "dev.c8ff0528d7",
+      "source": "c8ff integrated snapshot; see history",
+      "role": "Measured local contrast counterexample motivating official fitted protection",
+      "status": "historical failure; not current rendering"
+    }
+  ],
+  "review": "visual-review-01-correction.json and visual-review-01-packet.json; retained JPEG bytes independently inspected against original PNGs"
+}
