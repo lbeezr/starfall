@@ -214,8 +214,8 @@ struct ConstellationReturnLayout {
         let sharesAwardBand = award.intersects(band)
         let width = min(120, band.width * 0.34)
         let height = min(100, band.height)
-        let slot = CGRect(x: sharesAwardBand ? band.minX : band.midX - width / 2,
-                          y: band.midY - height / 2, width: width, height: height)
+        let slot = CGRect(x: sharesAwardBand ? band.minX : band.minX + (band.width - width) / 2,
+                          y: band.minY + (band.height - height) / 2, width: width, height: height)
         let labelLeft = max(award.minX, slot.maxX + 12)
         let label = sharesAwardBand
             ? CGRect(x: labelLeft, y: award.minY,
@@ -416,8 +416,8 @@ struct CascadeReturnLayout {
             let shared = award.intersects(band)
             let width = min(220, shared ? band.width * 0.56 : band.width)
             let height = min(100, band.height)
-            let strip = CGRect(x: shared ? band.minX : band.midX - width / 2,
-                               y: band.midY - height / 2, width: width, height: height)
+            let strip = CGRect(x: shared ? band.minX : band.minX + (band.width - width) / 2,
+                               y: band.minY + (band.height - height) / 2, width: width, height: height)
             let count = event.precedingReturns.count + 1
             let gap: CGFloat = 14
             let slotWidth = (width - gap * CGFloat(count - 1)) / CGFloat(count)
@@ -728,12 +728,13 @@ struct StarlightCelebrationOverlay: View {
         let destination = CGPoint(x: target.midX, y: target.midY)
         let flight = StarlightCelebration.packetFlight(toRestoration: lightDestination != nil)
         // Clip the composited light, including its shadow, outside the measured
-        // score instrument. Paths and arrivals stay unchanged; the separate
+        // score and header. Paths and arrivals stay unchanged; the separate
         // arrival bloom still acknowledges collection around the instrument.
         var packets = context
-        if !score.isEmpty, !score.isNull, !score.isInfinite {
+        for (bounds, padding) in [(score, CGFloat(4)), (header, CGFloat.zero)]
+            where !bounds.isEmpty && !bounds.isNull && !bounds.isInfinite {
             var visible = Path(CGRect(origin: .zero, size: canvasSize))
-            visible.addRect(score.insetBy(dx: -4, dy: -4))
+            visible.addRect(bounds.insetBy(dx: -padding, dy: -padding))
             packets.clip(to: visible, style: FillStyle(eoFill: true))
         }
         packets.drawLayer { layer in

@@ -61,6 +61,7 @@ struct SkyScoreInstrument: View {
     var restorationLabel: String? = nil
     var restorationIdentifier: String? = nil
     let hint: String
+    @Environment(\.dynamicTypeSize) private var textSize
 
     var body: some View {
         HStack(spacing: StarfallTheme.Spacing.small) {
@@ -72,13 +73,22 @@ struct SkyScoreInstrument: View {
             Group {
                 if let target {
                     ViewThatFits(in: .horizontal) {
-                        (Text("\(score.formatted()) ") + targetText(target)).fixedSize()
+                        ZStack(alignment: .leading) {
+                            if textSize.isAccessibilitySize {
+                                // Reserve the actual objective's digit width so
+                                // earning the opening points does not move play.
+                                (Text("\(max(score, target).formatted()) ") + targetText(target))
+                                    .hidden().accessibilityHidden(true)
+                            }
+                            (Text("\(score.formatted()) ") + targetText(target))
+                        }.fixedSize()
                         VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
                             Text(score.formatted())
                             targetText(target)
                         }
                         .fixedSize(horizontal: false, vertical: true)
                     }
+                    .fixedSize(horizontal: false, vertical: true)
                 } else {
                     Text(score.formatted()).fixedSize(horizontal: false, vertical: true)
                 }
@@ -96,8 +106,10 @@ struct SkyScoreInstrument: View {
             }
         }
         .foregroundStyle(StarfallTheme.Colors.textPrimary)
+        .fixedSize(horizontal: false, vertical: true)
         .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
         .frame(minHeight: StarfallTheme.Layout.minimumTarget)
+        .starfallSceneryProtection()
         .starlightAnchor(.score)
         .allowsHitTesting(false)
     }

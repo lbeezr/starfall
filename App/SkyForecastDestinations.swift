@@ -37,6 +37,8 @@ struct SkyForecastSnapshot: Equatable, Sendable {
     let arriving: Bool
     var selectedID: Int? = nil
     var select: (Int) -> Void = { _ in }
+    var inspectShower: (() -> Void)? = nil
+    var inspectionEnabled = true
     @ScaledMetric(relativeTo: .caption) private var minimumChipWidth: CGFloat = 32
 
     var stateLabel: String {
@@ -46,24 +48,41 @@ struct SkyForecastSnapshot: Equatable, Sendable {
     var body: some View {
         let snapshot = SkyForecastSnapshot(forecast: forecast)
         if !snapshot.entries.isEmpty {
-            ViewThatFits(in: .horizontal) {
-                HStack(spacing: StarfallTheme.Spacing.small) {
-                    title
-                    HStack(spacing: StarfallTheme.Spacing.small) { chips(snapshot) }
-                }
-                .fixedSize(horizontal: true, vertical: false)
-                VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
-                    title
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: max(44, minimumChipWidth)),
-                                                  spacing: StarfallTheme.Spacing.small,
-                                                  alignment: .leading)],
-                              alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
-                        chips(snapshot)
+            HStack(alignment: .top, spacing: StarfallTheme.Spacing.small) {
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: StarfallTheme.Spacing.small) {
+                        title
+                        HStack(spacing: StarfallTheme.Spacing.small) { chips(snapshot) }
                     }
+                    .fixedSize(horizontal: true, vertical: false)
+                    VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
+                        title
+                        HStack(spacing: StarfallTheme.Spacing.small) { chips(snapshot) }
+                    }
+                    .fixedSize(horizontal: true, vertical: false)
+                    VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
+                        title
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: max(44, minimumChipWidth)),
+                                                      spacing: StarfallTheme.Spacing.small,
+                                                      alignment: .leading)],
+                                  alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
+                            chips(snapshot)
+                        }
+                    }
+                }
+                if let inspectShower {
+                    Button(action: inspectShower) {
+                        ObservatoryIcon(.help, size: StarfallTheme.Layout.hudSymbolSide)
+                    }
+                    .buttonStyle(StarfallUtilityButtonStyle())
+                    .disabled(!inspectionEnabled)
+                    .accessibilityLabel(SkyCopy.text(.showerInspectionAction))
+                    .accessibilityIdentifier("sky.showerInspection.open")
                 }
             }
             .font(StarfallTheme.Typography.skyCaption)
             .foregroundStyle(StarfallTheme.Colors.textSecondary)
+            .starfallSceneryProtection()
             .accessibilityElement(children: .contain)
             .accessibilityLabel(stateLabel)
             .accessibilityValue(snapshot.accessibilityValue)
@@ -88,16 +107,8 @@ struct SkyForecastSnapshot: Equatable, Sendable {
                         .monospacedDigit()
                         .fixedSize(horizontal: true, vertical: false)
                 }
-                .frame(minWidth: 44, minHeight: 44)
-                .contentShape(Rectangle())
-                .overlay {
-                    if selectedID == entry.id {
-                        RoundedRectangle(cornerRadius: StarfallTheme.Spacing.small)
-                            .stroke(StarfallTheme.Colors.textPrimary, lineWidth: 2)
-                    }
-                }
             }
-            .buttonStyle(.plain)
+            .buttonStyle(StarfallGameButtonStyle(role: .forecast(selected: selectedID == entry.id)))
             .fixedSize(horizontal: true, vertical: false)
             .accessibilityLabel(SkyCopy.text(.forecastDestination, values: [
                 "star": SkyPiece.description(for: .init(entry.family)), "column": String(entry.column)

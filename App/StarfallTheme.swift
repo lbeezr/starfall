@@ -258,6 +258,37 @@ struct StarfallButtonStyle: ButtonStyle {
     }
 }
 
+/// Keep one natural-size caption, dropping decoration before words. A caller
+/// chooses iconOnly when the glyph conveys this action in context. Otherwise
+/// natural text width propagates to the parent's stack/scroll layout.
+/// The enclosing Button owns the complete spoken action.
+struct StarfallActionLabel: View {
+    let title: String
+    let glyph: ObservatoryGlyph
+    var rotation: Double = 0
+    var iconOnly = false
+
+    var body: some View {
+        if iconOnly {
+            icon
+        } else {
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: StarfallTheme.Spacing.small) {
+                    icon
+                    Text(title).fixedSize(horizontal: true, vertical: false)
+                }
+                .fixedSize(horizontal: true, vertical: false)
+                Text(title).fixedSize(horizontal: true, vertical: false)
+            }
+        }
+    }
+
+    private var icon: some View {
+        ObservatoryIcon(glyph, size: 20)
+            .rotationEffect(.degrees(rotation))
+    }
+}
+
 private struct StarfallPanelStyle: ViewModifier {
     let inset: CGFloat
 
@@ -294,20 +325,47 @@ extension View {
     func starfallPanel(inset: CGFloat = StarfallTheme.Spacing.page) -> some View {
         modifier(StarfallPanelStyle(inset: inset))
     }
+
+    /// Fitted instrument protection; visual outsets never enlarge native layout.
+    func starfallSceneryProtection(_ enabled: Bool = true) -> some View {
+        modifier(StarfallSceneryProtection(enabled: enabled))
+    }
+}
+
+private struct StarfallSceneryProtection: ViewModifier {
+    let enabled: Bool
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.colorSchemeContrast) private var contrast
+
+    func body(content: Content) -> some View {
+        let opaque = reduceTransparency || contrast == .increased
+        return content.background {
+            if enabled {
+                RoundedRectangle(cornerRadius: StarfallTheme.Spacing.small, style: .continuous)
+                    .fill(StarfallTheme.Colors.surface.opacity(opaque ? 1 : 0.82))
+                    .padding(-StarfallTheme.Spacing.small)
+                    .blur(radius: opaque ? 0 : 3)
+                    .allowsHitTesting(false).accessibilityHidden(true)
+            }
+        }
+    }
 }
 
 /// Read-only supporting feedback. IDs and labels remain at the call site, and
 /// each Text keeps its own measured accessibility bounds.
 struct StarfallStatusText: View {
     enum Emphasis { case supporting, positive }
+    enum Role { case message, instrument }
     let text: String
     var emphasis: Emphasis = .supporting
+    var role: Role = .message
 
     var body: some View {
         Text(text)
-            .font(StarfallTheme.Typography.status)
+            .font(role == .instrument ? StarfallTheme.Typography.skyCaption : StarfallTheme.Typography.status)
             .foregroundStyle(emphasis == .positive ? StarfallTheme.Colors.positiveStatus : StarfallTheme.Colors.textSecondary)
             .fixedSize(horizontal: false, vertical: true)
+            .starfallSceneryProtection(role == .instrument)
     }
 }
 
@@ -370,30 +428,80 @@ struct StarfallProgressStyle: ProgressViewStyle {
 
 /// Compact gameplay chrome retains a full native touch target at every text size.
 struct StarfallGameButtonStyle: ButtonStyle {
+    enum Role: Equatable {
+        case gameplay
+        case forecast(selected: Bool)
+    }
+    enum Backdrop: Equatable { case clear, scenery }
+
+    var role: Role = .gameplay
+    var backdrop: Backdrop = .clear
     var tint = StarfallTheme.Colors.actionPrimary
     @Environment(\.isEnabled) private var isEnabled
     @Environment(\.isFocused) private var focused
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
     @Environment(\.colorSchemeContrast) private var contrast
+
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(StarfallTheme.Typography.gameDetail.weight(.medium))
-            .foregroundStyle(isEnabled ? tint : StarfallTheme.Colors.textDisabled)
-            .padding(.horizontal, StarfallTheme.Spacing.small)
-            .frame(minWidth: StarfallTheme.Layout.gameplayTarget, minHeight: StarfallTheme.Layout.gameplayTarget)
+        let pressed = configuration.isPressed && isEnabled
+        let shape = RoundedRectangle(cornerRadius: isForecast ? StarfallTheme.Spacing.small : 10)
+        return configuration.label
+            .font(role == .gameplay ? StarfallTheme.Typography.gameDetail.weight(.medium) : StarfallTheme.Typography.skyCaption)
+            .foregroundStyle(ink)
+            .saturation(isForecast && !isEnabled ? 0.25 : 1)
+            .padding(.horizontal, isForecast ? 0 : StarfallTheme.Spacing.small)
+            // Reserve the same selection-mark space in every forecast state,
+            // including when large native digits make the target taller.
+            .padding(.bottom, isForecast ? StarfallTheme.Spacing.small : 0)
+            .frame(minWidth: minimumTarget, minHeight: minimumTarget)
             .background {
-                if configuration.isPressed && isEnabled || reduceTransparency || contrast == .increased {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(configuration.isPressed ? StarfallTheme.Colors.surfacePressed : StarfallTheme.Colors.surface)
+                if pressed || reduceTransparency || contrast == .increased {
+                    shape.fill(pressed ? StarfallTheme.Colors.surfacePressed : StarfallTheme.Colors.surface)
+                }
+            }
+            .starfallSceneryProtection(backdrop == .scenery)
+            .overlay(alignment: .bottom) {
+                if isSelected {
+                    Capsule().fill(ink)
+                        .frame(width: StarfallTheme.Spacing.large, height: StarfallTheme.Layout.focusWidth)
+                        .padding(.bottom, StarfallTheme.Spacing.compact)
+                        .allowsHitTesting(false).accessibilityHidden(true)
                 }
             }
             .overlay {
                 if focused {
-                    RoundedRectangle(cornerRadius: 10).strokeBorder(StarfallTheme.Colors.focus, lineWidth: 2)
+                    shape.strokeBorder(StarfallTheme.Colors.focus, lineWidth: StarfallTheme.Layout.focusWidth)
+                        .allowsHitTesting(false).accessibilityHidden(true)
                 }
             }
             .contentShape(Rectangle())
             .transaction { $0.animation = nil }
+    }
+
+    private var isForecast: Bool {
+        if case .forecast = role { return true }
+        return false
+    }
+
+    private var isSelected: Bool {
+        if case .forecast(let selected) = role { return selected }
+        return false
+    }
+
+    private var minimumTarget: CGFloat {
+        switch role {
+        case .gameplay: StarfallTheme.Layout.gameplayTarget
+        case .forecast: StarfallTheme.Layout.minimumTarget
+        }
+    }
+
+    private var ink: Color {
+        guard isEnabled else { return StarfallTheme.Colors.textDisabled }
+        switch role {
+        case .gameplay: return tint
+        case .forecast(let selected):
+            return selected ? StarfallTheme.Colors.textPrimary : StarfallTheme.Colors.textSecondary
+        }
     }
 }
 

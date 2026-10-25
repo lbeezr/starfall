@@ -57,6 +57,7 @@ struct SkyCeilingSnapshot: Equatable {
 /// with the stars and native cells, and owns no input, clock, animation or rule.
 struct SkyCeilingOverlay: View {
     static let topClearance: CGFloat = 44
+    static let baseMarkerHeight: CGFloat = 24
     /// The semantic boundary includes the complete scaled badge and its outer
     /// stroke, so reading layouts can reveal it below their pinned header.
     static func requiredTopClearance(markerHeight: CGFloat) -> CGFloat {
@@ -98,7 +99,7 @@ struct SkyCeilingOverlay: View {
         }
     }
 
-    @ScaledMetric(relativeTo: .caption) private var markerHeight: CGFloat = 24
+    @ScaledMetric(relativeTo: .caption) private var markerHeight: CGFloat = SkyCeilingOverlay.baseMarkerHeight
 
     private func ceiling(_ snapshot: SkyCeilingSnapshot) -> Path {
         Path { path in

@@ -8,7 +8,6 @@ import StarfallCore
     private var tutorialEndingAfter: SkyTutorial?
     @State private var store: FallingSkyStore
     @State private var interaction = SkyInteractionSession()
-    @State private var contactInputSnapshot: FallingSky?
     @State private var forecastInspection: SkyForecastInspection?
     @State private var showerInspection: SkyShowerInspection?
     private var trace: ConstellationTraceIntent { interaction.trace }
@@ -28,6 +27,7 @@ import StarfallCore
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @ScaledMetric(relativeTo: .caption) private var ceilingMarkerHeight: CGFloat = SkyCeilingOverlay.baseMarkerHeight
     private var largeText: Bool { dynamicTypeSize.isAccessibilitySize }
     @Namespace private var matchingGroups
 
@@ -158,39 +158,7 @@ import StarfallCore
                     if store.tutorial != nil && !largeText && !landscape {
                         tutorialPlayfield(viewport: safeViewport.size)
                     } else if largeText || (landscape && canvasHeight < 700) || store.tutorial != nil {
-                        // Reading-heavy layouts keep chrome at the viewport edge and
-                        // give the unchanged star canvas its own scrollable space.
-                        VStack(spacing: 0) {
-                            if !showingCeremony && !settings {
-                                edgeHeader(island: false)
-                                    .padding(.horizontal, StarfallTheme.Spacing.medium)
-                                    .padding(.top, StarfallTheme.Spacing.compact)
-                                // Manual walks and automatic patterns share fixed
-                                // protected sky outside the scrolling playfield.
-                                Color.clear.frame(height: 80)
-                                    .starlightAnchor(.constellationReturn)
-                                    .padding(.vertical, 8)
-                                    .allowsHitTesting(false).accessibilityHidden(true)
-                            }
-                            GeometryReader { readingViewport in
-                                ScrollView {
-                                    let canvas = Self.readingCanvas(viewport: safeViewport.size, accessible: largeText)
-                                    VStack(spacing: StarfallTheme.Spacing.small) {
-                                        board(expanded: true, landscape: landscape)
-                                            .frame(height: canvas.size.height)
-                                            .frame(height: canvas.visibleHeight, alignment: .top).clipped()
-                                            .allowsHitTesting(!settings && !showingCeremony)
-                                            .accessibilityHidden(settings || showingCeremony)
-                                        if !showingCeremony && !settings {
-                                            guide(compact: false, maximumHeight: max(240, readingViewport.size.height - 2 * StarfallTheme.Spacing.medium))
-                                                .padding(.horizontal, StarfallTheme.Spacing.medium)
-                                                .padding(.bottom, StarfallTheme.Spacing.medium)
-                                                .frame(maxWidth: .infinity)
-                                        }
-                                    }
-                                }.scrollBounceBehavior(.basedOnSize)
-                            }
-                        }
+                        readingPlayfield(viewport: safeViewport.size, landscape: landscape)
                     } else {
                         playfield(insets: safeViewport.safeAreaInsets, compact: safeViewport.size.height < 750,
                                   allowsIsland: true, landscape: landscape).ignoresSafeArea()
@@ -240,6 +208,60 @@ import StarfallCore
                 .observatoryReadingPanel()
                 .accessibilityIdentifier("sky.preparing")
                 .zIndex(2)
+            }
+        }
+    }
+
+    /// One continuous painting backs the pinned instruments and reading viewport.
+    /// Crop only the unused crown of the foreground canvas, keeping SpriteKit,
+    /// native cells, ceiling and receipt sources on their original common mapping.
+    private func readingPlayfield(viewport: CGSize, landscape: Bool) -> some View {
+        let canvas = Self.readingCanvas(viewport: viewport, accessible: largeText)
+        let clearance = SkyCeilingOverlay.requiredTopClearance(markerHeight: ceilingMarkerHeight)
+        let crop = max(0, LandingGeometry(size: canvas.size).arenaFrame.minY - clearance)
+        return ZStack {
+            scenery(landscape: landscape).ignoresSafeArea()
+            VStack(spacing: 0) {
+                if !showingCeremony && !settings {
+                    edgeHeader(island: false)
+                        .padding(.horizontal, StarfallTheme.Spacing.medium)
+                        .padding(.top, StarfallTheme.Spacing.compact)
+                    // Exact figure returns need fixed sky while the cells scroll.
+                    // This region now belongs to the same painting as the HUD.
+                    Color.clear.frame(height: 80)
+                        .starlightAnchor(.constellationReturn)
+                        .padding(.vertical, StarfallTheme.Spacing.small)
+                        .allowsHitTesting(false).accessibilityHidden(true)
+                }
+                GeometryReader { readingViewport in
+                    ScrollViewReader { reader in
+                    ScrollView {
+                        VStack(spacing: StarfallTheme.Spacing.small) {
+                            board(expanded: true, landscape: landscape, showsScenery: false)
+                                .frame(height: canvas.size.height)
+                                .offset(y: -crop)
+                                .frame(height: canvas.visibleHeight - crop, alignment: .top).clipped()
+                                .allowsHitTesting(!settings && !showingCeremony)
+                                .accessibilityHidden(settings || showingCeremony)
+                                .id("sky.readingBoard")
+                            if !showingCeremony && !settings {
+                                guide(compact: false, maximumHeight: max(240, readingViewport.size.height - 2 * StarfallTheme.Spacing.medium))
+                                    .padding(.horizontal, StarfallTheme.Spacing.medium)
+                                    .padding(.bottom, StarfallTheme.Spacing.medium)
+                                    .frame(maxWidth: .infinity)
+                            }
+                        }
+                    }
+                    .scrollBounceBehavior(.basedOnSize)
+                    .task {
+                        // A compact reader starts on the current stars, rather
+                        // than the empty rows above the survivor opening.
+                        await Task.yield()
+                        guard !Task.isCancelled else { return }
+                        reader.scrollTo("sky.readingBoard", anchor: .bottom)
+                    }
+                    }
+                }
             }
         }
     }
@@ -342,29 +364,32 @@ import StarfallCore
                     stackedHeader(island: island)
                 }
             }
-            if showsMode {
-                modeSupport(source: inspectionSource)
+            if showsMode && store.game.usesFullBoardRefill {
+                modeLabel
             }
             if !store.game.isOver && !store.game.usesFullBoardRefill && !store.forecast.isEmpty {
                 SkyForecastDestinations(forecast: store.forecast, arriving: store.showerCountdown.arriving,
                                         selectedID: forecastInspection?.entry(in: forecastSource)?.id,
-                                        select: { inspectForecast($0, source: renderedForecastSource) })
+                                        select: { inspectForecast($0, source: renderedForecastSource) },
+                                        inspectShower: inspectionSource.map { source in { inspectShower(source: source) } },
+                                        inspectionEnabled: !store.busy)
                     .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
-                if !showsMode, let source = inspectionSource {
-                    showerInspectionButton(source: source)
-                }
             }
             if let pressure = store.pressureCue {
-                StarfallStatusText(text: pressure.text)
+                StarfallStatusText(text: pressure.text, role: .instrument)
                     .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
                     .accessibilityIdentifier("sky.pressure")
                     .allowsHitTesting(false)
             }
         }
+        // The reading viewport may scroll, but its pinned instruments must
+        // retain the complete native text height under a finite height proposal.
+        .fixedSize(horizontal: false, vertical: true)
         .frame(maxWidth: 620)
         .frame(maxWidth: .infinity)
         .starlightAnchor(.header)
         .accessibilityElement(children: .contain)
+        .accessibilityValue(showsMode ? SkyCopy.text(store.game.usesFullBoardRefill ? .fullBoardRefill : .fallingSkyMode) : "")
         .accessibilityIdentifier("sky.header")
     }
 
@@ -375,43 +400,11 @@ import StarfallCore
         return source
     }
 
-    @ViewBuilder private func modeSupport(source: SkyForecastInspection.Source?) -> some View {
-        if let source {
-            if largeText {
-                VStack(spacing: StarfallTheme.Spacing.compact) {
-                    modeLabel
-                    showerInspectionButton(source: source)
-                }
-            } else {
-                ViewThatFits(in: .horizontal) {
-                    HStack(spacing: StarfallTheme.Spacing.small) {
-                        modeLabel.fixedSize(horizontal: true, vertical: false)
-                        showerInspectionButton(source: source).fixedSize(horizontal: true, vertical: false)
-                    }
-                    VStack(spacing: StarfallTheme.Spacing.compact) {
-                        modeLabel
-                        showerInspectionButton(source: source)
-                    }
-                }
-            }
-        } else {
-            modeLabel
-        }
-    }
-
     private var modeLabel: some View {
-        StarfallStatusText(text: SkyCopy.text(store.game.usesFullBoardRefill ? .fullBoardRefill : .fallingSkyMode))
+        StarfallStatusText(text: SkyCopy.text(store.game.usesFullBoardRefill ? .fullBoardRefill : .fallingSkyMode), role: .instrument)
             .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
             .accessibilityIdentifier(store.game.challenge == .ribbonCrossing ? "ribbon.mode" : "lantern.mode")
             .allowsHitTesting(false)
-    }
-
-    private func showerInspectionButton(source: SkyForecastInspection.Source) -> some View {
-        Button(SkyCopy.text(.showerInspectionAction)) { inspectShower(source: source) }
-            .buttonStyle(StarfallButtonStyle(role: .compact))
-            .frame(minHeight: StarfallTheme.Layout.preferenceTarget)
-            .disabled(store.busy)
-            .accessibilityIdentifier("sky.showerInspection.open")
     }
 
     private func stackedHeader(island: Bool) -> some View {
@@ -421,7 +414,10 @@ import StarfallCore
                 Spacer(minLength: StarfallTheme.Spacing.small)
                 skyMenuButton
             }
-            if !island { showerTrail(island: false, width: 160) }
+            if !island {
+                showerTrail(island: false)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
         }
     }
 
@@ -446,7 +442,7 @@ import StarfallCore
                             if run.showsPauseControl { pauseControl }
                             if run.showsShowerControl { showerControl }
                         }
-                    }.buttonStyle(StarfallButtonStyle(role: .compact))
+                    }.buttonStyle(StarfallGameButtonStyle(backdrop: .scenery))
                 }
             }
         } else if !store.game.isOver {
@@ -461,27 +457,24 @@ import StarfallCore
                             .fixedSize(horizontal: true, vertical: false)
                         VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) { pauseControl; showerControl }
                     }
-                    .buttonStyle(StarfallButtonStyle(role: .compact))
+                    .buttonStyle(StarfallGameButtonStyle(backdrop: .scenery))
                 }
             }
         }
     }
     private var pauseControl: some View {
-        Button { store.togglePause() } label: {
-            HStack(spacing: StarfallTheme.Spacing.small) {
-                ObservatoryIcon(store.isPaused ? .play : .pause, size: 16)
-                Text(store.isPaused ? (store.game.turns == 0 ? SkyCopy.text(.actionStart) : SkyCopy.text(.actionResume)) : SkyCopy.text(.actionPause))
-            }
+        let title = store.isPaused ? (store.game.turns == 0 ? SkyCopy.text(.actionStart) : SkyCopy.text(.actionResume)) : SkyCopy.text(.actionPause)
+        return Button { store.togglePause() } label: {
+            StarfallActionLabel(title: title, glyph: store.isPaused ? .play : .pause)
         }
+            .accessibilityLabel(title)
             .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
     }
     private var showerControl: some View {
         Button { store.callShower() } label: {
-            HStack(spacing: StarfallTheme.Spacing.small) {
-                ObservatoryIcon(.next, size: 16)
-                Text(SkyCopy.text(.actionNext))
-            }
+            StarfallActionLabel(title: SkyCopy.text(.actionNext), glyph: .next)
         }
+            .accessibilityLabel(SkyCopy.text(.actionNext))
             .disabled(store.busy || store.suspended).accessibilityIdentifier("experiment.next")
     }
 
@@ -509,10 +502,10 @@ import StarfallCore
             .accessibilityIdentifier("experiment.settings").accessibilityFocused($menuFocused)
     }
 
-    @ViewBuilder private func showerTrail(island: Bool, width: CGFloat = StarfallTheme.Layout.showerTrailWidth) -> some View {
+    @ViewBuilder private func showerTrail(island: Bool) -> some View {
         if !store.game.usesFullBoardRefill {
             SkyShowerTrail(readCountdown: { store.showerCountdown },
-                           quiet: quietMotion, island: island, width: width, forecast: store.forecast)
+                           quiet: quietMotion, island: island, forecast: store.forecast)
         }
     }
 
@@ -527,23 +520,29 @@ import StarfallCore
         menu = nil
     }
 
-    private func board(expanded: Bool, landscape: Bool) -> some View {
+    private func scenery(landscape: Bool) -> some View {
+        let presentation = restoration ?? RestorationPresentation(challenge: .firstLight,
+            progress: StarlightRestoration(score: 18, target: 18))
+        return ZStack {
+            RestorationEnvironment(presentation: presentation,
+                active: scenePhase == .active && !settings && store.persistenceNotice == nil,
+                ambientActive: !showingCeremony && !store.isPaused,
+                quiet: quietMotion || reduceTransparency, isTablet: UIDevice.current.userInterfaceIdiom == .pad,
+                isLandscape: landscape,
+                award: !settings && !showingCeremony && RestorationAwardResponse.supports(restoration?.challenge) ? store.celebration : nil,
+                awardQuiet: quietMotion)
+                .id("\(presentation.challenge.rawValue).\(environmentGeneration)")
+            if environmentContrast == .increased || reduceTransparency {
+                Color.black.opacity(0.28).allowsHitTesting(false).accessibilityHidden(true)
+            }
+        }
+    }
+
+    private func board(expanded: Bool, landscape: Bool, showsScenery: Bool = true) -> some View {
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
-                    let scenery = restoration ?? RestorationPresentation(challenge: .firstLight,
-                        progress: StarlightRestoration(score: 18, target: 18))
-                    RestorationEnvironment(presentation: scenery,
-                                           active: scenePhase == .active && !settings && store.persistenceNotice == nil,
-                                           ambientActive: !showingCeremony && !store.isPaused,
-                                           quiet: quietMotion || reduceTransparency, isTablet: UIDevice.current.userInterfaceIdiom == .pad,
-                                           isLandscape: landscape,
-                                           award: !settings && !showingCeremony && RestorationAwardResponse.supports(restoration?.challenge) ? store.celebration : nil,
-                                           awardQuiet: quietMotion)
-                        .id("\(scenery.challenge.rawValue).\(environmentGeneration)")
-                    if environmentContrast == .increased || reduceTransparency {
-                        Color.black.opacity(0.28).allowsHitTesting(false).accessibilityHidden(true)
-                    }
+                    if showsScenery { scenery(landscape: landscape) }
                     SpriteView(scene: store.scene, options: [.allowsTransparency])
                         .opacity(boardVisible ? (endingReady ? 0.22 : 1) : 0)
                         .animation(quietMotion ? nil : .easeOut(duration: StarfallTheme.Ceremony.handoffDuration), value: boardVisible)
@@ -897,7 +896,7 @@ private extension FallingSkyView {
         showerInspection = nil
         forecastInspection = nil
         defer { cancelConstellation() }
-        guard let snapshot = contactInputSnapshot ?? store.inputSnapshot(at: cell) else {
+        guard let snapshot = interaction.inputSnapshot ?? store.inputSnapshot(at: cell) else {
             store.explainSettling(at: cell); return
         }
         _ = store.requestInput(.tap(cell), snapshot: snapshot, generation: store.constellationInputGeneration)
@@ -905,18 +904,16 @@ private extension FallingSkyView {
     func commitDirectSwap(from: Cell, to: Cell, generation: UInt64) {
         defer { cancelConstellation() }
         guard store.constellationTracing, generation == store.constellationInputGeneration,
-              let snapshot = contactInputSnapshot else { return }
+              let snapshot = interaction.inputSnapshot else { return }
         _ = store.requestInput(.swap(from, to), snapshot: snapshot, generation: generation)
     }
     func cancelConstellation() {
-        contactInputSnapshot = nil
         interaction.cancelContact(release: store.endConstellationHold)
         store.scene.clearConstellationTrace()
     }
     func invalidateInteraction(cancelQueue: Bool = true) {
         showerInspection = nil
         forecastInspection = nil
-        contactInputSnapshot = nil
         if cancelQueue { store.cancelBufferedInput() }
         interaction.invalidate(release: store.endConstellationHold)
         store.scene.clearConstellationTrace()
@@ -929,10 +926,9 @@ private extension FallingSkyView {
         guard let snapshot = store.inputSnapshot(at: cell) else {
             store.explainSettling(at: cell); return false
         }
-        guard interaction.acquireHold(at: cell, using: store.beginResponsiveContact) else {
+        guard interaction.acquireHold(at: cell, snapshot: snapshot, using: store.beginResponsiveContact) else {
             store.explainSettling(at: cell); return false
         }
-        contactInputSnapshot = snapshot
         store.showInputFeedback(nil)
         store.scene.showContact(cell, drawingEligible: store.game.canStartConstellation(at: cell) && store.canTrace([cell]))
         return true

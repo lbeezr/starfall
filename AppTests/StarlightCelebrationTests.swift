@@ -48,14 +48,25 @@ final class StarlightCelebrationTests: XCTestCase {
         window.rootViewController = host; window.makeKeyAndVisible()
         defer { window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
 
-        let destinations: [(score: CGRect, light: CGRect?, ages: [Double])] = [
-            (CGRect(x: 80, y: 100, width: 210, height: 48), nil, [0.55, 0.61, 0.68]),
-            (CGRect(x: 65, y: 150, width: 240, height: 65), CGRect(x: 160, y: 20, width: 30, height: 30), [0.27, 0.34, 0.39])
+        // Source-bound dev.402680814f compact AX5 reading geometry after the
+        // existing 80-point native scroll, including the complete forecast.
+        let readingSize = CGSize(width: 375, height: 667)
+        let readingBoard = CGRect(x: 0, y: -156.5, width: 375, height: 900)
+        let readingHeader = CGRect(x: 12, y: 4, width: 351, height: 282)
+        let readingScore = CGRect(x: 12, y: 4, width: 244.5, height: 131)
+        let destinations: [(size: CGSize, board: CGRect, score: CGRect, header: CGRect, light: CGRect?, ages: [Double])] = [
+            (window.bounds.size, window.bounds, CGRect(x: 80, y: 100, width: 210, height: 48), .zero, nil, [0.55, 0.61, 0.68]),
+            (window.bounds.size, window.bounds, CGRect(x: 65, y: 150, width: 240, height: 65), .zero,
+             CGRect(x: 160, y: 20, width: 30, height: 30), [0.27, 0.34, 0.39]),
+            (readingSize, readingBoard, readingScore, readingHeader, nil, [0.34, 0.40, 0.46]),
+            (readingSize, readingBoard, readingScore, readingHeader,
+             CGRect(x: 34, y: 40, width: 25, height: 25), [0.18, 0.203686, 0.24])
         ]
         for (index, destination) in destinations.enumerated() {
+            window.frame = CGRect(origin: .zero, size: destination.size)
             for age in destination.ages {
-                let overlay = StarlightCelebrationOverlay(event: receipt, board: window.bounds,
-                    score: destination.score, header: .zero, quiet: false, lightDestination: destination.light)
+                let overlay = StarlightCelebrationOverlay(event: receipt, board: destination.board,
+                    score: destination.score, header: destination.header, quiet: false, lightDestination: destination.light)
                 host.rootView = AnyView(Canvas { context, size in
                     overlay.drawPackets(in: &context, age: age, canvasSize: size)
                 }.background(Color.black).ignoresSafeArea().id("\(index)-\(age)"))
@@ -72,6 +83,10 @@ final class StarlightCelebrationTests: XCTestCase {
                 XCTAssertGreaterThan(totalInk, 25, "The packet flight must still render outside the score")
                 XCTAssertEqual(try packetInk(in: rendered, region: destination.score), 0,
                     "Packet heads, tails and shadow must not paint over the measured score at age\(age)")
+                if !destination.header.isEmpty {
+                    XCTAssertEqual(try packetInk(in: rendered, region: destination.header), 0,
+                        "Composited packet light must leave the full measured forecast/header unpainted at age\(age)")
+                }
                 let attachment = XCTAttachment(image: rendered)
                 attachment.name = "packet-score-exclusion-\(index)-\(age)"
                 attachment.lifetime = .keepAlways; add(attachment)

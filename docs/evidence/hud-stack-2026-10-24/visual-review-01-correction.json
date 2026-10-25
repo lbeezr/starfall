@@ -1,0 +1,878 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "goal": {
+    "issue": 382,
+    "stackIssue": 381,
+    "order": 1
+  },
+  "reviewer": "hud_read_ahead, independent visual-review subagent",
+  "overallVerdict": "BOUNDED_VISUAL_PASS",
+  "summary": "The corrected goal 1 HUD has a source-bound visual pass for the reviewed whole native/hosted states: official contextual inspection, complete local instruments, continuous scenery, dominant accessible stars, readable bright-scene labels and protected forecast ink. Fresh isolated Sunny/Studio beginning/end captures pass visual review, and the retained JPEG exports preserve the raw observations. No known current visual failure remains in those states. Earlier native pan stalls remain unresolved interaction evidence; the isolated native pass does not prove their cause or perfect reliability.",
+  "reference": [
+    "docs/design/interface/observatory-game-ui-concept-2026-10-19.png (middle Play screen; concept, not native evidence)",
+    "docs/design/GAME_UI_SYSTEM.md",
+    "docs/design/UI_PRODUCTION.md#decide-visual-acceptance-separately",
+    "docs/design/hud/README.md"
+  ],
+  "method": "Independent whole-viewport image review against the supplied reference and official component roles, separately from coordinator-reported test outcomes. Contrast values below come from read-only decoding of original RGB PNG pixels and sRGB relative-luminance calculations.",
+  "history": [
+    {
+      "runtime": "dev.72a01d9bb7",
+      "verdict": "REJECTED_BASELINE",
+      "captures": [
+        "dev-72a01d9bb7-goal01-phone-selected.jpg",
+        "dev-72a01d9bb7-goal01-tablet-stacked.jpg"
+      ],
+      "scope": "Initial merged goal 1; user rejection retained by the parent evidence record.",
+      "finding": "The AX tablet's menu-style optional inspection action and disconnected header/return reserve violated active-play hierarchy and scenic continuity."
+    },
+    {
+      "runtime": "dev.4429e6b889",
+      "verdict": "FAIL",
+      "captureRoot": "/private/tmp/starfall-hud-stack-20261024/hosted-01-correction-layout-v2-attachments/",
+      "captures": [
+        "F0CD826E-DE48-4FBF-B17C-4ABA8D7154DE.png",
+        "C08312F2-7035-4262-88FA-A6C883E9A191.png"
+      ],
+      "scope": "Real hosted windows, AX5, 1024x1366 and 375x667 on the tablet; compact window is not phone artwork/device acceptance.",
+      "finding": "Scenery became continuous, but Inspect remained too prominent. The compact viewport showed instruments and empty crown with no actual stars. A later score intrinsic-height fix was not depicted."
+    },
+    {
+      "runtime": "dev.9807b70b6f",
+      "verdict": "BOUNDED_PASS",
+      "captureRoot": "/private/tmp/starfall-hud-stack-20261024/phone-01-correction-inspection-attachments/",
+      "captures": [
+        "7CA822B4-4CAA-4383-ADD5-49BBCD8F8DE5.png"
+      ],
+      "scope": "iPhone 17e/iOS 27, default text, normal system motion, Calm off, paused Lantern4, selected column 6.",
+      "finding": "Compact instruments, subordinate Inspect, continuous painting and visible stars corrected the depicted hierarchy. This did not accept AX layouts or the whole goal."
+    },
+    {
+      "runtime": "dev.d319d9e311",
+      "verdict": "BOUNDED_PASSES_WITH_CORRECTION_REQUIRED",
+      "captureRoots": {
+        "hostedV5": "/private/tmp/starfall-hud-stack-20261024/hosted-01-correction-layout-v5-attachments/",
+        "timedReceipts": "/private/tmp/starfall-hud-stack-20261024/hosted-01-correction-final-attachments/",
+        "phone": "/private/tmp/starfall-hud-stack-20261024/phone-01-correction-pressure-dialogue-attachments/"
+      },
+      "captures": {
+        "before": [
+          "F834B868-FFA6-44A1-A9B2-DF2011FB3AF4.png",
+          "8F655F5D-2B52-4184-AFFF-5190778781E7.png"
+        ],
+        "publicationImmediateReceipts": [
+          "3457E263-4ECA-49D1-80E9-D847DAE59033.png",
+          "B04B7C9F-7D28-41E0-8078-592C600F7268.png"
+        ],
+        "naturallyTimedReceipts": [
+          "E3EA77E2-7E15-4EA3-AE83-87FE10534AD4.png",
+          "E576B383-289B-4BBE-A00F-82F4A8F51ECF.png"
+        ],
+        "pressure": [
+          "B5A4AC82-A377-4DBF-A85A-7338972EA18B.png",
+          "B2D9F910-C5AB-4428-B1C6-0DE2C2A7DD77.png"
+        ],
+        "dialogueAndStudio": [
+          "C1C720AD-183F-4376-8621-96B7446151DE.png",
+          "267D63DD-B12F-4000-B2F1-1FBA2C4763A4.png",
+          "DFC14080-7953-4E94-8C9D-060C59471F9D.png",
+          "56896361-5308-4E7E-A2EC-24BDDC723B72.png"
+        ]
+      },
+      "finding": "Before-state composition passed. Publication-immediate receipt frames were too faint to establish reading; naturally timed approximately 0.213/0.232-second frames passed their phase-only review. Dialogue and Studio scrolling/controls passed bounded reading review.",
+      "correction": "The initial pressure readability/nonoverlap pass missed its wrong component context. It was withdrawn: persistent pressure used message/callout rather than the official instrument/caption role and became a headline. A separate source audit also found the shortened 80-point trail could overlap miniatures; these images do not accept its later 132-point replacement."
+    },
+    {
+      "runtime": "dev.de668f8e0a",
+      "source": "6b94e7555722eda7fedcffd98ec6d1fe9f9520b3",
+      "verdict": "THIRTEEN_SAMPLED_STATES_PASS_OVERALL_SUBSEQUENTLY_HELD",
+      "captureRoots": {
+        "hosted": "/private/tmp/starfall-hud-stack-20261024/hosted-01-correction-contact-attachments/",
+        "phone": "/private/tmp/starfall-hud-stack-20261024/phone-01-correction-contact-attachments/",
+        "tablet": "/private/tmp/starfall-hud-stack-20261024/tablet-01-correction-contact-attachments/"
+      },
+      "captures": {
+        "hosted": [
+          "AAB22B9A-0C3D-4650-B494-6E41B2D7379E.png",
+          "44016776-861B-4F3E-AE17-FE59873934D0.png",
+          "711F0F0C-FBD1-4F48-8D07-8F78BC2F751A.png",
+          "3716A122-4FEF-486B-81DE-089868449C0F.png"
+        ],
+        "phone": [
+          "6A8734FD-BC5F-4347-B982-69C498A1D428.png",
+          "87447A2B-27B4-467F-9E53-4B84CAB8B722.png",
+          "C4A5B55C-39D4-4F10-B57A-927F1CEAB17D.png",
+          "47D76922-234B-4CF7-B4E0-1F081AA43740.png"
+        ],
+        "tablet": [
+          "E09B16FD-6175-47F3-9611-731D3F744EDB.png",
+          "E25D277B-5FA0-4058-84E9-D298A707B31F.png",
+          "39069E88-F476-4C05-AB7A-6ECC261C88E1.png",
+          "6C4B4D37-C6EE-48F7-AC0E-38818C941865.png",
+          "F82ED7A9-68B5-4C54-8365-7CE2A3C3A003.png"
+        ]
+      },
+      "finding": "Continuous scene, contextual inspection utility, complete score/forecast text, corrected pressure instrument role, distinct 132-point trail miniatures, selected-column correspondence and sampled receipt ink passed these specific states. Tablet opening/Full Board showed the full ceiling and 24/49 stars.",
+      "receiptScope": "Hosted receipt ages approximately 0.20547 and 0.20401 seconds; compact scroll offset 358 points, tablet zero. Partial compact stars/guide were scroll-edge states. The native settled chain capture is not a receipt animation frame.",
+      "supersedingHold": "The later Sunny lit-state counterexample exposed essential text/action contrast failures missed by the earlier bounded review. The overall goal pass was withdrawn, while the thirteen state-specific observations remain valid."
+    },
+    {
+      "runtime": "c8ff integrated rendering; coordinator identifies subsequent dev.de668f8e0a contact-ownership difference as non-rendered",
+      "verdict": "HOLD_FOR_ACTUAL_SCENIC_CONTRAST_FAILURE",
+      "captureRoot": "/private/tmp/starfall-hud-stack-20261024/phone-01-correction-integrated-attachments/",
+      "captures": [
+        "7CBDCE51-4A24-4B7E-8059-A48B5F044686.png",
+        "C5D3798B-9A61-4375-A296-4E3368E3AE88.png"
+      ],
+      "comparisonOnly": {
+        "captureRoot": "/tmp/starfall-design-system-captures-v11/",
+        "captures": [
+          "307724AE-4261-417C-87AC-F383C3317C2B.png",
+          "FB60BA4E-E959-4660-9F76-59E26C67F536.png"
+        ],
+        "distinction": "Another authorized branch shortens action captions and uses icon-only Close. Those differences are not our implementation or its acceptance evidence."
+      },
+      "finding": "Our own Next columns text crosses lit wood, and Resume sky/Next shower strokes blend into bright pink clouds. This is a current visible defect, not hypothetical unmeasured risk. Reader text/Close remain readable; intentional inner scrolling and no stars during deliberate reading are not failures.",
+      "contrastData": "contrastSamples.before"
+    },
+    {
+      "runtime": "dev.bca571394e",
+      "verdict": "BOUNDED_SUNNY_SLICE_PASS",
+      "sourceBase": "6b94e7555722eda7fedcffd98ec6d1fe9f9520b3",
+      "sourceSnapshot": "/private/tmp/starfall-hud-stack-20261024/source-01-correction-scenic.json",
+      "renderedAppDifferences": [
+        "App/FallingSkyHUD.swift",
+        "App/FallingSkyView.swift",
+        "App/SkyForecastDestinations.swift",
+        "App/StarfallTheme.swift",
+        "App/StarlightCelebration.swift"
+      ],
+      "laterSourceScope": "Coordinator reports 6d03857 changes test extraction/project membership/docs only, with no rendered App difference. This review does not extend to the subsequent header-sizing correction.",
+      "captureRoot": "/private/tmp/starfall-hud-stack-20261024/sunny-01-correction-scenic-attachments/",
+      "captures": [
+        "E66194E9-C916-465F-BF88-8D60769F1567.png",
+        "C171DA09-AF5F-4184-874C-B453CB7322C9.png",
+        "77B4BCF5-86C9-48ED-94F9-D77501A878AE.png"
+      ],
+      "scope": "Exact native iPhone Sunny AX5 deliberate-reader beginning/end/final-reader frames; source-bound fitted scenery-protection prototype.",
+      "finding": "Essential header/footer labels now read clearly over the lit wood/cloud state. Separate fitted score/forecast/action protection leaves scenery continuous around and between groups, without a menu frame or disconnected full-header shelf. Its AX5 footprint reflects the scaled content/targets. Reader scrolling is intentional.",
+      "contrastData": "contrastSamples.after",
+      "adoptionLimit": "Pass for these three Sunny frames only. Overall goal 1 remains pending new default, selected and AX native captures after the confirmed header-sizing fix."
+    },
+    {
+      "runtime": "dev.402680814f",
+      "source": "d5d02a7b",
+      "verdict": "MIXED_COMPACT_RECEIPT_FAIL",
+      "captureRoot": "/private/tmp/starfall-hud-stack-20261024/hosted-01-correction-natural-header-attachments/",
+      "captures": {
+        "compactBefore": "B56DC567-3A32-42F4-BCCC-F49789F1C0A8.png",
+        "compactReceipt": "244DCEBC-D100-47C4-A332-33F3881DA74D.png",
+        "syntheticLargeBefore": "814133F2-CE58-4598-B324-D7FBE57F4133.png",
+        "syntheticLargeReceipt": "E34D331C-13A9-4792-8C1E-96B978513CAB.png"
+      },
+      "scope": "Real hosted production view/SpriteKit/native cells in 375x667 and synthetic 1024x1366 windows, AX5 environment. Host/window traits are Phone and 3x: the large window is not actual iPad artwork/device evidence.",
+      "beforeVerdict": "BOUNDED_PASS",
+      "beforeFinding": "Exact native score/target and contextual forecast text fit after whole-header natural vertical sizing. Protection remains attached to content groups; scenery remains continuous and visible current stars retain a playable region. Compact partial stars are at the native scrolling viewport edge, not text truncation.",
+      "syntheticLargeReceiptVerdict": "BOUNDED_PHASE_PASS",
+      "syntheticLargeReceipt": {
+        "ageSeconds": 0.2205590009689331,
+        "scrollOffset": [
+          0,
+          0
+        ],
+        "finding": "Complete bright +15,000, distinguishable figures/packet light and readable protected header in this supplied phase. No actual iPad or complete trajectory acceptance."
+      },
+      "compactReceiptVerdict": "FAIL",
+      "compactReceipt": {
+        "ageSeconds": 0.20368599891662598,
+        "scrollOffset": [
+          0,
+          405
+        ],
+        "finding": "Bright cyan packet strokes visibly cross the destination 6 and the left side of the Next columns region. The award itself is complete, but essential forecast reading is obscured. This is distinct from the intentionally scrolled stars and partial guide.",
+        "sourceBoundary": "StarlightCelebrationOverlay.drawPackets masks the score only; figure drawing already excludes the header. A fitted backing cannot protect against a later overlay that paints over it.",
+        "boundedCorrection": "Clip composited packet ink and shadow outside the actual header/readout bounds, or a dedicated measured forecast anchor, while preserving packet paths, committed facts, arrival timing and receipt lifetime. Recheck the exact compact midlife state and affected packet/anchor regressions."
+      },
+      "diagnostics": [
+        "FDE953C9-C986-4192-A4B1-BEB62B99A2E8.txt",
+        "1C520A7F-EF6C-46CD-A798-4084DBD44905.txt",
+        "7F68A54C-2E3B-4754-B66F-6DDF99597EA2.txt",
+        "FA96CE84-4419-4A18-9B3C-9E4D5E8EA49F.txt"
+      ],
+      "adoptionLimit": "Mechanical score/mapping/containment results are separate. Native phone selected/AX and actual tablet captures were pending at review. Do not defer this visible receipt/header collision to a later goal."
+    },
+    {
+      "runtime": "dev.3ebf052fca",
+      "source": "bf5e6d23",
+      "sourceSnapshot": "/private/tmp/starfall-hud-stack-20261024/source-01-packet-integrated.json",
+      "verdict": "BOUNDED_NATIVE_SUNNY_AND_STUDIO_PASS",
+      "captureRoot": "/private/tmp/starfall-hud-stack-20261024/phone-01-reader-diagnostic-attachments/",
+      "captures": {
+        "normalSunnyBeginning": "20B416CF-0F08-4AC9-879E-B6E40745DDD2.png",
+        "normalSunnyEnd": "F86DE918-6D8C-43A1-8226-B44390ACB1B0.png",
+        "studioBeginning": "FFF92F8F-3B54-4911-9E64-A4B65AD60B6B.png",
+        "studioEnd": "4D83D8B0-D04C-4822-8BA5-3DA908D88087.png"
+      },
+      "scope": "Actual native iPhone AX5 normal Sunny reader and retained Studio. Captures precede the later one-sample loop correction; no rendered App change is inferred from that test-only correction.",
+      "finding": "The full Sunny viewport preserves readable score, complete forecast, subordinate inspection utility and protected Resume sky/Next shower over lit scenery. Separate fitted groups leave the scene continuous. The deliberately scrolled reader end visibly includes the complete tail, more showers / with a touching / star. Close and both gameplay actions remain complete. Studio uses its official menu reading context, shows the final match. line, and retains separate Continue, Close and Done controls.",
+      "scrollingDistinction": "Partial adjacent lines at the inner reader edge and no stars during deliberate page reading are expected scroll states. These are not glyph truncation or evidence of inaccessible board rows.",
+      "mechanicalSeparation": "Coordinator reports the unchanged-gate native case passed in 90.097 seconds. That result is separate from this image verdict.",
+      "limits": "No new numeric contrast samples, complete scroll-motion certification, actual VoiceOver or physical-device acceptance. Final phone forecast/inspection states remain pending."
+    },
+    {
+      "runtime": "dev.402680814f",
+      "source": "d5d02a7b",
+      "verdict": "BOUNDED_ACTUAL_TABLET_SETTLED_STATES_PASS",
+      "captureRoot": "/private/tmp/starfall-hud-stack-20261024/tablet-01-d5d02a7b-attachments/",
+      "captures": {
+        "AX5Opening": "DD14107E-9F43-400C-9FEC-03D0C6C49ED5.png",
+        "selectedColumn6": "D9BA2E34-4442-48D1-9040-4BFE762AE07D.png",
+        "selectedColumn1": "83612194-FAD6-4C2B-A3B3-79136834DF90.png",
+        "settled15000": "C20A3747-44B4-4AD2-82B9-9CB3804F288D.png",
+        "FullBoard": "A1119312-E415-4205-93B5-ED772885072B.png"
+      },
+      "scope": "Actual native tablet artwork/2x raster at AX5 with Calm. Full windows reviewed against the approved Play concept; opening also checked at original resolution. These are d5 runtime captures, not fresh bf5 tablet execution.",
+      "finding": "The opening retains all 24 stars and complete ceiling in one continuous scenic composition. Score/goal and forecast characters fit completely within local protection; the optional question-mark action stays subordinate. Selecting 6 or 1 adds the corresponding quiet chip underline and a correctly placed unfilled column outline without masking stars. The settled chain shows complete 15,000 / 150,000 with a readable unchanged forecast. Full Board shows 49 distinct stars, complete contextual Full Board copy and no shower forecast, timer or inspection action.",
+      "scrollingDistinction": "The settled-chain and Full Board guide panels continue below the screenshot edge in the outer scrolling page. Their partial prose is not a claim of full-message reading acceptance; the visible board and instruments are the reviewed slice.",
+      "sourceEquivalenceLimit": "Coordinator reports bf5 differs from d5 through integrated map/scene-readiness work and packet/header clipping. These settled Calm states depict the same HUD/painting/type geometry, but this does not establish a fresh bf5 tablet runtime or its live packet animation.",
+      "mechanicalSeparation": "Coordinator reports the native tablet method passed in 288.127 seconds. No visual pass is inferred from that outcome.",
+      "limits": "No packet phase/trajectory, full guide reading, new numerical contrast audit, all orientations/locations, actual VoiceOver or physical-device acceptance."
+    },
+    {
+      "runtime": "dev.402680814f",
+      "source": "d5d02a7b",
+      "verdict": "OLDER_READER_FAILURE_CAUSE_UNASSIGNED",
+      "captureRoot": "/private/tmp/starfall-hud-stack-20261024/phone-01-d5d02a7b-attachments/",
+      "captures": [
+        "BE7B9A3A-EFDE-47D0-9DA4-CC320DB4EEB5.mp4"
+      ],
+      "finding": "The older failed recording exposes Dusk will eat 4 / stars after 5 / more showers before an unchanged extra pan. It does not expose the source copy final phrase with a touching star. My earlier interpretation that this raster alone proved the complete final paragraph was reached is withdrawn; the failure cause remains unassigned.",
+      "testResponsibility": "The original where admission and before baseline were independent AX reads. ec40c9a3 changes admission to one immutable before snapshot, preserving the same 12-pan bound and all movement, overlap, text-height, full-final-line and pinned-action gates. Removing this observation race is independently sound, but it is not exclusive causal proof for the older failure. No App fix is inferred.",
+      "laterEvidence": "The source-bound bf5 normal Sunny end image in the preceding entry visibly includes the full final phrase and has a bounded visual pass."
+    },
+    {
+      "runtime": "dev.3ebf052fca",
+      "source": "ec40c9a3 test checkout; rendered App inputs match bf5e6d23 / source-01-packet-integrated.json",
+      "verdict": "BOUNDED_DEFAULT_PHONE_STATES_PASS_OVERALL_READER_HOLD",
+      "captureRoot": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/",
+      "captures": {
+        "selectedColumn6": "378EEA20-994C-4625-8971-8E9D373B2236.png",
+        "inspectionReader": "6DF258E1-55FE-44D7-894E-71D84068016C.png",
+        "selectedBeforeBackground": "90CAA994-FE6D-4EAD-9DAC-DB06DC0B558F.png",
+        "returnedAfterBackground": "CE535284-4CAD-4C04-8B3F-21A59219BBEB.png"
+      },
+      "scope": "Whole native iPhone-simulator screenshots, 390x844 points/1170x2532 pixels, default text; all four inspected at original resolution. The native source uses the same rendered App fingerprint as bf5; ec40 changes test observations only.",
+      "finding": "Exact score/target, ordered forecast and trail miniatures remain complete and distinct, with a small contextual help utility. The selected6 underline corresponds to the unfilled sixth-column outline without masking stars. Scene, ceiling and 24-star opening remain continuous/dominant. Inspection uses its official menu reading context with readable entry descriptions and complete Return to sky. Its fifth body description continues in the scroll viewport; this frame does not claim the entire inspector was read. After background, the selector outline/underline is absent and the same score/forecast/native actions remain visible.",
+      "mechanicalSeparation": {
+        "rawLog": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3.log",
+        "receipt": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-receipt.json",
+        "manifest": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/manifest.json",
+        "inspectionMethod": "passed in 101.472 seconds",
+        "backgroundWorldMethod": "passed in 112.350 seconds",
+        "wholeBundle": "3 executed; 2 passed, 1 failed; exit65. Do not label the bundle a pass."
+      },
+      "activeReaderFailure": {
+        "method": "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+        "methodResult": "failed in 47.853 seconds at iteration 2",
+        "capture": "311619EB-1839-47A2-94CA-B9D59A8460EB.png",
+        "initialFrames": "515D035E-7B71-47D0-A3C0-5750EE4E3F37.txt",
+        "nonmovingFrames": "15800770-87C6-4ADC-903A-6638B065E322.txt",
+        "recording": "48982A51-0557-4595-B129-99DABABB364F.mp4",
+        "observed": "The reader viewport remains y419..607.333; before/after text remains y404.667..1101.333 with height 696.667. Only the first 14.333 points moved, and actions remain pinned. The raster still shows the message beginning. This is real overflowing text, not proof of an end-of-content or viewport-precision condition.",
+        "synthesizedInput": "Both retained pointer records start at (195,560.25) and drag to (195,475.5), wholly inside the inner reading viewport. Source has no competing custom reader gesture; actual native hit ownership/content extent/recognizer state remain to be established.",
+        "causalLimit": "The one-sample guard removes an independent AX observation race but did not resolve this reproduction. No exclusive root cause or App fix is inferred from these frames. Earlier 90.097-second Sunny/Studio success remains source-bound and cannot establish reliable pan behavior."
+      },
+      "limits": "These bounded default-state visual passes do not accept the failed reader, the overall goal, continuous animation, all sizes/locations, whole-glyph contrast, actual VoiceOver or physical-device comfort."
+    },
+    {
+      "runtime": "dev.3ebf052fca",
+      "source": "3fe9f9a8 test checkout; unchanged bf5e6d23 rendered App",
+      "verdict": "FRESH_ISOLATED_SUNNY_STUDIO_BOUNDED_VISUAL_PASS",
+      "captureRoot": "/private/tmp/starfall-hud-stack-20261024/phone-01-3fe9f9a8-serial-attachments/",
+      "captures": {
+        "sunnyBeginning": "028D0F13-8873-4655-A1F1-6879A8CEADB1.png",
+        "sunnyEnd": "2334BAD1-C32E-4867-B700-EA30D1FC821C.png",
+        "studioBeginning": "6A99183A-3AC9-4F31-8972-691571CDC20B.png",
+        "studioEnd": "E37C92AE-1278-4E4E-969A-734A06C5C4CF.png"
+      },
+      "scope": "Whole native iPhone-simulator AX5 frames inspected at original 1170x2532 resolution. Reading intentionally scrolls away from the star field; this is not an active-play opening screenshot.",
+      "finding": "Sunny shows the complete beginning and final more showers / with a touching / star. text at unchanged native scale. Its exact score, complete forecast and small help utility remain readable against protected lit scenery. Close, Resume sky and Next shower fit completely. Studio shows the final toward a tap / match. lines and distinct Continue/Close/Done controls. No new shelf, disconnected painting, unreadable essential label or permanent glyph clipping is visible.",
+      "scrollingDistinction": "Partial neighboring lines at inner viewport edges are deliberate reading positions. No stars in these reader-page captures is expected; opening/ceiling/board accessibility has separate evidence.",
+      "mechanicalSeparation": {
+        "rawLog": "/private/tmp/starfall-hud-stack-20261024/phone-01-3fe9f9a8-serial.log",
+        "receipt": "/private/tmp/starfall-hud-stack-20261024/phone-01-3fe9f9a8-serial-receipt.json",
+        "manifest": "/private/tmp/starfall-hud-stack-20261024/phone-01-3fe9f9a8-serial-attachments/manifest.json",
+        "testResult": "1 method passed,0 failures,0 skips; method 64.788 seconds; bounded command 70.019 seconds",
+        "gates": "The same 12-pan bound, movement, overlap, full text height/final line and pinned-action/bounds gates remain intact. The log records 8 Sunny pans with shortened final distances and 3 Studio pans.",
+        "executionScope": "Coordinator reports this native UI run was isolated from other native interaction. No rendered App change occurred.",
+        "causalLimit": "A successful isolated method establishes that source-bound interaction result only. Prior d5/ec40 pan failures remain failures; this review does not prove why they occurred or claim a product fix/perfect reliability."
+      },
+      "limits": "No new quantitative contrast measurement, complete animation, all orientations/locations, actual VoiceOver, physical comfort or independent performance acceptance."
+    }
+  ],
+  "contrastSamples": {
+    "convention": {
+      "raster": "1170x2532 RGB PNG; integer coordinates are original top-left-origin pixels",
+      "inks": {
+        "supporting": [
+          202,
+          200,
+          196
+        ],
+        "action": [
+          224,
+          191,
+          123
+        ],
+        "primary": [
+          240,
+          233,
+          218
+        ]
+      },
+      "calculation": "Approximate (lighter sRGB relative luminance + 0.05) / (darker + 0.05), rounded to three decimals.",
+      "limitation": "Local composited pixels adjacent to matching opaque glyph cores are sampled backdrop proxies. They are not an isolated backdrop reconstruction, every glyph/edge, a whole-glyph minimum, a global contrast audit or physical-display certification."
+    },
+    "before": {
+      "capture": "C5D3798B-9A61-4375-A296-4E3368E3AE88.png",
+      "samples": [
+        {
+          "label": "Next columns / lit wood",
+          "ink": "supporting",
+          "xy": [
+            407,
+            550
+          ],
+          "backgroundRGB": [
+            193,
+            117,
+            70
+          ],
+          "ratioApprox": 2.13
+        },
+        {
+          "label": "Next columns / lit wood",
+          "ink": "supporting",
+          "xy": [
+            378,
+            510
+          ],
+          "backgroundRGB": [
+            194,
+            94,
+            48
+          ],
+          "ratioApprox": 2.546
+        },
+        {
+          "label": "Resume sky / cloud",
+          "ink": "action",
+          "xy": [
+            401,
+            2190
+          ],
+          "backgroundRGB": [
+            252,
+            174,
+            183
+          ],
+          "ratioApprox": 1.003
+        },
+        {
+          "label": "Resume sky / cloud",
+          "ink": "action",
+          "xy": [
+            453,
+            2190
+          ],
+          "backgroundRGB": [
+            253,
+            186,
+            185
+          ],
+          "ratioApprox": 1.083
+        },
+        {
+          "label": "Next shower / cloud",
+          "ink": "action",
+          "xy": [
+            321,
+            2390
+          ],
+          "backgroundRGB": [
+            253,
+            191,
+            194
+          ],
+          "ratioApprox": 1.126
+        }
+      ]
+    },
+    "after": {
+      "capture": "C171DA09-AF5F-4184-874C-B453CB7322C9.png",
+      "samples": [
+        {
+          "label": "Next columns / protected wood",
+          "ink": "supporting",
+          "xy": [
+            407,
+            550
+          ],
+          "backgroundRGB": [
+            19,
+            27,
+            39
+          ],
+          "ratioApprox": 10.356
+        },
+        {
+          "label": "Next columns / protected wood",
+          "ink": "supporting",
+          "xy": [
+            378,
+            510
+          ],
+          "backgroundRGB": [
+            19,
+            27,
+            39
+          ],
+          "ratioApprox": 10.356
+        },
+        {
+          "label": "Resume sky / protected cloud",
+          "ink": "action",
+          "xy": [
+            401,
+            2190
+          ],
+          "backgroundRGB": [
+            58,
+            54,
+            69
+          ],
+          "ratioApprox": 6.639
+        },
+        {
+          "label": "Resume sky / protected cloud",
+          "ink": "action",
+          "xy": [
+            453,
+            2190
+          ],
+          "backgroundRGB": [
+            59,
+            57,
+            69
+          ],
+          "ratioApprox": 6.412
+        },
+        {
+          "label": "Next shower / protected cloud",
+          "ink": "action",
+          "xy": [
+            321,
+            2390
+          ],
+          "backgroundRGB": [
+            59,
+            57,
+            71
+          ],
+          "ratioApprox": 6.394
+        },
+        {
+          "label": "Score 0 / protected backdrop",
+          "ink": "primary",
+          "xy": [
+            134,
+            240
+          ],
+          "backgroundRGB": [
+            12,
+            21,
+            34
+          ],
+          "ratioApprox": 15.16
+        },
+        {
+          "label": "Score 0 / protected backdrop",
+          "ink": "primary",
+          "xy": [
+            165,
+            240
+          ],
+          "backgroundRGB": [
+            12,
+            21,
+            33
+          ],
+          "ratioApprox": 15.175
+        },
+        {
+          "label": "Score 0 / protected backdrop",
+          "ink": "primary",
+          "xy": [
+            192,
+            240
+          ],
+          "backgroundRGB": [
+            12,
+            20,
+            32
+          ],
+          "ratioApprox": 15.286
+        },
+        {
+          "label": "Score 0 / protected backdrop",
+          "ink": "primary",
+          "xy": [
+            222,
+            240
+          ],
+          "backgroundRGB": [
+            12,
+            21,
+            32
+          ],
+          "ratioApprox": 15.189
+        },
+        {
+          "label": "Destination 4 / protected backdrop",
+          "ink": "supporting",
+          "xy": [
+            194,
+            685
+          ],
+          "backgroundRGB": [
+            16,
+            25,
+            41
+          ],
+          "ratioApprox": 10.536
+        },
+        {
+          "label": "Destination 4 / protected backdrop",
+          "ink": "supporting",
+          "xy": [
+            215,
+            685
+          ],
+          "backgroundRGB": [
+            14,
+            24,
+            39
+          ],
+          "ratioApprox": 10.665
+        },
+        {
+          "label": "Destination 4 / protected backdrop",
+          "ink": "supporting",
+          "xy": [
+            225,
+            685
+          ],
+          "backgroundRGB": [
+            14,
+            24,
+            38
+          ],
+          "ratioApprox": 10.677
+        },
+        {
+          "label": "Destination 4 / protected backdrop",
+          "ink": "supporting",
+          "xy": [
+            246,
+            685
+          ],
+          "backgroundRGB": [
+            12,
+            23,
+            38
+          ],
+          "ratioApprox": 10.779
+        }
+      ]
+    }
+  },
+  "remainingAcceptance": [
+    "Coordinator must reconcile exact source/dirty inputs, required mechanical checks, this visual verdict and the reader residual before recording integration/merge acceptance; this review itself performs no adoption or merge.",
+    "Prior native pan failures remain recorded with cause unassigned and an isolated-recurrence instrumentation trigger; the fresh isolated pass must not be described as fixing their cause.",
+    "No known current visual failure remains in the identified reviewed goal 1 states. Unreviewed locations/orientations or every animation phase are outside this bounded verdict.",
+    "Still captures do not establish complete receipt trajectories, global/whole-glyph contrast, actual VoiceOver, minimum-iOS execution, physical comfort, sustained performance or enjoyment.",
+    "Goals 2 through 10remain pending their own sequential work and acceptance."
+  ],
+  "provenanceLimit": "Temporary capture roots/source snapshots are disposable raw evidence locations, not published retained capture links. The parent evidence owner must retain selected media/provenance before cleanup.",
+  "relatedIndependentReview": {
+    "path": "docs/evidence/hud-stack-2026-10-24/visual-review-01-packet.json",
+    "scope": "Owned by hud_audit. Its source-bound packet/default tranche verdict is separate; this file does not overwrite or independently duplicate it."
+  },
+  "packagingPlan": {
+    "status": "SUPERSEDED_BY_RETAINED_EXPORT_REVIEW; earlier proposed selections/names are historical planning metadata",
+    "principle": "Retain original full-viewport bytes and source/state metadata for distinct visual contracts. Keep failures clearly historical/active; do not promote any capture to Current merely because it is recent or because unrelated methods passed.",
+    "nativePrimary": [
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/378EEA20-994C-4625-8971-8E9D373B2236.png",
+        "proposedName": "dev-bf5e6d23__hud-selected-column-6__iphone-17e__default-text.png",
+        "runtime": "dev.3ebf052fca",
+        "source": "ec40c9a3 tests; bf5e6d23 rendered App",
+        "role": "Default phone hierarchy, complete forecast and selected-column correspondence",
+        "status": "bounded visual pass; overall held",
+        "bytes": 3463465,
+        "sha256": "8487aa706a22b86189500830bea6ab000918908400b95cc0c3c557b47f73d590",
+        "pixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/6DF258E1-55FE-44D7-894E-71D84068016C.png",
+        "proposedName": "dev-bf5e6d23__shower-inspection__iphone-17e__default-text.png",
+        "runtime": "dev.3ebf052fca",
+        "source": "ec40c9a3 tests; bf5e6d23 rendered App",
+        "role": "Contextual inspection destination and complete Return action",
+        "status": "bounded visual pass; whole inspector reading not inferred",
+        "bytes": 1554329,
+        "sha256": "e1785dd1cbed5d0d5b5e1f9e8f6574771760ffdb6fe4ae03338743753dc23bc0",
+        "pixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/CE535284-4CAD-4C04-8B3F-21A59219BBEB.png",
+        "proposedName": "dev-bf5e6d23__hud-after-background__iphone-17e__default-text.png",
+        "runtime": "dev.3ebf052fca",
+        "source": "ec40c9a3 tests; bf5e6d23 rendered App",
+        "role": "Unselected return after background/world journey",
+        "status": "bounded visual pass",
+        "bytes": 3456518,
+        "sha256": "d10dc1e3e44d6d2ea93a5fc44e65c7e7169f532f35ed6c64e8229f50915418a0",
+        "pixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-01-d5d02a7b-attachments/D9BA2E34-4442-48D1-9040-4BFE762AE07D.png",
+        "proposedName": "dev-d5d02a7b__hud-selected-column-6__ipad__ax5-calm.png",
+        "runtime": "dev.402680814f",
+        "source": "d5d02a7b",
+        "role": "Actual tablet AX5 local instruments, 24 stars, ceiling and selection in one frame",
+        "status": "bounded settled visual pass; not fresh bf5 tablet execution",
+        "bytes": 6860192,
+        "sha256": "6fa54f5db45ac5894e18fdf374f7f19a0c45e21cd0aa2171b192457e7aa9154b",
+        "pixels": [
+          2064,
+          2752
+        ]
+      },
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-01-d5d02a7b-attachments/C20A3747-44B4-4AD2-82B9-9CB3804F288D.png",
+        "proposedName": "dev-d5d02a7b__hud-settled-15000__ipad__ax5-calm.png",
+        "runtime": "dev.402680814f",
+        "source": "d5d02a7b",
+        "role": "Exact nonzero score/goal and settled star field",
+        "status": "bounded settled visual pass; not live receipt/complete guide reading",
+        "bytes": 6647533,
+        "sha256": "c50c8736d7f2444703598e716c12274866d2f3894f6b66af50e5c8a50d6755a4",
+        "pixels": [
+          2064,
+          2752
+        ]
+      },
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-01-d5d02a7b-attachments/A1119312-E415-4205-93B5-ED772885072B.png",
+        "proposedName": "dev-d5d02a7b__full-board__ipad__ax5-calm.png",
+        "runtime": "dev.402680814f",
+        "source": "d5d02a7b",
+        "role": "49 stars and contextual Full Board without shower instruments",
+        "status": "bounded settled visual pass; not fresh bf5 tablet execution",
+        "bytes": 6959314,
+        "sha256": "ba7f00de8b9ab0bc0e4934de1bef10cea4c49e7efe2bc86d68d8a706f71a3685",
+        "pixels": [
+          2064,
+          2752
+        ]
+      },
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-reader-diagnostic-attachments/20B416CF-0F08-4AC9-879E-B6E40745DDD2.png",
+        "proposedName": "dev-bf5e6d23__sunny-reading-beginning__iphone-17e__ax5.png",
+        "runtime": "dev.3ebf052fca",
+        "source": "bf5e6d23",
+        "role": "Lit-scenery full text beginning and pinned actions",
+        "status": "historical bounded still pass; reader reliability unresolved",
+        "bytes": 3025362,
+        "sha256": "d35060ded10bf21ae1ee6d741b1c91b7996eeb69815a953d979a6193ca662c88",
+        "pixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-reader-diagnostic-attachments/F86DE918-6D8C-43A1-8226-B44390ACB1B0.png",
+        "proposedName": "dev-bf5e6d23__sunny-reading-end__iphone-17e__ax5.png",
+        "runtime": "dev.3ebf052fca",
+        "source": "bf5e6d23",
+        "role": "Full visible final phrase with a touching star and readable actions",
+        "status": "historical bounded still pass; must refresh after reader correction",
+        "bytes": 3034118,
+        "sha256": "1eec575c1067dec94cf920f7b2f292d48f36b460fb02960780148a21586393ec",
+        "pixels": [
+          1170,
+          2532
+        ]
+      }
+    ],
+    "hostedCompanion": {
+      "independentOwner": "visual-review-01-packet.json; do not duplicate or overwrite its verdict",
+      "minimalPair": [
+        {
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-01-phone-packet-attachments/405CB3D7-2078-4CB7-9A59-0385D6BF6D0A.png",
+          "proposedName": "dev-bf5e6d23__hosted-reading-before__phone-traits__375x667-ax5.png",
+          "runtime": "dev.3ebf052fca",
+          "source": "bf5e6d23;source-01-packet-integrated.json",
+          "role": "Compact 3x hosted before-state for live receipt comparison",
+          "status": "bounded pass recorded by hud_audit",
+          "bytes": 6433066,
+          "sha256": "a06e42b2184218b3459d3ff5362f0cd678669b7411eb34e507657d31df76d1f6",
+          "pixels": [
+            1125,
+            2001
+          ]
+        },
+        {
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/hosted-01-phone-packet-attachments/3FC6B14F-F36F-4FD1-806D-F6D05EB43E67.png",
+          "proposedName": "dev-bf5e6d23__hosted-reading-receipt__phone-traits__375x667-ax5.png",
+          "runtime": "dev.3ebf052fca",
+          "source": "bf5e6d23;source-01-packet-integrated.json",
+          "role": "Actual midlife compact packet/forecast separation, age 0.202424 seconds",
+          "status": "bounded phase pass recorded by hud_audit",
+          "bytes": 6110352,
+          "sha256": "e4899711ec0e8b35bd7db40dc16edc4d343402f10e446c46ffd1a92f295c47a9",
+          "pixels": [
+            1125,
+            2001
+          ]
+        }
+      ],
+      "scope": "Real hosted production view in synthetic 375x667 window with phone traits; this pair is not full actual-device-layout or continuous-animation evidence."
+    },
+    "retainUnresolvedFailure": [
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/311619EB-1839-47A2-94CA-B9D59A8460EB.png",
+        "proposedName": "dev-bf5e6d23__sunny-reader-stalled__iphone-17e__ax5.png",
+        "runtime": "dev.3ebf052fca",
+        "source": "ec40c9a3 tests; bf5e6d23 rendered App",
+        "role": "Visible overflowing reader failure; do not conflate with Sunny end pass",
+        "status": "active failure",
+        "bytes": 3027978,
+        "sha256": "429c7ede75b6fab2b2795a4a9d81a4e109ff7891a70d0918fcf5f1cca9ba259e",
+        "pixels": [
+          1170,
+          2532
+        ]
+      },
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-ec40c9a3-attachments/15800770-87C6-4ADC-903A-6638B065E322.txt",
+        "proposedName": "ec40c9a3__sunny-reader-stalled__native-frames.txt",
+        "runtime": "dev.3ebf052fca",
+        "source": "ec40c9a3 tests; bf5e6d23 rendered App",
+        "role": "Exact unchanged reader/text/action frame diagnostics",
+        "status": "active failure",
+        "bytes": 1802,
+        "sha256": "2942ce54f5f7a43653d6878dad76862ef3db70a026c3421329bb683abe46e5bd"
+      }
+    ],
+    "existingHistoricalMedia": [
+      "docs/evidence/hud-stack-2026-10-24/dev-72a01d9bb7-goal01-phone-selected.jpg",
+      "docs/evidence/hud-stack-2026-10-24/dev-72a01d9bb7-goal01-tablet-stacked.jpg"
+    ],
+    "historicalContrastCounterexample": {
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-correction-integrated-attachments/C5D3798B-9A61-4375-A296-4E3368E3AE88.png",
+      "proposedName": "dev-c8ff0528d7__sunny-contrast-failure__iphone-17e__ax5.png",
+      "runtime": "dev.c8ff0528d7",
+      "source": "c8ff integrated snapshot; see history",
+      "role": "Measured local contrast counterexample motivating official fitted protection",
+      "status": "historical failure; not current rendering",
+      "bytes": 3483554,
+      "sha256": "a0b33e3cc8b8b2fe3bede5cd3df06a6807543bf9d16fbc0b816630ade1aa3371",
+      "pixels": [
+        1170,
+        2532
+      ]
+    },
+    "omitRedundantMedia": "Do not retain every before-containment duplicate, second selected-phone frame, tablet unselected opening/column1 duplicate, Studio unchanged-context pair or synthetic large-phone-traits image in the primary set. Keep their manifests and exact earlier review records until integration; preserve any unique unresolved raw recording/diagnostics while investigation is active.",
+    "beforePromotion": "Use the reviewed retained manifest and final source-bound visual verdict with the coordinator mechanical record. Earlier pan failures remain a residual with an isolated-recurrence instrumentation trigger; no pan cause or App fix is claimed.",
+    "supersededBy": "retainedExportReview; captures-01-correction.json contains actual retained paths, fresh serial Sunny states and provenance"
+  },
+  "finalSourceBoundVerdict": {
+    "verdict": "VISUAL_ACCEPTANCE_FOR_IDENTIFIED_SOURCE_AND_STATES",
+    "renderedSource": "bf5e6d235936dad65ef445b249f97f766ad4433b / dev.3ebf052fca; source-01-packet-integrated.json records matching App input provenance",
+    "freshNativeTests": "3fe9f9a8 adds hosted diagnostic coverage only; rendered App remains unchanged. Fresh isolated native reader method passed once with all existing gates intact.",
+    "tabletScope": "Actual tablet settled AX5/Calm captures remain d5d02a7b / dev.402680814f. Their HUD/painting/type geometry is rendered-equivalent under the stated later map/readiness and packet changes, not fresh current-runtime tablet execution or current tablet live-animation evidence.",
+    "reviewedCriteria": [
+      "Official small help utility replaces the rejected menu-style Inspect action; context is complete and the optional action remains subordinate.",
+      "Score/goal, ordered destinations, trail miniatures, Full Board mode context and native actions remain readable and complete in their reviewed source-bound contexts.",
+      "Pinned local material joins one continuous painting; the rejected disconnected opaque header/extra scenic crown does not recur in reviewed frames.",
+      "Default phone and actual-tablet star fields remain dominant; selected chip/column correspondence, full ceiling and Full Board 49/no-shower state pass their bounded reviews.",
+      "Fresh Sunny bright-scenery reading retains the complete final phrase and readable Close/Resume/Next labels; Studio retains its official menu context and final text/actions.",
+      "The separately reviewed compact live receipt preserves visible award/packet ink without painting over forecast facts."
+    ],
+    "knownCurrentVisualFailures": [],
+    "scopeLimit": "This is visual acceptance for the identified source and sampled states against the approved middle Play reference and official roles. It is not an unqualified goal-completion, interaction reliability, full animation, global contrast, actual VoiceOver or physical-device certification.",
+    "integrationRecommendation": "Use this source-bound visual verdict with the coordinator mechanical/source record. Preserve the prior native pan failures and their residual trigger in Engineering; do not call their cause fixed or attribute them exclusively to concurrent activity. Goals 2 through 10 require their own sequential implementation and acceptance."
+  },
+  "retainedExportReview": {
+    "verdict": "PASS_FOR_EXPORT_FIDELITY_AND_BOUNDED_CURRENT_VISUAL_STATES",
+    "manifest": "docs/evidence/hud-stack-2026-10-24/captures-01-correction.json",
+    "conversion": "Coordinator exports 13 JPEGs at original dimensions via sips quality80 and copies 1 diagnostic TXT exactly. Original RGB PNGs remain the quantitative contrast source.",
+    "byteVerification": "Independently checked all 14 raw/export SHA256s and byte lengths against manifest; all 13 JPEG dimensions equal original PNG dimensions; TXT equals raw bytes.",
+    "primaryReviewer": "hud_read_ahead inspected 9 current native JPEGs plus the stalled-reader JPEG against already-reviewed raw source frames; fresh Sunny/Studio raw originals were inspected in this tranche.",
+    "delegatedReviewer": {
+      "name": "hud_audit, independent read-only export reviewer",
+      "scope": [
+        "hosted-reading-before",
+        "hosted-reading-receipt",
+        "historical-sunny-contrast-failure"
+      ],
+      "verdict": "BOUNDED_PASS",
+      "finding": "All six requested raw/export hashes, sizes and dimensions match. Score/forecast/help and live packet/figure/glow relation remain legible; historical lit-scene contrast failure remains visibly distinct. Slight compression smoothing in fine scenic texture/glow has no consequential text, glyph or receipt-relation loss.",
+      "limits": "Export fidelity only; no continuous motion, quantitative JPEG contrast or overall mechanical acceptance."
+    },
+    "currentBoundedVisualPassExports": [
+      "correction-captures/dev-3ebf052fca__hud-selected-column-6__iphone-17e__default-text.jpg",
+      "correction-captures/dev-3ebf052fca__shower-inspection__iphone-17e__default-text.jpg",
+      "correction-captures/dev-3ebf052fca__hud-after-background__iphone-17e__default-text.jpg",
+      "correction-captures/dev-d5d02a7b__hud-selected-column-6__ipad__ax5-calm.jpg",
+      "correction-captures/dev-d5d02a7b__hud-settled-15000__ipad__ax5-calm.jpg",
+      "correction-captures/dev-d5d02a7b__full-board__ipad__ax5-calm.jpg",
+      "correction-captures/dev-3ebf052fca__hosted-reading-before__phone-traits__375x667-ax5.jpg",
+      "correction-captures/dev-3ebf052fca__hosted-reading-receipt__phone-traits__375x667-ax5.jpg",
+      "correction-captures/dev-3ebf052fca__sunny-reading-beginning__iphone-17e__ax5.jpg",
+      "correction-captures/dev-3ebf052fca__sunny-reading-end__iphone-17e__ax5.jpg",
+      "correction-captures/dev-3ebf052fca__studio-reading-end__iphone-17e__ax5.jpg"
+    ],
+    "failureExportsRemainFailures": [
+      "correction-captures/dev-3ebf052fca__sunny-reader-stalled__iphone-17e__ax5.jpg",
+      "correction-captures/ec40c9a3__sunny-reader-stalled__native-frames.txt",
+      "correction-captures/dev-c8ff0528d7__sunny-contrast-failure__iphone-17e__ax5.jpg"
+    ],
+    "finding": "Retained exports preserve the whole viewport, official component hierarchy, text fits, scene continuity, selected-state correspondence and visible receipt/forecast separation of their exact raw frames. The failed reader image remains visibly near its beginning and is paired with unchanged numeric diagnostics; it is not relabeled a reading-end pass. The earlier unprotected contrast counterexample remains historical.",
+    "limits": "JPEGs are lossy review media. No every-glyph pixel equivalence or contrast number is derived from them; no content was cropped and no source/runtime scope is broadened."
+  },
+  "readerResidual": {
+    "status": "PRIOR_FAILURES_RETAINED_CAUSE_UNASSIGNED",
+    "evidence": "See older d5 reader interpretation and ec40 overflowing iteration2 failure entries, exact retained PNG/TXT, original logs/recordings and coordinator verification record.",
+    "latestResult": "Fresh isolated 3fe9f9a8 native method passes all existing gates at unchanged App runtime; this does not rewrite prior outcomes.",
+    "notClaimed": [
+      "Exclusive concurrent-activity cause",
+      "Fixed product defect",
+      "Perfect native reader reliability",
+      "Failure at content end"
+    ],
+    "coordinatorFollowup": "Record the residual in Engineering. If a stall recurs in an isolated native run, retain the same gates and instrument actual native hit ancestry plus both pan recognizer/content-size/offset states before assigning or changing a product boundary."
+  }
+}

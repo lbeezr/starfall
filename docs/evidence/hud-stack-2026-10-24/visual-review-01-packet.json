@@ -1,0 +1,210 @@
+{
+  "reviewedOn": "2026-10-24",
+  "reviewer": "hud_audit; independent of packet implementation",
+  "status": "bounded-visual-pass; overall-goal-1-held",
+  "source": {
+    "commit": "bf5e6d235936dad65ef445b249f97f766ad4433b",
+    "runtime": "dev.3ebf052fca",
+    "snapshot": "/private/tmp/starfall-hud-stack-20261024/source-01-packet-integrated.json",
+    "snapshotSha256": "e99a2afa89afac0fa1566a75edc86d824b8a15ddd981772de27e8da696dacb25",
+    "binding": "All three dirty-input hashes in the b7aa58f7-based snapshot match their bytes at bf5e6d23. This review did not build or certify clean publication."
+  },
+  "references": {
+    "approvedPlay": "docs/design/interface/observatory-game-ui-concept-2026-10-19.png; middle Play composition",
+    "officialRoles": "docs/design/GAME_UI_SYSTEM.md: active play, fitted scenery protection, forecast targets and existing 48-point utility",
+    "visualCriteria": "docs/design/UI_PRODUCTION.md#decide-visual-acceptance-separately",
+    "rejectedCounterexample": "/private/tmp/starfall-hud-stack-20261024/hosted-01-correction-natural-header-attachments/244DCEBC-D100-47C4-A332-33F3881DA74D.png",
+    "counterexampleFinding": "The earlier compact live frame paints cyan packet/glow through the first destination digit 6. Its source/host is historical, not a pixel-identical baseline."
+  },
+  "rawRoot": "/private/tmp/starfall-hud-stack-20261024",
+  "captures": [
+    {
+      "scope": "tablet2x-compact-before",
+      "file": "hosted-01-packet-integrated-attachments/A86A176A-DDAD-478C-BB91-D44D6AA3BD7A.png",
+      "pixels": [
+        750,
+        1334
+      ],
+      "sha256": "0aea8fef8ab07050b33f33529f71af8b2946637eed196301c50edab4856ef4f5"
+    },
+    {
+      "scope": "tablet2x-compact-live",
+      "file": "hosted-01-packet-integrated-attachments/90B09C84-7D39-44B0-8DC4-C0FFD8DEB669.png",
+      "pixels": [
+        750,
+        1334
+      ],
+      "sha256": "0e8ee9c2add68dd870fdf9b8fd3d5a7c8f9e3e1e1245eda8b8c758b152f15cb4"
+    },
+    {
+      "scope": "tablet2x-large-before",
+      "file": "hosted-01-packet-integrated-attachments/A6D24A3C-242B-458E-80CB-8358E558C007.png",
+      "pixels": [
+        2048,
+        2732
+      ],
+      "sha256": "1caa5a39c6d77d213d3dbcab091435bea2c6fceead83a20be9567810d4d3264d"
+    },
+    {
+      "scope": "tablet2x-large-live",
+      "file": "hosted-01-packet-integrated-attachments/16BAAD78-CA13-40CC-BC48-1C4943E8514E.png",
+      "pixels": [
+        2048,
+        2732
+      ],
+      "sha256": "dd51a30d4238cd473d86555d72a5cf89d315d53c3487d3234fcfe33923276f8f"
+    },
+    {
+      "scope": "phone3x-compact-before",
+      "file": "hosted-01-phone-packet-attachments/405CB3D7-2078-4CB7-9A59-0385D6BF6D0A.png",
+      "pixels": [
+        1125,
+        2001
+      ],
+      "sha256": "a06e42b2184218b3459d3ff5362f0cd678669b7411eb34e507657d31df76d1f6"
+    },
+    {
+      "scope": "phone3x-compact-live",
+      "file": "hosted-01-phone-packet-attachments/3FC6B14F-F36F-4FD1-806D-F6D05EB43E67.png",
+      "pixels": [
+        1125,
+        2001
+      ],
+      "sha256": "e4899711ec0e8b35bd7db40dc16edc4d343402f10e446c46ffd1a92f295c47a9"
+    },
+    {
+      "scope": "phone3x-synthetic-large-before",
+      "file": "hosted-01-phone-packet-attachments/07B2600A-962A-48B2-A5A0-B739873BDC90.png",
+      "pixels": [
+        3072,
+        4098
+      ],
+      "sha256": "e6e2c68ee88d4e6cbcded2d0f66447dcd0acb5088c98a8542f3ec085c5b553a2"
+    },
+    {
+      "scope": "phone3x-synthetic-large-live",
+      "file": "hosted-01-phone-packet-attachments/70279686-CFCD-4690-BC64-3B0B0F78CAB8.png",
+      "pixels": [
+        3072,
+        4098
+      ],
+      "sha256": "64d067d4add7cb98188939fe18e040f7b2f9e9fb93bd0dd64164915487752c27"
+    },
+    {
+      "scope": "phone3x-native-default",
+      "file": "phone-01-frame-diagnostic-attachments/45477A1D-4403-42DB-9EC4-0347A3106C9F.png",
+      "pixels": [
+        1170,
+        2532
+      ],
+      "sha256": "34c04735389bf7f165564bd418fc937d1a99757bf1d3f67bdfcf7c3aad27b601"
+    }
+  ],
+  "captureScopes": {
+    "tablet2x": {
+      "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "deviceName": "Starfall HUD Stack dcf3 Tablet",
+      "scale": 2,
+      "windowsPoints": [
+        [
+          375,
+          667
+        ],
+        [
+          1024,
+          1366
+        ]
+      ],
+      "text": "accessibility5",
+      "kind": "real hosted FallingSkyView in synthetic compact and large windows on a tablet simulator"
+    },
+    "phone3x": {
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "scale": 3,
+      "windowsPoints": [
+        [
+          375,
+          667
+        ],
+        [
+          1024,
+          1366
+        ]
+      ],
+      "text": "accessibility5",
+      "kind": "real hosted FallingSkyView with phone traits; 1024x1366 is a synthetic large window, not native tablet evidence"
+    },
+    "nativeDefault": {
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "viewportPoints": [
+        390,
+        844
+      ],
+      "text": "default",
+      "kind": "whole native UI-test screenshot on the phone simulator; captured before the containment assertion failed"
+    }
+  },
+  "normalMotionLiveSamples": {
+    "configuration": "SkyReadingPlayfieldTests sets calmEffects=false and uses accessibility5. These are live normal-effects stills; its ManualRainClock controls shower time.",
+    "samples": [
+      {
+        "scope": "tablet2x-compact-live",
+        "receipt": 1,
+        "ageSeconds": 0.21401000022888184,
+        "stateFile": "hosted-01-packet-integrated-attachments/92A65A60-613E-4A66-A92D-DE93A0B9A947.txt"
+      },
+      {
+        "scope": "tablet2x-large-live",
+        "receipt": 2,
+        "ageSeconds": 0.2030320167541504,
+        "stateFile": "hosted-01-packet-integrated-attachments/FD8DA1DB-0437-4FB4-9A9B-AEB9A0FE83C6.txt"
+      },
+      {
+        "scope": "phone3x-compact-live",
+        "receipt": 1,
+        "ageSeconds": 0.2024240493774414,
+        "stateFile": "hosted-01-phone-packet-attachments/2098EE30-DF03-4A04-B180-66899CA24BFB.txt"
+      },
+      {
+        "scope": "phone3x-synthetic-large-live",
+        "receipt": 2,
+        "ageSeconds": 0.21452701091766357,
+        "stateFile": "hosted-01-phone-packet-attachments/34AB79F2-42A6-47CC-BDCB-269E67CD3B08.txt"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "criterion": "Forecast ink survives live receipt effects",
+      "verdict": "pass in reviewed frames",
+      "observation": "Compact cyan packet trails stop before forecast lettering and digits; Next columns and all five ordered destinations 6,1,2,4,5 remain readable. Large pink trails remain below the forecast. No packet or shadow obscures forecast ink in either scale."
+    },
+    {
+      "criterion": "Native hierarchy and official material",
+      "verdict": "pass in reviewed frames",
+      "observation": "Default native phone keeps a compact exact score and fine trail above the ordered forecast. Inspection is the contextual help glyph, without a menu headline. AX5 expands native text into fitted protected groups; score, forecast and help remain complete. The shared nightglass material stays local to instruments."
+    },
+    {
+      "criterion": "One scenic composition",
+      "verdict": "pass in reviewed frames",
+      "observation": "Painting remains continuous behind instruments, return space and stars. Default native phone retains a dominant star field. AX5 compact dedicates substantial height to complete large text and retains a scrolling board viewport; the visible crop is not a whole-board claim."
+    },
+    {
+      "criterion": "Receipt remains visible without covering forecast",
+      "verdict": "pass in reviewed live frames",
+      "observation": "The cyan compact square/glow, pink large return figure, source figure, surviving stars and earned-score feedback remain visible. Protection removes packet ink from forecast facts without removing the receipt presentation."
+    }
+  ],
+  "mechanicalSeparation": {
+    "nativeDefault": "The screenshot comes from testNormalLanternSupportingRowKeepsForecastInspectionRound, which failed its raw header containment check. Observed header maxY173.3333282470703 versus forecast maxY173.33333333333334 is mixed AX Float32/CGFloat precision; this image review does not inherit an interaction pass. The scoped common-precision helper awaits its next native run.",
+    "otherTests": "Hosted pass counts and exact target/geometry checks belong to the mechanical evidence. They were not substituted for this visual judgment."
+  },
+  "limits": [
+    "Overall goal 1 remains held pending final Sunny and native acceptance; this verdict does not adopt or merge the goal.",
+    "Only the identified whole-frame before/live samples were reviewed. No continuous animation, full flight timeline or interruption acceptance is inferred.",
+    "AX5 synthetic windows do not establish all device sizes/orientations; phone-hosted 1024x1366 is not a physical or native tablet viewport.",
+    "The lower dialogue is partly outside some live viewports. These frames do not establish complete dialogue reading, scroll interaction or Close reachability.",
+    "No complete contrast measurement, actual VoiceOver, physical-device reading comfort, performance or player comprehension was performed."
+  ]
+}

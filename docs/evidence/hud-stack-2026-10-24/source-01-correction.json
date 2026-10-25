@@ -1,0 +1,32 @@
+{
+  "source": "3fe9f9a89d2529297e9dccbbfa3ae890fb97bf56",
+  "runtime": "dev.3ebf052fca",
+  "cleanArchiveRuntime": "dev.3ebf052fca",
+  "runtimeMatches": true,
+  "runtimeInputCount": 567,
+  "dirtyPaths": [
+    " M docs/evidence/hud-stack-2026-10-24/verification-01-correction.json",
+    "?? docs/evidence/hud-stack-2026-10-24/captures-01-correction.json",
+    "?? docs/evidence/hud-stack-2026-10-24/correction-captures/",
+    "?? docs/evidence/hud-stack-2026-10-24/visual-review-01-correction.json",
+    "?? docs/evidence/hud-stack-2026-10-24/visual-review-01-packet.json"
+  ],
+  "scope": "Runtime/build input bytes from clean git archive; evidence-only working-tree differences. No binary rebuild for documentation/media edits.",
+  "diagnostic": "Initial extraction command unsupported filter argument on system Python; no extraction or product test occurred. Fingerprint computed directly from clean archive members instead.",
+  "postEvidenceRuntime": "dev.3ebf052fca",
+  "postEvidenceChanges": [
+    "App/README.md",
+    "README.md",
+    "docs/ENGINEERING.md",
+    "docs/EXPERIMENTS.md",
+    "docs/README.md",
+    "docs/ROADMAP.md",
+    "docs/design/GAME_UI_SYSTEM.md",
+    "docs/design/VISUAL_REFERENCE.md",
+    "docs/design/hud/README.md",
+    "docs/evidence/hud-stack-2026-10-24/README.md",
+    "docs/evidence/hud-stack-2026-10-24/verification-01-correction.json"
+  ],
+  "postEvidenceRuntimeDifference": false,
+  "postEvidenceNote": "Only Markdown, JSON and retained capture files changed after3fe9; runtime/build inputs still match the clean archive fingerprint. Final commit/tree identity is checked before merge."
+}
