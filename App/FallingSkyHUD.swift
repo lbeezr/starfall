@@ -63,8 +63,16 @@ struct SkyScoreInstrument: View {
     let hint: String
     @Environment(\.dynamicTypeSize) private var textSize
 
+    // Carry the earned line's actual center through both fitting layouts.
+    private enum EarnedLine: AlignmentID {
+        static func defaultValue(in dimensions: ViewDimensions) -> CGFloat {
+            dimensions[VerticalAlignment.center]
+        }
+    }
+    private static let earnedLine = VerticalAlignment(EarnedLine.self)
+
     var body: some View {
-        HStack(spacing: StarfallTheme.Spacing.small) {
+        HStack(alignment: Self.earnedLine, spacing: StarfallTheme.Spacing.small) {
             Image(uiImage: StarCast.image(for: .colored(.amber)))
                 .resizable().scaledToFit().frame(width: 24, height: 24)
                 .accessibilityLabel(restorationLabel ?? "")
@@ -81,19 +89,30 @@ struct SkyScoreInstrument: View {
                                     .hidden().accessibilityHidden(true)
                             }
                             (Text("\(score.formatted()) ") + targetText(target))
-                        }.fixedSize()
+                        }
+                        .fixedSize()
+                        .alignmentGuide(Self.earnedLine) { $0[VerticalAlignment.center] }
                         VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
-                            Text(score.formatted())
+                            ZStack(alignment: .leading) {
+                                if textSize.isAccessibilitySize {
+                                    Text(max(score, target).formatted())
+                                        .hidden().accessibilityHidden(true)
+                                }
+                                Text(score.formatted())
+                            }
+                            .alignmentGuide(Self.earnedLine) { $0[VerticalAlignment.center] }
                             targetText(target)
                         }
                         .fixedSize(horizontal: false, vertical: true)
                     }
                     .fixedSize(horizontal: false, vertical: true)
                 } else {
-                    Text(score.formatted()).fixedSize(horizontal: false, vertical: true)
+                    Text(score.formatted())
+                        .fixedSize(horizontal: false, vertical: true)
+                        .alignmentGuide(Self.earnedLine) { $0[VerticalAlignment.center] }
                 }
             }
-            .font(StarfallTheme.Typography.gameTitle)
+            .font(StarfallTheme.Typography.instrumentScore)
             .monospacedDigit()
             .accessibilityRepresentation {
                 // Reflow changes only the visible layout. Keep one native text
@@ -116,7 +135,7 @@ struct SkyScoreInstrument: View {
 
     private func targetText(_ target: Int) -> Text {
         Text("/ \(target.formatted())")
-            .fontWeight(.regular)
+            .font(StarfallTheme.Typography.instrumentTarget)
             .foregroundStyle(StarfallTheme.Colors.textSecondary)
     }
 }

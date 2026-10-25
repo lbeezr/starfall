@@ -121,6 +121,10 @@ enum StarfallTheme {
         static let celebrationAward = Font.system(.largeTitle, design: .rounded).weight(.heavy)
         static let gameDetail = Font.subheadline
         static let skyCaption = Font.system(.caption, design: .rounded).weight(.medium)
+        static let instrumentScore = gameTitle
+        static let instrumentTarget = gameTitle.weight(.regular)
+        static let instrumentLabel = skyCaption
+        static let instrumentNumber = instrumentLabel.weight(.semibold)
         static let skyHeading = Font.system(.headline, design: .serif)
         static let titleTracking: CGFloat = 0.8
 
@@ -362,7 +366,7 @@ struct StarfallStatusText: View {
 
     var body: some View {
         Text(text)
-            .font(role == .instrument ? StarfallTheme.Typography.skyCaption : StarfallTheme.Typography.status)
+            .font(role == .instrument ? StarfallTheme.Typography.instrumentLabel : StarfallTheme.Typography.status)
             .foregroundStyle(emphasis == .positive ? StarfallTheme.Colors.positiveStatus : StarfallTheme.Colors.textSecondary)
             .fixedSize(horizontal: false, vertical: true)
             .starfallSceneryProtection(role == .instrument)
@@ -446,7 +450,7 @@ struct StarfallGameButtonStyle: ButtonStyle {
         let pressed = configuration.isPressed && isEnabled
         let shape = RoundedRectangle(cornerRadius: isForecast ? StarfallTheme.Spacing.small : 10)
         return configuration.label
-            .font(role == .gameplay ? StarfallTheme.Typography.gameDetail.weight(.medium) : StarfallTheme.Typography.skyCaption)
+            .font(role == .gameplay ? StarfallTheme.Typography.gameDetail.weight(.medium) : StarfallTheme.Typography.instrumentLabel)
             .foregroundStyle(ink)
             .saturation(isForecast && !isEnabled ? 0.25 : 1)
             .padding(.horizontal, isForecast ? 0 : StarfallTheme.Spacing.small)

@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "goal": 2,
+  "status": "All 13 retained exports passed independent optical/export review for the stated development scope.",
+  "encoding": "JPEG80, original dimensions, no retouch/crop",
+  "captures": [
+    {
+      "sourceCommit": "3705d9a9",
+      "runtime": "dev.f4ecc1c437",
+      "kind": "native production component in display-only synthetic host, not gameplay history",
+      "state": "0/150000 at240pt AX5",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/hosted-02-3705d9a9-slice-attachments/F547F11E-A7B4-4AF2-800C-72475E8333B3.png",
+      "rawSHA256": "4d1858ea4faefca03025c65039d01ed6e7760dcd105414adb89ffd8ca692c444",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__component-0-of-150000__240pt-ax5.jpg",
+      "retainedSHA256": "6ea2164fa5a606f60177a247bdf58737026f18901f82ff82daf932a451fdc616",
+      "bytes": 65897,
+      "dimensions": [
+        "  pixelWidth: 1125",
+        "  pixelHeight: 2001"
+      ]
+    },
+    {
+      "sourceCommit": "3705d9a9",
+      "runtime": "dev.f4ecc1c437",
+      "kind": "native production component in display-only synthetic host, not gameplay history",
+      "state": "149000/150000 at240pt AX5",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/hosted-02-3705d9a9-slice-attachments/86CABAA4-6F01-407D-85E0-4B188F7783A8.png",
+      "rawSHA256": "e8a4e056886ccf32cb679cfe28260b3eb2c3e4d7ce4d5e9e811ee35c4ee64c2c",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__component-149000-of-150000__240pt-ax5.jpg",
+      "retainedSHA256": "8edbe10baaf7d399b2eacafd9c8be892ecdb34f3ba49bf7533de49c2c05104a2",
+      "bytes": 81158,
+      "dimensions": [
+        "  pixelWidth: 1125",
+        "  pixelHeight: 2001"
+      ]
+    },
+    {
+      "sourceCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "runtimeInputFingerprint": "dev.f4ecc1c437",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "kind": "actual native phone, iPhone17e/iOS27.0, defaulttext and normalmotion, paused ordinary newLantern6",
+      "state": "Native ordinary Lantern opening, unselected forecast",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/phone-02-ac78832a-default-attachments/AF66E66B-54E0-4B14-9EC8-45DA7DDF3FE4.png",
+      "rawSHA256": "59ca4b0f7c1c650c49ddf16de9ec12d951e35275c3cd4547331488b97399604f",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__phone-default__opening.jpg",
+      "retainedSHA256": "69658fbfaa70b807559770de564e15851f38a238b4596aa16dffbd357340b46a",
+      "bytes": 526755,
+      "dimensions": [
+        "  pixelWidth: 1170",
+        "  pixelHeight: 2532"
+      ]
+    },
+    {
+      "sourceCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "runtimeInputFingerprint": "dev.f4ecc1c437",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "kind": "actual native phone, iPhone17e/iOS27.0, defaulttext and normalmotion, paused ordinary newLantern6",
+      "state": "Native ordinary Lantern selected column6",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/phone-02-ac78832a-default-attachments/F98C9BC6-98EF-49D8-BF83-62A965968621.png",
+      "rawSHA256": "57acf1a310932409c03c3bb32ebad89a1cdfcf9a3a28e789a3c1a2bfeb25d560",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__phone-default__selected-column-6.jpg",
+      "retainedSHA256": "7048ccd527d5588248a5e3f4f28d89efcdd8f2acc146900b647c11bac1eb7b98",
+      "bytes": 545323,
+      "dimensions": [
+        "  pixelWidth: 1170",
+        "  pixelHeight: 2532"
+      ]
+    },
+    {
+      "sourceCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "runtimeInputFingerprint": "dev.f4ecc1c437",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "kind": "actual native phone, iPhone17e/iOS27.0, defaulttext and normalmotion, paused ordinary newLantern6",
+      "state": "Native announced-shower inspector",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/phone-02-ac78832a-default-attachments/217F2FE2-0E8A-4CED-9F25-743E5267CC2B.png",
+      "rawSHA256": "e1785dd1cbed5d0d5b5e1f9e8f6574771760ffdb6fe4ae03338743753dc23bc0",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__phone-default__inspection.jpg",
+      "retainedSHA256": "5dacaf886720e739e20439c7f25a7c9613d22f28b8b819319d1ec10e87622d36",
+      "bytes": 460333,
+      "dimensions": [
+        "  pixelWidth: 1170",
+        "  pixelHeight: 2532"
+      ]
+    },
+    {
+      "sourceCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "runtimeInputFingerprint": "dev.f4ecc1c437",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "kind": "actualnative iPhone17e/iOS27.0, AX5, existinglegitimateCalmcontext",
+      "state": "Current Lantern after four actual showers: column 2 is full and column 1 has one space left.",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/phone-02-ac78832a-pressure-attachments/6C5D743C-6F4D-4B03-B753-DD38B6E9B208.png",
+      "rawSHA256": "8a7f393aee8ec230bcb4da652fc504cbad931fe2d6d68bd937efd2ffdcf44794",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__phone-ax5-calm__full-column.jpg",
+      "retainedSHA256": "994ce3def71a2ddb735d675cec74543ce9bf36013092e31651815dcf5ec4ece6",
+      "bytes": 568261,
+      "dimensions": [
+        "  pixelWidth: 1170",
+        "  pixelHeight: 2532"
+      ]
+    },
+    {
+      "sourceCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "runtimeInputFingerprint": "dev.f4ecc1c437",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "kind": "actualnative iPhone17e/iOS27.0, AX5, existinglegitimateCalmcontext",
+      "state": "Actual 5,000-point recovery: column 2 has four spaces and the full-column warning retires.",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/phone-02-ac78832a-pressure-attachments/E6A825BA-4478-43A1-A76A-3E724421DEBA.png",
+      "rawSHA256": "f48d3a40858f4711c5e86fee8cc2915c85b46a08c8b42b80e048b6b815e44c27",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__phone-ax5-calm__recovered-column.jpg",
+      "retainedSHA256": "765bd9a86d08dfe3a602f23a539320d5f75243544ac87e52fad2a159ddb23a12",
+      "bytes": 569597,
+      "dimensions": [
+        "  pixelWidth: 1170",
+        "  pixelHeight: 2532"
+      ]
+    },
+    {
+      "sourceCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "runtimeInputFingerprint": "dev.f4ecc1c437",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "kind": "actualnative iPhone17e/iOS27.0, AX5, normalmotion reader",
+      "state": "Sunny reader final line after real native pans.",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/phone-02-ac78832a-reader-attachments/02521447-9BC5-4B18-AD39-640CE902AA28.png",
+      "rawSHA256": "ad90acac553310049ec1bbc07777c857bf6f89b82bcdb9d99acf524426a6270a",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__phone-ax5-normal__sunny-reader-end.jpg",
+      "retainedSHA256": "c7fe4f5ac9f8a4c600fdd6cbcfea8121578ff7103a3c82abac2f423c45e48475",
+      "bytes": 458572,
+      "dimensions": [
+        "  pixelWidth: 1170",
+        "  pixelHeight: 2532"
+      ]
+    },
+    {
+      "sourceCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "runtimeInputFingerprint": "dev.f4ecc1c437",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "kind": "actualnative iPhone17e/iOS27.0, AX5, normalmotion reader",
+      "state": "Spark studio reader final line and stacked actions after real native pans.",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/phone-02-ac78832a-reader-attachments/FE84F9F0-0BAA-47B7-84B6-1E68C17BDFE4.png",
+      "rawSHA256": "7f595e348c1b7fe6efb09e812bde9e2a7e5acbd6046ee513bf3570cce4834b8c",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__phone-ax5-normal__spark-reader-end.jpg",
+      "retainedSHA256": "c4bc2716ebfb3252e0673ac10ef0722b2876e1deb3f0ffee439bd1baefb0f559",
+      "bytes": 380862,
+      "dimensions": [
+        "  pixelWidth: 1170",
+        "  pixelHeight: 2532"
+      ]
+    },
+    {
+      "sourceCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "runtimeInputFingerprint": "dev.f4ecc1c437",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "kind": "Actual iPad Pro 13-inch M5, iOS 27.0, AX5, actual Settings Calm enabled; 2064\u00d72752 pixels.",
+      "state": "Current Lantern opening, 0 of 150,000, unselected forecast.",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/tablet-02-ac78832a-calm-attachments/32D4371C-FA21-4C39-B363-DC8DE6B61E0A.png",
+      "rawSHA256": "d946b10da99e04f7bc033b54b6f55ef5b1a45489496a10d73ac624e608f9c424",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__tablet-ax5-calm__opening.jpg",
+      "retainedSHA256": "be7f9ea4af0e03ed48e946d43575d2e97e78c7cfccc26571ffb2d5e0fecec3c0",
+      "bytes": 1047643,
+      "dimensions": [
+        "  pixelWidth: 2064",
+        "  pixelHeight: 2752"
+      ]
+    },
+    {
+      "sourceCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "runtimeInputFingerprint": "dev.f4ecc1c437",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "kind": "Actual iPad Pro 13-inch M5, iOS 27.0, AX5, actual Settings Calm enabled; 2064\u00d72752 pixels.",
+      "state": "Current Lantern selected column 6, exact opening preserved.",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/tablet-02-ac78832a-calm-attachments/8A24D586-F5AE-40D2-A8BF-57E74BEB52FF.png",
+      "rawSHA256": "dddbaad72868fdfe9305192f5c4c803e5879937259212a4afb183d11798562c1",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__tablet-ax5-calm__selected-column-6.jpg",
+      "retainedSHA256": "99040fe611ffdb28fa3704627e92940514b9fdae646e496dcf67ec2555c1d42c",
+      "bytes": 1066779,
+      "dimensions": [
+        "  pixelWidth: 2064",
+        "  pixelHeight: 2752"
+      ]
+    },
+    {
+      "sourceCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "runtimeInputFingerprint": "dev.f4ecc1c437",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "kind": "Actual iPad Pro 13-inch M5, iOS 27.0, AX5, actual Settings Calm enabled; 2064\u00d72752 pixels.",
+      "state": "Real automatic chain earns 15,000 points and retires forecast focus.",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/tablet-02-ac78832a-calm-attachments/2F830D74-5785-4EE8-8EC7-B84AA802A090.png",
+      "rawSHA256": "5e77d5f1bed0b3efb5f062a08e4b6d1c3602225f6352aa5c9ed8cc5a279c9806",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__tablet-ax5-calm__earned-15000.jpg",
+      "retainedSHA256": "8508f5aa6d77d403eee8b585189662ccd0c68524273fd11a3316c0acfe092dd0",
+      "bytes": 997039,
+      "dimensions": [
+        "  pixelWidth: 2064",
+        "  pixelHeight: 2752"
+      ]
+    },
+    {
+      "sourceCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "runtimeInputFingerprint": "dev.f4ecc1c437",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "kind": "Actual iPad Pro 13-inch M5, iOS 27.0, AX5, actual Settings Calm enabled; 2064\u00d72752 pixels.",
+      "state": "New Full Board opening at 0 of 150,000; no shower forecast or focus. The later 42,000-point refill is not depicted.",
+      "raw": "/private/tmp/starfall-hud-stack-20261024/tablet-02-ac78832a-calm-attachments/491706D1-5282-400A-AE2E-D2CE90D59065.png",
+      "rawSHA256": "1fea5e52df961c62e7c9ea83c0506b304d39bd34fa50708afabfd8ba721c79d2",
+      "retained": "docs/evidence/hud-stack-2026-10-24/goal-02-captures/dev-f4ecc1c437__tablet-ax5-calm__full-board-opening.jpg",
+      "retainedSHA256": "eefe355fec731d183a688d58f97d480d48ea1fed4e7f0ab667c03d89caff742f",
+      "bytes": 1117638,
+      "dimensions": [
+        "  pixelWidth: 2064",
+        "  pixelHeight: 2752"
+      ]
+    }
+  ],
+  "identityMeaning": "Component filenames/earlier runtime fields use the computed runtime-input fingerprint; those hosted products embedded dev.local. Final actual phone/tablet products explicitly embed the matching dev.f4ecc1c437. See source-02-final.json.",
+  "reviewReferences": [
+    "visual-review-02.json",
+    "visual-review-02-tablet-exports.json"
+  ],
+  "reviewNoteResolution": "The stale pending-review caption flagged in the tablet export sidecar was updated after review passed."
+}
