@@ -1,0 +1,56 @@
+{
+  "goal": 5,
+  "status": "Historical read-ahead. Activated only after verified Goal4 PR405/mainbac7bcf3; concrete acceptance is goal-05-acceptance.json.",
+  "issue": {
+    "url": "https://github.com/lbeezr/starfall/issues/386",
+    "title": "[HUD 5/10] One coherent forecast instrument",
+    "stateAtRead": "open",
+    "dependsOn": "https://github.com/lbeezr/starfall/issues/385",
+    "outcome": "Reconcile trail, ordered arrival stars/destinations and inspection with less duplicated visual information. Preserve exact Next/Arriving facts, optional column locator/inspection, actual refresh and Full Board absence."
+  },
+  "readAgainstHead": "87f846df3870df5d5af8740c6f5185d61bf66805",
+  "owners": {
+    "App/FallingSkyHUD.swift:SkyShowerTrail": "Existing132×28 straight/148×50 calibrated island timing paths, cached miniature images, visual progress and experiment.arrivalCue accessibility. Timeline samples the supplied readCountdown closure only while advancing.",
+    "App/SkyForecastDestinations.swift": "One ordered native star/destination button per snapshot entry, caption labels/numeric roles, optional one-instance48pt help outside fitting candidates and44pt forecast targets.",
+    "App/SkyTrailMotion.swift": "Presentation-only ordered follower positions/fade; cannot schedule, hold or commit showers.",
+    "App/FallingSkyView.swift:edgeHeader/stackedHeader/showerTrail": "Only production trail/destination caller. Trail is beside score on fitting default header or in a separate trailing row at large text. Destination group follows below. Owns captured callback sources and optional readers.",
+    "App/FallingSkyStore.swift:forecast/showerCountdown": "Authoritative displayed forecast and read-only clock values; keep existing scheduling/presentation ownership.",
+    "App/SkyForecastInspection.swift": "Source includes exact game, generation, full ordered forecast and arriving state. Entry IDs identify actual stars; repeated columns remain distinct.",
+    "App/StarfallTheme.swift; docs/design/GAME_UI_SYSTEM.md": "Official native control, typography and fitted scenery-material contracts inherited from prior goals."
+  },
+  "exactSemantics": [
+    "store.forecast is[] in Full Board; otherwise pending.forecast ?? game.incoming. During shower presentation, Core may already hold the following incoming array while the HUD must retain the arriving shower array.",
+    "showerCountdown.arriving is true when pending arrivals exist OR rainDue is deferred. It is not inferred from a trail animation callback. Progress is1 while arriving; normal advancement samples the existing deadline.",
+    "A contact can freeze advancement without pausing the round: advancing=false does not imply paused=true. Pause/background retain their existing remainder/grace and no-catch-up policy.",
+    "Next/Arriving label comes directly from countdown.arriving. Optional shower reader requires a non-arriving captured source whose forecast equals that game.incoming, plus current revalidation and busy gating.",
+    "Selection/reader sources are retired on existing contact, lifecycle, game/generation or displayed-forecast change. Presentation completion can refresh the displayed forecast without a new input generation.",
+    "Destination numbers are one-based mappings of each actual ordered entry. Never deduplicate repeated columns, replace IDs with array indices, or use animated positions to determine facts."
+  ],
+  "visibleCandidate": {
+    "observedDuplication": "The regular comet paints a sequence of family miniatures; the native destination row repeats those same families beside their column numbers. They currently occupy separate header rows at AX5.",
+    "smallestComparison": "Compare one authoritative ordered star+column row with a timing-only regular comet, retaining the existing timing path/status and contextual inspection utility. This can remove the duplicate miniature sequence without merging controls into Canvas or introducing a screen/header framework.",
+    "decisionBoundary": "This is a candidate, not an accepted design or current defect. Re-read after goals3–4: those changes may alter material or state craft. Prove that timing remains visibly understandable without the duplicate miniature sequence, in normal and quiet states, before choosing an API or removing any rendering.",
+    "preserve": "Keep current132pt width,28pt straight height, countdown cadence, native IDs/ordered accessible facts, targets and callback ownership. Keep calibrated island dimensions/placement and its distinct proof boundary; do not silently reshape its contour. No new wrapper, manager, timing state or asset family is required.",
+    "avoidRegression": "Do not move the48pt utility into every fitting candidate or force a48pt title row that needlessly expands compact/AX5 headers. Preserve the natural-width five-chip candidate and genuine narrow-grid fallback. Full Board keeps no comet, destinations or shower reader."
+  },
+  "exactProofBoundary": {
+    "deterministicSequence": "Reuse SkyForecastRecoveryTests Lantern case after four actual showers: preview IDs20…24, columns7,6,1,2,4; recovery swap commits5000; actual next shower retains that preview during presentation although Core incoming has changed; completion refreshes to IDs25…29. Save/restore shows committed next forecast.",
+    "sourceBoundary": "Reuse SkyForecastInspectionTests.testReadOnlyInspectionPreservesDeadlineSavesAndActualShowerThenFollowsDisplayedRefresh and the changed-board/generation/order/material/destination/arrival rejection case. Repeated destinations must retain distinct ordered buttons.",
+    "clockBoundary": "Reuse FallingSkyStoreTests.testForecastUsesHeldRemainderAndActualDeadlineThroughDeferredRain and testForecastPreservesPauseGraceBackgroundAndQuietOutcome. Keep their exact timing and no-burst assertions.",
+    "nativeBoundary": "Existing ForecastColumnInspectionInteractionTests default phone selection/reader and AX5 tablet path retain full44/48pt targets, native column mapping, exact15,000 clear and Full Board absence. PacingCueUITests normal/quiet approaches and SkyDialogueInteractionTests.testNormalMotionForecastCompletesSeveralAutomaticCycles retain real arrival refresh.",
+    "visualBoundary": "Compare exact-source whole-phone default/AX5 and relevant tablet states before approach, during Arriving and after refresh. Keep one real source snapshot per captured callback; inspect normal effects and legitimate quiet state separately. Do not infer observed motion from stills or claim physical recognition/VoiceOver."
+  },
+  "performedForThisPlan": "Issue/source/test inspection only. No App/test edits, build, native operation, issue mutation, implementation or acceptance result.",
+  "preActivationFollowup": {
+    "source": "Read-only currentowners at Goal3candidate4d7; no Goal5 implementation",
+    "smallestBoundary": "Existingisland branch can retain miniatures; ordinary path can become timing-only without a newflag. Preserve forecast as exact accessibility facts and all countdown/path/cadence/status owners.",
+    "endpointTest": "Existing testEveryForecastStarFinishesOnBothPathsBeforeReset exercises SkyTrailMotion ordering/progress/end/fade, not paintedpathgeometry. Preserve all assertions and both spacings; ifordinaryfollowers disappear, rename/relabel formerstraight spacing as historicalregression and retainusedislandcoverage. Existing16/108spacing differsfromtoday18/108ordinarysource; never silentlyclaimcurrentpathrastercoverage.",
+    "native": "Normal/quiet/systemReduceMotion PacingCue cases prove approach precedes commit, not exactnextIDs. Existing normalSeed focusreplacement case proves IDs0-4 to5-9 afteractualNextaction. Automatic-cycle case provescount/resume; existinghostedinspectionmethod retains exactpending-vs-nextidentity.",
+    "visualRisk": "Timing-only quiettrail must remain understandable in native comparison; removingduplicatefollowers is a candidate, not accepted merely fromsource."
+  },
+  "activation": {
+    "main": "bac7bcf3b609902f21e4549980f8f31f04588342",
+    "issue385": "closed/completed",
+    "sourceReadUTC": "2026-10-25T02:46:15.513456+00:00"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "goal": 5,
+  "issue": 386,
+  "status": "Adopted for the named development slice after mechanical, independent whole-native-screen, sampled-motion and exact-export reviews; individual main merge next.",
+  "baseMain": "bac7bcf3b609902f21e4549980f8f31f04588342",
+  "branch": "codex/hud-goal-05-forecast-instrument",
+  "playerOutcome": "Read the announced families and destinations once in the ordered native row; use the regular trail to judge time. Column selection and inspection retain exact current facts.",
+  "sourceObservation": "Ordinary trail repeats family miniatures above the ordered row. Its head is only a tail endpoint/particle origin; removing miniatures alone leaves no separately painted head at quiet cycle start. No new scheduling/input failure is claimed.",
+  "componentContract": {
+    "owner": "SkyShowerTrail ordinary Canvas branch; StarfallTheme.Layout supplies head diameter",
+    "ordinary": "Timing-only132x28; same inset12, head coordinate, track/tail/glow/eight normal particles and paused opacity. A fixed5pt pearl head with1pt dark keyline remains visible at start and in quiet mode. No family identity in this timing marker.",
+    "exactForecast": "SkyForecastDestinations retains the complete ordered star/column row, stable IDs, targets, selected underline and one inspection utility. Trail keeps exact accessibility facts and status.",
+    "island": "Calibrated148x50 camera contour and its miniature followers stay unchanged. Resolve images only when island is selected. Do not claim ordinary sampling math proves rendered arc geometry.",
+    "ownership": "Existing readCountdown closure and Timeline sample committed clock state; no callback, new timer/state, rule, save or Store change."
+  },
+  "observableAcceptance": [
+    "Native normal and legitimate quiet ordinary trail retains visible start/middle/approach/Arriving/refreshed timing cue with no duplicate family sequence, complete ordered row and no collisions.",
+    "Real pause freezes timing, real resume advances; native approach occurs before commit. Source/countdown and exact pending-vs-next forecast tests remain.",
+    "Current Seed native selection replacement proves actual IDs0–4 to5–9 after real Next; AX5 actual-Calm tablet retains targets, real15k chain and Full Board absence.",
+    "Compare source-bound whole default/AX5 phone/tablet captures against accepted main; inspect actual normal/quiet recordings before adoption. Existing calibrated island rendering remains separately bounded.",
+    "Independent whole-screen/motion-sample and final exact-export review before individual merge."
+  ],
+  "plannedChecks": {
+    "core": "swift test",
+    "hosted": [
+      "StarfallAppTests/SkyDialogueTests/testIslandPlacementFallsBackForUnknownSmallAndAccessibleLayouts",
+      "StarfallAppTests/SkyDialogueTests/testForecastFollowersFinishBeforeResetForIslandAndHistoricalStraightSampling",
+      "StarfallAppTests/FallingSkyStoreTests/testForecastUsesHeldRemainderAndActualDeadlineThroughDeferredRain",
+      "StarfallAppTests/FallingSkyStoreTests/testForecastPreservesPauseGraceBackgroundAndQuietOutcome",
+      "StarfallAppTests/SkyForecastDestinationsTests",
+      "StarfallAppTests/SkyForecastRecoveryTests/testLanternRecoveryKeepsTheAnnouncedDestinationsThroughPresentationAndRestore",
+      "StarfallAppTests/SkyForecastInspectionTests/testReadOnlyInspectionPreservesDeadlineSavesAndActualShowerThenFollowsDisplayedRefresh"
+    ],
+    "native": [
+      "StarfallUITests/PacingCueUITests/testNormalForecastApproachesBeforeTheShower",
+      "StarfallUITests/PacingCueUITests/testQuietForecastApproachesBeforeTheShower",
+      "StarfallUITests/PacingCueUITests/testSystemReduceMotionForecastApproachesBeforeTheShower",
+      "StarfallUITests/SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles",
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalSeedForecastFocusDoesNotCommitAndRetiresOnReplacement",
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard"
+    ],
+    "builds": "Debug/test; Release if affected routing/resources/membership, otherwise bounded existing configuration check",
+    "always": [
+      "python3 scripts/ci-hygiene.py",
+      "git diff --check"
+    ],
+    "inventory": "816 hosted/260 UI before changes; planned source inventory, not executed full matrix.",
+    "nativeExpectedMethods": 7,
+    "hostedExpectedMethods": 12
+  },
+  "limits": "Sampled motion is not continuous animation/performance or physical recognition. Actual VoiceOver and physical contrast remain separate. No new simulator/device route or profile spoofing for acceptance. Prior reader-pan uncertainty remains.",
+  "ownership": "App implementer root; existing hosted rename by hud_goal_review and Pacing helper by hud_audit. Independent timing review by hud_goal_review, current-story/tablet review by hud_audit and exact-export review by hud_read_ahead; each reviewed outside their product implementation scope.",
+  "delivery": "Merge verified Goal5 alone closing386/Refs381, confirm completed issue/Project availability, then activate6.",
+  "nativeComparison": "Include the unchanged normalLantern contact/Return case for a matched default0/150k opening against Goal4; normalSeed separately proves exact0–4→5–9 replacement, and AX5tablet proves Full Board absence. Record normal/quiet countdown cases and the multi-cycle pause/resume case; no new product hook.",
+  "sourceReview": {
+    "islandContourSHA256": "3de1d67dce262bb9d716217696ce98644e93dcbbe18480aa9dae81008cb2f3c8",
+    "islandFollowerDrawingSHA256": "f72041214e6e905fed16fba54da4176fd36748b0c1dce819dba4300fe7dd8204",
+    "proof": "Both function sections are byte-identical to accepted main. Their image factory resolves the same ordered prefix when island is true. Ordinary branch alone changes ink."
+  },
+  "testChanges": "One preserved follower-sampling method renamed with historical/live scope comments. Existing Pacing countdown helper explicitly sets/restores actual system Reduce Motion and captures initial/running/approaching/committed/paused states. Original assertions, time bounds and method counts remain.",
+  "completedEvidence": {
+    "testedCommit": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+    "embeddedBuildID": "dev.38edbb845c",
+    "source": "source-05.json",
+    "verification": "verification-05.json",
+    "nativeTimingReview": "visual-review-05-native.json",
+    "currentStoryReview": "visual-review-05-current.json",
+    "finalExportReview": "visual-review-05-exports.json",
+    "captureIndex": "captures-05.json",
+    "result": "All required bounded gates pass; no known visible failure in named native states. Normal pixels establish Arriving; quiet samples show approach then refreshed Next without a witnessed Arriving dwell. No quiet timing/dwell was added."
+  },
+  "coverageLimits": "Fresh native coverage: default phone normal/Calm/system Reduce Motion, current Lantern/Seed, AX5 actual-Calm tablet/Full Board. No fresh AX5 phone or native island run. Island contour/follower functions remain byte-identical to accepted main; sampler checks do not prove native painted geometry. Scrolling guide images retain actual viewport; Full Board opening precedes later mechanical42k. Sampled motion is not continuous motion/performance or physical/VoiceOver evidence."
+}

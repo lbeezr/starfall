@@ -196,10 +196,11 @@ struct SkyShowerCountdown: Equatable {
     var forecast: [IncomingStar] = []
 
     var body: some View {
-        // Resolve the same faceless pieces used in flight and on the board outside the frame closure.
-        let miniatures = forecast.prefix(FallingSky.maximumShowerSize).map {
+        // Only the calibrated camera contour carries miniature followers.
+        // The ordinary path shows time; the native row owns the ordered families/columns.
+        let miniatures = island ? forecast.prefix(FallingSky.maximumShowerSize).map {
             Image(uiImage: SkyPiece.image(for: .init($0)))
-        }
+        } : []
         let countdown = readCountdown()
         if countdown.advancing {
             // Quiet timing remains informative with discrete updates. It is not
@@ -250,10 +251,11 @@ struct SkyShowerCountdown: Equatable {
                         drawing.fill(Path(ellipseIn: dust), with: .color((index.isMultiple(of: 2) ? StarfallTheme.Observatory.lanternGlow : StarfallTheme.Colors.actionPrimary).opacity((1-age)*0.9)))
                     }
                 }
-                drawForecast(in: &drawing, miniatures: miniatures, progress: progress,
-                             spacing: 18 / (end.x - start.x), diameter: 16) { fraction in
-                    CGPoint(x: start.x + (end.x - start.x) * fraction, y: start.y)
-                }
+                let diameter = StarfallTheme.Layout.showerTrailHeadDiameter
+                let marker = Path(ellipseIn: CGRect(x: head.x - diameter / 2, y: head.y - diameter / 2,
+                                                   width: diameter, height: diameter))
+                drawing.stroke(marker, with: .color(StarfallTheme.Colors.skyTop.opacity(0.9)), lineWidth: 2)
+                drawing.fill(marker, with: .color(StarfallTheme.Colors.textPrimary))
             }
             .frame(width: island ? StarfallTheme.IslandTimer.width : width,
                    height: island ? StarfallTheme.IslandTimer.height : 28)

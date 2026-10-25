@@ -1,6 +1,6 @@
 import Foundation
 
-/// Shared by straight and island paths. Followers finish, then fade at the endpoint.
+/// Island followers and retained historical straight sampling finish, then fade at the endpoint.
 /// Presentation only: never schedules, advances or holds a core shower.
 enum SkyTrailMotion {
     struct Sample: Equatable {

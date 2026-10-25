@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "goal": 5,
+  "testedCommit": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+  "baseMain": "bac7bcf3b609902f21e4549980f8f31f04588342",
+  "runtimeInputFingerprint": "dev.38edbb845c",
+  "committedRuntimeInputCount": 567,
+  "workingTreeBuildDifferences": [],
+  "workingTreeTestDifferences": [],
+  "changedAppOwners": [
+    "App/FallingSkyHUD.swift",
+    "App/StarfallTheme.swift",
+    "App/SkyTrailMotion.swift (comment only)"
+  ],
+  "changedTestOwners": [
+    "AppTests/SkyDialogueTests.swift (retained method rename/comments)",
+    "UITests/PacingCueUITests.swift (existing helper/captures/system motion setup)"
+  ],
+  "scope": "Ordinary trail timing ink only. Ordered row, island contour/follower drawing, Store/Core/rules/saves/clock/routing/resources and membership retain their accepted owners. No unaccepted source from the other UI task is included.",
+  "rawInputManifest": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-05-candidate.json",
+  "rawInputManifestSHA256": "08d0465ace591e61580f8ee5b2f6ac01fae372f4006c2cf7a477570d619355c7",
+  "proof": "Every canonical runtime path equals its committed Git blob; runtime SHA256 uses canonical build_identity; no untracked runtime input.",
+  "sourceReview": {
+    "islandContourSHA256": "3de1d67dce262bb9d716217696ce98644e93dcbbe18480aa9dae81008cb2f3c8",
+    "islandFollowerDrawingSHA256": "f72041214e6e905fed16fba54da4176fd36748b0c1dce819dba4300fe7dd8204",
+    "proof": "Both function sections are byte-identical to accepted main. Their image factory resolves the same ordered prefix when island is true. Ordinary branch alone changes ink."
+  },
+  "independentSourceReview": {
+    "reviewer": "/root/hud_read_ahead",
+    "result": "No concrete App defect found at frozen08aa30c0. Head is unconditional after tail/dust, including quiet/pausedp0 and arrivingp1;5ptpearl +1pt exterior keyline stays inside12ptinsets/28ptheight. Ordered row and calibrated island sections unchanged. Timeline/AX/status/pause opacity unchanged.",
+    "limits": "Source math does not establish native appearance. Committed screenshot may show refresh; classify actual recorded phase. Fresh native matrix covers default phone and AX5tablet, not AX5phone."
+  },
+  "sdk": "iphonesimulator27.1",
+  "xcodeBuild": "27A9275",
+  "simulatorOS": "iOS27.0",
+  "environment": "macOS27.0.1/26A434; dedicated iPhone17e390x844@3x and actual iPadPro13M5 portrait1032x1376/wide1376x1032@2x simulators",
+  "embeddedBuildIDs": {
+    "Debug": "dev.38edbb845c",
+    "Release": "dev.38edbb845c"
+  }
+}

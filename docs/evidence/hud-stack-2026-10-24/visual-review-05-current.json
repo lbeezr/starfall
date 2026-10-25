@@ -1,0 +1,450 @@
+{
+  "schemaVersion": 1,
+  "goal": 5,
+  "reviewer": "/root/hud_audit",
+  "status": "CURRENT_STORY_STILL_REVIEW_COMPLETE",
+  "verdict": "PASS within the three named current-story native still contexts",
+  "overallGoalStatus": "This bounded record does not adopt Goal 5. Overall acceptance belongs to goal-05-acceptance.json after separate timing and exact-export review.",
+  "independence": "Reviewer inspected the complete raw images against the approved Play direction and accepted Goal 4 comparisons before receiving an implementer visual verdict. Mechanical successes were supplied as context and did not determine this judgment. Reviewer did not implement the Goal 5 App change; the separately edited Pacing helper and its timing evidence are outside this review.",
+  "source": {
+    "testedCommit": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+    "acceptedBaseMain": "bac7bcf3b609902f21e4549980f8f31f04588342",
+    "embeddedBuildID": "dev.38edbb845c",
+    "sourceRecord": "source-05.json",
+    "sourceRecordSHA256": "fbf14f1efa88a6599aaaa1a719eb7339af41b8a4a8a575501677b530962f6e56",
+    "buildAffectingWorkingTreeDifferences": [],
+    "environment": "iOS 27.0 simulators: actual iPhone 17e 390×844 at 3×; actual iPad Pro 13 M5 portrait 1032×1376 at 2×. Tablet uses native AX5 and actual Settings Calm effects."
+  },
+  "scope": {
+    "rawPNGCount": 23,
+    "distinctPNGHashes": 16,
+    "directWholeFrameViews": 16,
+    "method": "Directly inspect every byte-distinct complete PNG; classify remaining duplicate captures by SHA256. Preserve chronology, source and orientation. No image editing, crop generation, controller operation, build or native run by reviewer.",
+    "resultBoundary": "These are paused/default and actual-Calm still compositions, selected-column states, one inspection opening, reader returns, current Seed replacement, a 15,000-point Lantern chain and the Full Board opening. They are not continuous timing or held-contact footage."
+  },
+  "references": {
+    "approved": {
+      "path": "docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+      "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+      "pixels": [
+        1536,
+        1024
+      ],
+      "orientation": "landscape",
+      "context": "Middle Play screen; concept direction, not native acceptance"
+    },
+    "officialContract": "docs/design/GAME_UI_SYSTEM.md: Goal 5 ordinary timing-only 132×28 trail, constant 5-point pearl head with midnight keyline; the complete ordered family/column row stays in SkyForecastDestinations. docs/design/hud/README.md supplies whole-screen hierarchy.",
+    "acceptedGoal4Index": "captures-04.json",
+    "acceptedGoal4BuildID": "dev.dcb267d534",
+    "matchedGoal4Baselines": [
+      {
+        "id": "phone-default__lantern-idle",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/0A3CDC62-F624-489F-ACCB-F7385AD23E97.png",
+        "rawSHA256": "ed21821ad1de70a8b629a2dcc2a5991b898b8ee913086b6b22aba2394a0d7dd8",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait"
+      },
+      {
+        "id": "phone-default__selected-column-6",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/E744A50C-A6F4-4C10-B6AD-99BC7345F16E.png",
+        "rawSHA256": "870b798eaa9e987eb802bd36a09c342f92169276889f70a18cca282452d848e0",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait"
+      },
+      {
+        "id": "tablet-ax5-calm__selected-column-6",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/81FA44FB-D849-4FDB-A641-184BC8D7E719.png",
+        "rawSHA256": "a6ec352d1b5ca6be8d3aee40fcaee813572c91b9fa06a95a695bc3a8c2f2954f",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": "portrait"
+      },
+      {
+        "id": "tablet-ax5-calm__real-15000-chain",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/6384A911-AED1-4476-9C47-4E5CB3DEE4EB.png",
+        "rawSHA256": "b7238f42cae32e623f417b97ae85f4b1946d57bf59a6ea4d4772d67095f6dece",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": "portrait"
+      },
+      {
+        "id": "tablet-ax5-calm__full-board-opening",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/E07EAEEF-E942-4002-9431-A56B7DB17AC9.png",
+        "rawSHA256": "dce566eeafbbcc94605a70e95fd7f07612afb34036aeaafde72c730ab25d2861",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": "portrait"
+      }
+    ]
+  },
+  "findings": [
+    "The ordinary trail is visibly timing-only: one small pearl and its thin path replace the redundant family miniatures. The remaining complete five-pair row is the clear family/destination source; the pearl is not drawn as a destination or another family.",
+    "Exact score/goal, Pause, Help, ordered forecast and selected underline retain distinct space. The fitted materials remain local to instruments; scenery continues behind the HUD and the stars remain the dominant playable field.",
+    "Matched Lantern and AX5 comparisons retain the accepted score, forecast, board and footer placement. No new clipping, overlapping controls, persistent contact face or extra selected-column outline is visible in these frames.",
+    "The pearl is intentionally small and quieter than the forecast glyphs at AX5. It remains visible in the inspected paused frames; these stills cannot establish moving-head recognition, duration, smoothness, head-to-commit timing or physical contrast."
+  ],
+  "contexts": {
+    "normalLantern": {
+      "verdict": "PASS for named whole-screen states",
+      "selector": "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+      "manifestPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/manifest.json",
+      "compiledContext": "Current Lantern4, paused before any shower, 0 of 150,000; normal effects and actual system Reduce Motion off in the existing case.",
+      "comparisons": [
+        "phone-default__lantern-idle",
+        "phone-default__selected-column-6"
+      ],
+      "chronology": "Initial support, idle and three post-cancel captures are byte-identical. Deliberate forecast selection shows one underline under destination 6 and one column-6 locator. The inspection opening is followed by a selected support capture after Return, a valid reopen/Return journey, and the final selected controls capture.",
+      "visibleOutcome": "The complete five pairs remain 6, 1, 2, 4, 5 with their distinct families. The sole timing head/path is quieter than Goal 4's additional family miniatures. Complete 0 / 150,000, Pause, Help, ceiling, opening stars, Start sky and Next shower remain separate and readable.",
+      "duplicateBoundary": "Five idle/post-cancel PNGs share e0387fd0cbe3ed6b3b0c3f7277f00fef472962e4cbdef6cbeffd9b25686bf84c. Three selected/returned PNGs share 0f4727be49eb2ae9ea96b44ac41f85b7bcc727ade5980059a95dd83a48df5219. Repetition does not establish transient held appearance.",
+      "readingLimit": "The inspection opening shows the first four complete entries and the fifth heading; its lower body is outside the scrolling viewport above Return. No complete-reader or reopened-reader visual claim follows from this sample.",
+      "frames": [
+        {
+          "attachmentName": "lantern-support-before-containment_0_1D49965B-BD24-4097-911A-AC4BBF3B2901.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/6BC0F4FA-B881-4666-9275-F911B824A70B.png",
+          "rawSHA256": "e0387fd0cbe3ed6b3b0c3f7277f00fef472962e4cbdef6cbeffd9b25686bf84c",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897259.582,
+          "state": "lantern-support-before-containment",
+          "review": "SHA256-identical to a directly inspected frame in this context"
+        },
+        {
+          "attachmentName": "hud-goal-four-controls-idle_0_CC91A32F-268E-4142-A0BF-629EC19B21D2.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/DEB8D372-4309-4B57-A6B3-AAAB47842A00.png",
+          "rawSHA256": "e0387fd0cbe3ed6b3b0c3f7277f00fef472962e4cbdef6cbeffd9b25686bf84c",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897261.394,
+          "state": "hud-goal-four-controls-idle",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "hud-goal-four-pause-contact-cancelled_0_CE2B1FCF-29F9-4E40-9F7A-06697D040D64.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/C4C4E7F4-63F3-4E21-8FBF-4883109790BD.png",
+          "rawSHA256": "e0387fd0cbe3ed6b3b0c3f7277f00fef472962e4cbdef6cbeffd9b25686bf84c",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897265.549,
+          "state": "hud-goal-four-pause-contact-cancelled",
+          "review": "SHA256-identical to a directly inspected frame in this context"
+        },
+        {
+          "attachmentName": "hud-goal-four-forecast-contact-cancelled_0_0DF0A20E-1FFF-4793-B623-783F9203DC06.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/AC5278CA-58CF-40BA-87F0-88F1D62018CB.png",
+          "rawSHA256": "e0387fd0cbe3ed6b3b0c3f7277f00fef472962e4cbdef6cbeffd9b25686bf84c",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897269.423,
+          "state": "hud-goal-four-forecast-contact-cancelled",
+          "review": "SHA256-identical to a directly inspected frame in this context"
+        },
+        {
+          "attachmentName": "hud-goal-four-inspection-contact-cancelled_0_7BC31452-8B13-4197-930C-258C9F8E1200.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/23C2399F-47C4-4FF4-8DCC-DA6C4169C4F6.png",
+          "rawSHA256": "e0387fd0cbe3ed6b3b0c3f7277f00fef472962e4cbdef6cbeffd9b25686bf84c",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897273.415,
+          "state": "hud-goal-four-inspection-contact-cancelled",
+          "review": "SHA256-identical to a directly inspected frame in this context"
+        },
+        {
+          "attachmentName": "hud-goal-one-phone-native-forecast-selection_0_8987541A-B4AE-4455-8682-583E297B13D7.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/C2A8FDC9-B33C-432A-B769-74DCB2CC84C4.png",
+          "rawSHA256": "0f4727be49eb2ae9ea96b44ac41f85b7bcc727ade5980059a95dd83a48df5219",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897277.852,
+          "state": "hud-goal-one-phone-native-forecast-selection",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "hud-goal-one-phone-inspection-reading_0_58832018-423E-4993-9BFC-31B9E563EBC4.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/C70F8AC9-D56D-4E6B-AFBF-9967A5C5E229.png",
+          "rawSHA256": "670e4e6eca8178a459e7b764e40ce68b32ad670e479cc8f939a7e06d34299d04",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897282.504,
+          "state": "hud-goal-one-phone-inspection-reading",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "lantern-support-before-containment_0_6D711BAC-623C-4276-B05B-D936F4BE5F85.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/49886404-D454-4E7E-9C29-E751D02C9A38.png",
+          "rawSHA256": "0f4727be49eb2ae9ea96b44ac41f85b7bcc727ade5980059a95dd83a48df5219",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897290.162,
+          "state": "lantern-support-before-containment",
+          "review": "SHA256-identical to a directly inspected frame in this context"
+        },
+        {
+          "attachmentName": "hud-goal-four-controls-returned_0_958ADA82-8268-4DBF-AA64-0D940D433E5C.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/309F4715-76B6-4949-B0DC-FF0C11A6C526.png",
+          "rawSHA256": "0f4727be49eb2ae9ea96b44ac41f85b7bcc727ade5980059a95dd83a48df5219",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897300.684,
+          "state": "hud-goal-four-controls-returned",
+          "review": "SHA256-identical to a directly inspected frame in this context"
+        }
+      ]
+    },
+    "normalSeed": {
+      "verdict": "PASS for all five distinct whole-screen states",
+      "selector": "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalSeedForecastFocusDoesNotCommitAndRetiresOnReplacement",
+      "manifestPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-seed-attachments/manifest.json",
+      "compiledContext": "Current Seed4, exact 11,000-point objective, actual system Reduce Motion off and normal effects.",
+      "chronology": "Selected column 6, selected column 1, selected column 2 before setup, selected column 1 after real setup, then the actual Next shower's replacement row with selection retired.",
+      "visibleOutcome": "Each selected image has one underline and one corresponding column locator. The replacement frame shows Amber 3, Violet 7, Violet 6, Rose 1 and Mint 2, with no old underline/locator. Score remains complete 0 / 11,000; changed stars, the complete growth guide, Close and footer stay readable below the forecast.",
+      "proofBoundary": "The old/new native IDs 0–4 and 5–9 are assertions of the existing native method, not identities inferred from pixels. Still comparison proves the shown replacement composition, not intervening falling motion.",
+      "frames": [
+        {
+          "attachmentName": "forecast-inspection-phone-column-six_0_FC6E08C5-4B8B-46F5-8BBA-535EF28E83AE.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-seed-attachments/C5621534-2910-45C8-A38C-71C65D0CCF28.png",
+          "rawSHA256": "002faf0232790c91bb335a67a0a312a109811f0200f044bc1ebe35d5c918a0e2",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897358.012,
+          "state": "forecast-inspection-phone-column-six",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "forecast-inspection-phone-column-one_0_2CE5A7BC-1700-4664-B8C4-70B0D68EFBC7.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-seed-attachments/26000282-E5F9-4226-9062-E2DCC084F088.png",
+          "rawSHA256": "8949e766b4274f808d855e7618b7b804695e237b39a882409e13bcf9b7ad386c",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897366.73,
+          "state": "forecast-inspection-phone-column-one",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "forecast-inspection-phone-before-real-setup_0_EA445BA9-FBC9-4FEB-8036-1385E6065723.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-seed-attachments/105FE603-70E8-497F-A970-897E8CD69383.png",
+          "rawSHA256": "eb1985b16d52a4754c7a910c6c4952170648adc8432b0e7c7755a6c4c3b6c9d5",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897390.285,
+          "state": "forecast-inspection-phone-before-real-setup",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "forecast-inspection-phone-before-next-shower_0_5235E647-2167-4012-BA5F-E035D9524C67.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-seed-attachments/76DFD5C9-A0C4-45D5-BD58-377C45999782.png",
+          "rawSHA256": "1aadb29218c346540813b8b50fd39364911d7daf12974b0ce19b12743fbef0f0",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897404.804,
+          "state": "forecast-inspection-phone-before-next-shower",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "forecast-inspection-phone-replaced-arrivals_0_F74729D0-77B2-4B54-B4FF-D200E2D290DF.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-seed-attachments/C6801545-E0C5-4046-BDEC-B69C595864BC.png",
+          "rawSHA256": "735def25fcc6c3373fb72a1ccadd73482c810ed770acb006a746f45fd60cf395",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897412.928,
+          "state": "forecast-inspection-phone-replaced-arrivals",
+          "review": "Direct whole-frame visual inspection"
+        }
+      ]
+    },
+    "tabletAX5ActualCalm": {
+      "verdict": "PASS for all eight distinct whole-screen compositions across nine PNGs",
+      "selector": "StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+      "manifestPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/manifest.json",
+      "compiledContext": "Actual tablet portrait, native AX5, Calm effects enabled through actual Settings, current Lantern4 then current Full Board6.",
+      "comparisons": [
+        "tablet-ax5-calm__selected-column-6",
+        "tablet-ax5-calm__real-15000-chain",
+        "tablet-ax5-calm__full-board-opening"
+      ],
+      "chronology": "Settings Calm on; two byte-identical unselected support frames; selected columns 6, 1 and 2; real 15,000-point chain with selection retired; Full Board opening; Settings Calm off after the later gameplay.",
+      "visibleOutcome": "Complete 0 / 150,000 and 15,000 / 150,000 remain legible. All five family/destination pairs and Help fit in one protected row below the timing-only head/path. The selected locator stays singular. After the chain the locator/underline retire while the same forecast remains. Full Board has the complete mode label, 49 visibly present stars in seven rows, and no shower trail, destination row, inspection utility or column locator.",
+      "matchedFullBoardProof": "The Full Board opening raw PNG hash dce566eeafbbcc94605a70e95fd7f07612afb34036aeaafde72c730ab25d2861 exactly matches accepted Goal 4's full-board-opening frame.",
+      "readingLimit": "The 15,000-point chain and Full Board opening show only the upper portion of the scrolling guide, as in the matched Goal 4 states. These stills do not establish complete guide extent or reading interaction. The Full Board opening precedes the later 42,000-point refill; its appearance is not shown by that opening frame. The final Settings image is a preference-restoration witness, not a full-board/refill composition witness.",
+      "frames": [
+        {
+          "attachmentName": "forecast-inspection-tablet-actual-calm-on_0_D1DDE314-832A-44C0-9571-8B19246896B6.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/5D015DEC-291C-4F16-BB30-417C9A7BC693.png",
+          "rawSHA256": "26200728ffc000118274a9f1ff6aa10c744bb22ad486702b823af52b3621136c",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897509.213,
+          "state": "forecast-inspection-tablet-actual-calm-on",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "lantern-support-before-containment_0_22D9FF98-8432-4299-8D2B-058EE75EC468.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/570D298E-ADE1-4CDA-8219-5559AD9FD9CA.png",
+          "rawSHA256": "e79a3aa5e4364b3ba0567f157caab96cb7e6abbe5f880fc4a4b686f473865fa2",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897514.328,
+          "state": "lantern-support-before-containment",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "hud-goal-one-tablet-largest-stacked-support_0_7830D532-65F2-41CA-8CE8-CE8FE29C4489.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/CD3A4FE2-684B-4CC1-94B6-ED028D47ECAD.png",
+          "rawSHA256": "e79a3aa5e4364b3ba0567f157caab96cb7e6abbe5f880fc4a4b686f473865fa2",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897514.714,
+          "state": "hud-goal-one-tablet-largest-stacked-support",
+          "review": "SHA256-identical to a directly inspected frame in this context"
+        },
+        {
+          "attachmentName": "forecast-inspection-tablet-column-six_0_84A82B1E-FCB3-4A36-AD3D-F751D304AB98.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/3884F289-16BF-492C-9B05-5FFC4A7CC009.png",
+          "rawSHA256": "9e7d8ef415a932d1b77883fcf896d44656363f94244dccfe578cd6e26d37f2eb",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897519.492,
+          "state": "forecast-inspection-tablet-column-six",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "forecast-inspection-tablet-column-one_0_0CA5165B-43AA-45DD-9BB2-DD4B150940B3.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/2983D49F-38F1-4CE6-AC16-9C3E3D8718BF.png",
+          "rawSHA256": "10f1cf8366f09ffe13276a9240c437b5015688ce231fe94bc2c70b6ed7d7a75a",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897524.342,
+          "state": "forecast-inspection-tablet-column-one",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "forecast-inspection-tablet-before-real-chain_0_F6346AFE-2884-450A-BEA3-0E99A5436AA5.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/1DB61185-5303-42B5-9C82-FDEBC236C6FC.png",
+          "rawSHA256": "db30f9ce7db5b84d9284a1d5c1c6d2b652a994c9802087fb7bb2070fe7210cfb",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897529.348,
+          "state": "forecast-inspection-tablet-before-real-chain",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "forecast-inspection-tablet-real-automatic-chain_0_22C97003-845B-4301-BBEC-9B8C2704717E.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/9D607590-027F-4C49-B928-9464E3B39D45.png",
+          "rawSHA256": "c2a56b0eb49af132509322bafd02a70d2b58f26558d5c708c6d9d4c302cbbf5b",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897535.294,
+          "state": "forecast-inspection-tablet-real-automatic-chain",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "forecast-inspection-tablet-full-board-has-no-shower-focus_0_A83742F4-4B20-411F-902C-3C3445A894DC.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/7D1B4315-FB20-47CD-AC41-838F92A83E04.png",
+          "rawSHA256": "dce566eeafbbcc94605a70e95fd7f07612afb34036aeaafde72c730ab25d2861",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897587.994,
+          "state": "forecast-inspection-tablet-full-board-has-no-shower-focus",
+          "review": "Direct whole-frame visual inspection"
+        },
+        {
+          "attachmentName": "forecast-inspection-tablet-actual-calm-off_0_042307B4-162A-4492-9FDB-9DB62F5BEEA8.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/8E68BD90-7C8A-4826-A329-5AC0D66CA31E.png",
+          "rawSHA256": "260256ac8b6dc1c2b9b3930d8b72ce2b3862f37573e7feb7358e8a36319a75b3",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait",
+          "timestamp": 1792897638.18,
+          "state": "forecast-inspection-tablet-actual-calm-off",
+          "review": "Direct whole-frame visual inspection"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "No continuous timing, normal/quiet animation, approach/commit/reset, pause/resume motion, island contour or follower motion verdict in this record. Those require the separate timing review.",
+    "Post-cancel stills and returned controls do not establish held-contact appearance or event latency. No platform-focus, genuine disabled-touch, VoiceOver, Increased Contrast, Reduced Transparency or physical-device acceptance is claimed.",
+    "No all-scenery, all-device or AX5-phone acceptance. Current-story comparisons are the actual named phone and tablet contexts only.",
+    "No complete-reader extent/pan verdict from the sampled inspector or AX5 guide openings. Native interactions and exact round/source/save assertions retain their separate mechanical scope.",
+    "These raw PNGs have not been reviewed here as retained JPEG/video exports; exact-export review and overall adoption are separate records."
+  ]
+}
