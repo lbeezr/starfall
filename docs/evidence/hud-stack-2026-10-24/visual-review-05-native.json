@@ -1,0 +1,1109 @@
+{
+  "schemaVersion": 1,
+  "goal": 5,
+  "reviewer": "hud_goal_review, independent Pacing/cycle native visual reviewer",
+  "verdicts": {
+    "wholePacingStillComposition": "PASS for named normal, Calm and actual system Reduce Motion states",
+    "wholeCycleStillComposition": "PASS for four named normal-effect automatic-cycle states",
+    "sampledMotion": "PASS for twenty-seven named whole decoded samples: normal approach/Arriving/reset, Calm successive quiet positions/reset, repeated normal cycles and two paused windows",
+    "overallGoal5VisualAcceptance": "PASS within this bounded Pacing/cycle native scope; current-story/tablet, final exports and global adoption remain separately owned"
+  },
+  "knownVisibleFailureFound": false,
+  "scope": "Independent review of nineteen source-bound whole native PNG records / eighteen unique pixel states, six paused text receipts and twenty-seven whole native H264-decoded frames. All distinct PNG states and all decoded frames inspected directly at original resolution. No implementer visual verdict supplied. Reviewer performed no build, controller operation, App/test edit, extraction or image alteration.",
+  "sourceBinding": {
+    "commit": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+    "acceptedBaseMain": "bac7bcf3b609902f21e4549980f8f31f04588342",
+    "embeddedBuildID": "dev.38edbb845c",
+    "sourceProof": "source-05.json",
+    "sourceProofSHA256": "fbf14f1efa88a6599aaaa1a719eb7339af41b8a4a8a575501677b530962f6e56",
+    "identityLimit": "Source/runtime binding comes from the source-bound run record, not from appearance. Later evidence-only changes do not imply a new App build.",
+    "deviceID": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "deviceName": "Starfall HUD Stack dcf3 Phone",
+    "logicalViewportPoints": [
+      390,
+      844
+    ],
+    "reportedSimulator": "iPhone 17e, iOS 27.0"
+  },
+  "reference": {
+    "path": "docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "panel": "approved middle Play"
+  },
+  "contracts": [
+    "docs/design/GAME_UI_SYSTEM.md: Goal 5 ordinary trail timing-only; ordered forecast remains authoritative; island unchanged",
+    "docs/design/hud/README.md: exact readable instruments over continuous scenery and dominant actual stars"
+  ],
+  "comparisonLimits": "Goal 4 Lantern idle and AX5 tablet baselines were inspected as hierarchy references. Pacing is a distinct reset Debug observatory-review fixture with retained Dusk copy, not a matched Lantern or fresh-survival/current-Story encounter. Current Lantern/Seed/tablet comparison is owned by hud_audit. Automatic-cycle captures are a separate freshSurvival(seed: 5) launch through dialogue-review without observatory-review, with actual system Reduce Motion/Calm off and automatic critical-mass aging disabled; they do not inherit Pacing\u2019s retained-Dusk classification.",
+  "integrity": {
+    "method": "SHA-256 recomputed with hashlib. Pillow checked stored/display dimensions and EXIF. All eighteen distinct whole PNG states opened at original resolution.",
+    "rawPNGRecords": 19,
+    "uniqueRawPNGHashes": 18,
+    "pausedTextRecords": 6,
+    "allWholeUprightPixels": [
+      1170,
+      2532
+    ],
+    "intentionalEquivalence": "Quiet initial and system Reduce Motion initial are byte-identical; their separate receipts establish distinct actual settings."
+  },
+  "visualReasons": [
+    "The ordinary rail now reads as a small timing track with one head; families and destination digits appear in the single forecast row. The native star field retains priority and continuous scenery.",
+    "The head remains identifiable at left, near-right and right-end positions, including Calm and actual system Reduce Motion. Normal glow/particles remain subordinate to the track and forecast.",
+    "Complete 4/5/6, 2/3 and repeated 1/1/1/6/6 forecast facts remain distinct. Arriving versus Next is classified from visible pixels rather than attachment names.",
+    "Pause, Help where present, score and paused controls stay complete and separate. Sunny, Spark and Nova text fits in the pictured bubbles with complete final phrases.",
+    "Automatic-cycle stills show bodies at distinct heights and later fuller fields without collision between the forecast and timing rail. These stills do not establish unseen animation continuity."
+  ],
+  "findings": [],
+  "limits": [
+    "Twenty-seven sparse samples show the pictured state ordering and visually stable heads in two sampled paused windows. They do not establish continuous smoothness, exact cadence, unseen intervals, full pause duration or performance.",
+    "Normal raw/decoded pixels witness Arriving at the right endpoint. Calm and system Reduce Motion committed-named stills show refreshed Next; Calm decoded footage also goes from near-end approach to refreshed Next in the selected samples. No quiet p=1/Arriving dwell is pictured or claimed.",
+    "Pacing Calm and actual system Reduce Motion are legitimate separate requested contrasts. Their raw receipts report true/false and false/true respectively; neither replaces normal-motion acceptance.",
+    "No native island path was exercised here; preserved source/sampler checks are not painted native geometry proof.",
+    "No native AX5 phone, platform focus, disabled touch, Increased Contrast, Reduced Transparency, actual VoiceOver, minimum-iOS or physical-device comfort/performance acceptance follows from this scope.",
+    "No contrast ratio, target size, rule, save, receipt timing or clock invariant is inferred from these pixels. Mechanical source-bound results remain separately owned.",
+    "Final JPEG-export acceptance and global Goal 5 adoption remain separately owned; this review supplies bounded Pacing/cycle native acceptance only.",
+    "Actual system Reduce Motion was independently verified in its still/text receipts; no system Reduce Motion movie was decoded. Calm motion samples remain a distinct mode. H264-decoded samples are not source RGB contrast evidence."
+  ],
+  "groups": [
+    {
+      "group": "normal",
+      "testSelector": "StarfallUITests/PacingCueUITests/testNormalForecastApproachesBeforeTheShower",
+      "manifestPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/manifest.json",
+      "manifestSHA256": "afd8cf3aafab3b2865af8dab6ed2bacd06d3d8b213d093b474566066e396dd2a",
+      "reportedMechanicalResult": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "basis": "Reported by root; separate from visual review"
+      },
+      "items": [
+        {
+          "attachmentName": "countdown-initial-paused-normal_0_70483D7D-A1C5-46A8-8236-11E20E840D32.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/0B6D0FF2-E31B-4382-973D-2804A9A48CE1.png",
+          "timestampUnix": 1792897026.198,
+          "sha256": "23c402213ba88c91afca3d49033e76a805885814ae68218d1e07040409392f43",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Paused opening: score 0; complete mint destinations 4, 5, 6 and Help; timing head at the left. Resume sky / Next shower are complete. Retained Dusk fixture bodies remain the dominant field."
+        },
+        {
+          "attachmentName": "countdown-running-normal_0_D0E29722-E348-46F2-A0C1-FD2F99BB84D6.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/A429D002-2110-4188-8BB1-B341FC3C2F14.png",
+          "timestampUnix": 1792897026.819,
+          "sha256": "a461e50be36a8a972b33e1092fa56cb3aee9a8c6ec1bb2fed4b5a408ac617182",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Running: head just beyond the left; complete mint destinations 4, 5, 6. Sunny text includes the complete retained Dusk final phrase with a touching star."
+        },
+        {
+          "attachmentName": "countdown-approaching-normal_0_2883D0B3-895C-4B82-B38C-64D041047070.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/6ECC2505-DC23-4EFC-A261-D275FB872BF8.png",
+          "timestampUnix": 1792897031.547,
+          "sha256": "53ad9ead4bd22d8ab07099f5d301a5b3311005f4565553c978e11503c63fea09",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Approaching: head near the right with a small warm tail and normal glow/particles. Same 4, 5, 6 destination row remains complete."
+        },
+        {
+          "attachmentName": "countdown-committed-normal_0_80CEF4AB-20BD-4C1E-B296-3B51960A6B22.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/961A53E1-E481-43EC-B576-8DC75B93FE0D.png",
+          "timestampUnix": 1792897032.799,
+          "sha256": "7b9db6e0bd7b58eb2ab9c49a6abe3b2ce0318ef25d77756aae2fce4e93bbebe8",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "The attachment name says committed, but the pixels still read Arriving columns 4, 5, 6; head is at the right endpoint and Help is absent. This is not a picture of the next forecast."
+        },
+        {
+          "attachmentName": "countdown-paused-after-modal-normal_0_DF30503A-327D-4E64-8455-54C74175D4D8.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/78276A0E-584C-4A4E-8193-5D54230E6134.png",
+          "timestampUnix": 1792897036.085,
+          "sha256": "f8aa7666cb9018dd197e589b0e0e76e02fc3eb48e1e553cede2161db2f596e77",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Paused after modal: three arrived mint bodies are visible; Next columns 2, 3 are aqua with Help restored and the head near the reset end. Resume sky / Next shower remain complete."
+        }
+      ],
+      "pausedStateReceipts": [
+        {
+          "attachmentName": "countdown-initial-paused-normal-state_0_2AA19267-384B-47C6-9629-B064BA5AEC10.txt",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/E5D789A1-F4B7-49BF-9F1C-4D9285BC3800.txt",
+          "timestampUnix": 1792897026.344,
+          "sha256": "e9ed8f0f57e838e3abd8b32ee21a46609c33d984cae982d65eff5e63daf17ed9",
+          "reportedPausedState": {
+            "stage": "initial-paused",
+            "calmEffects": "false",
+            "systemReduceMotion": "false",
+            "cue.label": "Automatic showers paused",
+            "cue.value": "Optional(Mint angular meteor shard, Pip, column 4, then Mint angular meteor shard, Pip, column 5, then Mint angular meteor shard, Pip, column 6)",
+            "forecast.value": "Optional(Mint angular meteor shard, Pip, column 4, then Mint angular meteor shard, Pip, column 5, then Mint angular meteor shard, Pip, column 6)",
+            "board.value": "Optional(5 showers, 2 matching groups ready)"
+          }
+        },
+        {
+          "attachmentName": "countdown-paused-after-modal-normal-state_0_EA17E1D6-40B1-4AB2-AF3F-B7CFC2EE6B88.txt",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/F8BE69F0-3416-4A38-BE83-360D640C13B8.txt",
+          "timestampUnix": 1792897036.229,
+          "sha256": "1d0f13706b3ff8b64cd038fe5c6dcffc93bb19f44eee368a904d3ac1a090bffc",
+          "reportedPausedState": {
+            "stage": "paused-after-modal",
+            "calmEffects": "false",
+            "systemReduceMotion": "false",
+            "cue.label": "Automatic showers paused",
+            "cue.value": "Optional(Aqua swept comet shard, Spark, column 2, then Aqua swept comet shard, Spark, column 3)",
+            "forecast.value": "Optional(Aqua swept comet shard, Spark, column 2, then Aqua swept comet shard, Spark, column 3)",
+            "board.value": "Optional(6 showers, 3 matching groups ready)"
+          }
+        }
+      ],
+      "fixtureBinding": {
+        "source": "UITests/PacingCueUITests.swift:16; App/FallingSkyStore.swift:409",
+        "classification": "Reset Debug observatory-review fixture adopting retained feeding Dusk. Not fresh survival or current Story. Actual Calm/system Reduce Motion settings remain in the separate paused receipts."
+      }
+    },
+    {
+      "group": "quiet",
+      "testSelector": "StarfallUITests/PacingCueUITests/testQuietForecastApproachesBeforeTheShower",
+      "manifestPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-attachments/manifest.json",
+      "manifestSHA256": "04e0cdfef67d9568b13c37b5699c691c5d058b5083f580fcb6f14f84c035b408",
+      "reportedMechanicalResult": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "basis": "Reported by root; separate from visual review"
+      },
+      "items": [
+        {
+          "attachmentName": "countdown-initial-paused-quiet_0_5F9377CD-C25D-40B2-80F8-D9B5EDCA8314.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-attachments/FA05FB5F-A8FB-41F5-94E5-97929604D230.png",
+          "timestampUnix": 1792897076.222,
+          "sha256": "8c3e12964c77d802e5c3a834bf03a4624f6ddf392dbd5c40417d483d4c3df83e",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Paused Calm opening: complete score 0, mint destinations 4, 5, 6, Help and footer; a small head remains visible at the left without normal glow."
+        },
+        {
+          "attachmentName": "countdown-running-quiet_0_FA6DA954-225C-4534-9EFA-1C88668F70A7.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-attachments/A65DD701-9C9F-4236-9883-B5DFB1383E08.png",
+          "timestampUnix": 1792897076.815,
+          "sha256": "b72b6297445dff1ec6dff324f1520e38563ecda7ba64073e95a98620ac1727bd",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Calm running: left head and complete 4, 5, 6 forecast; full Sunny retained Dusk text is legible."
+        },
+        {
+          "attachmentName": "countdown-approaching-quiet_0_DC764EEC-5553-4B52-B04D-DF19F3323F65.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-attachments/4A244A6A-3D63-4766-AD67-A73434354897.png",
+          "timestampUnix": 1792897081.687,
+          "sha256": "0326d01c2447a2a79a30e24e58aca01bf869d4110f5ddd843988bf57bf1084fa",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Calm approaching: head near the right, with a readable track/tail and no normal glow or dust."
+        },
+        {
+          "attachmentName": "countdown-committed-quiet_0_BFB99203-D2BB-435F-AEDF-533E082FD7E6.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-attachments/58140907-D587-4B6C-BE25-27CCC6F4B355.png",
+          "timestampUnix": 1792897082.883,
+          "sha256": "3c909d0cf4f0abc32646b67412ec81971efce6a106e8a5e44430ff23394005e0",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "The attachment name says committed; pictured state already reads Next columns 2, 3 with the head near reset and three arrived mint bodies. Complete Spark copy ends with a touching star."
+        },
+        {
+          "attachmentName": "countdown-paused-after-modal-quiet_0_F74DB4BE-6DAD-492A-A283-9EFB9806902F.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-attachments/A68B2CE0-0637-4376-9A68-8CE28C8F567B.png",
+          "timestampUnix": 1792897086.146,
+          "sha256": "1274f80abfff9f22421c4b2ad7931190edf3dff0021cd9d425b9a6d27da51eff",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Paused after modal: complete aqua 2, 3 forecast and Help, head near the left, full Resume sky / Next shower footer."
+        }
+      ],
+      "pausedStateReceipts": [
+        {
+          "attachmentName": "countdown-initial-paused-quiet-state_0_4534FFB9-EB68-4C01-8E5B-FB107E41D188.txt",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-attachments/3D8EA1BB-8C29-4162-86C0-0C0731A50378.txt",
+          "timestampUnix": 1792897076.351,
+          "sha256": "adcc46b532bba7ecdb72cad1abc6a246bf0215c4c129921a9efab8782fe6fa86",
+          "reportedPausedState": {
+            "stage": "initial-paused",
+            "calmEffects": "true",
+            "systemReduceMotion": "false",
+            "cue.label": "Automatic showers paused",
+            "cue.value": "Optional(Mint angular meteor shard, Pip, column 4, then Mint angular meteor shard, Pip, column 5, then Mint angular meteor shard, Pip, column 6)",
+            "forecast.value": "Optional(Mint angular meteor shard, Pip, column 4, then Mint angular meteor shard, Pip, column 5, then Mint angular meteor shard, Pip, column 6)",
+            "board.value": "Optional(5 showers, 2 matching groups ready)"
+          }
+        },
+        {
+          "attachmentName": "countdown-paused-after-modal-quiet-state_0_950AE2AE-C7B7-4D66-BFFE-770CE6817B56.txt",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-attachments/5CB54FEB-230B-40F4-BDB2-E70E433B3498.txt",
+          "timestampUnix": 1792897086.279,
+          "sha256": "ddcd941233d82114a52f8438f242f2c53def6c3554ec3f0f2e8ec24d70a175fc",
+          "reportedPausedState": {
+            "stage": "paused-after-modal",
+            "calmEffects": "true",
+            "systemReduceMotion": "false",
+            "cue.label": "Automatic showers paused",
+            "cue.value": "Optional(Aqua swept comet shard, Spark, column 2, then Aqua swept comet shard, Spark, column 3)",
+            "forecast.value": "Optional(Aqua swept comet shard, Spark, column 2, then Aqua swept comet shard, Spark, column 3)",
+            "board.value": "Optional(6 showers, 3 matching groups ready)"
+          }
+        }
+      ],
+      "fixtureBinding": {
+        "source": "UITests/PacingCueUITests.swift:16; App/FallingSkyStore.swift:409",
+        "classification": "Reset Debug observatory-review fixture adopting retained feeding Dusk. Not fresh survival or current Story. Actual Calm/system Reduce Motion settings remain in the separate paused receipts."
+      }
+    },
+    {
+      "group": "system-reduced",
+      "testSelector": "StarfallUITests/PacingCueUITests/testSystemReduceMotionForecastApproachesBeforeTheShower",
+      "manifestPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-system-reduced-attachments/manifest.json",
+      "manifestSHA256": "80548c59928870b3fed24338d40a657fe348328a518923544441e38e99dbb9d6",
+      "reportedMechanicalResult": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "basis": "Reported by root; separate from visual review"
+      },
+      "items": [
+        {
+          "attachmentName": "countdown-initial-paused-system-reduced_0_B16B985B-F425-472D-AFDF-9C50523D8511.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-system-reduced-attachments/080A449A-021E-41CB-83C0-CAB982D1A358.png",
+          "timestampUnix": 1792897122.079,
+          "sha256": "8c3e12964c77d802e5c3a834bf03a4624f6ddf392dbd5c40417d483d4c3df83e",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Actual system Reduce Motion paused opening is byte-identical to the Calm initial still. Mode/state facts come from its separate text receipt."
+        },
+        {
+          "attachmentName": "countdown-running-system-reduced_0_66DCCDE9-2A77-4F78-A26A-F143A2250E62.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-system-reduced-attachments/EB7B88EA-A25D-423E-9DB2-EE8AB1C72B4B.png",
+          "timestampUnix": 1792897122.67,
+          "sha256": "b862debdc2c5edd0e46140e0008295b4c270042fc9232d41bfb3ffb5599e4da0",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Actual system Reduce Motion running: left head, complete 4, 5, 6 forecast and complete Sunny retained Dusk text."
+        },
+        {
+          "attachmentName": "countdown-approaching-system-reduced_0_D807CEE9-4919-4450-B5E0-12A9C4B8E9D1.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-system-reduced-attachments/AF50D70B-0AB1-45C2-8E8B-832DF21A94AF.png",
+          "timestampUnix": 1792897127.561,
+          "sha256": "75affceef0d295a276037833401e1d9a13f567cf2afb5fbe158682527c97136c",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Actual system Reduce Motion approaching: readable head near the right without normal glow or particles."
+        },
+        {
+          "attachmentName": "countdown-committed-system-reduced_0_EAEA4F8D-9299-46AF-8E16-AA79F7EDBC61.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-system-reduced-attachments/3FD67E44-8BA0-4A82-9FB9-75531C29B0ED.png",
+          "timestampUnix": 1792897128.753,
+          "sha256": "f56c363032e83b0aabffa15530236d85206ecfeb8a8572c84affa0be32c2b40c",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "The attachment name says committed; pixels already show Next columns 2, 3 and a reset head after the mint arrival. Complete Spark retained Dusk text remains legible."
+        },
+        {
+          "attachmentName": "countdown-paused-after-modal-system-reduced_0_00F72C4F-A89B-4A1E-B3BC-C78ADC0C1226.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-system-reduced-attachments/FEC3E662-5F91-4860-B519-9251ADC84857.png",
+          "timestampUnix": 1792897131.941,
+          "sha256": "1773360f833ea4a4f6e7fa84f4b78b8f5d866b5a676a65d612af267a2a96a1a0",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Paused after modal: aqua 2, 3 and Help, head near reset, complete footer. This is system Reduce Motion with Calm off, not a Calm-only run."
+        }
+      ],
+      "pausedStateReceipts": [
+        {
+          "attachmentName": "countdown-initial-paused-system-reduced-state_0_503F4951-EAFD-45B8-A5EA-0AB42898D4E0.txt",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-system-reduced-attachments/1C73D669-6E53-4FB2-917D-F9E25153BA55.txt",
+          "timestampUnix": 1792897122.211,
+          "sha256": "fd683cc096e1d7a593717e259aa0a295d2a6550d1da6b9921f60bc227f4df90b",
+          "reportedPausedState": {
+            "stage": "initial-paused",
+            "calmEffects": "false",
+            "systemReduceMotion": "true",
+            "cue.label": "Automatic showers paused",
+            "cue.value": "Optional(Mint angular meteor shard, Pip, column 4, then Mint angular meteor shard, Pip, column 5, then Mint angular meteor shard, Pip, column 6)",
+            "forecast.value": "Optional(Mint angular meteor shard, Pip, column 4, then Mint angular meteor shard, Pip, column 5, then Mint angular meteor shard, Pip, column 6)",
+            "board.value": "Optional(5 showers, 2 matching groups ready)"
+          }
+        },
+        {
+          "attachmentName": "countdown-paused-after-modal-system-reduced-state_0_1BFA1C5D-B0C7-459A-A8E7-8ED1E6B8470B.txt",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-system-reduced-attachments/5D06D891-D66D-40D2-96FD-3D2EE7F04A27.txt",
+          "timestampUnix": 1792897132.072,
+          "sha256": "b91e3f1c4fafca723b8976e09229affb0ed417d036d29871819c68e63e63fe31",
+          "reportedPausedState": {
+            "stage": "paused-after-modal",
+            "calmEffects": "false",
+            "systemReduceMotion": "true",
+            "cue.label": "Automatic showers paused",
+            "cue.value": "Optional(Aqua swept comet shard, Spark, column 2, then Aqua swept comet shard, Spark, column 3)",
+            "forecast.value": "Optional(Aqua swept comet shard, Spark, column 2, then Aqua swept comet shard, Spark, column 3)",
+            "board.value": "Optional(6 showers, 3 matching groups ready)"
+          }
+        }
+      ],
+      "fixtureBinding": {
+        "source": "UITests/PacingCueUITests.swift:16; App/FallingSkyStore.swift:409",
+        "classification": "Reset Debug observatory-review fixture adopting retained feeding Dusk. Not fresh survival or current Story. Actual Calm/system Reduce Motion settings remain in the separate paused receipts."
+      }
+    },
+    {
+      "group": "cycles",
+      "testSelector": "StarfallUITests/SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles",
+      "manifestPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-attachments/manifest.json",
+      "manifestSHA256": "fd86509465761f3bbea01f68da371925b77f9c062e7b90b03a0f5be98877b9c0",
+      "reportedMechanicalResult": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "basis": "Reported by root; separate from visual review"
+      },
+      "items": [
+        {
+          "attachmentName": "dialogue-motion-first-regular-cycle_0_B409C33A-AA1E-4647-9678-48AD67433DD5.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-attachments/52192F5B-D1DE-49E7-9E11-A77EBCFE6363.png",
+          "timestampUnix": 1792897168.571,
+          "sha256": "82fa7d600c3fb143c185da9962572468ac6427e03b3001035c5f0de566a6632b",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Arriving columns 5, 2, 3: three distinct mint destinations and right-end head; actual mint bodies/streaks descend at different heights. No ordinary trail miniatures duplicate the destination row."
+        },
+        {
+          "attachmentName": "dialogue-motion-several-cycles_0_8C7C5F85-31D4-4A74-9F88-D401BDE433C5.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-attachments/3231D86F-99FB-4D7E-BC9D-7371BEFC65B1.png",
+          "timestampUnix": 1792897183.825,
+          "sha256": "0b186b0540885aa330510c30e8a6e07e6eeaf6963603cd59c331661cc57094e6",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Arriving column 3: one aqua destination and right-end head; falling aqua body is distinct from the retained lower field. Nova copy is complete: 1 lighter shower before the storm."
+        },
+        {
+          "attachmentName": "dialogue-motion-paused_0_3DC6EFA3-51F9-47CA-A364-A8F4BBF61CAB.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-attachments/1F21CD11-4005-4E5A-A13E-AFF3ABF2BA72.png",
+          "timestampUnix": 1792897189.658,
+          "sha256": "7c9ac0430cbb7b5bf372808601a415ec39ee115353c40e0189e9d952a61f83f3",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Paused: five distinct destinations 1, 1, 1, 6, 6 preserve repeated columns in order, with Help. Timing head lies partway along the rail; Resume sky / Next shower remain clear."
+        },
+        {
+          "attachmentName": "dialogue-motion-resumed-from-menu_0_8AE53F6C-B4C6-40B1-810A-25CAD0AAB57F.png",
+          "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-attachments/11FF3FEE-1397-40E1-AFCE-62342A9DE317.png",
+          "timestampUnix": 1792897196.759,
+          "sha256": "6469d4b8a4b8a8a9cfca8ec34c07220755fc34f6b347d5e59c24f0c9e2e42a5c",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIFOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "wholeScreenVerdict": "PASS within depicted state",
+          "observation": "Resumed state: Arriving columns 1, 1, 1, 6, 6 stays complete; head at right, falling/grown mint and aqua bodies plus a small ceiling count remain distinct. Sunny storm copy is complete."
+        }
+      ],
+      "pausedStateReceipts": [],
+      "fixtureBinding": {
+        "source": "UITests/SkyDialogueInteractionTests.swift:339; App/FallingSkyStore.swift:393",
+        "launchArguments": [
+          "--starfalls-reset",
+          "--dialogue-review",
+          "--starfalls-seed=5",
+          "-calmEffects",
+          "NO"
+        ],
+        "classification": "Distinct freshSurvival(seed: 5), actual system Reduce Motion off and Calm off. No observatory-review marker; automatic critical-mass aging disabled. Storm copy belongs to this fresh survival cycle, not the retained-Dusk Pacing fixture.",
+        "identityLimit": "Fixture/rule classification follows launch and Store initialization source; pixels alone do not establish rules."
+      }
+    }
+  ],
+  "sampledMotion": {
+    "status": "PASS within the twenty-seven sampled whole-frame states",
+    "method": "Existing compiled AVAssetImageGenerator, preferred transform, zero seek tolerance, full frame PNG; no crop/resize/retouch.",
+    "samplingPlanPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-sampling-plan.json",
+    "samplingPlanSHA256": "50a84b2bb2a748a5369416712827860c52a1343b7951875ed5007805126fcabc",
+    "wallTimeCorrelationPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-correlation.json",
+    "wallTimeCorrelationSHA256": "763885a06295b85579fca35ada0dd073423f4f21b72a17c0947a8addb046c8bd",
+    "integrity": "All three movie byte counts and SHA-256 hashes recomputed and matched. Extraction logs matched their retained plan text. Every decoded PNG is a whole upright 1170x2532 frame; all twenty-seven opened at original resolution. No crop/resize/retouch by reviewer.",
+    "frameCount": 27,
+    "phaseConclusions": [
+      "Normal actual 25.3, 27.483333, 28.993333 and 30.696667 show successive left-to-right positions before the 31.883333 Arriving endpoint. At 32.793333 the Sky menu hides the rail; 35.195 shows the later paused near-left head with next 2, 3. No direct flight/reset latency is inferred across that gap.",
+      "Calm actual 24.993333 through 30.496667 show a visible pearl head at successive quiet positions without normal glow/dust. At 31.698333 the next 2, 3 forecast and reset head are already visible. These sparse positions are consistent with the source quiet updates but do not prove a particular stepping cadence or an Arriving dwell.",
+      "Normal cycles show different successive forecasts and arrivals, including actual bodies/trails in flight and repeated ordered destinations. This confirms pictured repeated-cycle states, not every frame of each cycle.",
+      "Actual 44.096667, 44.796667 and 45.196667 all visibly show Resume sky with the same head/forecast 1, 1, 1, 6, 6. Actual 56.893333, 57.393333 and 57.891667 show a later paused head/forecast 3, 3, 3, 2, 2. Both roughly one-second sampled windows are visually stable; no absolute pause-duration claim follows.",
+      "Actual 52.298333 is resumed Arriving 1, 1, 1, 6, 6; 53.19 is the Sky menu. The latter is explicitly excluded from running-rail observations."
+    ],
+    "findings": [],
+    "limits": "Nominal wall-clock labels locate candidates only. Classification follows exact observed frame contents and AV actual timestamps. No continuous playback, physical touch, exact event latency, all-cycle continuity or sustained-performance verdict.",
+    "movies": [
+      {
+        "variant": "normal",
+        "moviePath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-actual-motion.mp4",
+        "movieBytes": 53498228,
+        "movieSHA256": "2e204b52802cc438e268dd590813e3e76461dcaebc916914bba3a79053c123f6",
+        "durationSeconds": 50.04,
+        "extractionLogPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-normal-extract.log",
+        "extractionLogSHA256": "e07b67991a686398f9b31d4573418ad442af97c4158f35500d679bcba4e4c070",
+        "items": [
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-normal-frames/frame-0025.300.png",
+            "sha256": "433a9b2dfbcde2b9a438b37400b08e0e58473140a749d29cff0e7fb6863b223f",
+            "requestedMovieSeconds": 25.3,
+            "actualMovieSeconds": 25.3,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "paused opening",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Left-end head; complete mint 4, 5, 6 with Help, score 0 and Resume sky / Next shower."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-normal-frames/frame-0027.500.png",
+            "sha256": "7dc3b67bd04331442745f0fb1501d7b274ab5718a6c80e14ed1f67c39405502d",
+            "requestedMovieSeconds": 27.5,
+            "actualMovieSeconds": 27.483333333333334,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "running approach",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Head advances to an interior-left position with a short warm tail/glow; same 4, 5, 6 row and complete Sunny copy."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-normal-frames/frame-0029.000.png",
+            "sha256": "7455da42a2dc196293b7a13dbd59204b353923f03034ffe8246802e90a5e2901",
+            "requestedMovieSeconds": 29.0,
+            "actualMovieSeconds": 28.993333333333332,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "running approach",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Head farther right, near the middle; same complete forecast and retained Dusk field."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-normal-frames/frame-0030.700.png",
+            "sha256": "6f798f29a36f4245b9ab4cb0e79db0cc88f65e3eb4cd03f1f9cc685f2ea374f6",
+            "requestedMovieSeconds": 30.7,
+            "actualMovieSeconds": 30.696666666666665,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "near-end approach",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Head near the right with normal glow/particles; row still says Next columns 4, 5, 6."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-normal-frames/frame-0031.900.png",
+            "sha256": "84acf059e459f4e929b6bbefdaacd0b70019ac2fb19f7952c28f067c9af3d43d",
+            "requestedMovieSeconds": 31.9,
+            "actualMovieSeconds": 31.883333333333333,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "Arriving endpoint",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Head at the right endpoint; visible Arriving columns 4, 5, 6; Help absent. Full Sunny phrase remains legible."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-normal-frames/frame-0032.800.png",
+            "sha256": "976857ac3a73ac4cb93cac3d85f18aa84f27886d9a10e95789be07866aaf3b8c",
+            "requestedMovieSeconds": 32.8,
+            "actualMovieSeconds": 32.79333333333334,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "Sky menu",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "The modal visibly says OPEN SKY, Pause sky and 6 showers, 3 matching groups ready. Rail is not visible; this is not a reset-head witness."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-normal-frames/frame-0035.200.png",
+            "sha256": "bb771b66b49b44a104c751eb5545fbce0b1ab53bba1fc5c884cc0020d09bb012",
+            "requestedMovieSeconds": 35.2,
+            "actualMovieSeconds": 35.195,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "paused after modal, refreshed forecast",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Near-left reset head; Next columns 2, 3 and Help; three arrived mint bodies; Resume sky / Next shower visible."
+          }
+        ]
+      },
+      {
+        "variant": "quiet",
+        "moviePath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-actual-motion.mp4",
+        "movieBytes": 49716983,
+        "movieSHA256": "0bf6bd2c407bc061ffbb660e3742373efb3abd18a99794b35b851b361148969a",
+        "durationSeconds": 46.31333333333333,
+        "extractionLogPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-quiet-extract.log",
+        "extractionLogSHA256": "bbe911291023a3b5f21f7d1fce82f488e0b6b159356b88855d3bb2be9150a407",
+        "items": [
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-quiet-frames/frame-0025.000.png",
+            "sha256": "25bb31db5771587fb322e87604707cb4ed084be65f140a76bc72737107666e96",
+            "requestedMovieSeconds": 25.0,
+            "actualMovieSeconds": 24.993333333333332,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "paused Calm opening",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Left-end head without glow/dust; 4, 5, 6 and Help, complete paused footer."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-quiet-frames/frame-0027.000.png",
+            "sha256": "00fe16655b50d54a0a81cff6280cbe2d9ee2b20663f9346632455c03be46f586",
+            "requestedMovieSeconds": 27.0,
+            "actualMovieSeconds": 27.0,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "Calm approach",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Head at an interior-left position with short quiet trail, no normal glow/dust; complete 4, 5, 6 row."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-quiet-frames/frame-0028.200.png",
+            "sha256": "da8bb7f950ff64e05c059c5789fdb61d39bea63ab586351b848275d9bc5b1b3c",
+            "requestedMovieSeconds": 28.2,
+            "actualMovieSeconds": 28.191666666666666,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "Calm approach",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Head farther right, around the first third; no normal particles. Sunny copy and 4, 5, 6 unchanged."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-quiet-frames/frame-0029.200.png",
+            "sha256": "a298c04ae365a23a57dc3e05716af46c4d8f69e3b1db31105a3690d2bb3f2b68",
+            "requestedMovieSeconds": 29.2,
+            "actualMovieSeconds": 29.198333333333334,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "Calm approach",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Head around the middle; same forecast, quiet track/tail and full Sunny copy."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-quiet-frames/frame-0030.500.png",
+            "sha256": "a28d83bbb2c05b1fc43397e5e8f2d228aeb28bc2fda9e5bed2c83198d2ab8c3d",
+            "requestedMovieSeconds": 30.5,
+            "actualMovieSeconds": 30.496666666666666,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "Calm near-end approach",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Head near the right with quiet tail and no normal glow/dust; still Next columns 4, 5, 6."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-quiet-frames/frame-0031.700.png",
+            "sha256": "a8d1eaab89a25210fd905812d99b8eb8b8dc66d51e0b96b85e68d49605b04bdf",
+            "requestedMovieSeconds": 31.7,
+            "actualMovieSeconds": 31.698333333333334,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "Calm refreshed forecast",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Head reset near the left; already Next columns 2, 3, three arrived mint bodies and complete Spark copy. No Arriving dwell is pictured."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-quiet-frames/frame-0034.900.png",
+            "sha256": "b04f5068c2cb717f8fe00ca33ec817c8d941dbeb413c9ab8102b4032defe6ec3",
+            "requestedMovieSeconds": 34.9,
+            "actualMovieSeconds": 34.895,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "Calm paused after modal",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Near-left head, Next columns 2, 3 and Help, Resume sky / Next shower visible."
+          }
+        ]
+      },
+      {
+        "variant": "cycles",
+        "moviePath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-actual-motion.mp4",
+        "movieBytes": 95181917,
+        "movieSHA256": "def884bcc46e26482348d60678aa7d212234e1cdebd98c41c822c5cfa2c4c42d",
+        "durationSeconds": 71.53666666666666,
+        "extractionLogPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-extract.log",
+        "extractionLogSHA256": "afab79bf9ab02fd64eb530f43473a5551e3bf8d1bf20cf394c8f617fe7b27421",
+        "items": [
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0024.200.png",
+            "sha256": "d0ac42b0f4a99e3695eab0938349d95ba50f01e30ffb9c88e75d858167acf07f",
+            "requestedMovieSeconds": 24.2,
+            "actualMovieSeconds": 24.19,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "first sampled arrival",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Arriving columns 5, 2, 3, right-end head; mint bodies and falling trails at different heights are distinct from the native forecast."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0028.000.png",
+            "sha256": "11ac7e55e73b8d6d68068a0e3efc6c2b710651d49ab6310eee49917e14439134",
+            "requestedMovieSeconds": 28.0,
+            "actualMovieSeconds": 27.996666666666666,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "later approach",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Next column 3 with an opal family icon; head near the middle. Earlier mint bodies are settled in the field."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0030.000.png",
+            "sha256": "9e477d70d7c72091dbb16cf9cc34f587f46dac15701ed3fd11d3bf07a20d87b7",
+            "requestedMovieSeconds": 30.0,
+            "actualMovieSeconds": 29.993333333333332,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "later arrival",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Arriving column 3 with an opal icon and right-end head; an actual entering body/tail is visible above the field. Forecast and score ink stay readable."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0035.000.png",
+            "sha256": "8b9ff658760f132313916d9f33e9ffb4161c2dc4fe4a7ebbeb4331594dc4375d",
+            "requestedMovieSeconds": 35.0,
+            "actualMovieSeconds": 34.99333333333333,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "subsequent approach",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Next columns 7, 1 with amber icons, head near the right; fuller board and larger retained aqua body remain distinct."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0039.400.png",
+            "sha256": "c28529856599b0617f130c0c53f1a2ec9417fc4fc0a11c72f5572c79c6a388cb",
+            "requestedMovieSeconds": 39.4,
+            "actualMovieSeconds": 39.4,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "subsequent arrival",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Arriving column 3 with aqua icon, right-end head and a falling aqua body; complete Nova lighter-shower message."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0044.100.png",
+            "sha256": "788b1eecb7736bb0f7a023499a47e115c78e02a5cf2ae2447e0ddeed935b2613",
+            "requestedMovieSeconds": 44.1,
+            "actualMovieSeconds": 44.096666666666664,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "first paused window",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Resume sky visible; head at an interior-left position; complete five-item Next 1, 1, 1, 6, 6 with Help."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0044.800.png",
+            "sha256": "3b1e9a0c4fd94671e8182ef78cd42d468c788b5de0199175dfc19cef94a1aa1d",
+            "requestedMovieSeconds": 44.8,
+            "actualMovieSeconds": 44.79666666666667,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "first paused window",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Same visible head position, five-item Next 1, 1, 1, 6, 6 and board arrangement; Resume sky remains visible."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0045.200.png",
+            "sha256": "279974a2fbc49ada7bfd3f6978e23a74828181fe19135f563557649f446a1346",
+            "requestedMovieSeconds": 45.2,
+            "actualMovieSeconds": 45.196666666666665,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "first paused window",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Same visible head position, forecast and board arrangement; complete Resume sky / Next shower footer."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0052.300.png",
+            "sha256": "05305fe2af8ebf2f1acc19fe5c2a1a292ab1177330ceb01893a430e35f3589a9",
+            "requestedMovieSeconds": 52.3,
+            "actualMovieSeconds": 52.29833333333333,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "resumed arrival",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Arriving columns 1, 1, 1, 6, 6 with right-end head; falling/grown bodies and ceiling count 1 remain distinct. Complete Sunny storm text."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0053.200.png",
+            "sha256": "45551dfd2f1b7ff8395f524f2c8ef8497ecb28375e93d266c853b55940a67860",
+            "requestedMovieSeconds": 53.2,
+            "actualMovieSeconds": 53.19,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "Sky menu after resumed arrival",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "OPEN SKY modal shows Pause sky and 10 showers, 6 matching groups ready. Rail is hidden; this is not a second running-rail observation."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0056.900.png",
+            "sha256": "d1e64892beb1659224f012fee3bebcfea5827ccc67d1f5754be73e517bf32e5b",
+            "requestedMovieSeconds": 56.9,
+            "actualMovieSeconds": 56.89333333333333,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "second paused window",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Resume sky visible; head at a different interior position for this later cycle. Next columns 3, 3, 3, 2, 2 and Help complete; ceiling count 1 visible."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0057.400.png",
+            "sha256": "3a35363d8282a3f2337b075153c24102f37115b8b5279e03256c1c12c836bba0",
+            "requestedMovieSeconds": 57.4,
+            "actualMovieSeconds": 57.39333333333333,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "second paused window",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Same visible head position and Next 3, 3, 3, 2, 2, board and ceiling count; Resume sky visible."
+          },
+          {
+            "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-cycles-frames/frame-0057.900.png",
+            "sha256": "f7553e2294613ef0e0b8d1571dc414fc682b154bb98d7cd27a4d464812ccf99f",
+            "requestedMovieSeconds": 57.9,
+            "actualMovieSeconds": 57.891666666666666,
+            "storedPixels": [
+              1170,
+              2532
+            ],
+            "EXIFOrientation": 1,
+            "displayPixels": [
+              1170,
+              2532
+            ],
+            "visiblePhase": "second paused window",
+            "wholeFrameVerdict": "PASS within depicted state",
+            "observation": "Same visible head position, forecast, board and ceiling count; complete paused footer remains."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "goal": 5,
+  "reviewer": "/root/hud_read_ahead",
+  "verdict": "PASS_BOUNDED_EXACT_EXPORT_REVIEW",
+  "knownVisibleFailureFound": false,
+  "outcome": "All 16 retained whole-screen JPEGs preserve their exact raw source's essential visible content and observed phase. No within-index duplicate, missing source, rotated/mislabeled frame or consequential export degradation was found. This completes the exact-export gate only; source, mechanics and broader sampled-motion review remain separate.",
+  "recordedUTC": "2026-10-25T03:18:00Z",
+  "captureIndex": {
+    "path": "docs/evidence/hud-stack-2026-10-24/captures-05.json",
+    "SHA256": "ac10fd7b1a704f88c7528a98ea27fd7155ba226c3c99292be8c36e572927375b",
+    "count": 16,
+    "exportBytes": 10466937
+  },
+  "independence": "Direct inspection of all 16 final JPEGs beside their 16 raw PNG/frame sources preceded this verdict; no implementer or other Goal 5 visual conclusion was read. This reviewer previously audited the small source patch, without implementing App changes or producing these images.",
+  "sourceBinding": {
+    "testedCommit": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+    "embeddedBuildID": "dev.38edbb845c",
+    "runtimeFingerprint": "dev.38edbb845c",
+    "acceptedBase": "bac7bcf3b609902f21e4549980f8f31f04588342",
+    "sourceRecord": "docs/evidence/hud-stack-2026-10-24/source-05.json",
+    "qualification": "Every index item carries this commit and embedded ID; source-05 records 567 committed runtime inputs and no App/test worktree differences. Hash inspection independently binds the exact reviewed image bytes, not a new build or independent embedded-ID measurement."
+  },
+  "reference": {
+    "approvedConcept": "docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "comparedPanel": "Middle Play: small viewport-edge instruments, continuous Observatory painting and dominant actual stars.",
+    "officialRole": "GAME_UI_SYSTEM Goal 5 proposed regular SkyShowerTrail role: one timing head on unchanged132×28 track; SkyForecastDestinations owns the single complete ordered family/column row. Island followers remain separate.",
+    "acceptedBaseline": [
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-contact-attachments/E744A50C-A6F4-4C10-B6AD-99BC7345F16E.png",
+        "state": "Goal4 default Lantern selected6; directly re-viewed"
+      },
+      {
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-04-4218c877-tablet-attachments/81FA44FB-D849-4FDB-A641-184BC8D7E719.png",
+        "state": "Goal4 actual AX5 Calm tablet selected6; directly re-viewed"
+      }
+    ],
+    "comparison": "Matched selected phone/tablet retain the prior score, ordered row, underline/locator, board and scenic composition. Replacing the repeated miniature sequence with one small timing dot reduces competing family information above the existing exact row."
+  },
+  "integrity": {
+    "rawHashesMatch": 16,
+    "exportHashesMatch": 16,
+    "rawAndExportDimensionsMatch": 32,
+    "orientationChecksMatch": 32,
+    "uniqueRawHashes": 16,
+    "uniqueExportHashes": 16,
+    "missingSources": [],
+    "withinIndexDuplicates": [],
+    "visibleMislabels": [],
+    "originalDimensions": "13 phone pairs1170×2532/390×844pt@3×;3 tablet pairs2064×2752/1032×1376pt@2×.",
+    "orientation": "The14 native-screen pairs explicitly store EXIF1 on both files. Both decoded-motion pairs have no EXIF orientation tag on raw or JPEG, interpreted as default1; all32 are upright and retain original stored/display dimensions.",
+    "method": "Python standard-library SHA256, PNG IHDR/eXIf and JPEG SOF/APP1 metadata parsing; all bytes/counts checked against the frozen index. No images were transformed, edited, cropped, resized or video-decoded by this reviewer.",
+    "visualMethod": "view_image opened every raw and retained file with original detail; whole-viewport paired comparison included actual glyphs, families/digits, head/track, selected cues, guide/control bounds and scenery. Tool previews displayed phone images at946×2048 and tablet images at1368×1824; native file dimensions were independently verified. This is not a physical or1:1 display inspection.",
+    "encoding": "JPEG80 slightly smooths fine painting texture and glow. No consequential essential-ink, symbol, timing-head, selection or whole-screen-content loss was observed. Two motion sources already contain H264 encoding; these exports are compared to their supplied decoded full-frame PNGs, not asserted equivalent to lossless native XCTest rasters."
+  },
+  "visualFindings": [
+    "One small pearl timing head is visible at left start/reset, interior, approach and right endpoint in the named normal/quiet/system samples. It remains separate from factual forecast content and smaller than playable stars; no repeated family miniatures appear on the ordinary track.",
+    "Complete exact current Story targets/forecasts retain clear protected ink on dark Lantern and bright Seed paintings. Selected6 retains one underline and one locator; refreshed Seed removes both old cues and exposes the new3/7/6/1/2 row.",
+    "Normal Arriving captures visibly retain their in-flight4/5/6 or1/1/1/6/6 row and right-end head. Quiet postcommit frame is visibly refreshed Next2/3, so its label is correct and cannot substitute for an Arriving dwell sample.",
+    "The current AX5 tablet keeps complete score/target, five destinations, utility glyphs and all visible board stars legible. The head is a quiet secondary instrument. Full Board's complete mode context and49-star opening omit forecast/trail/Help/locator as intended.",
+    "Whole-scene Observatory hierarchy and native text/control relationships remain intact against the approved Play panel and matched Goal4 phone/tablet. No new clipping, crowding, wrong destination implication or excessive new material extent was observed."
+  ],
+  "phaseAndContext": {
+    "currentStory": "Lantern revision4, Seed revision4 and Lantern Full Board revision6 are distinct from reset Debug timing fixtures.",
+    "retainedDebugDusk": "Pacing normal/quiet/system samples launch with reset+observatory-review; Dusk text is retained fixture behavior. It does not redefine fresh survival or Story rules.",
+    "cycles": "SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles launches reset+dialogue-review+seed5 without observatory-review; FallingSkyStore selects freshSurvival(seed5). Actual system Reduce Motion is set false and Calm is NO. These cycle screenshots are not the retained-Dusk fixture.",
+    "motionSettings": "CalmON/systemRMOFF and actual systemRMON/CalmOFF are separate recorded runs; appearance alone cannot prove an OS setting.",
+    "normalMovieFrame": {
+      "requestedSeconds": 27.5,
+      "actualSeconds": 27.483333333333334,
+      "source": "Provided AVAssetImageGenerator extraction log, not a decode run by this reviewer."
+    },
+    "quietMovieFrame": {
+      "requestedSeconds": 28.2,
+      "actualSeconds": 28.191666666666666,
+      "source": "Provided AVAssetImageGenerator extraction log, not a decode run by this reviewer."
+    },
+    "fullBoard": "Retained opening is0/150,000 before the later mechanically checked42,000 refill. No42,000 visual witness is present. The stated prior Goal4 opening identity is intentional cross-goal reuse, not a duplicate within this16-item index.",
+    "guides": "Seed grown-star guide is wholly visible. AX5 tablet chain/FullBoard guides continue below their actual scroll viewport; their stills do not prove the full text or scroll journey."
+  },
+  "items": [
+    {
+      "id": "phone-default__lantern-idle",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/DEB8D372-4309-4B57-A6B3-AAAB47842A00.png",
+      "rawSHA256": "e0387fd0cbe3ed6b3b0c3f7277f00fef472962e4cbdef6cbeffd9b25686bf84c",
+      "rawBytes": 3442323,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-default__lantern-idle.jpg",
+      "exportSHA256": "18fe78e5fd96249b6198f3fab882b727bef743ec4f654b4cd1950755c1cd6151",
+      "exportBytes": 521591,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Unselected Lantern opening: 0/150,000 is complete; five ordered targets 6/1/2/4/5 and Help are legible. One pearl head sits at the left track inset; no repeated family sequence appears above the row. JPEG preserves the head's light body/dark edge, complete footer and all stars."
+    },
+    {
+      "id": "phone-default__lantern-selected-6",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/C2A8FDC9-B33C-432A-B769-74DCB2CC84C4.png",
+      "rawSHA256": "0f4727be49eb2ae9ea96b44ac41f85b7bcc727ade5980059a95dd83a48df5219",
+      "rawBytes": 3448690,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-default__lantern-selected-6.jpg",
+      "exportSHA256": "e224682fe78c8fcb9a0edc5fa16fb792ade159b38194d4795c1040d1082e3c40",
+      "exportBytes": 540159,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Selected Lantern first target: one underline beneath Aqua 6 and one dashed column-6 locator remain distinct. Timing head remains separate above the complete row; neither export nor original clips digits or crowd Help."
+    },
+    {
+      "id": "phone-normal__seed-selected-6",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-seed-attachments/C5621534-2910-45C8-A38C-71C65D0CCF28.png",
+      "rawSHA256": "002faf0232790c91bb335a67a0a312a109811f0200f044bc1ebe35d5c918a0e2",
+      "rawBytes": 4103590,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal__seed-selected-6.jpg",
+      "exportSHA256": "a71edf68a70bc7ebc32501dd100a7d411a83cc83347411569af602d90b515df9",
+      "exportBytes": 727756,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Seed selected 6: score 0/11,000, ordered 6/1/2/4/5, Help and pause remain readable against bright pale architecture. Pearl head at the left inset remains distinguishable. Export preserves the selection underline, locator and full footer."
+    },
+    {
+      "id": "phone-normal__seed-refreshed",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-seed-attachments/C6801545-E0C5-4046-BDEC-B69C595864BC.png",
+      "rawSHA256": "735def25fcc6c3373fb72a1ccadd73482c810ed770acb006a746f45fd60cf395",
+      "rawBytes": 3947885,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal__seed-refreshed.jpg",
+      "exportSHA256": "e88d64b0178830fd243764fccb7a57a01d0fb735e63e9fc99fbafbf062378796",
+      "exportBytes": 687642,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Seed refreshed: row visibly reads Amber 3, Violet 7, Violet 6, Rose 1, Mint 2; previous underline/locator is absent. Complete Spark grown-star guidance, Close, Resume sky and Next shower fit. Stable IDs/real Next provenance are mechanical/source evidence, not inferred from pixels."
+    },
+    {
+      "id": "phone-normal__approaching",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/6ECC2505-DC23-4EFC-A261-D275FB872BF8.png",
+      "rawSHA256": "53ad9ead4bd22d8ab07099f5d301a5b3311005f4565553c978e11503c63fea09",
+      "rawBytes": 3437528,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal__approaching.jpg",
+      "exportSHA256": "4efe7005753c8161ac132a5adad02d488e5520e9fac8ab7ca157da14f4ff6df4",
+      "exportBytes": 534547,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Normal reset observatory fixture: Next columns Mint 4/5/6 and a near-right interior pearl head are visible. Gold tail/glow/dust remain subordinate to row and actual board. Complete Sunny/Dusk text is readable; it belongs to the retained Debug fixture, not current Story rules."
+    },
+    {
+      "id": "phone-normal__arriving",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/961A53E1-E481-43EC-B576-8DC75B93FE0D.png",
+      "rawSHA256": "7b9db6e0bd7b58eb2ab9c49a6abe3b2ce0318ef25d77756aae2fce4e93bbebe8",
+      "rawBytes": 3462634,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal__arriving.jpg",
+      "exportSHA256": "bcca134408144899fb99964793c50ef5a7d36640618b509660593595a9c7aff1",
+      "exportBytes": 540979,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Normal reset observatory fixture: actual pixels say Arriving columns 4/5/6, with the pearl head at the right endpoint. No Help icon is visible during this phase. Distinct from refreshed Next; essential text, head and right-end contour survive export."
+    },
+    {
+      "id": "phone-normal__paused-refreshed",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/78276A0E-584C-4A4E-8193-5D54230E6134.png",
+      "rawSHA256": "f8aa7666cb9018dd197e589b0e0e76e02fc3eb48e1e553cede2161db2f596e77",
+      "rawBytes": 3528757,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal__paused-refreshed.jpg",
+      "exportSHA256": "daf10f6b9fa76d90ae58bed007a2b56d05dc7b9f98985ea55671b5c2790cef20",
+      "exportBytes": 551995,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Normal reset observatory fixture after menu Pause: footer says Resume sky; refreshed Next Comet 2/3 and a near-left pearl head are visible. This still alone cannot prove a frozen interval. No Arriving label is visible."
+    },
+    {
+      "id": "phone-quiet__refreshed-next",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-attachments/58140907-D587-4B6C-BE25-27CCC6F4B355.png",
+      "rawSHA256": "3c909d0cf4f0abc32646b67412ec81971efce6a106e8a5e44430ff23394005e0",
+      "rawBytes": 3473616,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-quiet__refreshed-next.jpg",
+      "exportSHA256": "48831b402942e24df38689d7ed6d0ceaa617a4515737bbea4f949103026f4623",
+      "exportBytes": 542811,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Calm-on, system-Reduce-Motion-off reset observatory fixture: pixels already say Next columns Comet 2/3; pearl head has reset to the left inset. Complete Spark arrival/Dusk guidance remains readable. This is a refreshed state, not a quiet Arriving witness."
+    },
+    {
+      "id": "phone-system-reduced__approaching",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-system-reduced-attachments/AF50D70B-0AB1-45C2-8E8B-832DF21A94AF.png",
+      "rawSHA256": "75affceef0d295a276037833401e1d9a13f567cf2afb5fbe158682527c97136c",
+      "rawBytes": 3435976,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-system-reduced__approaching.jpg",
+      "exportSHA256": "628c898b5fa0dbdb214013471dc4b2f33a31b7efc834b233acd54c0ee7361f5b",
+      "exportBytes": 534646,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Actual system-Reduce-Motion-on, Calm-off reset observatory fixture: complete Next columns Mint 4/5/6 and near-right interior head are visible with a restrained tail. System-setting provenance comes from the named native setup, not the still's appearance."
+    },
+    {
+      "id": "tablet-ax5-calm__selected-column-6",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/3884F289-16BF-492C-9B05-5FFC4A7CC009.png",
+      "rawSHA256": "9e7d8ef415a932d1b77883fcf896d44656363f94244dccfe578cd6e26d37f2eb",
+      "rawBytes": 6853262,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__tablet-ax5-calm__selected-column-6.jpg",
+      "exportSHA256": "e848d7e2184d102c7616ecb6249486007d0aa450a6acffaed1a46d89bd8090d5",
+      "exportBytes": 1064715,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Actual AX5 Calm tablet: complete 0/150,000 and ordered 6/1/2/4/5 fit at full native type. First underline and single column-6 locator remain clear. Small left-inset timing head stays subordinate; no duplicate family train. Start sky/Next shower and the full current board remain visible."
+    },
+    {
+      "id": "tablet-ax5-calm__real-15000-chain",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/9D607590-027F-4C49-B928-9464E3B39D45.png",
+      "rawSHA256": "c2a56b0eb49af132509322bafd02a70d2b58f26558d5c708c6d9d4c302cbbf5b",
+      "rawBytes": 6640841,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__tablet-ax5-calm__real-15000-chain.jpg",
+      "exportSHA256": "5e1a30f12b57a023e345e90c5eb00c25db4481b9d96774dfa4308687d471cc91",
+      "exportBytes": 994052,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Actual AX5 Calm tablet after real chain: complete 15,000/150,000 and forecast 6/1/2/4/5 remain readable above the clear board. Spark guide begins at the bottom and continues below its pictured scroll viewport; this is not a complete-guide screenshot. Export preserves the visible text without introducing a new crop."
+    },
+    {
+      "id": "tablet-ax5-calm__full-board-opening",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/7D1B4315-FB20-47CD-AC41-838F92A83E04.png",
+      "rawSHA256": "dce566eeafbbcc94605a70e95fd7f07612afb34036aeaafde72c730ab25d2861",
+      "rawBytes": 6956575,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__tablet-ax5-calm__full-board-opening.jpg",
+      "exportSHA256": "761ee0e6ea3a29a60c32f0820e460dccd560c855fd24b53bbc03dbc19e0452f6",
+      "exportBytes": 1116540,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Actual AX5 Calm tablet Full Board opening: complete Full Board · clears refill and cascade context, 0/150,000, pause, ceiling and 49 visible stars; no timing trail, ordered forecast, Help or locator. Guide begins at the bottom and continues below the viewport. Opening precedes 42,000 refill; no visual refill claim."
+    },
+    {
+      "id": "phone-normal-cycles__paused",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-attachments/1F21CD11-4005-4E5A-A13E-AFF3ABF2BA72.png",
+      "rawSHA256": "7c9ac0430cbb7b5bf372808601a415ec39ee115353c40e0189e9d952a61f83f3",
+      "rawBytes": 3476455,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal-cycles__paused.jpg",
+      "exportSHA256": "e197f9b85f9537b353fc43db5ad2550d7ec6f51ed8dd0a8798153439d4aeb66d",
+      "exportBytes": 526805,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Normal fresh-survival seed-5 cycle paused through the menu: Resume sky, complete Next Mint 1/1/1 then Comet 6/6, and a pearl head in the left portion of the track are visible. No duplicated forecast above. Still establishes appearance only, not held duration."
+    },
+    {
+      "id": "phone-normal-cycles__resumed-arrival",
+      "kind": "native-screen",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-attachments/11FF3FEE-1397-40E1-AFCE-62342A9DE317.png",
+      "rawSHA256": "6469d4b8a4b8a8a9cfca8ec34c07220755fc34f6b347d5e59c24f0c9e2e42a5c",
+      "rawBytes": 3513402,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal-cycles__resumed-arrival.jpg",
+      "exportSHA256": "860c1dffbb1aa8c141c81295b0b3939295d5069f2c4e4b4a91c9fc0c4c98f7fb",
+      "exportBytes": 556019,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": 1,
+      "exportEXIFOrientation": 1,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Normal fresh-survival seed-5 cycle after menu Resume: pixels say Arriving columns 1/1/1/6/6, with head at right endpoint and actual arriving board stars. Complete Sunny storm guidance fits. Export retains all five families/digits and the endpoint head."
+    },
+    {
+      "id": "phone-normal-motion__interior-head",
+      "kind": "native-motion-frame",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-normal-frames/frame-0027.500.png",
+      "rawSHA256": "7dc3b67bd04331442745f0fb1501d7b274ab5718a6c80e14ed1f67c39405502d",
+      "rawBytes": 2834874,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal-motion__interior-head.jpg",
+      "exportSHA256": "18654abfa2884b51256f4c5a03e69e1513753e9faf996b987dd6788b06a2e99f",
+      "exportBytes": 513406,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": null,
+      "exportEXIFOrientation": null,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Already-decoded normal H264 frame: pearl head is visibly interior, with short gold tail/glow and sparse dust; row remains Next Mint 4/5/6. The board and complete retained-Dusk guidance dominate the composition. Export introduces minor texture smoothing without losing cue or text."
+    },
+    {
+      "id": "phone-quiet-motion__interior-head",
+      "kind": "native-motion-frame",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-quiet-frames/frame-0028.200.png",
+      "rawSHA256": "da8bb7f950ff64e05c059c5789fdb61d39bea63ab586351b848275d9bc5b1b3c",
+      "rawBytes": 2831072,
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-quiet-motion__interior-head.jpg",
+      "exportSHA256": "1327d471461ee522b80ed0d9ec1732945f2d5b944d8a02d3130f5c85649cdcf9",
+      "exportBytes": 513274,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "rawEXIFOrientation": null,
+      "exportEXIFOrientation": null,
+      "effectiveDisplayOrientation": 1,
+      "visualVerdict": "PASS_BOUNDED_EXACT_EXPORT",
+      "observation": "Already-decoded quiet H264 frame: pearl head is visibly interior with a clean restrained tail, while Next Mint 4/5/6 remains complete. No family train is painted on the track. Export preserves the head and factual row; this one frame cannot establish cadence, motion continuity or quiet Arriving dwell."
+    }
+  ],
+  "limits": [
+    "Exact-export gate for these16 named static frames only. Native interaction, score/forecast identity, timing/freeze/resume and selected test passes are independently recorded mechanics; no functional pass is inferred from stills.",
+    "Two supplied H264-derived interior frames establish sampled appearance only. No decoder/controller was run; this review does not establish continuous animation, exact wall-clock latency, performance or pause-duration reliability. Broader raw sampling has a separate owner.",
+    "No fresh AX5 phone or native calibrated-island rendering witness in this retained set. Unchanged island source ownership is source evidence only.",
+    "Quiet refreshed frame does not establish a quiet Arriving dwell. System-motion mode and Calm context are not interchangeable.",
+    "No global/local numerical contrast certification, all-scenery sweep, Increased Contrast, Reduced Transparency, native focus/disabled-touch, actual VoiceOver, minimum-iOS or physical-device acceptance.",
+    "Original full dimensions/orientation were checked; image-tool previews were resized. No physical-size or whole-glyph per-pixel contrast claim.",
+    "Earlier reader-pan failures retain their existing unresolved source-bound history. These unrelated stills do not assign a cause or establish a reliability/performance fix."
+  ],
+  "verificationPerformed": [
+    "All32 SHA256 checks against index",
+    "All32 dimensions/orientation checks",
+    "All16 exact paired whole-screen visual reviews",
+    "Re-viewed approved middle Play concept and2 matched Goal4 native baselines",
+    "JSON parse PASS",
+    "python3 scripts/ci-hygiene.py PASS: tracked-file hygiene and core UI-import guard; native validation is separate",
+    "git diff --check PASS; only this new review file written by this reviewer"
+  ]
+}

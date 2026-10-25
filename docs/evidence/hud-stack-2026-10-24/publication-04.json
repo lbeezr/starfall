@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "goal": 4,
+  "issue": 385,
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/405",
+  "mergeCommit": "bac7bcf3b609902f21e4549980f8f31f04588342",
+  "mergedAtUTC": "2026-10-25T02:42:39Z",
+  "publishedHead": "4ed9280f87b42a71f6f51fc2c7f0e47a2cb0815a",
+  "reviewedLocalCommit": "d34de9743aacb8199e32609611d142038317ea80",
+  "testedAppAndNativeCommit": "4218c877ddd8af0fda959318d9c53f05a33e6007",
+  "finalHostedTestCommit": "f0005119156f982fc14b70c3aac9016850a01702",
+  "reviewedAndPublishedTree": "86cd2fa9cc21199bd3c59d033bb6697ef4d85f83",
+  "baseMain": "47b0b5e9f6e60bfb428a3e776e272a113ef34e7a",
+  "treeVerification": {
+    "publishedHeadEqualsReviewedLocal": true,
+    "mergedMainEqualsReviewedLocal": true,
+    "method": "Fetched head/main; git diff --exit-code against reviewed local commit returned zero before and after merge."
+  },
+  "issueCompletion": {
+    "state": "closed",
+    "stateReason": "completed"
+  },
+  "canonicalProject": {
+    "status": "unavailable",
+    "reason": "No connected Projects query/update tool; completed issue confirmed, canonical Project Done not claimed."
+  },
+  "remoteChecks": {
+    "prCommitStatuses": [],
+    "claim": "No remote CI pass claimed; existing workflow has no PR trigger."
+  },
+  "runtimeInputFingerprint": "dev.dcb267d534",
+  "scope": "Only isolated Goal4. Other root’s unpublished glyph hit-test/flow/context source excluded."
+}

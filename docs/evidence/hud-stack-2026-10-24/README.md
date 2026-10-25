@@ -1,6 +1,6 @@
 # A coherent set of native HUD instruments
 
-**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 merged in [PR #404](https://github.com/lbeezr/starfall/pull/404); goal 4 verified for its development slice, merge next · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
+**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 merged in [PR #404](https://github.com/lbeezr/starfall/pull/404); goal 4 merged in [PR #405](https://github.com/lbeezr/starfall/pull/405); goal 5 verified for its development slice, merge next · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
 
 The user authorized [ten ordered HUD refinements](https://github.com/lbeezr/starfall/issues/381), with each goal tested and merged before the next implementation. Each pass retains the previous accepted behavior and corrects its current presentation seam in the normal app. Existing Observatory materials, native controls, rules, saves, replay, clocks and board mapping remain authoritative.
 
@@ -15,8 +15,8 @@ The initial development-adoption verdict below is superseded. Its source identit
 | 1 | Expanded HUD reading order | [#382](https://github.com/lbeezr/starfall/issues/382) | Corrected native slice reviewed; merged #402, issue completed |
 | 2 | Coherent instrument typography | [#383](https://github.com/lbeezr/starfall/issues/383) | Verified and merged #403; issue completed |
 | 3 | Readability across every sky | [#384](https://github.com/lbeezr/starfall/issues/384) | Verified and merged #404; issue completed |
-| 4 | Shared control states and glyph craft | [#385](https://github.com/lbeezr/starfall/issues/385) | Verified native/contact/state and final export review; individual merge next |
-| 5 | One coherent forecast instrument | [#386](https://github.com/lbeezr/starfall/issues/386) | After goal 4 merge |
+| 4 | Shared control states and glyph craft | [#385](https://github.com/lbeezr/starfall/issues/385) | Verified and merged #405; issue completed |
+| 5 | One coherent forecast instrument | [#386](https://github.com/lbeezr/starfall/issues/386) | Verified native, sampled-motion and exact-export review; individual merge next |
 | 6 | Specific, calm pressure feedback | [#387](https://github.com/lbeezr/starfall/issues/387) | After goal 5 merge |
 | 7 | Causal move-to-earned-light attention | [#388](https://github.com/lbeezr/starfall/issues/388) | After goal 6 merge |
 | 8 | Consistent optional detail readers | [#389](https://github.com/lbeezr/starfall/issues/389) | After goal 7 merge |
@@ -98,7 +98,7 @@ The unchanged isolated Sunny/Spark method passes again with its original 12-pan 
 
 ## Goal 4: stable glyphs and shared contact material
 
-**Status:** Adopted for the named development slice; individual main merge next. Goal 5 stays held until that merge.
+**Status:** Adopted for the named development slice and merged in [PR #405](https://github.com/lbeezr/starfall/pull/405), main `bac7bcf3`; issue #385 completed. [Publication proof](publication-04.json) confirms identical reviewed/published/main trees. Canonical Project projection is unavailable. Goal 5 follows this individual merge.
 
 Help and pause now retain their original glyph sizes during contact and use the same pressed material as forecast controls. The shared utility style paints a passive 40-point circle inside its existing 48-point target. Pause remains 20 points, forecast Help 24 points, and the style allocation 24 points. The old shrink/dim transforms are removed. Forecast selection keeps its separate underline; disabled artwork keeps one muted treatment, and the existing focus circle uses the shared width token. Clear/scenery resting roles and native input ownership remain.
 
@@ -121,6 +121,22 @@ Actual platform focus, native disabled-touch rejection, current Increased Contra
 | Resting native utilities | Actual recorded Help contact sample |
 | --- | --- |
 | ![Complete idle native phone HUD](goal-04-captures/dev-dcb267d534__phone-default__lantern-idle.jpg) | ![Whole native phone during Help contact](goal-04-captures/dev-dcb267d534__phone-contact__sample-56p900.jpg) |
+
+## Goal 5: one forecast row and a timing-only trail
+
+**Status:** Adopted for the named development slice; individual main merge next. Goal 6 remains held until that merge.
+
+The regular trail now shows time with one small pearl head. The complete ordered row remains the single family/column reading, with its original selection, locator and inspection utility. The shared Canvas keeps its 132×28 footprint, computed head, normal glow/dust, quiet updates and paused opacity. A five-point head with a one-point dark keyline remains painted at cycle start. Calibrated island followers and drawing stay unchanged; no new asset, route, clock or game state remains.
+
+App/tests froze at `08aa30c0`, based on main `bac7bcf3`, with `dev.38edbb845c` embedded in Debug and Release. [Source proof](source-05.json) matches all 567 runtime inputs. Twelve affected hosted methods and seven native methods pass with zero failures/skips; all 352 Core tests, Debug/test, Release, hygiene and whitespace pass. The native cases retain real clock approach/commit, repeated cycles, pause/resume, contact cancellation/Return/reopening, exact Seed IDs 0–4→5–9 replacement, actual Settings Calm, a real 15k Lantern chain and Full Board absence. Source inventory remains 816 hosted/260 UI methods; this is a selected subset, not a full matrix run.
+
+Independent reviewers accept the complete current Lantern/Seed/default-phone and AX5 actual-Calm tablet compositions, all 19 countdown/cycle still records and 27 whole native-motion samples. The final reviewer inspects every one of 16 retained JPEG80 exports against its raw source. No known visible failure remains within those named states. Normal pixels actually show Arriving at the endpoint. Quiet and actual system Reduce Motion captures already show refreshed Next; no quiet Arriving dwell is claimed or added. Two sampled paused windows retain the same head and forecast, and real resume advances the shower counter. Sampled frames do not prove continuous smoothness, exact cadence/latency or physical comfort.
+
+[Acceptance](goal-05-acceptance.json), [commands/results](verification-05.json), [captures](captures-05.json), [native timing review](visual-review-05-native.json), [current-story review](visual-review-05-current.json) and [final export review](visual-review-05-exports.json) preserve source, hashes and actual phase labels. Pacing uses a reset Debug observatory fixture with retained Dusk copy, separately from current Story and fresh survival. The tablet guide retains its actual scrolling position; Full Board’s image is its opening before the mechanically verified 42k refill. Earlier reader-pan uncertainty remains unassigned. No fresh native AX5-phone/island, actual VoiceOver, minimum-iOS, physical contrast or continuous-motion/performance acceptance is claimed.
+
+| Current native Lantern, timing only | Normal real Arriving state |
+| --- | --- |
+| ![Complete native Lantern HUD](goal-05-captures/dev-38edbb845c__phone-default__lantern-idle.jpg) | ![Complete native countdown fixture visibly Arriving](goal-05-captures/dev-38edbb845c__phone-normal__arriving.jpg) |
 
 ## Goal 1 initial implementation: mechanical results retained
 

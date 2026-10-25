@@ -1,0 +1,557 @@
+{
+  "schemaVersion": 1,
+  "goal": 5,
+  "issue": 386,
+  "status": "Frozen mechanical checks and independent bounded native, sampled-motion and all 16 exact-export reviews complete; development adoption. Individual merge next.",
+  "recordedUTC": "2026-10-25T03:09:33.787450+00:00",
+  "source": "source-05.json",
+  "sourceSHA256": "fbf14f1efa88a6599aaaa1a719eb7339af41b8a4a8a575501677b530962f6e56",
+  "testedCommit": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+  "runtimeInputFingerprint": "dev.38edbb845c",
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "testSeconds": 20.886,
+    "suiteSeconds": 20.902,
+    "stageSeconds": 22.12,
+    "changes": false
+  },
+  "hosted": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": []
+  },
+  "native": {
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "profiles": "Default normal/Calm/actual system-RM phone; current Lantern/Seed phone; actual AX5Calm tablet. No fresh AX5phone or nativeisland."
+  },
+  "builds": {
+    "Debug": "passed8.984s",
+    "Release": "passed8.221s",
+    "embeddedBuildIDs": {
+      "Debug": "dev.38edbb845c",
+      "Release": "dev.38edbb845c"
+    },
+    "resourceRoutingMembershipChanges": false
+  },
+  "inventory": {
+    "hosted": 816,
+    "ui": 260,
+    "meaning": "Source discovery only; selected subsets19methods, not full native matrix."
+  },
+  "warnings": {
+    "compiler": [],
+    "appIntents": "Three Debug/test and one Release expected extraction-skipped warnings; no AppIntents dependency.",
+    "swiftPM": "Existing unhandled README.md/AGENTS.md warnings in Core/test folders; no package change/suppression.",
+    "simulator": "Inherited system duplicate WebKit accessibility class and DVT operatingSystemBuild parse messages appear in native logs. Selected result runtimeWarnings arrays are empty; no warning-free system-log claim."
+  },
+  "ownedWindow": {
+    "startUTC": "2026-10-25T02:56:28.257525+00:00",
+    "grantEndUTC": "2026-10-25T03:10:00+00:00",
+    "heavyElapsedSeconds": 685.389,
+    "returnedUTC": "2026-10-25T03:08:30+00:00",
+    "scope": "All own xcodebuild/Core/controllers/recorders and AV extraction finished before handback. No other task source included."
+  },
+  "recordings": [
+    {
+      "movie": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-actual-motion.mp4",
+      "log": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-recording.log",
+      "pid": 76984,
+      "readyUTC": "2026-10-25T02:56:40.827237+00:00",
+      "monotonicOffsetFromStart": 12.569,
+      "exitCode": 0,
+      "finishedUTC": "2026-10-25T02:57:30.958056+00:00"
+    },
+    {
+      "movie": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-actual-motion.mp4",
+      "log": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-recording.log",
+      "pid": 77765,
+      "readyUTC": "2026-10-25T02:57:31.181964+00:00",
+      "monotonicOffsetFromStart": 62.924,
+      "exitCode": 0,
+      "finishedUTC": "2026-10-25T02:58:17.568323+00:00"
+    },
+    {
+      "movie": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-actual-motion.mp4",
+      "log": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-recording.log",
+      "pid": 78803,
+      "readyUTC": "2026-10-25T02:59:04.409381+00:00",
+      "monotonicOffsetFromStart": 156.152,
+      "exitCode": 0,
+      "finishedUTC": "2026-10-25T03:00:16.058607+00:00"
+    }
+  ],
+  "motionSampling": "/private/tmp/starfall-hud-stack-20261024/motion-05-sampling-plan.json",
+  "stages": [
+    {
+      "label": "build-05-08aa30c0-debug",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.38edbb845c",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "build-for-testing"
+      ],
+      "receipt": {
+        "stage": "build-05-08aa30c0-debug",
+        "startedUTC": "2026-10-25T02:56:28.283328+00:00",
+        "elapsedSeconds": 8.984,
+        "limitSeconds": 150.0,
+        "exitCode": 0,
+        "error": null
+      }
+    },
+    {
+      "label": "hosted-05-08aa30c0",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.38edbb845c",
+        "-destination",
+        "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+        "-only-testing:StarfallAppTests/SkyDialogueTests/testIslandPlacementFallsBackForUnknownSmallAndAccessibleLayouts",
+        "-only-testing:StarfallAppTests/SkyDialogueTests/testForecastFollowersFinishBeforeResetForIslandAndHistoricalStraightSampling",
+        "-only-testing:StarfallAppTests/FallingSkyStoreTests/testForecastUsesHeldRemainderAndActualDeadlineThroughDeferredRain",
+        "-only-testing:StarfallAppTests/FallingSkyStoreTests/testForecastPreservesPauseGraceBackgroundAndQuietOutcome",
+        "-only-testing:StarfallAppTests/SkyForecastDestinationsTests",
+        "-only-testing:StarfallAppTests/SkyForecastRecoveryTests/testLanternRecoveryKeepsTheAnnouncedDestinationsThroughPresentationAndRestore",
+        "-only-testing:StarfallAppTests/SkyForecastInspectionTests/testReadOnlyInspectionPreservesDeadlineSavesAndActualShowerThenFollowsDisplayedRefresh",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/hosted-05-08aa30c0.xcresult",
+        "test-without-building"
+      ],
+      "receipt": {
+        "stage": "hosted-05-08aa30c0",
+        "startedUTC": "2026-10-25T02:56:37.296940+00:00",
+        "elapsedSeconds": 3.302,
+        "limitSeconds": 120.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "testSummary": {
+        "totalTestCount": 12,
+        "passedTests": 12,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "result": "Passed",
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "label": "native-05-08aa30c0-normal",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.38edbb845c",
+        "-destination",
+        "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+        "-only-testing:StarfallUITests/PacingCueUITests/testNormalForecastApproachesBeforeTheShower",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal.xcresult",
+        "test-without-building"
+      ],
+      "receipt": {
+        "stage": "native-05-08aa30c0-normal",
+        "startedUTC": "2026-10-25T02:56:40.854231+00:00",
+        "elapsedSeconds": 49.962,
+        "limitSeconds": 180.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "testSummary": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "result": "Passed",
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "label": "native-05-08aa30c0-quiet",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.38edbb845c",
+        "-destination",
+        "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+        "-only-testing:StarfallUITests/PacingCueUITests/testQuietForecastApproachesBeforeTheShower",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet.xcresult",
+        "test-without-building"
+      ],
+      "receipt": {
+        "stage": "native-05-08aa30c0-quiet",
+        "startedUTC": "2026-10-25T02:57:31.212099+00:00",
+        "elapsedSeconds": 46.207,
+        "limitSeconds": 180.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "testSummary": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "result": "Passed",
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "label": "native-05-08aa30c0-system-reduced",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.38edbb845c",
+        "-destination",
+        "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+        "-only-testing:StarfallUITests/PacingCueUITests/testSystemReduceMotionForecastApproachesBeforeTheShower",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-system-reduced.xcresult",
+        "test-without-building"
+      ],
+      "receipt": {
+        "stage": "native-05-08aa30c0-system-reduced",
+        "startedUTC": "2026-10-25T02:58:17.614139+00:00",
+        "elapsedSeconds": 46.478,
+        "limitSeconds": 180.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "testSummary": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "result": "Passed",
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "label": "native-05-08aa30c0-cycles",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.38edbb845c",
+        "-destination",
+        "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+        "-only-testing:StarfallUITests/SkyDialogueInteractionTests/testNormalMotionForecastCompletesSeveralAutomaticCycles",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles.xcresult",
+        "test-without-building"
+      ],
+      "receipt": {
+        "stage": "native-05-08aa30c0-cycles",
+        "startedUTC": "2026-10-25T02:59:04.438859+00:00",
+        "elapsedSeconds": 71.408,
+        "limitSeconds": 180.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "testSummary": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "result": "Passed",
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "label": "native-05-08aa30c0-lantern",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.38edbb845c",
+        "-destination",
+        "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+        "-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern.xcresult",
+        "test-without-building"
+      ],
+      "receipt": {
+        "stage": "native-05-08aa30c0-lantern",
+        "startedUTC": "2026-10-25T03:00:16.113812+00:00",
+        "elapsedSeconds": 95.919,
+        "limitSeconds": 240.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "testSummary": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "result": "Passed",
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "label": "native-05-08aa30c0-seed",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.38edbb845c",
+        "-destination",
+        "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+        "-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalSeedForecastFocusDoesNotCommitAndRetiresOnReplacement",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-seed.xcresult",
+        "test-without-building"
+      ],
+      "receipt": {
+        "stage": "native-05-08aa30c0-seed",
+        "startedUTC": "2026-10-25T03:01:52.075816+00:00",
+        "elapsedSeconds": 138.323,
+        "limitSeconds": 240.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "testSummary": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "result": "Passed",
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "label": "native-05-08aa30c0-tablet",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Debug",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Integration",
+        "-parallel-testing-enabled",
+        "NO",
+        "-collect-test-diagnostics",
+        "never",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.38edbb845c",
+        "-destination",
+        "platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "-only-testing:StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+        "-resultBundlePath",
+        "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet.xcresult",
+        "test-without-building"
+      ],
+      "receipt": {
+        "stage": "native-05-08aa30c0-tablet",
+        "startedUTC": "2026-10-25T03:04:10.434038+00:00",
+        "elapsedSeconds": 192.791,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "testSummary": {
+        "totalTestCount": 1,
+        "passedTests": 1,
+        "failedTests": 0,
+        "skippedTests": 0,
+        "result": "Passed",
+        "runtimeWarnings": []
+      }
+    },
+    {
+      "label": "build-05-08aa30c0-release",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "Starfall.xcodeproj",
+        "-scheme",
+        "Starfall",
+        "-configuration",
+        "Release",
+        "-derivedDataPath",
+        "/private/tmp/starfall-hud-stack-20261024/Release",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-jobs",
+        "4",
+        "ARCHS=arm64",
+        "ONLY_ACTIVE_ARCH=YES",
+        "STARFALL_BUILD_ID=dev.38edbb845c",
+        "build"
+      ],
+      "receipt": {
+        "stage": "build-05-08aa30c0-release",
+        "startedUTC": "2026-10-25T03:07:23.268865+00:00",
+        "elapsedSeconds": 8.221,
+        "limitSeconds": 142.026814209,
+        "exitCode": 0,
+        "error": null
+      }
+    },
+    {
+      "label": "core-05-08aa30c0",
+      "command": [
+        "swift",
+        "test"
+      ],
+      "receipt": {
+        "stage": "core-05-08aa30c0",
+        "startedUTC": "2026-10-25T03:07:31.521698+00:00",
+        "elapsedSeconds": 22.12,
+        "limitSeconds": 120.0,
+        "exitCode": 0,
+        "error": null
+      }
+    }
+  ],
+  "alwaysChecks": {
+    "hygiene": "Passed before source freeze and after explicit final staging.",
+    "diff": "git diff --check and git diff --cached --check passed.",
+    "runtimeAndTestDirtyPaths": []
+  },
+  "limits": "Actual VoiceOver, physical/minimum-OS execution, continuous motion/performance and physical contrast remain unperformed. Native/still/sampled-motion/retained-export results retain separate scopes. Prior reader-pan cause remains unassigned.",
+  "visual": {
+    "nativeTimingReview": "visual-review-05-native.json",
+    "currentStoryReview": "visual-review-05-current.json",
+    "exactExportReview": "visual-review-05-exports.json",
+    "capturedRawStillRecords": 42,
+    "decodedWholeFrames": 27,
+    "retainedExports": 16,
+    "knownVisibleFailureFound": false,
+    "reviewSHA256": {
+      "visual-review-05-native.json": "b3aabf41313eff30cc65b61c15abc63f0cbaf0811d471445826b65789f58a954",
+      "visual-review-05-current.json": "00493cce729341eb2d15204320a1dcb5a0a181e8c6febcd4c6484718ebf2f981",
+      "visual-review-05-exports.json": "1160c6dc8e113a82a758cfb36dddd64e0a5573606f5f3f1712bc1916c4e090a6"
+    }
+  }
+}

@@ -171,6 +171,7 @@ enum StarfallTheme {
         static let accessibleBoardInset: CGFloat = 6
         static let progressHeight: CGFloat = 6
         static let showerTrailWidth: CGFloat = 132
+        static let showerTrailHeadDiameter: CGFloat = 5
         static let guidePropClearance: CGFloat = 76
         static let arrivalCueWidth: CGFloat = 56
         static let arrivalCueHeight: CGFloat = 3

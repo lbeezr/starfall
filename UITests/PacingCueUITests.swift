@@ -1,11 +1,40 @@
 import XCTest
 
 final class PacingCueUITests: XCTestCase {
-    @MainActor private func countdown(calm: Bool) {
+    @MainActor private func countdown(calm: Bool, systemReduced: Bool = false) {
         continueAfterFailure = false
+        let (preferences, motion) = NativeSystemMotionSettings.open()
+        let originalMotion = motion.value as? String == "1"
+        NativeSystemMotionSettings.set(systemReduced, on: motion)
+        preferences.terminate()
+        addTeardownBlock { @MainActor in
+            let (preferences, motion) = NativeSystemMotionSettings.open()
+            NativeSystemMotionSettings.set(originalMotion, on: motion)
+            preferences.terminate()
+        }
         let app = XCUIApplication()
         app.launchArguments = ["--starfalls-reset","--observatory-review","-calmEffects",calm ? "YES":"NO"]
         app.launch(); defer { app.terminate() }
+        let variant = systemReduced ? "system-reduced" : (calm ? "quiet" : "normal")
+        // Read the complete native facts only while paused, so diagnostics do not
+        // consume the running interval before the approaching-shower assertion.
+        let attachPausedState: (String) -> Void = { stage in
+            let cue = try? app.descendants(matching: .any)["experiment.arrivalCue"].firstMatch.snapshot()
+            let forecast = try? app.descendants(matching: .any)["sky.forecast.destinations"].firstMatch.snapshot()
+            let board = try? app.otherElements["experiment.board"].snapshot()
+            let state = XCTAttachment(string: """
+                stage=\(stage)
+                calmEffects=\(calm)
+                systemReduceMotion=\(systemReduced)
+                cue.label=\(cue?.label ?? "<unavailable>")
+                cue.value=\(String(describing: cue?.value))
+                forecast.value=\(String(describing: forecast?.value))
+                board.value=\(String(describing: board?.value))
+                """)
+            state.name = "countdown-\(stage)-\(variant)-state"
+            state.lifetime = .keepAlways
+            self.add(state)
+        }
         XCTAssertTrue(app.buttons["experiment.settings"].waitForExistence(timeout:10))
         app.buttons["experiment.settings"].tap()
         app.skyMenuControl("experiment.balance").tap()
@@ -14,11 +43,15 @@ final class PacingCueUITests: XCTestCase {
         gentle.tap()
         app.buttons["experiment.done"].tap()
         let board = app.otherElements["experiment.board"], original = board.value as? String
+        capture(app, "countdown-initial-paused-\(variant)")
+        attachPausedState("initial-paused")
         app.buttons["experiment.pause"].tap()
+        capture(app, "countdown-running-\(variant)")
         app.waitForApproachingShower(timeout: 5.5)
         XCTAssertEqual(board.value as? String,original,"The cue must approach before the shower commits")
-        capture(app,"countdown-approaching-\(calm ? "quiet" : "normal")")
+        capture(app,"countdown-approaching-\(variant)")
         XCTAssertTrue(XCTNSPredicateExpectation(predicate:NSPredicate(format:"value != %@",original!),object:board).wait(timeout:3))
+        capture(app, "countdown-committed-\(variant)")
         // Compact running skies expose pause through the menu, not the guide.
         app.buttons["experiment.settings"].tap()
         XCTAssertTrue(app.buttons["experiment.done"].waitForExistence(timeout: 5))
@@ -26,19 +59,14 @@ final class PacingCueUITests: XCTestCase {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
             !app.buttons["experiment.done"].exists && app.buttons["experiment.pause"].label == "Resume sky"
         }, object: nil).wait(timeout: 5))
+        capture(app, "countdown-paused-after-modal-\(variant)")
+        attachPausedState("paused-after-modal")
     }
 
     @MainActor func testQuietForecastApproachesBeforeTheShower() { countdown(calm:true) }
     @MainActor func testNormalForecastApproachesBeforeTheShower() { countdown(calm:false) }
     @MainActor func testSystemReduceMotionForecastApproachesBeforeTheShower() {
-        let (preferences, motion) = NativeSystemMotionSettings.open()
-        let original = motion.value as? String == "1"
-        NativeSystemMotionSettings.set(true,on:motion); preferences.terminate()
-        addTeardownBlock { @MainActor in
-            let (preferences,motion) = NativeSystemMotionSettings.open()
-            NativeSystemMotionSettings.set(original,on:motion); preferences.terminate()
-        }
-        countdown(calm:false)
+        countdown(calm:false, systemReduced:true)
     }
 
     @MainActor override func setUpWithError() throws {

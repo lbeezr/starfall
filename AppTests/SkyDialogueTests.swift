@@ -907,8 +907,10 @@ final class SkyDialogueTests: XCTestCase {
         XCTAssertFalse(SkyShowerPlacement.usesIsland(hardware: "iPhone17,2", size: .init(width: 956, height: 440), topInset: 0, accessible: false))
     }
 
-    func testEveryForecastStarFinishesOnBothPathsBeforeReset() {
+    func testForecastFollowersFinishBeforeResetForIslandAndHistoricalStraightSampling() {
         for count in 1...5 {
+            // 0.105 is the live island spacing; 16/108 retains historical straight sampling.
+            // Ordinary rendering used 18/108. These assertions cover samples, not painted geometry.
             for spacing in [0.105, 16.0/108] {
                 for index in 0..<count {
                     // Previous fixed-spacing mapping ends at 1-index*spacing: followers never arrive.

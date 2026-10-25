@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 1,
+  "goal": 5,
+  "status": "Prepared source-bound retained exports; independent exact-export review required before merge.",
+  "count": 16,
+  "bytes": 10466937,
+  "environment": "Xcode 27.1/27A9275, SDK 27.1; native iOS 27.0, iPhone 17e 390×844 @3× and actual iPad Pro 13 M5 portrait 1032×1376 @2×.",
+  "limits": "Current Lantern/Seed/tablet and reset Debug observatory Pacing with retained Dusk are separately labeled, as are native PNGs and decoded H264 frames. Guide captures retain actual scroll position. No fresh AX5 phone/native island, quiet Arriving dwell, continuous motion/performance, actual VoiceOver, physical or contrast acceptance follows.",
+  "motionSampling": "/private/tmp/starfall-hud-stack-20261024/motion-05-sampling-plan.json",
+  "items": [
+    {
+      "id": "phone-default__lantern-idle",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-default__lantern-idle.jpg",
+      "exportSHA256": "18fe78e5fd96249b6198f3fab882b727bef743ec4f654b4cd1950755c1cd6151",
+      "exportBytes": 521591,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/DEB8D372-4309-4B57-A6B3-AAAB47842A00.png",
+      "rawSHA256": "e0387fd0cbe3ed6b3b0c3f7277f00fef472962e4cbdef6cbeffd9b25686bf84c",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Current Lantern revision 4, normal effects, paused at 0/150,000. Matched unselected opening against Goal 4; timing head replaces duplicate family miniatures.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-default__lantern-selected-6",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-default__lantern-selected-6.jpg",
+      "exportSHA256": "e224682fe78c8fcb9a0edc5fa16fb792ade159b38194d4795c1040d1082e3c40",
+      "exportBytes": 540159,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-lantern-attachments/C2A8FDC9-B33C-432A-B769-74DCB2CC84C4.png",
+      "rawSHA256": "0f4727be49eb2ae9ea96b44ac41f85b7bcc727ade5980059a95dd83a48df5219",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Current Lantern revision 4, 0/150,000, first forecast star selected in column 6. One underline and one column locator.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-normal__seed-selected-6",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal__seed-selected-6.jpg",
+      "exportSHA256": "a71edf68a70bc7ebc32501dd100a7d411a83cc83347411569af602d90b515df9",
+      "exportBytes": 727756,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-seed-attachments/C5621534-2910-45C8-A38C-71C65D0CCF28.png",
+      "rawSHA256": "002faf0232790c91bb335a67a0a312a109811f0200f044bc1ebe35d5c918a0e2",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Current Seed revision 4, 0/11,000, forecast column 6 selected over bright scenery.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-normal__seed-refreshed",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal__seed-refreshed.jpg",
+      "exportSHA256": "e88d64b0178830fd243764fccb7a57a01d0fb735e63e9fc99fbafbf062378796",
+      "exportBytes": 687642,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-seed-attachments/C6801545-E0C5-4046-BDEC-B69C595864BC.png",
+      "rawSHA256": "735def25fcc6c3373fb72a1ccadd73482c810ed770acb006a746f45fd60cf395",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Current Seed revision 4 after genuine setup and real Next: Amber 3, Violet 7, Violet 6, Rose 1, Mint 2. Old selection retires; the native method asserts IDs 0–4 become 5–9. Complete growth guide is visible.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-normal__approaching",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal__approaching.jpg",
+      "exportSHA256": "4efe7005753c8161ac132a5adad02d488e5520e9fac8ab7ca157da14f4ff6df4",
+      "exportBytes": 534547,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/6ECC2505-DC23-4EFC-A261-D275FB872BF8.png",
+      "rawSHA256": "53ad9ead4bd22d8ab07099f5d301a5b3311005f4565553c978e11503c63fea09",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Reset Debug observatory fixture with retained Dusk, distinct from fresh survival/current Story. Actual approach before commit; current Mint destinations 4/5/6.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-normal__arriving",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal__arriving.jpg",
+      "exportSHA256": "bcca134408144899fb99964793c50ef5a7d36640618b509660593595a9c7aff1",
+      "exportBytes": 540979,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/961A53E1-E481-43EC-B576-8DC75B93FE0D.png",
+      "rawSHA256": "7b9db6e0bd7b58eb2ab9c49a6abe3b2ce0318ef25d77756aae2fce4e93bbebe8",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Reset Debug observatory fixture. Pixels visibly say Arriving columns 4/5/6, with head at the right endpoint. Classification comes from pixels, not the committed attachment name.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-normal__paused-refreshed",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal__paused-refreshed.jpg",
+      "exportSHA256": "daf10f6b9fa76d90ae58bed007a2b56d05dc7b9f98985ea55671b5c2790cef20",
+      "exportBytes": 551995,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-normal-attachments/78276A0E-584C-4A4E-8193-5D54230E6134.png",
+      "rawSHA256": "f8aa7666cb9018dd197e589b0e0e76e02fc3eb48e1e553cede2161db2f596e77",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Reset Debug observatory fixture after real menu Pause. Refreshed Next Comet destinations 2/3 and held head; distinct from Arriving.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-quiet__refreshed-next",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-quiet__refreshed-next.jpg",
+      "exportSHA256": "48831b402942e24df38689d7ed6d0ceaa617a4515737bbea4f949103026f4623",
+      "exportBytes": 542811,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-quiet-attachments/58140907-D587-4B6C-BE25-27CCC6F4B355.png",
+      "rawSHA256": "3c909d0cf4f0abc32646b67412ec81971efce6a106e8a5e44430ff23394005e0",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Legitimate Calm effects on, actual system Reduce Motion off; reset Debug observatory fixture. Pixels already show refreshed Next Comet 2/3 and reset head. No quiet Arriving dwell is claimed.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-system-reduced__approaching",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-system-reduced__approaching.jpg",
+      "exportSHA256": "628c898b5fa0dbdb214013471dc4b2f33a31b7efc834b233acd54c0ee7361f5b",
+      "exportBytes": 534646,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-system-reduced-attachments/AF50D70B-0AB1-45C2-8E8B-832DF21A94AF.png",
+      "rawSHA256": "75affceef0d295a276037833401e1d9a13f567cf2afb5fbe158682527c97136c",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Actual system Reduce Motion on, Calm effects off; reset Debug observatory fixture. Approach precedes commit. The existing native helper verifies and restores the actual system setting.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "tablet-ax5-calm__selected-column-6",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__tablet-ax5-calm__selected-column-6.jpg",
+      "exportSHA256": "e848d7e2184d102c7616ecb6249486007d0aa450a6acffaed1a46d89bd8090d5",
+      "exportBytes": 1064715,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/3884F289-16BF-492C-9B05-5FFC4A7CC009.png",
+      "rawSHA256": "9e7d8ef415a932d1b77883fcf896d44656363f94244dccfe578cd6e26d37f2eb",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        1032.0,
+        1376.0
+      ],
+      "state": "Actual AX5 tablet with Calm enabled through Settings. Current Lantern revision 4 at 0/150,000, exact forecast column 6 selected; matched against Goal 4.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "tablet-ax5-calm__real-15000-chain",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__tablet-ax5-calm__real-15000-chain.jpg",
+      "exportSHA256": "5e1a30f12b57a023e345e90c5eb00c25db4481b9d96774dfa4308687d471cc91",
+      "exportBytes": 994052,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/9D607590-027F-4C49-B928-9464E3B39D45.png",
+      "rawSHA256": "c2a56b0eb49af132509322bafd02a70d2b58f26558d5c708c6d9d4c302cbbf5b",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        1032.0,
+        1376.0
+      ],
+      "state": "Actual AX5 tablet with Calm enabled through Settings. Genuine 15,000-point chain in current Lantern revision 4. The guide continues below its pictured scrolling viewport; this still does not establish complete reader extent.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "tablet-ax5-calm__full-board-opening",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__tablet-ax5-calm__full-board-opening.jpg",
+      "exportSHA256": "761ee0e6ea3a29a60c32f0820e460dccd560c855fd24b53bbc03dbc19e0452f6",
+      "exportBytes": 1116540,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-tablet-attachments/7D1B4315-FB20-47CD-AC41-838F92A83E04.png",
+      "rawSHA256": "dce566eeafbbcc94605a70e95fd7f07612afb34036aeaafde72c730ab25d2861",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "logicalCanvasPoints": [
+        1032.0,
+        1376.0
+      ],
+      "state": "Current Lantern Full Board revision 6 opening: 49 stars, 0/150,000, no trail, forecast, Help or locator. Byte-identical to Goal 4 opening; precedes the mechanically verified 42,000-point refill. Guide continues below its pictured scrolling viewport.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-normal-cycles__paused",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal-cycles__paused.jpg",
+      "exportSHA256": "e197f9b85f9537b353fc43db5ad2550d7ec6f51ed8dd0a8798153439d4aeb66d",
+      "exportBytes": 526805,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-attachments/1F21CD11-4005-4E5A-A13E-AFF3ABF2BA72.png",
+      "rawSHA256": "7c9ac0430cbb7b5bf372808601a415ec39ee115353c40e0189e9d952a61f83f3",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Normal automatic cycles, real menu Pause. Resume sky and current forecast 1/1/1/6/6 are visible. Separate movie samples at actual 44.0967–45.1967 seconds observe the held head and row.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-normal-cycles__resumed-arrival",
+      "kind": "native-screen",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal-cycles__resumed-arrival.jpg",
+      "exportSHA256": "860c1dffbb1aa8c141c81295b0b3939295d5069f2c4e4b4a91c9fc0c4c98f7fb",
+      "exportBytes": 556019,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-05-08aa30c0-cycles-attachments/11FF3FEE-1397-40E1-AFCE-62342A9DE317.png",
+      "rawSHA256": "6469d4b8a4b8a8a9cfca8ec34c07220755fc34f6b347d5e59c24f0c9e2e42a5c",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Normal automatic cycles after real menu Resume. This frame visibly shows Arriving columns 1/1/1/6/6. The native showers counter advances after resume.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Original native XCTest PNG"
+    },
+    {
+      "id": "phone-normal-motion__interior-head",
+      "kind": "native-motion-frame",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-normal-motion__interior-head.jpg",
+      "exportSHA256": "18654abfa2884b51256f4c5a03e69e1513753e9faf996b987dd6788b06a2e99f",
+      "exportBytes": 513406,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-normal-frames/frame-0027.500.png",
+      "rawSHA256": "7dc3b67bd04331442745f0fb1501d7b274ab5718a6c80e14ed1f67c39405502d",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Whole native H264 frame requested at 27.5 seconds, actual 27.483333. Interior head with subordinate glow/dust and unchanged Next 4/5/6. Reset Debug observatory fixture.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Decoded original native H264 frame"
+    },
+    {
+      "id": "phone-quiet-motion__interior-head",
+      "kind": "native-motion-frame",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-05-captures/dev-38edbb845c__phone-quiet-motion__interior-head.jpg",
+      "exportSHA256": "1327d471461ee522b80ed0d9ec1732945f2d5b944d8a02d3130f5c85649cdcf9",
+      "exportBytes": 513274,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/motion-05-quiet-frames/frame-0028.200.png",
+      "rawSHA256": "da8bb7f950ff64e05c059c5789fdb61d39bea63ab586351b848275d9bc5b1b3c",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "logicalCanvasPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Whole native H264 frame requested at 28.2 seconds, actual 28.191667. Quiet interior head/tail and complete Next 4/5/6. Reset Debug observatory fixture; no physical contrast claim.",
+      "compiledCheckpoint": "08aa30c0337cdcc4f67a7d9c68531af4959df5cd",
+      "embeddedBuildID": "dev.38edbb845c",
+      "format": "sips JPEG80, full original dimensions/orientation; no crop, resize or retouch",
+      "sourceEncoding": "Decoded original native H264 frame"
+    }
+  ]
+}
