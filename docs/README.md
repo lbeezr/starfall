@@ -1,6 +1,6 @@
 # Documentation map
 
-Start HUD work with the [official guide](design/hud/README.md) and [ten-goal evidence index](evidence/hud-stack-2026-10-24/README.md), which retain merged goals 1-9, earlier failures and source-bound limits. Goal 10's [terminal result hierarchy](evidence/hud-stack-2026-10-24/README.md#goal-10-native-journey-cohesion) is adopted for the named development slice at `fff03063` / `dev.b088afcf5e`, with individual merge pending. Complete plain/spoken copy, native sizing and existing journey decisions remain authoritative.
+Start HUD work with the [official guide](design/hud/README.md) and [ten-goal evidence index](evidence/hud-stack-2026-10-24/README.md), which retain all ten individually merged goals, earlier failures and source-bound limits. Goal 10's [terminal result hierarchy](evidence/hud-stack-2026-10-24/README.md#goal-10-native-journey-cohesion) is adopted for the named development slice at `fff03063` / `dev.b088afcf5e`, merged in [PR #411](https://github.com/lbeezr/starfall/pull/411) as `2aee7d8b`, completing #391 and parent #381. Complete plain/spoken copy, native sizing and existing journey decisions remain authoritative.
 
 [Optional Last clear reading](evidence/decision-goal-08-last-clear-2026-10-24/README.md) keeps one actual committed clear in session memory, with exact ingredient diagrams, score components, survivors and room/refills. Native phone/tablet journeys preserve rewards, Map/Entry return and exact Replay; result decisions precede optional detail. Cold restore omits unavailable history.
 

@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "status": "MERGED_EXACT_REVIEWED_PUBLISHED_MAIN_TREE_AND_735_INPUTS",
+  "recordedUTC": "2026-10-25T14:03:11.282279+00:00",
+  "pr": {
+    "url": "https://github.com/lbeezr/starfall/pull/411",
+    "number": 411,
+    "merged": true,
+    "head": "deb9fd2ed10eb4b6994b13b67066412d2ee590cd",
+    "merge": "2aee7d8b0dd276aefd1f237d68ab5e92e595cc01",
+    "mergedUTC": "2026-10-25T14:02:19Z"
+  },
+  "acceptedBase": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+  "reviewedLocalHead": "b04f825c24f70c0a3f7651fabffd82128dafc8b2",
+  "publishedHead": "deb9fd2ed10eb4b6994b13b67066412d2ee590cd",
+  "mergedMain": "2aee7d8b0dd276aefd1f237d68ab5e92e595cc01",
+  "reviewedPublishedMainTree": "610f3850513402d6aab78d0fe1a4d437f8dcdec9",
+  "testedSource": "fff03063ddd02ed947e7524a090a599ee20fd063",
+  "runtime": "dev.b088afcf5e",
+  "sourceParity": [
+    {
+      "commit": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "tree": "c9b32fc142126d38f79b5fca25cb3e6c677fe875",
+      "runtimeInputsMatched": 568,
+      "testInputsMatched": 167
+    },
+    {
+      "commit": "b04f825c24f70c0a3f7651fabffd82128dafc8b2",
+      "tree": "610f3850513402d6aab78d0fe1a4d437f8dcdec9",
+      "runtimeInputsMatched": 568,
+      "testInputsMatched": 167
+    },
+    {
+      "commit": "deb9fd2ed10eb4b6994b13b67066412d2ee590cd",
+      "tree": "610f3850513402d6aab78d0fe1a4d437f8dcdec9",
+      "runtimeInputsMatched": 568,
+      "testInputsMatched": 167
+    },
+    {
+      "commit": "2aee7d8b0dd276aefd1f237d68ab5e92e595cc01",
+      "tree": "610f3850513402d6aab78d0fe1a4d437f8dcdec9",
+      "runtimeInputsMatched": 568,
+      "testInputsMatched": 167
+    }
+  ],
+  "workingTreeDifferencesAtProof": [],
+  "runtimeInputCount": 568,
+  "testInputCount": 167,
+  "sourceSnapshot": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-10-candidate-requalified-fff03063.json",
+    "sha256": "a4a5637622f7867a04a344280b6b185378db9e486f551fa7aaed8f777d3c0195",
+    "bytes": 187955
+  },
+  "sourceRecord": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-10.json",
+    "sha256": "2c3876b2e3ab16f2432c71ac2ce91a3d589729df59fe207681288a563e710a2e",
+    "bytes": 7188
+  },
+  "verification": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-10.json",
+    "sha256": "c3dd0bcbbf4367dcee69b7c6198243f40f395be011c1694c13973e0c9213c748",
+    "bytes": 32635
+  },
+  "adoptionBeforeMerge": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-adoption.json",
+    "sha256": "2fb32654904d8486e4ed4815cf9f960c607b4d7a6dc4bfcd5217d68a4ecb8db6",
+    "bytes": 8203
+  },
+  "retainedCaptures": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-10.json",
+    "sha256": "002db82d198321124ff1eda3679f733d013c019f2ffa42f424e59f66aecd1b8e",
+    "bytes": 84254
+  },
+  "sealedProductMetadata": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/sealed-goal10-final-product-metadata/manifest.json",
+    "sha256": "b03b948c3b6fd537eec0493e21c12a5b85fb94876339054f549939d947c08b20",
+    "bytes": 4637
+  },
+  "issue391": {
+    "state": "closed",
+    "stateReason": "completed",
+    "closedUTC": "2026-10-25T14:02:20Z",
+    "title": "[HUD 10/10] Complete native journey cohesion"
+  },
+  "parent381": {
+    "state": "closed",
+    "stateReason": "completed",
+    "closedUTC": "2026-10-25T14:02:20Z",
+    "title": "[HUD stack] Deliver ten compounding HUD and design-system goals"
+  },
+  "earlierLeaves": [
+    {
+      "number": 382,
+      "state": "closed",
+      "stateReason": "completed",
+      "title": "[HUD 1/10] Expanded HUD reading order"
+    },
+    {
+      "number": 383,
+      "state": "closed",
+      "stateReason": "completed",
+      "title": "[HUD 2/10] Coherent instrument typography"
+    },
+    {
+      "number": 384,
+      "state": "closed",
+      "stateReason": "completed",
+      "title": "[HUD 3/10] Readability across every sky"
+    },
+    {
+      "number": 385,
+      "state": "closed",
+      "stateReason": "completed",
+      "title": "[HUD 4/10] One physical language for HUD controls"
+    },
+    {
+      "number": 386,
+      "state": "closed",
+      "stateReason": "completed",
+      "title": "[HUD 5/10] One coherent forecast instrument"
+    },
+    {
+      "number": 387,
+      "state": "closed",
+      "stateReason": "completed",
+      "title": "[HUD 6/10] Specific calm pressure feedback"
+    },
+    {
+      "number": 388,
+      "state": "closed",
+      "stateReason": "completed",
+      "title": "[HUD 7/10] Causal move-to-earned-light attention"
+    },
+    {
+      "number": 389,
+      "state": "closed",
+      "stateReason": "completed",
+      "title": "[HUD 8/10] Consistent optional HUD readers"
+    },
+    {
+      "number": 390,
+      "state": "closed",
+      "stateReason": "completed",
+      "title": "[HUD 9/10] Whole-HUD adaptive layouts"
+    }
+  ],
+  "githubChecks": {
+    "combinedStatus": {
+      "statuses": []
+    },
+    "prWorkflowRuns": {
+      "workflow_runs": []
+    },
+    "claim": "No reported GitHub checks; empty results are not CI PASS. Exact local selected mechanical and independent visual evidence establish this development acceptance."
+  },
+  "projectStatus": "Unavailable: connected GitHub tools expose no Project item/status reader. Issue completion is verified; Project Done is not claimed.",
+  "limits": [
+    "All735 runtime/test inputs match the compiledfff snapshot through reviewed local, published and merged trees. Evidence/documentation differ from the original compiled commit explicitly.",
+    "Historical initial candidate failure and baseline evidence remain unchanged; current fresh7 methods are separate from14 executions across all scopes.",
+    "Actual VoiceOver, physical device/minimum-iOS execution, human recognition and continuous performance remain separate; no phone install.",
+    "This publication record is created after feature merge; a documentation-only follow-up will publish it and update maintained merge-pending prose without App/test changes."
+  ]
+}

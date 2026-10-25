@@ -1,6 +1,6 @@
 # A coherent set of native HUD instruments
 
-**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 merged in [PR #404](https://github.com/lbeezr/starfall/pull/404); goal 4 merged in [PR #405](https://github.com/lbeezr/starfall/pull/405); goal 5 merged in [PR #406](https://github.com/lbeezr/starfall/pull/406); goal 6 merged in [PR #407](https://github.com/lbeezr/starfall/pull/407); goal 7 merged in [PR #408](https://github.com/lbeezr/starfall/pull/408); goal 8 merged in [PR #409](https://github.com/lbeezr/starfall/pull/409) as `6a2acb17`; goal 9 merged in [PR #410](https://github.com/lbeezr/starfall/pull/410) as `0fa65a7a`; goal 10 qualified, merge pending · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
+**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 merged in [PR #404](https://github.com/lbeezr/starfall/pull/404); goal 4 merged in [PR #405](https://github.com/lbeezr/starfall/pull/405); goal 5 merged in [PR #406](https://github.com/lbeezr/starfall/pull/406); goal 6 merged in [PR #407](https://github.com/lbeezr/starfall/pull/407); goal 7 merged in [PR #408](https://github.com/lbeezr/starfall/pull/408); goal 8 merged in [PR #409](https://github.com/lbeezr/starfall/pull/409) as `6a2acb17`; goal 9 merged in [PR #410](https://github.com/lbeezr/starfall/pull/410) as `0fa65a7a`; goal 10 merged in [PR #411](https://github.com/lbeezr/starfall/pull/411) as `2aee7d8b`; all ten goals and parent #381 completed · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
 
 The user authorized [ten ordered HUD refinements](https://github.com/lbeezr/starfall/issues/381), with each goal tested and merged before the next implementation. Each pass retains the previous accepted behavior and corrects its current presentation seam in the normal app. Existing Observatory materials, native controls, rules, saves, replay, clocks and board mapping remain authoritative.
 
@@ -21,7 +21,7 @@ The initial development-adoption verdict below is superseded. Its source identit
 | 7 | Causal move-to-earned-light attention | [#388](https://github.com/lbeezr/starfall/issues/388) | Merged #408 as `c81b59ee`; issue completed |
 | 8 | Consistent optional detail readers | [#389](https://github.com/lbeezr/starfall/issues/389) | Verified and merged [#409](https://github.com/lbeezr/starfall/pull/409) as `6a2acb17`; issue completed |
 | 9 | Whole-HUD adaptive layouts | [#390](https://github.com/lbeezr/starfall/issues/390) | Verified and merged [#410](https://github.com/lbeezr/starfall/pull/410) as `0fa65a7a`; issue completed |
-| 10 | Complete native journey cohesion | [#391](https://github.com/lbeezr/starfall/issues/391) | Native, hosted, sampled-motion and exact-export reviews passed at `fff03063`; individual merge pending |
+| 10 | Complete native journey cohesion | [#391](https://github.com/lbeezr/starfall/issues/391) | Verified and merged [#411](https://github.com/lbeezr/starfall/pull/411) as `2aee7d8b`; issue #391 and parent #381 completed |
 
 ## Goal 1 correction: native and visual acceptance
 
@@ -247,7 +247,7 @@ Historical initial/correction records retain their measured Debug product hashes
 
 ## Goal 10: native journey cohesion
 
-**Status:** Adopted for the named development slice at `fff03063` / `dev.b088afcf5e`; individual PR merge pending. Parent #381 stays open until this verified main merge.
+**Status:** Adopted for the named development slice at `fff03063` / `dev.b088afcf5e`; merged in [PR #411](https://github.com/lbeezr/starfall/pull/411) as `2aee7d8b`. Issue #391 and parent #381 are completed. [Publication proof](publication-10.json) verifies the exact reviewed/published/main tree and all 735 tested inputs. The frozen [premerge adoption](goal-10-adoption.json) resolves the original verification record’s pending final light checks; its integration-pending status is historical after this merge.
 
 `SkyResultSummary` applies existing `instrumentScore` only to one exact complete committed score label in the original native sentence. Reason/coda stay supporting; complete speech, outcome, decisions, surfaces and native scrolling remain. Missing, repeated or embedded partial matches keep the original readable copy. The accepted-Goal9 baseline was legible: this is a hierarchy refinement.
 
