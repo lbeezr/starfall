@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "status": "PASS_BOUNDED_HOSTED_SPECIMENS; native and exact-export acceptance remain separate",
+  "reviewedUTC": "2026-10-25T07:07:41.675430+00:00",
+  "candidate": {
+    "appSource": "88101c1b23491860d985607d9930841d43e5a3b5",
+    "testSource": "88101c1b23491860d985607d9930841d43e5a3b5",
+    "runtime": "dev.3a98dc8e44",
+    "baseMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d"
+  },
+  "baseline": {
+    "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "appCheckpoint": "a985c5dcb161f746618bb35419455783d17ffa38",
+    "compiledTests": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+    "runtime": "dev.e045b9e428",
+    "productProof": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-products.json",
+      "sha256": "c4bba949f9adcbfe36103ee4fb57ef6402acb7ef4b8c46d8e08aa99d7ebff393",
+      "bytes": 1742
+    },
+    "qualification": "Retained accepted Goal7 products; original build products have since been replaced. This is historical specimen comparison, not a new baseline build."
+  },
+  "method": "Direct whole-image inspection of all four exact PNG files using view_image; no crop, resize or image editing. Read the committed production owners and the exact hosted selector. Compare the complete static19,000 explanation and separately the unchanged live control; mechanical passes do not determine this visual verdict.",
+  "mechanics": {
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-88101c1b-summary.json",
+      "sha256": "0600bc74a3deffc846e5e3d1a9f256430d1fc2da5093da8632a0935a98d385c8",
+      "bytes": 741
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-88101c1b-receipt.json",
+      "sha256": "2685e119bf6cd03bfeb58d467656ccae54eb452dc82027a05c788c7824abd3bb",
+      "bytes": 160
+    },
+    "total": 9,
+    "passed": 9,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": []
+  },
+  "specimens": [
+    {
+      "role": "accepted-goal7-static-total",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-attachments/02DB3039-197C-4EE0-B648-96A649C654C0.png",
+        "sha256": "8a726a2db845839394b5221ad273346c5ea4a1b7e78affb402165acc23a065c6",
+        "bytes": 18656
+      },
+      "metadata": {
+        "pixels": [
+          390,
+          168
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-attachments/manifest.json",
+        "sha256": "b2743cd701fb364e66981b1c1430f9583cb45e1ec92c9e15c6d406b8d5cad481",
+        "bytes": 1259
+      },
+      "testIdentifier": "SkyScorePresentationTests/testCompleteStaticReadingGrowsAtLargestTextAndCompactEquationFitsReceipt()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "02DB3039-197C-4EE0-B648-96A649C654C0.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "score-complete-committed-components_0_552DA628-3A34-4623-9F52-E436CEF8C7B5.png",
+        "timestamp": 1792910886.461
+      },
+      "verdict": "Historical comparison: complete phase equations and19,000 whole-clear total; total has the same supporting treatment as adjacent accounting."
+    },
+    {
+      "role": "candidate-static-total",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-88101c1b-attachments/EF112491-20BC-480D-BF2D-7024EB614D52.png",
+        "sha256": "83a675933828c3251fa73bb73d2e96d33de8c2ea194f2919ffd9eede179023e0",
+        "bytes": 19117
+      },
+      "metadata": {
+        "pixels": [
+          390,
+          171
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-88101c1b-attachments/manifest.json",
+        "sha256": "71cd6fdf86ac3ef3b27578b61db2bd069a08d50424bb07f1a42191980b218c01",
+        "bytes": 1259
+      },
+      "testIdentifier": "SkyScorePresentationTests/testCompleteStaticReadingGrowsAtLargestTextAndCompactEquationFitsReceipt()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "EF112491-20BC-480D-BF2D-7024EB614D52.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "score-complete-committed-components_0_B818A7BF-FB5C-46AC-8A49-E5E3ECA45D22.png",
+        "timestamp": 1792911738.508
+      },
+      "verdict": "PASS: complete19,000 total receives a clear serif summary emphasis after both unchanged5,000/14,000 phase equations; no visible clipping, overlap or new surface."
+    },
+    {
+      "role": "accepted-goal7-live-control",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-attachments/CBB43E54-D2E4-429F-9C9E-7D0E3DCB23BD.png",
+        "sha256": "cc39bc52a497ca53f39032abeea16cc116b9e1793e535cb6c3b7f7bf39ff461e",
+        "bytes": 6432
+      },
+      "metadata": {
+        "pixels": [
+          220,
+          72
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-attachments/manifest.json",
+        "sha256": "b2743cd701fb364e66981b1c1430f9583cb45e1ec92c9e15c6d406b8d5cad481",
+        "bytes": 1259
+      },
+      "testIdentifier": "SkyScorePresentationTests/testCompleteStaticReadingGrowsAtLargestTextAndCompactEquationFitsReceipt()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "CBB43E54-D2E4-429F-9C9E-7D0E3DCB23BD.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "score-live-cumulative-components_0_1EDC455E-FF55-4C30-B697-66B6540A311E.png",
+        "timestamp": 1792910886.467
+      },
+      "verdict": "Historical control: complete2CHAIN+19,000 and9,000base+3,000size+7,000chain."
+    },
+    {
+      "role": "candidate-live-control",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-88101c1b-attachments/E4E733E2-76EC-41B2-8AED-257CE010DA1E.png",
+        "sha256": "cc39bc52a497ca53f39032abeea16cc116b9e1793e535cb6c3b7f7bf39ff461e",
+        "bytes": 6432
+      },
+      "metadata": {
+        "pixels": [
+          220,
+          72
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-88101c1b-attachments/manifest.json",
+        "sha256": "71cd6fdf86ac3ef3b27578b61db2bd069a08d50424bb07f1a42191980b218c01",
+        "bytes": 1259
+      },
+      "testIdentifier": "SkyScorePresentationTests/testCompleteStaticReadingGrowsAtLargestTextAndCompactEquationFitsReceipt()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "E4E733E2-76EC-41B2-8AED-257CE010DA1E.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "score-live-cumulative-components_0_87052559-F7FB-4BCD-8B0A-1C3D836EE9A4.png",
+        "timestamp": 1792911738.516
+      },
+      "verdict": "PASS: complete live cumulative label; bytes identical to accepted baseline control."
+    }
+  ],
+  "findings": [
+    "The candidate whole-clear total has the intended official heading/primary-ink hierarchy and remains complete in this default-text isolated static explanation. The two phase equations and their order remain legible.",
+    "The live receipt is the unchanged supporting control: same complete wording and identical PNG hash; no inference about motion follows from its fixed-age rendering."
+  ],
+  "limits": [
+    "These are ImageRenderer specimens from SkyScorePresentationTests, not whole native windows or actual terminal navigation.",
+    "The selected SkyLastClearPresentationTests method checks largest-text sizing and existing reader ownership but emits no page image. It is not visual proof of complete Last clear page reading.",
+    "Default .large text is visually inspected here. Largest-text static sizing was asserted mechanically; no AX5 visual rendering or scroll/extent/hit proof is claimed by these four specimens.",
+    "No native tablet, exact JPEG conversion, continuous motion/performance, actual VoiceOver, physical-device or minimum-iOS acceptance. Native and final export reviews remain pending independently."
+  ]
+}

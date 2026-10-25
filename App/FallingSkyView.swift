@@ -622,7 +622,7 @@ import StarfallCore
             GeometryReader { geometry in
                 ZStack {
                     if showsScenery { scenery(landscape: landscape) }
-                    SpriteView(scene: store.scene, options: [.allowsTransparency])
+                    FallingSkySceneSurface(scene: store.scene)
                         .opacity(boardVisible ? (endingReady ? 0.22 : 1) : 0)
                         .animation(quietMotion ? nil : .easeOut(duration: StarfallTheme.Ceremony.handoffDuration), value: boardVisible)
                         .allowsHitTesting(false).accessibilityHidden(true)

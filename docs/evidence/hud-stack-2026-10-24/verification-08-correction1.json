@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "status": "CORRECTION1_NATIVE_AX_FAILURE; VISUAL_ACCEPTANCE_PENDING; NOT ACCEPTED",
+  "testedCommit": "0ac14e855889c5b771e3024b01693b118e39addd",
+  "runtime": "dev.754c3583e7",
+  "baseMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+  "counts": {
+    "hostedPassed": 10,
+    "hostedFailed": 0,
+    "hostedSkipped": 0,
+    "nativeExecuted": 1,
+    "nativePassed": 0,
+    "nativeFailed": 1,
+    "nativeSkipped": 0,
+    "nativeUnrun": 5,
+    "core": null
+  },
+  "debugBuild": {
+    "label": "build-08-0ac14e85-debug",
+    "command": [
+      "xcodebuild",
+      "-project",
+      "Starfall.xcodeproj",
+      "-scheme",
+      "Starfall",
+      "-configuration",
+      "Debug",
+      "-derivedDataPath",
+      "/private/tmp/starfall-hud-stack-20261024/Integration",
+      "-parallel-testing-enabled",
+      "NO",
+      "-collect-test-diagnostics",
+      "never",
+      "-jobs",
+      "4",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "STARFALL_BUILD_ID=dev.754c3583e7",
+      "-destination",
+      "generic/platform=iOS Simulator",
+      "build-for-testing"
+    ],
+    "exitCode": 0,
+    "stageSeconds": 7.645,
+    "actualLimitSeconds": 180.0,
+    "nominalBoundSeconds": 180,
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/build-08-0ac14e85-debug-receipt.json",
+      "sha256": "9d83d15340dfcd0738e62c5b20ca3d166e2644488a2f3b395f7fef98b8676d57",
+      "bytes": 165
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/build-08-0ac14e85-debug.log",
+      "sha256": "d4dba55e79819614c236f43f8b5a7ba079f0fbc3f691f73daf8c8f3799197ea5",
+      "bytes": 59989
+    },
+    "warnings": [
+      "Metadata extraction skipped, no AppIntents.framework dependency found"
+    ],
+    "productProof": {
+      "configuration": "Debug",
+      "runtime": "dev.754c3583e7",
+      "appPath": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app",
+      "infoSHA256": "0e1f0d817ce7d7c2850b1213e1225277679695280c56761f767b2465905ff003",
+      "catalogueSHA256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+      "catalogueSourcePath": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/App/DialogueScripts/observatory-dialogue.json",
+      "catalogueBytes": 96334
+    },
+    "currentProductAtCollection": {
+      "info": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+        "sha256": "0e1f0d817ce7d7c2850b1213e1225277679695280c56761f767b2465905ff003",
+        "bytes": 1402
+      },
+      "catalogue": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/observatory-dialogue.json",
+        "sha256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+        "bytes": 96334
+      },
+      "embeddedRuntime": "dev.754c3583e7"
+    }
+  },
+  "hosted": {
+    "label": "hosted-08-0ac14e85",
+    "command": [
+      "xcodebuild",
+      "-project",
+      "Starfall.xcodeproj",
+      "-scheme",
+      "Starfall",
+      "-configuration",
+      "Debug",
+      "-derivedDataPath",
+      "/private/tmp/starfall-hud-stack-20261024/Integration",
+      "-parallel-testing-enabled",
+      "NO",
+      "-collect-test-diagnostics",
+      "never",
+      "-jobs",
+      "4",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "STARFALL_BUILD_ID=dev.754c3583e7",
+      "-destination",
+      "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+      "-only-testing:StarfallAppTests/SkyScorePresentationTests/testCompleteStaticReadingGrowsAtLargestTextAndCompactEquationFitsReceipt",
+      "-only-testing:StarfallAppTests/SkyReadingPlayfieldTests/testActualOpenSkySceneAcrossFiveStarsEmptySuspensionAndNextShower",
+      "-only-testing:StarfallAppTests/SkyLastClearPresentationTests/testNativeCaptionsGrowAtLargestTextAndCompletePageKeepsTheExistingReader",
+      "-only-testing:StarfallAppTests/SkyLastClearStoreTests/testWinningCapturePrecedesCallbacksAndReadingCannotChangeCommitOrReviveRetiredArt",
+      "-only-testing:StarfallAppTests/SkyLastClearStoreTests/testSeparateClearsReplaceWholeSnapshotAndNoClearDoesNotBecomeLastAction",
+      "-only-testing:StarfallAppTests/SkyLastClearStoreTests/testGenuineZeroLightReplacesNumericAndBoardRecordWithoutMislabelingLastEarnedGeometry",
+      "-only-testing:StarfallAppTests/SkyLastClearStoreTests/testPausedLiveReadingPreservesDeadlineSaveAndImmutablePriorClearDuringEntryCancellation",
+      "-only-testing:StarfallAppTests/SkyScorePresentationTests/testStoreTerminalCaptureDoesNotWaitOrAlterExactSaveAndColdRestoreOmitsIt",
+      "-only-testing:StarfallAppTests/SkyShowerInspectionTests/testRepeatedInspectionPreservesLiveDeadlineSaveWorldAndActualSeededContinuation",
+      "-only-testing:StarfallAppTests/SkyShowerInspectionTests/testRealBackgroundAndSameOpeningReplayInvalidateSnapshotWithoutReplayingIt",
+      "-resultBundlePath",
+      "/private/tmp/starfall-hud-stack-20261024/hosted-08-0ac14e85.xcresult",
+      "test-without-building"
+    ],
+    "exitCode": 0,
+    "stageSeconds": 6.87,
+    "actualLimitSeconds": 220.0,
+    "nominalBoundSeconds": 220,
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-0ac14e85-receipt.json",
+      "sha256": "fd19993739eed019d7d14fbd5bce7f0726454fd8c4f0c5320703dffa95b4f950",
+      "bytes": 159
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-0ac14e85.log",
+      "sha256": "8942bcf4b46d3cbf9bba155e3335cfbec60d0191ac8659cb29bc2193a77bdeda",
+      "bytes": 9911
+    },
+    "warnings": [],
+    "counts": {
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    },
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-0ac14e85-summary.json",
+      "sha256": "148288054ea43e0401f951a33d58699bb88cfa02f0aacfaa71efd41b7b49b00f",
+      "bytes": 744
+    },
+    "runtimeWarnings": [],
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 10,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "attachmentManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-0ac14e85-attachments/manifest.json",
+      "sha256": "3219220aceee5f2839ec8ec8efe78f3d83f4b9d73e6fbe0d013b1e793adb1d5f",
+      "bytes": 6292
+    },
+    "exportReceipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-0ac14e85-export-receipt.json",
+      "sha256": "115e3466c0c6fbfae84f3fc48c78b2f13387b718dda11d21d35ee19863d009f7",
+      "bytes": 166
+    }
+  },
+  "failedFirstNative": {
+    "label": "native-08-0ac14e85-last-clear-open-sky-phone",
+    "command": [
+      "xcodebuild",
+      "-project",
+      "Starfall.xcodeproj",
+      "-scheme",
+      "Starfall",
+      "-configuration",
+      "Debug",
+      "-derivedDataPath",
+      "/private/tmp/starfall-hud-stack-20261024/Integration",
+      "-parallel-testing-enabled",
+      "NO",
+      "-collect-test-diagnostics",
+      "never",
+      "-jobs",
+      "4",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "STARFALL_BUILD_ID=dev.754c3583e7",
+      "-destination",
+      "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+      "-only-testing:StarfallUITests/LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss",
+      "-resultBundlePath",
+      "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone.xcresult",
+      "test-without-building"
+    ],
+    "exitCode": 65,
+    "stageSeconds": 272.163,
+    "actualLimitSeconds": 480.0,
+    "nominalBoundSeconds": 480,
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone-receipt.json",
+      "sha256": "a748871bf66fedf7dc60b7fcab18526355c1266ede758430dc59d1e577c34964",
+      "bytes": 189
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone.log",
+      "sha256": "5ea4fe7d9b7d402e40aef643356ff03aa232fa305b3608dcd4980bfb04fc54eb",
+      "bytes": 195310
+    },
+    "warnings": [],
+    "counts": {
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0
+    },
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone-summary.json",
+      "sha256": "36d11d81a729914b4bb0cdfe6cba6fef28f0eb2151c1fd761d5ae6aef29c77f9",
+      "bytes": 1799
+    },
+    "runtimeWarnings": [],
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 1,
+        "passedTests": 0,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "attachmentManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone-attachments/manifest.json",
+      "sha256": "be48262b6b27e2d052f2c14762f771ee7becb2579fcefdb372735893d01e15bf",
+      "bytes": 94821
+    },
+    "exportReceipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone-export-receipt.json",
+      "sha256": "0326b50036a87df90b3130af96f808dd075c5778f73f1d6c3bb15109c9791b64",
+      "bytes": 192
+    },
+    "testSeconds": 268.068,
+    "testFailures": [
+      {
+        "failureText": "Failed to get matching snapshot: Find single matching element. Multiple matching elements found for <XCUIElementQuery: 0x113db89b0>.\nSparse tree of matches:\n→Application, pid: 96151, label: 'Starfall'\n  ↳Window (Main)\n    ↳Other\n      ↳Other\n        ↳Other\n          ↳Other\n            ↳Other, identifier: 'sky.header'\n            ⋅ ↳StaticText, identifier: 'experiment.score', label: '5 starlight'\n            ↳ScrollView\n              ↳Other\n                ↳StaticText, identifier: 'experiment.score', label: 'Twinkle. Column 1 had no room for the next star. 5 starlight collected. Ready for another sky?'",
+        "targetName": "StarfallUITests",
+        "testIdentifier": 1,
+        "testIdentifierString": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss",
+        "testName": "testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()"
+      }
+    ],
+    "classification": "Native product accessibility duplication: retained header and terminal result both expose experiment.score. Existing strict single-match assertion failed; no timeout or skip."
+  },
+  "unrun": [
+    {
+      "label": "native-08-0ac14e85-last-clear-silver-phone",
+      "selector": "LastClearRecapInteractionTests/testNormalSilverLastClearChainSeparateActionsAndColdRestore",
+      "status": "UNRUN",
+      "resultCounts": null
+    },
+    {
+      "label": "native-08-0ac14e85-last-clear-full-board-tablet",
+      "selector": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+      "status": "UNRUN",
+      "resultCounts": null
+    },
+    {
+      "label": "native-08-0ac14e85-score-silver-phone",
+      "selector": "ScoreExplanationInteractionTests/testNormalSilverPhaseScoresSeparateActionsAndExactReplay",
+      "status": "UNRUN",
+      "resultCounts": null
+    },
+    {
+      "label": "native-08-0ac14e85-shower-frostfruit-phone",
+      "selector": "ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning",
+      "status": "UNRUN",
+      "resultCounts": null
+    },
+    {
+      "label": "native-08-0ac14e85-shower-calm-tablet",
+      "selector": "ShowerInspectionInteractionTests/testLargestCalmShowerInspectionReadsWithoutCommitAndFullBoardHasNone",
+      "status": "UNRUN",
+      "resultCounts": null
+    },
+    {
+      "label": "build-08-0ac14e85-release",
+      "selector": null,
+      "status": "UNRUN",
+      "resultCounts": null
+    },
+    {
+      "label": "core-08-0ac14e85",
+      "selector": null,
+      "status": "UNRUN",
+      "resultCounts": null
+    }
+  ],
+  "commandManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-08-0ac14e85.json",
+    "sha256": "07c8b1731dcc63e737507c141f51b5f8e5b700a262ace6149c9af8e37cdea01f",
+    "bytes": 15291
+  },
+  "originalManifestStatus": "stopped",
+  "originalManifestStopType": "SystemExit",
+  "originalManifestPreservedUnchanged": true,
+  "sourceSnapshot": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-08-0ac14e85.json",
+    "sha256": "c5a3f65cab9b9f5c9679e4db2898f29831849ce0cf466167e897d4d92b80ea5b",
+    "bytes": 186979
+  },
+  "preEditRevalidation": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/source-preflight-08-correction1-0ac14e85.json",
+    "sha256": "ff43f9609d16b1a851081a2061a23390868d3a21145a1a61a5458a7176774691",
+    "bytes": 196204
+  },
+  "sourceSnapshotTiming": {
+    "preBuildSnapshotPreparedUTC": "2026-10-25T07:47:40.404956+00:00",
+    "runnerStartedUTC": "2026-10-25T07:47:51.426440+00:00",
+    "cleanSourceRevalidatedUTC": "2026-10-25T07:54:25.439769+00:00",
+    "collectorUTC": "2026-10-25T07:55:59.417727+00:00",
+    "qualification": "The immutable clean0ac preflight was sealed before root began subsequent header diagnostic edits. This collector reads only that snapshot and retained evidence; it does not reread or match later App/test working files."
+  },
+  "failureMeaning": {
+    "observed": "At retained-loss read, native hierarchy contains experiment.score twice: sky.header5starlight and the terminal Twinkle loss description. Existing strict native assertion correctly rejects the duplicate.",
+    "responsibleBoundary": "The retained edgeHeader accessibility subtree under ceremony requires source correction. Test expectations and original allowances remain authoritative.",
+    "visual": "Gray-backdrop correction review belongs to separately inspected finalized0ac frames; no visual fix or pre-existing-defect claim is made here."
+  },
+  "initialEvidence": [
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-08-initial.json",
+      "sha256": "95f9a69da9d47413b7cf87897a952c6447e6c5dad49f39c625ee9dfdfdf5eaee",
+      "bytes": 3705
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-08-initial.json",
+      "sha256": "d8f98ec862d7a4fa3b04a4852d77432318131062f16e0eb7923486009640de4a",
+      "bytes": 27806
+    }
+  ],
+  "limits": [
+    "Debug and10hosted passed; only the first native method executed and failed. Other five native methods, Release and Core352 are UNRUN for0ac.",
+    "No six-native,352Core,Release,overall native/visual/export acceptance, adoption or merge claim.",
+    "No controller/build/simulator/export/decoder was run by this collector. Raw receipts, logs and completed exports came from the root-owned runner."
+  ],
+  "collectedUTC": "2026-10-25T07:55:59.417727+00:00"
+}

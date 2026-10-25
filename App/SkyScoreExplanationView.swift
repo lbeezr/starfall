@@ -17,6 +17,8 @@ struct SkyScoreExplanationView: View {
             }
             if explanation.phases.count > 1 {
                 Text(explanation.totalText)
+                    .font(StarfallTheme.Typography.skyHeading)
+                    .foregroundStyle(StarfallTheme.Colors.textPrimary)
                     .accessibilityIdentifier("score.total")
             }
         }

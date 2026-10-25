@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "hud_read_ahead; independent of App implementation",
+  "reviewedUTC": "2026-10-25T07:28:56.573589+00:00",
+  "status": "HOLD_VISIBLE_EARLY_OPEN_SKY_BACKDROP_FAILURE",
+  "verdict": "HOLD for complete source881 Open Sky tranche: three inspected early after-trace/menu frames replace substantial scenery with a flat gray rectangle. Later retained-loss/cold states and promoted exact total fit/readability pass only their named bounded still scopes. No overall Goal8 adoption.",
+  "source": {
+    "checkpoint": "88101c1b23491860d985607d9930841d43e5a3b5",
+    "runtime": "dev.3a98dc8e44",
+    "acceptedBase": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d"
+  },
+  "environment": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "passedTests": 1,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "mechanics": {
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-summary.json",
+      "sha256": "460f88ca119f97d4e2dd48b38715ce4a60774177a836c49be4f38b1ee600e959",
+      "bytes": 741
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-receipt.json",
+      "sha256": "e0998ee707f72382f33ce005d34b0a86dcfff98734b3837a013feba0f7e8ee4d",
+      "bytes": 188
+    },
+    "stageSeconds": 360.542,
+    "result": "Passed",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "scope": "Existing420-second native method; normal system motion helper and appCalmNO; actual historical horizontalFive reset fixture, not fresh campaign/random-supply admission. Mechanical pass remains separate from held visual result."
+  },
+  "attachmentManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/manifest.json",
+    "sha256": "e1746a67c8a50b779eda56da36edeafbb28a5d6a877bc45030fe0863f10d54a3",
+    "bytes": 11013
+  },
+  "testIdentifier": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+  "method": "Viewed each listed original native wholePNG with view_image original-detail; tool preview resized1170x2532 to946x2048. File SHA/bytes/IHDR verified without altering images. No build/controller/export/video decoding performed.",
+  "captures": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/AFFE2B6C-B191-4897-BD2C-C7140856F34F.png",
+      "sha256": "5302866640fa2afaa6b6839f791bd0c402cc412eb62301094182e59eaff3ab8e",
+      "bytes": 1428724,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "pngBitDepth": 8,
+      "pngColorType": 2,
+      "state": "initial after-trace Last clear context",
+      "visualVerdict": "HOLD_BACKDROP",
+      "independentObservation": "Complete Last clear title, intro,OPEN SKY,Clear1 and Return fit; diagram continues below current viewport. Large flat gray rectangle replaces the upper/middle scenic field behind this menu.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "last-clear-phone-manual-exact-five-sky.lastClear_0_39D659E8-F24C-452D-9B09-9CA878F33D16.mode-end",
+      "nativeAttachmentTimestamp": 1792912641.43
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/0CB9DBBD-1FA4-4331-8993-39E065342273.png",
+      "sha256": "def7b694187167959b7233c3ff060eb36943cb58bf8f64831560bea31bbe20c7",
+      "bytes": 1397163,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "pngBitDepth": 8,
+      "pngColorType": 2,
+      "state": "initial after-trace exact passive diagram",
+      "visualVerdict": "HOLD_BACKDROP",
+      "independentObservation": "Full row7 Rose1–5 outline/path and Clear1 fit above pinned Return. Same broad gray backdrop remains behind panel; does not resemble scenery, an authored surface or static drained-gem convention.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "last-clear-phone-manual-exact-five-sky.lastClear.diagram_0_1D4ECCC8-AF85-4498-8BC6-245D248D71C0.1-end",
+      "nativeAttachmentTimestamp": 1792912646.797
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/ECE8EE4D-E540-4F81-8A0A-788E47DBD3E4.png",
+      "sha256": "b74e54e9ebf598e66c48f3023172bfeb3c2403a9a338d887e48e79da33a7621e",
+      "bytes": 1528088,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "pngBitDepth": 8,
+      "pngColorType": 2,
+      "state": "initial after-trace complete exact5-point total",
+      "visualVerdict": "HOLD_BACKDROP_READER_INK_PASS",
+      "independentObservation": "Ingredient row7columns1–5,5stars·5light=5points,refill0,bold5points this clear and Return are complete/readable. Gray field remains above/behind reader; readable total alone does not yield whole-viewport PASS.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "last-clear-phone-manual-exact-five-sky.lastClear_0_78E1CCCC-64E3-4513-A844-A26522D6A0BA.total-end",
+      "nativeAttachmentTimestamp": 1792912657.568
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/80856254-8543-4C14-A11D-AC6B3FA3523D.png",
+      "sha256": "46029b494a7badba374d296d4df3254844d2d7873367fceab9d2ac6324427ec3",
+      "bytes": 2720406,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "pngBitDepth": 8,
+      "pngColorType": 2,
+      "state": "after genuine no-award shower, prior trace retained",
+      "visualVerdict": "PASS_BOUNDED_STILL",
+      "independentObservation": "Continuous painting visible behind reader. Same5point total, ingredients/path,refill0 and complete snapshot room fact visible through final after this clear line; full Return fits. Current live board/score not all visible and not asserted from this still.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "last-clear-phone-no-award-shower-retains-trace-sky.lastClear_0_481D5D54-726E-4197-93DF-36D9A41758F5.total-end",
+      "nativeAttachmentTimestamp": 1792912698.708
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/9CAF93BE-8EAB-4940-ADB3-232DA4C392DC.png",
+      "sha256": "a2d7a4c059f9baa54d7b395eb349961e8bd19f9cf8d695e43c80ca4f6709f755",
+      "bytes": 2445998,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "pngBitDepth": 8,
+      "pngColorType": 2,
+      "state": "after real no-award loss, retained recap context opening",
+      "visualVerdict": "PASS_BOUNDED_STILL",
+      "independentObservation": "Last clear,OPEN SKY,Clear1 and pinned Return readable over continuous darkened scene. Underlying ROUND OVER card partly visible; complete loss paragraph/score hidden by modal. Diagram is at top reading position, its lower row outside viewport.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "last-clear-phone-loss-keeps-prior-trace-sky.lastClear_0_FFA4BFC4-8B6E-4FE7-954B-D25480AE4E94.mode-end",
+      "nativeAttachmentTimestamp": 1792912850.21
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/269E45CE-1541-481F-9F8C-64D10B44B9B0.png",
+      "sha256": "d4df1907386686604c4745b5215c9786d8ae878116089a0940c5031f852b585c",
+      "bytes": 2553557,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "pngBitDepth": 8,
+      "pngColorType": 2,
+      "state": "after real no-award loss, retained recap exact total",
+      "visualVerdict": "PASS_BOUNDED_STILL",
+      "independentObservation": "Exact five Rose bodies and ordered horizontal path, complete ingredients row7columns1–5,5stars·5light=5points,refill0,bold5points this clear and complete Return fit. No5,000 scale. Underlying loss card is only partly visible; this image does not show complete loss score/paragraph.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "last-clear-phone-loss-keeps-prior-trace-sky.lastClear_0_D9A614CE-35FE-419B-BB1E-F1C7E4D394A3.total-end",
+      "nativeAttachmentTimestamp": 1792912866.667
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/207674D8-AB4B-415F-BBE6-4457C883379F.png",
+      "sha256": "adbadf5096c5584ab966bfb79db5f865b03bc6631d060768520925592f5bb3de",
+      "bytes": 2626851,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "pngBitDepth": 8,
+      "pngColorType": 2,
+      "state": "after loss, retained snapshot room/final line",
+      "visualVerdict": "PASS_BOUNDED_STILL",
+      "independentObservation": "Same retained5point total and complete factual5more spaces/columns1–5/0stars after this clear line are readable with Return. Row7 diagram remains visible; upper diagram rows intentionally scrolled above viewport.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "last-clear-phone-loss-keeps-prior-trace-sky.lastClear_0_9AEA4254-54DC-4A08-A731-13BE2C4A11D3.room-end",
+      "nativeAttachmentTimestamp": 1792912870.511
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/1DA7C699-9B5C-4069-A336-2FE7A01CDEF2.png",
+      "sha256": "1f6bf1137dbab87a2f73767c96acad8d39d0f1bf6f2a99ef9e08bdeadaf4ec87",
+      "bytes": 3420070,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "pngBitDepth": 8,
+      "pngColorType": 2,
+      "state": "cold restored loss, no reconstructed recap",
+      "visualVerdict": "PASS_BOUNDED_STILL",
+      "independentObservation": "Continuous scene and complete No room to land/Column1 had no room/5starlight paragraph visible. New sky,Replay this sky,Return to world map,Back to Observatory all fit. No Review last clear action appears in this viewport; semantic absence/cold boundary belongs to native assertions.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "last-clear-phone-cold-loss-no-reconstructed-clear_0_84CD9E75-6080-468E-8B74-204462271A6C.png",
+      "nativeAttachmentTimestamp": 1792912898.605
+    }
+  ],
+  "backdropFailure": {
+    "frames": [
+      "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/AFFE2B6C-B191-4897-BD2C-C7140856F34F.png",
+      "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/0CB9DBBD-1FA4-4331-8993-39E065342273.png",
+      "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/ECE8EE4D-E540-4F81-8A0A-788E47DBD3E4.png"
+    ],
+    "observation": "Large flat gray area spans the full upper/middle board region behind the Last clear modal; continuous painting returns in inspected after-shower/loss states. Cause is unassigned. No attribution to the two typography modifiers, capture-only artifact, live-empty scene or menu lifetime is established.",
+    "quantitativeWitness": {
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/AFFE2B6C-B191-4897-BD2C-C7140856F34F.png",
+      "coordinateConvention": "original1170x2532 PNG, top-left integer coordinates",
+      "pngRepresentation": "IHDR8-bit truecolorRGB type2; no alpha channel, so sampled gray is stored RGB rather than transparent preview background.",
+      "selectedRGB": [
+        {
+          "x": 100,
+          "y": 200,
+          "rgb": [
+            122,
+            122,
+            122
+          ]
+        },
+        {
+          "x": 600,
+          "y": 200,
+          "rgb": [
+            122,
+            122,
+            122
+          ]
+        },
+        {
+          "x": 1000,
+          "y": 200,
+          "rgb": [
+            122,
+            122,
+            122
+          ]
+        },
+        {
+          "x": 100,
+          "y": 400,
+          "rgb": [
+            122,
+            122,
+            122
+          ]
+        },
+        {
+          "x": 600,
+          "y": 400,
+          "rgb": [
+            122,
+            122,
+            122
+          ]
+        },
+        {
+          "x": 1000,
+          "y": 400,
+          "rgb": [
+            122,
+            122,
+            122
+          ]
+        },
+        {
+          "x": 100,
+          "y": 600,
+          "rgb": [
+            122,
+            122,
+            122
+          ]
+        },
+        {
+          "x": 600,
+          "y": 600,
+          "rgb": [
+            122,
+            122,
+            122
+          ]
+        },
+        {
+          "x": 1000,
+          "y": 600,
+          "rgb": [
+            122,
+            122,
+            122
+          ]
+        }
+      ],
+      "method": "Read-only stdlib PNG IDAT zlib/filter reconstruction; no image transform or export; only these9 pixels sampled.",
+      "limits": "No exact whole-region bounding box, contrast ratio, comprehensive pixel survey, root cause or physical display claim."
+    },
+    "nextBoundary": "Root will diagnose the live-empty versus menu-only/rendering boundary after frozen initial stages finish. Preserve failed images and unchanged mechanical gates; correct responsible production boundary and requalify before overall visual/adoption PASS."
+  },
+  "readerFindings": {
+    "hierarchy": "Existing serif heading gives5points this clear a distinct concluding role below complete quieter phase/ingredient facts. It remains exact/unscaled and does not duplicate a single-phase terminal sum.",
+    "surfacesAndControls": "Official nightglass/gold reader, static diagram and native full Return remain complete in inspected total/final-line states. Partial diagrams or prior context at other scroll positions are not text clipping defects.",
+    "meaning": "After no-award shower/loss the recap truthfully refers to prior clear; its0stars after this clear fact is historical, not the current filled loss board. Cold screenshot omits recap UI, while actual absence/snapshot identity is proved by assertions."
+  },
+  "recommendedExport": {
+    "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/269E45CE-1541-481F-9F8C-64D10B44B9B0.png",
+    "rawSHA256": "d4df1907386686604c4745b5215c9786d8ae878116089a0940c5031f852b585c",
+    "suggestedState": "Actual normal-phone historical Open Sky after a genuine no-award loss: Last clear retains earlier exact5star/5light/5point trace and complete Return. Captured reader scroll position hides the full result paragraph/score; underlying ROUND OVER is partial. This is later-state bounded PASS within an overall held881 tranche."
+  },
+  "unreviewedPNGs": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/B9F447CD-0BC4-4892-BE1E-20144DB93006.png",
+      "nativeAttachmentName": "last-clear-phone-loss-keeps-prior-trace-sky.lastClear.score_0_BFD18B9C-1EB5-40A4-94EE-0E48557D8855.1-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/075E1771-9F0E-4F76-8B57-D77ED4BDBD22.png",
+      "nativeAttachmentName": "last-clear-phone-loss-keeps-prior-trace-sky.lastClear.ingredients_0_779ED041-2279-4807-84A8-9EFDB359B416.1-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/AD4ADD0A-6FE7-4D2D-BAFF-DB9878A0AD08.png",
+      "nativeAttachmentName": "last-clear-phone-loss-keeps-prior-trace-sky.lastClear.diagram_0_8AF17AD4-BFAD-4F32-847B-BD85DECF88AD.1-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/E14B1C3E-05E3-4684-93A4-6A9DEFA23344.png",
+      "nativeAttachmentName": "last-clear-phone-loss-keeps-prior-trace-sky.lastClear.phase_0_FF7CC078-4CD1-432F-B293-0D1834225C4F.1-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/D232AFD2-C965-4988-BB09-AC51E9D8DE32.png",
+      "nativeAttachmentName": "last-clear-phone-no-award-shower-retains-trace-sky.lastClear_0_407061EE-2A7A-43FF-8C1E-56E05D740E9B.room-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/2728D5AD-BB2C-4D6B-9AE5-47472E8FAA75.png",
+      "nativeAttachmentName": "last-clear-phone-no-award-shower-retains-trace-sky.lastClear.score_0_85E4AEA9-E4C1-46A2-AA8D-1F7CA81C0386.1-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/2EBF3E16-21A8-460E-8E15-99717A522782.png",
+      "nativeAttachmentName": "last-clear-phone-no-award-shower-retains-trace-sky.lastClear.ingredients_0_D157CE70-2AE8-4DD3-A6CE-FF9CC71AD555.1-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/50C81190-402D-45FC-979E-2F9E0226EA36.png",
+      "nativeAttachmentName": "last-clear-phone-no-award-shower-retains-trace-sky.lastClear.diagram_0_214B903A-058E-4932-8E3D-25D6476F0C52.1-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/145772A1-DAF0-41F7-B4E6-14C41D06275C.png",
+      "nativeAttachmentName": "last-clear-phone-no-award-shower-retains-trace-sky.lastClear.phase_0_4B2BD8DE-1476-4B00-8767-D5509307F29C.1-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/6C1F1FA6-AEEC-4292-AFC4-ADCF060614BF.png",
+      "nativeAttachmentName": "last-clear-phone-no-award-shower-retains-trace-sky.lastClear_0_3AC095B2-D029-4F41-9B19-D0F5179EABC0.mode-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/7C1EA390-5A9A-4AD4-BDF4-E66DAB3D88A9.png",
+      "nativeAttachmentName": "last-clear-phone-manual-exact-five-sky.lastClear_0_B5474F0F-1415-406A-8C20-9BC989E5DBD0.room-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/9307DA0F-2250-4211-A898-B9E3A49D0806.png",
+      "nativeAttachmentName": "last-clear-phone-manual-exact-five-sky.lastClear.score_0_5F19A457-477F-4E52-9991-C71CE863CBA5.1-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/CF3B2415-5059-4112-B7B1-2642F3520A3B.png",
+      "nativeAttachmentName": "last-clear-phone-manual-exact-five-sky.lastClear.ingredients_0_040641E1-F1FD-4B4E-91F7-D9ABE037D95F.1-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/502CC187-C55D-405A-ADB9-F05D02F2C9FF.png",
+      "nativeAttachmentName": "last-clear-phone-manual-exact-five-sky.lastClear.phase_0_CBA58FA7-2BC8-4C05-8931-AE931536AA9B.1-end",
+      "reason": "Not directly inspected; redundant individual reader alignment/ingredient/phase captures excluded from this visual claim."
+    }
+  ],
+  "limits": [
+    "Default text iPhone17e/iOS27.0 Simulator only; no AX5 OpenSky or physical-device evidence.",
+    "This is a whole-viewport HOLD despite successful mechanics/readable totals; later good frames do not erase early gray frames.",
+    "No complete-page/all-scroll-position claim. Complete visible context varies by named capture, and diagram top/room tails may be outside its scroll viewport.",
+    "No continuous motion, exact latency/performance, actual VoiceOver, minimum-iOS or other platform-state claim.",
+    "No matched accepted7 OpenSky baseline exists in this tranche; accepted7 normal Silver and isolated accounting baselines cannot classify this new gray symptom.",
+    "Shower,ScoreExplanation,tablet and final exact-export review remain separate source-bound records; no overall acceptance by this file."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "status": "CORRECTION1_SOURCE_SEALED; failed first native attempt; historical, not accepted",
+  "testedCommit": "0ac14e855889c5b771e3024b01693b118e39addd",
+  "baseMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+  "runtimeInputFingerprint": "dev.754c3583e7",
+  "committedRuntimeInputCount": 567,
+  "committedTestInputCount": 167,
+  "workingTreeBuildDifferencesAtRevalidation": [],
+  "workingTreeTestDifferencesAtRevalidation": [],
+  "sourceSnapshot": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-08-0ac14e85.json",
+    "sha256": "c5a3f65cab9b9f5c9679e4db2898f29831849ce0cf466167e897d4d92b80ea5b",
+    "bytes": 186979
+  },
+  "preEditRevalidation": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/source-preflight-08-correction1-0ac14e85.json",
+    "sha256": "ff43f9609d16b1a851081a2061a23390868d3a21145a1a61a5458a7176774691",
+    "bytes": 196204
+  },
+  "sourceSnapshotTiming": {
+    "preBuildSnapshotPreparedUTC": "2026-10-25T07:47:40.404956+00:00",
+    "runnerStartedUTC": "2026-10-25T07:47:51.426440+00:00",
+    "cleanSourceRevalidatedUTC": "2026-10-25T07:54:25.439769+00:00",
+    "collectorUTC": "2026-10-25T07:55:59.417727+00:00",
+    "qualification": "The immutable clean0ac preflight was sealed before root began subsequent header diagnostic edits. This collector reads only that snapshot and retained evidence; it does not reread or match later App/test working files."
+  },
+  "proof": "All567runtime/167test bytes/Git blobs and canonical runtime match the original prebuild0ac snapshot; no App/test working-tree differences at this timestamp.",
+  "changedAppOwners": [
+    "App/FallingSkyView.swift",
+    "App/SkyLastClearView.swift",
+    "App/SkyScoreExplanationView.swift"
+  ],
+  "changedTestOwners": [
+    "AppTests/SkyReadingPlayfieldTests.swift",
+    "UITests/LastClearRecapInteractionTests.swift"
+  ],
+  "inventory": {
+    "hostedMethods": 819,
+    "developmentPhoneUIMethods": 260,
+    "actualVoiceOverDeferredMethods": 6
+  },
+  "debugProductProof": {
+    "configuration": "Debug",
+    "runtime": "dev.754c3583e7",
+    "appPath": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app",
+    "infoSHA256": "0e1f0d817ce7d7c2850b1213e1225277679695280c56761f767b2465905ff003",
+    "catalogueSHA256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+    "catalogueSourcePath": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/App/DialogueScripts/observatory-dialogue.json",
+    "catalogueBytes": 96334
+  },
+  "releaseStatus": "UNRUN",
+  "frozenSourceReview": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-review-08-final.json",
+    "sha256": "1fec51422b48d253749432e0156ad6818e4d83764e309b0480b576ce8830ec22",
+    "bytes": 8352
+  },
+  "qualification": "source-review-08-final.json describes this0ac source only. It stays frozen; its source-only no-blocker finding did not establish native accessibility or gray-backdrop correction."
+}

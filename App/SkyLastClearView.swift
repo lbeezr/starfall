@@ -51,6 +51,8 @@ import StarfallCore
             }
             SkyMenuRule()
             Text(snapshot.score.totalText)
+                .font(StarfallTheme.Typography.skyHeading)
+                .foregroundStyle(StarfallTheme.Colors.textPrimary)
                 .fixedSize(horizontal: false, vertical: true)
                 .accessibilityIdentifier("sky.lastClear.total")
             if let survivors = SkySurvivorCopy.fact(snapshot.survivorCount) {

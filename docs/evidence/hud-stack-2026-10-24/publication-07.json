@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "goal": 7,
+  "issue": 388,
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/408",
+  "mergeCommit": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+  "mergedAtUTC": "2026-10-25T06:45:08Z",
+  "publishedHead": "0c4d3fafddcd9713d1d4004b1d6a231354c209df",
+  "reviewedLocalCommit": "649451f3e18164d61aecc6ccb2be3a0bd76a4e71",
+  "testedAppCommit": "a985c5dcb161f746618bb35419455783d17ffa38",
+  "testedTestsCommit": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+  "runtimeInputFingerprint": "dev.e045b9e428",
+  "baseMain": "5b783e473d636913f646a95b305315ebcd845888",
+  "reviewedAndPublishedTree": "78820f567e1b1ae6c8c53f9253025b1de20f5c5f",
+  "treeVerification": {
+    "reviewedLocalTree": "78820f567e1b1ae6c8c53f9253025b1de20f5c5f",
+    "publishedHeadTree": "78820f567e1b1ae6c8c53f9253025b1de20f5c5f",
+    "mergedMainTree": "78820f567e1b1ae6c8c53f9253025b1de20f5c5f",
+    "method": "Read-only git rev-parse of all exact commits and zero git diff between reviewed local and published head; fetched main tree equals reviewed tree."
+  },
+  "issueCompletion": {
+    "state": "closed",
+    "stateReason": "completed",
+    "closedAtUTC": "2026-10-25T06:45:10Z",
+    "source": "GitHub fetch_issue after verified merge."
+  },
+  "canonicalProject": {
+    "status": "unavailable",
+    "reason": "No enabled GitHub Project item/status capability; canonical Project Done is not claimed."
+  },
+  "remoteChecks": {
+    "statuses": [],
+    "workflowRuns": [],
+    "claim": "Empty published-head lists do not establish a remote CI pass; acceptance is the recorded local development slice."
+  },
+  "sourceRecord": {
+    "path": "docs/evidence/hud-stack-2026-10-24/source-07.json",
+    "sha256": "e7abfef9aa1175f93ae483947658e7c957cc21e559ea0fb30aeebe00a813b9ac"
+  },
+  "captureIndex": {
+    "path": "docs/evidence/hud-stack-2026-10-24/captures-07.json",
+    "sha256": "c610671b03e0a9ebad3216d96afb6a53f1823d04c48b3a6185128cd250d4d8a6"
+  },
+  "exactExportReview": {
+    "path": "docs/evidence/hud-stack-2026-10-24/visual-review-07-exports.json",
+    "sha256": "98c4a8ebb2811548ae76e7a2102b5a4c746fb148265fef2ef7a3e4ba21c299fd"
+  },
+  "scope": "Only verified Goal7. Three untracked future read-ahead files were excluded. Goal8 activation follows this individual merge. No installation or new runtime validation is implied."
+}

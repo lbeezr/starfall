@@ -514,6 +514,9 @@ final class LastClearRecapInteractionTests: XCTestCase {
         let best = app.staticTexts["sky.mastery.result.best"]
         read(best, capture: "last-clear-tablet-result-best", in: app)
         XCTAssertTrue(best.label.contains("3 of 3 stars from one completed run"))
+        read(element("score.total", in: app),
+             expected: "58,000 points this clear.",
+             capture: "last-clear-tablet-result-whole-clear-total", in: app)
         for id in ["sky.worldMap", "experiment.replay", "experiment.new", "sky.home"] {
             let action = app.buttons[id]
             app.revealSkyControls([action])
@@ -559,12 +562,14 @@ final class LastClearRecapInteractionTests: XCTestCase {
         XCTAssertEqual(app.buttons.matching(NSPredicate(format:
             "identifier BEGINSWITH %@ AND label CONTAINS %@", "experiment.cell.", "Twinkle")).count, 0)
         let afterTrace = try round(in: app)
+        capture("last-clear-phone-empty-live-before-reader", in: app)
         openRecap(fromMenu: true, in: app)
         let traceRoom = "5 more spaces above the stars in columns 1, 2, 3, 4, 5. 0 stars on the board after this clear."
         let trace = readRecap(mode: "OPEN SKY", scores: ["5 stars · 5 light = 5 points."],
             total: "5 points this clear.", room: traceRoom, capture: "last-clear-phone-manual-exact-five", in: app)
         tap("experiment.done", in: app); settled(5, showers: nil, in: app)
         XCTAssertEqual(try round(in: app), afterTrace)
+        capture("last-clear-phone-empty-live-after-reader", in: app)
         XCUIDevice.shared.press(.home); app.activate(); settled(5, showers: nil, in: app)
         XCTAssertEqual(try round(in: app), afterTrace)
         tap("experiment.next", in: app); settled(5, showers: nil, in: app)

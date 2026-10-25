@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "hud_audit",
+  "reviewedUTCDate": "2026-10-25",
+  "verdict": "BOUNDED_PASS",
+  "overallGoalStatus": "HOLD: root and independent OpenSky reviewer observed a gray SpriteView-sized region in other initial881 manual empty-sky reader frames. This Silver-only pass does not resolve that visual failure; no aggregate/adoption executed.",
+  "source": {
+    "checkpoint": "88101c1b23491860d985607d9930841d43e5a3b5",
+    "runtime": "dev.3a98dc8e44",
+    "acceptedBase": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "qualification": "Initial candidate evidence, retained independently of any later diagnosis/correction."
+  },
+  "scope": {
+    "nativeAttachmentsAvailable": 8,
+    "nativeAttachmentsPersonallyViewed": 8,
+    "nativeDistinctImageHashesPersonallyViewed": 5,
+    "device": "iPhone17e",
+    "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "os": "iOS Simulator27.0(24A434)",
+    "scale": 3,
+    "windowPoints": [
+      390,
+      844
+    ],
+    "allEightAttachmentsViewed": true
+  },
+  "mechanicalContext": {
+    "selector": "ScoreExplanationInteractionTests/testNormalSilverPhaseScoresSeparateActionsAndExactReplay()",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "stageElapsedSeconds": 164.354,
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-summary.json",
+      "sha256": "f5b37785026a1c6de463b4194c8776495e4cc66ad17bfb3bdc5884c1f545a10f"
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-receipt.json",
+      "sha256": "f4f04239833c9e4b28b382538981841d6d22b7df107ce6d7083cef31edd389ed"
+    },
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-attachments/manifest.json",
+      "sha256": "8b9cf055204fc439538922caba7f3d5b5ac15e90f5dc7131e10649994e46e466"
+    }
+  },
+  "images": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-attachments/7B663A40-5C10-42E7-A6EB-D350D9352A0F.png",
+      "sha256": "df867d847dfe180bfd974a1040cdd4231539be0211de980da9221dc6d9855d41",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "score-phone-silver-committed-chain_0_208193B8-494F-4280-BC7E-9E7B98986CCE.png",
+      "state": "Committed19k before terminal presentation",
+      "directlyViewedWhole": true,
+      "observation": "Shows19,000/12,000 native score, committed field and normal scenery. This pre-terminal moment is excluded from settled result composition proof."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-attachments/9C2F32B9-D46D-441F-BA7A-31661477623F.png",
+      "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "score-phone-chain-phase-one-five-thousand_0_DBB03071-6322-46F5-9324-AC9504CE5734.png",
+      "state": "First phase read checkpoint",
+      "directlyViewedWhole": true,
+      "observation": "Complete terminal result shows survivor fact, exact5,000 first phase,14,000 second phase and strong serif19,000 whole-clear summary. Complete native actions and Last earned light remain inside the viewport."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-attachments/C42CF6A4-CD2F-48EE-BF1A-983116C23544.png",
+      "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "score-phone-chain-phase-two-fourteen-thousand_0_A63E7F38-1544-47B4-A639-B4AA7FF8E1A0.png",
+      "state": "Second phase read checkpoint",
+      "directlyViewedWhole": true,
+      "observation": "Full terminal accounting is readable. The summary remains distinct from both equations; the existing surface and action hierarchy remain coherent."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-attachments/61C4D170-10BF-4784-8AEE-7DFC981145C4.png",
+      "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "score-phone-chain-whole-clear-total_0_21EBF61C-EF39-4636-8CAA-5F6891F3F4F1.png",
+      "state": "Whole-clear19k read checkpoint",
+      "directlyViewedWhole": true,
+      "observation": "Full19,000 points this clear is a clear serif conclusion with no equation/action overlap or essential ink clipping in this native viewport."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-attachments/EBDD5174-F285-4A8C-904E-41E26AFC33D6.png",
+      "sha256": "e0683d74e1b225f49c2d43ad7988ff9b415646669ef7049dd4baf62373e9f001",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "score-phone-independent-seven-thousand-start_0_21604FEA-1A50-446C-A852-069C1CCDC24B.png",
+      "state": "Independent7k guide start",
+      "directlyViewedWhole": true,
+      "observation": "Native7,000/12,000 score and current ordered forecast remain readable above gameplay. Complete Pip7,000 equation, five-more-spaces fact and Close are visible."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-attachments/65947F32-117D-43A4-8C91-B33A79A811BC.png",
+      "sha256": "e0683d74e1b225f49c2d43ad7988ff9b415646669ef7049dd4baf62373e9f001",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "score-phone-independent-seven-thousand-end_0_9ACFD0DD-0D1E-421D-A8A4-E3112A80BE70.png",
+      "state": "Independent7k guide end",
+      "directlyViewedWhole": true,
+      "observation": "Guide body, exact equation and Close remain complete at the final reading stop. The frame does not establish continuous animation or every underlying board cell."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-attachments/34329F13-7132-46B1-B064-F5DE8E8E0B9B.png",
+      "sha256": "370eaffa6a8e8096d16373e38df3a2d08b983138e8074ffcefaa1ee8d77d8e6e",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "score-phone-independent-final-five-thousand_0_613DBE3B-48C4-4A4F-8C6B-13F3CBE9C56C.png",
+      "state": "Committed12k before independent terminal presentation",
+      "directlyViewedWhole": true,
+      "observation": "Shows12,000/12,000 committed score with gameplay field and scenery before result presentation. Excluded from settled result composition proof."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-attachments/CCF2DDD7-A253-4FBA-B8A9-97839896DB14.png",
+      "sha256": "dd1e7555c9e657864bc4cf3f96471a0610b8afc7f86b7991e7a9c8318ae3dd4b",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "score-phone-latest-independent-clear_0_7379FBFA-93B9-4CD1-B639-8427904E7AEE.png",
+      "state": "Latest independent5k terminal accounting",
+      "directlyViewedWhole": true,
+      "observation": "Whole restored result reports12,000 round completion separately from the latest one-phase5,000 equation. Redundant whole-clear total is absent, as intended for one phase; complete actions and Last earned light remain visible."
+    }
+  ],
+  "findings": [
+    "The exact multi-phase whole-clear total now has the intended existing serif-heading/primary-ink hierarchy; both equations, survivor fact and native result actions remain readable in this complete normal-phone terminal composition.",
+    "The later one-phase result preserves its5,000 equation without adding the conditional multi-phase whole-total line; round12,000 and latest-clear5,000 facts remain distinct.",
+    "The complete7,000 guide and Close remain readable in the two captured reading stops.",
+    "No gray rectangular backing is visible in these eight Silver captures. This is restricted observation, not proof about unviewed OpenSky frames or whether the reported failure is old/new."
+  ],
+  "baselineComparison": {
+    "review": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-baseline.json",
+      "sha256": "6e8aef2822872b540b6e0bbd061f412978544846179b05bba1d627fda3f36c78"
+    },
+    "scope": "Accepted baseline supplies isolated static accounting and native Last clear totals. No matched accepted whole terminal-screen capture was reviewed, so this is a bounded hierarchy comparison rather than a matched terminal before/after assertion.",
+    "observation": "Native candidate terminal summary uses the same official heading role that improved the separately reviewed Last clear total. Hosted static baseline was readable supporting text; live receipt control remains outside this native still review."
+  },
+  "recommendedExportSources": [
+    "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-attachments/61C4D170-10BF-4784-8AEE-7DFC981145C4.png",
+    "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-score-silver-phone-attachments/CCF2DDD7-A253-4FBA-B8A9-97839896DB14.png"
+  ],
+  "limits": [
+    "All eight attached whole PNGs were directly inspected; repeated read checkpoints may share exact image bytes, counted separately as attachments and explicitly deduplicated by hash above.",
+    "Two committed-score gameplay moments precede terminal presentation and do not prove settled terminal layout.",
+    "Normal-text native Silver phone scope only. AX5 tablet, OpenSky and shower readers belong to separately attributed reviewers.",
+    "No actual VoiceOver, physical/minimum-OS, continuous-motion, performance or human-recognition claim.",
+    "The known initial881 OpenSky gray-region failure holds Goal8 overall; this bounded Silver slice does not accept or publish the candidate."
+  ]
+}

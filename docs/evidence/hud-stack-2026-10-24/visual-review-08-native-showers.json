@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "hud_read_ahead; independent source-bound whole-native inspection",
+  "reviewedUTC": "2026-10-25T07:33:48.717880+00:00",
+  "status": "PASS_BOUNDED_INITIAL_FROSTFRUIT_ONLY; tablet incomplete/unreviewed; overall Goal8 remains held",
+  "verdict": "PASS for the12 listed completed initial881 default-phone Frostfruit stills. No new readability, hierarchy, contrast or scenery failure found in this bounded shower slice. This does not override OpenSkyHOLD or incomplete initial native/build/Core packet.",
+  "source": {
+    "checkpoint": "88101c1b23491860d985607d9930841d43e5a3b5",
+    "runtime": "dev.3a98dc8e44",
+    "acceptedBase": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "scope": "Initial typography candidate; no subsequent rendering correction is accepted by this file."
+  },
+  "mechanicalContext": {
+    "testIdentifier": "ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning()",
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-summary.json",
+      "sha256": "e516633301dbdf8a774eda45c346194fc8a4b6fffc171e86852100c4db7aeac1",
+      "bytes": 741
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-receipt.json",
+      "sha256": "a96c722320c83c6b83a827a556faed105ee6b82dc7a28eee15fa41f26251759c",
+      "bytes": 198
+    },
+    "stageSeconds": 168.142,
+    "result": "Passed",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "device": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 1,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "qualification": "Original normal-system-motion300s method; no forced Calm override or test weakening. Native assertions preserve actual source, growth outcome, running automatic arrival and stale withdrawal. Screenshots alone do not establish clock/deadline mechanics."
+  },
+  "attachmentManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/manifest.json",
+    "sha256": "ed263c02790452d1c083aada587c5e686f49b54e5cadb5b86d20e3ef0f5979d8",
+    "bytes": 9224
+  },
+  "reviewMethod": "Direct whole-originalPNG view_image inspection of12selected finalized files; tool display resized1170x2532 to946x2048. Original file hashes/bytes/IHDR dimensions retained below; no crop/resize/retouch/export/decoder/build/controller operation. Did not open any active or failed tablet result.",
+  "findings": {
+    "officialContext": "Existing This announced shower native reader keeps header/footer/scroll owner and Return. Forecast details retain canonical full ordered facts; no Last clear/single-phase total is fabricated here.",
+    "wholeViewport": "Default phone has complete opening5arrival facts in one captured viewport; prepared/running states honestly require scroll for later rows/final line. Pinned title and full Return remain independent from scrolling text. Partial warning/row at a scroll boundary is not a new fit defect.",
+    "liveHUD": "Actual grown and retired-inspection states retain continuous scenic painting, complete exact score/forecast/pressure facts, readable utilities and dominant actual stars. No early OpenSky-style gray rectangle appears in the12inspected Frostfruit frames.",
+    "clockBoundary": "Running warning is visible in0CF. The actual continued-shower/dismissal/save invariants are native assertions, separate from this static visual verdict."
+  },
+  "captures": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/DA6A807F-834B-4372-8881-EB9C2ADFD0DB.png",
+      "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+      "bytes": 1628965,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Opening warning/context, paused",
+      "observation": "Complete announced-shower title, current-source warning, already-paused status, all5ordered arrival names/destinations/details and Return fit. No gray scenery rectangle found.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-opening-warning_0_758B13A4-3DAB-4961-B3DA-1EAAEB30D74B.png",
+      "nativeAttachmentTimestamp": 1792913161.748,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/FFDE2DBE-A820-4931-87D6-E2888671CA51.png",
+      "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+      "bytes": 1628965,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Opening paused-state capture",
+      "observation": "Same complete title/warning/already-paused status and five ordered additions; full Return. Small exposed Frostfruit scenery edge remains coherent.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-opening-paused_0_8F4F4CAB-EB16-46D3-8D65-AE96BF7B42A5.png",
+      "nativeAttachmentTimestamp": 1792913163.787,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/27F68055-7692-4C20-BD61-9D313C3C44F9.png",
+      "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+      "bytes": 1628965,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Opening arrival0 reading",
+      "observation": "All5default-text arrival facts visible together at this captured position; native text, family glyphs and separators remain distinct, no compression or loss of final row.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-opening-arrival-0_0_C44F6D2D-FA26-4C2E-BB66-907EF5C6F0E6.png",
+      "nativeAttachmentTimestamp": 1792913165.846,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/108FE7B1-E326-4463-AC9F-D051A67614AD.png",
+      "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+      "bytes": 1628965,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Opening arrival4 reading",
+      "observation": "Final Rose row3column5 fact complete with Return; same opening source and paused status. No progression/result claim.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-opening-arrival-4_0_B1AD000C-2ED6-4CF2-BACC-169D1E02FC05.png",
+      "nativeAttachmentTimestamp": 1792913174.066,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/B349C66F-5D79-47AE-8581-622590D3BFF9.png",
+      "sha256": "e876c4c19554dd766087a23726dd08fecd0eda6471073d1e533ff66db0fe79e9",
+      "bytes": 1619832,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Opening final pattern summary after native scroll",
+      "observation": "All5arrival facts plus complete No automatic pattern clear in this snapshot final line and Return readable. Prior paused status is partially scrolled above header; deliberate scroll position, not clipped fixed text.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-opening-patterns_0_CDEC97F6-1309-4D6D-ADE2-079D077CD33A.png",
+      "nativeAttachmentTimestamp": 1792913178.34,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/89C4B2D6-0073-437C-B657-33B24E4598DC.png",
+      "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+      "bytes": 1630260,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Prepared source warning/growth context",
+      "observation": "After real zero-award exchange, Amber at row2column1 and Aqua at row2column2 explicitly grow to2light; additions1/4 also visible. Fifth row continues below viewport at this position; full Return remains pinned.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-prepared-warning_0_4002E57B-F94D-4169-AF18-7F82F3B288D1.png",
+      "nativeAttachmentTimestamp": 1792913194.166,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/588B01FE-2890-4E3F-90C2-2B1292384044.png",
+      "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+      "bytes": 1630260,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Prepared arrival0 reading",
+      "observation": "Complete visible growth facts retain point/row/column specificity; later fifth arrival partly below scrolling viewport. Existing authored panel/Return remain readable.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-prepared-arrival-0_0_FBB2FB74-C067-41EF-80DF-D667504AE1E2.png",
+      "nativeAttachmentTimestamp": 1792913198.282,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/13BF1A80-7AE2-4B58-911E-656CE3ABACC4.png",
+      "sha256": "e67978a2131304158b58f1f7c2cd5b564a10c6c9cd6971e7dd771d3792d9c86b",
+      "bytes": 1623390,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Prepared final arrival4 reading after native scroll",
+      "observation": "All5prepared arrival facts visible, including complete final Rose addition. Upper warning partly above viewport; Return complete.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-prepared-arrival-4_0_73EF38B4-9D46-4553-8BF6-F889FC74DBB4.png",
+      "nativeAttachmentTimestamp": 1792913208.476,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/DB2E5542-2101-4A7D-88AD-C4C93ACCD6D3.png",
+      "sha256": "555f02afb1365447771fd829558f941a214bc14dfba28281b0ea685b80dff67a",
+      "bytes": 1627040,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Prepared final pattern summary after native scroll",
+      "observation": "All5ordered prepared arrivals and complete No automatic pattern clear in this snapshot line fit above Return. This is a forecast snapshot, not a committed-clear receipt.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-prepared-patterns_0_AE80A150-A735-47D3-B764-094B88022790.png",
+      "nativeAttachmentTimestamp": 1792913212.673,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/007FE92D-2C35-4FAF-8943-086CA1BEEB4A.png",
+      "sha256": "9d4fff75625e5e7301346aa5f107ddd53c95baa96227c2333904bc5cc9ce2247",
+      "bytes": 4438730,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Actual grown caps after first real shower",
+      "observation": "Actual0/15,000 score, refreshed5forecast destinations, columns1/2 one-space fact and two visibly grown bodies readable. Complete Spark growth paragraph and Close fit; stars dominate field and scene continuous.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-real-grown-caps_0_358AB1D5-2E35-4995-B458-DD59D5042341.png",
+      "nativeAttachmentTimestamp": 1792913234.221,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/0CF285F1-0133-484A-A437-F5EC560E830D.png",
+      "sha256": "c54a65a84129f5221e73526b90ba5cdf4c11b595b9f38250d94cbeeae19db66d",
+      "bytes": 1615701,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Running inspector before automatic arrival",
+      "observation": "Complete source-withdrawal warning and The sky keeps running unless you pause it first status readable. Ordered first4arrival facts complete, fifth partly below viewport; pinned Return visible. A still alone does not prove clock progress.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-running-before-automatic-arrival_0_1CA6133C-8231-46BC-8CDA-3415D0E2C6CA.png",
+      "nativeAttachmentTimestamp": 1792913246.106,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/76838EE0-2128-42D1-8C39-700C232ED930.png",
+      "sha256": "79dfbd9b510ec930b086f5102c3327aa8d5cdbb4b784c16162cf5295686220e4",
+      "bytes": 4751159,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "state": "Automatic arrival retired old inspection, then paused",
+      "observation": "Inspector absent; exact0/15,000, refreshed forecast4/5/3/7/6, columns1/2 full and column6 one-space facts readable. Ceiling/full badges separated from stars, protected Pause and Resume sky/Next shower fit over continuous Frostfruit scene.",
+      "reviewedWholeFrame": true,
+      "nativeAttachmentName": "shower-inspection-phone-automatic-arrival-retired-copy_0_8DE62A8E-A721-45E0-A8BB-BB1B89A42290.png",
+      "nativeAttachmentTimestamp": 1792913257.302,
+      "visualVerdict": "PASS_BOUNDED_NAMED_STILL"
+    }
+  ],
+  "unreviewedPNGs": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/093256F3-561D-4CBE-82BA-A146CE70538B.png",
+      "nativeAttachmentName": "shower-inspection-phone-prepared-arrival-3_0_AE90B7A7-FBDE-4545-8139-ECB9B867E1F2.png",
+      "reason": "Not directly inspected; redundant intermediate row alignment captures excluded."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/15F36158-2623-42D9-ACC4-AEB0E43FF7DE.png",
+      "nativeAttachmentName": "shower-inspection-phone-prepared-arrival-2_0_018224BC-B932-4320-AA40-C0A11CF0A3E7.png",
+      "reason": "Not directly inspected; redundant intermediate row alignment captures excluded."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/815B6FF5-1C56-4CF1-B343-24F5DF64A5A7.png",
+      "nativeAttachmentName": "shower-inspection-phone-prepared-arrival-1_0_01BC0668-F4CC-496C-9317-2538B8C89936.png",
+      "reason": "Not directly inspected; redundant intermediate row alignment captures excluded."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/E4643357-A78B-4FA3-A110-F1D6FAD0FA2B.png",
+      "nativeAttachmentName": "shower-inspection-phone-prepared-paused_0_9E519256-A5AD-4BE4-8D30-8B65B0F7615B.png",
+      "reason": "Not directly inspected; redundant intermediate row alignment captures excluded."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/9D81E00C-4A5D-4761-9217-6086C6A5A6C8.png",
+      "nativeAttachmentName": "shower-inspection-phone-opening-arrival-3_0_75C77854-1FB5-47FD-9F26-C9936D2CFE30.png",
+      "reason": "Not directly inspected; redundant intermediate row alignment captures excluded."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/97E127AF-8D77-4955-8468-BBCF06FE7B1D.png",
+      "nativeAttachmentName": "shower-inspection-phone-opening-arrival-2_0_525B2260-8390-43B8-B605-B4D0BCE334D6.png",
+      "reason": "Not directly inspected; redundant intermediate row alignment captures excluded."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/0186FBC7-DC63-47E8-AA68-F809AB13895D.png",
+      "nativeAttachmentName": "shower-inspection-phone-opening-arrival-1_0_09E3B341-AEF8-4662-973E-92250D936AB4.png",
+      "reason": "Not directly inspected; redundant intermediate row alignment captures excluded."
+    }
+  ],
+  "recommendedExport": {
+    "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-shower-frostfruit-phone-attachments/DB2E5542-2101-4A7D-88AD-C4C93ACCD6D3.png",
+    "state": "Initial881 actual normal phone, prepared Frostfruit announced-shower snapshot after native scroll: complete5ordered growth/addition facts and final no-pattern line with Return. Upper warning/status scrolled above viewport; no whole-page-at-once or actual clock claim."
+  },
+  "tabletBoundary": {
+    "reviewed": false,
+    "status": "INCOMPLETE_SUPERVISOR_TRUNCATION; not a300s method failure/pass",
+    "rootReportedFacts": "Initial final Calm tablet stage externally truncated at old168.915-second supervisor limit, exit124; no tablet PASS. Release/Core not run by initial runner. Failed tablet bundle was not inspected or exported by this reviewer.",
+    "qualification": "This report independently validates only completed Frostfruit files; root-reported truncation is context, not a new tablet visual observation."
+  },
+  "overallGate": "HELD: visual-review-08-native-open-sky.json retains actual gray early backdrop failure; initial native packet incomplete. Passing this phone shower slice grants no adoption or future-goal implementation.",
+  "limits": [
+    "Default-text iPhone17e/iOS27.0 Simulator only; no AX5 tablet shower review or matched before/after typography claim.",
+    "Only12of19finalized PNGs directly inspected; exact tested rows/counts/clock facts remain mechanical evidence.",
+    "No complete-page/all-scroll-position, continuous motion/performance, actual VoiceOver, physical-device, minimum-iOS or global contrast claim.",
+    "No candidate export fidelity verdict; raw files are initial source-bound evidence. All earlier frozen records remain unchanged."
+  ]
+}

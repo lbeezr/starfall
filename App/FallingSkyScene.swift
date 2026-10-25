@@ -1,6 +1,54 @@
 import UIKit
 import SpriteKit
+import SwiftUI
 import StarfallCore
+
+/// Owns only the transparent native presentation surface. The scene retains
+/// committed rendering, size/readiness callbacks and its existing lifetime.
+struct FallingSkySceneSurface: UIViewRepresentable {
+    let scene: FallingSkyScene
+
+    func makeUIView(context: Context) -> Surface {
+        let view = Surface()
+        view.backgroundColor = .clear
+        view.isOpaque = false
+        view.allowsTransparency = true
+        view.ignoresSiblingOrder = false
+        view.shouldCullNonVisibleNodes = false
+        view.preferredFramesPerSecond = 60
+        view.isAccessibilityElement = false
+        view.accessibilityElementsHidden = true
+        view.install(scene)
+        return view
+    }
+
+    func updateUIView(_ view: Surface, context: Context) {
+        view.install(scene)
+    }
+
+    static func dismantleUIView(_ view: Surface, coordinator: ()) {
+        view.releaseScene()
+    }
+
+    final class Surface: SKView {
+        private weak var requestedScene: FallingSkyScene?
+
+        func install(_ scene: FallingSkyScene) {
+            // SwiftUI may update the retiring host after making its replacement.
+            // Its unchanged request must not reclaim the transferred scene.
+            guard requestedScene !== scene else { return }
+            releaseScene()
+            requestedScene = scene
+            if let previous = scene.view, previous !== self { previous.presentScene(nil) }
+            presentScene(scene)
+        }
+
+        func releaseScene() {
+            // An older host must never detach a newer host's scene attachment.
+            if scene?.view === self { presentScene(nil) }
+        }
+    }
+}
 
 /// Only presents committed turns. The view supplies native, full-cell buttons.
 @MainActor final class FallingSkyScene: SKScene, FallingSkyPresenting {

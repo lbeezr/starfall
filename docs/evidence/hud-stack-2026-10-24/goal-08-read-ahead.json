@@ -1,0 +1,59 @@
+{
+  "goal": 8,
+  "status": "ACTIVE after individually verified PR408/main c81b59ee; accepted-product baseline running, no App or test implementation yet.",
+  "issue": {
+    "url": "https://github.com/lbeezr/starfall/issues/389",
+    "title": "[HUD 8/10] Consistent optional HUD readers",
+    "stateAtRead": "open",
+    "dependsOn": "https://github.com/lbeezr/starfall/issues/388",
+    "outcome": "Align shower inspection, score accounting and Last clear reader typography, surfaces, diagrams and Return actions while preserving complete content, native scrolling/dismissal and each reader's clock and snapshot semantics."
+  },
+  "readAgainstHead": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+  "ownersAndPolicies": {
+    "App/SkyPreferences.swift:SkyMenuSurface/SkyMenuPresentation/SkyMenuSection": "Already shared by shower inspection, Last clear and Help: Observatory panel, fixed native header/footer, scrolling body and 48pt Return/Done target. Menu modal/suspension and shower-sheet lifecycle remain separate.",
+    "App/SkyShowerInspection.swift; App/SkyShowerInspectionView.swift; App/FallingSkyView.swift:forecastSource/showerInspectionContent": "Disposable Core evaluation of exact displayed Next: ordered growth/placement/first block/unreached suffix, actual pattern phases, prelude and snapshot/running warnings. Callback revalidates game/generation/ordered forecast/arrival state. Sheet does not enter menu, suspend, pause or hold; stale content withdraws synchronously. Large/page sizing stays; Full Board/Arriving omit it.",
+    "App/SkyLastClearSnapshot.swift; App/SkyLightReceiptSession.swift; App/SkyLastClearView.swift": "Immutable genuine committed clear: exact phase boards/paths, ingredients, accounting, moved survivors, room/refills. Menu/result retain suspension. No-clear actions may retain it; real replacement clears it; cold restore omits it. Passive 112\u2013300pt diagrams retain shared miniature geometry and static historical-gray convention.",
+    "App/SkyScoreExplanation.swift; App/SkyScoreExplanationCopy.swift; App/SkyScoreExplanationView.swift; App/SkyFlowCeremony.swift": "Copied committed components; complete optional terminal accounting follows result decisions. It is not a live HUD modal. Bounded transient receipt equations cannot replace canonical accounting; a no-award loss must not relabel the prior clear.",
+    "App/SkyPreferences.swift:SkyHelpContext/SkyHowToPlay": "Value snapshot of actual selected/current or retained rules. Existing menu owns suspension/navigation/dismissal. Preserve mode-specific controls, recipes, pause/Full Board and restoration facts rather than substituting current new-visit rules.",
+    "App/SkyDialogue.swift; App/SkyDialogueBubble.swift; App/SkyDialogueLibrary.swift": "Brief/reopened/script guide session with native speech scroll and pinned actions. Preserve priority/revision/expiry and complete warnings. Reopening does not stop live showers.",
+    "App/SkyTutorialView.swift:SkyTutorialGuide; App/SkyFullBoardChoicesView.swift": "Sibling learning/readers, not new presentation owners. Practice remains isolated from saved progression; Full Board choices retain immutable visible-board analysis, passive diagrams and equivalent coordinate prose."
+  },
+  "integrationDependency": {
+    "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "contract": "Only accepted main controls this goal. Parallel unpublished work is excluded and is not a dependency. Reuse the existing shared native menu surface and context-owned clock/snapshot lifetimes."
+  },
+  "smallVisibleCandidate": {
+    "sourceObservedGap": "Last clear total inherits body text; terminal accounting total inherits its equations\u2019 supporting face. Help/Last clear phase headings already have explicit hierarchy. Surfaces and Return are already shared.",
+    "firstSlice": "Compare consistent exact whole-action total emphasis in Last clear and terminal accounting with existing official heading/primary-ink roles; keep equations, context and legends quieter. Preserve all text, IDs and phases. Add no card, route, duplicate title or persistent HUD detail.",
+    "sharedContract": "Use existing StarfallTheme and SkyMenuSurface/Section first. Register a narrow shared summary role only if native comparison demonstrates a distinct reusable need. No screen-local substitute or general reader framework.",
+    "decisionBoundary": "This is a source-observed emphasis inconsistency, not a proved visual failure. Reproduce on then-current native captures before implementation. Reject extra fixed header/footer height, hidden early content, shrunk captions or diagram decoration. Do not enlarge every already semibold shower step to imitate Help."
+  },
+  "observableAcceptance": [
+    "Whole phone/relevant tablet default and AX5 screens distinguish context, phases and total; all facts remain native and complete. Return/Back stays reachable with existing48pt targets and fixed-footer ownership.",
+    "Shower reading preserves running deadline/save/world; actual growth/landing/block matches evaluation. Source change/background/replacement withdraws stale reading without pausing/holding. Full Board/Arriving retain absence.",
+    "Last clear/accounting retain phases, overlaps/manual paths, zero-light history, survivors/refills/totals. Reading cannot replay/award. Result decisions precede detail; replacement/cold restore retain existing boundaries.",
+    "Help preserves current/retained rules, canonical detail, warning priority and revision withdrawal. Reading/Close/reopen/pans cannot exchange a star, create a round, grant progression or alter showers. Keep scripts distinct from generated feedback.",
+    "Inspect normal motion and legitimate quiet paths separately; pan over passive diagrams and read the complete final line. Preserve Sunny hit/extent/pan checks: earlier intermittent stalls have no proved product cause. No weakened assertions/retries. Actual VoiceOver, physical comfort/contrast and recognition remain separate."
+  ],
+  "existingProofToRetain": [
+    "SkyShowerInspectionTests: exact-source rejection, repeated columns/blocked suffix/prelude, live deadline/save/continuation; ShowerInspectionInteractionTests normal Frostfruit running-clock and largest Calm/Full Board absence methods.",
+    "SkyLastClearPresentationTests complete-page/AX5 and exact diagram cases; SkyLastClearStoreTests immutable prior-clear/deadline/entry cancellation; LastClearRecapInteractionTests Silver menu/result/cold restore, largest Full Board Replay and Open Sky no-award loss.",
+    "SkyScorePresentationTests.testCompleteStaticReadingGrowsAtLargestTextAndCompactEquationFitsReceipt; SkyScoreGuideTests current/retained/20-phase canonical facts.",
+    "SkyDialogueTests.testSunnyMaximumTextReaderOwnsItsHitRegionAndFullNativeContentExtent plus saved-rule Help/priority/expiry; SkyDialogueInteractionTests active reopen/automatic cycles."
+  ],
+  "performedForThisPlan": "Current accepted-source inspection and baseline execution in progress. No App/test source edit, visual adoption or Goal8 merge yet.",
+  "baseline": {
+    "appCheckpoint": "a985c5dcb161f746618bb35419455783d17ffa38",
+    "compiledTests": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+    "runtime": "dev.e045b9e428",
+    "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "selection": "Two existing hosted methods plus complete normal Silver native Last clear/chain/separate action/restore journey; retained accepted products without rebuild.",
+    "scope": "Native normal phone comparison and isolated default accounting/live control. Existing AX page size assertion is geometry only; no matched full native AX baseline claimed. Candidate needs actual AX5 tablet full-reader and terminal-total proof."
+  },
+  "sharedWindow": {
+    "startUTC": "2026-10-25T06:46:10Z",
+    "endUTC": "2026-10-25T07:31:10Z",
+    "scope": "Exclusive root-owned controllers/builds/exports, only89BCphone/3C37tablet; explicit handback, no extension assumed."
+  },
+  "candidateRefinement": "Two existing total Text nodes adopt existing native serif skyHeading plus primary ink. Body is native.body; supporting is native.subheadline. Single-phase terminal omission, canonical text, identities, ordering, surfaces, Return actions and clock/snapshot policies remain."
+}

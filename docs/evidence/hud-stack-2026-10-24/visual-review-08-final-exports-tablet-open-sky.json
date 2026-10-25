@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "status": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY; four final-source statesPASS and historical initial-grayHOLD faithfully retained",
+  "reviewedUTC": "2026-10-25T08:52:19.558645+00:00",
+  "source": {
+    "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "runtime": "dev.2c4e822ca7",
+    "historicalException": "Row12 belongs to88101c1b/runtime3a98dc8e44 and remains INITIAL_VISUAL_HOLD; it is excluded from final-source accepted states."
+  },
+  "captureIndex": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-08.json",
+    "sha256": "eb2a13191dbe2c74d5e7df9944d529d599968d51c8e263510b5729a771b6b57f",
+    "bytes": 71303
+  },
+  "reviewedIDs": [
+    "07-current-tablet-last-clear-total",
+    "08-current-tablet-terminal-total",
+    "10-corrected-covered-empty-reader",
+    "11-corrected-returned-empty-sky",
+    "12-initial-held-gray-reader"
+  ],
+  "count": 5,
+  "method": "DirectwholePNG then exactwholeJPEG inspection for each of these five rows, plus independent fileSHA256/size/dimensions/EXIF/format and recordedtransform checks. No regeneration or image editing. LossyJPEG80 is visually reviewed for readable facts/composition; no originalRGB ratio is inferred from JPEG.",
+  "reference": {
+    "approvedPlay": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+      "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+      "bytes": 2479182
+    },
+    "qualification": "Approved middlePlay/scenery/material hierarchy; actualAX5 retrospective and result reading are official reader roles with full native typography and scrolling, not pixel replicas of the concept."
+  },
+  "pairs": [
+    {
+      "id": "07-current-tablet-last-clear-total",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-full-board-tablet-attachments/2B5568F3-0308-4DF1-836B-4C72F743121E.png",
+        "sha256": "732eb84c5619fe8f666cd3f0886058d4fda0f87773bfa9d11f7fd3d674853e32",
+        "bytes": 4821619
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/07-current-tablet-last-clear-total.jpg",
+        "sha256": "163208c5901079cd1b6104adea2f62c122dd284d681e5593efaba069f6c249ae",
+        "bytes": 886577
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "mode": "RGB",
+        "srgbIntent": 0,
+        "iccProfileSHA256": null
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "mode": "RGB",
+        "srgbIntent": null,
+        "iccProfileSHA256": null
+      },
+      "rawAndExportViewedDirectly": true,
+      "hashesBytesDimensionsEXIFMatchIndex": true,
+      "wholeFrame": true,
+      "recordedTransform": "sips JPEG80 only; no crop, resize, rotation, flip or retouch",
+      "exportFidelityVerdict": "PASS",
+      "productStateVerdict": "PASS_BOUNDED_CURRENT_STATE",
+      "finding": "PASS: wholeAX5 ordinary Full Board reading preserves complete58,000 per-clear heading, six survivors,22refills/49stars and fixed Return. All text and punctuation remain readable afterJPEG80. Round156,000 is outside this viewport; no practice score.",
+      "captionMatchesObservedState": true,
+      "stateCaption": "Final source 5a0cf195: actual AX5 Calm ordinary Lantern Full Board Last clear at its lower scroll position: complete 58,000 points this clear,6 survivors falling into later patterns,22 refill stars added,49 stars on the board after this clear and Return. Allthreephases were read separately above this viewport; ordinary round, not practice.",
+      "stage": "native-08-5a0cf195-last-clear-full-board-tablet",
+      "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+      "device": {
+        "id": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "name": "Starfall HUD Stack dcf3 Tablet"
+      },
+      "attachmentName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear_0_B8EE2910-C748-4D6A-AC51-465E0F06DB1A.room-end"
+    },
+    {
+      "id": "08-current-tablet-terminal-total",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-full-board-tablet-attachments/EF891C24-A81F-4B44-AE5E-349538510B84.png",
+        "sha256": "15faf308dba895e18d796e95dc56fe3f1b6fc7e2d31dab331fca0235f1bb0861",
+        "bytes": 5782169
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/08-current-tablet-terminal-total.jpg",
+        "sha256": "83621f4f678ab4aecf1eefaa167c02fc0bde2e71212b431706f60a2b597956e7",
+        "bytes": 1040237
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "mode": "RGB",
+        "srgbIntent": 0,
+        "iccProfileSHA256": null
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "mode": "RGB",
+        "srgbIntent": null,
+        "iccProfileSHA256": null
+      },
+      "rawAndExportViewedDirectly": true,
+      "hashesBytesDimensionsEXIFMatchIndex": true,
+      "wholeFrame": true,
+      "recordedTransform": "sips JPEG80 only; no crop, resize, rotation, flip or retouch",
+      "exportFidelityVerdict": "PASS",
+      "productStateVerdict": "PASS_BOUNDED_CURRENT_STATE",
+      "finding": "PASS: all three terminal phase equations17,000/26,000/15,000 and the complete58,000 whole-clear total retain readable type, hierarchy and color. Result actions/156,000 round total are in an earlier scroll viewport, correctly qualified in index.",
+      "captionMatchesObservedState": true,
+      "stateCaption": "Final source 5a0cf195: actual AX5 Calm ordinary Lantern Full Board terminal accounting: complete 17,000+26,000+15,000 phase equations and58,000 points this clear. The 156,000 completed-round score/actions were read separately above this scroll position; ordinary round, not practice.",
+      "stage": "native-08-5a0cf195-last-clear-full-board-tablet",
+      "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+      "device": {
+        "id": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "name": "Starfall HUD Stack dcf3 Tablet"
+      },
+      "attachmentName": "last-clear-tablet-result-whole-clear-total-end_0_0BF58F4E-9BB5-499A-A2C0-EC66DDE4A9CC.png"
+    },
+    {
+      "id": "10-corrected-covered-empty-reader",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-open-sky-phone-attachments/D56334DA-5AA8-40C6-8B41-83D0FC3B82BB.png",
+        "sha256": "f00fbb08e0024767357120d1fb9b5ac0f5bef5afc5bdca19a86adcaa8e045923",
+        "bytes": 2541578
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/10-corrected-covered-empty-reader.jpg",
+        "sha256": "bde1d64ff0c4e9c90df02bf135957b89357b4b5e6e984907142627c57d1972f5",
+        "bytes": 414161
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB",
+        "srgbIntent": 0,
+        "iccProfileSHA256": null
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB",
+        "srgbIntent": null,
+        "iccProfileSHA256": null
+      },
+      "rawAndExportViewedDirectly": true,
+      "hashesBytesDimensionsEXIFMatchIndex": true,
+      "wholeFrame": true,
+      "recordedTransform": "sips JPEG80 only; no crop, resize, rotation, flip or retouch",
+      "exportFidelityVerdict": "PASS",
+      "productStateVerdict": "PASS_BOUNDED_CURRENT_STATE",
+      "finding": "PASS: same covered mode/diagram viewport as historical failure retains continuous painting. Last clear heading, OPEN SKY, diagram labels and Return remain legible, with no gray rectangle or conversion-induced crop. Five-point total is below this viewport.",
+      "captionMatchesObservedState": true,
+      "stateCaption": "Final corrected5a0 actual Open Sky Last clear mode/diagram viewport after a genuine five-star trace. Surrounding empty live scene retains continuous painting; this is the corresponding reader viewport of the preserved initial gray frame. Exact five-point total was read and reviewed separately below this viewport.",
+      "stage": "native-08-5a0cf195-last-clear-open-sky-phone",
+      "testIdentifier": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+      "device": {
+        "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "name": "Starfall HUD Stack dcf3 Phone"
+      },
+      "attachmentName": "last-clear-phone-manual-exact-five-sky.lastClear_0_661700E4-91AD-4929-8322-B160E66BE39C.mode-end"
+    },
+    {
+      "id": "11-corrected-returned-empty-sky",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-open-sky-phone-attachments/FBE23C85-B532-457B-BA2C-E7B9B7AC6607.png",
+        "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+        "bytes": 3260806
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/11-corrected-returned-empty-sky.jpg",
+        "sha256": "08c20a0e11840ee21914ac5adb95d0901a939dc8800cc9ed1bcd7bdce16e71de",
+        "bytes": 444927
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB",
+        "srgbIntent": 0,
+        "iccProfileSHA256": null
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB",
+        "srgbIntent": null,
+        "iccProfileSHA256": null
+      },
+      "rawAndExportViewedDirectly": true,
+      "hashesBytesDimensionsEXIFMatchIndex": true,
+      "wholeFrame": true,
+      "recordedTransform": "sips JPEG80 only; no crop, resize, rotation, flip or retouch",
+      "exportFidelityVerdict": "PASS",
+      "productStateVerdict": "PASS_BOUNDED_CURRENT_STATE",
+      "finding": "PASS: genuinely empty returned live sky retains painting,5score, complete forecast and clear feedback. JPEG80 preserves material/glyph readability and the full view. Actual control re-admission belongs to native result, not this still alone.",
+      "captionMatchesObservedState": true,
+      "stateCaption": "Final corrected5a0 actual return from Last clear to the genuinely empty Open Sky: continuous painting, exact 5 score and complete forecast; original native input re-admission and persisted-round gates passed.",
+      "stage": "native-08-5a0cf195-last-clear-open-sky-phone",
+      "testIdentifier": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+      "device": {
+        "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "name": "Starfall HUD Stack dcf3 Phone"
+      },
+      "attachmentName": "last-clear-phone-empty-live-after-reader_0_C9877418-04D9-422F-AC08-0354D7FA2F23.png"
+    },
+    {
+      "id": "12-initial-held-gray-reader",
+      "kind": "initial-visual-hold-native",
+      "sourceIdentity": {
+        "appSource": "88101c1b23491860d985607d9930841d43e5a3b5",
+        "testSource": "88101c1b23491860d985607d9930841d43e5a3b5",
+        "runtime": "dev.3a98dc8e44",
+        "acceptedMain": null,
+        "status": "INITIAL_VISUAL_HOLD"
+      },
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/AFFE2B6C-B191-4897-BD2C-C7140856F34F.png",
+        "sha256": "5302866640fa2afaa6b6839f791bd0c402cc412eb62301094182e59eaff3ab8e",
+        "bytes": 1428724
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/12-initial-held-gray-reader.jpg",
+        "sha256": "b0fdfd98ac2ede79b21432b10cd2ab9427b121bae52c5f0b514f28ca3f8cea1d",
+        "bytes": 269050
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB",
+        "srgbIntent": 0,
+        "iccProfileSHA256": null
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB",
+        "srgbIntent": null,
+        "iccProfileSHA256": null
+      },
+      "rawAndExportViewedDirectly": true,
+      "hashesBytesDimensionsEXIFMatchIndex": true,
+      "wholeFrame": true,
+      "recordedTransform": "sips JPEG80 only; no crop, resize, rotation, flip or retouch",
+      "exportFidelityVerdict": "PASS",
+      "productStateVerdict": "HISTORICAL_INITIAL_VISUAL_HOLD",
+      "finding": "HISTORICAL_VISUAL_HOLD preserved: flat gray scene-sized rectangle is plainly present in both originalPNG andJPEG. Export faithfully retains the rejected881 state and matching reader viewport; it is never accepted final-source product evidence.",
+      "captionMatchesObservedState": true,
+      "stateCaption": "HISTORICAL INITIAL_VISUAL_HOLD: original 88101c1b Open Sky Last clear mode/diagram viewport after the actual five-star trace replaces the underlying empty scene with a large gray rectangle. Corresponding corrected reader viewport is retained separately; this is preserved failure evidence, never an accepted final screen.",
+      "stage": "native-08-88101c1b-last-clear-open-sky-phone",
+      "testIdentifier": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+      "device": {
+        "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "name": "Starfall HUD Stack dcf3 Phone"
+      },
+      "attachmentName": "last-clear-phone-manual-exact-five-sky.lastClear_0_39D659E8-F24C-452D-9B09-9CA878F33D16.mode-end"
+    }
+  ],
+  "findings": [
+    "All ten exact files match their indexed hashes/bytes. Tablet pairs retain2064\u00d72752 pixels; phone pairs retain1170\u00d72532. All raw and JPEG EXIF orientation tags equal1. No crop/resize/flip/rotation was found.",
+    "No meaningful JPEG80 conversion loss in readability, complete totals, shared glyph identity, gold/cream/dark-blue hierarchy or continuous painting was found. These are visual conversion judgments, not claims of pixel equality or measured contrast ratios.",
+    "The initial gray failure is visibly retained and accurately named; the corresponding final covered mode is clear. Historical mechanical1/0/0 does not turn that gray product state into a visual pass.",
+    "Source/state captions correctly distinguish ordinaryFullBoard frompractice, per-clear58,000 fromround156,000, selected scroll viewport from completepage, and preserved881failure from final5a0evidence."
+  ],
+  "limits": [
+    "Bounded to assignedIDs07,08,10,11,12; the other nine export rows and overall adoption have separate review ownership.",
+    "No latency, continuous-motion/frame-pacing, actualVoiceOver, physical-device or minimum-iOS acceptance is supplied by these static pairs. Supplemental decoded samples remain a separate owner.",
+    "The tablet case does not contain a cold-relaunch; Home/activate and Replay are distinct.",
+    "JPEG80 cannot establish exact sourceRGB measurements. OriginalPNG is authoritative for source pixels."
+  ]
+}

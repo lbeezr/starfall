@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "hud_audit",
+  "reviewedUTC": "2026-10-25T08:27:50.022615+00:00",
+  "verdict": "BOUNDED_PASS",
+  "scopeStatus": "Final-source selected normal-phone Last clear states reviewed; Score, other native shards, motion sampling and exact exports remain separate. No overall adoption.",
+  "source": {
+    "checkpoint": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "runtime": "dev.2c4e822ca7",
+    "acceptedBase": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "prebuildInputs": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-08-5a0cf195.json",
+      "sha256": "836cc6ebfd146393f20bdc453b10bd8d37e7925195017b9459615b41a4edb197"
+    }
+  },
+  "environment": {
+    "architecture": "arm64",
+    "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "deviceName": "Starfall HUD Stack dcf3 Phone",
+    "modelName": "iPhone 17e",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator",
+    "scale": 3,
+    "windowPoints": [
+      390,
+      844
+    ]
+  },
+  "decision": {
+    "outcome": "Existing shared heading/primary-ink treatment gives19k and independent 5k whole-clear totals an unmistakable summary hierarchy. Exact equations, diagrams, context and fixed Return stay readable in the selected whole native viewports. No new surface or visible geometry regression found in this scope.",
+    "baselineComparison": "The accepted normal-phone totals were readable ordinary body text. Current stronger serif totals improve hierarchy; this is not a claim that baseline was unreadable or clipped.",
+    "regressionObserved": null
+  },
+  "reviewScope": {
+    "availableAttachments": 41,
+    "personallyViewedAttachments": 8,
+    "distinctPersonallyViewedImageHashes": 8,
+    "allAvailableAttachmentsReviewed": false,
+    "acceptedBaseline": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-baseline.json",
+      "sha256": "6e8aef2822872b540b6e0bbd061f412978544846179b05bba1d627fda3f36c78"
+    }
+  },
+  "mechanicalContext": {
+    "selector": "LastClearRecapInteractionTests/testNormalSilverLastClearChainSeparateActionsAndColdRestore()",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "stageElapsedSeconds": 375.577,
+    "testElapsedSeconds": 371.184,
+    "processAllowanceSeconds": 600,
+    "methodAllowanceSeconds": 540,
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-receipt.json",
+      "sha256": "cfa7fde6041a7fdb613a2020bdbcba466bce2376c13e9c090c94cb0620c5e7b4"
+    },
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-summary.json",
+      "sha256": "dc020cae472379b2d795f1c37f637c0b191a743531f0c52c17e224a7541d64ea"
+    },
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/manifest.json",
+      "sha256": "f82ec4123bccd9fd7fb96a02a1360bfad05a2d987158f2247095f6fef40d5c71"
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone.log",
+      "sha256": "d8747d00c55fc39ba3ff3c90dba28178334c41b2fc3fa895eefda2f75146f60f"
+    },
+    "distinction": "Original native assertions establish interaction/outcome context; this independent review judges only the eight named PNGs."
+  },
+  "proposedRetainedExports": {
+    "matchedChain 19k": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/C43431C4-AC91-467C-AB7D-452472189AFA.png",
+    "independent 5k": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/7728D693-5135-45F3-833F-90F431DE42B4.png",
+    "wholeWonResultIfScoreCaseOffersNoBetterFrame": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/D5264376-9446-41EE-BF19-66B59230806A.png",
+    "hostedStatic19k": "/private/tmp/starfall-hud-stack-20261024/hosted-08-5a0cf195-attachments/115D232F-6D0E-4AD5-A31A-E6B1905C1F19.png"
+  },
+  "captures": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/E9D201A3-165F-43C2-95FB-4A0A69392246.png",
+      "sha256": "7544811aa0d726debffc8a47457a7cff45e8d0354dba436ddb8a94a2b7221e76",
+      "attachmentName": "last-clear-phone-silver-chain-sky.lastClear_0_E66349C1-E539-47D4-933E-F604264DDBB6.mode-end",
+      "timestamp": 1792916322.754,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "directlyViewedWhole": true,
+      "state": "Chain 19k reader opening",
+      "observation": "Title, introduction, Silver Pools \u00b7 Falling Sky and Clear 1 remain readable; the passive board continues in the clipped scroll body; complete fixed Return.",
+      "matchedAcceptedBaseline": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/B44EFF18-2F0F-430B-BFAD-F74A1AD042A2.png",
+        "sha256": "1afb1b25d3d887fc3ebfbfd8bcd0a6b3e95eaa594323a479b00f4e80f9413e42"
+      }
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/C022F5BB-91FA-49C8-87C0-AC3576F3361E.png",
+      "sha256": "b0b6f9be5e68a3e5cc4cde29f4d466f7221d690d6b14ffe2d8d78742f738736b",
+      "attachmentName": "last-clear-phone-silver-chain-sky.lastClear.score_0_64321B7E-FE47-4737-A0D0-51281F548B57.2-end",
+      "timestamp": 1792916352.222,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "directlyViewedWhole": true,
+      "state": "Phase-two accounting",
+      "observation": "Outlined blue stars and survivor diamond remain recognizable; complete 5-star / 5-light / 14k equation fits. Lower text continues below the scroll viewport.",
+      "matchedAcceptedBaseline": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/5B425F5A-EE7E-4AE2-9C35-1E244A75C83F.png",
+        "sha256": "66278c93f7c8841c293dfdeb8287234419718f6ac4485644c15cb496154e0965"
+      }
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/C43431C4-AC91-467C-AB7D-452472189AFA.png",
+      "sha256": "7980e07a01770923721c57a2960e5aa4e013581c1e358c1c481a4ff5907c774c",
+      "attachmentName": "last-clear-phone-silver-chain-sky.lastClear_0_00EDCDD8-4D0D-4C78-B2D5-442BFCFBE09E.total-end",
+      "timestamp": 1792916356.059,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "directlyViewedWhole": true,
+      "state": "Chain 19k total",
+      "observation": "Full 19,000 points this clear in strong serif summary role; equation and zero-refill fact remain separate; complete Return.",
+      "matchedAcceptedBaseline": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/18F3ECC9-82AB-4972-A2C6-D0D9A96614E6.png",
+        "sha256": "66278c93f7c8841c293dfdeb8287234419718f6ac4485644c15cb496154e0965"
+      }
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/EA21912D-F075-44C0-B80D-4BF410A4503F.png",
+      "sha256": "b53f7fae9d9ec69bbae5dfce86c3e7208f0d5a09e12dcbcd5f0d6a2ee0a7209a",
+      "attachmentName": "last-clear-phone-silver-chain-sky.lastClear_0_B8E6D6AA-D809-499B-AE34-E83433FF53C5.room-end",
+      "timestamp": 1792916363.455,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "directlyViewedWhole": true,
+      "state": "Chain survivor and remaining room",
+      "observation": "Complete 19k summary, one survivor and 15 remaining-star facts remain legible together above Return."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/05C37632-2CA4-469A-9DA2-A520625E341F.png",
+      "sha256": "9c6cd7814f0e0d2b6fcebed6b67321ec22e91a78812ba6f632e0aab153902c75",
+      "attachmentName": "last-clear-phone-entry-back-retains-chain-sky.lastClear_0_EA9F1956-BA98-4C35-843C-59B1FE8085FF.total-end",
+      "timestamp": 1792916428.613,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "directlyViewedWhole": true,
+      "state": "Entry-return retains same chain total",
+      "observation": "Same full 19k summary/phase equation after leaving and reentering context; no missing painting around reader."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/7728D693-5135-45F3-833F-90F431DE42B4.png",
+      "sha256": "665e3ff55416698a22314d8beabf13b9ade21c571abfb114d50c574b6daa9318",
+      "attachmentName": "last-clear-phone-only-latest-independent-five-sky.lastClear_0_73470276-8EF1-4F44-9094-1B2C02986EAF.total-end",
+      "timestamp": 1792916553.381,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "directlyViewedWhole": true,
+      "state": "Latest independent 5k total",
+      "observation": "Whole 5,000 summary fits in one line and separates from the four-star equation/zero refill; readable passive diagram and full Return.",
+      "matchedAcceptedBaseline": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/9D96F800-4C87-472A-87E0-8D1C5435AEDD.png",
+        "sha256": "53332e25f4fc3fe076ab949238854bb4dd45806eea6295beac6437766a37e7c8"
+      }
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/D5264376-9446-41EE-BF19-66B59230806A.png",
+      "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+      "attachmentName": "last-clear-phone-silver-whole-result-end_0_FA1DD064-DFF9-4800-ADA9-813ACA66AEB7.png",
+      "timestamp": 1792916316.802,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "directlyViewedWhole": true,
+      "state": "Complete 19k terminal result",
+      "observation": "Whole restored result and native actions remain readable. Both phase equations and 19k final summary fit in the long result body with painted scenery visible around it."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/1655B239-4366-4FBC-8F3F-4E479E77ED24.png",
+      "sha256": "cee12b2ace31d7e801d07635e1c1f2aaefa61b39b5ed8877770820918d91bd37",
+      "attachmentName": "last-clear-phone-cold-ending-omits-session-recap_0_D0044E17-1CEA-43DC-B459-B6A2811F2D25.png",
+      "timestamp": 1792916594.735,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "directlyViewedWhole": true,
+      "state": "Cold ending without session recap",
+      "observation": "Full 12k restored result and continuation/replay/world actions visible; no reconstructed LastClear recap is shown. Painting remains visible."
+    }
+  ],
+  "limits": [
+    "Only eight of 41 attachments were directly inspected; no claim to the rest.",
+    "These are actual normal-text 390×844 phone native screenshots. No actual AX5 tablet, whole multi-phase terminal 58k, OpenSky empty-modal or other-reader verdict is inherited.",
+    "Scroll diagrams/prose intentionally continue beyond individual viewports. Fixed Return is complete in the named reader frames; not every accounting fact appears simultaneously.",
+    "No continuous-motion, frame pacing/onset, actual VoiceOver, physical-device, minimum-OS or human recognition proof. A separate bounded movie-sample review is planned after all native controllers stop.",
+    "This reviewer ran no build, native controller, exporter or decoder."
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "Independent subagent /root/hud_read_ahead",
+  "status": "PASS_BOUNDED_EXACT_EXPORTS_13_14",
+  "reviewedUTC": "2026-10-25T08:50:09.257Z",
+  "verdict": "Both assigned retained JPEG80 exports pass comparison against their exact whole original PNGs. This record covers only ids13 and14; it does not certify the other12 index rows, overall Goal8 adoption or motion.",
+  "captureIndex": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-08.json",
+    "sha256": "eb2a13191dbe2c74d5e7df9944d529d599968d51c8e263510b5729a771b6b57f",
+    "bytes": 71303
+  },
+  "source": {
+    "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "runtime": "dev.2c4e822ca7"
+  },
+  "originalNativeReview": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-showers.json",
+    "sha256": "1917a027da808213fde2eaae2fc4456d7725baa1f25699077526cfdca8b3b0b2",
+    "bytes": 49130,
+    "status": "PASS_BOUNDED_FINAL_SOURCE_NATIVE_SHOWERS"
+  },
+  "method": {
+    "imageInspection": "Each of the two exact raw PNGs and each of the two retained JPEGs was directly opened with view_image detail original and inspected as a complete native viewport. No crop, resize, retouch, recorder, native controller or decoder was used by this reviewer.",
+    "metadata": "Read-only SHA256 and byte counts plus PNG IHDR/eXIf and JPEG SOF/Exif parsing using Python standard-library struct/hashlib. All4 file hashes/byte counts,4 original dimensions and4 orientation1 values match the index; no metadata is inferred from filename alone.",
+    "references": [
+      "docs/design/interface/observatory-game-ui-concept-2026-10-19.png (approved middle Play, previously inspected)",
+      "docs/design/GAME_UI_SYSTEM.md",
+      "docs/design/UI_PRODUCTION.md",
+      "docs/design/hud/README.md",
+      "Artwork/ObservatoryUI/INTEGRATION.md"
+    ],
+    "role": "These optional reader surfaces use the official protected menu context; they are intentionally distinct from the active-Play board view. Complete native text is evaluated at the actual retained scroll position."
+  },
+  "pairs": [
+    {
+      "id": "13-current-phone-shower-reading",
+      "kind": "candidate-native",
+      "state": "Final source 5a0cf195: actual normal Frostfruit prepared shower-inspection snapshot after a real scroll: all five ordered arrivals, exact Amber/Aqua 2-light growth facts, complete No automatic pattern clear sentence and Return. The current-source warning/paused status is above this viewport, not simultaneously visible; live-clock/stale-source behavior is verified separately.",
+      "stage": "native-08-5a0cf195-shower-frostfruit-phone",
+      "testIdentifier": "ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning()",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/73EDFA49-98B8-4782-8378-CE46C1581489.png",
+        "sha256": "555f02afb1365447771fd829558f941a214bc14dfba28281b0ea685b80dff67a",
+        "bytes": 1627040,
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/13-current-phone-shower-reading.jpg",
+        "sha256": "7fcb580633178e273e3ee6c8346aac68add2163a76c8cda29d5d9df70d314d30",
+        "bytes": 498601,
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "device": {
+        "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "name": "Starfall HUD Stack dcf3 Phone"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/manifest.json",
+          "sha256": "d04722f416e5b8337fb8defa3bed8c6935fd1b207628f518a2b52b2083527356",
+          "bytes": 9222
+        },
+        "testIdentifier": "ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning",
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "73EDFA49-98B8-4782-8378-CE46C1581489.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "shower-inspection-phone-prepared-patterns_0_4C51BDE6-3CD1-4DDD-B787-5673BA67DEED.png",
+          "timestamp": 1792917379.312
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-receipt.json",
+          "sha256": "e0b19e70eea3807812f2c5d0c05e29ca8b6502568d8cbfb6104c6709515144af",
+          "bytes": 185
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-summary.json",
+          "sha256": "bfe3de885fe6c941dd4c1499522e63b1b56c2cc13bb5c41c19f8296617a76cc0",
+          "bytes": 740
+        },
+        "counts": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        },
+        "resultBundlePath": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone.xcresult"
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "metadataVerdict": "PASS_HASH_BYTES_DIMENSIONS_ORIENTATION_MATCH",
+      "result": "PASS",
+      "observedState": "Actual normal/default phone, final prepared inspection scroll position. All five ordered arrival titles/outcomes, Amber and Aqua row2 growth-to2-light facts, complete no-pattern sentence and Return are visible. Warning/paused status is above this viewport.",
+      "exportComparison": "Direct whole-original PNG and exact retained JPEG view_image inspection found the same complete glyphs, row order, arrows, shard identities, heading, dividers, no-pattern sentence and Return. Slight smoothing in fine scenic/panel texture and gold edges is visible at JPEG80; no consequential essential-ink or state loss.",
+      "labelVerdict": "PASS: exact index caption matches the actual prepared state and qualifies the scrolled-away warning. This is not a running-clock or whole-page warning witness."
+    },
+    {
+      "id": "14-current-tablet-shower-reading",
+      "kind": "candidate-native",
+      "state": "Final source 5a0cf195: actual AX5 Calm tablet shower reader at the final prepared-pattern scroll position. Complete fifth Rose row 3, column 5 fact, complete no-automatic-pattern sentence, full Return and wrapped title remain readable. Earlier facts and the current-source warning are above this viewport; this is not an all-five-facts or whole-page still.",
+      "stage": "native-08-5a0cf195-shower-calm-tablet",
+      "testIdentifier": "ShowerInspectionInteractionTests/testLargestCalmShowerInspectionReadsWithoutCommitAndFullBoardHasNone()",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/FDF0CDA2-A5CA-4548-A1C2-AE3AA738946A.png",
+        "sha256": "4eed39aa6c7a46f6225fb06d2f93a1fff544c88f817bcb5b63d715a88ddea653",
+        "bytes": 1172497,
+        "format": "PNG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/14-current-tablet-shower-reading.jpg",
+        "sha256": "d127df4cf4504134da258597abadc7a168a6568fef2f1e2f4d2a91b65d9cd6e0",
+        "bytes": 485991,
+        "format": "JPEG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "device": {
+        "id": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "name": "Starfall HUD Stack dcf3 Tablet"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/manifest.json",
+          "sha256": "40b091a57d8c77b9feb69b5373196581ffecc11b22ac7c089463e8760986d4f8",
+          "bytes": 10611
+        },
+        "testIdentifier": "ShowerInspectionInteractionTests/testLargestCalmShowerInspectionReadsWithoutCommitAndFullBoardHasNone()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/ShowerInspectionInteractionTests/testLargestCalmShowerInspectionReadsWithoutCommitAndFullBoardHasNone",
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "FDF0CDA2-A5CA-4548-A1C2-AE3AA738946A.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "shower-inspection-tablet-prepared-patterns_0_A0750252-FCBA-4665-A7E3-E05F8BDA96CE.png",
+          "timestamp": 1792917597.103
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-receipt.json",
+          "sha256": "2cf407d20278f9091c96986051bb47bfab5303eba0b374cbdefeca133f62c8b1",
+          "bytes": 181
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-summary.json",
+          "sha256": "a4c31c31b8500cb2170b3a6f50d54a149699d0ecce7148b0f7f9eca86f70e74c",
+          "bytes": 752
+        },
+        "counts": {
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0
+        },
+        "resultBundlePath": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet.xcresult"
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "metadataVerdict": "PASS_HASH_BYTES_DIMENSIONS_ORIENTATION_MATCH",
+      "result": "PASS",
+      "observedState": "Actual AX5/Settings-Calm tablet at the final prepared-pattern reader position. Wrapped fixed title, complete fifth Rose row3/column5 fact, complete no-pattern sentence and full Return are visible. Earlier facts/warning are above the viewport; fourth-arrival title is partly at its top edge.",
+      "exportComparison": "Direct whole-original PNG and exact retained JPEG view_image inspection retains the same full fifth fact, sentence, complete wrapped title and Return. The intentional partial fourth title at the scroll top remains the same in both; no new clipping, crop, orientation change or consequential loss of essential ink is introduced by conversion.",
+      "labelVerdict": "PASS: index correctly limits the witness to the fifth/final facts and Return; no all-five-facts or complete-page claim."
+    }
+  ],
+  "duplicateAndLabelCheck": {
+    "assignedRows": 2,
+    "distinctRawHashes": 2,
+    "distinctExportHashes": 2,
+    "result": "No duplicate, missing source, incorrect state, crop or orientation mismatch in the assigned two pairs. The14-row index aggregate and remaining pairs belong to sibling reviewers."
+  },
+  "limits": [
+    "Bounded still/export review only. Native interaction, clock/save/world invariants and genuine pan reachability remain separate original-method mechanics.",
+    "Phone final image shows all five prepared facts; tablet final image shows the complete fifth fact and final sentence. Neither is captioned as simultaneously showing the current-source warning or an entire AX5 page.",
+    "Exposed scenic strips are retained; opaque reader coverage does not prove underlying stars visible or certify the reproduced empty-sky scene boundary.",
+    "No continuous animation/performance, actual VoiceOver, physical-device, minimum-iOS, focus, all-locales or global contrast claim. JPEGs are not quantitative contrast sources.",
+    "The initial881 held gray row and rejected correction histories are outside these two corrected-final-source pairs and remain historical HOLD evidence. This pair PASS does not relabel them or establish the precise original private SpriteView mechanism.",
+    "No overall Goal8 adoption or unseen-file acceptance."
+  ]
+}

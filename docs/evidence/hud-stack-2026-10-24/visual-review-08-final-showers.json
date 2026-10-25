@@ -1,0 +1,782 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "Independent subagent /root/hud_read_ahead",
+  "status": "PASS_BOUNDED_FINAL_SOURCE_NATIVE_SHOWERS",
+  "reviewedUTC": "2026-10-25T08:48:19.263Z",
+  "verdict": "PASS for the two named final-source shower-reader regression scopes and directly inspected whole original rasters. This is neither overall Goal8 adoption nor exact-JPEG acceptance.",
+  "source": {
+    "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "runtime": "dev.2c4e822ca7",
+    "acceptedBase": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "runtimeInputs": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-08-5a0cf195.json",
+      "sha256": "836cc6ebfd146393f20bdc453b10bd8d37e7925195017b9459615b41a4edb197",
+      "bytes": 187018
+    },
+    "sourceRecord": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-08.json",
+      "sha256": "1c45c723156cb33c09a9f6357c4cd7ac810a35cfe371a1c7243c2237be7b47ac",
+      "bytes": 5753
+    },
+    "mechanicalRecord": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-08.json",
+      "sha256": "3703302591d80b15d07aac47224f290747b0bd05071836837d4657b079fa87ed",
+      "bytes": 42433
+    },
+    "qualification": "Fresh completed final5a0 original native attachments. Initial881, rejected0ac and4120 bounded probe images are separate history; none is relabeled as this source."
+  },
+  "method": {
+    "inspection": "Direct original-resolution view_image inspection of30 named full-screen PNG rows, covering all24 distinct raster hashes in the39-PNG supplied pair. No image was cropped, resized, retouched, decoded from video or exported by this reviewer.",
+    "references": [
+      "docs/design/interface/observatory-game-ui-concept-2026-10-19.png (approved middle Play, previously inspected)",
+      "docs/design/GAME_UI_SYSTEM.md",
+      "docs/design/UI_PRODUCTION.md",
+      "docs/design/hud/README.md",
+      "Artwork/ObservatoryUI/INTEGRATION.md"
+    ],
+    "contract": "Official optional reader/menu surfaces may cover the board while open; native full text wraps inside a real scrolling reading viewport with a fixed title and Return. The approved active-Play reference governs the separate visible board/scenery states, not a requirement to show all underlying stars through an opaque reader.",
+    "independence": "Parent supplied finalized source, stage results and raw paths; mechanics were not used as a substitute for judging actual glyphs, surface extent and viewport contents."
+  },
+  "cases": [
+    {
+      "status": "PASS_BOUNDED_WHOLE_ORIGINALS",
+      "selector": "StarfallUITests/ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "scenario": "Actual normal/default-text iPhone17e simulator; system Reduce Motion explicitly off and app Calm off. Explicit current Frostfruit revision8 visit, objective15000, opening and real zero-award prepared exchange, actual shower growth, running inspector and automatic retirement. Current production rules, not historical18-light fixture rules.",
+      "mechanics": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "methodAllowanceSeconds": 300,
+        "processLimitSeconds": 360,
+        "stageElapsedSeconds": 174.03,
+        "exitCode": 0,
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-receipt.json",
+          "sha256": "e0b19e70eea3807812f2c5d0c05e29ca8b6502568d8cbfb6104c6709515144af",
+          "bytes": 185
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-summary.json",
+          "sha256": "bfe3de885fe6c941dd4c1499522e63b1b56c2cc13bb5c41c19f8296617a76cc0",
+          "bytes": 740
+        },
+        "qualification": "Reported completed original method mechanics are separate from this direct static visual verdict; no test, timing allowance or assertion was changed for this review."
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/manifest.json",
+        "sha256": "d04722f416e5b8337fb8defa3bed8c6935fd1b207628f518a2b52b2083527356",
+        "bytes": 9222
+      },
+      "pngRows": 19,
+      "byteUniquePNGs": 8,
+      "directlyViewedPNGRows": 12,
+      "directlyViewedUniqueRasterCount": 8,
+      "reviewedCaptures": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/7E58DC7B-EBB5-42CA-B8E6-F84646A5E1FC.png",
+          "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+          "bytes": 1628965,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-opening-warning_0_2CE9447C-60AA-4387-9BBF-BBBD4F317F14.png",
+          "attachmentTimestampEpoch": 1792917328.301,
+          "state": "Opening warning/context",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete current-source warning, paused status, all five opening arrival facts and full Return fit; scenic edges remain visible."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/003EFAEF-BF0F-4F51-A973-D47BE1921FEE.png",
+          "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+          "bytes": 1628965,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-opening-paused_0_72FFA9F7-26D3-4CAC-A366-211A8D6BB9E5.png",
+          "attachmentTimestampEpoch": 1792917330.429,
+          "state": "Opening paused/context",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete paused state, five ordered arrival facts and Return remain readable."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/AC35627C-035B-4CFC-A75B-BA4B3794D700.png",
+          "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+          "bytes": 1628965,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-opening-arrival-0_0_7DFD6251-73EF-4BCD-B9B3-B68C7D50068A.png",
+          "attachmentTimestampEpoch": 1792917332.489,
+          "state": "Opening arrival0",
+          "wholeOriginalViewed": true,
+          "visualFinding": "All five initial facts fit at this native position, with title and Return; no local glyph loss."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/981A476A-57C6-4287-9B50-2D1AFAD24CCA.png",
+          "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+          "bytes": 1628965,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-opening-arrival-4_0_2C24A463-A871-4716-B629-A189C2A0B896.png",
+          "attachmentTimestampEpoch": 1792917340.594,
+          "state": "Opening arrival4",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Fifth Rose row3/column5 fact complete with preceding ordered facts, full title and Return."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/72857157-42A9-4B2C-AC73-B3A9122A4F46.png",
+          "sha256": "e876c4c19554dd766087a23726dd08fecd0eda6471073d1e533ff66db0fe79e9",
+          "bytes": 1619832,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-opening-patterns_0_6AB401D7-1023-4D8C-A3C7-69A886541860.png",
+          "attachmentTimestampEpoch": 1792917344.852,
+          "state": "Opening no-pattern final after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "All five initial arrival facts and complete No automatic pattern clear in this snapshot plus Return visible. Paused status is partly above the deliberate scroll viewport."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/D7D713F7-A8C3-42D5-A39F-5429E74B142F.png",
+          "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+          "bytes": 1630260,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-prepared-warning_0_6DEDD848-0834-45AA-AD0B-D67CEDCC14C3.png",
+          "attachmentTimestampEpoch": 1792917360.624,
+          "state": "Prepared warning/context",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Current warning/paused status and both Amber/Aqua growth facts readable; fifth arrival continues below the scroll viewport; Return pinned."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/17A257F7-17F8-441A-B365-9801DDFC297C.png",
+          "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+          "bytes": 1630260,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-prepared-arrival-0_0_662086EC-C43B-4F19-84F3-BBB5B908F106.png",
+          "attachmentTimestampEpoch": 1792917364.843,
+          "state": "Prepared arrival0",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete first four prepared facts and both2-light growth facts; fifth title partly beyond viewport at this position. Return and title remain intact."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/B6DCBA7F-8AB0-4446-93C7-ACB1A644949D.png",
+          "sha256": "e67978a2131304158b58f1f7c2cd5b564a10c6c9cd6971e7dd771d3792d9c86b",
+          "bytes": 1623390,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-prepared-arrival-4_0_D889846E-C33D-457F-99A3-4C881C9DCD26.png",
+          "attachmentTimestampEpoch": 1792917375.088,
+          "state": "Prepared arrival4 after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "All five prepared arrival facts complete and full Return; warning tail is intentionally partly scrolled above viewport."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/73EDFA49-98B8-4782-8378-CE46C1581489.png",
+          "sha256": "555f02afb1365447771fd829558f941a214bc14dfba28281b0ea685b80dff67a",
+          "bytes": 1627040,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-prepared-patterns_0_4C51BDE6-3CD1-4DDD-B787-5673BA67DEED.png",
+          "attachmentTimestampEpoch": 1792917379.312,
+          "state": "Prepared no-pattern final after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Strongest whole inspection witness: all five ordered facts, both Amber/Aqua row2 growth-to2 facts, complete no-pattern sentence and full Return. Current warning/paused status is scrolled away."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/6EFC46E7-741B-41E7-9BB2-4A2CD5EB8F70.png",
+          "sha256": "78e3b5ff9284a6d1ccef8a9311716a4fe455fed5b791c49e5c0a479800ba465a",
+          "bytes": 4438613,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-real-grown-caps_0_36F7EDEE-CFD1-4E9B-BDE5-2461DD240B98.png",
+          "attachmentTimestampEpoch": 1792917401.8,
+          "state": "Actual first shower grown caps with Spark guide",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Actual Amber/Aqua grown bodies visible, score0/15000, refreshed3/7/6/1/2 forecast and one-space columns1/2. Complete Spark2-stars-grew explanation and Close fit. Board dominates continuous painting."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/37D33781-52D2-449F-A988-CD45CEAE6820.png",
+          "sha256": "c54a65a84129f5221e73526b90ba5cdf4c11b595b9f38250d94cbeeae19db66d",
+          "bytes": 1615701,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-running-before-automatic-arrival_0_12F9D57A-58D8-4115-A74C-E657F40CB921.png",
+          "attachmentTimestampEpoch": 1792917413.597,
+          "state": "Running inspector before actual automatic arrival",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete source warning and sky-keeps-running status plus first four refreshed facts. Fifth row partly below current viewport; full Return visible. A still alone does not prove deadline progression."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/8CCE379D-652B-4941-9AB4-53E61A8912AB.png",
+          "sha256": "f968c4f0dbdc6e3319bd034ff242577eac8225d365798036bdbb4f43a22f0f40",
+          "bytes": 4750464,
+          "storedWidthPixels": 1170,
+          "storedHeightPixels": 2532,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-phone-automatic-arrival-retired-copy_0_D02E8889-4371-479E-8F6A-3D2245C36F49.png",
+          "attachmentTimestampEpoch": 1792917424.86,
+          "state": "Automatic arrival retires inspector, subsequently paused",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Inspector absent; continuous board, refreshed4/5/3/7/6 forecast, full columns1/2 and one-space column6 facts fit. Numbered ceiling and grown bodies remain distinct; Resume/Next controls visible."
+        }
+      ],
+      "unviewedRows": [
+        {
+          "filename": "08FDCB1C-2D85-467E-B33C-BE6DFA116F42.png",
+          "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+          "reason": "Intermediate/repeated context; exact raster hash aliases a directly viewed frame. No separate direct-view claim for this filename."
+        },
+        {
+          "filename": "769BEDDD-7F6B-4AB4-AC30-2B23584A24AB.png",
+          "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+          "reason": "Intermediate/repeated context; exact raster hash aliases a directly viewed frame. No separate direct-view claim for this filename."
+        },
+        {
+          "filename": "8D0ACB8A-CD3E-42F2-926B-88E690794E2F.png",
+          "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+          "reason": "Intermediate/repeated context; exact raster hash aliases a directly viewed frame. No separate direct-view claim for this filename."
+        },
+        {
+          "filename": "20E34A73-2D97-4306-80A0-D84DACDEBE89.png",
+          "sha256": "ae78598b9ae72cb7bcf9ab6d2426cad21024d667e2c6213a33f6885e33e673b5",
+          "reason": "Intermediate/repeated context; exact raster hash aliases a directly viewed frame. No separate direct-view claim for this filename."
+        },
+        {
+          "filename": "8DBD8871-8494-4371-B8C5-50D65F7FCEAF.png",
+          "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+          "reason": "Intermediate/repeated context; exact raster hash aliases a directly viewed frame. No separate direct-view claim for this filename."
+        },
+        {
+          "filename": "76E40A88-5749-4F35-B31C-AA661282E1A8.png",
+          "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+          "reason": "Intermediate/repeated context; exact raster hash aliases a directly viewed frame. No separate direct-view claim for this filename."
+        },
+        {
+          "filename": "98545B29-315A-43CC-9F20-7EE073589CB4.png",
+          "sha256": "1f2874bb601fd10bf477e5f1fec14a7d65c472d55f5787b4a499bb4b48463305",
+          "reason": "Intermediate/repeated context; exact raster hash aliases a directly viewed frame. No separate direct-view claim for this filename."
+        }
+      ],
+      "identicalRasterAliasGroups": [
+        [
+          "08FDCB1C-2D85-467E-B33C-BE6DFA116F42.png",
+          "769BEDDD-7F6B-4AB4-AC30-2B23584A24AB.png",
+          "8D0ACB8A-CD3E-42F2-926B-88E690794E2F.png",
+          "17A257F7-17F8-441A-B365-9801DDFC297C.png",
+          "20E34A73-2D97-4306-80A0-D84DACDEBE89.png",
+          "D7D713F7-A8C3-42D5-A39F-5429E74B142F.png"
+        ],
+        [
+          "981A476A-57C6-4287-9B50-2D1AFAD24CCA.png",
+          "8DBD8871-8494-4371-B8C5-50D65F7FCEAF.png",
+          "76E40A88-5749-4F35-B31C-AA661282E1A8.png",
+          "98545B29-315A-43CC-9F20-7EE073589CB4.png",
+          "AC35627C-035B-4CFC-A75B-BA4B3794D700.png",
+          "003EFAEF-BF0F-4F51-A973-D47BE1921FEE.png",
+          "7E58DC7B-EBB5-42CA-B8E6-F84646A5E1FC.png"
+        ]
+      ],
+      "aliasQualification": "Attachment names identify test checkpoints, not distinct visual moments. Byte-identical checkpoints are explicitly grouped; no distinct-motion or new-position claim follows."
+    },
+    {
+      "status": "PASS_BOUNDED_WHOLE_ORIGINALS",
+      "selector": "StarfallUITests/ShowerInspectionInteractionTests/testLargestCalmShowerInspectionReadsWithoutCommitAndFullBoardHasNone",
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "modelName": "iPad Pro 13-inch (M5)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "scenario": "Actual iPadPro13-inchM5 simulator, AX5 largest accessibility text. The original method toggles real Settings Calm off-to-on, reads opening/prepared Frostfruit inspection through native pans, then enters Lantern revision6 Full Board and performs one genuine42000 clear before restoring its original Calm preference.",
+      "mechanics": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "methodAllowanceSeconds": 300,
+        "processLimitSeconds": 360,
+        "stageElapsedSeconds": 247.865,
+        "exitCode": 0,
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-receipt.json",
+          "sha256": "2cf407d20278f9091c96986051bb47bfab5303eba0b374cbdefeca133f62c8b1",
+          "bytes": 181
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-summary.json",
+          "sha256": "a4c31c31b8500cb2170b3a6f50d54a149699d0ecce7148b0f7f9eca86f70e74c",
+          "bytes": 752
+        },
+        "qualification": "Reported completed original method mechanics are separate from this direct static visual verdict; no test, timing allowance or assertion was changed for this review."
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/manifest.json",
+        "sha256": "40b091a57d8c77b9feb69b5373196581ffecc11b22ac7c089463e8760986d4f8",
+        "bytes": 10611
+      },
+      "pngRows": 20,
+      "byteUniquePNGs": 16,
+      "directlyViewedPNGRows": 18,
+      "directlyViewedUniqueRasterCount": 16,
+      "reviewedCaptures": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/88CB1B75-EE20-4584-9540-1DD40E633D4C.png",
+          "sha256": "661ea7239f07a0dec065889f42f9dcb8881dbd8dbc426938c2392b1612e481df",
+          "bytes": 5540760,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-actual-calm-on_0_697B5EAE-7955-4DD6-B666-7EAD46645D57.png",
+          "attachmentTimestampEpoch": 1792917501.891,
+          "state": "Actual Settings Calm on before the readers",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete Settings title, Sound/Haptics/Calm labels, checked Calm control and Done fit. Frostfruit painting and actual stars remain visible beside the official panel. Actual off-to-on transition is separately asserted by the native method; this still shows on."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/326906EB-1D58-4EA5-B96F-08E6744B6429.png",
+          "sha256": "a2e8fef97507ddf9a21ad455cbd67255d1c2d04e63d4e60739757a275f382bb5",
+          "bytes": 1186563,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-opening-warning_0_73ACB2F7-2EFE-4CEB-A9BB-13E2CEFA7832.png",
+          "attachmentTimestampEpoch": 1792917511.477,
+          "state": "Opening warning",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete current-source warning, paused status and first Aqua row3/column6 arrival fact fit below the wrapped title. The second arrival begins below the current reader viewport; full Return remains visible."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/1BF6A5F6-30E9-445E-9A17-9ADEA30DF75F.png",
+          "sha256": "a2e8fef97507ddf9a21ad455cbd67255d1c2d04e63d4e60739757a275f382bb5",
+          "bytes": 1186563,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-opening-arrival-0_0_6C204E4C-984B-461D-B8C8-62978E8306B4.png",
+          "attachmentTimestampEpoch": 1792917515.513,
+          "state": "Opening arrival0",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete first Aqua row3/column6 fact, current warning/paused status and full Return are readable. The following title is partly below the viewport."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/2EAD7D54-695B-4CC6-AAD2-8863EA7A7416.png",
+          "sha256": "ede780b8bf43b0b772741aa7a5927a98652da48aa46b9fbf45bfca5e4d36f4ce",
+          "bytes": 1178434,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-opening-arrival-1_0_A71D2C96-2BB4-4CBA-ADAA-7A8F6CBF3475.png",
+          "attachmentTimestampEpoch": 1792917521.521,
+          "state": "Opening arrival1 after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete first Aqua row3/column6 and second Amber row1/column1 facts; the paused-status tail is partly above the viewport. Full title and Return remain readable."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/DE5D4BE1-083C-4751-90FE-3D4AD13F42EE.png",
+          "sha256": "c59e43178d5fcb047f504f9a29a6c68d0a855757f83d43d0fc98a9229769a839",
+          "bytes": 1180354,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-opening-arrival-2_0_1E491E97-4440-4F43-9A0A-E9DB65AE1C28.png",
+          "attachmentTimestampEpoch": 1792917528.061,
+          "state": "Opening arrival2 after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete second Amber row1/column1 and third Aqua row1/column2 facts. The preceding fact's tail is intentionally at the top scroll edge. Full Return remains visible."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/A8FAB533-7541-40FE-8FA4-E56B90F34EDC.png",
+          "sha256": "1d7b92dd21febcedc9645b3e9913a2826be804f5a3099e8da5d4c4654e80d3fc",
+          "bytes": 1184019,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-opening-arrival-3_0_FD0A7777-A17F-40C0-9163-3A6A8FAD8AC4.png",
+          "attachmentTimestampEpoch": 1792917534.587,
+          "state": "Opening arrival3 after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete third Aqua row1/column2 and fourth Mint row4/column4 facts fit at full native size, with full Return. Earlier content is above this viewport."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/C1B2F2B5-63A4-415C-86FF-0CB18E9904A7.png",
+          "sha256": "b8382f88d44556bf7b0438db077f512edb271298e25506df276354be00247bff",
+          "bytes": 1169658,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-opening-arrival-4_0_CF749103-104D-45E1-8A46-DD4BB9ED748E.png",
+          "attachmentTimestampEpoch": 1792917542.556,
+          "state": "Opening arrival4 after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete fourth Mint row4/column4 and fifth Rose row3/column5 facts, wrapped fixed title and full Return. The following no-pattern statement begins beyond the lower content edge and is read in the next checkpoint."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/287FABBE-4CD8-4DA9-AF15-92A75DC01C42.png",
+          "sha256": "8f972f4ac8244852a68f07781052efacc964c9a6b55057a2f120df040630ba60",
+          "bytes": 1171272,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-opening-patterns_0_69BFB46D-31E3-48E5-AD98-6C1FE4600B56.png",
+          "attachmentTimestampEpoch": 1792917546.857,
+          "state": "Opening no-pattern final after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete fifth Rose row3/column5 fact and No automatic pattern clear in this snapshot sentence fit above full Return. Fourth-arrival title is partly scrolled above; this is a final reading position, not the whole page."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/5EDB6D53-ADF8-4E64-92DE-601843C04005.png",
+          "sha256": "0b0294ae1d8aad4f12d24e58234e99f846e88e249540d00ac899dfcaf312d7c5",
+          "bytes": 1186504,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-prepared-warning_0_CBA79C9A-ECE0-4BD4-B560-57CBA2728E39.png",
+          "attachmentTimestampEpoch": 1792917562.524,
+          "state": "Prepared warning",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete current-source warning/paused status and first Aqua row3/column6 fact. The next arrival starts below the viewport; full Return remains visible."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/4837490C-28A8-4A8A-9D03-3CE9C2AD9987.png",
+          "sha256": "0b0294ae1d8aad4f12d24e58234e99f846e88e249540d00ac899dfcaf312d7c5",
+          "bytes": 1186504,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-prepared-arrival-0_0_75A66253-70FE-45CF-A4FA-20F5E0C771B7.png",
+          "attachmentTimestampEpoch": 1792917566.63,
+          "state": "Prepared arrival0",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete first Aqua row3/column6 fact, warning and paused status. The second title is partly below this position; full Return remains visible."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/7DE1A49B-BC3C-45A6-A261-D113F32E59D3.png",
+          "sha256": "a49b8bb798ab937b111b7284999d008ada798d3f6db42518a74e618d94fe95df",
+          "bytes": 1171966,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-prepared-arrival-1_0_77A45115-34FF-49F9-BB49-55E687BB0882.png",
+          "attachmentTimestampEpoch": 1792917573.125,
+          "state": "Prepared arrival1 after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete second Amber row2/column1 growth-to2-light fact and the preceding first fact's row3/column6 outcome. First title is partly above the viewport. Full Return remains visible."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/42AC1EDD-0F0E-4A96-9151-AACCD5A86DAB.png",
+          "sha256": "8f383ce72e22db28a2899d6c07656e7bef94a3d3ab9f6cf3a85dc6f48f5066fa",
+          "bytes": 1179464,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-prepared-arrival-2_0_4966C2D1-8F7B-42CA-9976-6AED5FCDB537.png",
+          "attachmentTimestampEpoch": 1792917580.219,
+          "state": "Prepared arrival2 after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete Amber row2/column1 and Aqua row2/column2 growth-to2-light outcomes. The second title is partly above this viewport; full Return remains visible."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/A33AA237-0CBB-4445-BA10-C97A875985EC.png",
+          "sha256": "d7fbcde423c549673fb0ea7efda16a30faf5610cafe4f58f4d13f958984dd022",
+          "bytes": 1174206,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-prepared-arrival-3_0_6C3B7E13-CB39-41B3-AA38-3E47E092838D.png",
+          "attachmentTimestampEpoch": 1792917585.773,
+          "state": "Prepared arrival3 after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete third Aqua row2/column2 growth-to2-light and fourth Mint row4/column4 facts. Full Return remains visible; earlier facts are above the viewport."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/D4C090CA-DF7A-443F-82A9-63AF91D121DE.png",
+          "sha256": "00a5d47928ab0f2fd297a598ea7b05dca1f1c3e6566eed6bc0ed27c887339c67",
+          "bytes": 1165312,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-prepared-arrival-4_0_670505C0-A7EE-4F87-B6C0-60DB06BC6CD0.png",
+          "attachmentTimestampEpoch": 1792917592.285,
+          "state": "Prepared arrival4 after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete fourth Mint row4/column4 and fifth Rose row3/column5 facts. Earlier growth tail is at the top content edge; title and full Return remain intact."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/FDF0CDA2-A5CA-4548-A1C2-AE3AA738946A.png",
+          "sha256": "4eed39aa6c7a46f6225fb06d2f93a1fff544c88f817bcb5b63d715a88ddea653",
+          "bytes": 1172497,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-prepared-patterns_0_A0750252-FCBA-4665-A7E3-E05F8BDA96CE.png",
+          "attachmentTimestampEpoch": 1792917597.103,
+          "state": "Prepared no-pattern final after real scroll",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Strongest final AX5 inspection witness: complete fifth Rose row3/column5 fact, complete No automatic pattern clear in this snapshot sentence, wrapped title and full Return. The fourth-arrival title is partly above the viewport; earlier facts and warning are scrolled away."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/7B1565A4-99EE-4DF7-857F-3C7273467B3E.png",
+          "sha256": "dce566eeafbbcc94605a70e95fd7f07612afb34036aeaafde72c730ab25d2861",
+          "bytes": 6956575,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-full-board-absence_0_8546CD7A-345E-4ED9-AD71-51581BD7A882.png",
+          "attachmentTimestampEpoch": 1792917644.089,
+          "state": "New Lantern Full Board opening, inspection absent",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Exact0/150000 and complete Full Board clears-refill-and-cascade context fit above an intact49-star board and continuous Lantern painting. Shower forecast/inspection is absent. The lower-left Spark guide continues beyond this deliberate board viewport, so its complete text and controls are not visually accepted from this still."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/FC9FEBEE-2519-4712-8B34-F10F29C05B4A.png",
+          "sha256": "c53f07d3564eebdba6e13a730c9cd99b087ffb8587c289b89d675f702785d4fd",
+          "bytes": 7010794,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-following-real-full-board-clear_0_B9104217-C99D-43B1-A6B4-5CFEE22F3C35.png",
+          "attachmentTimestampEpoch": 1792917649.631,
+          "state": "Following genuine Full Board42000 clear",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Exact42000/150000, mode context, actual refilled board and distinct earned/returned figures remain visible over continuous Lantern painting. This is not a42k Last clear reader. The lower Spark guide is only a prefix at this captured board position; complete-guide reading and controls are outside this still's acceptance."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/C1BCD831-D236-464B-93E4-8A1E0F51EA20.png",
+          "sha256": "c5a74c744294310d0c601aebb8736f309ea98d2c60b75835b1170b3dd51f74f1",
+          "bytes": 4868300,
+          "storedWidthPixels": 2064,
+          "storedHeightPixels": 2752,
+          "format": "PNG",
+          "exifOrientation": 1,
+          "hasExifChunk": true,
+          "sRGBRenderingIntent": 0,
+          "orientationQualification": "Stored portrait raster; no rotation performed for review.",
+          "attachmentName": "shower-inspection-tablet-actual-calm-on_0_945DBE50-8EE4-4644-9647-E5BC20840E22.png",
+          "attachmentTimestampEpoch": 1792917692.868,
+          "state": "Actual Settings after original Calm restoration",
+          "wholeOriginalViewed": true,
+          "visualFinding": "Complete Settings title, checked Calm control and Done fit on the official surface, now over Lantern scenery. The method restores its captured original preference; the resulting still visibly shows on."
+        }
+      ],
+      "unviewedRows": [
+        {
+          "filename": "E5629FFF-067D-4810-8B4E-325EA1A3437E.png",
+          "sha256": "0b0294ae1d8aad4f12d24e58234e99f846e88e249540d00ac899dfcaf312d7c5",
+          "reason": "Intermediate/repeated context; exact raster hash aliases a directly viewed frame. No separate direct-view claim for this filename."
+        },
+        {
+          "filename": "E93EB48E-AA10-40D9-B25C-4B37BD8C5F44.png",
+          "sha256": "a2e8fef97507ddf9a21ad455cbd67255d1c2d04e63d4e60739757a275f382bb5",
+          "reason": "Intermediate/repeated context; exact raster hash aliases a directly viewed frame. No separate direct-view claim for this filename."
+        }
+      ],
+      "identicalRasterAliasGroups": [
+        [
+          "4837490C-28A8-4A8A-9D03-3CE9C2AD9987.png",
+          "E5629FFF-067D-4810-8B4E-325EA1A3437E.png",
+          "5EDB6D53-ADF8-4E64-92DE-601843C04005.png"
+        ],
+        [
+          "1BF6A5F6-30E9-445E-9A17-9ADEA30DF75F.png",
+          "E93EB48E-AA10-40D9-B25C-4B37BD8C5F44.png",
+          "326906EB-1D58-4EA5-B96F-08E6744B6429.png"
+        ]
+      ],
+      "aliasQualification": "Attachment names identify test checkpoints, not distinct visual moments. Byte-identical checkpoints are explicitly grouped; no distinct-motion or new-position claim follows."
+    }
+  ],
+  "findings": [
+    "No visible truncated essential glyph, ellipsis, reduced text size or loss of the fixed Return was found in the inspected shower-reader checkpoints. At AX5 the native title wraps to three lines and each arrival remains readable across actual scroll positions.",
+    "Opening rows retain order6/1/2/4/5 and their family/figure names. Prepared Amber and Aqua facts explicitly grow row2 columns1/2 to2light; later normal-phone actual grown bodies and guide are visibly distinct.",
+    "The phone final prepared frame fits all five arrivals and the no-pattern statement simultaneously. The AX5 tablet final frame fits the complete fifth arrival plus the no-pattern statement; it does not show all five facts or the current-source warning at once.",
+    "The blue official reader panel protects ivory native facts and the full Return. The dark surrounding sheet region is expected modal context. Only exposed scene strips are judged while covered; the underlying board is not claimed visible or legible through the reader.",
+    "Actual phone retired-inspector board and tablet Full Board frames retain coherent visible painting, distinct stars and complete relevant score/mode ink. They do not show the initial881 gray rectangle in their exposed scene areas; the separate OpenSky review owns that reproduced empty-sky boundary.",
+    "Full Board0 and42000 board stills show no shower forecast/inspection. Their lower guide is only a visible prefix at the captured board position; complete Full Board guide reading/controls are explicitly outside this record."
+  ],
+  "recommendedExports": [
+    {
+      "id": 13,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/73EDFA49-98B8-4782-8378-CE46C1581489.png",
+      "rawSHA256": "555f02afb1365447771fd829558f941a214bc14dfba28281b0ea685b80dff67a",
+      "caption": "Final5a0 normal/default phone, prepared announced-shower reader after real scroll: all five arrival facts, both2-light growth outcomes, full no-pattern sentence and Return. Warning/paused status is scrolled away."
+    },
+    {
+      "id": 14,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/FDF0CDA2-A5CA-4548-A1C2-AE3AA738946A.png",
+      "rawSHA256": "4eed39aa6c7a46f6225fb06d2f93a1fff544c88f817bcb5b63d715a88ddea653",
+      "caption": "Final5a0 actual-Calm AX5 tablet, final prepared reader scroll position: full fifth arrival, no-pattern sentence and Return. Earlier facts/warning are above the viewport; fourth title is partly at its top edge."
+    }
+  ],
+  "preservedHistory": [
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-native-showers.json",
+      "sha256": "491eb79c6c329496b6b65c1316265959aff72ffebffb86fc4061c8dd8b020719",
+      "bytes": 18821
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-native-open-sky.json",
+      "sha256": "bf4786cb1d702147bfd21731b3dbf7b1f422b542831536bd28b04a2e02d228a4",
+      "bytes": 22289
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-correction-0ac14e85.json",
+      "sha256": "73dbeac87e8876c08c11bb239d6735e8453b947ad39997401286d4a01a5930bc",
+      "bytes": 6943
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-explicit-surface-probe-4120d46c.json",
+      "sha256": "7610f1f9d07f60cafe36af202174b579f173d99f7e9134135c3d25ef8000a0d4",
+      "bytes": 8982
+    }
+  ],
+  "limits": [
+    "Static simulator rasters; no continuous motion, event latency, sustained performance, physical device, comfort/enjoyment, minimum-iOS or actual VoiceOver claim.",
+    "Complete rows are accepted across named scrolled positions, not as simultaneous whole-page visibility. Partial text at deliberate scroll edges is identified for each frame. No whole guide acceptance follows from the partial Full Board guide.",
+    "Clock continuation, exact committed/save/world preservation, original preference restoration, tap reachability and real-pan bounds remain the original native method's separate mechanical evidence; pixels alone do not establish them.",
+    "No global contrast, all states, focus, Increase Contrast, Reduced Transparency or every locale claim. No new pixel-ratio measurement is made here.",
+    "This record does not prove the precise original private SpriteView gray mechanism or reassign earlier reader/pan failure causes. Initial881 OpenSky HOLD, incomplete initial Calm supervisor result and rejected0ac remain unchanged historical records.",
+    "Goal8 promoted Last clear/terminal total typography is reviewed in sibling final phone/score/tablet records. These two shower methods are affected native-surface and optional-reader regression witnesses.",
+    "Exact retained JPEG pairs are a subsequent separate inspection; this report does not accept unseen export bytes or adopt Goal8."
+  ],
+  "remainingVisualGate": "Overall independent aggregate, exact retained-export and supplemental recorded-motion decisions belong to their separately scoped records."
+}
