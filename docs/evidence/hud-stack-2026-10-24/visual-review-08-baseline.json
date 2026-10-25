@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "hud_audit",
+  "reviewedUTCDate": "2026-10-25",
+  "status": "BASELINE_REVIEW_COMPLETE; narrow candidate justified, candidate acceptance pending",
+  "decision": {
+    "recommendation": "Reuse the existing skyHeading font and primary ink at the Last clear whole-clear total and the terminal static whole-clear total only.",
+    "reason": "The readable whole-clear summary currently inherits the same ordinary body or supporting role as phase accounting. A shared heading role gives that final fact a clear place in the existing serif reader hierarchy.",
+    "baselineFailureClaim": null,
+    "preserve": "Keep exact text, identifiers, conditional presence, full-size reflow, native scroll and Return controls, existing surfaces, immutable accounting and reader lifetime policies. The live cumulative receipt already distinguishes its total and should remain unchanged."
+  },
+  "source": {
+    "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "appCheckpoint": "a985c5dcb161f746618bb35419455783d17ffa38",
+    "compiledTestsCheckpoint": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+    "runtime": "dev.e045b9e428",
+    "productsProof": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-products.json",
+      "sha256": "c4bba949f9adcbfe36103ee4fb57ef6402acb7ef4b8c46d8e08aa99d7ebff393"
+    },
+    "method": "Retained accepted Goal7 products; source equivalence and actual binary identities are recorded in the products proof. No build or native controller was run by this reviewer."
+  },
+  "scope": {
+    "nativeAttachmentsDirectlyViewed": 4,
+    "nativeDistinctImageHashes": 3,
+    "nativeAvailableAttachments": 41,
+    "hostedImagesDirectlyViewed": 2,
+    "nativeEnvironment": {
+      "device": "iPhone 17e",
+      "name": "Starfall HUD Stack dcf3 Phone",
+      "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "os": "iOS Simulator 27.0 (24A434)",
+      "scale": 3,
+      "windowPoints": [
+        390,
+        844
+      ]
+    },
+    "hostedScope": "Default-text ImageRenderer component specimens, not whole native app composition. Existing AX5 fitting measurements do not provide an AX5 raster baseline."
+  },
+  "mechanicalContext": [
+    {
+      "stage": "baseline-08-from-07-reader-phone",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "stageElapsedSeconds": 382.624,
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-summary.json",
+        "sha256": "e24855cafac7e4326e30693ba01e0b32c487e784e0bf262259b6f726212033cc"
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-receipt.json",
+        "sha256": "dc8d3c720a8b05b3b25a44917ad52e3a7e51971e8378b761d29d4659536d9acd"
+      }
+    },
+    {
+      "stage": "baseline-08-from-07-hosted",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "stageElapsedSeconds": 7.733,
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-summary.json",
+        "sha256": "0e256a0effde134ed1c839644fe2d0cb64acfbc7e872983d85d937ffcea96b62"
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-receipt.json",
+        "sha256": "e3716b409cd0630b6b298c1ace484610da9ff36e29eabdb5a402ada002fe92c2"
+      }
+    }
+  ],
+  "captures": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/B44EFF18-2F0F-430B-BFAD-F74A1AD042A2.png",
+      "sha256": "1afb1b25d3d887fc3ebfbfd8bcd0a6b3e95eaa594323a479b00f4e80f9413e42",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "attachmentName": "last-clear-phone-silver-chain-sky.lastClear_0_9066BF91-EDE2-43F3-AB45-41AC2D1325A7.mode-end",
+      "state": "Silver Pools 19,000 chain Last clear opening and mode",
+      "scope": "normal-phone native whole viewport",
+      "directlyViewedWhole": true,
+      "observation": "Reader title, context, serif phase heading and fixed Return action follow the official menu surface. Visible text is complete at this scroll position; the passive diagram continues into the scroll body."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/5B425F5A-EE7E-4AE2-9C35-1E244A75C83F.png",
+      "sha256": "66278c93f7c8841c293dfdeb8287234419718f6ac4485644c15cb496154e0965",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "attachmentName": "last-clear-phone-silver-chain-sky.lastClear.score_0_F6A3264A-F029-4548-865D-30A55A0741C4.2-end",
+      "state": "Silver Pools phase-two accounting and 19,000 whole-clear total",
+      "scope": "normal-phone native whole viewport",
+      "directlyViewedWhole": true,
+      "observation": "The 14,000-point phase accounting and the 19,000-point whole-clear total are readable. The final total has ordinary body weight, despite being the summary after the divider. Fixed Return remains complete."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/18F3ECC9-82AB-4972-A2C6-D0D9A96614E6.png",
+      "sha256": "66278c93f7c8841c293dfdeb8287234419718f6ac4485644c15cb496154e0965",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "attachmentName": "last-clear-phone-silver-chain-sky.lastClear_0_4FF74044-0F4B-4AB5-8611-E28923D67159.total-end",
+      "state": "Silver Pools 19,000 whole-clear total end",
+      "scope": "normal-phone native whole viewport",
+      "directlyViewedWhole": true,
+      "observation": "Identical image bytes to the phase-two accounting attachment; this supplies no additional distinct pixel state. The full total remains readable and visually undifferentiated from body accounting."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/9D96F800-4C87-472A-87E0-8D1C5435AEDD.png",
+      "sha256": "53332e25f4fc3fe076ab949238854bb4dd45806eea6295beac6437766a37e7c8",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "attachmentName": "last-clear-phone-only-latest-independent-five-sky.lastClear_0_A2020F87-0B34-4B64-A49C-D3C4881B84F1.total-end",
+      "state": "Later independent 5,000-point Last clear total",
+      "scope": "normal-phone native whole viewport",
+      "directlyViewedWhole": true,
+      "observation": "The latest independent clear is represented as 5,000 points, separate from the earlier chain. Its complete total again uses ordinary body styling. Diagram, accounting and fixed Return remain legible at this scroll position."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-attachments/02DB3039-197C-4EE0-B648-96A649C654C0.png",
+      "sha256": "8a726a2db845839394b5221ad273346c5ea4a1b7e78affb402165acc23a065c6",
+      "dimensionsPx": [
+        390,
+        168
+      ],
+      "orientation": "landscape component",
+      "attachmentName": "score-complete-committed-components_0_552DA628-3A34-4623-9F52-E436CEF8C7B5.png",
+      "state": "Complete static 5,000 plus 14,000 accounting and 19,000 total",
+      "scope": "hosted default-text component raster",
+      "directlyViewedWhole": true,
+      "observation": "Every accounting component and the final total is readable; the whole-clear total inherits the same supporting size and weight. This supports the terminal static-total hierarchy refinement, not a whole terminal-screen fit claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-attachments/CBB43E54-D2E4-429F-9C9E-7D0E3DCB23BD.png",
+      "sha256": "cc39bc52a497ca53f39032abeea16cc116b9e1793e535cb6c3b7f7bf39ff461e",
+      "dimensionsPx": [
+        220,
+        72
+      ],
+      "orientation": "landscape component",
+      "attachmentName": "score-live-cumulative-components_0_1EDC455E-FF55-4C30-B697-66B6540A311E.png",
+      "state": "Live cumulative 2 CHAIN and +19,000 control",
+      "scope": "hosted default-text component raster",
+      "directlyViewedWhole": true,
+      "observation": "The stronger live chain/total already separates from the quieter cumulative equation. Preserve this existing live receipt hierarchy."
+    }
+  ],
+  "sourceOwners": [
+    {
+      "path": "App/SkyLastClearView.swift",
+      "consumer": "Text(snapshot.score.totalText)",
+      "currentRole": "Inherits SkyMenuSurface body font. Existing phase headings already use skyHeading."
+    },
+    {
+      "path": "App/SkyScoreExplanationView.swift",
+      "consumer": "Text(explanation.totalText)",
+      "currentRole": "Inherits enclosing supporting font. Applies only when there is more than one phase."
+    },
+    {
+      "path": "App/StarfallTheme.swift",
+      "contract": "Existing skyHeading serif headline and textPrimary ink are sufficient; no new role or surface is required."
+    }
+  ],
+  "candidateProofRequired": [
+    "Matched normal-phone Last clear totals and exact phase accounting remain complete after styling.",
+    "Actual AX5 tablet Last clear and terminal static accounting fit and scroll with complete Return/action targets; no matched native AX baseline is claimed.",
+    "Retain current exact-fact, round isolation, cold-restore, immutable-context and live-control tests; visual hierarchy does not establish these behaviors."
+  ],
+  "limits": [
+    "Only the four named native attachments were inspected, not all 41; two named attachments have identical pixels.",
+    "Native evidence is normal-text phone scope. No native AX5 baseline, whole terminal-accounting baseline, continuous-motion, actual VoiceOver, physical-device or minimum-OS validation is claimed.",
+    "Scroll-body diagrams and prose extend beyond individual viewports by design; these stills do not show every fact simultaneously.",
+    "This record justifies preparation of a small candidate; it does not accept an implementation or close Goal8."
+  ],
+  "manifests": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/manifest.json",
+      "sha256": "7337149a24110e834daa650dfee9623653cee4a33d99b7b0b26150c4d4c14673"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-attachments/manifest.json",
+      "sha256": "b2743cd701fb364e66981b1c1430f9583cb45e1ec92c9e15c6d406b8d5cad481"
+    }
+  ]
+}

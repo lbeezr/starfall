@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "hud_audit (aggregate collector)",
+  "reviewedUTC": "2026-10-25T08:50:00.791308+00:00",
+  "verdict": "PASS_BOUNDED_NATIVE_SLICES",
+  "status": "PASS_BOUNDED_NATIVE_SLICES",
+  "adoptionScope": "Independent selected native slices complete; goal adoption/publication remain owned by goal-08-acceptance.json. Supplemental motion and exact exports remain separate records.",
+  "source": {
+    "checkpoint": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "runtime": "dev.2c4e822ca7"
+  },
+  "method": "Collect frozen independent judgments and exact identities. The aggregator directly viewed phone and score frames only; other named reviewers own their visual observations. Mechanical success is checked separately and does not create a visual judgment.",
+  "commands": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-08-5a0cf195.json",
+    "sha256": "c5a50258cc19c5c8d33ad85a603ad25d76813b5013232b492240b7ee214206cd"
+  },
+  "nativeCounts": {
+    "executions": 6,
+    "uniqueMethods": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0
+  },
+  "nativeMethods": [
+    "LastClearRecapInteractionTests/testNormalSilverLastClearChainSeparateActionsAndColdRestore",
+    "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+    "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss",
+    "ScoreExplanationInteractionTests/testNormalSilverPhaseScoresSeparateActionsAndExactReplay",
+    "ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning",
+    "ShowerInspectionInteractionTests/testLargestCalmShowerInspectionReadsWithoutCommitAndFullBoardHasNone"
+  ],
+  "mechanicalStages": [
+    {
+      "stage": "native-08-5a0cf195-last-clear-silver-phone",
+      "selector": "LastClearRecapInteractionTests/testNormalSilverLastClearChainSeparateActionsAndColdRestore",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "stageElapsedSeconds": 375.577,
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-summary.json",
+        "sha256": "dc020cae472379b2d795f1c37f637c0b191a743531f0c52c17e224a7541d64ea"
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-receipt.json",
+        "sha256": "cfa7fde6041a7fdb613a2020bdbcba466bce2376c13e9c090c94cb0620c5e7b4"
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/manifest.json",
+        "sha256": "f82ec4123bccd9fd7fb96a02a1360bfad05a2d987158f2247095f6fef40d5c71"
+      }
+    },
+    {
+      "stage": "native-08-5a0cf195-last-clear-full-board-tablet",
+      "selector": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "stageElapsedSeconds": 468.214,
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-full-board-tablet-summary.json",
+        "sha256": "f80d0f84a16fee777d714f52308f4f7b2fd1dbeb92e561faa5250f8019db0af6"
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-full-board-tablet-receipt.json",
+        "sha256": "7211f1ec307722e1d952f6285cef14b6427e88422b3e8aa21bff96e9760d93b7"
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-full-board-tablet-attachments/manifest.json",
+        "sha256": "26b0b8fa6d6b923ef3d0edfa2866e6ab935eb19d0dd962b07b115f55ef83090c"
+      }
+    },
+    {
+      "stage": "native-08-5a0cf195-last-clear-open-sky-phone",
+      "selector": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "stageElapsedSeconds": 360.785,
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-open-sky-phone-summary.json",
+        "sha256": "104228e7c8d8d47a9599ae001898dab05b585a98a60392c9b51d23ccc6cae799"
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-open-sky-phone-receipt.json",
+        "sha256": "c3bcd53445a4a4c4190ed20cf105f998c4d456adcc4b4f234149bb344afe8856"
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-open-sky-phone-attachments/manifest.json",
+        "sha256": "87525bd1fc2f9fa6260784c376fcb1f6e0b1e9882126c0935c230f75a76a542c"
+      }
+    },
+    {
+      "stage": "native-08-5a0cf195-score-silver-phone",
+      "selector": "ScoreExplanationInteractionTests/testNormalSilverPhaseScoresSeparateActionsAndExactReplay",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "stageElapsedSeconds": 170.789,
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-summary.json",
+        "sha256": "c1d70ebc6508dfde7789d08f943748cbe539d0a443b1f9df0db7f752dd4a0ff9"
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-receipt.json",
+        "sha256": "fe920577b61873f188a3f2b5781d550e14d640f2644f87914079cc761dbd31db"
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/manifest.json",
+        "sha256": "8491ac1a174cc9a0e9bbf9b885a339fc02187e3e630d053f7d9b9f802fdd3ab7"
+      }
+    },
+    {
+      "stage": "native-08-5a0cf195-shower-frostfruit-phone",
+      "selector": "ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "stageElapsedSeconds": 174.03,
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-summary.json",
+        "sha256": "bfe3de885fe6c941dd4c1499522e63b1b56c2cc13bb5c41c19f8296617a76cc0"
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-receipt.json",
+        "sha256": "e0b19e70eea3807812f2c5d0c05e29ca8b6502568d8cbfb6104c6709515144af"
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/manifest.json",
+        "sha256": "d04722f416e5b8337fb8defa3bed8c6935fd1b207628f518a2b52b2083527356"
+      }
+    },
+    {
+      "stage": "native-08-5a0cf195-shower-calm-tablet",
+      "selector": "ShowerInspectionInteractionTests/testLargestCalmShowerInspectionReadsWithoutCommitAndFullBoardHasNone",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": [],
+      "stageElapsedSeconds": 247.865,
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-summary.json",
+        "sha256": "a4c31c31b8500cb2170b3a6f50d54a149699d0ecce7148b0f7f9eca86f70e74c"
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-receipt.json",
+        "sha256": "2cf407d20278f9091c96986051bb47bfab5303eba0b374cbdefeca133f62c8b1"
+      },
+      "attachmentManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/manifest.json",
+        "sha256": "40b091a57d8c77b9feb69b5373196581ffecc11b22ac7c089463e8760986d4f8"
+      }
+    }
+  ],
+  "independentNativeShards": [
+    {
+      "role": "phone",
+      "reviewer": "hud_audit",
+      "recordedReviewer": "hud_audit",
+      "review": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-phone.json",
+        "sha256": "d75c3f49bdd8e60a3fdaaddbf381b30c0c542e805fee1e1ec65b375983209a34"
+      },
+      "verdict": "BOUNDED_PASS",
+      "scope": "Normal-phone Last clear, separate clears, terminal context and cold restore.",
+      "explicitWholePNGRecordsHashValidated": 8,
+      "reportedScope": {
+        "availableAttachments": 41,
+        "personallyViewedAttachments": 8,
+        "distinctPersonallyViewedImageHashes": 8,
+        "allAvailableAttachmentsReviewed": false,
+        "acceptedBaseline": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-baseline.json",
+          "sha256": "6e8aef2822872b540b6e0bbd061f412978544846179b05bba1d627fda3f36c78"
+        }
+      },
+      "distinctRawImageHashes": 8,
+      "aggregatorPersonallyViewedTheseFrames": true,
+      "scopeAndLimitsRemainAuthoritativeInShard": true
+    },
+    {
+      "role": "tablet",
+      "reviewer": "hud_goal_review",
+      "recordedReviewer": "Independent subagent /root/hud_goal_review",
+      "review": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-tablet.json",
+        "sha256": "fa722f81cf8ff858f4ba2f44f59d974264e7550787b7b36cb2eff31c69b48d0e"
+      },
+      "verdict": "PASS_BOUNDED_FINAL_SOURCE_AX5_FULL_BOARD_JOURNEY",
+      "scope": "Actual AX5 Calm Full Board recap, exact 58,000 clear versus 156,000 round and Replay.",
+      "explicitWholePNGRecordsHashValidated": 28,
+      "reportedScope": {
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-full-board-tablet-attachments/manifest.json",
+          "sha256": "26b0b8fa6d6b923ef3d0edfa2866e6ab935eb19d0dd962b07b115f55ef83090c",
+          "bytes": 17135
+        },
+        "pngRows": 31,
+        "byteUniquePNGs": 28,
+        "identicalAliasRows": 3,
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "modelName": "iPad Pro 13-inch (M5)",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "scenario": "Actual world-entry Lantern Landing revision6 Full Board, largest accessibility text/AX5. Ordinary saved gameplay earns local repair progression; this is neither guided practice nor Compare clears. Real Settings enables Calm fromoff and restores originaloff before the final Replay-opening frame.",
+        "stateAccounting": "First live action earns42,000. The round reaches98,000 before the final action earns17,000+26,000+15,000=58,000, yielding156,000round points against150,000target.",
+        "coldRestoreQualification": "This exact tablet method uses Home/activate and exact same-round Replay. It does not terminate/relaunch and supplies no cold-restore image. Cold restore remains separate sibling coverage."
+      },
+      "distinctRawImageHashes": 28,
+      "aggregatorPersonallyViewedTheseFrames": false,
+      "scopeAndLimitsRemainAuthoritativeInShard": true
+    },
+    {
+      "role": "score",
+      "reviewer": "hud_audit",
+      "recordedReviewer": "hud_audit",
+      "review": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-score.json",
+        "sha256": "877b5c78815d5d93511dcc2ea70ba5e792c0ab412e0c9313f05a940e51e8d317"
+      },
+      "verdict": "BOUNDED_PASS",
+      "scope": "Separate normal-phone ScoreExplanation native journey.",
+      "explicitWholePNGRecordsHashValidated": 8,
+      "reportedScope": {
+        "nativeAttachmentsAvailable": 8,
+        "nativeAttachmentsPersonallyViewed": 8,
+        "nativeDistinctImageHashesPersonallyViewed": 5,
+        "allAttachmentsReviewed": true,
+        "relatedHostedReview": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-hosted.json",
+          "sha256": "b7b89cdafaa870dd0c2ee08787e522a85b90ac95179e54269765e5aa959fe29b"
+        },
+        "relatedNativeLastClearReview": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-phone.json",
+          "sha256": "d75c3f49bdd8e60a3fdaaddbf381b30c0c542e805fee1e1ec65b375983209a34"
+        }
+      },
+      "distinctRawImageHashes": 5,
+      "aggregatorPersonallyViewedTheseFrames": true,
+      "scopeAndLimitsRemainAuthoritativeInShard": true
+    },
+    {
+      "role": "open-sky",
+      "reviewer": "hud_goal_review",
+      "recordedReviewer": "Independent subagent /root/hud_goal_review",
+      "review": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-open-sky.json",
+        "sha256": "fa3a10a0f33e231ecb0dac2cd041d29d7a25d82c56036cfbafeec1ffa1f22789"
+      },
+      "verdict": "PASS_BOUNDED_FINAL_SOURCE_OPEN_SKY_JOURNEY",
+      "scope": "Normal Open Sky retained trace and no-award loss history.",
+      "explicitWholePNGRecordsHashValidated": 22,
+      "reportedScope": {
+        "attachmentManifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-open-sky-phone-attachments/manifest.json",
+          "sha256": "87525bd1fc2f9fa6260784c376fcb1f6e0b1e9882126c0935c230f75a76a542c",
+          "bytes": 11944
+        },
+        "pngRows": 24,
+        "byteUniquePNGs": 21,
+        "identicalAliasRows": 3,
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "modelName": "iPhone 17e",
+          "osBuildNumber": "24A434",
+          "osVersion": "27.0",
+          "platform": "iOS Simulator"
+        },
+        "scenario": "Reset-only paused horizontalFive manual Open Sky fixture with retained Dusk behavior, Calm off/normal system motion. This is not fresh modern survival or an earned Story visit."
+      },
+      "distinctRawImageHashes": 22,
+      "aggregatorPersonallyViewedTheseFrames": false,
+      "scopeAndLimitsRemainAuthoritativeInShard": true
+    },
+    {
+      "role": "showers",
+      "reviewer": "hud_read_ahead",
+      "recordedReviewer": "Independent subagent /root/hud_read_ahead",
+      "review": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-showers.json",
+        "sha256": "1917a027da808213fde2eaae2fc4456d7725baa1f25699077526cfdca8b3b0b2"
+      },
+      "verdict": "PASS for the two named final-source shower-reader regression scopes and directly inspected whole original rasters. This is neither overall Goal8 adoption nor exact-JPEG acceptance.",
+      "scope": "Normal Frostfruit and actual largest-Calm shower reader native journeys.",
+      "explicitWholePNGRecordsHashValidated": 30,
+      "reportedScope": {},
+      "distinctRawImageHashes": 24,
+      "aggregatorPersonallyViewedTheseFrames": false,
+      "scopeAndLimitsRemainAuthoritativeInShard": true
+    }
+  ],
+  "relatedHostedReview": {
+    "review": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-hosted.json",
+      "sha256": "b7b89cdafaa870dd0c2ee08787e522a85b90ac95179e54269765e5aa959fe29b"
+    },
+    "reviewer": "hud_audit",
+    "verdict": "BOUNDED_PASS",
+    "scope": "23 directly inspected hosted PNGs: isolated static accounting/live control plus actual-root geometry, five empty-scene stages and held-presenter states; no actual modal/reader native acceptance inferred."
+  },
+  "limits": [
+    "Selected frames only; each frozen shard preserves its direct-view count, scroll-position qualifications and omissions.",
+    "Hosted components, native interactions and inspected native stills are separate forms of evidence.",
+    "No continuous-motion, actual VoiceOver, physical-device, minimum-OS or human-recognition claim.",
+    "Exact JPEG/raw export review and supplemental motion review remain separate gates; this collector neither adopts nor merges Goal8."
+  ]
+}

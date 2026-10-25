@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "status": "RECONSTRUCTED_DIAGNOSTIC3652_SOURCE; rejected readmission candidate, not accepted",
+  "appCheckpoint": "3652f463e6c8c39813f6478620004756131eccd7",
+  "testCheckpoint": "3652f463e6c8c39813f6478620004756131eccd7",
+  "baseMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+  "runtime": "dev.61cd8411ac",
+  "runtimeInputCount": 567,
+  "testInputCount": 167,
+  "sourceReconstruction": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/reconstructed-inputs-08-surface-probe-3652f463.json",
+    "sha256": "d22595c986b05ca25b0b69f55970ab23406018c7ee9e9d12ba9b65145fa1ecb8",
+    "bytes": 185951
+  },
+  "sourceSnapshotTiming": {
+    "reconstructedUTC": "2026-10-25T08:07:22.755550+00:00",
+    "runnerStartedUTC": "2026-10-25T08:00:23.817129+00:00",
+    "preBuildDetailedPerFileSnapshotExisted": false,
+    "qualification": "No claim that detailed567/167dump predates this probe. Frozen HEAD, clean build/test inputs and canonical runtime were checked by the probe runner before each executed stage; reconstruction is post-run from committed Git blobs."
+  },
+  "runnerSourceAtCollection": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/run-goal08-explicit-surface-probe.py",
+    "sha256": "70e6532e61d593aeab82bf02821c873ed663a1ceeb67a4f2f88abb0215af1535",
+    "bytes": 4078
+  },
+  "runnerQualification": "Helper source contains initial and per-stage assert_frozen calls. Its private helper hash was not recorded before this probe; the original command manifest and stamped build proof remain the run record.",
+  "changedAppOwners": [
+    "App/FallingSkyScene.swift",
+    "App/FallingSkyView.swift",
+    "App/SkyLastClearView.swift",
+    "App/SkyScoreExplanationView.swift"
+  ],
+  "changedTestOwners": [
+    "AppTests/SkyReadingPlayfieldTests.swift",
+    "UITests/LastClearRecapInteractionTests.swift"
+  ],
+  "historicalDebugProductProof": {
+    "configuration": "Debug",
+    "runtime": "dev.61cd8411ac",
+    "appPath": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app",
+    "infoSHA256": "e731aab4e95c174a5d7d0a8182acd15ca2e521c53c669cc6f9f605e77d1e56fe",
+    "catalogueSHA256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+    "catalogueSourcePath": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/App/DialogueScripts/observatory-dialogue.json",
+    "catalogueBytes": 96334
+  },
+  "productLimit": "Build-time Info/catalogue hashes and embeddedruntime are historical records. Live DerivedData product paths may now contain a later diagnostic; this collector does not compare overwritten binaries with3652 hashes.",
+  "scope": "Narrow explicit transparent native SKView surface replaces FallingSkyView SpriteView; exact static total styles retained. Temporary90second short native probe supplements but does not replace the original six required methods."
+}

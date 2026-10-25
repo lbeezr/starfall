@@ -485,6 +485,168 @@ final class SkyReadingPlayfieldTests: XCTestCase {
         }
     }
 
+    /// Render-boundary diagnostic; actual private menu presentation is exercised
+    /// by the native Open Sky case. This method never simulates a cover.
+    @MainActor func testActualOpenSkySceneAcrossFiveStarsEmptySuspensionAndNextShower() async throws {
+        executionTimeAllowance = 30
+        let sceneDeadline = ContinuousClock.now + .seconds(3)
+        var available = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
+        while available == nil && ContinuousClock.now < sceneDeadline {
+            try await Task.sleep(for: .milliseconds(20))
+            available = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
+        }
+        let owner = try XCTUnwrap(available), previous = owner.windows.first(where: \.isKeyWindow)
+        let suite = "Starfall.EmptySceneBoundary.\(UUID())"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        defaults.set(false, forKey: "calmEffects"); defaults.set(false, forKey: "soundEnabled")
+        let arguments = ["--starfalls-reset", "--dialogue-review", "--constellation-fixture=horizontalFive"]
+        let clock = ManualRainClock()
+        let store = FallingSkyStore(defaults: defaults, arguments: arguments, clock: clock)
+        let window = UIWindow(windowScene: owner)
+        window.frame = CGRect(x: 0, y: 0, width: 390, height: 844)
+        var anchors: [StarlightAnchor: CGRect] = [:]
+        let host = UIHostingController(rootView: FallingSkyView(store: store, flow: SkyFlowState(arguments: arguments))
+            .defaultAppStorage(defaults).environment(\.scenePhase, .active)
+            .environment(\.dynamicTypeSize, .large)
+            .overlayPreferenceValue(StarlightAnchors.self) { values in
+                GeometryReader { geometry in
+                    let origin = geometry.frame(in: .global).origin
+                    let resolved = values.mapValues { geometry[$0].offsetBy(dx: origin.x, dy: origin.y) }
+                    Color.clear.onAppear { anchors = resolved }.onChange(of: resolved) { _, value in anchors = value }
+                }.allowsHitTesting(false)
+            })
+        let container = UIViewController()
+        window.rootViewController = container; container.view.frame = window.bounds
+        container.addChild(host); host.view.frame = container.view.bounds
+        host.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        container.view.addSubview(host.view); host.didMove(toParent: container); window.makeKeyAndVisible()
+        defer { store.setSuspended(true); window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+        func observe(_ phase: String, suspended: Bool) async throws {
+            let deadline = ContinuousClock.now + .seconds(3)
+            var previousFrame: CGRect?, stable = 0
+            while stable < 2 && ContinuousClock.now < deadline {
+                await Task.yield(); host.view.layoutIfNeeded()
+                let frame = store.scene.view.map { window.convert($0.bounds, from: $0) }
+                if store.sceneReady, !store.busy, store.suspended == suspended,
+                   store.scene.view?.window === window, frame == previousFrame, anchors[.board] != nil {
+                    stable += 1
+                } else { stable = 0 }
+                previousFrame = frame
+                if stable < 2 { try await Task.sleep(for: .milliseconds(20)) }
+            }
+            XCTAssertEqual(stable, 2, "Real scene attachment and committed placement must settle: \(phase)")
+            let canvas = try XCTUnwrap(store.scene.view)
+            let game = store.game, generation = store.constellationInputGeneration
+            let saved = defaults.data(forKey: SkySaveArchive.key), deadlineBefore = clock.deadline
+            let capture = XCTAttachment(image: windowImage(window))
+            capture.name = "open-sky-render-boundary-\(phase)"; capture.lifetime = .keepAlways; add(capture)
+            let children = store.scene.children.map {
+                "\(type(of: $0)):name=\($0.name ?? "nil"),children=\($0.children.count),alpha=\($0.alpha),hidden=\($0.isHidden),actions=\($0.hasActions())"
+            }
+            var ancestors: [String] = []
+            var ancestor: UIView? = canvas
+            for depth in 0..<12 {
+                guard let view = ancestor else { break }
+                ancestors.append("depth=\(depth); type=\(type(of: view)); frame=\(view.frame); windowFrame=\(window.convert(view.bounds, from: view)); background=\(String(describing: view.backgroundColor)); opaque=\(view.isOpaque); alpha=\(view.alpha); hidden=\(view.isHidden); layerBackground=\(String(describing: view.layer.backgroundColor)); layerOpaque=\(view.layer.isOpaque); layerOpacity=\(view.layer.opacity)")
+                if view === host.view || view === container.view { break }
+                ancestor = view.superview
+            }
+            let layers = "viewBackground=\(String(describing: canvas.backgroundColor)); viewOpaque=\(canvas.isOpaque); allowsTransparency=\(canvas.allowsTransparency); viewAlpha=\(canvas.alpha); hidden=\(canvas.isHidden); layerBackground=\(String(describing: canvas.layer.backgroundColor)); layerOpaque=\(canvas.layer.isOpaque); layerOpacity=\(canvas.layer.opacity); layerType=\(type(of: canvas.layer)); presentationOpacity=\(String(describing: canvas.layer.presentation()?.opacity))"
+            let facts = XCTAttachment(string: "phase=\(phase); no modal cover presented; normal motion requested; inheritedReduceMotion=\(UIAccessibility.isReduceMotionEnabled); occupied=\(game.board.compactMap { $0 }.count); score=\(game.displayScore); turns=\(game.turns); suspended=\(store.suspended); paused=\(store.isPaused); busy=\(store.busy); sceneReady=\(store.sceneReady); scenePaused=\(store.scene.isPaused); sceneBackground=\(store.scene.backgroundColor); sceneSize=\(store.scene.size); canvasBounds=\(canvas.bounds); canvasWindowFrame=\(window.convert(canvas.bounds, from: canvas)); anchors=\(anchors); hostBackground=\(String(describing: host.view.backgroundColor)); hostOpaque=\(host.view.isOpaque); children=\(children); ancestors=\(ancestors); \(layers)")
+            facts.name = "open-sky-render-properties-\(phase)"; facts.lifetime = .keepAlways; add(facts)
+            // Observation may not commit, resume rain, alter saved state or
+            // replace the genuine snapshot; layer values above are diagnostics.
+            XCTAssertEqual(store.game, game); XCTAssertEqual(store.constellationInputGeneration, generation)
+            XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), saved)
+            XCTAssertEqual(clock.deadline, deadlineBefore); XCTAssertEqual(clock.now, 0)
+            XCTAssertTrue(store.isPaused); XCTAssertEqual(store.suspended, suspended)
+            XCTAssertEqual(canvas.bounds.size, store.scene.size)
+        }
+        try await observe("five-live", suspended: false)
+        let opening = store.game, world = store.journey.journey
+        XCTAssertEqual(opening, ConstellationFixture.horizontalFive.game().adoptingFeedingDusk())
+        XCTAssertEqual(opening.board.compactMap { $0 }.count, 5)
+        var expected = opening
+        let path = (0..<5).map { Cell(0, $0) }
+        let cleared = try XCTUnwrap(expected.clearConstellation(path))
+        XCTAssertEqual(cleared.collected, 5)
+        store.clearTracedConstellation(path, snapshot: store.game, generation: store.constellationInputGeneration)
+        XCTAssertEqual(store.game, expected)
+        try await observe("empty-live", suspended: false)
+        XCTAssertEqual(store.game.board.compactMap { $0 }.count, 0); XCTAssertEqual(store.game.displayScore, 5)
+        let recap = try XCTUnwrap(store.lastClear), emptySave = defaults.data(forKey: SkySaveArchive.key)
+        store.setSuspended(true)
+        try await observe("empty-store-suspended-without-cover", suspended: true)
+        XCTAssertEqual(store.game, expected); XCTAssertEqual(store.lastClear, recap)
+        XCTAssertEqual(defaults.data(forKey: SkySaveArchive.key), emptySave)
+        store.setSuspended(false)
+        try await observe("empty-resumed-without-cover", suspended: false)
+        let arrival = try XCTUnwrap(expected.letStarsFall())
+        XCTAssertEqual(arrival.collected, 0)
+        store.callShower()
+        XCTAssertEqual(store.game, expected)
+        try await observe("one-no-award-shower", suspended: false)
+        XCTAssertGreaterThan(store.game.board.compactMap { $0 }.count, 0)
+        XCTAssertEqual(store.game.displayScore, 5); XCTAssertEqual(store.lastClear, recap)
+        XCTAssertEqual(store.journey.journey, world)
+        XCTAssertEqual(SkySaveArchive.load(from: defaults), store.game)
+    }
+
+    @MainActor func testNativeSceneTransferRejectsRetiringHostUpdatesAndTeardown() {
+        // Isolated real SKView ownership proof. Actual private-menu dismissal,
+        // input re-admission and clock preservation remain native journey gates.
+        let frame = CGRect(x: 0, y: 0, width: 390, height: 900)
+        let first = FallingSkyScene(size: frame.size), second = FallingSkyScene(size: frame.size)
+        let old = FallingSkySceneSurface.Surface(frame: frame)
+        let replacement = FallingSkySceneSurface.Surface(frame: frame)
+        var firstReadiness: [Bool] = [], secondReadiness: [Bool] = []
+        first.onReadinessChanged = { firstReadiness.append($0) }
+        second.onReadinessChanged = { secondReadiness.append($0) }
+        defer { old.releaseScene(); replacement.releaseScene() }
+
+        old.install(first)
+        XCTAssertTrue(first.view === old); XCTAssertTrue(old.scene === first)
+        XCTAssertEqual(first.size, frame.size); XCTAssertEqual(old.bounds.size, frame.size)
+        XCTAssertEqual(firstReadiness.last, true, "The positive-size native attachment must report ready")
+
+        replacement.install(first)
+        XCTAssertNil(old.scene, "Transfer must clear the retiring SKView before the new attachment")
+        XCTAssertTrue(first.view === replacement); XCTAssertTrue(replacement.scene === first)
+        XCTAssertEqual(first.size, replacement.bounds.size); XCTAssertEqual(first.size, frame.size)
+        XCTAssertTrue(firstReadiness.contains(false), "Real detachment must report not-ready before transfer")
+        XCTAssertEqual(firstReadiness.last, true, "The replacement must publish its own real readiness")
+        let transferredCallbacks = firstReadiness
+
+        old.install(first) // SwiftUI can update an already-retiring host.
+        old.releaseScene() // Its later dismantle must also leave the new owner intact.
+        XCTAssertNil(old.scene)
+        XCTAssertTrue(first.view === replacement); XCTAssertTrue(replacement.scene === first)
+        XCTAssertEqual(firstReadiness, transferredCallbacks,
+                       "Stale update/teardown must not detach, reattach or emit a false readiness callback")
+        XCTAssertEqual(first.size, replacement.bounds.size); XCTAssertEqual(first.size, frame.size)
+
+        replacement.install(second) // A genuinely different request on the same view must work.
+        XCTAssertNil(first.view); XCTAssertEqual(firstReadiness.last, false)
+        XCTAssertTrue(second.view === replacement); XCTAssertTrue(replacement.scene === second)
+        XCTAssertEqual(second.size, replacement.bounds.size); XCTAssertEqual(second.size, frame.size)
+        XCTAssertEqual(secondReadiness.last, true)
+        let replacementCallbacks = secondReadiness
+        let retiredCallbacks = firstReadiness
+        old.install(first); old.releaseScene()
+        XCTAssertNil(old.scene); XCTAssertNil(first.view)
+        XCTAssertTrue(second.view === replacement); XCTAssertTrue(replacement.scene === second)
+        XCTAssertEqual(firstReadiness, retiredCallbacks); XCTAssertEqual(secondReadiness, replacementCallbacks)
+
+        replacement.releaseScene()
+        XCTAssertNil(replacement.scene); XCTAssertNil(second.view)
+        XCTAssertEqual(secondReadiness.last, false, "Only current-owner teardown must detach the scene")
+        XCTAssertGreaterThan(secondReadiness.count, replacementCallbacks.count)
+        XCTAssertEqual(first.size, frame.size); XCTAssertEqual(second.size, frame.size)
+        let facts = XCTAttachment(string: "Isolated native SKView transfer only; no game menu, Store or clock exercised. frame=\(frame); firstReadiness=\(firstReadiness); secondReadiness=\(secondReadiness)")
+        facts.name = "native-scene-transfer-readiness"; facts.lifetime = .keepAlways; add(facts)
+    }
+
     @MainActor private func windowImage(_ window: UIWindow) -> UIImage {
         UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
             window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)

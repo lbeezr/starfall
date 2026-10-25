@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "testedCommit": "5a0cf19535639f9f385122d17318f28278ce179b",
+  "baseMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+  "runtimeInputFingerprint": "dev.2c4e822ca7",
+  "committedRuntimeInputCount": 567,
+  "committedTestInputCount": 167,
+  "workingTreeBuildDifferences": [],
+  "workingTreeTestDifferences": [],
+  "excludedDocumentationDifferences": [],
+  "changedAppOwners": [
+    "App/FallingSkyScene.swift",
+    "App/FallingSkyView.swift",
+    "App/SkyLastClearView.swift",
+    "App/SkyScoreExplanationView.swift"
+  ],
+  "changedTestOwners": [
+    "AppTests/SkyReadingPlayfieldTests.swift",
+    "UITests/LastClearRecapInteractionTests.swift"
+  ],
+  "rawInputManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-08-5a0cf195.json",
+    "sha256": "836cc6ebfd146393f20bdc453b10bd8d37e7925195017b9459615b41a4edb197",
+    "bytes": 187018
+  },
+  "canonicalBuildIdentityHelper": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/scripts/build_identity.py",
+    "sha256": "2f1f3cbeed1197935013045d717f34379d19b43430cdf413daa832c541a34d1b",
+    "bytes": 1063
+  },
+  "sourceSnapshotTiming": {
+    "perFileSnapshotPreparedUTC": "2026-10-25T08:10:50.317088+00:00",
+    "runnerStartedUTC": "2026-10-25T08:10:57.834834+00:00",
+    "perFileDumpPredatesRunner": true,
+    "qualification": "Final567runtime/167test per-file dump predates the runner and Debug build. Runner checks frozen HEAD, clean build/test inputs and canonical build identity before every stage. Current hashes/Git blobs are revalidated here."
+  },
+  "proof": "All567 canonical runtime inputs and all non-Markdown test inputs equal their committed Git blobs and SHA256/size. Canonical build_identity reproduces runtime. Only the named4App/2test owners differ from accepted main; no build/test-affecting working-tree input.",
+  "embeddedProducts": [
+    {
+      "configuration": "Debug",
+      "embeddedRuntime": "dev.2c4e822ca7",
+      "info": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+        "sha256": "353af749fd332c4ca61ad215f3d3ee348d8918d66a62a5b8435d5e45337a104e",
+        "bytes": 1402
+      },
+      "dialogueCatalogue": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/observatory-dialogue.json",
+        "sha256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+        "bytes": 96334
+      },
+      "currentProductBinaries": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Starfall",
+          "sha256": "5076e97055bf87e28571dad30b15549827b23e7970de728d0fa3399c954d8c30",
+          "bytes": 40144
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Starfall.debug.dylib",
+          "sha256": "1a007ba6238e7337bef4198a4adae9f2c6418c2e1cdc28e73c36fa1408c88d49",
+          "bytes": 15938384
+        }
+      ]
+    },
+    {
+      "configuration": "Release",
+      "embeddedRuntime": "dev.2c4e822ca7",
+      "info": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Release/Build/Products/Release-iphonesimulator/Starfall.app/Info.plist",
+        "sha256": "353af749fd332c4ca61ad215f3d3ee348d8918d66a62a5b8435d5e45337a104e",
+        "bytes": 1402
+      },
+      "dialogueCatalogue": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Release/Build/Products/Release-iphonesimulator/Starfall.app/observatory-dialogue.json",
+        "sha256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+        "bytes": 96334
+      },
+      "currentProductBinaries": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/Release/Build/Products/Release-iphonesimulator/Starfall.app/Starfall",
+          "sha256": "32ccc4a551d74a7edad16d0f7268e53283647f2cccfa2f3089947aafc88c1001",
+          "bytes": 8784624
+        }
+      ]
+    }
+  ],
+  "inventory": {
+    "hostedMethods": 820,
+    "developmentPhoneUIMethods": 260,
+    "actualVoiceOverDeferredMethods": 6,
+    "sourceCounter": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/scripts/native_test_plan.py",
+      "sha256": "880692e979080196e4f0cd4097ea08932a3aeea3fef6bc01b66241d9414e02ff",
+      "bytes": 7480
+    },
+    "qualification": "Source discovery only; selected17hosted/6native is not a full-matrix pass."
+  },
+  "collectorHelpers": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/prepare-goal08-final-source-r2.py",
+      "sha256": "af5df768f664179877057c51c56503b915bfbbfc8e17a5c8c8d51c8e1493cc22",
+      "bytes": 6896
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/run-goal08-final-r2.py",
+      "sha256": "aadfa48bd1c8267353d29746bdbcf265a992485cd665e7e0d3ca161fe33f96f6",
+      "bytes": 16750
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/finish-goal08-final-mechanics-r2.py",
+      "sha256": "e245cdbc36195a4178b0d91d0ec0c8a2689e7aa823373e38040e51854df9a842",
+      "bytes": 18682
+    }
+  ],
+  "scope": "Existing official serif headline and primary ink for exact LastClear and multi-phase terminal totals, plus a narrow transparent native SKView presentation surface in FallingSkyScene replacing FallingSkyView SpriteView. The rejected retained-header layout is not adopted. Complete facts, native input/common geometry and scene/readiness/clock/save ownership remain authoritative. Added actual OpenSky scene diagnostic and two native live-reader captures preserve all original native method allowances. Actual production delta remains reviewable in four App owners."
+}

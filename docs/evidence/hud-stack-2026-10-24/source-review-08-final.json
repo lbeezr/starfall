@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "hud_audit",
+  "reviewedUTC": "2026-10-25T07:53:06.935888+00:00",
+  "verdict": "NO_SOURCE_BLOCKER_IDENTIFIED; final native and visual acceptance pending",
+  "source": {
+    "checkpoint": "0ac14e855889c5b771e3024b01693b118e39addd",
+    "runtime": "dev.754c3583e7",
+    "acceptedBase": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "perFileSourceProof": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-08-0ac14e85.json",
+      "sha256": "c5a3f65cab9b9f5c9679e4db2898f29831849ce0cf466167e897d4d92b80ea5b",
+      "bytes": 186979
+    },
+    "runtimeInputCount": 567,
+    "testInputCount": 167,
+    "snapshotPreparedUTC": "2026-10-25T07:47:40.404956+00:00",
+    "qualification": "Existing complete source proof predates final Debug. This reviewer independently matched the five reviewed working files to their committed bytes and per-file snapshot entries; no build or controller was run."
+  },
+  "reviewedDiff": {
+    "command": [
+      "git",
+      "diff",
+      "--no-ext-diff",
+      "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+      "0ac14e855889c5b771e3024b01693b118e39addd",
+      "--",
+      "App/FallingSkyView.swift",
+      "App/SkyLastClearView.swift",
+      "App/SkyScoreExplanationView.swift",
+      "AppTests/SkyReadingPlayfieldTests.swift",
+      "UITests/LastClearRecapInteractionTests.swift"
+    ],
+    "sha256": "a1c4a3a034f5bf5cea6bee19213ef4c32591e5814ef87ab5d1bc3f94211af0bb",
+    "files": [
+      {
+        "path": "App/FallingSkyView.swift",
+        "sha256": "7fee8752fdec72c2e47167ef95e652a5c05df6c1f7a49ea64bf437c97378907d",
+        "bytes": 63012,
+        "committedGitBlob": "46857a5f5ccfe5b86d14874a529608ebeb8931c9",
+        "workingTreeEqualsCommittedAndSnapshot": true,
+        "diffFromBase": {
+          "sha256": "306c2f54bd45cb6b27bac56b33a774a0fe0ce3e37ec74a8793bfb518cf0911a6",
+          "bytes": 2605,
+          "addedLines": 10,
+          "deletedLines": 2
+        }
+      },
+      {
+        "path": "App/SkyLastClearView.swift",
+        "sha256": "7b11dd1cf862b2b7a1b84429880c9a0a51d16609ed26b39342c4a2c80f83aa9d",
+        "bytes": 10719,
+        "committedGitBlob": "6c953fd0c383aa21f3df671fae347aee2f57ecf1",
+        "workingTreeEqualsCommittedAndSnapshot": true,
+        "diffFromBase": {
+          "sha256": "3dea74d4c227b8bdad4a6376435d3b838ea6ea0de4212bdeded2d4b72d37c588",
+          "bytes": 626,
+          "addedLines": 2,
+          "deletedLines": 0
+        }
+      },
+      {
+        "path": "App/SkyScoreExplanationView.swift",
+        "sha256": "1210f67f76494e8838f947537ad46bd20e1b8efdd5f649a44b575c34cea5a284",
+        "bytes": 2770,
+        "committedGitBlob": "debc0d9b82dfa153f6a3187461154a256551cb92",
+        "workingTreeEqualsCommittedAndSnapshot": true,
+        "diffFromBase": {
+          "sha256": "9e7fba4b1ddb87e064dd0dad8e7d116fee181b4f0a13b1ac31f3ce0685a5e861",
+          "bytes": 582,
+          "addedLines": 2,
+          "deletedLines": 0
+        }
+      },
+      {
+        "path": "AppTests/SkyReadingPlayfieldTests.swift",
+        "sha256": "6ee13dc7b37daa2292b2cd3580490099bd1b801ac8896d157189bcc2554129c2",
+        "bytes": 46930,
+        "committedGitBlob": "99b9f2d82caa2966c8accc2efeeadbb8d0566c00",
+        "workingTreeEqualsCommittedAndSnapshot": true,
+        "diffFromBase": {
+          "sha256": "d58f4b69ee1e8d36091b796c62e06f6a69ba8d675989ed897dd4cf89a2617aae",
+          "bytes": 9415,
+          "addedLines": 108,
+          "deletedLines": 0
+        }
+      },
+      {
+        "path": "UITests/LastClearRecapInteractionTests.swift",
+        "sha256": "14e29be5cc665ddcf00de41900e872ef49a68497629e900c38bfe2b1eab58a2f",
+        "bytes": 39243,
+        "committedGitBlob": "17054aef76f4b5879d246c0e3f0c2c8e90d85f59",
+        "workingTreeEqualsCommittedAndSnapshot": true,
+        "diffFromBase": {
+          "sha256": "4ad656e6d5aaec8f584b77d31a00c00f0e89d88a678ca958d77051be5ea0dd81",
+          "bytes": 2053,
+          "addedLines": 5,
+          "deletedLines": 0
+        }
+      }
+    ]
+  },
+  "findings": [
+    {
+      "owner": "App/FallingSkyView.swift:240",
+      "finding": "readingPlayfield retains header/return and guide in stable Group branches for both settings and ceremony. Opacity, hit testing and accessibility reflect the same covered value; the fixed80-point return anchor remains published.",
+      "extent": "Reading branch only. Ordinary overlay playfield and default tutorialPlayfield branches are unchanged. Accessible/landscape reading siblings share this retention."
+    },
+    {
+      "owner": "App/FallingSkyView.swift:262",
+      "finding": "SpriteView, fixed reading canvas, physical crop rule, local LandingGeometry, native cells and board anchor are unchanged. The correction does not add an opaque backing, duplicate scenery, geometry projection or SpriteKit/framework wrapper."
+    },
+    {
+      "owner": "App/FallingSkyView.swift:535",
+      "finding": "Ordinary guide receives active=false while either cover is present; its existing task key cancels/guards expiry. Covered header/guide controls are noninteractive and AX-hidden. Existing input/suspension, scene readiness and forecast-source withdrawal owners are unchanged."
+    },
+    {
+      "owner": "App/SkyLastClearView.swift:53 and App/SkyScoreExplanationView.swift:19",
+      "finding": "Only the exact static whole-clear totals add the existing skyHeading/primary-ink roles. Existing text, identifiers, conditional terminal multi-phase presence, full-size layout, surfaces and native controls remain."
+    },
+    {
+      "owner": "AppTests/SkyReadingPlayfieldTests.swift:490",
+      "finding": "One new actual-scene diagnostic observes five stars, empty board, store suspension/resumption and no-award shower. It retains exact game, generation, save, clock, recap and canvas-size assertions. It explicitly does not present a modal cover, so it cannot independently prove the original menu/reader gray-region correction."
+    },
+    {
+      "owner": "UITests/LastClearRecapInteractionTests.swift:517",
+      "finding": "Existing AX5 Full Board method reads actual58,000 terminal total; existing OpenSky method adds whole captures before and after its reader. No native method, timeout, wait, pan/target, outcome/Replay/save or source assertion is removed or weakened."
+    },
+    {
+      "owner": "docs/ENGINEERING.md:3",
+      "finding": "The1105-line App owner has a concrete cohesive extraction followup before another reading-layout extension, keeping common board anchors and private menu/ceremony lifetime together in this bounded correction."
+    }
+  ],
+  "preservedGates": {
+    "originalSkyReadingMethods": "Existing two methods retain their original source; file diff adds the new diagnostic only. No original strict geometry/readiness assertion is removed.",
+    "nativeSelection": "Six existing methods and their original allowances are retained by the prepared final runner; no new native method or skip.",
+    "sourceInventory": {
+      "hostedMethods": 819,
+      "developmentPhoneUIMethods": 260,
+      "actualVoiceOverDeferredMethods": 6
+    },
+    "rulesClockSaveOwnership": "No Core, Store, rule, RNG, clock, save, score or persistence owner is edited by this five-file delta."
+  },
+  "residualLimits": [
+    {
+      "owner": "App/FallingSkyView.swift:483 and App/SkyForecastDestinations.swift:76",
+      "limit": "Source establishes structural retention, not identical covered header height. forecastSource withdrawal still omits the optional inspection utility inside the retained edgeHeader, so internal natural-size reflow remains possible. Actual native geometry/whole frames must determine whether that ordinary child change matters; no preemptive source change is recommended without evidence."
+    },
+    {
+      "limit": "No source-only claim that the initial gray region is fixed, pre-existing or caused by typography. Initial visual failure remains preserved independently."
+    },
+    {
+      "limit": "This source review contains no final native, visual, export or overall Goal8 PASS. Final OpenSky proof is decisive and belongs to its independent reviewer."
+    },
+    {
+      "limit": "No native controller, build, simulator, image exporter, AV decoder, actual VoiceOver, physical/minimum-OS or continuous-motion operation was performed for this review."
+    }
+  ]
+}

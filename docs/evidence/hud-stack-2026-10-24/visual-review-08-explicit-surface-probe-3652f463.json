@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "status": "HOLD: before/covered visual improvement; original after-return admission fails and no returned-empty visual proof",
+  "reviewedUTC": "2026-10-25T08:05:26.968375+00:00",
+  "source": {
+    "appSource": "3652f463e6c8c39813f6478620004756131eccd7",
+    "testSource": "3652f463e6c8c39813f6478620004756131eccd7",
+    "runtime": "dev.61cd8411ac",
+    "candidate": "Explicit public SKView UIViewRepresentable, original reading layout restored; rejected0ac stable-Group layout is absent."
+  },
+  "mechanics": {
+    "selector": "StarfallUITests/LastClearRecapInteractionTests/testNormalOpenSkyEmptyReaderKeepsItsBackdropAndExactRound",
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "stageElapsedSeconds": 79.999,
+    "exitCode": 65,
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-3652f463-summary.json",
+      "sha256": "fb964e73cfac2a21f6cedca24b720f19c2941b068dc82ce0ff28fc8453c05eaa",
+      "bytes": 1191
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-3652f463-receipt.json",
+      "sha256": "5b3d6ff2ac87befafc6e8331ab7daf425e2badc43f648bdf452f1c04eacb0ef1",
+      "bytes": 185
+    },
+    "failure": "Original bounded settled(5) after reader Return did not pass within12s. Score remained5, but conjunction requires cell0.0enabled, advanceenabled and notbusy. Exact responsible failing condition is not established by the three images. No gate was weakened.",
+    "hostedSibling": "Existing five\u2192empty\u2192suspension-without-cover\u2192next-shower test passed1/0/0 at the same source/runtime; it does not exercise the private menu cover.",
+    "commandManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-08-explicit-surface-probe-3652f463.json",
+      "sha256": "9256eec6bf0d0754ce5b74b13e452f2f01d3188562f6dc5d5da1e2280c7c5572",
+      "bytes": 6131
+    }
+  },
+  "attachmentManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-3652f463-attachments/manifest.json",
+    "sha256": "ba71e245cebccf7c21f5e9fc7ad93fae386ea2f8921c4f373b6e5e15124dc125",
+    "bytes": 20042
+  },
+  "views": [
+    {
+      "state": "before-reader",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-3652f463-attachments/61A4D9E0-7844-4475-9CCC-E0FA1A2FE275.png",
+        "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+        "bytes": 3260806
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB"
+      },
+      "viewedDirectly": true,
+      "attachmentName": "empty-reader-fast-before_0_1FC29090-499B-46BA-83F3-F374F305309B.png",
+      "timestamp": 1792915287.613,
+      "associatedWithFailure": false,
+      "verdict": "PASS_THIS_STATE: continuous painting behind the genuine empty live sky and five-point score."
+    },
+    {
+      "state": "covered-mode",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-3652f463-attachments/1A17C968-89B0-4130-99E1-3EE12549F2B9.png",
+        "sha256": "f00fbb08e0024767357120d1fb9b5ac0f5bef5afc5bdca19a86adcaa8e045923",
+        "bytes": 2541578
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB"
+      },
+      "viewedDirectly": true,
+      "attachmentName": "empty-reader-fast-covered_0_B01EAD08-7CC5-4F11-9AEA-B488CCC53AAC.png",
+      "timestamp": 1792915294.995,
+      "associatedWithFailure": false,
+      "verdict": "PASS_THIS_STATE: continuous painting behind the Last clear mode reader; the former SpriteView-sized flat gray region is absent."
+    },
+    {
+      "state": "covered-total",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-3652f463-attachments/C465E372-91BC-4CDC-9A8C-67A2AE72F883.png",
+        "sha256": "51d8f4272f4a5b1ffaf7bf00660abf0c5b37f3f89630b97c03538dfe701e8018",
+        "bytes": 2718087
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB"
+      },
+      "viewedDirectly": true,
+      "attachmentName": "empty-reader-fast-covered-total-end_0_67174B5B-43FD-4007-9BBF-556177B80F93.png",
+      "timestamp": 1792915300.967,
+      "associatedWithFailure": false,
+      "verdict": "PASS_THIS_STATE: continuous painting behind complete traced-five geometry and the exact five-point total; no gray rectangle."
+    }
+  ],
+  "comparison": {
+    "originalDiagnosis": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/diagnosis-08-empty-sprite.json",
+      "sha256": "fa402a0a7bc35af93dc7e70579f0bcd3426211e78a8f5982fb582cb8a362a168",
+      "bytes": 20655
+    },
+    "rejectedStableLayout": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-correction-0ac14e85.json",
+      "sha256": "73dbeac87e8876c08c11bb239d6735e8453b947ad39997401286d4a01a5930bc",
+      "bytes": 6943
+    },
+    "finding": "Unlike d70 and rejected0ac covered mode/total frames, these exact3652 covered frames show the continuous painting. This establishes only the inspected states, not a complete lifecycle correction."
+  },
+  "remainingGate": "Readmit the original controls after actual reader Return and directly inspect returned empty sky/cold restore, then retain full normal and AX sibling journey acceptance. No overall Goal8 adoption from this probe.",
+  "limits": [
+    "No after-return or cold-restore frame exists in this failed run; no returned-empty visual verdict is possible.",
+    "Only three exact whole native1170\u00d72532 frames reviewed; no exact private-framework cause or latency result claimed.",
+    "No actual VoiceOver, physical/minimum-iOS, continuous-motion/performance or JPEG conversion proof."
+  ]
+}

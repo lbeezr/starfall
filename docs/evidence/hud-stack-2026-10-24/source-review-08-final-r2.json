@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "hud_audit",
+  "reviewedUTC": "2026-10-25T08:16:21.348794+00:00",
+  "verdict": "NO_SOURCE_BLOCKER_IDENTIFIED",
+  "scopeStatus": "Source review complete; mechanical, whole-native and exact-export acceptance are separate records.",
+  "source": {
+    "checkpoint": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "runtime": "dev.2c4e822ca7",
+    "acceptedBase": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "preBuildPerFileProof": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-08-5a0cf195.json",
+      "sha256": "836cc6ebfd146393f20bdc453b10bd8d37e7925195017b9459615b41a4edb197",
+      "bytes": 187018
+    },
+    "snapshotPreparedUTC": "2026-10-25T08:10:50.317088+00:00",
+    "runtimeInputCount": 567,
+    "testInputCount": 167,
+    "reviewedFilesEqualCommittedSnapshot": true
+  },
+  "reviewedDiff": {
+    "command": [
+      "git",
+      "diff",
+      "--no-ext-diff",
+      "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+      "5a0cf19535639f9f385122d17318f28278ce179b",
+      "--",
+      "App/FallingSkyScene.swift",
+      "App/FallingSkyView.swift",
+      "App/SkyLastClearView.swift",
+      "App/SkyScoreExplanationView.swift",
+      "AppTests/SkyReadingPlayfieldTests.swift",
+      "UITests/LastClearRecapInteractionTests.swift"
+    ],
+    "sha256": "03eba780400dccd023dcf0b6d3dfae1568d40b086d2c6c092310b1d5b7c29601",
+    "files": [
+      {
+        "path": "App/FallingSkyScene.swift",
+        "sha256": "9108e3a3fad13eecd70b5e2008c27eab0124debee4771ded7557e502a967d080",
+        "gitBlob": "e77ae2f4ab7e29321ae786494164087b4c8fd432",
+        "bytes": 52032,
+        "equalsCommittedAndSnapshot": true,
+        "diffFromBase": {
+          "sha256": "5438aa2edb6ab700dfb44c6da3d4f9a079190aa288e3eefd89e5b8d23d614892",
+          "bytes": 2163,
+          "addedLines": 48,
+          "deletedLines": 0
+        }
+      },
+      {
+        "path": "App/FallingSkyView.swift",
+        "sha256": "cd8aabdaba4d57cd5757a8512519a7866c20a18b1ec669cc4da51bc3665b1aaf",
+        "gitBlob": "557d99e4bd89eea6556e7461b51aeee1e4a815d1",
+        "bytes": 62611,
+        "equalsCommittedAndSnapshot": true,
+        "diffFromBase": {
+          "sha256": "0d19eb66812b68f55fc23fa054146d008f0c222207249a4d1f69a32b7bfb63da",
+          "bytes": 778,
+          "addedLines": 1,
+          "deletedLines": 1
+        }
+      },
+      {
+        "path": "App/SkyLastClearView.swift",
+        "sha256": "7b11dd1cf862b2b7a1b84429880c9a0a51d16609ed26b39342c4a2c80f83aa9d",
+        "gitBlob": "6c953fd0c383aa21f3df671fae347aee2f57ecf1",
+        "bytes": 10719,
+        "equalsCommittedAndSnapshot": true,
+        "diffFromBase": {
+          "sha256": "3dea74d4c227b8bdad4a6376435d3b838ea6ea0de4212bdeded2d4b72d37c588",
+          "bytes": 626,
+          "addedLines": 2,
+          "deletedLines": 0
+        }
+      },
+      {
+        "path": "App/SkyScoreExplanationView.swift",
+        "sha256": "1210f67f76494e8838f947537ad46bd20e1b8efdd5f649a44b575c34cea5a284",
+        "gitBlob": "debc0d9b82dfa153f6a3187461154a256551cb92",
+        "bytes": 2770,
+        "equalsCommittedAndSnapshot": true,
+        "diffFromBase": {
+          "sha256": "9e7fba4b1ddb87e064dd0dad8e7d116fee181b4f0a13b1ac31f3ce0685a5e861",
+          "bytes": 582,
+          "addedLines": 2,
+          "deletedLines": 0
+        }
+      },
+      {
+        "path": "AppTests/SkyReadingPlayfieldTests.swift",
+        "sha256": "dea6ab3512dac2f1a0c307cf8b95df2c25baf4fc7b488610f985b7f01f08f2a9",
+        "gitBlob": "02d56f6896ffc55a409e7046ca9f1ed02250ca4d",
+        "bytes": 50724,
+        "equalsCommittedAndSnapshot": true,
+        "diffFromBase": {
+          "sha256": "d9c83068790dd3f4af3e0fca9764d025a773aac0953986e8b44db192fbcc154e",
+          "bytes": 13263,
+          "addedLines": 162,
+          "deletedLines": 0
+        }
+      },
+      {
+        "path": "UITests/LastClearRecapInteractionTests.swift",
+        "sha256": "14e29be5cc665ddcf00de41900e872ef49a68497629e900c38bfe2b1eab58a2f",
+        "gitBlob": "17054aef76f4b5879d246c0e3f0c2c8e90d85f59",
+        "bytes": 39243,
+        "equalsCommittedAndSnapshot": true,
+        "diffFromBase": {
+          "sha256": "4ad656e6d5aaec8f584b77d31a00c00f0e89d88a678ca958d77051be5ea0dd81",
+          "bytes": 2053,
+          "addedLines": 5,
+          "deletedLines": 0
+        }
+      }
+    ]
+  },
+  "findings": [
+    {
+      "owner": "App/FallingSkyScene.swift:8",
+      "finding": "FallingSkySceneSurface is the narrow explicit native presentation owner. It configures a transparent/nonopaque SKView with passive native accessibility, preserving the same external SwiftUI opacity/hit behavior and existing scene object."
+    },
+    {
+      "owner": "App/FallingSkyScene.swift:36",
+      "finding": "Surface.install remembers its requested scene, ignores a retiring host repeating the same request, detaches the previous actual owner before presentation, and Surface.releaseScene acts only when scene.view is itself. This matches the exact old-host teardown failure established in the separate trace diagnosis."
+    },
+    {
+      "owner": "App/FallingSkyScene.swift:54",
+      "finding": "The entire pre-existing FallingSkyScene declaration/body from its documentation marker onward is byte-identical to accepted main. Rendering, resizeFill, didMove/willMove/didChangeSize, readiness callbacks, node/animation cancellation and Store callback capability remain unchanged."
+    },
+    {
+      "owner": "App/FallingSkyView.swift:625",
+      "finding": "The production callsite changes only SpriteView to FallingSkySceneSurface. Existing common LandingGeometry,900-point reading canvas/crop, board anchor, native hit cells, trace surface, ceremony opacity and AX behavior remain unchanged. The rejected retained-header Group layout is absent."
+    },
+    {
+      "owner": "App/SkyLastClearView.swift:53 and App/SkyScoreExplanationView.swift:19",
+      "finding": "Two static totalText nodes add only existing skyHeading/primary-ink roles; exact words, IDs, terminal multi-phase conditional, full native reflow and reader surfaces/actions stay intact."
+    },
+    {
+      "owner": "AppTests/SkyReadingPlayfieldTests.swift:490",
+      "finding": "The actual-root empty-scene diagnostic retains exact game/generation/save/clock/recap/canvas gates over five-live,empty,suspended,resumed and real no-award shower stages. Its comment correctly limits this to no-modal rendering; actual menu/Return behavior belongs to native methods."
+    },
+    {
+      "owner": "AppTests/SkyReadingPlayfieldTests.swift:598",
+      "finding": "The new real SKView transfer regression proves initial attachment/readiness, old→new transfer, stale old update/teardown silence, same-host genuinely different scene replacement, and current-owner teardown. It checks actual scene.view/SKView.scene identity, exact frame size and readiness sequences. It does not claim Store/clock/menu coverage."
+    },
+    {
+      "owner": "UITests/LastClearRecapInteractionTests.swift",
+      "finding": "Only actual58,000 terminal reading and empty-live before/after whole captures extend the existing methods. Original waits,12second settled gate, deadlines, panning/targets, exact equations/round/Replay/save/world outcomes are retained. Temporary90second diagnostic method and all eight OSLog blocks are absent."
+    }
+  ],
+  "preservedGates": {
+    "hostedInventory": 820,
+    "developmentUIInventory": 260,
+    "actualVoiceOverDeferredMethods": 6,
+    "selectedFinalPlan": "17existing/targeted hosted methods plus six original native methods with unchanged allowances; selection source in the final runner is separate from execution results.",
+    "originalGeometryMethods": "Original SkyReading methods/gates unchanged; two methods are appended.",
+    "rulesClockSave": "No Core,Store,rules,RNG,score,clock,save or persistence implementation changes. Scene false-readiness still freezes synchronously; root revision-driven readmission retains existing policies.",
+    "membership": "No new source file,asset,font,dependency or PBX membership change."
+  },
+  "diagnosis": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/diagnosis-08-surface-transfer.json",
+    "sha256": "8548665065a0bdd6ed9b19d2c36d877f9bad9946c9e4bacaeb7cd6f70689b589",
+    "bytes": 24466
+  },
+  "residualLimits": [
+    "This source audit does not prove that final native gray/Return/AX paths pass. Inspect the final whole native captures and exact original assertions before adoption.",
+    "The bridge makes sibling order,culling and60fps choices explicit. Source review establishes no measured performance or continuous-motion equivalence.",
+    "The initial privateSpriteView gray mechanism remains unproved; explicit ownership/transparent rendering is the bounded correction, not an assertion about private internals.",
+    "FallingSkyView remains1097lines; cohesive reading-composition followup belongs to ENGINEERING. Underlying scene remains968lines and is kept with its narrow surface owner in this bounded change.",
+    "No native controller,build,simulator exporter,decoder,actual VoiceOver,physical/minimum-OS or continuous-motion operation was performed by this reviewer."
+  ]
+}

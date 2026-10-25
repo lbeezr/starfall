@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "hud_audit",
+  "reviewedUTC": "2026-10-25T08:50:11.261579+00:00",
+  "verdict": "PASS_BOUNDED_EXACT_EXPORT_PAIRS",
+  "status": "Seven assigned exact pairs reviewed; other seven pairs, final native aggregate and supplemental motion belong to separate records. No overall adoption.",
+  "source": {
+    "checkpoint": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "runtime": "dev.2c4e822ca7",
+    "acceptedBase": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "baselineIdentity": "App a985c5dc / tests 5d4a7250 / runtime e045b9e428 accepted Goal7; each baseline row retains exact source identity."
+  },
+  "captureIndex": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-08.json",
+    "sha256": "eb2a13191dbe2c74d5e7df9944d529d599968d51c8e263510b5729a771b6b57f"
+  },
+  "scope": {
+    "assignedIDs": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "09"
+    ],
+    "personallyViewedPairs": 7,
+    "personallyViewedFiles": 14,
+    "hashesVerified": 14,
+    "metadataVerified": 14,
+    "indexRows": 14,
+    "unassignedRowsPersonallyReviewedInThisRecord": false,
+    "method": "View each whole original PNG and final JPEG at original detail; independently read file hashes, lengths and sips dimensions/orientation. No crop, resize, retouch, re-export, native control or decoding performed."
+  },
+  "decision": {
+    "outcome": "JPEG80 preserves whole-viewport readability and the intended baseline/current hierarchy distinction for all seven assigned pairs. Native totals, equations, outlined stars/survivor marks and fixed Return/result actions remain readable; tiny hosted equations also remain legible.",
+    "degradation": "Lossy compression can soften painting texture and fine decorative edges slightly; no blocking loss of essential text, glyph identity or diagram relationship was observed.",
+    "transformBoundary": "All assigned original/export dimensions match their index entries. Visible composition remains whole and upright. No EXIF orientation tag is reported in either form; indexed 1 is the normalized upright default, not a newly added physical-device claim."
+  },
+  "pairs": [
+    {
+      "id": "01-accepted-phone-chain-total",
+      "kind": "accepted-goal7-native",
+      "sourceIdentity": {
+        "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+        "testSource": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+        "runtime": "dev.e045b9e428",
+        "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+        "status": "ACCEPTED_GOAL7_BASELINE"
+      },
+      "state": "Accepted Goal 7 normal Silver Last clear reader scrolled to second-phase accounting, exact 19,000 this-clear total and Return; earlier phase is above the current viewport.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/18F3ECC9-82AB-4972-A2C6-D0D9A96614E6.png",
+        "sha256": "66278c93f7c8841c293dfdeb8287234419718f6ac4485644c15cb496154e0965",
+        "bytes": 2738805,
+        "actualPixels": [
+          1170,
+          2532
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright portrait"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/01-accepted-phone-chain-total.jpg",
+        "sha256": "22c58ee22065dbbf76dd3e05e3d710ab2c90dc50e36fa5d23fd1a003dc2d079c",
+        "bytes": 586406,
+        "actualPixels": [
+          1170,
+          2532
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright portrait"
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "verdict": "PASS",
+      "observation": "Accepted native 19k body total, phase 2 diagram/equation and complete Return remain readable in JPEG; this is baseline scroll position, not a full-page view.",
+      "indexedOrientation": 1,
+      "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+    },
+    {
+      "id": "02-current-phone-chain-total",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "state": "Final source 5a0cf195: normal Silver Last clear at complete second-phase accounting, exact 19,000 whole-clear heading and Return; earlier phase remains above this viewport.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/C43431C4-AC91-467C-AB7D-452472189AFA.png",
+        "sha256": "7980e07a01770923721c57a2960e5aa4e013581c1e358c1c481a4ff5907c774c",
+        "bytes": 2738398,
+        "actualPixels": [
+          1170,
+          2532
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright portrait"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/02-current-phone-chain-total.jpg",
+        "sha256": "4a39d14bb437defdd4bb0de56fd454c325c72b637bc5ff1019ad17d45ce6ae77",
+        "bytes": 586359,
+        "actualPixels": [
+          1170,
+          2532
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright portrait"
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "verdict": "PASS",
+      "observation": "Current native 19k serif total remains visibly stronger than supporting equation and preserved in JPEG; complete fixed Return and diagram relation unchanged.",
+      "indexedOrientation": 1,
+      "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+    },
+    {
+      "id": "03-accepted-phone-independent-total",
+      "kind": "accepted-goal7-native",
+      "sourceIdentity": {
+        "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+        "testSource": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+        "runtime": "dev.e045b9e428",
+        "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+        "status": "ACCEPTED_GOAL7_BASELINE"
+      },
+      "state": "Accepted Goal 7 normal Silver later independent 5,000-point Last clear reader total and Return; not the previous chain or whole-round total.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/9D96F800-4C87-472A-87E0-8D1C5435AEDD.png",
+        "sha256": "53332e25f4fc3fe076ab949238854bb4dd45806eea6295beac6437766a37e7c8",
+        "bytes": 2852110,
+        "actualPixels": [
+          1170,
+          2532
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright portrait"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/03-accepted-phone-independent-total.jpg",
+        "sha256": "4f6520c2bff84a21e15224877292d1b05b64247ee3fe5fad61334f357e9ce6fe",
+        "bytes": 556400,
+        "actualPixels": [
+          1170,
+          2532
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright portrait"
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "verdict": "PASS",
+      "observation": "Accepted native independent 5k body total, exact four-star accounting and complete Return remain readable after conversion.",
+      "indexedOrientation": 1,
+      "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+    },
+    {
+      "id": "04-current-phone-independent-total",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "state": "Final source 5a0cf195: normal Silver latest independent 5,000-point Last clear heading and Return; separate from earlier chain and whole-round score.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/7728D693-5135-45F3-833F-90F431DE42B4.png",
+        "sha256": "665e3ff55416698a22314d8beabf13b9ade21c571abfb114d50c574b6daa9318",
+        "bytes": 2854464,
+        "actualPixels": [
+          1170,
+          2532
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright portrait"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/04-current-phone-independent-total.jpg",
+        "sha256": "e9a9e26385e11012f3581e6ad7058b365f5f0f2b43ed42d91049153fbe74dd8d",
+        "bytes": 557827,
+        "actualPixels": [
+          1170,
+          2532
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright portrait"
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "verdict": "PASS",
+      "observation": "Current native independent 5k serif total stays complete and distinct from its equation; JPEG preserves the native reading hierarchy and whole viewport.",
+      "indexedOrientation": 1,
+      "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+    },
+    {
+      "id": "05-accepted-static-accounting",
+      "kind": "accepted-goal7-hosted",
+      "sourceIdentity": {
+        "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+        "testSource": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+        "runtime": "dev.e045b9e428",
+        "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+        "status": "ACCEPTED_GOAL7_BASELINE"
+      },
+      "state": "Accepted Goal 7 isolated default-size ImageRenderer accounting specimen: complete 5,000 and 14,000 phase equations and 19,000 total. This is hosted content, not a whole native screen or native scroll proof.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-attachments/02DB3039-197C-4EE0-B648-96A649C654C0.png",
+        "sha256": "8a726a2db845839394b5221ad273346c5ea4a1b7e78affb402165acc23a065c6",
+        "bytes": 18656,
+        "actualPixels": [
+          390,
+          168
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright landscape"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/05-accepted-static-accounting.jpg",
+        "sha256": "3bb632c1f59fc07ab81b72c5cb037de0b18428969dd7533ceecea47f15338b1e",
+        "bytes": 16721,
+        "actualPixels": [
+          390,
+          168
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright landscape"
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "verdict": "PASS",
+      "observation": "Accepted hosted default-text static 5k + 14k equations and ordinary 19k total remain legible in the tiny original-dimension component raster.",
+      "indexedOrientation": 1,
+      "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+    },
+    {
+      "id": "06-current-static-accounting",
+      "kind": "candidate-hosted",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "state": "Final source 5a0cf195: isolated default-size ImageRenderer accounting specimen: complete 5,000 and 14,000 phase equations and exact 19,000 total in the official serif heading. Hosted content, separate from whole native screen/scroll evidence.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-5a0cf195-attachments/115D232F-6D0E-4AD5-A31A-E6B1905C1F19.png",
+        "sha256": "83a675933828c3251fa73bb73d2e96d33de8c2ea194f2919ffd9eede179023e0",
+        "bytes": 19117,
+        "actualPixels": [
+          390,
+          171
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright landscape"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/06-current-static-accounting.jpg",
+        "sha256": "71ee7efb00bae98827fc355c21937d8faa68d9ccd52d75d1faeb34e981ed64a8",
+        "bytes": 17323,
+        "actualPixels": [
+          390,
+          171
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright landscape"
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "verdict": "PASS",
+      "observation": "Current hosted serif 19k summary remains visibly distinct; JPEG preserves the complete equations. Its 171px height is the original current raster, not an export resize of the 168px baseline.",
+      "indexedOrientation": 1,
+      "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+    },
+    {
+      "id": "09-current-phone-whole-result",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "state": "Final source 5a0cf195: normal Silver actual19,000-point won round result with both5,000 and 14,000 phase equations, whole-clear heading and retained earned-light cue. Actual normal-phone terminal viewport; other actions and earlier text have separately verified scroll positions.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/3E2F8362-6599-4F0F-BF57-C2FBF984FB5C.png",
+        "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+        "bytes": 3093282,
+        "actualPixels": [
+          1170,
+          2532
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright portrait"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/09-current-phone-whole-result.jpg",
+        "sha256": "67e31d728b39b188a2d9ec0f8514e02295e5a766a4b2fd42c21281a9829ed080",
+        "bytes": 642450,
+        "actualPixels": [
+          1170,
+          2532
+        ],
+        "sipsOrientation": "<nil>; no EXIF orientation reported",
+        "displayedOrientation": "upright portrait"
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "verdict": "PASS",
+      "observation": "Current native whole19k restored result retains full heading, story score, all actions, both exact phase equations, serif summary and earned-light cue without conversion-induced cropping or unreadable ink.",
+      "indexedOrientation": 1,
+      "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+    }
+  ],
+  "limits": [
+    "Rows 01/03 are accepted-product native baselines; rows 02/04/09 are current-source normal-phone native; rows 05/06 are isolated default-text hosted ImageRenderer components, not whole native composition.",
+    "Current total hierarchy improves readable baseline body/supporting totals; no false baseline-unreadability or cropping claim.",
+    "Reader diagrams/prose intentionally continue outside individual scroll viewports; the images preserve each exact checkpoint rather than imply full-page visibility.",
+    "This shard contains no personal visual verdict for unassigned rows 07/08/10/11/12/13/14.",
+    "Exact still exports do not prove live scrolling, animation onset/frame pacing, continuous motion, actual VoiceOver, physical-device/minimum-OS behavior or human recognition."
+  ]
+}

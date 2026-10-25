@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "status": "PASS_BOUNDED_NATIVE_AX5_TABLET; exact-export and other native slices remain separate",
+  "reviewedUTC": "2026-10-25T07:18:39.440289+00:00",
+  "source": {
+    "appSource": "88101c1b23491860d985607d9930841d43e5a3b5",
+    "testSource": "88101c1b23491860d985607d9930841d43e5a3b5",
+    "runtime": "dev.3a98dc8e44",
+    "baseMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d"
+  },
+  "stage": {
+    "label": "native-08-88101c1b-last-clear-full-board-tablet",
+    "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+    "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+    "deviceName": "Starfall HUD Stack dcf3 Tablet",
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/manifest.json",
+      "sha256": "b2e993c98514af0545377266fc89f3ab3c9170bee9ac40e745670c0fe35d3ccd",
+      "bytes": 17134
+    },
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-summary.json",
+      "sha256": "4a625fe6491a73299cc0016b1dccee5e1158a23eb659251893bdfd528f854548",
+      "bytes": 753
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-receipt.json",
+      "sha256": "ff8f864338df885eba2a9ccefd5a64d1a4d81af612997557c6ac1dfec43763ed",
+      "bytes": 191
+    },
+    "elapsedSeconds": 463.213,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": []
+  },
+  "method": "Directly inspected the 11 named whole native PNGs using view_image. Original bytes remain 2064\u00d72752, EXIF1; tool previews were display-resized to1368\u00d71824 without changing files. Read the committed exact scenario and source-diff contract separately from the mechanical pass; no implementer visual verdict supplied.",
+  "stateQualification": "This actual world-entry Lantern Landing revision-6 Full Board round is ordinary gameplay, with real exchanges, local repair progression and a final156,000 round score. Real Settings enabled Calm for the reader journey and restored the original preference afterward. This is neither Compare clears nor another guided-practice score. The same round reaches98,000 before the final17,000+26,000+15,000 action earns58,000, producing156,000 total. The replay-opening screenshot is after preference restoration.",
+  "images": [
+    {
+      "role": "exact-replay-opening",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/52A22AAC-B35F-41F0-B8C1-2A6B087160D1.png",
+        "sha256": "dce566eeafbbcc94605a70e95fd7f07612afb34036aeaafde72c730ab25d2861",
+        "bytes": 6956575
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-tablet-exact-replay-no-recap_0_13AC92D6-C0FB-48C0-808C-16B3BAE2483E.png",
+      "timestamp": 1792912581.262,
+      "verdict": "PASS: complete 0 / 150,000 score, visible Full Board mode, Pause and dominant seven-by-seven star field. Bottom guide continues outside this scrolled view; no complete-guide claim. This frame is after the original Calm preference was restored, rather than a Calm-on settings witness."
+    },
+    {
+      "role": "live-first-clear-mode-and-diagram",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/EE0C4C1E-EC97-460B-8649-EEDB41904F06.png",
+        "sha256": "6804b3d0b8d8e0443dca6bec665e664b2cda8b7d13fca14738a3e05c01b6a753",
+        "bytes": 5021564
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-tablet-live-mode-end_0_4947EB41-F77A-4D5E-BF64-29E16A313AE8.png",
+      "timestamp": 1792912211.899,
+      "verdict": "PASS: actual Lantern Landing \u00b7 Full Board mode, first clear diagram and fixed Return to sky are distinct and readable. Body text intentionally continues below the reader viewport."
+    },
+    {
+      "role": "live-first-clear-diagram",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/47969BEE-249F-45CA-A325-C450F7632468.png",
+        "sha256": "6804b3d0b8d8e0443dca6bec665e664b2cda8b7d13fca14738a3e05c01b6a753",
+        "bytes": 5021564
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-tablet-live-first-diagram-end_0_681563A5-7A88-4E56-A118-63A7F50851F6.png",
+      "timestamp": 1792912213.805,
+      "verdict": "PASS: complete first clear miniature, outlined path and fixed Return control. Same visible pixel state as the mode checkpoint; separate captured provenance retained."
+    },
+    {
+      "role": "final-clear-phase-one-diagram",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/C8149BDC-72E1-4AD6-9868-D2EFCE11FB10.png",
+        "sha256": "874340627d4b2a9ca8c8f451312c73091a4503cca7b4e07985e2ca841b2cb7d0",
+        "bytes": 4869718
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.diagram_0_9FF163E1-B422-495A-8047-DF7ABAECFA32.1-end",
+      "timestamp": 1792912377.527,
+      "verdict": "PASS: Clear 1 miniature presents separate outlined shapes on the captured ingredient board; header and Return remain separate from scrolling body."
+    },
+    {
+      "role": "final-clear-phase-two-diagram",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/E63C42BD-A783-4CC2-A943-1CA70ECD32C1.png",
+        "sha256": "62046c36964e4ffdc3accdbfabc9f2577e59b82c643f306bd33852641a749b40",
+        "bytes": 4869838
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.diagram_0_B0D85882-D5AD-4728-8903-E115862F3F13.2-end",
+      "timestamp": 1792912399.34,
+      "verdict": "PASS: complete Clear 2 miniature and preceding 17,000 equation/refill fact; survivor diamonds remain distinct from outline circles. Earlier text is intentionally scrolled above pinned header."
+    },
+    {
+      "role": "final-clear-phase-three-diagram",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/5F6A6CEA-9732-464D-9605-24F5F77CC592.png",
+        "sha256": "e5d8b1eacec19a1fdf71c0093542bf4d64f48cbc81ae99c898d1b86095dc59e6",
+        "bytes": 4875649
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.diagram_0_7548F007-CA49-4126-9C36-077E8565B772.3-end",
+      "timestamp": 1792912424.753,
+      "verdict": "PASS: complete Clear 3 miniature and preceding 26,000 equation/refill fact; fixed Return stays clear."
+    },
+    {
+      "role": "last-clear-total-read-checkpoint",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/CEDE876C-FFBC-43C8-99B4-FC22501B273B.png",
+        "sha256": "64381a73379ad039ad7a947125470a505c78321628a9ee2aa4ebd171afc7bb0b",
+        "bytes": 4833278
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear_0_3B21A4E7-F700-4D28-BEE2-90A09874A5DB.total-end",
+      "timestamp": 1792912442.01,
+      "verdict": "PASS: complete serif 58,000 points this clear on two native lines, following the full 15,000 phase equation and four-star refill fact; no overlap with Return."
+    },
+    {
+      "role": "result-round-total-and-actions",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/237D62A3-78C6-4F77-9B25-B77619E62D77.png",
+        "sha256": "60e548027ffdebc2930ddbf9e15a02d018be107c983e704ea13dba5648503cba",
+        "bytes": 5983863
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-tablet-result-whole-score-end_0_4268CF97-2BA0-4AA8-A4DD-9553535AE256.png",
+      "timestamp": 1792912460.063,
+      "verdict": "PASS: complete 156,000 of 150,000 starlight collected in the ordinary restored-round result, distinct from the per-clear accounting. Visit Ribbon Crossing, New sky, Replay First Light, Back to Observatory and Review last clear are visible. This frame does not show the later 58,000 accounting block."
+    },
+    {
+      "role": "terminal-whole-clear-total",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/531FB206-54BC-42FE-96E4-6BFD0C9F6845.png",
+        "sha256": "c4b1f30bcd49e32af0a694c91d1b1271b9c8cfca1aba3ebc003206df70dd99ed",
+        "bytes": 5785063
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-tablet-result-whole-clear-total-end_0_49B71A35-77FE-4B5B-9AB8-3BC9EC291CFB.png",
+      "timestamp": 1792912490.477,
+      "verdict": "PASS: complete 17,000 / 26,000 / 15,000 phase equations followed by the emphasized 58,000 points this clear. Both total lines and final punctuation are visible near the bottom, with no ellipsis or overlapping control; upper mastery text is intentionally above viewport."
+    },
+    {
+      "role": "result-best-run-reading",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/6A463CEE-4B61-426F-A8C2-0D4BE2A17DAD.png",
+        "sha256": "5525813140908e4e4efd32e498f765d870811279185f77404d23cc8c86fa27f1",
+        "bytes": 5769593
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-tablet-result-best-end_0_32EE4A25-50D9-40A3-A65C-FB0BB28C5F11.png",
+      "timestamp": 1792912481.743,
+      "verdict": "PASS: complete current optional-star explanation and Best completed run: 3 of 3 stars from one completed run. This is a scrolled result body, rather than another changed total or practice result."
+    },
+    {
+      "role": "last-clear-complete-final-facts",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/D30D5ED7-BC24-4667-94D0-31988241598A.png",
+        "sha256": "16c3e8190b990bf65f27fad563cff51c2e336468aa75287ec5c9c23ccc5b70b0",
+        "bytes": 4820384
+      },
+      "metadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear_0_1C9CB0E5-4689-43CC-9549-C523DA1FBF93.room-end",
+      "timestamp": 1792912452.939,
+      "verdict": "PASS: complete 58,000 whole-clear total, six survivors, 22 refills and 49 stars after the clear, together with fixed Return to sky. This is the preferred complete total/context export."
+    }
+  ],
+  "viewedCount": 11,
+  "uniquePNGHashes": 10,
+  "recommendedExports": [
+    {
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/D30D5ED7-BC24-4667-94D0-31988241598A.png",
+        "sha256": "16c3e8190b990bf65f27fad563cff51c2e336468aa75287ec5c9c23ccc5b70b0",
+        "bytes": 4820384
+      },
+      "caption": "Actual AX5 ordinary Lantern Full Board final Last clear, scrolled to the complete 58,000 whole-clear total, six survivors and final refill/occupancy facts; fixed Return stays visible. Real Calm was enabled via Settings during this journey.",
+      "reason": "Complete changed total and useful surrounding facts in one whole native frame."
+    },
+    {
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-full-board-tablet-attachments/531FB206-54BC-42FE-96E4-6BFD0C9F6845.png",
+        "sha256": "c4b1f30bcd49e32af0a694c91d1b1271b9c8cfca1aba3ebc003206df70dd99ed",
+        "bytes": 5785063
+      },
+      "caption": "Actual AX5 ordinary Lantern Full Board terminal accounting, scrolled to complete 17,000 + 26,000 + 15,000 phase scores and 58,000 points this clear. The separate result records 156,000 round points; result actions are in an earlier viewport. No practice score is depicted.",
+      "reason": "Complete changed total and useful surrounding facts in one whole native frame."
+    }
+  ],
+  "findings": [
+    "Both changed whole-clear totals are complete at native AX5 size and use a consistent serif heading/primary-ink summary treatment. Equations remain subordinate and legible.",
+    "The final Last clear reader keeps an independent pinned title and Return control while native body text scrolls; the final-facts viewport shows the complete total, survivors and room facts without control overlap.",
+    "The result identifies the156,000 round total separately from58,000 for the final action. The inspected result-score viewport presents ordinary navigation/actions; the accounting viewport intentionally scrolls those earlier sections away."
+  ],
+  "limits": [
+    "This review covers only the 11 named stills, not every attachment or every scroll intermediate. Text at the top/bottom of intermediate scrolling viewports is intentionally partial; complete reading/extent/hit assertions belong to the passed native selector.",
+    "The opening screenshot supports source-bound board/header composition and exact Replay; it does not show the entire optional guide or prove a Calm-on preference by pixels.",
+    "No matched AX5 accepted-Goal7 whole-window baseline was captured. This review judges the candidate against its official component/state contract and the actual whole native frames, without claiming a controlled before/after AX comparison.",
+    "No exact JPEG export, other phone/tablet scenarios, continuous motion/performance, actual VoiceOver, physical-device, minimum-iOS or human recognition acceptance. Overall Goal8 remains subject to the remaining independent reviews."
+  ]
+}

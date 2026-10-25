@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "hud_audit",
+  "reviewedUTCDate": "2026-10-25",
+  "verdict": "BOUNDED_PASS",
+  "scopeStatus": "Normal-phone Last clear selected states complete; separate ScoreExplanation case pending. Overall goal decision belongs to goal-08-acceptance.json and the separate AX/readers/export records.",
+  "source": {
+    "checkpoint": "88101c1b23491860d985607d9930841d43e5a3b5",
+    "runtime": "dev.3a98dc8e44",
+    "acceptedBase": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d"
+  },
+  "environment": {
+    "device": "iPhone 17e",
+    "name": "Starfall HUD Stack dcf3 Phone",
+    "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "os": "iOS Simulator 27.0 (24A434)",
+    "scale": 3,
+    "windowPoints": [
+      390,
+      844
+    ]
+  },
+  "decision": {
+    "outcome": "The shared serif heading treatment makes the whole-clear total a clear summary, consistent with existing reader headings. Selected complete totals and Return controls fit without essential-ink clipping or new chrome.",
+    "baselineComparison": "Accepted baseline totals were readable ordinary body text; this candidate improves hierarchy. It is not presented as repair of an unreadable or clipped baseline.",
+    "observedRegression": null
+  },
+  "mechanicalContext": {
+    "selector": "LastClearRecapInteractionTests/testNormalSilverLastClearChainSeparateActionsAndColdRestore()",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "stageElapsedSeconds": 380.259,
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-summary.json",
+      "sha256": "e02509430fcb7c480afea56b10c4563d8899f242bf27a14e8de93966cfaded4c"
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-receipt.json",
+      "sha256": "eba39b4cbcddadc8343582de69ff9c62e8747e01ad0e7824a555bf3899e07460"
+    },
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/manifest.json",
+      "sha256": "be84e885862a8114d3ffd67920dfc845b23f647eb714c28b175f71a43d33feaf"
+    }
+  },
+  "reviewScope": {
+    "nativeAttachmentsAvailable": 41,
+    "nativeAttachmentsPersonallyViewed": 8,
+    "nativeDistinctImageHashesPersonallyViewed": 8,
+    "allAttachmentsReviewed": false,
+    "baseline": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-baseline.json",
+      "sha256": "6e8aef2822872b540b6e0bbd061f412978544846179b05bba1d627fda3f36c78"
+    }
+  },
+  "captures": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/EDFECC78-B805-47F2-A0EA-483D1C74CC32.png",
+      "sha256": "b903ad2827dcb941c4bf9b57cf007ed70c841b0216083e3b7e03ae8c7d9ea79b",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "last-clear-phone-silver-chain-sky.lastClear_0_9D8B5683-9DC5-4671-92D2-D4C6D7797860.mode-end",
+      "state": "Last clear opening/mode",
+      "directlyViewedWhole": true,
+      "observation": "Unchanged reader title, intro, mode and Clear 1 heading remain coherent with official surface. Fixed Return is complete; long passive diagram continues in the clipped scroll body."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/788DBAA8-871F-4A67-8887-614812CACBCE.png",
+      "sha256": "34d0d0c19359788b3d150b07e718769e2f95ccee0c2fb940e8ebe3a77df4d454",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "last-clear-phone-silver-chain-sky.lastClear.score_0_CB5255AB-74A5-4EF1-BB10-DF493CCE88EC.1-end",
+      "state": "First phase exact accounting",
+      "directlyViewedWhole": true,
+      "observation": "Four-star 5,000-point accounting is complete and readable. Lower refill prose is outside this targeted scroll stop; this is not an all-facts-in-one-viewport claim."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/AD6C6FA8-8F94-4517-8C7A-556E75927EB7.png",
+      "sha256": "261433a57c8ccbe877577c4dd8e957142543fba9fe0cb310d651eeb91daea70a",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "last-clear-phone-silver-chain-sky.lastClear.score_0_CD8F7BC4-D15A-4D7C-816F-4728019B9D06.2-end",
+      "state": "Second phase exact accounting",
+      "directlyViewedWhole": true,
+      "observation": "Five-star 14,000-point accounting remains complete with cleared outlines and survivor diamond. Fixed Return is distinct; subsequent refill/summary lie below this targeted stop."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/0D361D03-7C78-4C6F-A9A1-3876A9DAC6AC.png",
+      "sha256": "06651ce160e3c42105a79a24dcf38d25f59ccba24d3f856255dd4242032d7006",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "last-clear-phone-silver-chain-sky.lastClear_0_0D4F2E83-F5F5-45FA-8DDA-AE9BAF681C86.total-end",
+      "state": "19,000-point whole-clear reader summary",
+      "directlyViewedWhole": true,
+      "observation": "The full serif summary now separates cleanly from body accounting and fits on one line above the footer divider. The preceding 14,000-point accounting/refill and fixed Return are readable."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/4A65561A-57B0-4323-9C68-74A3FA54320F.png",
+      "sha256": "8cf7caa1ab3c9fe5f7d125cafd686c67abcbcd25c3da5b5c5915f4f3fb4aca0b",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "last-clear-phone-only-latest-independent-five-sky.lastClear_0_3F9B8B2B-81DD-4E42-BD0C-C38D082E1BA8.total-end",
+      "state": "Latest independent 5,000-point reader summary",
+      "directlyViewedWhole": true,
+      "observation": "The full 5,000-point summary uses the same official heading role and stays distinct from its preceding one-phase accounting. Complete Return remains unobstructed."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/5EC8872D-863F-42FC-BB34-B7044BCCE057.png",
+      "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "last-clear-phone-silver-whole-result-end_0_46A8746F-D804-4812-9ACF-C6C6BE047E9E.png",
+      "state": "19,000-point terminal whole result",
+      "directlyViewedWhole": true,
+      "observation": "Whole native result shows complete actions, both 5,000/14,000 phase facts, new serif 19,000 summary and Last earned light. Summary emphasis is clear without a new surface."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/4995532E-7691-4434-A0E9-ABC846B5D2BD.png",
+      "sha256": "1929c3efdbef190e6ec8546a33d2eb5dadff850d74fe456454b89da0b2c379be",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "last-clear-phone-independent-whole-result-end_0_E3D039A3-BB21-498F-A77A-1F149703B76C.png",
+      "state": "Later independent result: 12,000 round and latest 5,000 clear",
+      "directlyViewedWhole": true,
+      "observation": "Whole result visibly separates round objective completion from latest 5,000-point one-phase accounting. No redundant whole-clear total is rendered for the one-phase terminal explanation. Actions and Last earned light are complete."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/2ECA8BE7-A846-4057-A8BA-1267A5A888F1.png",
+      "sha256": "36baa6beb083125d056ec0780d117f479aa25b52b6c523517fabf917b89682f8",
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "captureName": "last-clear-phone-cold-ending-omits-session-recap_0_C1A7BB42-B3BB-4FB5-84E2-836F51D17F7A.png",
+      "state": "Cold-restored ending",
+      "directlyViewedWhole": true,
+      "observation": "Whole restored ending has complete normal result actions and no session recap/Review last clear region. This still supports visible absence only; lifecycle assertions belong to the completed native method."
+    }
+  ],
+  "matchedComparisons": [
+    {
+      "candidate": "EDFECC78-B805-47F2-A0EA-483D1C74CC32.png",
+      "baseline": "B44EFF18-2F0F-430B-BFAD-F74A1AD042A2.png",
+      "finding": "Opening reader hierarchy and existing surface remain consistent."
+    },
+    {
+      "candidate": "0D361D03-7C78-4C6F-A9A1-3876A9DAC6AC.png",
+      "baseline": "18F3ECC9-82AB-4972-A2C6-D0D9A96614E6.png",
+      "finding": "19,000 summary now has clear serif emphasis while preceding accounting and fixed Return remain complete."
+    },
+    {
+      "candidate": "4A65561A-57B0-4323-9C68-74A3FA54320F.png",
+      "baseline": "9D96F800-4C87-472A-87E0-8D1C5435AEDD.png",
+      "finding": "Latest independent 5,000 summary gains the same heading role without crowding the footer."
+    }
+  ],
+  "recommendedExportSources": [
+    "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/0D361D03-7C78-4C6F-A9A1-3876A9DAC6AC.png",
+    "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/4A65561A-57B0-4323-9C68-74A3FA54320F.png",
+    "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-silver-phone-attachments/5EC8872D-863F-42FC-BB34-B7044BCCE057.png"
+  ],
+  "limits": [
+    "Eight named whole captures were directly inspected, not all 41 attachments.",
+    "Normal-text native phone scope only; actual AX5 tablet and other reader paths belong to independent reviewers.",
+    "The separate ScoreExplanation native case remains pending in this record. The 19,000 whole result here is real native evidence from the completed Last clear method.",
+    "Reader diagrams/prose continue beyond individual scroll stops; no claim that all facts fit simultaneously.",
+    "Static captures do not establish continuous animation, actual VoiceOver, physical-device or minimum-OS behavior.",
+    "Exact-fact, round/isolation, source and restoration correctness are mechanical claims from the native method and source; this is a bounded visual judgment."
+  ]
+}

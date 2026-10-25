@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "status": "VISUAL_HOLD_CONFIRMED; correction candidate requires fresh native proof",
+  "recordedUTC": "2026-10-25T07:47:28.853492+00:00",
+  "source": {
+    "appSource": "88101c1b23491860d985607d9930841d43e5a3b5",
+    "testSource": "d70ca1cad00aeed279fd9f79150f87ee3f57ab4d",
+    "runtime": "dev.3a98dc8e44",
+    "appByteParity": "FallingSkyView Git bytes at d70 equal881; no production rendering change during diagnostics.",
+    "fallingSkyViewGitSHA256": "e60869fb27640b240ec351470e9756f2d48d9390e7c4f2b32349d953c96ca163"
+  },
+  "mechanicalResults": {
+    "native": {
+      "label": "native-08-empty-diagnostic-d70ca1ca",
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-empty-diagnostic-d70ca1ca-summary.json",
+        "sha256": "c3c3e4f91e9fdd15647db2cf117d49bcc56b713f3a1a2324e150d0f21e11f6e5",
+        "bytes": 741
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-empty-diagnostic-d70ca1ca-receipt.json",
+        "sha256": "a1261cf26b42e1a63b081cf8b97e55b4f8727a28bec18eaf4787f604cb4ad865",
+        "bytes": 178
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 360.58,
+      "runtimeWarnings": []
+    },
+    "hosted": {
+      "label": "hosted-08-empty-diagnostic-d70ca1ca",
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-summary.json",
+        "sha256": "e65074d3f7dcc9af150aa2c389ac8e07747ff9841300d804f76415a0e26a1cd7",
+        "bytes": 740
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-receipt.json",
+        "sha256": "7b4cf1dddb0be0b0939563aacd5dc244264fdc5dd38fa40bad5529dc614b63a3",
+        "bytes": 176
+      },
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 8.136,
+      "runtimeWarnings": []
+    },
+    "commands": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-08-empty-diagnostic-d70ca1ca.json",
+      "sha256": "241acf0ba3dc0e3eefedbbfaffa9311f5055c7d0680b441de2198f01ccb97e85",
+      "bytes": 7306
+    },
+    "qualification": "Both corrected diagnostic stages pass assertions. Their mechanical passes do not override the native visual failure."
+  },
+  "nativeViews": [
+    {
+      "classification": "empty-live-before-reader",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-empty-diagnostic-d70ca1ca-attachments/7F847477-2544-4A5D-8478-780A1D7CBB3A.png",
+        "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+        "bytes": 3260806
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-empty-diagnostic-d70ca1ca-attachments/manifest.json",
+        "sha256": "3d0fc4b37628bcde1abaf01769daecd0d464b1e0826167d0b749012120edb84c",
+        "bytes": 11945
+      },
+      "testIdentifier": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+      "attachmentName": "last-clear-phone-empty-live-before-reader_0_443EF917-3408-4605-B125-A87A44A85DDD.png",
+      "verdict": "Continuous painting through the complete empty board; no gray rectangle. Score5, forecast and paused guide visible."
+    },
+    {
+      "classification": "covered-last-clear-mode",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-empty-diagnostic-d70ca1ca-attachments/D61F16BD-01F5-4CF8-AC39-D5C8B34D3263.png",
+        "sha256": "5302866640fa2afaa6b6839f791bd0c402cc412eb62301094182e59eaff3ab8e",
+        "bytes": 1428724
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-empty-diagnostic-d70ca1ca-attachments/manifest.json",
+        "sha256": "3d0fc4b37628bcde1abaf01769daecd0d464b1e0826167d0b749012120edb84c",
+        "bytes": 11945
+      },
+      "testIdentifier": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+      "attachmentName": "last-clear-phone-manual-exact-five-sky.lastClear_0_A86E2F44-F61E-4117-BA12-87D062DA6C77.mode-end",
+      "verdict": "FAIL_VISUAL: large uniform gray board-sized rectangle behind ceiling and the reader; Last clear surface and text remain rendered."
+    },
+    {
+      "classification": "covered-last-clear-total",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-empty-diagnostic-d70ca1ca-attachments/D54A0AB6-AE00-46A6-94A8-3DF0AD15F119.png",
+        "sha256": "b74e54e9ebf598e66c48f3023172bfeb3c2403a9a338d887e48e79da33a7621e",
+        "bytes": 1528088
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-empty-diagnostic-d70ca1ca-attachments/manifest.json",
+        "sha256": "3d0fc4b37628bcde1abaf01769daecd0d464b1e0826167d0b749012120edb84c",
+        "bytes": 11945
+      },
+      "testIdentifier": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+      "attachmentName": "last-clear-phone-manual-exact-five-sky.lastClear_0_B6B548B0-3FAD-4B5E-B6A0-A41FE922BBD6.total-end",
+      "verdict": "FAIL_VISUAL: same gray rectangle while the exact5-point total and complete traced-five row are readable."
+    },
+    {
+      "classification": "returned-empty-live-after-reader",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-empty-diagnostic-d70ca1ca-attachments/F07BDEFF-AD7F-4265-9E16-73224CC5AA0C.png",
+        "sha256": "f8b004fa0144baa9e76882019b4c9d5d87970b02dd535a66d6b7445d9f3c2f14",
+        "bytes": 1805522
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-empty-diagnostic-d70ca1ca-attachments/manifest.json",
+        "sha256": "3d0fc4b37628bcde1abaf01769daecd0d464b1e0826167d0b749012120edb84c",
+        "bytes": 11945
+      },
+      "testIdentifier": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+      "attachmentName": "last-clear-phone-empty-live-after-reader_0_88AEDB1E-9CA5-400D-ABB1-CB5639D5DACA.png",
+      "verdict": "FAIL_VISUAL: gray board-sized rectangle persists after dismissal, now undimmed beneath restored header and above guide. This is not only a menu background appearance."
+    }
+  ],
+  "hostedViews": [
+    {
+      "classification": "five-live",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/159E588A-7370-4292-A482-9020CA805499.png",
+        "sha256": "36e784e021f90834b86cf30ee84be61055bdd4f91198f2141da43ecf2a874038",
+        "bytes": 9111112
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/manifest.json",
+        "sha256": "15e3dd5fdaff7d903ae6015adc585f909a3091b62ed654eed4d98eb71e82c8ca",
+        "bytes": 5036
+      },
+      "testIdentifier": "SkyReadingPlayfieldTests/testActualOpenSkySceneAcrossFiveStarsEmptySuspensionAndNextShower()",
+      "attachmentName": "open-sky-render-boundary-five-live_0_13907F2F-EBF1-4900-A4C5-BB89AA868241.png",
+      "verdict": "Continuous painting and five visible pink stars."
+    },
+    {
+      "classification": "empty-live",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/CF1C542D-4E15-4E3E-9607-F7BA31E08538.png",
+        "sha256": "d8120c520dd8e414630c589857c1fb53b09df74d7a0de3bbfa45e92b5c6148a3",
+        "bytes": 8812041
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/manifest.json",
+        "sha256": "15e3dd5fdaff7d903ae6015adc585f909a3091b62ed654eed4d98eb71e82c8ca",
+        "bytes": 5036
+      },
+      "testIdentifier": "SkyReadingPlayfieldTests/testActualOpenSkySceneAcrossFiveStarsEmptySuspensionAndNextShower()",
+      "attachmentName": "open-sky-render-boundary-empty-live_0_B72D4CBD-5E5C-43ED-9BA6-E4C3A96BBAB0.png",
+      "verdict": "Continuous painting with empty committed scene; live receipt is separately still visible."
+    },
+    {
+      "classification": "empty-store-suspended-without-cover",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/413A84E3-3BDF-4103-B15B-DF1B629684A2.png",
+        "sha256": "fc545c82f1451c260e99bc9c97360f4ebb1f3c80c16dedc2249cef9f2d9adb8e",
+        "bytes": 8900527
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/manifest.json",
+        "sha256": "15e3dd5fdaff7d903ae6015adc585f909a3091b62ed654eed4d98eb71e82c8ca",
+        "bytes": 5036
+      },
+      "testIdentifier": "SkyReadingPlayfieldTests/testActualOpenSkySceneAcrossFiveStarsEmptySuspensionAndNextShower()",
+      "attachmentName": "open-sky-render-boundary-empty-store-suspended-without-cover_0_3AD655BA-3B23-4A9D-BB3D-F6F3A93572E0.png",
+      "verdict": "Continuous painting; suspension alone produces no gray."
+    },
+    {
+      "classification": "empty-resumed-without-cover",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/10D9CBEC-09D1-40CB-A75E-BB88BCFA6E81.png",
+        "sha256": "2516dc4758bc6f8d5d1aa2a162d43c0d67403c26573df1988e495b920c56f6fb",
+        "bytes": 8787504
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/manifest.json",
+        "sha256": "15e3dd5fdaff7d903ae6015adc585f909a3091b62ed654eed4d98eb71e82c8ca",
+        "bytes": 5036
+      },
+      "testIdentifier": "SkyReadingPlayfieldTests/testActualOpenSkySceneAcrossFiveStarsEmptySuspensionAndNextShower()",
+      "attachmentName": "open-sky-render-boundary-empty-resumed-without-cover_0_F0DE306B-CC1C-4875-B3BD-047BD1525B62.png",
+      "verdict": "Continuous painting after resuming Store without a modal."
+    },
+    {
+      "classification": "one-no-award-shower",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/CDB6511F-5D60-499E-9B64-BC7D473E920E.png",
+        "sha256": "ff0ff2eca4782e05a4fca7ddfe579ba9dfd76069483e12bb295ed1e0dc002acc",
+        "bytes": 8828937
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/manifest.json",
+        "sha256": "15e3dd5fdaff7d903ae6015adc585f909a3091b62ed654eed4d98eb71e82c8ca",
+        "bytes": 5036
+      },
+      "testIdentifier": "SkyReadingPlayfieldTests/testActualOpenSkySceneAcrossFiveStarsEmptySuspensionAndNextShower()",
+      "attachmentName": "open-sky-render-boundary-one-no-award-shower_0_1E98811C-F97E-46A7-9A6E-D89164037BDC.png",
+      "verdict": "Continuous painting and three actual new mint stars; existing5-point score/last-clear history preserved."
+    }
+  ],
+  "hostedProperties": [
+    {
+      "phase": "one-no-award-shower",
+      "record": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/16F5BEB3-2935-425B-B0C4-A8AA10CB9707.txt",
+        "sha256": "672d1d3658326fb308a43fca3f8b30e09ae58aa18200b9a54e69f4d1ed1fe8c6",
+        "bytes": 4174
+      },
+      "observed": "Actual SKView allowsTransparency=true/isOpaque=false; CAMetalLayer isOpaque=false/clear layer background; scene background clear/isPaused=false; attached390\u00d7900 canvas with readiness true. Wrapper/scroll ancestors are opaque=true/backgroundnil in both occupied and empty good renders."
+    },
+    {
+      "phase": "empty-resumed-without-cover",
+      "record": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/E05C7A0C-7DE2-46E7-B433-3FDDD9B780CE.txt",
+        "sha256": "0af724dd2aa6a4a23c002cbcb1d603049579529b86f67db16018f2f8c7f52654",
+        "bytes": 4206
+      },
+      "observed": "Actual SKView allowsTransparency=true/isOpaque=false; CAMetalLayer isOpaque=false/clear layer background; scene background clear/isPaused=false; attached390\u00d7900 canvas with readiness true. Wrapper/scroll ancestors are opaque=true/backgroundnil in both occupied and empty good renders."
+    },
+    {
+      "phase": "empty-store-suspended-without-cover",
+      "record": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/D1D78247-A5FA-402D-BA7F-F354BB3486B8.txt",
+        "sha256": "ee84aea28861d4c5f753cd36d41587a96f5739dc6ae4447ae31f3f2913108582",
+        "bytes": 4212
+      },
+      "observed": "Actual SKView allowsTransparency=true/isOpaque=false; CAMetalLayer isOpaque=false/clear layer background; scene background clear/isPaused=false; attached390\u00d7900 canvas with readiness true. Wrapper/scroll ancestors are opaque=true/backgroundnil in both occupied and empty good renders."
+    },
+    {
+      "phase": "empty-live",
+      "record": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/53F51813-D4E7-492B-993A-68F00FF80694.txt",
+        "sha256": "0c91a04676583a852883fb7a0caa8607a2d9b2b318cffe40efd02314ed1833a9",
+        "bytes": 4189
+      },
+      "observed": "Actual SKView allowsTransparency=true/isOpaque=false; CAMetalLayer isOpaque=false/clear layer background; scene background clear/isPaused=false; attached390\u00d7900 canvas with readiness true. Wrapper/scroll ancestors are opaque=true/backgroundnil in both occupied and empty good renders."
+    },
+    {
+      "phase": "five-live",
+      "record": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-d70ca1ca-attachments/323CE482-53F6-4C3D-996D-BA29F294D8C1.txt",
+        "sha256": "6920ca3d0420f47a0600e9e3c5889eb847d2ad846b0203629b9546830da72d3a",
+        "bytes": 4164
+      },
+      "observed": "Actual SKView allowsTransparency=true/isOpaque=false; CAMetalLayer isOpaque=false/clear layer background; scene background clear/isPaused=false; attached390\u00d7900 canvas with readiness true. Wrapper/scroll ancestors are opaque=true/backgroundnil in both occupied and empty good renders."
+    }
+  ],
+  "confirmedObservations": [
+    "Native before-reader empty live sky is correct. Gray begins during the actual full-screen Last clear route and remains in the returned empty live sky. It therefore requires a correction beyond hiding a menu-only artifact.",
+    "No-cover hosted five\u2192empty\u2192Store-suspended\u2192resumed\u2192three-star shower all retain painting. Their actual SKView, scene and Metal-layer transparency values are already correct. This rules out a reproduced missing allowsTransparency flag or plain Store suspension as a sufficient cause.",
+    "The uniform rectangle follows the cropped foreground canvas rather than the full-screen scrim:390\u00d7900 canvas,378-point arena,217-point crown crop and442-point clipped foreground. Full-screen settings removes the fixed header/80-point return composition and moves that canvas under the cover.",
+    "Opaque UIKit wrapper/scroll ancestors occur in both correctly rendered occupied and empty hosted states. Their opacity declarations alone do not identify a faulty view. Failed native covered-state UIKit properties were not instrumented."
+  ],
+  "sourceBoundaryAndHypothesis": {
+    "responsibleArea": "FallingSkyView.readingPlayfield composition around the transparent SpriteView while full-screen menu/ceremony covers play.",
+    "boundedDiagnosis": "Failure is observed across the real cover transition in this native sequence; deleted layout and native cover/drawable behavior co-occur. The exact private-framework/render-driver mechanism and an exclusive causal allocation between cover and layout movement are not yet proved.",
+    "candidate": "Retain the header/fixed-return composition and eligible guide subtree under both settings and ceremony. Preserve zero ink, no hit testing and hidden accessibility for covered header/guide, and preserve existing board/receipt guards. This is a source-backed prevention hypothesis until fresh native covered AND returned empty frames pass.",
+    "proposal": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/goal08-covered-reading-lifecycle-proposal.json",
+      "sha256": "8da422ecd04e43dda8c2e6aa325fd2e4f43820046ae9bdd68b1cac119a01cdd1",
+      "bytes": 5535
+    },
+    "patch": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/goal08-covered-reading-layout-hypothesis.patch",
+      "sha256": "141ac570367e80e1f409de173f6f9f3f6e7b4e0d3838c0db4559f36907a0f1bf",
+      "bytes": 2448
+    },
+    "excludedShortcuts": "No empty-board special case, dummy SpriteKit node, forced motion, menu-only paint mask, Core/state change or unsupported private UIKit mutation."
+  },
+  "history": [
+    {
+      "testSource": "341c9f4e138f75c8aa5547e5d1d77e5927ac2501",
+      "result": {
+        "label": "hosted-08-empty-diagnostic-341c9f4e",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-341c9f4e-summary.json",
+          "sha256": "1be229ee0ab1fd1e565421550a2de892685ec0b8ec26dd66f619d5c13103b187",
+          "bytes": 5799
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-empty-diagnostic-341c9f4e-receipt.json",
+          "sha256": "82084548b17c8066bb345e553912ba13b58148583c36391c264d873336629192",
+          "bytes": 177
+        },
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "elapsedSeconds": 7.545,
+        "runtimeWarnings": []
+      },
+      "qualification": "First hosted diagnostic failed only equality with raw fixture.game; Store intentionally applies adoptingFeedingDusk. All five observations were retained. Corrected oracle uses the exact public adoption; no existing outcome assertion or timing allowance was weakened."
+    },
+    {
+      "source": "88101c1b23491860d985607d9930841d43e5a3b5",
+      "record": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-native-open-sky.json",
+        "sha256": "bf4786cb1d702147bfd21731b3dbf7b1f422b542831536bd28b04a2e02d228a4",
+        "bytes": 22289
+      },
+      "qualification": "Initial full native case passed its mechanics but independently revealed the gray background. No claim that the failure was preexisting or covered by historical acceptance."
+    }
+  ],
+  "limits": [
+    "Nine exact new stills were directly inspected, plus all five corrected hosted property records. Tool display resizing did not modify original1170\u00d72532 PNG bytes.",
+    "No actual UIKit property snapshot was taken while native gray was present; hosted property values describe the no-cover context only.",
+    "The later correct occupied-shower frame belongs to the same source scenario, but this report does not infer a continuous duration, precise render latency or a generally safe recovery policy.",
+    "No production correction acceptance, JPEG conversion, actual VoiceOver, physical/minimum-iOS or continuous performance claim. Goal8 stays held until the correction and representative sibling native review pass."
+  ]
+}

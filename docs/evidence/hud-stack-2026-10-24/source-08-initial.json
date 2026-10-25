@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "status": "INITIAL_SOURCE_REVALIDATED; NOT ACCEPTED",
+  "testedCommit": "88101c1b23491860d985607d9930841d43e5a3b5",
+  "baseMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+  "runtimeInputFingerprint": "dev.3a98dc8e44",
+  "committedRuntimeInputCount": 567,
+  "committedTestInputCount": 167,
+  "workingTreeBuildDifferences": [],
+  "workingTreeTestDifferences": [],
+  "excludedDocumentationDifferences": [],
+  "changedAppOwners": [
+    "App/SkyLastClearView.swift",
+    "App/SkyScoreExplanationView.swift"
+  ],
+  "changedTestOwners": [
+    "UITests/LastClearRecapInteractionTests.swift"
+  ],
+  "rawInputManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-08-88101c1b.json",
+    "sha256": "cbbe18faf4619b2cdf0e8effc86fd04c642b57f6d8a22efb31be2348604ff38f",
+    "bytes": 186898
+  },
+  "proof": "All567 canonical runtime inputs and all non-Markdown test inputs equal their committed Git blobs and SHA256/size. Canonical build_identity reproduces runtime. Only the named2App/1test owners differ from accepted main; no build/test-affecting working-tree input.",
+  "sourceSnapshotTiming": {
+    "perFileSnapshotPreparedUTC": "2026-10-25T07:03:22.716551+00:00",
+    "runnerStartedUTC": "2026-10-25T07:02:06.247828+00:00",
+    "sourceRevalidatedUTC": "2026-10-25T07:33:11.441383+00:00",
+    "qualification": "Detailed per-file dump was prepared during the source-frozen initial run, not before Debug; all567 runtime and167 test bytes/Git blobs and canonical runtime identity were revalidated before diagnostic edits."
+  },
+  "inventory": {
+    "hostedMethods": 818,
+    "developmentPhoneUIMethods": 260,
+    "actualVoiceOverDeferredMethods": 6
+  },
+  "embeddedProducts": [
+    {
+      "configuration": "Debug",
+      "embeddedRuntime": "dev.3a98dc8e44",
+      "info": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+        "sha256": "10fc71c7a68e26d8b36c2d1510d3d304e4c27d0cfd41a01feb616314a43cf6a8",
+        "bytes": 1402
+      },
+      "dialogueCatalogue": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/observatory-dialogue.json",
+        "sha256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+        "bytes": 96334
+      },
+      "currentProductBinaries": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Starfall",
+          "sha256": "d802ce8f97eeb7ed504d28672daee0b5f9aaa408f5b637a10c5db0e8c3b9a53a",
+          "bytes": 40144
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Starfall.debug.dylib",
+          "sha256": "a0fb8fc16d34f311e477ab21735d2da0b375bb89f56385469a1394cef900e8d2",
+          "bytes": 15929312
+        }
+      ]
+    }
+  ],
+  "releaseEmbeddedProduct": null,
+  "releaseProductStatus": "UNRUN in initial candidate",
+  "collectorHelpers": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/prepare-goal08-source.py",
+      "sha256": "afcbeef42a7355e64edf57995fedcd8c0371957ff1a5a45d274cfa338746dc6d",
+      "bytes": 6723
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/run-goal08-candidate.py",
+      "sha256": "42c5ac2d5e676b497bc1bfdf431d5c33202fadc7c23f71d47bc7cef92ce646fc",
+      "bytes": 14398
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/collect-goal08-initial-partial.py",
+      "sha256": "1d304c013c046299b97d905a1c23eb82975febd041f25077a0c581a719cb7d75",
+      "bytes": 12863
+    }
+  ]
+}

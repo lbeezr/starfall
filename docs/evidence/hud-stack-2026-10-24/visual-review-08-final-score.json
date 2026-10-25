@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "hud_audit",
+  "reviewedUTC": "2026-10-25T08:37:54.552728+00:00",
+  "verdict": "BOUNDED_PASS",
+  "scopeStatus": "Final-source normal-phone ScoreExplanation native review complete. Final aggregate and exact-export decisions remain separate; no overall adoption.",
+  "source": {
+    "checkpoint": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "runtime": "dev.2c4e822ca7",
+    "acceptedBase": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "prebuildInputs": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-08-5a0cf195.json",
+      "sha256": "836cc6ebfd146393f20bdc453b10bd8d37e7925195017b9459615b41a4edb197"
+    }
+  },
+  "environment": {
+    "architecture": "arm64",
+    "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "deviceName": "Starfall HUD Stack dcf3 Phone",
+    "modelName": "iPhone 17e",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator",
+    "scale": 3,
+    "windowPoints": [
+      390,
+      844
+    ]
+  },
+  "decision": {
+    "outcome": "The native 19k terminal whole-clear summary is visibly distinct from both exact phase equations using the existing serif heading and primary ink. Result heading/actions, survivor fact and earned-light cue remain complete and readable. Separate 7k then 5k actions preserve their own readable context and conditional single-phase accounting.",
+    "observedRegression": null,
+    "baselineBoundary": "Accepted baseline static accounting and normal LastClear baseline are recorded separately. No matched accepted-product whole terminal native Score screenshot was captured, so this is a current-source composition verdict, not a paired whole-terminal regression measurement."
+  },
+  "mechanicalContext": {
+    "selector": "ScoreExplanationInteractionTests/testNormalSilverPhaseScoresSeparateActionsAndExactReplay()",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "stageElapsedSeconds": 170.789,
+    "testElapsedSeconds": 166.271,
+    "processAllowanceSeconds": 360,
+    "methodAllowanceSeconds": 300,
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-receipt.json",
+      "sha256": "fe920577b61873f188a3f2b5781d550e14d640f2644f87914079cc761dbd31db"
+    },
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-summary.json",
+      "sha256": "c1d70ebc6508dfde7789d08f943748cbe539d0a443b1f9df0db7f752dd4a0ff9"
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone.log",
+      "sha256": "4184e3acf54e1f6b17f1b1cef7585476ebff1673d6b99998d01031ea605954d0"
+    },
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/manifest.json",
+      "sha256": "8491ac1a174cc9a0e9bbf9b885a339fc02187e3e630d053f7d9b9f802fdd3ab7"
+    },
+    "assertedBehavior": "The unchanged original method verifies exact 19k phase accounting, background persistence, world isolation, same-round Replay opening, independent 7k plus 5k sequence, latest-only single-phase accounting and cold-restore omission. The still images do not independently prove those transitions."
+  },
+  "reviewScope": {
+    "nativeAttachmentsAvailable": 8,
+    "nativeAttachmentsPersonallyViewed": 8,
+    "nativeDistinctImageHashesPersonallyViewed": 5,
+    "allAttachmentsReviewed": true,
+    "relatedHostedReview": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-hosted.json",
+      "sha256": "b7b89cdafaa870dd0c2ee08787e522a85b90ac95179e54269765e5aa959fe29b"
+    },
+    "relatedNativeLastClearReview": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-phone.json",
+      "sha256": "d75c3f49bdd8e60a3fdaaddbf381b30c0c542e805fee1e1ec65b375983209a34"
+    }
+  },
+  "proposedRetainedWholeResult": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/3E2F8362-6599-4F0F-BF57-C2FBF984FB5C.png",
+    "reason": "Represents this separate native method with complete 19k result, both phase equations, summary and native continuation/replay/world/review actions."
+  },
+  "captures": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/F89A1FEE-53FF-43D4-846F-27F1BAF0ADCF.png",
+      "sha256": "dd1e7555c9e657864bc4cf3f96471a0610b8afc7f86b7991e7a9c8318ae3dd4b",
+      "attachmentName": "score-phone-latest-independent-clear_0_2C2192EB-D7B9-4FA8-9282-51B388A26B73.png",
+      "timestamp": 1792917212.923,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "state": "Latest independent single-phase result",
+      "directlyViewedWhole": true,
+      "observation": "Complete 12k result shows only latest clear accounting: four stars / 4 light / 5k. No duplicate multi-phase total appears; native actions and vertical earned-light cue fit."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/ADBE78A9-2D68-4CC9-A1C2-0FDD418E1998.png",
+      "sha256": "e58c2c02a4ee4e69fb3a34bcfa9125d675ceadad8282da066be63c6652665c00",
+      "attachmentName": "score-phone-independent-final-five-thousand_0_613B9F3B-4E34-4310-A68E-55170735951C.png",
+      "timestamp": 1792917208.122,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "state": "Independent final 5k commit",
+      "directlyViewedWhole": true,
+      "observation": "Whole native field shows 12k earned score and committed stars; terminal surface has not yet arrived in this capture."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/98FAFA1A-CD14-4C82-B28A-413C4B796DFB.png",
+      "sha256": "ac3fefdc207094469b191bfb4bf6aba7a7986e24ea5e94603cc13720335fc36d",
+      "attachmentName": "score-phone-independent-seven-thousand-end_0_49DE40C7-D40C-4CF0-AECA-3A2E1DF19068.png",
+      "timestamp": 1792917204.115,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "state": "Replay independent 7k guide end",
+      "directlyViewedWhole": true,
+      "observation": "Same settled guide composition remains readable; no inference of continuous animation between the two guide stills."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/AFB32735-493F-4FFD-9BF0-B4434A884EBA.png",
+      "sha256": "ac3fefdc207094469b191bfb4bf6aba7a7986e24ea5e94603cc13720335fc36d",
+      "attachmentName": "score-phone-independent-seven-thousand-start_0_2B921DB4-E6F8-4D5F-848A-5F2D619652D6.png",
+      "timestamp": 1792917203.795,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "state": "Replay independent 7k guide start",
+      "directlyViewedWhole": true,
+      "observation": "Readable 7k score and full five ordered forecasts above actual stars. Pip guide includes complete 5-star accounting and room fact, with complete Close label."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/3E2F8362-6599-4F0F-BF57-C2FBF984FB5C.png",
+      "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+      "attachmentName": "score-phone-chain-whole-clear-total_0_D3B2BC21-70A8-466E-AC90-2B8A9098865B.png",
+      "timestamp": 1792917160.708,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "state": "19k terminal whole-clear total target",
+      "directlyViewedWhole": true,
+      "observation": "Best retained whole-result specimen from this method: complete two-phase equations and stronger 19k whole-clear summary with all result actions visible."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/3C718444-8992-4285-8A7D-E689727A62BD.png",
+      "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+      "attachmentName": "score-phone-chain-phase-two-fourteen-thousand_0_201204A7-C36D-4275-B557-F4A9D236B7A4.png",
+      "timestamp": 1792917159.398,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "state": "19k terminal phase-two target",
+      "directlyViewedWhole": true,
+      "observation": "Same complete terminal composition; no clipped phase equation or overlap with total."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/3B694116-2910-473E-B0AA-DD7147706165.png",
+      "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+      "attachmentName": "score-phone-chain-phase-one-five-thousand_0_E10B2D90-02E9-40A7-962A-D1AF3F5B16EB.png",
+      "timestamp": 1792917158.105,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "state": "19k terminal phase-one target",
+      "directlyViewedWhole": true,
+      "observation": "Complete restored result, native actions, survivor fact, 5k and 14k equations, final serif 19k total and earned-light cue are readable together."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/9474A330-D4DB-440A-8FD3-631B7AA5DFCD.png",
+      "sha256": "d45c3708c5f3a813d0000ab7c13434889ebc6a7ec4f007c89359e886f97aadfb",
+      "attachmentName": "score-phone-silver-committed-chain_0_1523715A-6E73-4536-86C3-C2D9CF47A0B4.png",
+      "timestamp": 1792917153.252,
+      "dimensionsPx": [
+        1170,
+        2532
+      ],
+      "orientation": "portrait",
+      "state": "Committed chain field",
+      "directlyViewedWhole": true,
+      "observation": "Actual normal-phone whole frame shows 19k earned score, intact scenery and recognizable committed stars; terminal surface has not yet arrived in this capture."
+    }
+  ],
+  "limits": [
+    "Eight attachment PNGs contain fewer distinct pixel states; repeated phase-target captures are not separate moments of gameplay motion.",
+    "Normal-text actual Phone scope only. No actual AX5 tablet, empty-sky reader lifetime, Frostfruit inspector, continuous-motion, frame-pacing/onset, physical-device, minimum-OS or actual VoiceOver conclusion is inherited.",
+    "Replay and cold restore have passing original mechanical assertions; no dedicated Replay or cold ending screenshot is present in this eight-image set.",
+    "This reviewer ran no build, native controller, exporter or decoder and did not inspect an active result bundle."
+  ]
+}

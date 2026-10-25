@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "status": "PASS_BOUNDED_FIVE_STATE_PROBE; full Goal8 adoption remains pending",
+  "reviewedUTC": "2026-10-25T08:10:18.625778+00:00",
+  "source": {
+    "appSource": "4120d46cd73005855fda6d2fa447a637918be21b",
+    "testSource": "4120d46cd73005855fda6d2fa447a637918be21b",
+    "runtime": "dev.0e8f51dfa2",
+    "candidate": "Explicit transparent native SKView with requested-scene identity, detach-before-transfer and current-owner-only teardown; temporary passive diagnostics still present at this checkpoint."
+  },
+  "mechanics": {
+    "selector": "StarfallUITests/LastClearRecapInteractionTests/testNormalOpenSkyEmptyReaderKeepsItsBackdropAndExactRound",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "stageElapsedSeconds": 87.007,
+    "methodElapsedSeconds": 83.543,
+    "runtimeWarnings": [],
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-4120d46c-summary.json",
+      "sha256": "45392c2dbf7c9bcf0715fbda18543616251e986d6ea4794bd56c7da876cadf5e",
+      "bytes": 741
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-4120d46c-receipt.json",
+      "sha256": "18b16c612deccea4203d76c14d4037ce4abca252f8fc5cdfda32d5a43487be98",
+      "bytes": 184
+    },
+    "commandManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-08-explicit-surface-probe-4120d46c.json",
+      "sha256": "26a2bbf52c32305a8b9c59eaf3ec76af5730a16eb5a42e840f72b1a4c8d59c8b",
+      "bytes": 7438
+    },
+    "otherCompletedStages": {
+      "debugBuildSeconds": 8.269,
+      "existingHostedDiagnostic": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "stageSeconds": 6.121
+      }
+    },
+    "qualification": "The unchanged native probe gates real trace, unique/withdrawn score semantics, exact observable round and world state, bounded input re-admission after actual private-reader Return and cold restore. It does not itself compare raw save bytes/RNG or prove the full original journey matrix."
+  },
+  "attachmentManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-4120d46c-attachments/manifest.json",
+    "sha256": "ac9d7b2c0d32db281dc645b9abb7bc2ee89512857972faa7bceead5bdb79fd9a",
+    "bytes": 2584
+  },
+  "views": [
+    {
+      "state": "before-reader",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-4120d46c-attachments/126829AD-97CB-4CD5-80ED-2AA6B2269A7A.png",
+        "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+        "bytes": 3260806
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB"
+      },
+      "viewedDirectly": true,
+      "attachmentName": "empty-reader-fast-before_0_813C7AB3-6A0B-49C4-8C48-DB7061BB4C36.png",
+      "timestamp": 1792915710.454,
+      "associatedWithFailure": false,
+      "verdict": "PASS_THIS_STATE",
+      "finding": "Continuous painting behind the genuine empty live sky; five-point score, forecast and complete clear feedback visible."
+    },
+    {
+      "state": "covered-mode",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-4120d46c-attachments/AFA39BEB-8C82-40ED-AB6F-7220EB3CE9B1.png",
+        "sha256": "f00fbb08e0024767357120d1fb9b5ac0f5bef5afc5bdca19a86adcaa8e045923",
+        "bytes": 2541578
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB"
+      },
+      "viewedDirectly": true,
+      "attachmentName": "empty-reader-fast-covered_0_2B5CD9E9-4663-46FF-ACF2-70F4870209C7.png",
+      "timestamp": 1792915717.848,
+      "associatedWithFailure": false,
+      "verdict": "PASS_THIS_STATE",
+      "finding": "Continuous painting behind Last clear mode/header and reader; no SpriteView-sized flat gray region."
+    },
+    {
+      "state": "covered-total",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-4120d46c-attachments/CE6DDBB7-DC6F-4988-AE54-CB73CDF04B8C.png",
+        "sha256": "be07a73895938488ab9199ed2c41623b37cf25c598eb48951849e40c6991ab7a",
+        "bytes": 2645338
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB"
+      },
+      "viewedDirectly": true,
+      "attachmentName": "empty-reader-fast-covered-total-end_0_5E580B2D-71CE-49D2-B27C-7CA4F117F7D5.png",
+      "timestamp": 1792915723.036,
+      "associatedWithFailure": false,
+      "verdict": "PASS_THIS_STATE",
+      "finding": "Continuous painting behind complete outlined traced-five diagram, exact five-point total and Return to sky. Total is clear and distinct from supporting accounting."
+    },
+    {
+      "state": "after-reader",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-4120d46c-attachments/7E0B1896-6EFE-47BF-A514-6207C359C93C.png",
+        "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+        "bytes": 3260806
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB"
+      },
+      "viewedDirectly": true,
+      "attachmentName": "empty-reader-fast-after_0_EA3937CD-9E55-4FED-A1D0-1CE558DCF01D.png",
+      "timestamp": 1792915727.453,
+      "associatedWithFailure": false,
+      "verdict": "PASS_THIS_STATE",
+      "finding": "Returned empty live sky preserves continuous painting, complete five-point score/forecast and clear feedback; no gray rectangle."
+    },
+    {
+      "state": "cold-restored",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-explicit-surface-probe-4120d46c-attachments/BF0C2A53-CBAF-4167-8D41-8CD5E2FEE981.png",
+        "sha256": "479797d83691b346a41f66f27f6ebfdb61a2eba29ca5502fd0d7504661fc9ade",
+        "bytes": 3353828
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "mode": "RGB"
+      },
+      "viewedDirectly": true,
+      "attachmentName": "empty-reader-fast-cold-restored_0_43AD48A2-10B1-4C8F-BE91-76222589DA13.png",
+      "timestamp": 1792915747.594,
+      "associatedWithFailure": false,
+      "verdict": "PASS_THIS_STATE",
+      "finding": "Cold-restored empty live sky preserves continuous painting and five-point score/forecast; Resume sky and Next shower visible. No gray rectangle."
+    }
+  ],
+  "comparison": {
+    "originalDiagnosis": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/diagnosis-08-empty-sprite.json",
+      "sha256": "fa402a0a7bc35af93dc7e70579f0bcd3426211e78a8f5982fb582cb8a362a168",
+      "bytes": 20655
+    },
+    "failedSimpleBridgeProbe": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-explicit-surface-probe-3652f463.json",
+      "sha256": "abf7554ac10fd12f76a39e6215d23b3b2fc410bda73e82fcaeb4b3509368adff",
+      "bytes": 6122
+    },
+    "rejectedStableLayout": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-correction-0ac14e85.json",
+      "sha256": "73dbeac87e8876c08c11bb239d6735e8453b947ad39997401286d4a01a5930bc",
+      "bytes": 6943
+    },
+    "finding": "Originald70 and rejected0ac showed gray during/after the reader.3652 covered frames were clear but input did not readmit and no after frame existed. These five actual4120 frames are clear before, covered, returned empty and cold restored, with the original probe gates passing. Historical failures remain valid evidence for their own sources."
+  },
+  "decision": "The probe supports expanding verification of this transfer-owned surface. It establishes no full-journey, AX5-tablet or final-export adoption; final source must be frozen and the original six native journeys plus affected hosted/build/Core checks and independent final visual review must still complete.",
+  "limits": [
+    "Exactly five whole1170\u00d72532 originals reviewed, with display rescaling by image-view tool only; source PNGs remain unchanged.",
+    "Fixture is reset/manual horizontalFive with retained Dusk support, not a fresh survival or authored Story encounter. Cold restore has no transient feedback; it is distinct from the before/after clear bubble.",
+    "This is sampled still evidence, not exact continuous transition timing, frame pacing, physical/minimum-iOS, actual VoiceOver or JPEG conversion proof.",
+    "The isolated transfer regression is not yet part of this4120 run; temporary instrumentation and the short native probe are planned for removal before final acceptance."
+  ]
+}

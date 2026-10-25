@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "status": "REJECTED_VISUAL_AND_MECHANICAL_HOLD; stable-Group hypothesis did not fix original gray",
+  "reviewedUTC": "2026-10-25T07:56:02.271498+00:00",
+  "source": {
+    "appSource": "0ac14e855889c5b771e3024b01693b118e39addd",
+    "testSource": "0ac14e855889c5b771e3024b01693b118e39addd",
+    "runtime": "dev.754c3583e7",
+    "basedOnApp": "88101c1b23491860d985607d9930841d43e5a3b5"
+  },
+  "mechanics": {
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone-summary.json",
+      "sha256": "36d11d81a729914b4bb0cdfe6cba6fef28f0eb2151c1fd761d5ae6aef29c77f9",
+      "bytes": 1799
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone-receipt.json",
+      "sha256": "a748871bf66fedf7dc60b7fcab18526355c1266ede758430dc59d1e577c34964",
+      "bytes": 189
+    },
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "stageElapsedSeconds": 272.163,
+    "failure": "Failed to get matching snapshot: Find single matching element. Multiple matching elements found for <XCUIElementQuery: 0x113db89b0>.\nSparse tree of matches:\n\u2192Application, pid: 96151, label: 'Starfall'\n  \u21b3Window (Main)\n    \u21b3Other\n      \u21b3Other\n        \u21b3Other\n          \u21b3Other\n            \u21b3Other, identifier: 'sky.header'\n            \u22c5 \u21b3StaticText, identifier: 'experiment.score', label: '5 starlight'\n            \u21b3ScrollView\n              \u21b3Other\n                \u21b3StaticText, identifier: 'experiment.score', label: 'Twinkle. Column 1 had no room for the next star. 5 starlight collected. Ready for another sky?'",
+    "qualification": "Original loss assertion found two experiment.score elements: hidden retained header5 starlight and real terminal score. No assertion change is warranted."
+  },
+  "attachmentManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone-attachments/manifest.json",
+    "sha256": "be48262b6b27e2d052f2c14762f771ee7becb2579fcefdb372735893d01e15bf",
+    "bytes": 94821
+  },
+  "views": [
+    {
+      "state": "before-reader",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone-attachments/0121BB11-16E3-42AC-8A85-EEA88C55902C.png",
+        "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+        "bytes": 3260806
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-phone-empty-live-before-reader_0_FB901372-F883-477C-B4CE-6FAC1A1BFE37.png",
+      "associatedWithFailure": false,
+      "verdict": "PASS_THIS_STATE: continuous painting through the empty live board."
+    },
+    {
+      "state": "covered-mode",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone-attachments/91EF980C-9DDD-4C3B-B3A9-C6A371DCF641.png",
+        "sha256": "f965402edf5341edbe99b2bd83c14faf2d323d5a277b948f06ee90d3def8caa0",
+        "bytes": 2320510
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-phone-manual-exact-five-sky.lastClear_0_50C5BE91-AE3C-482F-9D07-F1A60CDB2C2D.mode-end",
+      "associatedWithFailure": false,
+      "verdict": "FAIL: flat gray cropped-board rectangle remains behind ceiling and reader. Retained layout moves its top below the invisible header/return region; it does not repair the defect."
+    },
+    {
+      "state": "covered-total",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone-attachments/221E7348-8B8D-451C-A7CD-362DF2B51972.png",
+        "sha256": "45a35df256c0df8cac232111e1e00b6ae1eac8be77a567a8b0c042fcd0887c1e",
+        "bytes": 2445755
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-phone-manual-exact-five-sky.lastClear_0_F463C2E6-868C-4AA8-A4F1-82DD67EDC597.total-end",
+      "associatedWithFailure": false,
+      "verdict": "FAIL: same gray rectangle remains while five-point total is readable."
+    },
+    {
+      "state": "after-reader",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-0ac14e85-last-clear-open-sky-phone-attachments/E00E97BD-6E21-4232-8268-5AB7454E5041.png",
+        "sha256": "f8b004fa0144baa9e76882019b4c9d5d87970b02dd535a66d6b7445d9f3c2f14",
+        "bytes": 1805522
+      },
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "viewedDirectly": true,
+      "attachmentName": "last-clear-phone-empty-live-after-reader_0_36F0534D-BA59-4DFE-B3B3-D0BFBAAF35D6.png",
+      "associatedWithFailure": false,
+      "verdict": "FAIL: gray rectangle persists in returned empty live sky; no continuous painting across the transition."
+    }
+  ],
+  "comparison": {
+    "originalDiagnosis": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/diagnosis-08-empty-sprite.json",
+      "sha256": "fa402a0a7bc35af93dc7e70579f0bcd3426211e78a8f5982fb582cb8a362a168",
+      "bytes": 20655
+    },
+    "finding": "Both original and stable-composition candidate render clear before the reader and gray during/after. Candidate changes position of the gray region, establishing that preserving header/return slots alone is insufficient."
+  },
+  "recommendation": "Reject the stable-Group candidate entirely and restore its source baseline before another mechanism probe. The proposed actual-container contain/ignore+hidden semantic pattern would be the appropriate boundary for any future retained header, but it cannot fix gray or justify keeping this failed candidate. Preserve the existing unique score assertions.",
+  "remainingMechanism": "Real clear fullScreenCover/SpriteView compositor behavior remains to be isolated. Hosted suspension-only transparency already passes; explicit SKView ownership versus Apple SpriteView bridge can be compared in a narrow public-API harness. Do not introduce dummy drawing or hide empty boards.",
+  "limits": [
+    "Only these four exact whole native frames were directly viewed for this record. This is not final candidate acceptance or the full remaining matrix.",
+    "No exact private-framework/driver root cause is proved. One effect changing position is not proof that layout movement exclusively caused it.",
+    "No actual VoiceOver, physical/minimum-iOS, motion/performance or final JPEG conversion acceptance."
+  ]
+}

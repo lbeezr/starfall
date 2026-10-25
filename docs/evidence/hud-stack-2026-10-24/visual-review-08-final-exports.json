@@ -1,0 +1,1572 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "status": "PASS_BOUNDED_EXACT_EXPORTS",
+  "verdict": "PASS_BOUNDED_EXACT_EXPORTS",
+  "preparedAggregateBy": "/root/hud_read_ahead; source/coverage/metadata collection only",
+  "generatedUTC": "2026-10-25T08:55:28.108201+00:00",
+  "source": {
+    "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "runtime": "dev.2c4e822ca7",
+    "acceptedBase": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+    "sourceRecord": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-08.json",
+      "sha256": "1c45c723156cb33c09a9f6357c4cd7ac810a35cfe371a1c7243c2237be7b47ac",
+      "bytes": 5753
+    },
+    "verificationRecord": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-08.json",
+      "sha256": "3703302591d80b15d07aac47224f290747b0bd05071836837d4657b079fa87ed",
+      "bytes": 42433
+    }
+  },
+  "captureIndex": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-08.json",
+    "sha256": "eb2a13191dbe2c74d5e7df9944d529d599968d51c8e263510b5729a771b6b57f",
+    "bytes": 71303
+  },
+  "reviewers": [
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-phone.json",
+      "sha256": "921cfc6eac476599344420783ac3512c2657eefd94f6dee4ef5d9eeb39b5f9ff",
+      "bytes": 17481,
+      "reviewer": "hud_audit",
+      "assignedIDs": [
+        "01-accepted-phone-chain-total",
+        "02-current-phone-chain-total",
+        "03-accepted-phone-independent-total",
+        "04-current-phone-independent-total",
+        "05-accepted-static-accounting",
+        "06-current-static-accounting",
+        "09-current-phone-whole-result"
+      ],
+      "declaredStatus": "Seven assigned exact pairs reviewed; other seven pairs, final native aggregate and supplemental motion belong to separate records. No overall adoption.",
+      "declaredVerdict": "PASS_BOUNDED_EXACT_EXPORT_PAIRS",
+      "meaning": "Direct visual judgments remain this named reviewer's; aggregator validates coverage and bytes only."
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-tablet-open-sky.json",
+      "sha256": "ef6b0e450cd6ad4825d7ce4f79e1c83260b4658bf290c3246771d2acb8ceba8d",
+      "bytes": 17456,
+      "reviewer": "Independent subagent /root/hud_goal_review",
+      "assignedIDs": [
+        "07-current-tablet-last-clear-total",
+        "08-current-tablet-terminal-total",
+        "10-corrected-covered-empty-reader",
+        "11-corrected-returned-empty-sky",
+        "12-initial-held-gray-reader"
+      ],
+      "declaredStatus": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY; four final-source statesPASS and historical initial-grayHOLD faithfully retained",
+      "declaredVerdict": null,
+      "meaning": "Direct visual judgments remain this named reviewer's; aggregator validates coverage and bytes only."
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-showers.json",
+      "sha256": "30373f5db32bfa67ffe56266f0ab0a95f0e087250f79a3a54ec10e203e0e93a5",
+      "bytes": 13187,
+      "reviewer": "Independent subagent /root/hud_read_ahead",
+      "assignedIDs": [
+        "13-current-phone-shower-reading",
+        "14-current-tablet-shower-reading"
+      ],
+      "declaredStatus": "PASS_BOUNDED_EXACT_EXPORTS_13_14",
+      "declaredVerdict": "Both assigned retained JPEG80 exports pass comparison against their exact whole original PNGs. This record covers only ids13 and14; it does not certify the other12 index rows, overall Goal8 adoption or motion.",
+      "meaning": "Direct visual judgments remain this named reviewer's; aggregator validates coverage and bytes only."
+    }
+  ],
+  "coverage": {
+    "indexedPairs": 14,
+    "independentShardCount": 3,
+    "exactOnceIDs": [
+      "01-accepted-phone-chain-total",
+      "02-current-phone-chain-total",
+      "03-accepted-phone-independent-total",
+      "04-current-phone-independent-total",
+      "05-accepted-static-accounting",
+      "06-current-static-accounting",
+      "07-current-tablet-last-clear-total",
+      "08-current-tablet-terminal-total",
+      "09-current-phone-whole-result",
+      "10-corrected-covered-empty-reader",
+      "11-corrected-returned-empty-sky",
+      "12-initial-held-gray-reader",
+      "13-current-phone-shower-reading",
+      "14-current-tablet-shower-reading"
+    ],
+    "rawHashesVerified": 14,
+    "exportHashesVerified": 14,
+    "dimensionsVerified": 28,
+    "normalizedOrientationsVerified": 28,
+    "sourceKinds": {
+      "accepted-goal7-native": 2,
+      "candidate-native": 9,
+      "accepted-goal7-hosted": 1,
+      "candidate-hosted": 1,
+      "initial-visual-hold-native": 1
+    }
+  },
+  "pairs": [
+    {
+      "id": "01-accepted-phone-chain-total",
+      "kind": "accepted-goal7-native",
+      "sourceIdentity": {
+        "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+        "testSource": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+        "runtime": "dev.e045b9e428",
+        "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+        "status": "ACCEPTED_GOAL7_BASELINE"
+      },
+      "indexedState": "Accepted Goal 7 normal Silver Last clear reader scrolled to second-phase accounting, exact 19,000 this-clear total and Return; earlier phase is above the current viewport.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/18F3ECC9-82AB-4972-A2C6-D0D9A96614E6.png",
+        "sha256": "66278c93f7c8841c293dfdeb8287234419718f6ac4485644c15cb496154e0965",
+        "bytes": 2738805,
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/01-accepted-phone-chain-total.jpg",
+        "sha256": "22c58ee22065dbbf76dd3e05e3d710ab2c90dc50e36fa5d23fd1a003dc2d079c",
+        "bytes": 586406,
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "hud_audit",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-phone.json",
+        "sha256": "921cfc6eac476599344420783ac3512c2657eefd94f6dee4ef5d9eeb39b5f9ff",
+        "bytes": 17481
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "01-accepted-phone-chain-total",
+        "kind": "accepted-goal7-native",
+        "sourceIdentity": {
+          "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+          "testSource": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+          "runtime": "dev.e045b9e428",
+          "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+          "status": "ACCEPTED_GOAL7_BASELINE"
+        },
+        "state": "Accepted Goal 7 normal Silver Last clear reader scrolled to second-phase accounting, exact 19,000 this-clear total and Return; earlier phase is above the current viewport.",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/18F3ECC9-82AB-4972-A2C6-D0D9A96614E6.png",
+          "sha256": "66278c93f7c8841c293dfdeb8287234419718f6ac4485644c15cb496154e0965",
+          "bytes": 2738805,
+          "actualPixels": [
+            1170,
+            2532
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright portrait"
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/01-accepted-phone-chain-total.jpg",
+          "sha256": "22c58ee22065dbbf76dd3e05e3d710ab2c90dc50e36fa5d23fd1a003dc2d079c",
+          "bytes": 586406,
+          "actualPixels": [
+            1170,
+            2532
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright portrait"
+        },
+        "rawDirectlyViewedWhole": true,
+        "exportDirectlyViewedWhole": true,
+        "verdict": "PASS",
+        "observation": "Accepted native 19k body total, phase 2 diagram/equation and complete Return remain readable in JPEG; this is baseline scroll position, not a full-page view.",
+        "indexedOrientation": 1,
+        "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "ACCEPTED_GOAL7_BASELINE; export fidelity PASS, no matchedAX baseline claim"
+    },
+    {
+      "id": "02-current-phone-chain-total",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "indexedState": "Final source 5a0cf195: normal Silver Last clear at complete second-phase accounting, exact 19,000 whole-clear heading and Return; earlier phase remains above this viewport.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/C43431C4-AC91-467C-AB7D-452472189AFA.png",
+        "sha256": "7980e07a01770923721c57a2960e5aa4e013581c1e358c1c481a4ff5907c774c",
+        "bytes": 2738398,
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/02-current-phone-chain-total.jpg",
+        "sha256": "4a39d14bb437defdd4bb0de56fd454c325c72b637bc5ff1019ad17d45ce6ae77",
+        "bytes": 586359,
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "hud_audit",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-phone.json",
+        "sha256": "921cfc6eac476599344420783ac3512c2657eefd94f6dee4ef5d9eeb39b5f9ff",
+        "bytes": 17481
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "02-current-phone-chain-total",
+        "kind": "candidate-native",
+        "sourceIdentity": {
+          "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": null,
+          "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+        },
+        "state": "Final source 5a0cf195: normal Silver Last clear at complete second-phase accounting, exact 19,000 whole-clear heading and Return; earlier phase remains above this viewport.",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/C43431C4-AC91-467C-AB7D-452472189AFA.png",
+          "sha256": "7980e07a01770923721c57a2960e5aa4e013581c1e358c1c481a4ff5907c774c",
+          "bytes": 2738398,
+          "actualPixels": [
+            1170,
+            2532
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright portrait"
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/02-current-phone-chain-total.jpg",
+          "sha256": "4a39d14bb437defdd4bb0de56fd454c325c72b637bc5ff1019ad17d45ce6ae77",
+          "bytes": 586359,
+          "actualPixels": [
+            1170,
+            2532
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright portrait"
+        },
+        "rawDirectlyViewedWhole": true,
+        "exportDirectlyViewedWhole": true,
+        "verdict": "PASS",
+        "observation": "Current native 19k serif total remains visibly stronger than supporting equation and preserved in JPEG; complete fixed Return and diagram relation unchanged.",
+        "indexedOrientation": 1,
+        "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "CORRECTED_FINAL_SOURCE; named reviewer's bounded still/export PASS, no overall adoption"
+    },
+    {
+      "id": "03-accepted-phone-independent-total",
+      "kind": "accepted-goal7-native",
+      "sourceIdentity": {
+        "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+        "testSource": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+        "runtime": "dev.e045b9e428",
+        "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+        "status": "ACCEPTED_GOAL7_BASELINE"
+      },
+      "indexedState": "Accepted Goal 7 normal Silver later independent 5,000-point Last clear reader total and Return; not the previous chain or whole-round total.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/9D96F800-4C87-472A-87E0-8D1C5435AEDD.png",
+        "sha256": "53332e25f4fc3fe076ab949238854bb4dd45806eea6295beac6437766a37e7c8",
+        "bytes": 2852110,
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/03-accepted-phone-independent-total.jpg",
+        "sha256": "4f6520c2bff84a21e15224877292d1b05b64247ee3fe5fad61334f357e9ce6fe",
+        "bytes": 556400,
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "hud_audit",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-phone.json",
+        "sha256": "921cfc6eac476599344420783ac3512c2657eefd94f6dee4ef5d9eeb39b5f9ff",
+        "bytes": 17481
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "03-accepted-phone-independent-total",
+        "kind": "accepted-goal7-native",
+        "sourceIdentity": {
+          "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+          "testSource": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+          "runtime": "dev.e045b9e428",
+          "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+          "status": "ACCEPTED_GOAL7_BASELINE"
+        },
+        "state": "Accepted Goal 7 normal Silver later independent 5,000-point Last clear reader total and Return; not the previous chain or whole-round total.",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-reader-phone-attachments/9D96F800-4C87-472A-87E0-8D1C5435AEDD.png",
+          "sha256": "53332e25f4fc3fe076ab949238854bb4dd45806eea6295beac6437766a37e7c8",
+          "bytes": 2852110,
+          "actualPixels": [
+            1170,
+            2532
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright portrait"
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/03-accepted-phone-independent-total.jpg",
+          "sha256": "4f6520c2bff84a21e15224877292d1b05b64247ee3fe5fad61334f357e9ce6fe",
+          "bytes": 556400,
+          "actualPixels": [
+            1170,
+            2532
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright portrait"
+        },
+        "rawDirectlyViewedWhole": true,
+        "exportDirectlyViewedWhole": true,
+        "verdict": "PASS",
+        "observation": "Accepted native independent 5k body total, exact four-star accounting and complete Return remain readable after conversion.",
+        "indexedOrientation": 1,
+        "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "ACCEPTED_GOAL7_BASELINE; export fidelity PASS, no matchedAX baseline claim"
+    },
+    {
+      "id": "04-current-phone-independent-total",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "indexedState": "Final source 5a0cf195: normal Silver latest independent 5,000-point Last clear heading and Return; separate from earlier chain and whole-round score.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/7728D693-5135-45F3-833F-90F431DE42B4.png",
+        "sha256": "665e3ff55416698a22314d8beabf13b9ade21c571abfb114d50c574b6daa9318",
+        "bytes": 2854464,
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/04-current-phone-independent-total.jpg",
+        "sha256": "e9a9e26385e11012f3581e6ad7058b365f5f0f2b43ed42d91049153fbe74dd8d",
+        "bytes": 557827,
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "hud_audit",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-phone.json",
+        "sha256": "921cfc6eac476599344420783ac3512c2657eefd94f6dee4ef5d9eeb39b5f9ff",
+        "bytes": 17481
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "04-current-phone-independent-total",
+        "kind": "candidate-native",
+        "sourceIdentity": {
+          "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": null,
+          "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+        },
+        "state": "Final source 5a0cf195: normal Silver latest independent 5,000-point Last clear heading and Return; separate from earlier chain and whole-round score.",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-silver-phone-attachments/7728D693-5135-45F3-833F-90F431DE42B4.png",
+          "sha256": "665e3ff55416698a22314d8beabf13b9ade21c571abfb114d50c574b6daa9318",
+          "bytes": 2854464,
+          "actualPixels": [
+            1170,
+            2532
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright portrait"
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/04-current-phone-independent-total.jpg",
+          "sha256": "e9a9e26385e11012f3581e6ad7058b365f5f0f2b43ed42d91049153fbe74dd8d",
+          "bytes": 557827,
+          "actualPixels": [
+            1170,
+            2532
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright portrait"
+        },
+        "rawDirectlyViewedWhole": true,
+        "exportDirectlyViewedWhole": true,
+        "verdict": "PASS",
+        "observation": "Current native independent 5k serif total stays complete and distinct from its equation; JPEG preserves the native reading hierarchy and whole viewport.",
+        "indexedOrientation": 1,
+        "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "CORRECTED_FINAL_SOURCE; named reviewer's bounded still/export PASS, no overall adoption"
+    },
+    {
+      "id": "05-accepted-static-accounting",
+      "kind": "accepted-goal7-hosted",
+      "sourceIdentity": {
+        "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+        "testSource": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+        "runtime": "dev.e045b9e428",
+        "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+        "status": "ACCEPTED_GOAL7_BASELINE"
+      },
+      "indexedState": "Accepted Goal 7 isolated default-size ImageRenderer accounting specimen: complete 5,000 and 14,000 phase equations and 19,000 total. This is hosted content, not a whole native screen or native scroll proof.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-attachments/02DB3039-197C-4EE0-B648-96A649C654C0.png",
+        "sha256": "8a726a2db845839394b5221ad273346c5ea4a1b7e78affb402165acc23a065c6",
+        "bytes": 18656,
+        "format": "PNG",
+        "pixels": [
+          390,
+          168
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/05-accepted-static-accounting.jpg",
+        "sha256": "3bb632c1f59fc07ab81b72c5cb037de0b18428969dd7533ceecea47f15338b1e",
+        "bytes": 16721,
+        "format": "JPEG",
+        "pixels": [
+          390,
+          168
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "hud_audit",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-phone.json",
+        "sha256": "921cfc6eac476599344420783ac3512c2657eefd94f6dee4ef5d9eeb39b5f9ff",
+        "bytes": 17481
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "05-accepted-static-accounting",
+        "kind": "accepted-goal7-hosted",
+        "sourceIdentity": {
+          "appSource": "a985c5dcb161f746618bb35419455783d17ffa38",
+          "testSource": "5d4a72504c1347ab78d5100b4845b366daf8eaaf",
+          "runtime": "dev.e045b9e428",
+          "acceptedMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+          "status": "ACCEPTED_GOAL7_BASELINE"
+        },
+        "state": "Accepted Goal 7 isolated default-size ImageRenderer accounting specimen: complete 5,000 and 14,000 phase equations and 19,000 total. This is hosted content, not a whole native screen or native scroll proof.",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/baseline-08-from-07-hosted-attachments/02DB3039-197C-4EE0-B648-96A649C654C0.png",
+          "sha256": "8a726a2db845839394b5221ad273346c5ea4a1b7e78affb402165acc23a065c6",
+          "bytes": 18656,
+          "actualPixels": [
+            390,
+            168
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright landscape"
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/05-accepted-static-accounting.jpg",
+          "sha256": "3bb632c1f59fc07ab81b72c5cb037de0b18428969dd7533ceecea47f15338b1e",
+          "bytes": 16721,
+          "actualPixels": [
+            390,
+            168
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright landscape"
+        },
+        "rawDirectlyViewedWhole": true,
+        "exportDirectlyViewedWhole": true,
+        "verdict": "PASS",
+        "observation": "Accepted hosted default-text static 5k + 14k equations and ordinary 19k total remain legible in the tiny original-dimension component raster.",
+        "indexedOrientation": 1,
+        "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "ACCEPTED_GOAL7_BASELINE; export fidelity PASS, no matchedAX baseline claim"
+    },
+    {
+      "id": "06-current-static-accounting",
+      "kind": "candidate-hosted",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "indexedState": "Final source 5a0cf195: isolated default-size ImageRenderer accounting specimen: complete 5,000 and 14,000 phase equations and exact 19,000 total in the official serif heading. Hosted content, separate from whole native screen/scroll evidence.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-5a0cf195-attachments/115D232F-6D0E-4AD5-A31A-E6B1905C1F19.png",
+        "sha256": "83a675933828c3251fa73bb73d2e96d33de8c2ea194f2919ffd9eede179023e0",
+        "bytes": 19117,
+        "format": "PNG",
+        "pixels": [
+          390,
+          171
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/06-current-static-accounting.jpg",
+        "sha256": "71ee7efb00bae98827fc355c21937d8faa68d9ccd52d75d1faeb34e981ed64a8",
+        "bytes": 17323,
+        "format": "JPEG",
+        "pixels": [
+          390,
+          171
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "hud_audit",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-phone.json",
+        "sha256": "921cfc6eac476599344420783ac3512c2657eefd94f6dee4ef5d9eeb39b5f9ff",
+        "bytes": 17481
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "06-current-static-accounting",
+        "kind": "candidate-hosted",
+        "sourceIdentity": {
+          "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": null,
+          "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+        },
+        "state": "Final source 5a0cf195: isolated default-size ImageRenderer accounting specimen: complete 5,000 and 14,000 phase equations and exact 19,000 total in the official serif heading. Hosted content, separate from whole native screen/scroll evidence.",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-08-5a0cf195-attachments/115D232F-6D0E-4AD5-A31A-E6B1905C1F19.png",
+          "sha256": "83a675933828c3251fa73bb73d2e96d33de8c2ea194f2919ffd9eede179023e0",
+          "bytes": 19117,
+          "actualPixels": [
+            390,
+            171
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright landscape"
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/06-current-static-accounting.jpg",
+          "sha256": "71ee7efb00bae98827fc355c21937d8faa68d9ccd52d75d1faeb34e981ed64a8",
+          "bytes": 17323,
+          "actualPixels": [
+            390,
+            171
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright landscape"
+        },
+        "rawDirectlyViewedWhole": true,
+        "exportDirectlyViewedWhole": true,
+        "verdict": "PASS",
+        "observation": "Current hosted serif 19k summary remains visibly distinct; JPEG preserves the complete equations. Its 171px height is the original current raster, not an export resize of the 168px baseline.",
+        "indexedOrientation": 1,
+        "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "CORRECTED_FINAL_SOURCE; named reviewer's bounded still/export PASS, no overall adoption"
+    },
+    {
+      "id": "07-current-tablet-last-clear-total",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "indexedState": "Final source 5a0cf195: actual AX5 Calm ordinary Lantern Full Board Last clear at its lower scroll position: complete 58,000 points this clear,6 survivors falling into later patterns,22 refill stars added,49 stars on the board after this clear and Return. Allthreephases were read separately above this viewport; ordinary round, not practice.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-full-board-tablet-attachments/2B5568F3-0308-4DF1-836B-4C72F743121E.png",
+        "sha256": "732eb84c5619fe8f666cd3f0886058d4fda0f87773bfa9d11f7fd3d674853e32",
+        "bytes": 4821619,
+        "format": "PNG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/07-current-tablet-last-clear-total.jpg",
+        "sha256": "163208c5901079cd1b6104adea2f62c122dd284d681e5593efaba069f6c249ae",
+        "bytes": 886577,
+        "format": "JPEG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "Independent subagent /root/hud_goal_review",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-tablet-open-sky.json",
+        "sha256": "ef6b0e450cd6ad4825d7ce4f79e1c83260b4658bf290c3246771d2acb8ceba8d",
+        "bytes": 17456
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "07-current-tablet-last-clear-total",
+        "kind": "candidate-native",
+        "sourceIdentity": {
+          "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": null,
+          "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+        },
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-full-board-tablet-attachments/2B5568F3-0308-4DF1-836B-4C72F743121E.png",
+          "sha256": "732eb84c5619fe8f666cd3f0886058d4fda0f87773bfa9d11f7fd3d674853e32",
+          "bytes": 4821619
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/07-current-tablet-last-clear-total.jpg",
+          "sha256": "163208c5901079cd1b6104adea2f62c122dd284d681e5593efaba069f6c249ae",
+          "bytes": 886577
+        },
+        "rawMetadata": {
+          "format": "PNG",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1,
+          "mode": "RGB",
+          "srgbIntent": 0,
+          "iccProfileSHA256": null
+        },
+        "exportMetadata": {
+          "format": "JPEG",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1,
+          "mode": "RGB",
+          "srgbIntent": null,
+          "iccProfileSHA256": null
+        },
+        "rawAndExportViewedDirectly": true,
+        "hashesBytesDimensionsEXIFMatchIndex": true,
+        "wholeFrame": true,
+        "recordedTransform": "sips JPEG80 only; no crop, resize, rotation, flip or retouch",
+        "exportFidelityVerdict": "PASS",
+        "productStateVerdict": "PASS_BOUNDED_CURRENT_STATE",
+        "finding": "PASS: wholeAX5 ordinary Full Board reading preserves complete58,000 per-clear heading, six survivors,22refills/49stars and fixed Return. All text and punctuation remain readable afterJPEG80. Round156,000 is outside this viewport; no practice score.",
+        "captionMatchesObservedState": true,
+        "stateCaption": "Final source 5a0cf195: actual AX5 Calm ordinary Lantern Full Board Last clear at its lower scroll position: complete 58,000 points this clear,6 survivors falling into later patterns,22 refill stars added,49 stars on the board after this clear and Return. Allthreephases were read separately above this viewport; ordinary round, not practice.",
+        "stage": "native-08-5a0cf195-last-clear-full-board-tablet",
+        "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+        "device": {
+          "id": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "name": "Starfall HUD Stack dcf3 Tablet"
+        },
+        "attachmentName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear_0_B8EE2910-C748-4D6A-AC51-465E0F06DB1A.room-end"
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "CORRECTED_FINAL_SOURCE; named reviewer's bounded still/export PASS, no overall adoption"
+    },
+    {
+      "id": "08-current-tablet-terminal-total",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "indexedState": "Final source 5a0cf195: actual AX5 Calm ordinary Lantern Full Board terminal accounting: complete 17,000+26,000+15,000 phase equations and58,000 points this clear. The 156,000 completed-round score/actions were read separately above this scroll position; ordinary round, not practice.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-full-board-tablet-attachments/EF891C24-A81F-4B44-AE5E-349538510B84.png",
+        "sha256": "15faf308dba895e18d796e95dc56fe3f1b6fc7e2d31dab331fca0235f1bb0861",
+        "bytes": 5782169,
+        "format": "PNG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/08-current-tablet-terminal-total.jpg",
+        "sha256": "83621f4f678ab4aecf1eefaa167c02fc0bde2e71212b431706f60a2b597956e7",
+        "bytes": 1040237,
+        "format": "JPEG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "Independent subagent /root/hud_goal_review",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-tablet-open-sky.json",
+        "sha256": "ef6b0e450cd6ad4825d7ce4f79e1c83260b4658bf290c3246771d2acb8ceba8d",
+        "bytes": 17456
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "08-current-tablet-terminal-total",
+        "kind": "candidate-native",
+        "sourceIdentity": {
+          "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": null,
+          "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+        },
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-full-board-tablet-attachments/EF891C24-A81F-4B44-AE5E-349538510B84.png",
+          "sha256": "15faf308dba895e18d796e95dc56fe3f1b6fc7e2d31dab331fca0235f1bb0861",
+          "bytes": 5782169
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/08-current-tablet-terminal-total.jpg",
+          "sha256": "83621f4f678ab4aecf1eefaa167c02fc0bde2e71212b431706f60a2b597956e7",
+          "bytes": 1040237
+        },
+        "rawMetadata": {
+          "format": "PNG",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1,
+          "mode": "RGB",
+          "srgbIntent": 0,
+          "iccProfileSHA256": null
+        },
+        "exportMetadata": {
+          "format": "JPEG",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1,
+          "mode": "RGB",
+          "srgbIntent": null,
+          "iccProfileSHA256": null
+        },
+        "rawAndExportViewedDirectly": true,
+        "hashesBytesDimensionsEXIFMatchIndex": true,
+        "wholeFrame": true,
+        "recordedTransform": "sips JPEG80 only; no crop, resize, rotation, flip or retouch",
+        "exportFidelityVerdict": "PASS",
+        "productStateVerdict": "PASS_BOUNDED_CURRENT_STATE",
+        "finding": "PASS: all three terminal phase equations17,000/26,000/15,000 and the complete58,000 whole-clear total retain readable type, hierarchy and color. Result actions/156,000 round total are in an earlier scroll viewport, correctly qualified in index.",
+        "captionMatchesObservedState": true,
+        "stateCaption": "Final source 5a0cf195: actual AX5 Calm ordinary Lantern Full Board terminal accounting: complete 17,000+26,000+15,000 phase equations and58,000 points this clear. The 156,000 completed-round score/actions were read separately above this scroll position; ordinary round, not practice.",
+        "stage": "native-08-5a0cf195-last-clear-full-board-tablet",
+        "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+        "device": {
+          "id": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "name": "Starfall HUD Stack dcf3 Tablet"
+        },
+        "attachmentName": "last-clear-tablet-result-whole-clear-total-end_0_0BF58F4E-9BB5-499A-A2C0-EC66DDE4A9CC.png"
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "CORRECTED_FINAL_SOURCE; named reviewer's bounded still/export PASS, no overall adoption"
+    },
+    {
+      "id": "09-current-phone-whole-result",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "indexedState": "Final source 5a0cf195: normal Silver actual19,000-point won round result with both5,000 and 14,000 phase equations, whole-clear heading and retained earned-light cue. Actual normal-phone terminal viewport; other actions and earlier text have separately verified scroll positions.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/3E2F8362-6599-4F0F-BF57-C2FBF984FB5C.png",
+        "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+        "bytes": 3093282,
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/09-current-phone-whole-result.jpg",
+        "sha256": "67e31d728b39b188a2d9ec0f8514e02295e5a766a4b2fd42c21281a9829ed080",
+        "bytes": 642450,
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "hud_audit",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-phone.json",
+        "sha256": "921cfc6eac476599344420783ac3512c2657eefd94f6dee4ef5d9eeb39b5f9ff",
+        "bytes": 17481
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "09-current-phone-whole-result",
+        "kind": "candidate-native",
+        "sourceIdentity": {
+          "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": null,
+          "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+        },
+        "state": "Final source 5a0cf195: normal Silver actual19,000-point won round result with both5,000 and 14,000 phase equations, whole-clear heading and retained earned-light cue. Actual normal-phone terminal viewport; other actions and earlier text have separately verified scroll positions.",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-score-silver-phone-attachments/3E2F8362-6599-4F0F-BF57-C2FBF984FB5C.png",
+          "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+          "bytes": 3093282,
+          "actualPixels": [
+            1170,
+            2532
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright portrait"
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/09-current-phone-whole-result.jpg",
+          "sha256": "67e31d728b39b188a2d9ec0f8514e02295e5a766a4b2fd42c21281a9829ed080",
+          "bytes": 642450,
+          "actualPixels": [
+            1170,
+            2532
+          ],
+          "sipsOrientation": "<nil>; no EXIF orientation reported",
+          "displayedOrientation": "upright portrait"
+        },
+        "rawDirectlyViewedWhole": true,
+        "exportDirectlyViewedWhole": true,
+        "verdict": "PASS",
+        "observation": "Current native whole19k restored result retains full heading, story score, all actions, both exact phase equations, serif summary and earned-light cue without conversion-induced cropping or unreadable ink.",
+        "indexedOrientation": 1,
+        "metadataNote": "Index normalizes absent orientation to upright 1; sips reports no orientation tag for either original/export. Dimensions and visible upright orientation match."
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "CORRECTED_FINAL_SOURCE; named reviewer's bounded still/export PASS, no overall adoption"
+    },
+    {
+      "id": "10-corrected-covered-empty-reader",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "indexedState": "Final corrected5a0 actual Open Sky Last clear mode/diagram viewport after a genuine five-star trace. Surrounding empty live scene retains continuous painting; this is the corresponding reader viewport of the preserved initial gray frame. Exact five-point total was read and reviewed separately below this viewport.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-open-sky-phone-attachments/D56334DA-5AA8-40C6-8B41-83D0FC3B82BB.png",
+        "sha256": "f00fbb08e0024767357120d1fb9b5ac0f5bef5afc5bdca19a86adcaa8e045923",
+        "bytes": 2541578,
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/10-corrected-covered-empty-reader.jpg",
+        "sha256": "bde1d64ff0c4e9c90df02bf135957b89357b4b5e6e984907142627c57d1972f5",
+        "bytes": 414161,
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "Independent subagent /root/hud_goal_review",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-tablet-open-sky.json",
+        "sha256": "ef6b0e450cd6ad4825d7ce4f79e1c83260b4658bf290c3246771d2acb8ceba8d",
+        "bytes": 17456
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "10-corrected-covered-empty-reader",
+        "kind": "candidate-native",
+        "sourceIdentity": {
+          "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": null,
+          "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+        },
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-open-sky-phone-attachments/D56334DA-5AA8-40C6-8B41-83D0FC3B82BB.png",
+          "sha256": "f00fbb08e0024767357120d1fb9b5ac0f5bef5afc5bdca19a86adcaa8e045923",
+          "bytes": 2541578
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/10-corrected-covered-empty-reader.jpg",
+          "sha256": "bde1d64ff0c4e9c90df02bf135957b89357b4b5e6e984907142627c57d1972f5",
+          "bytes": 414161
+        },
+        "rawMetadata": {
+          "format": "PNG",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "mode": "RGB",
+          "srgbIntent": 0,
+          "iccProfileSHA256": null
+        },
+        "exportMetadata": {
+          "format": "JPEG",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "mode": "RGB",
+          "srgbIntent": null,
+          "iccProfileSHA256": null
+        },
+        "rawAndExportViewedDirectly": true,
+        "hashesBytesDimensionsEXIFMatchIndex": true,
+        "wholeFrame": true,
+        "recordedTransform": "sips JPEG80 only; no crop, resize, rotation, flip or retouch",
+        "exportFidelityVerdict": "PASS",
+        "productStateVerdict": "PASS_BOUNDED_CURRENT_STATE",
+        "finding": "PASS: same covered mode/diagram viewport as historical failure retains continuous painting. Last clear heading, OPEN SKY, diagram labels and Return remain legible, with no gray rectangle or conversion-induced crop. Five-point total is below this viewport.",
+        "captionMatchesObservedState": true,
+        "stateCaption": "Final corrected5a0 actual Open Sky Last clear mode/diagram viewport after a genuine five-star trace. Surrounding empty live scene retains continuous painting; this is the corresponding reader viewport of the preserved initial gray frame. Exact five-point total was read and reviewed separately below this viewport.",
+        "stage": "native-08-5a0cf195-last-clear-open-sky-phone",
+        "testIdentifier": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+        "device": {
+          "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "name": "Starfall HUD Stack dcf3 Phone"
+        },
+        "attachmentName": "last-clear-phone-manual-exact-five-sky.lastClear_0_661700E4-91AD-4929-8322-B160E66BE39C.mode-end"
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "CORRECTED_FINAL_SOURCE; named reviewer's bounded still/export PASS, no overall adoption"
+    },
+    {
+      "id": "11-corrected-returned-empty-sky",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "indexedState": "Final corrected5a0 actual return from Last clear to the genuinely empty Open Sky: continuous painting, exact 5 score and complete forecast; original native input re-admission and persisted-round gates passed.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-open-sky-phone-attachments/FBE23C85-B532-457B-BA2C-E7B9B7AC6607.png",
+        "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+        "bytes": 3260806,
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/11-corrected-returned-empty-sky.jpg",
+        "sha256": "08c20a0e11840ee21914ac5adb95d0901a939dc8800cc9ed1bcd7bdce16e71de",
+        "bytes": 444927,
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "Independent subagent /root/hud_goal_review",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-tablet-open-sky.json",
+        "sha256": "ef6b0e450cd6ad4825d7ce4f79e1c83260b4658bf290c3246771d2acb8ceba8d",
+        "bytes": 17456
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "11-corrected-returned-empty-sky",
+        "kind": "candidate-native",
+        "sourceIdentity": {
+          "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": null,
+          "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+        },
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-last-clear-open-sky-phone-attachments/FBE23C85-B532-457B-BA2C-E7B9B7AC6607.png",
+          "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+          "bytes": 3260806
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/11-corrected-returned-empty-sky.jpg",
+          "sha256": "08c20a0e11840ee21914ac5adb95d0901a939dc8800cc9ed1bcd7bdce16e71de",
+          "bytes": 444927
+        },
+        "rawMetadata": {
+          "format": "PNG",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "mode": "RGB",
+          "srgbIntent": 0,
+          "iccProfileSHA256": null
+        },
+        "exportMetadata": {
+          "format": "JPEG",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "mode": "RGB",
+          "srgbIntent": null,
+          "iccProfileSHA256": null
+        },
+        "rawAndExportViewedDirectly": true,
+        "hashesBytesDimensionsEXIFMatchIndex": true,
+        "wholeFrame": true,
+        "recordedTransform": "sips JPEG80 only; no crop, resize, rotation, flip or retouch",
+        "exportFidelityVerdict": "PASS",
+        "productStateVerdict": "PASS_BOUNDED_CURRENT_STATE",
+        "finding": "PASS: genuinely empty returned live sky retains painting,5score, complete forecast and clear feedback. JPEG80 preserves material/glyph readability and the full view. Actual control re-admission belongs to native result, not this still alone.",
+        "captionMatchesObservedState": true,
+        "stateCaption": "Final corrected5a0 actual return from Last clear to the genuinely empty Open Sky: continuous painting, exact 5 score and complete forecast; original native input re-admission and persisted-round gates passed.",
+        "stage": "native-08-5a0cf195-last-clear-open-sky-phone",
+        "testIdentifier": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+        "device": {
+          "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "name": "Starfall HUD Stack dcf3 Phone"
+        },
+        "attachmentName": "last-clear-phone-empty-live-after-reader_0_C9877418-04D9-422F-AC08-0354D7FA2F23.png"
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "CORRECTED_FINAL_SOURCE; named reviewer's bounded still/export PASS, no overall adoption"
+    },
+    {
+      "id": "12-initial-held-gray-reader",
+      "kind": "initial-visual-hold-native",
+      "sourceIdentity": {
+        "appSource": "88101c1b23491860d985607d9930841d43e5a3b5",
+        "testSource": "88101c1b23491860d985607d9930841d43e5a3b5",
+        "runtime": "dev.3a98dc8e44",
+        "acceptedMain": null,
+        "status": "INITIAL_VISUAL_HOLD"
+      },
+      "indexedState": "HISTORICAL INITIAL_VISUAL_HOLD: original 88101c1b Open Sky Last clear mode/diagram viewport after the actual five-star trace replaces the underlying empty scene with a large gray rectangle. Corresponding corrected reader viewport is retained separately; this is preserved failure evidence, never an accepted final screen.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/AFFE2B6C-B191-4897-BD2C-C7140856F34F.png",
+        "sha256": "5302866640fa2afaa6b6839f791bd0c402cc412eb62301094182e59eaff3ab8e",
+        "bytes": 1428724,
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/12-initial-held-gray-reader.jpg",
+        "sha256": "b0fdfd98ac2ede79b21432b10cd2ab9427b121bae52c5f0b514f28ca3f8cea1d",
+        "bytes": 269050,
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "Independent subagent /root/hud_goal_review",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-tablet-open-sky.json",
+        "sha256": "ef6b0e450cd6ad4825d7ce4f79e1c83260b4658bf290c3246771d2acb8ceba8d",
+        "bytes": 17456
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "12-initial-held-gray-reader",
+        "kind": "initial-visual-hold-native",
+        "sourceIdentity": {
+          "appSource": "88101c1b23491860d985607d9930841d43e5a3b5",
+          "testSource": "88101c1b23491860d985607d9930841d43e5a3b5",
+          "runtime": "dev.3a98dc8e44",
+          "acceptedMain": null,
+          "status": "INITIAL_VISUAL_HOLD"
+        },
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-88101c1b-last-clear-open-sky-phone-attachments/AFFE2B6C-B191-4897-BD2C-C7140856F34F.png",
+          "sha256": "5302866640fa2afaa6b6839f791bd0c402cc412eb62301094182e59eaff3ab8e",
+          "bytes": 1428724
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/12-initial-held-gray-reader.jpg",
+          "sha256": "b0fdfd98ac2ede79b21432b10cd2ab9427b121bae52c5f0b514f28ca3f8cea1d",
+          "bytes": 269050
+        },
+        "rawMetadata": {
+          "format": "PNG",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "mode": "RGB",
+          "srgbIntent": 0,
+          "iccProfileSHA256": null
+        },
+        "exportMetadata": {
+          "format": "JPEG",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "mode": "RGB",
+          "srgbIntent": null,
+          "iccProfileSHA256": null
+        },
+        "rawAndExportViewedDirectly": true,
+        "hashesBytesDimensionsEXIFMatchIndex": true,
+        "wholeFrame": true,
+        "recordedTransform": "sips JPEG80 only; no crop, resize, rotation, flip or retouch",
+        "exportFidelityVerdict": "PASS",
+        "productStateVerdict": "HISTORICAL_INITIAL_VISUAL_HOLD",
+        "finding": "HISTORICAL_VISUAL_HOLD preserved: flat gray scene-sized rectangle is plainly present in both originalPNG andJPEG. Export faithfully retains the rejected881 state and matching reader viewport; it is never accepted final-source product evidence.",
+        "captionMatchesObservedState": true,
+        "stateCaption": "HISTORICAL INITIAL_VISUAL_HOLD: original 88101c1b Open Sky Last clear mode/diagram viewport after the actual five-star trace replaces the underlying empty scene with a large gray rectangle. Corresponding corrected reader viewport is retained separately; this is preserved failure evidence, never an accepted final screen.",
+        "stage": "native-08-88101c1b-last-clear-open-sky-phone",
+        "testIdentifier": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss()",
+        "device": {
+          "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "name": "Starfall HUD Stack dcf3 Phone"
+        },
+        "attachmentName": "last-clear-phone-manual-exact-five-sky.lastClear_0_39D659E8-F24C-452D-9B09-9CA878F33D16.mode-end"
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "INITIAL_VISUAL_HOLD; conversion fidelity PASS only, original gray defect remains rejected; excluded from final native acceptance"
+    },
+    {
+      "id": "13-current-phone-shower-reading",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "indexedState": "Final source 5a0cf195: actual normal Frostfruit prepared shower-inspection snapshot after a real scroll: all five ordered arrivals, exact Amber/Aqua 2-light growth facts, complete No automatic pattern clear sentence and Return. The current-source warning/paused status is above this viewport, not simultaneously visible; live-clock/stale-source behavior is verified separately.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/73EDFA49-98B8-4782-8378-CE46C1581489.png",
+        "sha256": "555f02afb1365447771fd829558f941a214bc14dfba28281b0ea685b80dff67a",
+        "bytes": 1627040,
+        "format": "PNG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/13-current-phone-shower-reading.jpg",
+        "sha256": "7fcb580633178e273e3ee6c8346aac68add2163a76c8cda29d5d9df70d314d30",
+        "bytes": 498601,
+        "format": "JPEG",
+        "pixels": [
+          1170,
+          2532
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "Independent subagent /root/hud_read_ahead",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-showers.json",
+        "sha256": "30373f5db32bfa67ffe56266f0ab0a95f0e087250f79a3a54ec10e203e0e93a5",
+        "bytes": 13187
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "13-current-phone-shower-reading",
+        "kind": "candidate-native",
+        "state": "Final source 5a0cf195: actual normal Frostfruit prepared shower-inspection snapshot after a real scroll: all five ordered arrivals, exact Amber/Aqua 2-light growth facts, complete No automatic pattern clear sentence and Return. The current-source warning/paused status is above this viewport, not simultaneously visible; live-clock/stale-source behavior is verified separately.",
+        "stage": "native-08-5a0cf195-shower-frostfruit-phone",
+        "testIdentifier": "ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning()",
+        "sourceIdentity": {
+          "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": null,
+          "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+        },
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/73EDFA49-98B8-4782-8378-CE46C1581489.png",
+          "sha256": "555f02afb1365447771fd829558f941a214bc14dfba28281b0ea685b80dff67a",
+          "bytes": 1627040,
+          "format": "PNG",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/13-current-phone-shower-reading.jpg",
+          "sha256": "7fcb580633178e273e3ee6c8346aac68add2163a76c8cda29d5d9df70d314d30",
+          "bytes": 498601,
+          "format": "JPEG",
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1
+        },
+        "device": {
+          "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "name": "Starfall HUD Stack dcf3 Phone"
+        },
+        "attachmentProvenance": {
+          "manifest": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-attachments/manifest.json",
+            "sha256": "d04722f416e5b8337fb8defa3bed8c6935fd1b207628f518a2b52b2083527356",
+            "bytes": 9222
+          },
+          "testIdentifier": "ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/ShowerInspectionInteractionTests/testNormalFrostfruitShowerInspectionMatchesGrowthAndKeepsClockRunning",
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "exportedFileName": "73EDFA49-98B8-4782-8378-CE46C1581489.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "shower-inspection-phone-prepared-patterns_0_4C51BDE6-3CD1-4DDD-B787-5673BA67DEED.png",
+            "timestamp": 1792917379.312
+          },
+          "receipt": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-receipt.json",
+            "sha256": "e0b19e70eea3807812f2c5d0c05e29ca8b6502568d8cbfb6104c6709515144af",
+            "bytes": 185
+          },
+          "summary": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone-summary.json",
+            "sha256": "bfe3de885fe6c941dd4c1499522e63b1b56c2cc13bb5c41c19f8296617a76cc0",
+            "bytes": 740
+          },
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0
+          },
+          "resultBundlePath": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-frostfruit-phone.xcresult"
+        },
+        "rawDirectlyViewedWhole": true,
+        "exportDirectlyViewedWhole": true,
+        "metadataVerdict": "PASS_HASH_BYTES_DIMENSIONS_ORIENTATION_MATCH",
+        "result": "PASS",
+        "observedState": "Actual normal/default phone, final prepared inspection scroll position. All five ordered arrival titles/outcomes, Amber and Aqua row2 growth-to2-light facts, complete no-pattern sentence and Return are visible. Warning/paused status is above this viewport.",
+        "exportComparison": "Direct whole-original PNG and exact retained JPEG view_image inspection found the same complete glyphs, row order, arrows, shard identities, heading, dividers, no-pattern sentence and Return. Slight smoothing in fine scenic/panel texture and gold edges is visible at JPEG80; no consequential essential-ink or state loss.",
+        "labelVerdict": "PASS: exact index caption matches the actual prepared state and qualifies the scrolled-away warning. This is not a running-clock or whole-page warning witness."
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "CORRECTED_FINAL_SOURCE; named reviewer's bounded still/export PASS, no overall adoption"
+    },
+    {
+      "id": "14-current-tablet-shower-reading",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": null,
+        "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+      },
+      "indexedState": "Final source 5a0cf195: actual AX5 Calm tablet shower reader at the final prepared-pattern scroll position. Complete fifth Rose row 3, column 5 fact, complete no-automatic-pattern sentence, full Return and wrapped title remain readable. Earlier facts and the current-source warning are above this viewport; this is not an all-five-facts or whole-page still.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/FDF0CDA2-A5CA-4548-A1C2-AE3AA738946A.png",
+        "sha256": "4eed39aa6c7a46f6225fb06d2f93a1fff544c88f817bcb5b63d715a88ddea653",
+        "bytes": 1172497,
+        "format": "PNG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/14-current-tablet-shower-reading.jpg",
+        "sha256": "d127df4cf4504134da258597abadc7a168a6568fef2f1e2f4d2a91b65d9cd6e0",
+        "bytes": 485991,
+        "format": "JPEG",
+        "pixels": [
+          2064,
+          2752
+        ],
+        "storedExifOrientation": 1,
+        "hasExifMetadata": true,
+        "normalizedOrientation": 1,
+        "orientationQualification": "Read-only binary EXIF parsing; null means no orientation entry found. Absent orientation normalizes to upright1 as in the index. A reviewer's sips nil/no-report is preserved separately and is not promoted to a stored tag."
+      },
+      "directVisualReviewer": "Independent subagent /root/hud_read_ahead",
+      "reviewShard": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-08-final-exports-showers.json",
+        "sha256": "30373f5db32bfa67ffe56266f0ab0a95f0e087250f79a3a54ec10e203e0e93a5",
+        "bytes": 13187
+      },
+      "rawDirectlyViewedWhole": true,
+      "exportDirectlyViewedWhole": true,
+      "directViewQualification": "Declared by the named independent reviewer; aggregation adds no personal viewing claim.",
+      "reviewerPairDeclaration": {
+        "id": "14-current-tablet-shower-reading",
+        "kind": "candidate-native",
+        "state": "Final source 5a0cf195: actual AX5 Calm tablet shower reader at the final prepared-pattern scroll position. Complete fifth Rose row 3, column 5 fact, complete no-automatic-pattern sentence, full Return and wrapped title remain readable. Earlier facts and the current-source warning are above this viewport; this is not an all-five-facts or whole-page still.",
+        "stage": "native-08-5a0cf195-shower-calm-tablet",
+        "testIdentifier": "ShowerInspectionInteractionTests/testLargestCalmShowerInspectionReadsWithoutCommitAndFullBoardHasNone()",
+        "sourceIdentity": {
+          "appSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "testSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": null,
+          "status": "CORRECTED_FINAL_SOURCE; visual acceptance separate"
+        },
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/FDF0CDA2-A5CA-4548-A1C2-AE3AA738946A.png",
+          "sha256": "4eed39aa6c7a46f6225fb06d2f93a1fff544c88f817bcb5b63d715a88ddea653",
+          "bytes": 1172497,
+          "format": "PNG",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-08-captures/14-current-tablet-shower-reading.jpg",
+          "sha256": "d127df4cf4504134da258597abadc7a168a6568fef2f1e2f4d2a91b65d9cd6e0",
+          "bytes": 485991,
+          "format": "JPEG",
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1
+        },
+        "device": {
+          "id": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "name": "Starfall HUD Stack dcf3 Tablet"
+        },
+        "attachmentProvenance": {
+          "manifest": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-attachments/manifest.json",
+            "sha256": "40b091a57d8c77b9feb69b5373196581ffecc11b22ac7c089463e8760986d4f8",
+            "bytes": 10611
+          },
+          "testIdentifier": "ShowerInspectionInteractionTests/testLargestCalmShowerInspectionReadsWithoutCommitAndFullBoardHasNone()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/ShowerInspectionInteractionTests/testLargestCalmShowerInspectionReadsWithoutCommitAndFullBoardHasNone",
+          "attachment": {
+            "configurationName": "Test Scheme Action",
+            "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+            "deviceName": "Starfall HUD Stack dcf3 Tablet",
+            "exportedFileName": "FDF0CDA2-A5CA-4548-A1C2-AE3AA738946A.png",
+            "isAssociatedWithFailure": false,
+            "suggestedHumanReadableName": "shower-inspection-tablet-prepared-patterns_0_A0750252-FCBA-4665-A7E3-E05F8BDA96CE.png",
+            "timestamp": 1792917597.103
+          },
+          "receipt": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-receipt.json",
+            "sha256": "2cf407d20278f9091c96986051bb47bfab5303eba0b374cbdefeca133f62c8b1",
+            "bytes": 181
+          },
+          "summary": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet-summary.json",
+            "sha256": "a4c31c31b8500cb2170b3a6f50d54a149699d0ecce7148b0f7f9eca86f70e74c",
+            "bytes": 752
+          },
+          "counts": {
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0
+          },
+          "resultBundlePath": "/private/tmp/starfall-hud-stack-20261024/native-08-5a0cf195-shower-calm-tablet.xcresult"
+        },
+        "rawDirectlyViewedWhole": true,
+        "exportDirectlyViewedWhole": true,
+        "metadataVerdict": "PASS_HASH_BYTES_DIMENSIONS_ORIENTATION_MATCH",
+        "result": "PASS",
+        "observedState": "Actual AX5/Settings-Calm tablet at the final prepared-pattern reader position. Wrapped fixed title, complete fifth Rose row3/column5 fact, complete no-pattern sentence and full Return are visible. Earlier facts/warning are above the viewport; fourth-arrival title is partly at its top edge.",
+        "exportComparison": "Direct whole-original PNG and exact retained JPEG view_image inspection retains the same full fifth fact, sentence, complete wrapped title and Return. The intentional partial fourth title at the scroll top remains the same in both; no new clipping, crop, orientation change or consequential loss of essential ink is introduced by conversion.",
+        "labelVerdict": "PASS: index correctly limits the witness to the fifth/final facts and Return; no all-five-facts or complete-page claim."
+      },
+      "conversionVerdict": "PASS",
+      "visualSourceScope": "CORRECTED_FINAL_SOURCE; named reviewer's bounded still/export PASS, no overall adoption"
+    }
+  ],
+  "interpretation": "All14 conversion pairs pass the assigned independent reviewers' bounded whole-original/whole-JPEG judgments and fresh metadata checks. The one historical gray defect remains INITIAL_VISUAL_HOLD; its conversion PASS does not make the old product visually acceptable.",
+  "personalViewingBoundary": "Each pair identifies its actual direct visual reviewer. Aggregator does not claim to have personally viewed another reviewer's pairs.",
+  "orientationBoundary": "Binary storedEXIF entries, absent/default normalization and reviewer metadata-tool no-report remain distinct. All display orientations match indexupright1; no physical orientation claim.",
+  "limits": [
+    "Exact still/export acceptance only; six final native methods and17hosted counts remain separate mechanical/source evidence.",
+    "Three acceptedGoal7 baseline rows, ten corrected-final rows and one initial881 visualHOLD row are never combined as one runtime. Hosted isolated components are not whole native screens.",
+    "Whole images show their actual bounded reader scroll positions; no simultaneous all-page or offscreen-guide visibility is inferred.",
+    "No aggregate continuous motion, latency, actualVoiceOver, physical-device, minimum-iOS, all-locales or global-contrast claim. Supplemental sampled motion remains separate.",
+    "This report does not adopt Goal8 or erase initial supervisor truncation, rejected0ac, earlier renderer/pan failures or precise privateSpriteView mechanism uncertainty."
+  ]
+}
