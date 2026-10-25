@@ -1,0 +1,148 @@
+{
+  "base": "0214cf09b61fd9bf13bb6d37e9dd40aea97a6040",
+  "status": "unverified; actual test fails; draft only",
+  "inputs": {
+    "UITests/ObservatoryInteractionTests.swift": "390689a42b5d52cdcecca21611e84b8cc740c99bff098c9d1145f961a3957421",
+    "scripts/native_test_plan.py": "2681deace643653539061ca7617d0bf089b3aba907f4976a54e47b07db2482f7",
+    "scripts/test_native_test_plan.py": "db8f80fe9f79a61b8f89d6af478f97031a08124111ef8e23a3577a5fc7a26205"
+  },
+  "receipts": [
+    {
+      "stage": "frame-baseline-build",
+      "startedUTC": "2026-10-22T15:59:13.640635+00:00",
+      "elapsedSeconds": 1.197,
+      "limitSeconds": 900.0,
+      "exitCode": 74,
+      "error": null
+    },
+    {
+      "stage": "frame-baseline-build-authorized",
+      "startedUTC": "2026-10-22T15:59:44.250402+00:00",
+      "elapsedSeconds": 25.285,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "frame-baseline-test",
+      "startedUTC": "2026-10-22T16:00:52.347504+00:00",
+      "elapsedSeconds": 132.062,
+      "limitSeconds": 300.0,
+      "exitCode": 143,
+      "error": null
+    },
+    {
+      "stage": "navigation-candidate-build",
+      "startedUTC": "2026-10-22T16:03:34.397889+00:00",
+      "elapsedSeconds": 3.398,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "navigation-candidate-short",
+      "startedUTC": "2026-10-22T16:04:01.314438+00:00",
+      "elapsedSeconds": 145.335,
+      "limitSeconds": 300.0,
+      "exitCode": 143,
+      "error": null
+    },
+    {
+      "stage": "export-short-result",
+      "startedUTC": "2026-10-22T16:06:26.646391+00:00",
+      "elapsedSeconds": 0.044,
+      "limitSeconds": 45.0,
+      "exitCode": 1,
+      "error": null
+    },
+    {
+      "stage": "paused-source-flick-build",
+      "startedUTC": "2026-10-22T16:12:47.941778+00:00",
+      "elapsedSeconds": 3.467,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "paused-source-flick-short",
+      "startedUTC": "2026-10-22T16:13:19.895630+00:00",
+      "elapsedSeconds": 139.888,
+      "limitSeconds": 300.0,
+      "exitCode": 143,
+      "error": null
+    },
+    {
+      "stage": "source-fast-flick-build",
+      "startedUTC": "2026-10-22T16:18:39.064627+00:00",
+      "elapsedSeconds": 5.199,
+      "limitSeconds": 900.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "source-fast-flick-short",
+      "startedUTC": "2026-10-22T16:18:59.656447+00:00",
+      "elapsedSeconds": 149.235,
+      "limitSeconds": 600.0,
+      "exitCode": 143,
+      "error": null
+    },
+    {
+      "stage": "rotor-state-build",
+      "startedUTC": "2026-10-22T16:28:10.752660+00:00",
+      "elapsedSeconds": 5.369,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "rotor-state-short",
+      "startedUTC": "2026-10-22T16:28:54.370722+00:00",
+      "elapsedSeconds": 157.993,
+      "limitSeconds": 600.0,
+      "exitCode": 65,
+      "error": null
+    },
+    {
+      "stage": "rotor-category-build",
+      "startedUTC": "2026-10-22T16:33:12.750741+00:00",
+      "elapsedSeconds": 3.18,
+      "limitSeconds": 600.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "rotor-category-short",
+      "startedUTC": "2026-10-22T16:33:27.123812+00:00",
+      "elapsedSeconds": 180.056,
+      "limitSeconds": 600.0,
+      "exitCode": 65,
+      "error": null
+    }
+  ],
+  "latestSummary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "result": "Failed",
+    "validCompletedXCResult": true,
+    "failure": "VoiceOver did not speak the selected action; source star description instead",
+    "testSeconds": 151.331,
+    "wrapperSeconds": 180.056,
+    "exitCode": 65
+  },
+  "coreOracle": {
+    "base": "0214cf09b61fd9bf13bb6d37e9dd40aea97a6040",
+    "method": "Compile unmodified production Core with disposable main.swift, then execute legal revision3 Lantern prefix",
+    "command": "swiftc -module-cache-path /private/tmp/starfall-factory-217/oracle/cache Sources/StarfallCore/*.swift /private/tmp/starfall-factory-217/oracle/main.swift -o /private/tmp/starfall-factory-217/oracle/run",
+    "harnessSHA256": "cb24b4f3896fb3073d6f9f5d8c39e86479cd29cb9b733d1e017ef16da8cfa57b",
+    "output": "opening 0 0 true\nexchange 8 9 legal true showers 0 score 15000 save true\nexchange 5 12 legal true showers 0 score 20000 save true\n"
+  },
+  "remaining": [
+    "Actual move activation,15k/20k outcomes and restore",
+    "Full-round deterministic setup and measured execution strategy",
+    "Physical RC acceptance"
+  ],
+  "rawEvidenceRoot": "/private/tmp/starfall-factory-217"
+}
