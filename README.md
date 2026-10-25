@@ -1,6 +1,6 @@
 # Starfall
 
-[The corrected native HUD](docs/evidence/hud-stack-2026-10-24/README.md#goal-1-correction-native-and-visual-acceptance) uses official gameplay instruments over continuous scenery, with a compact inspection utility and complete largest-text reflow. Independent source-bound native visual review passes; earlier reader-pan failures and their follow-up remain explicit. The ten HUD goals continue one verified merge at a time.
+[The corrected native HUD](docs/evidence/hud-stack-2026-10-24/README.md#goal-1-correction-native-and-visual-acceptance) uses official gameplay instruments over continuous scenery, with a compact inspection utility and complete largest-text reflow. Independent source-bound native visual review passes; earlier reader-pan failures and their follow-up remain explicit. [Goal 3 pause separation](docs/evidence/hud-stack-2026-10-24/README.md#goal-3-pause-separation-over-scenery) adds the official fitted backdrop to the viewport pause visual; named bright/darker native states and exact exports pass independent review. The ten HUD goals continue one verified merge at a time.
 
 [Actual survivors](docs/evidence/decision-goal-07-survivor-ingredients-2026-10-24/README.md) now receive open diamond marks only when they really fell into a later committed pattern. Exact whole-clear facts and immediate result reading preserve rules, clocks, saves and Replay; human recognition remains separate.
 

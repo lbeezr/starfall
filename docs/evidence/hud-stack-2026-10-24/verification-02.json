@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "goal": 2,
   "issue": 383,
-  "status": "Core, affected hosted/native checks and independent whole-screen/export review passed for the stated development scope; individual publication/merge pending.",
+  "status": "Verified for the recorded development scope; PR #403 merged as 1ed733bb and issue #383 is completed.",
   "baseMain": "8e196ccbaf1173e8c1cecf1ea2f47dd81e24b97c",
   "candidateHistory": [
     {
@@ -285,7 +285,7 @@
     "Goal 2 proceeds independently on accepted main 8e196ccb; pending separate UI-flow source is neither adopted nor a publication dependency. Reconcile genuinely accepted main changes before merge.",
     "Prior goal 1 reader-pan failures remain source-bound residuals, not erased by later passes. Actual VoiceOver, physical-device comfort/contrast and minimum-iOS runtime acceptance were not performed."
   ],
-  "remaining": "Publish one individual goal 2 PR closing #383, verify its exact source tree, merge, and confirm issue completion. Activate goal 3 only after this merge.",
+  "remaining": "Goal 2 is complete. Goal 3 activates after this verified individual merge, confirmed in publication-02.json.",
   "testedCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
   "runtimeInputFingerprint": "dev.f4ecc1c437",
   "environment": {
@@ -309,13 +309,11 @@
     "nativeControllerPolicy": "One explicitly owned native controller; this documentation update ran no builds or simulator/controller actions."
   },
   "runtimeLabelInterpretation": "Runtime fields in initial candidate history retain their original values. The f4 fingerprint versus embedded dev.local distinction is explicitly corrected in the final source binding and source-02-final.json; only the stamped final native Debug build is independently plist-verified as dev.f4ecc1c437.",
-  "pendingAcceptance": [
-    "Exact published-tree verification and individual goal 2 merge",
-    "Confirm completed issue and report unavailable canonical Project projection honestly"
-  ],
+  "pendingAcceptance": [],
   "visualEvidence": {
     "review": "visual-review-02.json",
     "tabletExports": "visual-review-02-tablet-exports.json",
     "scope": "Default phone and AX5 normal/quiet phone, actual AX5 Calm tablet; bounded still/export review. No actual VoiceOver, physical/minimum-iOS, full animation or sustained-performance acceptance. Earlier goal 1 pan failures retain their unassigned cause."
-  }
+  },
+  "publication": "publication-02.json"
 }

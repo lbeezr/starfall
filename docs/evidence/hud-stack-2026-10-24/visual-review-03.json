@@ -1,0 +1,2155 @@
+{
+  "schemaVersion": 1,
+  "goal": 3,
+  "issue": 384,
+  "status": "BOUNDED_VISUAL_PASS; source-bound native visual review and separate independent retained-export gate fulfilled",
+  "recordedUTC": "2026-10-25T01:54:55.742301+00:00",
+  "reviewer": "hud_read_ahead, independent source-bound whole-screen and original-pixel reviewer",
+  "source": {
+    "candidateCommit": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+    "verifiedEmbeddedID": "dev.189706f888",
+    "baselineCompiledCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+    "baselineVerifiedEmbeddedID": "dev.f4ecc1c437",
+    "acceptedMainBeforeGoal3": "1ed733bb8e38d309576867618a52186cb9e0e58d",
+    "manifest": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-seed-attachments/manifest.json",
+    "nativeTest": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+    "coordinatorReportedMechanicalResult": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 181.889
+    },
+    "mechanicalLimit": "Native pass is separate from this visual verdict. No App/test changes, native operations or build were performed by this reviewer."
+  },
+  "reference": {
+    "path": "docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "panel": "Middle Play: continuous scenery, restrained top instruments and dominant actual stars. Used as a hierarchy/identity reference, not an exact pixel layout or instruction to add ornamental rings.",
+    "contracts": [
+      "docs/design/GAME_UI_SYSTEM.md",
+      "docs/design/UI_PRODUCTION.md",
+      "Artwork/ObservatoryUI/INTEGRATION.md"
+    ]
+  },
+  "tabletVerdict": {
+    "result": "BOUNDED_VISUAL_PASS",
+    "reviewedCompleteFrames": 4,
+    "knownVisibleFailuresInReviewedScope": [],
+    "findings": [
+      "The original two-bar pause is easier to distinguish against the bright stone in all three landscape stages. The fitted dark backing reads as a small isolated utility surface; it does not join the forecast group, become a shelf or compete with the playable stars.",
+      "Portrait 0 retains a small separated pause, readable complete score/objective and ordered 4/5/6 forecast. The native footer labels and symbols fit. No new clipping, crowding or apparent movement of the established HUD/board composition was observed against the exact baseline.",
+      "The scene remains continuous through the viewport, with the restoration painting, ceiling line and actual stars visually dominant. Existing score, forecast and footer protection stays localized. The pause refinement remains consistent with the official shared utility/material context.",
+      "Visual acceptance follows the complete contour and whole-screen hierarchy. Some old dark contour pixels now have low separation from the dark backing, while the pearl body has strong separation; that expected multicolor layer tradeoff is not a failed control.",
+      "No other current visual failure was observed in these four frames. This does not accept the pending default phone, pressure/recovery or Sunny reader states."
+    ]
+  },
+  "captures": [
+    {
+      "id": "seed-landscape-0",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-seed-attachments/73768AB0-B9AD-433C-8D12-41FDA2C4E0E9.png",
+      "rawSHA256": "147fdc47c381005bc32e80fd21130fa703806e3ec749c6a4c0ce73daa60f23b4",
+      "rawPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "sRGBChunkHex": "00",
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "viewportPoints": [
+        1376,
+        1032
+      ],
+      "scale": 2,
+      "state": "Historical Seed review fixture, landscape 0 milestone, 0/18; normal-motion test context.",
+      "baselineRawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-attachments/A914DAE3-CFF6-42ED-92BD-F548E9383355.png",
+      "baselineRawSHA256": "89968411d2fa8d8344dcac61d599260852bff1e08a84440bdfdc559e53f6eac6",
+      "pauseSamples": [
+        {
+          "layer": "pearl body",
+          "foreground": {
+            "displayXY": [
+              1953,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1953
+            ],
+            "RGB": [
+              250,
+              232,
+              194
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              57,
+              62,
+              69
+            ]
+          },
+          "contrastApprox": 8.921,
+          "baselineContrastApprox": 1.085,
+          "baselineForegroundRGB": [
+            251,
+            233,
+            195
+          ],
+          "baselineBackdropProxyRGB": [
+            245,
+            223,
+            189
+          ]
+        },
+        {
+          "layer": "brass rim",
+          "foreground": {
+            "displayXY": [
+              1960,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1960
+            ],
+            "RGB": [
+              161,
+              90,
+              6
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              57,
+              62,
+              69
+            ]
+          },
+          "contrastApprox": 2.042,
+          "baselineContrastApprox": 4.007,
+          "baselineForegroundRGB": [
+            162,
+            91,
+            7
+          ],
+          "baselineBackdropProxyRGB": [
+            245,
+            223,
+            189
+          ]
+        },
+        {
+          "layer": "dark edge",
+          "foreground": {
+            "displayXY": [
+              1961,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1961
+            ],
+            "RGB": [
+              83,
+              43,
+              18
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              57,
+              62,
+              69
+            ]
+          },
+          "contrastApprox": 1.132,
+          "baselineContrastApprox": 6.39,
+          "baselineForegroundRGB": [
+            111,
+            68,
+            38
+          ],
+          "baselineBackdropProxyRGB": [
+            245,
+            223,
+            189
+          ]
+        }
+      ],
+      "bodyRunEndpointSamplesAtDisplayY56": [
+        {
+          "displayX": 1933,
+          "RGB": [
+            104,
+            61,
+            19
+          ]
+        },
+        {
+          "displayX": 1944,
+          "RGB": [
+            157,
+            84,
+            4
+          ]
+        },
+        {
+          "displayX": 1950,
+          "RGB": [
+            187,
+            124,
+            26
+          ]
+        },
+        {
+          "displayX": 1961,
+          "RGB": [
+            83,
+            43,
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seed-landscape-25",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-seed-attachments/DEA31DC3-72C2-4AE3-A325-40BDD9BE1A1B.png",
+      "rawSHA256": "6f438406288ff0ead9167491be5c9a36c4f07f9e5cad2911e7023354b873a431",
+      "rawPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "sRGBChunkHex": "00",
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "viewportPoints": [
+        1376,
+        1032
+      ],
+      "scale": 2,
+      "state": "Historical Seed review fixture, landscape 25 milestone label, 5/18 (28 percent actual completion); normal-motion test context.",
+      "baselineRawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-attachments/0E21CCF6-2F8B-42AC-9E7D-12634D7A3DAA.png",
+      "baselineRawSHA256": "e870570b921b237bd625c1b8a6ccf2f8e28afa1cb20d12e190624f0623c6192e",
+      "pauseSamples": [
+        {
+          "layer": "pearl body",
+          "foreground": {
+            "displayXY": [
+              1953,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1953
+            ],
+            "RGB": [
+              250,
+              232,
+              194
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              56,
+              60,
+              63
+            ]
+          },
+          "contrastApprox": 9.217,
+          "baselineContrastApprox": 1.202,
+          "baselineForegroundRGB": [
+            251,
+            233,
+            195
+          ],
+          "baselineBackdropProxyRGB": [
+            243,
+            211,
+            155
+          ]
+        },
+        {
+          "layer": "brass rim",
+          "foreground": {
+            "displayXY": [
+              1960,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1960
+            ],
+            "RGB": [
+              161,
+              90,
+              6
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              56,
+              60,
+              63
+            ]
+          },
+          "contrastApprox": 2.11,
+          "baselineContrastApprox": 3.618,
+          "baselineForegroundRGB": [
+            162,
+            91,
+            7
+          ],
+          "baselineBackdropProxyRGB": [
+            243,
+            211,
+            155
+          ]
+        },
+        {
+          "layer": "dark edge",
+          "foreground": {
+            "displayXY": [
+              1961,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1961
+            ],
+            "RGB": [
+              83,
+              43,
+              17
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              56,
+              60,
+              63
+            ]
+          },
+          "contrastApprox": 1.096,
+          "baselineContrastApprox": 5.776,
+          "baselineForegroundRGB": [
+            111,
+            68,
+            36
+          ],
+          "baselineBackdropProxyRGB": [
+            243,
+            211,
+            155
+          ]
+        }
+      ],
+      "bodyRunEndpointSamplesAtDisplayY56": [
+        {
+          "displayX": 1933,
+          "RGB": [
+            104,
+            61,
+            19
+          ]
+        },
+        {
+          "displayX": 1944,
+          "RGB": [
+            157,
+            84,
+            4
+          ]
+        },
+        {
+          "displayX": 1950,
+          "RGB": [
+            187,
+            124,
+            26
+          ]
+        },
+        {
+          "displayX": 1961,
+          "RGB": [
+            83,
+            43,
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seed-landscape-50",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-seed-attachments/4DEF27A9-6038-47D9-B188-6397C959E5C2.png",
+      "rawSHA256": "0eeb625e2d8c483daf2a505be8ee524ba1cefded82717b3138e41a2251199728",
+      "rawPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "sRGBChunkHex": "00",
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "viewportPoints": [
+        1376,
+        1032
+      ],
+      "scale": 2,
+      "state": "Historical Seed review fixture, landscape 50 milestone, 9/18; normal-motion test context.",
+      "baselineRawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-attachments/60CCE75F-B25D-4B29-B5E8-59844F13C55D.png",
+      "baselineRawSHA256": "5f64869f16f8379cab1153152e507ae0eb3b09d8c1edca988195f13da64cd8b2",
+      "pauseSamples": [
+        {
+          "layer": "pearl body",
+          "foreground": {
+            "displayXY": [
+              1953,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1953
+            ],
+            "RGB": [
+              250,
+              232,
+              194
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              54,
+              56,
+              58
+            ]
+          },
+          "contrastApprox": 9.748,
+          "baselineContrastApprox": 1.471,
+          "baselineForegroundRGB": [
+            251,
+            233,
+            195
+          ],
+          "baselineBackdropProxyRGB": [
+            232,
+            188,
+            127
+          ]
+        },
+        {
+          "layer": "brass rim",
+          "foreground": {
+            "displayXY": [
+              1960,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1960
+            ],
+            "RGB": [
+              161,
+              90,
+              6
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              54,
+              56,
+              58
+            ]
+          },
+          "contrastApprox": 2.232,
+          "baselineContrastApprox": 2.956,
+          "baselineForegroundRGB": [
+            162,
+            91,
+            7
+          ],
+          "baselineBackdropProxyRGB": [
+            232,
+            188,
+            127
+          ]
+        },
+        {
+          "layer": "dark edge",
+          "foreground": {
+            "displayXY": [
+              1961,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1961
+            ],
+            "RGB": [
+              83,
+              43,
+              17
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              54,
+              56,
+              58
+            ]
+          },
+          "contrastApprox": 1.036,
+          "baselineContrastApprox": 4.842,
+          "baselineForegroundRGB": [
+            110,
+            66,
+            33
+          ],
+          "baselineBackdropProxyRGB": [
+            232,
+            188,
+            127
+          ]
+        }
+      ],
+      "bodyRunEndpointSamplesAtDisplayY56": [
+        {
+          "displayX": 1933,
+          "RGB": [
+            104,
+            61,
+            19
+          ]
+        },
+        {
+          "displayX": 1944,
+          "RGB": [
+            157,
+            84,
+            4
+          ]
+        },
+        {
+          "displayX": 1950,
+          "RGB": [
+            187,
+            124,
+            26
+          ]
+        },
+        {
+          "displayX": 1961,
+          "RGB": [
+            83,
+            43,
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seed-portrait-0",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-seed-attachments/F0ADD823-953C-4A9A-BAA4-3E102EE851C5.png",
+      "rawSHA256": "646bf5969eb04518b72d91f10f8ee2c8d8179e62e26dbf6b7eb15b20ab7b035b",
+      "rawPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 1,
+      "sRGBChunkHex": "00",
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "viewportPoints": [
+        1032,
+        1376
+      ],
+      "scale": 2,
+      "state": "Historical Seed review fixture, portrait 0 milestone, 0/18; normal-motion test context.",
+      "baselineRawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-attachments/B50C0F61-6B05-4CD8-8864-988E80150877.png",
+      "baselineRawSHA256": "789fc8f40a2f527c0db32cf8878e7839475ab7281ea66e484fcb58803d4da618",
+      "pauseSamples": [
+        {
+          "layer": "pearl body",
+          "foreground": {
+            "displayXY": [
+              1609,
+              56
+            ],
+            "rawXY": [
+              1609,
+              56
+            ],
+            "RGB": [
+              250,
+              232,
+              194
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1622,
+              56
+            ],
+            "rawXY": [
+              1622,
+              56
+            ],
+            "RGB": [
+              37,
+              46,
+              45
+            ]
+          },
+          "contrastApprox": 11.534,
+          "baselineContrastApprox": 3.417,
+          "baselineForegroundRGB": [
+            251,
+            233,
+            194
+          ],
+          "baselineBackdropProxyRGB": [
+            136,
+            127,
+            52
+          ]
+        },
+        {
+          "layer": "brass rim",
+          "foreground": {
+            "displayXY": [
+              1616,
+              56
+            ],
+            "rawXY": [
+              1616,
+              56
+            ],
+            "RGB": [
+              161,
+              90,
+              6
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1622,
+              56
+            ],
+            "rawXY": [
+              1622,
+              56
+            ],
+            "RGB": [
+              37,
+              46,
+              45
+            ]
+          },
+          "contrastApprox": 2.641,
+          "baselineContrastApprox": 1.272,
+          "baselineForegroundRGB": [
+            162,
+            91,
+            6
+          ],
+          "baselineBackdropProxyRGB": [
+            136,
+            127,
+            52
+          ]
+        },
+        {
+          "layer": "dark edge",
+          "foreground": {
+            "displayXY": [
+              1617,
+              56
+            ],
+            "rawXY": [
+              1617,
+              56
+            ],
+            "RGB": [
+              81,
+              41,
+              13
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1622,
+              56
+            ],
+            "rawXY": [
+              1622,
+              56
+            ],
+            "RGB": [
+              37,
+              46,
+              45
+            ]
+          },
+          "contrastApprox": 1.11,
+          "baselineContrastApprox": 2.563,
+          "baselineForegroundRGB": [
+            95,
+            53,
+            14
+          ],
+          "baselineBackdropProxyRGB": [
+            136,
+            127,
+            52
+          ]
+        }
+      ],
+      "bodyRunEndpointSamplesAtDisplayY56": [
+        {
+          "displayX": 1589,
+          "RGB": [
+            100,
+            56,
+            15
+          ]
+        },
+        {
+          "displayX": 1600,
+          "RGB": [
+            157,
+            84,
+            4
+          ]
+        },
+        {
+          "displayX": 1606,
+          "RGB": [
+            187,
+            124,
+            26
+          ]
+        },
+        {
+          "displayX": 1617,
+          "RGB": [
+            81,
+            41,
+            13
+          ]
+        }
+      ]
+    }
+  ],
+  "pixelMethod": {
+    "baselineRecord": "baseline-seed-native-03.json; four matched Seed captures contribute 12 repeated layer/proxy pairs. Its three Goal2 Lantern-dark pairs remain historical context only; no candidate dark capture is invented.",
+    "coordinates": "Integer original PNG pixels, top-left origin. Landscape raw 2064 x 2752 EXIF 8 maps display(x,y) -> raw(2063-y,x); upright display 2752 x 2064. Portrait orientation absent/1 uses identity mapping. No rotated/resampled output was written.",
+    "profile": "All four candidate PNGs declare sRGB 00. Original encoded RGB bytes are treated as sRGB with no ICC conversion or physical-display calibration.",
+    "formula": "For each 8-bit channel v, c=v/255; linear=c/12.92 if c<=0.04045, else ((c+0.055)/1.055)^2.4. Y=0.2126*Rlinear+0.7152*Glinear+0.0722*Blinear. Contrast=(max(Y1,Y2)+0.05)/(min(Y1,Y2)+0.05), rounded to 3 decimals.",
+    "comparison": "Exactly the baseline foreground/proxy coordinates are repeated. New backdrop proxies include the actual fitted material. Foreground artwork is multicolor and composited, so dark/brass/body layers must be interpreted together.",
+    "limits": "These are nearby composited proxies, not reconstructed backgrounds beneath opaque glyphs, whole-glyph minima, an image-wide contrast audit or control recognition thresholds. Raw PNG bytes, not resized tool previews, supply the measurements."
+  },
+  "recoverableGlyphRuns": {
+    "comparison": "At display y=56 the candidate retains visible body-color runs at x=1933..1944 and x=1950..1961 inclusive in landscape; portrait subtracts 344 from x. The candidate row was sampled across that interval, with endpoint RGB values retained per capture. This is a bounded positional observation of the authored bars, not exact raster equality.",
+    "envelope": "Landscape single-row envelope display(1933,56,29,1) -> raw(2007,1933,1,29). This is a recoverable body-row envelope, not full alpha bounds, a layout measurement or a hit rectangle.",
+    "sourceInferredGeometry": "Frozen source retains ObservatoryIcon(.pause,size:20), the 24-point style frame and 48-point native target. Protection is attached after the original pressed/scale/shadow treatment, before the outer target. Existing material expands the 24-point visual by an 8-point outset and feathers by 3 points; that nominal roughly 40-point surface is inferred from source, not alpha-isolated from the screenshot.",
+    "visibleExtent": "The complete frames show a compact soft square around the original glyph, spatially separate from other header protection. No exact alpha/shadow bounds or whole-image geometry equality is claimed."
+  },
+  "fixtureAndDeviceLimits": [
+    "Actual native iPad Pro 13-inch M5 simulator/iOS27, 2x tablet composition. Landscape viewport 1376 x 1032 points; portrait 1032 x 1376 points. This is not a synthetic phone host or physical-device proof.",
+    "Historical reset-only 18-light Seed review fixtures establish scene/material/input orientation only. The 25 stage is 5/18 (28 percent). Terminal 18-light captures are result/ceremony states, excluded from active pause review and current revision-4 11,000-point acceptance.",
+    "Only the four named candidate frames are accepted here; no claim covers all 16 native captures, all 105 source backdrops, active trail heads, complete animation, focus, disabled, Increased Contrast, Reduced Transparency, actual VoiceOver, minimum iOS or physical recognition/performance.",
+    "Current ordinary comet trail remains unchanged. No new trail loss was established by these stills. Practice Close remains the clear shared-style branch by source inspection; it has no new candidate visual review here.",
+    "Original supplied images were viewed complete with orientation honored; the tool preview was resized from original storage. Pixel values and hashes were obtained from original bytes. Phone and retained-export review remain pending."
+  ],
+  "verificationPerformed": "Read-only frozen-source/manifest/original-PNG analysis and this JSON only. No implementation/test edits, image modifications, controller use or builds.",
+  "updatedUTC": "2026-10-25T02:09:53.711785+00:00",
+  "phoneDefaultAndPressure": {
+    "result": "BOUNDED_VISUAL_PASS",
+    "candidateCommit": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+    "verifiedEmbeddedID": "dev.189706f888",
+    "device": "Actual native iPhone17e simulator/iOS27.0, 390 x 844 points at 3x; not a physical phone.",
+    "defaultManifest": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-default-attachments/manifest.json",
+    "pressureManifest": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-pressure-attachments/manifest.json",
+    "coordinatorReportedMechanicalResults": [
+      {
+        "test": "ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound()",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "elapsedSeconds": 76.203
+      },
+      {
+        "test": "SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable()",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "elapsedSeconds": 119.382
+      }
+    ],
+    "mechanicalLimit": "Native interaction, exact-round return, target dimensions and recovery assertions remain separate from visual acceptance. This reviewer used no controllers or test/build tools.",
+    "captures": [
+      {
+        "id": "default-opening",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-default-attachments/6B385ABB-9066-441F-8BED-BAF8CB9C0D3C.png",
+        "rawSHA256": "e83047f7d6f8329ebbf2151b037efb10225fd33c84b6236e91da794a325421e2",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "orientation": "Portrait storage/display; integer raw/display coordinates identical.",
+        "sRGBChunkHex": "00",
+        "state": "Default native phone unselected opening, Lantern 0/150,000; forecast 6,1,2,4,5 without selected underline/dashed column cue; Start sky and Next shower visible. First assertLanternSupport capture before focus.",
+        "localPauseSamples": [
+          {
+            "layer": "pearl body",
+            "foreground": {
+              "rawAndDisplayXY": [
+                1070,
+                220
+              ],
+              "RGB": [
+                248,
+                235,
+                202
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "rawAndDisplayXY": [
+                1086,
+                220
+              ],
+              "RGB": [
+                44,
+                49,
+                59
+              ]
+            },
+            "contrastApprox": 11.014
+          },
+          {
+            "layer": "dark edge",
+            "foreground": {
+              "rawAndDisplayXY": [
+                1082,
+                220
+              ],
+              "RGB": [
+                89,
+                40,
+                11
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "rawAndDisplayXY": [
+                1086,
+                220
+              ],
+              "RGB": [
+                44,
+                49,
+                59
+              ]
+            },
+            "contrastApprox": 1.077
+          }
+        ]
+      },
+      {
+        "id": "default-selected6",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-default-attachments/CE2474C3-7D28-454D-A716-88EE43FC5BB6.png",
+        "rawSHA256": "4f1c37599ed25d2d0d11bad168dbdeebbe5f0b1f1a5809851a5642203085dccf",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "orientation": "Portrait storage/display; integer raw/display coordinates identical.",
+        "sRGBChunkHex": "00",
+        "state": "Default native phone, selected forecast column 6 with underline and dashed board-column cue.",
+        "localPauseSamples": [
+          {
+            "layer": "pearl body",
+            "foreground": {
+              "rawAndDisplayXY": [
+                1070,
+                220
+              ],
+              "RGB": [
+                248,
+                235,
+                202
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "rawAndDisplayXY": [
+                1086,
+                220
+              ],
+              "RGB": [
+                44,
+                49,
+                59
+              ]
+            },
+            "contrastApprox": 11.014
+          },
+          {
+            "layer": "dark edge",
+            "foreground": {
+              "rawAndDisplayXY": [
+                1082,
+                220
+              ],
+              "RGB": [
+                89,
+                40,
+                11
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "rawAndDisplayXY": [
+                1086,
+                220
+              ],
+              "RGB": [
+                44,
+                49,
+                59
+              ]
+            },
+            "contrastApprox": 1.077
+          }
+        ]
+      },
+      {
+        "id": "default-inspector",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-default-attachments/29A36630-5297-41D8-AA02-305A71BE2688.png",
+        "rawSHA256": "670e4e6eca8178a459e7b764e40ce68b32ad670e479cc8f939a7e06d34299d04",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "orientation": "Portrait storage/display; integer raw/display coordinates identical.",
+        "sRGBChunkHex": "00",
+        "state": "Native announced-shower inspector at its initial scroll position, Return to sky pinned below its text viewport."
+      },
+      {
+        "id": "default-returned",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-default-attachments/7D818970-DF68-4771-8DF0-03DC1626A315.png",
+        "rawSHA256": "4f1c37599ed25d2d0d11bad168dbdeebbe5f0b1f1a5809851a5642203085dccf",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "orientation": "Portrait storage/display; integer raw/display coordinates identical.",
+        "sRGBChunkHex": "00",
+        "state": "Returned native phone HUD retains selected column 6, score 0 and target 150,000. Second assertLanternSupport capture after inspector Return; byte-identical to the earlier selected-column-6 frame.",
+        "localPauseSamples": [
+          {
+            "layer": "pearl body",
+            "foreground": {
+              "rawAndDisplayXY": [
+                1070,
+                220
+              ],
+              "RGB": [
+                248,
+                235,
+                202
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "rawAndDisplayXY": [
+                1086,
+                220
+              ],
+              "RGB": [
+                44,
+                49,
+                59
+              ]
+            },
+            "contrastApprox": 11.014
+          },
+          {
+            "layer": "dark edge",
+            "foreground": {
+              "rawAndDisplayXY": [
+                1082,
+                220
+              ],
+              "RGB": [
+                89,
+                40,
+                11
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "rawAndDisplayXY": [
+                1086,
+                220
+              ],
+              "RGB": [
+                44,
+                49,
+                59
+              ]
+            },
+            "contrastApprox": 1.077
+          }
+        ]
+      },
+      {
+        "id": "ax5-pressure-full",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-pressure-attachments/B5494EDB-6708-44F1-A9F4-495C09018D66.png",
+        "rawSHA256": "f8021534a3e5ff8c150d15544a36d19ade675d6c75df1bd49a56d4a7be48081a",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "orientation": "Portrait storage/display; integer raw/display coordinates identical.",
+        "sRGBChunkHex": "00",
+        "state": "AX5 largest quiet pressure state, score 0/150,000, ordered 7,6,1,2,4 forecast and complete Column 2 is full. status.",
+        "localPauseSamples": [
+          {
+            "layer": "pearl body",
+            "foreground": {
+              "rawAndDisplayXY": [
+                1070,
+                220
+              ],
+              "RGB": [
+                248,
+                235,
+                202
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "rawAndDisplayXY": [
+                1086,
+                220
+              ],
+              "RGB": [
+                44,
+                49,
+                59
+              ]
+            },
+            "contrastApprox": 11.014
+          },
+          {
+            "layer": "dark edge",
+            "foreground": {
+              "rawAndDisplayXY": [
+                1082,
+                220
+              ],
+              "RGB": [
+                89,
+                40,
+                11
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "rawAndDisplayXY": [
+                1086,
+                220
+              ],
+              "RGB": [
+                44,
+                49,
+                59
+              ]
+            },
+            "contrastApprox": 1.077
+          }
+        ]
+      },
+      {
+        "id": "ax5-pressure-recovered",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-pressure-attachments/AFE64F06-5C0C-42A7-B4A0-6E97C5CC2F38.png",
+        "rawSHA256": "7e36b10b009588c55881e5989921e0da751ec58794cd281fb4368878dc326324",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "orientation": "Portrait storage/display; integer raw/display coordinates identical.",
+        "sRGBChunkHex": "00",
+        "state": "AX5 largest quiet recovered state, score 5,000/150,000; pressure status and column 2 badge retired from visible HUD.",
+        "localPauseSamples": [
+          {
+            "layer": "pearl body",
+            "foreground": {
+              "rawAndDisplayXY": [
+                1070,
+                220
+              ],
+              "RGB": [
+                248,
+                235,
+                202
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "rawAndDisplayXY": [
+                1086,
+                220
+              ],
+              "RGB": [
+                44,
+                49,
+                59
+              ]
+            },
+            "contrastApprox": 11.014
+          },
+          {
+            "layer": "dark edge",
+            "foreground": {
+              "rawAndDisplayXY": [
+                1082,
+                220
+              ],
+              "RGB": [
+                89,
+                40,
+                11
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "rawAndDisplayXY": [
+                1086,
+                220
+              ],
+              "RGB": [
+                44,
+                49,
+                59
+              ]
+            },
+            "contrastApprox": 1.077
+          }
+        ]
+      }
+    ],
+    "knownVisibleFailuresInReviewedScope": [],
+    "findings": [
+      "The complete default opening, selected and returned HUDs retain readable 0/150,000, all five ordered forecast values and miniatures, full footer actions and distinct actual stars. The selected underline and dashed column 6 cue remain visible; the post-inspector frame retains those visible facts.",
+      "The original small pause bars remain clear. Its local soft material blends quietly into the darker surrounding HUD/painting, adds no large bezel or shelf and does not crowd the existing trail. The whole-screen composition retains continuous scenery and the previously accepted Play hierarchy.",
+      "The inspector uses the registered ceremonial panel and native text/Return action. Its initial viewport shows the first four complete outcomes and the fifth heading. The fifth description is intentionally cut by the text scroll viewport above the pinned footer; this still does not prove that the entire inspector has been read, and the expected scroll edge is not treated as a new glyph-fitting failure.",
+      "AX5 full pressure retains the complete objective and ordered 7,6,1,2,4 forecast without font reduction. Column 2 is full. is fully legible in the official instrument role, and the gold 2! cue is distinct. The recovered frame visibly shows 5,000/150,000 and removes that pressure status/cue. The pause stays subordinate to the large native reading instruments.",
+      "In both AX5 frames the visible native column cues and board stars remain distinct. These tall-text captures deliberately devote more height to readable instruments and show a portion of the board; full board reachability is a separate native interaction contract, not established by the still alone.",
+      "No new visible clipping, ambiguous utility, deficient label separation or excessive material extent was observed in these six complete phone frames. Sunny and the candidate darker-tablet witness still need their own source-bound review."
+    ],
+    "nativeFrameTextEvidence": {
+      "paths": [
+        "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-default-attachments/F694599C-AE0D-4F18-8F9E-71F3DC3B5055.txt",
+        "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-default-attachments/D6CE8295-2C66-4AA9-9220-1F60981E423C.txt"
+      ],
+      "measuredHelpTargetPoints": [
+        301,
+        103,
+        48,
+        48
+      ],
+      "limit": "These exported figures measure the forecast inspection Help target, not the pause hit frame. Native containment guard is true; the CGRect arithmetic field differs by a subpixel floating-point boundary, which is not a visible clipping finding."
+    },
+    "sampleMethod": "Same original phone pause locations as baseline-native-samples-03.json: pearl (1070,220), dark edge (1082,220), nearby composited proxy (1086,220). Standard sRGB formula and proxy limits in pixelMethod apply. Only HUD frames are sampled; the modal hides the pause and is not assigned fake utility samples.",
+    "limits": [
+      "Pixel pairs and source allocations do not certify every glyph edge or hidden backdrop. Inspector full-read and full-board reachability are not inferred from the captured visible portions.",
+      "Increased Contrast, Reduced Transparency, platform focus, native disabled, actual VoiceOver and physical-device evidence remain unperformed.",
+      "No active moving trail or continuous animation acceptance is added. Earlier scene-specific and source-specific limits remain."
+    ]
+  },
+  "readerVerdict": {
+    "result": "BOUNDED_VISUAL_PASS",
+    "candidateCommit": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+    "verifiedEmbeddedID": "dev.189706f888",
+    "manifest": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-reader-attachments/manifest.json",
+    "coordinatorReportedMechanicalResult": {
+      "test": "SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable()",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 67.887
+    },
+    "runMeaning": "Existing AX5 normal-system/normal-app-effects Sunny and Spark reader case. Original bounded 12-pan, movement/overlap, full-final-line, text-height and pinned-action assertions remained unchanged. Reported native mechanics are separate from this visual verdict.",
+    "baseline": {
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-02-ac78832a-reader-attachments/02521447-9BC5-4B18-AD39-640CE902AA28.png",
+      "rawSHA256": "ad90acac553310049ec1bbc07777c857bf6f89b82bcdb9d99acf524426a6270a",
+      "rawPixels": [
+        1170,
+        2532
+      ],
+      "viewportPoints": [
+        390,
+        844
+      ],
+      "scale": 3,
+      "sRGBChunkHex": "00",
+      "coordinates": "Portrait original raw/display pixels, top-left origin, identity mapping.",
+      "pauseSamples": [
+        {
+          "layer": "pearl body",
+          "foreground": {
+            "xy": [
+              1070,
+              220
+            ],
+            "RGB": [
+              249,
+              236,
+              202
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "xy": [
+              1086,
+              220
+            ],
+            "RGB": [
+              214,
+              162,
+              117
+            ]
+          },
+          "contrastApprox": 1.926
+        },
+        {
+          "layer": "brass rim",
+          "foreground": {
+            "xy": [
+              1081,
+              220
+            ],
+            "RGB": [
+              189,
+              106,
+              4
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "xy": [
+              1086,
+              220
+            ],
+            "RGB": [
+              214,
+              162,
+              117
+            ]
+          },
+          "contrastApprox": 1.776
+        },
+        {
+          "layer": "dark edge",
+          "foreground": {
+            "xy": [
+              1082,
+              220
+            ],
+            "RGB": [
+              94,
+              42,
+              11
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "xy": [
+              1086,
+              220
+            ],
+            "RGB": [
+              214,
+              162,
+              117
+            ]
+          },
+          "contrastApprox": 5.124
+        }
+      ],
+      "source": "Compiled ac78832a66146b0c23c49a0af5ef05453d533219, verified embedded dev.f4ecc1c437; immediate accepted Goal2 Sunny reader-end native baseline."
+    },
+    "captures": [
+      {
+        "id": "sunny-beginning",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-reader-attachments/0316C918-7D38-4502-88F1-6097BF492835.png",
+        "rawSHA256": "a19ecf83a5fd670b5ae14b5b6dcabde3ea383fbfea15f9b1121d2e6eb3c211f4",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "sRGBChunkHex": "00",
+        "coordinates": "Portrait original raw/display pixels, top-left origin, identity mapping.",
+        "pauseSamples": [
+          {
+            "layer": "pearl body",
+            "foreground": {
+              "xy": [
+                1070,
+                220
+              ],
+              "RGB": [
+                248,
+                235,
+                202
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "xy": [
+                1086,
+                220
+              ],
+              "RGB": [
+                50,
+                50,
+                53
+              ]
+            },
+            "contrastApprox": 10.788,
+            "baselineContrastApprox": 1.926
+          },
+          {
+            "layer": "brass rim",
+            "foreground": {
+              "xy": [
+                1081,
+                220
+              ],
+              "RGB": [
+                187,
+                105,
+                4
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "xy": [
+                1086,
+                220
+              ],
+              "RGB": [
+                50,
+                50,
+                53
+              ]
+            },
+            "contrastApprox": 3.125,
+            "baselineContrastApprox": 1.776
+          },
+          {
+            "layer": "dark edge",
+            "foreground": {
+              "xy": [
+                1082,
+                220
+              ],
+              "RGB": [
+                90,
+                40,
+                11
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "xy": [
+                1086,
+                220
+              ],
+              "RGB": [
+                50,
+                50,
+                53
+              ]
+            },
+            "contrastApprox": 1.061,
+            "baselineContrastApprox": 5.124
+          }
+        ]
+      },
+      {
+        "id": "sunny-end",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-reader-attachments/7B467505-34D1-46CB-B334-854EDA2D8E10.png",
+        "rawSHA256": "64d21d892f9c639fae7cb8712decec0e40b50e4132c9ad26c514b49b38ed765c",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "sRGBChunkHex": "00",
+        "coordinates": "Portrait original raw/display pixels, top-left origin, identity mapping.",
+        "pauseSamples": [
+          {
+            "layer": "pearl body",
+            "foreground": {
+              "xy": [
+                1070,
+                220
+              ],
+              "RGB": [
+                248,
+                235,
+                202
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "xy": [
+                1086,
+                220
+              ],
+              "RGB": [
+                50,
+                50,
+                53
+              ]
+            },
+            "contrastApprox": 10.788,
+            "baselineContrastApprox": 1.926
+          },
+          {
+            "layer": "brass rim",
+            "foreground": {
+              "xy": [
+                1081,
+                220
+              ],
+              "RGB": [
+                187,
+                105,
+                4
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "xy": [
+                1086,
+                220
+              ],
+              "RGB": [
+                50,
+                50,
+                53
+              ]
+            },
+            "contrastApprox": 3.125,
+            "baselineContrastApprox": 1.776
+          },
+          {
+            "layer": "dark edge",
+            "foreground": {
+              "xy": [
+                1082,
+                220
+              ],
+              "RGB": [
+                90,
+                40,
+                11
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "xy": [
+                1086,
+                220
+              ],
+              "RGB": [
+                50,
+                50,
+                53
+              ]
+            },
+            "contrastApprox": 1.061,
+            "baselineContrastApprox": 5.124
+          }
+        ]
+      },
+      {
+        "id": "sunny-whole-after-read",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-reader-attachments/CAD34F35-ADF4-4C99-BB8B-83CF8030E661.png",
+        "rawSHA256": "64d21d892f9c639fae7cb8712decec0e40b50e4132c9ad26c514b49b38ed765c",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "sRGBChunkHex": "00",
+        "coordinates": "Portrait original raw/display pixels, top-left origin, identity mapping.",
+        "pauseSamples": [
+          {
+            "layer": "pearl body",
+            "foreground": {
+              "xy": [
+                1070,
+                220
+              ],
+              "RGB": [
+                248,
+                235,
+                202
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "xy": [
+                1086,
+                220
+              ],
+              "RGB": [
+                50,
+                50,
+                53
+              ]
+            },
+            "contrastApprox": 10.788,
+            "baselineContrastApprox": 1.926
+          },
+          {
+            "layer": "brass rim",
+            "foreground": {
+              "xy": [
+                1081,
+                220
+              ],
+              "RGB": [
+                187,
+                105,
+                4
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "xy": [
+                1086,
+                220
+              ],
+              "RGB": [
+                50,
+                50,
+                53
+              ]
+            },
+            "contrastApprox": 3.125,
+            "baselineContrastApprox": 1.776
+          },
+          {
+            "layer": "dark edge",
+            "foreground": {
+              "xy": [
+                1082,
+                220
+              ],
+              "RGB": [
+                90,
+                40,
+                11
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "xy": [
+                1086,
+                220
+              ],
+              "RGB": [
+                50,
+                50,
+                53
+              ]
+            },
+            "contrastApprox": 1.061,
+            "baselineContrastApprox": 5.124
+          }
+        ]
+      },
+      {
+        "id": "spark-studio-beginning",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-reader-attachments/B24973C9-12D2-481E-B33C-BAFFCB268765.png",
+        "rawSHA256": "ac766e9d75b2f7135911b166998ec19e488f31f98091e383720860814b374127",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "sRGBChunkHex": "00",
+        "coordinates": "Portrait original raw/display pixels, top-left origin, identity mapping."
+      },
+      {
+        "id": "spark-studio-end",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-reader-attachments/2EB21598-C482-4D4A-A7AD-210225EB0992.png",
+        "rawSHA256": "6431367cf4952c032121e1094dfcf0c2c40734c357baea413c9f1c111260dfa3",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "sRGBChunkHex": "00",
+        "coordinates": "Portrait original raw/display pixels, top-left origin, identity mapping."
+      },
+      {
+        "id": "spark-studio-whole-after-read",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-reader-attachments/DF42F901-B760-4DC1-A5EB-952B0553CA18.png",
+        "rawSHA256": "4836bc2b03cd7cda267232a2047a19d8cc3bcd716e00282a4446de69df0772ea",
+        "rawPixels": [
+          1170,
+          2532
+        ],
+        "viewportPoints": [
+          390,
+          844
+        ],
+        "scale": 3,
+        "sRGBChunkHex": "00",
+        "coordinates": "Portrait original raw/display pixels, top-left origin, identity mapping."
+      }
+    ],
+    "knownVisibleFailuresInReviewedScope": [],
+    "findings": [
+      "Sunny beginning and end show a clear small two-bar pause against a localized soft backing over the lit bridge. It remains spatially separate from the protected score and forecast, and does not enlarge the header or produce an excessive shelf. The original numeral/forecast fonts and the 4/5/6 facts remain complete and legible.",
+      "Sunny reader body and Close retain strong visual separation. The end capture visibly includes the complete final phrase more showers with a touching star. Resume sky and Next shower retain their full labels and clear gold ink over localized protection on the bright wood/clouds.",
+      "Spark Studio preserves the official ceremonial panel, readable wrapped Dialogue studio title, complete final words grown. It counts as 2 toward a tap match., distinct Continue/Close actions and a separate Done action. All essential labels fit their visible native regions.",
+      "Partial previous text lines at the top of the end panes and text cut at the bottom of the beginning panes correspond to their intentional native scroll viewports. No new glyph shrink or line-height clipping was observed. The absence of stars in these deliberately scrolled reading views is expected; board reachability remains separate native evidence.",
+      "The six complete viewport captures preserve the accepted reader hierarchy and continuous underlying scene. No new visible label, material-extent, essential-ink separation or control-fit failure was observed in this tranche."
+    ],
+    "pixelComparison": "The four exact original Sunny locations are repeated on the immediate f4 baseline and three current Sunny frames: pearl (1070,220), brass (1081,220), dark edge (1082,220), nearby composited backdrop proxy (1086,220). All coordinates, RGB values and ratios are retained. Standard sRGB formula and proxy limitations in pixelMethod apply; source checkpoint and file hash distinguish these pixels from historical Goal1 captures even where values coincide.",
+    "limits": [
+      "This is static whole-screen visual acceptance of six native simulator frames, not proof of every intermediate pan, continuous animation, performance or physical readability.",
+      "The native pass is one further successful execution of unchanged gates. It neither assigns a cause to earlier intermittent Sunny pan failures nor establishes that their cause or reliability was fixed. The previously recorded residual and recurrence instrumentation trigger remain applicable.",
+      "Source-bound phone/tablet slices remain distinct. A current candidate darker-tablet witness and exact retained-export comparison remain required before the aggregate verdict.",
+      "Increased Contrast, Reduced Transparency, platform focus, native disabled, actual VoiceOver and physical-device states remain unperformed. No alpha-isolated glyph bounds or global contrast minimum is claimed."
+    ]
+  },
+  "darkerTabletVerdict": {
+    "result": "BOUNDED_VISUAL_PASS",
+    "candidateCommit": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+    "verifiedEmbeddedID": "dev.189706f888",
+    "manifest": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-frost-attachments/manifest.json",
+    "coordinatorReportedMechanicalResult": {
+      "test": "FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput()",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 62.822
+    },
+    "captures": [
+      {
+        "id": "frostfruit-landscape-dense75",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-frost-attachments/651C0BB1-68F2-4A6E-BE83-B0040A642A9B.png",
+        "rawSHA256": "528e6b2374c7a1f671a495d7345b0c04537e85788dec8609e2de745d206dac81",
+        "rawPixels": [
+          2064,
+          2752
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2752,
+          2064
+        ],
+        "viewportPoints": [
+          1376,
+          1032
+        ],
+        "scale": 2,
+        "sRGBChunkHex": "00",
+        "state": "Historical dense Frostfruit 75-stage fixture, 14/18; native actual tablet pause HUD with 4/5/6 forecast, seven gold full-column cues and dense stars.",
+        "pauseSamples": [
+          {
+            "layer": "pearl body",
+            "foreground": {
+              "displayXY": [
+                1953,
+                56
+              ],
+              "rawXY": [
+                2007,
+                1953
+              ],
+              "RGB": [
+                250,
+                232,
+                194
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "displayXY": [
+                1966,
+                56
+              ],
+              "rawXY": [
+                2007,
+                1966
+              ],
+              "RGB": [
+                24,
+                35,
+                68
+              ]
+            },
+            "contrastApprox": 12.759
+          },
+          {
+            "layer": "brass rim",
+            "foreground": {
+              "displayXY": [
+                1960,
+                56
+              ],
+              "rawXY": [
+                2007,
+                1960
+              ],
+              "RGB": [
+                161,
+                90,
+                6
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "displayXY": [
+                1966,
+                56
+              ],
+              "rawXY": [
+                2007,
+                1966
+              ],
+              "RGB": [
+                24,
+                35,
+                68
+              ]
+            },
+            "contrastApprox": 2.921
+          },
+          {
+            "layer": "dark edge",
+            "foreground": {
+              "displayXY": [
+                1961,
+                56
+              ],
+              "rawXY": [
+                2007,
+                1961
+              ],
+              "RGB": [
+                78,
+                39,
+                17
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "displayXY": [
+                1966,
+                56
+              ],
+              "rawXY": [
+                2007,
+                1966
+              ],
+              "RGB": [
+                24,
+                35,
+                68
+              ]
+            },
+            "contrastApprox": 1.19
+          }
+        ],
+        "separateNearbyScenePointOutsideNominalBacking": {
+          "displayXY": [
+            2006,
+            56
+          ],
+          "rawXY": [
+            2007,
+            2006
+          ],
+          "RGB": [
+            74,
+            83,
+            202
+          ]
+        },
+        "separateScenePointYApprox": 0.11907
+      },
+      {
+        "id": "frostfruit-portrait-dense75",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-frost-attachments/07F45C1D-D8BB-45E2-82AD-3AB19A17D91F.png",
+        "rawSHA256": "ef0e1a77ba17c29cacb054cafbbc6f8f387dbe00d13255febb5dca78519d2bf9",
+        "rawPixels": [
+          2064,
+          2752
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "viewportPoints": [
+          1032,
+          1376
+        ],
+        "scale": 2,
+        "sRGBChunkHex": "00",
+        "state": "Historical dense Frostfruit 75-stage fixture, 14/18; native actual tablet pause HUD with 4/5/6 forecast, seven gold full-column cues and dense stars.",
+        "pauseSamples": [
+          {
+            "layer": "pearl body",
+            "foreground": {
+              "displayXY": [
+                1609,
+                56
+              ],
+              "rawXY": [
+                1609,
+                56
+              ],
+              "RGB": [
+                250,
+                232,
+                194
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "displayXY": [
+                1622,
+                56
+              ],
+              "rawXY": [
+                1622,
+                56
+              ],
+              "RGB": [
+                14,
+                24,
+                54
+              ]
+            },
+            "contrastApprox": 14.457
+          },
+          {
+            "layer": "brass rim",
+            "foreground": {
+              "displayXY": [
+                1616,
+                56
+              ],
+              "rawXY": [
+                1616,
+                56
+              ],
+              "RGB": [
+                161,
+                90,
+                6
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "displayXY": [
+                1622,
+                56
+              ],
+              "rawXY": [
+                1622,
+                56
+              ],
+              "RGB": [
+                14,
+                24,
+                54
+              ]
+            },
+            "contrastApprox": 3.31
+          },
+          {
+            "layer": "dark edge",
+            "foreground": {
+              "displayXY": [
+                1617,
+                56
+              ],
+              "rawXY": [
+                1617,
+                56
+              ],
+              "RGB": [
+                77,
+                38,
+                15
+              ]
+            },
+            "nearbyCompositedBackdropProxy": {
+              "displayXY": [
+                1622,
+                56
+              ],
+              "rawXY": [
+                1622,
+                56
+              ],
+              "RGB": [
+                14,
+                24,
+                54
+              ]
+            },
+            "contrastApprox": 1.33
+          }
+        ],
+        "separateNearbyScenePointOutsideNominalBacking": {
+          "displayXY": [
+            1662,
+            56
+          ],
+          "rawXY": [
+            1662,
+            56
+          ],
+          "RGB": [
+            168,
+            131,
+            156
+          ]
+        },
+        "separateScenePointYApprox": 0.26958
+      },
+      {
+        "id": "frostfruit-landscape-terminal-result",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-frost-attachments/1FEA8C64-96DA-4C40-97AC-2A2A7CDC1C66.png",
+        "rawSHA256": "02f8a4a409c28034b293e0d9381652b2ecbba756015cae0e7bc3ad18c12e076f",
+        "rawPixels": [
+          2064,
+          2752
+        ],
+        "exifOrientation": 8,
+        "displayPixels": [
+          2752,
+          2064
+        ],
+        "viewportPoints": [
+          1376,
+          1032
+        ],
+        "scale": 2,
+        "sRGBChunkHex": "00",
+        "state": "Historical 18-light Frostfruit result/ceremony after native win; no active pause HUD. Not current revision-8 15,000-point acceptance."
+      },
+      {
+        "id": "frostfruit-portrait-terminal-result",
+        "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-frost-attachments/585C71C0-F011-480A-8FC4-4B18878C319F.png",
+        "rawSHA256": "a39ba4eb82fad4b6b92dc792b5556dc611ac02bc19159e1fac3c2403a77d7812",
+        "rawPixels": [
+          2064,
+          2752
+        ],
+        "exifOrientation": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "viewportPoints": [
+          1032,
+          1376
+        ],
+        "scale": 2,
+        "sRGBChunkHex": "00",
+        "state": "Historical 18-light Frostfruit result/ceremony after native win; no active pause HUD. Not current revision-8 15,000-point acceptance."
+      }
+    ],
+    "knownVisibleFailuresInReviewedScope": [],
+    "findings": [
+      "Both current candidate dense Frostfruit HUD frames show a clear original pause on a compact local backing. In landscape it stays quiet over the darker upper-right scenic region; portrait has different nearby snow/branch colors and also retains the same small separated utility. Neither backing grows into a bezel or joined header shelf.",
+      "Landscape and portrait preserve the complete 14/18 score, ordered 4/5/6 forecast, all seven gold full-column cues, readable Resume sky/Next shower actions and distinct actual star silhouettes. Dense artwork remains continuous, while the playable stars and ceiling relationship stay clear.",
+      "No essential label clipping, ambiguous pause, excessive material extent or new hierarchy failure was observed in these two complete active HUD frames. This darker witness is current candidate source, not the earlier Goal2 Lantern comparator.",
+      "The other two frames show historical 18-light result/ceremony surfaces. Result labels/actions fit visibly; active pause is absent. They are not counted as active-pause contrast evidence or current Frostfruit revision-8 rule proof."
+    ],
+    "sampleMeaning": "Three original multicolor pause layer/proxy pairs are sampled in each active frame at the same tablet coordinates as Seed. The extra nearby scene point lies beyond the source-inferred backing, but is not a reconstruction of hidden background. No matched baseline Frostfruit capture, whole-glyph minimum or image-wide dark-scene statistic is claimed.",
+    "orientationAndProfile": "Original raw storage 2064 x 2752; actual landscape EXIF 8 maps display(x,y) -> raw(2063-y,x), display 2752 x 2064. Portrait identity. All declare sRGB 00; standard formula and local-proxy limitations in pixelMethod apply.",
+    "limits": [
+      "Historical reset-only 18-light dense review fixtures prove composition/input/material in this state, not the current 15,000-point Frostfruit encounter.",
+      "Native actual 2x iPad simulator composition is distinct from phone and physical-device evidence. Source ranking selected a darker intersection; neither a family name nor one scene pixel proves all backdrop pixels are dark.",
+      "No matched Frostfruit before/after, active animation, focus, disabled, Increased Contrast, Reduced Transparency, actual VoiceOver, minimum-iOS or physical-device acceptance is added."
+    ]
+  },
+  "aggregateNativeVerdict": {
+    "result": "BOUNDED_NATIVE_VISUAL_PASS",
+    "knownCurrentVisibleFailuresInReviewedScope": [],
+    "scope": "Four selected Seed tablet frames, six default/pressure phone frames, six Sunny/Spark reader frames (including after-read duplicate context), and two current dense Frostfruit tablet HUD frames. Two additional Frostfruit result frames are explicitly separate terminal context. All candidate frames bind frozen 4d7cfa217d53a6e39deff2ba9418941aa5c99bd8 / verified embedded dev.189706f888.",
+    "reason": "The registered pause backing strengthens the original bars over bright Seed stone and lit Sunny wood, stays restrained in default/AX phone and darker dense tablet contexts, and preserves complete visible facts, official roles, continuous scenes and the accepted Play hierarchy. No known current visible failure remains in these reviewed native states.",
+    "remainingGate": "None for the stated native/static-export visual scope. Separate peer exact-export gate is fulfilled by visual-review-03-exports.json; mechanical acceptance remains outside this visual verdict.",
+    "mechanicalSeparation": "Core/build/interaction success, target floor and exact-round return are reported separately by the coordinator. This visual verdict does not turn passing assertions into image evidence or claim continuous motion.",
+    "readerResidual": "Earlier source-bound intermittent reader-pan failures remain recorded with cause unassigned. The latest unchanged-gate successful run is bounded successful evidence, not a performance/reliability fix or causal proof.",
+    "unperformedStates": [
+      "Increased Contrast",
+      "Reduced Transparency",
+      "platform focus",
+      "native disabled control",
+      "actual VoiceOver",
+      "physical device",
+      "minimum-iOS execution",
+      "complete animation and moving active-trail sequence"
+    ],
+    "globalLimits": "Selected composited point pairs are not whole-glyph/control minima, a 105-backdrop native audit, alpha-isolated bounds, hidden-backdrop reconstruction or physical recognition certification. All historical source, fixture and viewport distinctions above remain."
+  },
+  "metadataHistory": [
+    {
+      "recordedUTC": "2026-10-25T02:07:08.383026+00:00",
+      "scope": "Phone opening/selected/returned evidence labels only; no new native execution or visual acceptance change.",
+      "finding": "The reviewer already inspected and correctly labeled genuine unselected opening 6B385ABB, initial selected6 CE2474C3, and returned selected6 7D818970. Source test order places the first assertLanternSupport before focus, then selected capture, inspection/Return, then the second assertLanternSupport. CE and 7D share raw SHA256 4f1c37599ed25d2d0d11bad168dbdeebbe5f0b1f1a5809851a5642203085dccf.",
+      "packagingCorrection": "The initial retained opening entry mistakenly selected returned frame 7D. Coordinator replaced that opening JPEG/index entry with genuine opening 6B (raw SHA256 e83047f7d6f8329ebbf2151b037efb10225fd33c84b6236e91da794a325421e2). Current index opening matches the already-reviewed genuine raw.",
+      "currentIndex": {
+        "path": "captures-03.json",
+        "count": 11,
+        "bytes": 9605016,
+        "openingExportSHA256": "e2015aef81a7b6b8ca0c0538882365e5a6ae12872820839c0c471a6598fcd070"
+      },
+      "unchanged": "Matched pixel/source/timing facts and bounded native visual PASS remain unchanged. Replacement export fidelity/hash/dimension review remains assigned to the independent peer."
+    },
+    {
+      "recordedUTC": "2026-10-25T02:09:53.711785+00:00",
+      "scope": "Final aggregate visual status only.",
+      "finding": "Read the final corrected peer export record and verified its eleven matching pairs, unique count, total bytes and capture-index hash. Previous partial-review pending-export wording is historical and superseded by retainedExportGate=FULFILLED_BY_INDEPENDENT_PEER. Independently reviewed native findings, sampled pixels and timings remain unchanged."
+    }
+  ],
+  "retainedExportGate": {
+    "status": "FULFILLED_BY_INDEPENDENT_PEER",
+    "reviewPath": "docs/evidence/hud-stack-2026-10-24/visual-review-03-exports.json",
+    "reviewSHA256AtRead": "5bb26619e1408e5a1ae0465e2b3989d411ca03ee276255c54a3d9e7dceab7f15",
+    "reviewer": "hud_goal_review, independent exact-export reviewer",
+    "verdict": "PASS for the eleven final named exports and their bounded candidate states. Initial duplicate opening evidence was corrected and independently rechecked before finalization.",
+    "captureIndexPath": "docs/evidence/hud-stack-2026-10-24/captures-03.json",
+    "captureIndexSHA256AtPeerReview": "bccfc6f0870701d6b9290e17006d109b99ed38b7e14d85ac269d221ee8eeb6c4",
+    "retainedCount": 11,
+    "retainedBytes": 9605016,
+    "rawHashMatches": "11 of 11",
+    "exportHashMatches": "11 of 11",
+    "geometryAndOrientationMatches": "22 of 22",
+    "sourceScope": "Ten candidate exports at frozen 4d7cfa217d53a6e39deff2ba9418941aa5c99bd8 / verified embedded dev.189706f888, plus one intentional compiled ac78832a / dev.f4ecc1c437 baseline. Corrected genuine opening export included.",
+    "separation": "Peer directly compared all final raw/export whole frames, rechecked all final hashes/dimensions/orientations and independently accepted the corrected opening pair. This reviewer links that separate export review; native findings and original-PNG quantitative samples above are unchanged.",
+    "limits": "Static source-bound export fidelity and visible-state acceptance only. All native/fixture/orientation/reader-residual and unperformed-state limits remain; no new mechanical, animation, focus, disabled, IC/RT, actual VoiceOver, physical-device or minimum-iOS claim."
+  }
+}

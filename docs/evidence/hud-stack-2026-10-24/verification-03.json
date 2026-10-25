@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "goal": 3,
+  "issue": 384,
+  "status": "Mechanical verification complete; independent whole-native-screen and final retained-export reviews pass for the named development slice.",
+  "recordedUTC": "2026-10-25T02:09:44.019038+00:00",
+  "source": "source-03-final.json",
+  "commandsManifest": "/private/tmp/starfall-hud-stack-20261024/commands-03-4d7cfa21.json",
+  "additionalCommand": {
+    "rawExpansion": "/private/tmp/starfall-hud-stack-20261024",
+    "reason": "Existing darker-backdrop native case prepared in acceptance before execution; resolves current-candidate dark witness gap without new methods/source.",
+    "argv": [
+      "python3",
+      "scripts/simulator-command.py",
+      "--receipt",
+      "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-frost-receipt.json",
+      "tablet-03-4d7cfa21-frost",
+      "210",
+      "xcodebuild",
+      "-project",
+      "Starfall.xcodeproj",
+      "-scheme",
+      "Starfall",
+      "-configuration",
+      "Debug",
+      "-derivedDataPath",
+      "/private/tmp/starfall-hud-stack-20261024/Integration",
+      "-parallel-testing-enabled",
+      "NO",
+      "-collect-test-diagnostics",
+      "never",
+      "-jobs",
+      "4",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "STARFALL_BUILD_ID=dev.189706f888",
+      "-destination",
+      "platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "-only-testing:StarfallUITests/FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput",
+      "-resultBundlePath",
+      "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-frost.xcresult",
+      "test-without-building"
+    ]
+  },
+  "core": {
+    "passed": 352,
+    "failed": 0,
+    "skipped": 0,
+    "testSeconds": 24.834,
+    "suiteSeconds": 24.858,
+    "stageSeconds": 26.78,
+    "newCoreOrRuleChanges": false
+  },
+  "hosted": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "stageSeconds": 17.903,
+    "runtimeWarnings": [],
+    "selectors": "goal-03-acceptance.json plannedChecks.hosted; 1 artwork+1score+1reading+6forecast+2restoration+1header",
+    "bundle": "/private/tmp/starfall-hud-stack-20261024/hosted-03-4d7cfa21.xcresult"
+  },
+  "native": {
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0,
+    "methods": [
+      {
+        "label": "tablet-03-4d7cfa21-seed",
+        "selector": "StarfallUITests/SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput",
+        "scope": "default actualtablet, normal effects, historical18-light fixture",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "bundle": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-seed.xcresult"
+      },
+      {
+        "label": "phone-03-4d7cfa21-default",
+        "selector": "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+        "scope": "currentLantern4/defaultphone/normal effects",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "bundle": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-default.xcresult"
+      },
+      {
+        "label": "phone-03-4d7cfa21-pressure",
+        "selector": "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable",
+        "scope": "currentLantern4/AX5phone/legitimatequiet",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "bundle": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-pressure.xcresult"
+      },
+      {
+        "label": "phone-03-4d7cfa21-reader",
+        "selector": "StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+        "scope": "AX5phone/fullSunnySparkreader/normal effects",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "bundle": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-reader.xcresult"
+      },
+      {
+        "label": "tablet-03-4d7cfa21-frost",
+        "selector": "StarfallUITests/FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput",
+        "scope": "default actualtablet/dense49/normal effects/historical18-light fixture",
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": [],
+        "bundle": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-frost.xcresult"
+      }
+    ]
+  },
+  "build": {
+    "DebugSeconds": 8.842,
+    "ReleaseSeconds": 13.6,
+    "bothPassed": true,
+    "embeddedID": "dev.189706f888",
+    "warnings": "Three expected AppIntents metadata extraction-skip diagnostics: two Debug/test products and one Release. No Swift compiler warnings; native/hosted summaries report no runtimeWarnings."
+  },
+  "receipts": [
+    {
+      "stage": "build-03-4d7cfa21-debug",
+      "startedUTC": "2026-10-25T01:48:54.475139+00:00",
+      "elapsedSeconds": 8.842,
+      "limitSeconds": 150.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "hosted-03-4d7cfa21",
+      "startedUTC": "2026-10-25T01:49:03.349706+00:00",
+      "elapsedSeconds": 17.903,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "tablet-03-4d7cfa21-seed",
+      "startedUTC": "2026-10-25T01:49:21.295967+00:00",
+      "elapsedSeconds": 181.889,
+      "limitSeconds": 360.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone-03-4d7cfa21-default",
+      "startedUTC": "2026-10-25T01:52:23.225347+00:00",
+      "elapsedSeconds": 76.203,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone-03-4d7cfa21-pressure",
+      "startedUTC": "2026-10-25T01:53:39.474108+00:00",
+      "elapsedSeconds": 119.382,
+      "limitSeconds": 210.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "phone-03-4d7cfa21-reader",
+      "startedUTC": "2026-10-25T01:55:38.914624+00:00",
+      "elapsedSeconds": 67.887,
+      "limitSeconds": 210.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "build-03-4d7cfa21-release",
+      "startedUTC": "2026-10-25T01:56:46.875733+00:00",
+      "elapsedSeconds": 13.6,
+      "limitSeconds": 150.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "core-03-4d7cfa21",
+      "startedUTC": "2026-10-25T01:57:00.533977+00:00",
+      "elapsedSeconds": 26.78,
+      "limitSeconds": 120.0,
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "stage": "tablet-03-4d7cfa21-frost",
+      "startedUTC": "2026-10-25T01:57:44.981520+00:00",
+      "elapsedSeconds": 62.822,
+      "limitSeconds": 210.0,
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "baseline": {
+    "source": "unchangedac78832a/f4 acceptedmain1ed products",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "stageSeconds": 202.924,
+    "role": "MatchedSeedbright material/geometry baseline only, not candidate acceptance."
+  },
+  "toolingIncident": {
+    "action": "Concurrent completed-bundle export and summary on firstread",
+    "result": "Export0; summary64 because xcresulttool metadata database initialization collided.",
+    "correction": "Summary reread sequentially after export finalized;1/0/0 and no runtimeWarnings. No app/test rerun or source change; remaining same-bundle reads stayed sequential."
+  },
+  "inventory": "No test sources/methods changed; prior source inventory815hosted/260developmentUI is inherited, not a full executed suite or fresh discovery. Selected counts are independently read from completed bundles.",
+  "hygieneAndDiff": "Passed before candidate execution; repeat final staged-evidence checks before publication.",
+  "visual": {
+    "nativeReview": "visual-review-03.json",
+    "finalExportReview": "visual-review-03-exports.json",
+    "captureIndexSHA256": "bccfc6f0870701d6b9290e17006d109b99ed38b7e14d85ac269d221ee8eeb6c4",
+    "result": "Bounded PASS, no known current visible failure found in named captures. Initial duplicate opening export corrected and independently rechecked before finalization; no native rerun/source change."
+  },
+  "readerResidual": "Another unchanged source-bound Sunny pass retains all original12pan/final-line/target assertions. Earlier two pan failures remain failures with unassigned cause and ENGINEERING recurrence instrumentation trigger; no performance or concurrency-cause fix claimed.",
+  "unperformed": [
+    "Actual VoiceOver",
+    "Physical-device recognition/comfort/contrast and issue209 acceptance",
+    "Minimum-iOS execution",
+    "Complete continuous-animation or sustained-performance acceptance",
+    "New native platform-focus/disabled-touch/Reduced Transparency/Increased Contrast appearance acceptance"
+  ],
+  "integration": "Only merge the fully reviewed goal3 default-main PR closing384; Project projection unavailable, no Done claim. Goal4 implementation waits for actual individual merge.",
+  "finalChecks": {
+    "ciHygiene": "Passed after staging final new evidence files",
+    "diffCheck": "Passed on final staged evidence",
+    "runtimeSource": "App/test source frozen at 4d7cfa21; final edits are documentation/evidence only."
+  }
+}

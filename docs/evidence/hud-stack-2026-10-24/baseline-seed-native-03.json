@@ -1,0 +1,721 @@
+{
+  "schemaVersion": 1,
+  "goal": 3,
+  "issue": 384,
+  "status": "BASELINE_ONLY; no candidate rendering or whole-control failure verdict",
+  "recordedUTC": "2026-10-25T01:42:39.330757+00:00",
+  "reviewer": "hud_read_ahead, independent whole-screen and original-pixel review",
+  "summary": "The pause pearl body has weak local separation from bright Seed stone. Its brass and dark contour remain visible, and its body separates more strongly over the separate Lantern night-sky comparator. The supplied screens support comparing a small registered pause backing; they do not establish that the complete pause control failed.",
+  "sourceAndRun": {
+    "compiledAppAndTests": "ac78832a66146b0c23c49a0af5ef05453d533219",
+    "acceptedMain": "1ed733bb8e38d309576867618a52186cb9e0e58d",
+    "computedFingerprintAndVerifiedEmbeddedID": "dev.f4ecc1c437",
+    "sourceMeaning": "Unchanged Goal2 products were reused for the new baseline. Current Goal3 implementation was not built into these screenshots. Accepted-main documentation/merge identity does not replace the compiled checkpoint.",
+    "simulator": "Actual native iPad Pro 13-inch M5 simulator, iOS 27.0; not a physical iPad or synthetic hosted window.",
+    "testIdentifier": "SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput()",
+    "bundle": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline.xcresult",
+    "manifest": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-attachments/manifest.json",
+    "receipt": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-receipt.json",
+    "coordinatorReportedResult": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 202.924,
+      "exitCode": 0
+    },
+    "mechanicalLimit": "The native case checks visible/hittable menu and mapped playfield containment. This does not turn the visual review into an accessibility or contrast test. The separate prior phone forecast case proves its own 48-point target floor; no numeric AX pause frame was exported in these Seed captures.",
+    "darkComparator": "Existing accepted Goal2 native capture, same compiled checkpoint and verified embedded ID, separately bound by source-02-final.json and visual-review-02.json; not another Seed execution."
+  },
+  "fixtureMeaning": {
+    "launchScope": "Reset-only --world-legacy-review and --seed-restoration-review fixtures, with app Calm NO and system Reduce Motion off in the Seed case.",
+    "milestones": "0/5/9/14/18 historical lights use labels 0/25/50/75/100. Five of 18 is 28 percent; the 25 label names a sampled stage.",
+    "terminal": "Landscape 09BC7704-D8AE-43FF-B701-8500A6DCA934.png and 09807708-AE40-4B82-87ED-330B9B11017E.png show the 18-light result/ceremony surface, not an active pause HUD. Their 18-light victory does not establish current Seed revision-4 11,000-point behavior."
+  },
+  "orientationAndFormula": {
+    "coordinates": "All integer coordinates use top-left origins. displayXY addresses the upright image; rawXY addresses stored PNG bytes. Samples are from original PNG pixels, not resized previews or JPEGs.",
+    "landscape": "Raw storage is 2064 x 2752 with EXIF 274=8. Upright display is 2752 x 2064. display(x,y) -> raw(2063-y,x); inverse raw(x,y) -> display(y,2063-x). Thus display(1953,56) -> raw(2007,1953). This is a coordinate mapping only; no rotated image was written.",
+    "portrait": "Raw/display 2064 x 2752, orientation absent or 1; identity mapping.",
+    "profile": "All five PNGs declare sRGB chunk 00, perceptual rendering intent. Their encoded RGB bytes are treated as sRGB; no ICC or physical-display calibration was applied.",
+    "formula": "For each 8-bit channel v, c=v/255; linear=c/12.92 if c<=0.04045, else ((c+0.055)/1.055)^2.4. Y=0.2126*Rlinear+0.7152*Glinear+0.0722*Blinear. Contrast=(max(Y1,Y2)+0.05)/(min(Y1,Y2)+0.05), rounded to 3 decimals.",
+    "proxyLimit": "Backdrop points are actual nearby composited scene/shadow pixels. They do not reconstruct the hidden background beneath an opaque multicolor glyph. Local ratios are not whole-glyph minima or whole-control pass/fail thresholds."
+  },
+  "captures": [
+    {
+      "id": "seed-landscape-0",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-attachments/A914DAE3-CFF6-42ED-92BD-F548E9383355.png",
+      "rawSHA256": "89968411d2fa8d8344dcac61d599260852bff1e08a84440bdfdc559e53f6eac6",
+      "rawPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "sRGBChunkHex": "00",
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "viewportPoints": [
+        1376,
+        1032
+      ],
+      "scale": 2,
+      "state": "Historical Seed review fixture, landscape 0 milestone, 0/18; normal-motion test context.",
+      "pauseSamples": [
+        {
+          "layer": "pearl body",
+          "foreground": {
+            "displayXY": [
+              1953,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1953
+            ],
+            "RGB": [
+              251,
+              233,
+              195
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              245,
+              223,
+              189
+            ]
+          },
+          "contrastApprox": 1.085
+        },
+        {
+          "layer": "brass rim",
+          "foreground": {
+            "displayXY": [
+              1960,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1960
+            ],
+            "RGB": [
+              162,
+              91,
+              7
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              245,
+              223,
+              189
+            ]
+          },
+          "contrastApprox": 4.007
+        },
+        {
+          "layer": "dark edge",
+          "foreground": {
+            "displayXY": [
+              1961,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1961
+            ],
+            "RGB": [
+              111,
+              68,
+              38
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              245,
+              223,
+              189
+            ]
+          },
+          "contrastApprox": 6.39
+        }
+      ]
+    },
+    {
+      "id": "seed-landscape-25",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-attachments/0E21CCF6-2F8B-42AC-9E7D-12634D7A3DAA.png",
+      "rawSHA256": "e870570b921b237bd625c1b8a6ccf2f8e28afa1cb20d12e190624f0623c6192e",
+      "rawPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "sRGBChunkHex": "00",
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "viewportPoints": [
+        1376,
+        1032
+      ],
+      "scale": 2,
+      "state": "Historical Seed review fixture, landscape 25 milestone label, 5/18 (28 percent actual completion); normal-motion test context.",
+      "pauseSamples": [
+        {
+          "layer": "pearl body",
+          "foreground": {
+            "displayXY": [
+              1953,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1953
+            ],
+            "RGB": [
+              251,
+              233,
+              195
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              243,
+              211,
+              155
+            ]
+          },
+          "contrastApprox": 1.202
+        },
+        {
+          "layer": "brass rim",
+          "foreground": {
+            "displayXY": [
+              1960,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1960
+            ],
+            "RGB": [
+              162,
+              91,
+              7
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              243,
+              211,
+              155
+            ]
+          },
+          "contrastApprox": 3.618
+        },
+        {
+          "layer": "dark edge",
+          "foreground": {
+            "displayXY": [
+              1961,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1961
+            ],
+            "RGB": [
+              111,
+              68,
+              36
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              243,
+              211,
+              155
+            ]
+          },
+          "contrastApprox": 5.776
+        }
+      ]
+    },
+    {
+      "id": "seed-landscape-50",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-attachments/60CCE75F-B25D-4B29-B5E8-59844F13C55D.png",
+      "rawSHA256": "5f64869f16f8379cab1153152e507ae0eb3b09d8c1edca988195f13da64cd8b2",
+      "rawPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "sRGBChunkHex": "00",
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "viewportPoints": [
+        1376,
+        1032
+      ],
+      "scale": 2,
+      "state": "Historical Seed review fixture, landscape 50 milestone, 9/18; normal-motion test context.",
+      "pauseSamples": [
+        {
+          "layer": "pearl body",
+          "foreground": {
+            "displayXY": [
+              1953,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1953
+            ],
+            "RGB": [
+              251,
+              233,
+              195
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              232,
+              188,
+              127
+            ]
+          },
+          "contrastApprox": 1.471
+        },
+        {
+          "layer": "brass rim",
+          "foreground": {
+            "displayXY": [
+              1960,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1960
+            ],
+            "RGB": [
+              162,
+              91,
+              7
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              232,
+              188,
+              127
+            ]
+          },
+          "contrastApprox": 2.956
+        },
+        {
+          "layer": "dark edge",
+          "foreground": {
+            "displayXY": [
+              1961,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1961
+            ],
+            "RGB": [
+              110,
+              66,
+              33
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1966,
+              56
+            ],
+            "rawXY": [
+              2007,
+              1966
+            ],
+            "RGB": [
+              232,
+              188,
+              127
+            ]
+          },
+          "contrastApprox": 4.842
+        }
+      ]
+    },
+    {
+      "id": "seed-portrait-0",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-attachments/B50C0F61-6B05-4CD8-8864-988E80150877.png",
+      "rawSHA256": "789fc8f40a2f527c0db32cf8878e7839475ab7281ea66e484fcb58803d4da618",
+      "rawPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 1,
+      "sRGBChunkHex": "00",
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "viewportPoints": [
+        1032,
+        1376
+      ],
+      "scale": 2,
+      "state": "Historical Seed review fixture, portrait 0 milestone, 0/18; normal-motion test context.",
+      "pauseSamples": [
+        {
+          "layer": "pearl body",
+          "foreground": {
+            "displayXY": [
+              1609,
+              56
+            ],
+            "rawXY": [
+              1609,
+              56
+            ],
+            "RGB": [
+              251,
+              233,
+              194
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1622,
+              56
+            ],
+            "rawXY": [
+              1622,
+              56
+            ],
+            "RGB": [
+              136,
+              127,
+              52
+            ]
+          },
+          "contrastApprox": 3.417
+        },
+        {
+          "layer": "brass rim",
+          "foreground": {
+            "displayXY": [
+              1616,
+              56
+            ],
+            "rawXY": [
+              1616,
+              56
+            ],
+            "RGB": [
+              162,
+              91,
+              6
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1622,
+              56
+            ],
+            "rawXY": [
+              1622,
+              56
+            ],
+            "RGB": [
+              136,
+              127,
+              52
+            ]
+          },
+          "contrastApprox": 1.272
+        },
+        {
+          "layer": "dark edge",
+          "foreground": {
+            "displayXY": [
+              1617,
+              56
+            ],
+            "rawXY": [
+              1617,
+              56
+            ],
+            "RGB": [
+              95,
+              53,
+              14
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1622,
+              56
+            ],
+            "rawXY": [
+              1622,
+              56
+            ],
+            "RGB": [
+              136,
+              127,
+              52
+            ]
+          },
+          "contrastApprox": 2.563
+        }
+      ]
+    },
+    {
+      "id": "goal2-lantern-dark-selected6",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-02-ac78832a-calm-attachments/8A24D586-F5AE-40D2-A8BF-57E74BEB52FF.png",
+      "rawSHA256": "dddbaad72868fdfe9305192f5c4c803e5879937259212a4afb183d11798562c1",
+      "rawPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 1,
+      "sRGBChunkHex": "00",
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "viewportPoints": [
+        1032,
+        1376
+      ],
+      "scale": 2,
+      "state": "Separate Goal2 actual-tablet Lantern 0/150,000, selected column 6, AX5 and actual Settings Calm ON; nearby night-sky comparator, not the new Seed baseline run.",
+      "pauseSamples": [
+        {
+          "layer": "pearl body",
+          "foreground": {
+            "displayXY": [
+              1609,
+              56
+            ],
+            "rawXY": [
+              1609,
+              56
+            ],
+            "RGB": [
+              251,
+              232,
+              195
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1622,
+              56
+            ],
+            "rawXY": [
+              1622,
+              56
+            ],
+            "RGB": [
+              164,
+              121,
+              211
+            ]
+          },
+          "contrastApprox": 2.787
+        },
+        {
+          "layer": "brass rim",
+          "foreground": {
+            "displayXY": [
+              1616,
+              56
+            ],
+            "rawXY": [
+              1616,
+              56
+            ],
+            "RGB": [
+              162,
+              91,
+              7
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1622,
+              56
+            ],
+            "rawXY": [
+              1622,
+              56
+            ],
+            "RGB": [
+              164,
+              121,
+              211
+            ]
+          },
+          "contrastApprox": 1.55
+        },
+        {
+          "layer": "dark edge",
+          "foreground": {
+            "displayXY": [
+              1617,
+              56
+            ],
+            "rawXY": [
+              1617,
+              56
+            ],
+            "RGB": [
+              99,
+              53,
+              38
+            ]
+          },
+          "nearbyCompositedBackdropProxy": {
+            "displayXY": [
+              1622,
+              56
+            ],
+            "rawXY": [
+              1622,
+              56
+            ],
+            "RGB": [
+              164,
+              121,
+              211
+            ]
+          },
+          "contrastApprox": 3.025
+        }
+      ]
+    }
+  ],
+  "recoverableGlyphGeometry": {
+    "capture": "seed-landscape-0",
+    "measuredRasterRuns": "At display y=56, visually identified body-color runs are x=1933..1944 and x=1950..1961 inclusive. Their single-row envelope is display x=1933,y=56,width=29,height=1, mapping to raw x=2007,y=1933,width=1,height=29.",
+    "boundsLimit": "These are recoverable raster runs within the two visible bars, not alpha-isolated complete glyph, shadow, native layout or hit bounds. Full alpha bounds cannot be recovered from the fully composited RGB screenshot.",
+    "sourceInferredAllocations": {
+      "owner": "Baseline ac78832a App/FallingSkyView.swift skyMenuButton -> ObservatoryIcon(.pause,size:20); App/StarfallTheme.swift StarfallUtilityButtonStyle -> 24-point visual frame -> 48-point preference target, with original-art color and black shadow.",
+      "landscapeNominalCenterPoints": [
+        974,
+        28
+      ],
+      "landscapeDisplayRects": {
+        "20PointGlyph": [
+          1928,
+          36,
+          40,
+          40
+        ],
+        "24PointStyle": [
+          1924,
+          32,
+          48,
+          48
+        ],
+        "48PointTarget": [
+          1900,
+          8,
+          96,
+          96
+        ]
+      },
+      "portraitNominalCenterPoints": [
+        802,
+        28
+      ],
+      "meaning": "Source/layout-inferred nominal rectangles, not measured AX frames or isolated raster bounds. They describe the existing allocation, not an added bezel."
+    }
+  },
+  "wholeScreenFindings": [
+    "Selected Seed landscape 0/25/50 and portrait 0 preserve a continuous scene, complete score/objective and ordered forecast, native bottom actions, and dominant playable stars. The pause remains a small recognizable two-bar utility; no clipping or displaced controls were observed in these complete frames.",
+    "Across the three sampled bright landscape stages the pearl core is close to nearby stone, while the brass and dark contour retain separation. In portrait 0 the sampled body separates more strongly, while brass and dark-edge pairs are weaker against a differently colored nearby pixel. This is a robustness opportunity, not a demonstrated full-control recognition failure.",
+    "The Lantern selected-column-6 comparator has a different scene, state and Calm context. Its stronger sampled light-body separation is useful context, not a matched Seed before/after or a general dark-scene minimum.",
+    "The terminal 18-light landscape frames are result presentations with ceremony/actions. They are excluded from active-pause measurements and do not extend the claim to current authored Seed rules."
+  ],
+  "candidateBoundary": "Compare a small contextual backing in the official shared utility owner for gameplay pause only. Preserve original glyph, native target, position and input semantics. Practice Close remains clear. Leave ordinary trail, painting, score/receipt anchors and unrelated controls unchanged on this evidence.",
+  "limits": [
+    "Detailed pixel record covers four selected Seed screenshots and one existing dark comparator, not all 16 baseline images or the 105-source intersection survey.",
+    "Fully composited stills cannot establish alpha-isolated glyph bounds, every edge contrast, hidden-background color or a global minimum.",
+    "No active timing-head loss, continuous motion, actual VoiceOver, physical-device recognition/performance, minimum-iOS or whole-product acceptance is claimed.",
+    "The source-inferred 48-point pause target remains distinct from measured raster runs and from other tests that independently measure native target floors.",
+    "This baseline record does not accept any Goal3 candidate. A source-bound matched native comparison and whole-screen visual review are still required."
+  ],
+  "verificationPerformed": "Read-only original PNG chunk decoding, integer RGB sampling, source/run inspection and this JSON only. No App/test edits, image edits or exports, builds, tests or simulator controllers."
+}

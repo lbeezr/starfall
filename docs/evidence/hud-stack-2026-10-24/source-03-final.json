@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "goal": 3,
+  "testedCommit": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+  "baseMain": "1ed733bb8e38d309576867618a52186cb9e0e58d",
+  "runtimeInputFingerprint": "dev.189706f888",
+  "committedRuntimeInputCount": 567,
+  "workingTreeBuildDifferences": [],
+  "workingTreeTestDifferences": [],
+  "changedAppOwners": [
+    "App/StarfallTheme.swift",
+    "App/FallingSkyView.swift"
+  ],
+  "sourceScope": "Only the optional shared utility backdrop and pause-only opt-in changed. Core, tests, resources, routing, project membership and save/cadence owners are unchanged.",
+  "rawInputManifest": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-03-4d7cfa21.json",
+  "rawInputManifestSHA256": "88075326ca72d973e3fb60cb19039131cd70f2143b1fa345508cca7bbdb3025f",
+  "proof": "Every canonical runtime path equals its committed Git blob; runtime SHA256 uses canonical build_identity; no untracked runtime input.",
+  "documentationDuringTesting": "goal-03-acceptance.json gained current-f4 Sunny source bridge/baseline audit and the additional preselected darker-native witness; no runtime/test file changed. Untracked native-review JSON/capture exports and future read-ahead docs are outside build inputs.",
+  "sdk": "iphonesimulator27.1",
+  "xcodeBuild": "27A9275",
+  "simulatorOS": "iOS27.0",
+  "environment": "macOS27.0.1/26A434; actual native iPhone17e390x844@3x and iPadPro13M5 portrait1032x1376/wide1376x1032@2x simulators",
+  "baselineProducts": "ac78832a/accepted main1ed, explicitly embeddeddev.f4ecc1c437; baseline1method is separate from final candidate5 methods.",
+  "embeddedBuildIDs": {
+    "Debug": "dev.189706f888",
+    "Release": "dev.189706f888"
+  }
+}

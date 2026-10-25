@@ -1,0 +1,634 @@
+{
+  "schemaVersion": 1,
+  "goal": 3,
+  "issue": 384,
+  "status": "BASELINE_NATIVE_POINT_SAMPLES_ONLY; no candidate implementation or full-control failure verdict",
+  "recordedUTC": "2026-10-25T01:27:22.257876+00:00",
+  "reviewer": "hud_read_ahead, independent read-only native witness sampling",
+  "sourceInspection": "Read current shared owners after accepted goal2 main1ed733bb; documentation checkpoint eace1159 was current while recording. Pixel evidence remains bound to each historical capture source below, not to a new rendered Goal3 build.",
+  "summary": "The original-color pause glyph has locally weak ivory/brass separation over some scenic pixels, while its authored dark contour still distinguishes the bar. Different parts of the same glyph vary substantially. Protected score/target/forecast/action pairs are strong at the sampled locations. The paused ordinary rails are subdued; they provide no active-head failure proof. These observations support comparing a small registered scenic utility backing while leaving the trail unchanged.",
+  "captures": [
+    {
+      "id": "goal1-sunny-lit",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-01-3fe9f9a8-serial-attachments/2334BAD1-C32E-4867-B700-EA30D1FC821C.png",
+      "source": "Goal1 rendered App bf5e6d23; native test checkpoint3fe9f9a8; recorded runtime-input label dev.3ebf052fca. No new embedded-label observation.",
+      "viewportPoints": [
+        390,
+        844
+      ],
+      "scale": 3,
+      "state": "Fully lit Sunny AX5 reader after real pans, final phrase visible; paused/settled ordinary trail. Existing accepted source-bound Goal1 capture, not a new Goal3 run.",
+      "provenance": "visual-review-01-correction.json and captures-01-correction.json",
+      "rawSHA256": "1eec575c1067dec94cf920f7b2f292d48f36b460fb02960780148a21586393ec",
+      "pixels": [
+        1170,
+        2532
+      ],
+      "pngFormat": "8-bit RGB, fully composited, no alpha; noninterlaced",
+      "colorProfileMetadata": [
+        {
+          "type": "sRGB",
+          "valueHex": "00"
+        }
+      ]
+    },
+    {
+      "id": "goal2-phone",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-02-ac78832a-default-attachments/AF66E66B-54E0-4B14-9EC8-45DA7DDF3FE4.png",
+      "source": "ac78832a66146b0c23c49a0af5ef05453d533219; computed fingerprint and verified final-native embedded ID dev.f4ecc1c437.",
+      "viewportPoints": [
+        390,
+        844
+      ],
+      "scale": 3,
+      "state": "Native iPhone17e simulator/iOS27.0; default text, paused Lantern0/150,000, unselected6,1,2,4,5 forecast; normal/CalmOFF journey.",
+      "provenance": "source-02-final.json, captures-02.json and visual-review-02.json",
+      "rawSHA256": "59ca4b0f7c1c650c49ddf16de9ec12d951e35275c3cd4547331488b97399604f",
+      "pixels": [
+        1170,
+        2532
+      ],
+      "pngFormat": "8-bit RGB, fully composited, no alpha; noninterlaced",
+      "colorProfileMetadata": [
+        {
+          "type": "sRGB",
+          "valueHex": "00"
+        }
+      ]
+    },
+    {
+      "id": "goal2-tablet",
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-02-ac78832a-calm-attachments/32D4371C-FA21-4C39-B363-DC8DE6B61E0A.png",
+      "source": "ac78832a66146b0c23c49a0af5ef05453d533219; computed fingerprint and verified final-native embedded ID dev.f4ecc1c437.",
+      "viewportPoints": [
+        1032,
+        1376
+      ],
+      "scale": 2,
+      "state": "Native iPad Pro13-inch M5 simulator/iOS27.0; AX5, actual Settings CalmON, paused Lantern0/150,000 opening with unselected6,1,2,4,5 forecast. Actual tablet artwork/geometry, not a synthetic phone window or physical iPad.",
+      "provenance": "source-02-final.json, captures-02.json and visual-review-02.json",
+      "rawSHA256": "d946b10da99e04f7bc033b54b6f55ef5b1a45489496a10d73ac624e608f9c424",
+      "pixels": [
+        2064,
+        2752
+      ],
+      "pngFormat": "8-bit RGB, fully composited, no alpha; noninterlaced",
+      "colorProfileMetadata": [
+        {
+          "type": "sRGB",
+          "valueHex": "00"
+        }
+      ]
+    }
+  ],
+  "method": {
+    "coordinates": "Integer original PNG pixels, top-left origin. Point pairs are measured from raw8-bit RGB screenshots, not JPEGs or resized tool previews.",
+    "profile": "All three inspected PNGs declare an sRGB chunk with value00 (perceptual rendering intent); no ICC conversion was applied. Encoded RGB bytes are treated as sRGB under the standard transfer function. This is raster evidence, not a physical-display color measurement.",
+    "formula": "For each8-bit channel v: c=v/255; linear=c/12.92 if c<=0.04045, else ((c+0.055)/1.055)^2.4. Y=0.2126*Rlinear+0.7152*Glinear+0.0722*Blinear. Contrast=(max(Y1,Y2)+0.05)/(min(Y1,Y2)+0.05), rounded to3 decimals.",
+    "foregroundChoice": "Protected text points match opaque native core colors in the actual raster: primary240,233,218; supporting202,200,196; scenic-action gold224,191,123. Utility body/rim/edge samples intentionally retain the multicolor authored layers rather than pretending the icon is flat text.",
+    "backdropChoice": "Nearby actual composited pixels are backdrop proxies. They include existing material, shadows and scene texture. They do not reconstruct the exact background hidden beneath an opaque glyph.",
+    "tooling": "Read-only Python standard-library PNG chunk/decompression/filter decoding and direct integer RGB access; no image transformation, resampling, retouching or native/controller operation. Temporary analysis helper remains disposable under/private/tmp."
+  },
+  "utilitySamples": [
+    {
+      "capture": "goal1-sunny-lit",
+      "label": "Pause right-bar ivory body against nearby lit wood",
+      "role": "essential utility; authored multicolor silhouette",
+      "foregroundPoint": {
+        "xy": [
+          1070,
+          220
+        ],
+        "RGB": [
+          249,
+          236,
+          202
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          1086,
+          220
+        ],
+        "RGB": [
+          214,
+          162,
+          117
+        ]
+      },
+      "contrastApprox": 1.926,
+      "interpretation": "Ivory body alone has weak local separation; this is not the whole control."
+    },
+    {
+      "capture": "goal1-sunny-lit",
+      "label": "Pause right-bar brass rim against the same wood",
+      "role": "essential utility; authored multicolor silhouette",
+      "foregroundPoint": {
+        "xy": [
+          1081,
+          220
+        ],
+        "RGB": [
+          189,
+          106,
+          4
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          1086,
+          220
+        ],
+        "RGB": [
+          214,
+          162,
+          117
+        ]
+      },
+      "contrastApprox": 1.776,
+      "interpretation": "Brass body/rim merges locally with the wood color."
+    },
+    {
+      "capture": "goal1-sunny-lit",
+      "label": "Pause adjacent dark edge against the same wood",
+      "role": "essential utility; existing dark contour",
+      "foregroundPoint": {
+        "xy": [
+          1082,
+          220
+        ],
+        "RGB": [
+          94,
+          42,
+          11
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          1086,
+          220
+        ],
+        "RGB": [
+          214,
+          162,
+          117
+        ]
+      },
+      "contrastApprox": 5.124,
+      "interpretation": "The dark edge remains distinctly separated and preserves the visible bar boundary."
+    },
+    {
+      "capture": "goal2-phone",
+      "label": "Pause ivory body against nearby unrestored scenery",
+      "role": "essential utility; authored multicolor silhouette",
+      "foregroundPoint": {
+        "xy": [
+          1070,
+          220
+        ],
+        "RGB": [
+          248,
+          235,
+          202
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          1086,
+          220
+        ],
+        "RGB": [
+          183,
+          158,
+          153
+        ]
+      },
+      "contrastApprox": 2.119,
+      "interpretation": "Body separation is locally weak even in this less-lit composition."
+    },
+    {
+      "capture": "goal2-phone",
+      "label": "Pause dark edge against the same unrestored scenery",
+      "role": "essential utility; existing dark contour",
+      "foregroundPoint": {
+        "xy": [
+          1082,
+          220
+        ],
+        "RGB": [
+          92,
+          42,
+          12
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          1086,
+          220
+        ],
+        "RGB": [
+          183,
+          158,
+          153
+        ]
+      },
+      "contrastApprox": 4.669,
+      "interpretation": "Dark edge remains distinct; do not declare the full control failed from its light body alone."
+    },
+    {
+      "capture": "goal2-tablet",
+      "label": "Pause right-bar ivory against nearby purple scenery",
+      "role": "essential utility; authored multicolor silhouette",
+      "foregroundPoint": {
+        "xy": [
+          1610,
+          55
+        ],
+        "RGB": [
+          250,
+          233,
+          198
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          1620,
+          55
+        ],
+        "RGB": [
+          154,
+          115,
+          199
+        ]
+      },
+      "contrastApprox": 3.103,
+      "interpretation": "Local body separation differs from phone and Sunny; no global minimum is claimed."
+    },
+    {
+      "capture": "goal2-tablet",
+      "label": "Pause right-bar brass rim against the same purple scenery",
+      "role": "essential utility; authored multicolor silhouette",
+      "foregroundPoint": {
+        "xy": [
+          1615,
+          55
+        ],
+        "RGB": [
+          189,
+          146,
+          94
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          1620,
+          55
+        ],
+        "RGB": [
+          154,
+          115,
+          199
+        ]
+      },
+      "contrastApprox": 1.316,
+      "interpretation": "The brass layer alone has little separation."
+    },
+    {
+      "capture": "goal2-tablet",
+      "label": "Pause right-bar dark edge against the same purple scenery",
+      "role": "essential utility; existing dark contour",
+      "foregroundPoint": {
+        "xy": [
+          1617,
+          55
+        ],
+        "RGB": [
+          101,
+          55,
+          40
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          1620,
+          55
+        ],
+        "RGB": [
+          154,
+          115,
+          199
+        ]
+      },
+      "contrastApprox": 2.652,
+      "interpretation": "Dark-edge separation here is lower than in the sampled phone pair; other portions of the same glyph remain stronger."
+    },
+    {
+      "capture": "goal2-tablet",
+      "label": "Pause other bar ivory against nearby dark scenery",
+      "role": "essential utility; authored multicolor silhouette",
+      "foregroundPoint": {
+        "xy": [
+          1595,
+          55
+        ],
+        "RGB": [
+          249,
+          226,
+          186
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          1585,
+          55
+        ],
+        "RGB": [
+          76,
+          59,
+          80
+        ]
+      },
+      "contrastApprox": 8.11,
+      "interpretation": "A nearby part of the same control has much stronger body separation; contrast varies within one glyph."
+    }
+  ],
+  "pausedRailSamples": [
+    {
+      "capture": "goal1-sunny-lit",
+      "label": "Ordinary rail pale center against nearby dark sky",
+      "role": "paused ordinary track; active head not sampled",
+      "foregroundPoint": {
+        "xy": [
+          1000,
+          396
+        ],
+        "RGB": [
+          89,
+          95,
+          110
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          1000,
+          392
+        ],
+        "RGB": [
+          14,
+          23,
+          51
+        ]
+      },
+      "contrastApprox": 2.764,
+      "interpretation": "The resting rail is subdued. This pair is not evidence that an active deadline head or forecast miniature is lost."
+    },
+    {
+      "capture": "goal2-tablet",
+      "label": "Ordinary rail pale center against nearby wood",
+      "role": "paused ordinary track; active head not sampled",
+      "foregroundPoint": {
+        "xy": [
+          1600,
+          170
+        ],
+        "RGB": [
+          100,
+          99,
+          104
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          1600,
+          175
+        ],
+        "RGB": [
+          70,
+          61,
+          70
+        ]
+      },
+      "contrastApprox": 1.749,
+      "interpretation": "The resting rail is subdued over this wood. Nearby scene texture and its dark under-stroke vary, so this is not a whole-rail minimum."
+    }
+  ],
+  "protectedEssentialSamples": [
+    {
+      "capture": "goal2-phone",
+      "label": "Earned0 opaque native core beside protected sky",
+      "role": "instrumentScore",
+      "foregroundPoint": {
+        "xy": [
+          137,
+          226
+        ],
+        "RGB": [
+          240,
+          233,
+          218
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          130,
+          226
+        ],
+        "RGB": [
+          14,
+          22,
+          37
+        ]
+      },
+      "contrastApprox": 14.975,
+      "interpretation": "Complete native primary ink is strongly separated at this local protected pair."
+    },
+    {
+      "capture": "goal2-phone",
+      "label": "Objective native core beside protected sky",
+      "role": "instrumentTarget",
+      "foregroundPoint": {
+        "xy": [
+          266,
+          226
+        ],
+        "RGB": [
+          202,
+          200,
+          196
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          272,
+          226
+        ],
+        "RGB": [
+          10,
+          18,
+          31
+        ]
+      },
+      "contrastApprox": 11.231,
+      "interpretation": "Regular quieter objective retains strong local separation."
+    },
+    {
+      "capture": "goal2-phone",
+      "label": "Forecast6 semibold native core beside protected sky",
+      "role": "instrumentNumber",
+      "foregroundPoint": {
+        "xy": [
+          227,
+          417
+        ],
+        "RGB": [
+          202,
+          200,
+          196
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          233,
+          417
+        ],
+        "RGB": [
+          14,
+          24,
+          38
+        ]
+      },
+      "contrastApprox": 10.677,
+      "interpretation": "The stronger forecast numeral retains strong local separation without changing its authoritative state ink."
+    },
+    {
+      "capture": "goal2-tablet",
+      "label": "Objective native core beside protected sky",
+      "role": "instrumentTarget",
+      "foregroundPoint": {
+        "xy": [
+          860,
+          72
+        ],
+        "RGB": [
+          202,
+          200,
+          196
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          868,
+          72
+        ],
+        "RGB": [
+          12,
+          19,
+          33
+        ]
+      },
+      "contrastApprox": 11.117,
+      "interpretation": "Regular objective remains strongly separated on the actual tablet frame."
+    },
+    {
+      "capture": "goal2-tablet",
+      "label": "Next columns native core beside protected scenery",
+      "role": "instrumentLabel",
+      "foregroundPoint": {
+        "xy": [
+          494,
+          272
+        ],
+        "RGB": [
+          202,
+          200,
+          196
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          486,
+          272
+        ],
+        "RGB": [
+          15,
+          24,
+          38
+        ]
+      },
+      "contrastApprox": 10.662,
+      "interpretation": "Shared protected caption remains strongly separated on the actual tablet frame."
+    },
+    {
+      "capture": "goal1-sunny-lit",
+      "label": "Next columns native core beside protected lit scenery",
+      "role": "instrumentLabel",
+      "foregroundPoint": {
+        "xy": [
+          185,
+          535
+        ],
+        "RGB": [
+          202,
+          200,
+          196
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          177,
+          535
+        ],
+        "RGB": [
+          13,
+          22,
+          35
+        ]
+      },
+      "contrastApprox": 10.872,
+      "interpretation": "Protection keeps native supporting ink distinct over the fully lit Sunny composition."
+    },
+    {
+      "capture": "goal1-sunny-lit",
+      "label": "Resume sky gold native core beside protected scenery",
+      "role": "scenic gameplay action",
+      "foregroundPoint": {
+        "xy": [
+          603,
+          2218
+        ],
+        "RGB": [
+          224,
+          191,
+          123
+        ]
+      },
+      "nearbyCompositedBackdropProxy": {
+        "xy": [
+          594,
+          2218
+        ],
+        "RGB": [
+          27,
+          33,
+          57
+        ]
+      },
+      "contrastApprox": 8.999,
+      "interpretation": "The existing scenic action protection keeps the actual gold text distinct from its nearby composited surface."
+    }
+  ],
+  "interpretation": {
+    "pause": "No full-control failure is asserted. Weak light/brass patches coexist with distinct dark contours and stronger nearby portions. The essential pause affordance remains recognizable in the supplied whole-frame baseline review.",
+    "trail": "SkyShowerTrail owns the ordinary dark under-track, pale rail, actual forecast miniatures and progress geometry. Glow/dust/faint trailing light are decoration. SkyTrailMotion deliberately fades followers only at the endpoint. The supplied paused/settled rail pairs do not establish an active timing-head, approaching/arriving state or moving-miniature contrast failure.",
+    "protectedRoles": "These actual opaque text-core/proxy pairs show local protection working in default phone, actual AX5 tablet and fully lit Sunny reader contexts. They are not every-glyph, worst-painting or every-state certification.",
+    "candidate": "Compare only a small scenic backing variant in the official shared utility owner. Design/register the contextual role before use; retain full target, fixed glyph geometry and existing enabled/pressed/focused semantics. ObservatoryIcon renders original artwork, so a foregroundStyle change alone does not recolor its essential body. Leave the comet trail unchanged on this evidence."
+  },
+  "limits": [
+    "Local point pairs are not whole-glyph minima, a whole-control pass/fail threshold, an isolated-backdrop reconstruction or a global contrast audit.",
+    "Body, brass, dark contour, shadow and adjacent texture each contribute differently; do not select a weak decorative layer and call all essential ink failed.",
+    "These are three selected native simulator stills, not the complete7locations x5milestones x3compositions intersection survey, active motion sequence or physical-device evidence.",
+    "Ordinary essential text has the repository proposed4.5:1 baseline. This record does not apply that text threshold automatically to a multicolor nontext utility or decorative rail.",
+    "No new actual VoiceOver, physical comfort/performance, minimum-iOS, human recognition or animation acceptance. Prior source-bound visual passes remain bounded and are not withdrawn by these local samples."
+  ],
+  "verificationPerformed": "Read-only source and raw native pixel analysis plus this JSON only. No App/test edits, image edits, builds, hosted/native tests or simulator controllers."
+}

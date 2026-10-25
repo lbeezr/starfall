@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "goal": 2,
+  "issue": 383,
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/403",
+  "mergeCommit": "1ed733bb8e38d309576867618a52186cb9e0e58d",
+  "mergedAtUTC": "2026-10-25T01:14:10Z",
+  "publishedHead": "b6b3e9c3fc206930c165e5e977b53d0b6f8c2f9f",
+  "reviewedLocalCommit": "4e46e976758c39663ead6f6d5b322c3c938dd9bb",
+  "testedAppAndTestCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+  "reviewedAndPublishedTree": "6061a2d7450f4b742b064cf94cad0c8d0e34917d",
+  "baseMain": "8e196ccbaf1173e8c1cecf1ea2f47dd81e24b97c",
+  "treeVerification": {
+    "publishedHeadEqualsReviewedLocal": true,
+    "mergedMainEqualsReviewedLocal": true,
+    "method": "Fetched origin head and main; git diff --exit-code against reviewed local commit returned zero in both cases."
+  },
+  "issueCompletion": {
+    "state": "closed",
+    "stateReason": "completed",
+    "closedAtUTC": "2026-10-25T01:14:11Z"
+  },
+  "canonicalProject": {
+    "status": "unavailable",
+    "reason": "Connected GitHub tools provide issue and PR operations but no Projects query/update capability. Completed issue is confirmed; canonical Project Done is not claimed."
+  },
+  "remoteChecks": {
+    "prCommitStatuses": [],
+    "claim": "No remote CI pass is claimed. Existing workflow has no PR trigger; local selected validation is recorded separately."
+  },
+  "runtimeInputFingerprint": "dev.f4ecc1c437",
+  "finalNativeEmbeddedBuildID": "dev.f4ecc1c437",
+  "scope": "Only isolated goal2 changes on accepted main; the separate pending UI-flow source was excluded."
+}
