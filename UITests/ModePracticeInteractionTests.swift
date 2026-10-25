@@ -46,8 +46,11 @@ final class ModePracticeInteractionTests: XCTestCase {
     @MainActor private func score(_ value: Int, _ app: XCUIApplication) {
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@",
             "\(value.formatted()) of 150,000 starlight collected"), object: app.staticTexts["experiment.score"]).wait(timeout: 10))
-        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"),
-                                                object: app.buttons["experiment.cell.0.0"]).wait(timeout: 10))
+        let board = app.otherElements["experiment.board"]
+        XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            board.exists && (board.value as? String)?.contains("Stars settling") == false
+                && app.buttons["experiment.cell.0.0"].isEnabled
+        }, object: nil).wait(timeout: 10), "Capture retained state after the whole board has settled")
     }
 
     @MainActor private func cells(_ app: XCUIApplication) throws -> [String] {

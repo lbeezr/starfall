@@ -1,0 +1,1824 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "status": "SOURCE_BOUND_WHOLE_EXPORTS_READY; INDEPENDENT_EXACT_EXPORT_REVIEW_PENDING",
+  "candidateSource": "fff03063ddd02ed947e7524a090a599ee20fd063",
+  "candidateRuntime": "dev.b088afcf5e",
+  "baselineSource": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+  "baselineRuntime": "dev.06a3229203",
+  "commands": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-10-candidate-requalified-fff03063-completion.json",
+    "sha256": "7d888b0ad24265d1a62b1bc27768ff84f90736f5269f48807439ed4ade224f08",
+    "bytes": 100645
+  },
+  "sourceRecord": {
+    "path": "docs/evidence/hud-stack-2026-10-24/source-10.json",
+    "sha256": "2c3876b2e3ab16f2432c71ac2ce91a3d589729df59fe207681288a563e710a2e",
+    "bytes": 7188
+  },
+  "verificationRecord": {
+    "path": "docs/evidence/hud-stack-2026-10-24/verification-10.json",
+    "sha256": "c3dd0bcbbf4367dcee69b7c6198243f40f395be011c1694c13973e0c9213c748",
+    "bytes": 32635
+  },
+  "baselineVerification": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-10-baseline.json",
+    "sha256": "98ac6350f4b3bed347210e03274ee555adfa3b6e573ab3340093ee335868fd79",
+    "bytes": 10955
+  },
+  "sourceSnapshot": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-10-candidate-requalified-fff03063.json",
+    "sha256": "a4a5637622f7867a04a344280b6b185378db9e486f551fa7aaed8f777d3c0195",
+    "bytes": 187955
+  },
+  "selection": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/goal10-requalified-captures-selection.json",
+    "sha256": "7a55a135ae64cce4a623f3d1273461b6d6769d1196b3b22da3c88a05d419f7ad",
+    "bytes": 14527
+  },
+  "helper": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/export-goal10-requalified-captures.py",
+    "sha256": "ca719f32d7538aba7c95e61c40fbea74395a0251e69c30a83551d01ef831be22",
+    "bytes": 22873
+  },
+  "grant": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/grant-10-requalification-1200-1400.json",
+    "sha256": "5a837a3793d95166cf46cbdfd18ff88cfefbf088db1b9dbf6e6a02db2211224f",
+    "bytes": 1124
+  },
+  "sharedWindowStartUTC": "2026-10-25T12:00:00Z",
+  "sharedWindowEndUTC": "2026-10-25T14:00:00Z",
+  "count": 11,
+  "bytes": 8650726,
+  "nativeReviewRefs": [
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-baseline-phone.json",
+      "sha256": "55e89c3cda814e501506ec852cd57c25c4fe656af1816054f9d4b171ce69f465",
+      "bytes": 21790
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-baseline-tablet.json",
+      "sha256": "7db86f02c53a97b2450c9e0759b3e7ee525a9cb83917a1269e209ae9841f19d4",
+      "bytes": 38170
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-requalified-silver-phone.json",
+      "sha256": "e5809b16052e006a587f5ce4225f300f12e6836d89a53ea461336e77134ca0ea",
+      "bytes": 29355
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-requalified-last-clear-tablet.json",
+      "sha256": "bfe7da39471f3be765303e3057433c43aecb06e24b5e362d067de8df78be3728",
+      "bytes": 56337
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-requalified-ending-native.json",
+      "sha256": "19b493845b2a4a8faaa230dda8d6b575f2cd34a65395a11a34bc54b2d14146d8",
+      "bytes": 34950
+    }
+  ],
+  "images": [
+    {
+      "id": "01-baseline-silver-summary",
+      "kind": "baseline-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-attachments/538E91F2-5A10-4D94-9DD6-C444245A9E33.png",
+      "rawSHA256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+      "stage": "native-10-baseline-faed226d-identity-phone",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+      "attachmentName": "identity10-phone-story-earned-final-light_0_7AE5387F-31A4-499D-8207-E81451494158.png",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "sourceHead": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+      "runtime": "dev.06a3229203",
+      "state": "Accepted-Goal9 baseline: actual normal-phone Silver earned result,19,000 of12,000 round summary with separate19,000 this-clear accounting. Already legible; retained as hierarchy comparison.",
+      "stateSlug": "silver-round-summary",
+      "deviceSlug": "iphone-17e",
+      "variant": "default-text-normal-effects",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-attachments/538E91F2-5A10-4D94-9DD6-C444245A9E33.png",
+        "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+        "bytes": 3093282
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+        "runtime": "dev.06a3229203",
+        "kind": "accepted-main baseline",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-attachments/manifest.json",
+          "sha256": "ba16c0ca1dc2b2fd5e85fa3fc1df04bb88107fe6dae50cf8673c9576cb4e100b",
+          "bytes": 6389
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "538E91F2-5A10-4D94-9DD6-C444245A9E33.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-phone-story-earned-final-light_0_7AE5387F-31A4-499D-8207-E81451494158.png",
+          "timestamp": 1792929732.055
+        },
+        "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-receipt.json",
+          "sha256": "bec0bbd330e49428243fa39450168abe3fc52d9d9924a8aed9548a5cf23e566c",
+          "bytes": 186
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-summary.json",
+          "sha256": "8e7e6b90438ea6758c4ed4e912f34bd06ef6d5bc249283b46d2d59649c8e266b",
+          "bytes": 741,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "originalNativeCommand": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.06a3229203",
+          "-destination",
+          "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+          "-only-testing:StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+          "-resultBundlePath",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone.xcresult",
+          "test-without-building"
+        ]
+      },
+      "canonicalFilename": "dev-faed226d__silver-round-summary__iphone-17e__default-text-normal-effects.jpg",
+      "independentExactExportReview": "PENDING_DIRECT_REVIEW_OF_THIS_RETAINED_JPEG_AND_RAW_PAIR",
+      "codecIdlePreflight": {
+        "checkedUTC": "2026-10-25T13:49:37.905907+00:00",
+        "conflictingProcesses": [],
+        "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-faed226d__silver-round-summary__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "67e31d728b39b188a2d9ec0f8514e02295e5a766a4b2fd42c21281a9829ed080",
+        "bytes": 642450,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-faed226d__silver-round-summary__iphone-17e__default-text-normal-effects.jpg",
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "mode": "RGB",
+          "format": "JPEG",
+          "iccProfileSHA256": null
+        },
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-attachments/538E91F2-5A10-4D94-9DD6-C444245A9E33.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-faed226d__silver-round-summary__iphone-17e__default-text-normal-effects.jpg"
+        ],
+        "codecReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-01-baseline-silver-summary-receipt.json",
+          "sha256": "8e76c207eefd97011051e67b186ab3903b3172164ef242eca606313a850b61ce",
+          "bytes": 185
+        },
+        "codecLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-01-baseline-silver-summary.log",
+          "sha256": "a08340d3b658b663b3147846efb0a1b4c007f9e18feee31fafb15390dbbcf11c",
+          "bytes": 486
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false,
+        "quality": 80
+      }
+    },
+    {
+      "id": "02-silver-summary",
+      "kind": "candidate-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/1FB7A384-42BF-4D0A-B562-19318A8ACB81.png",
+      "rawSHA256": "6cd99bb976edb93061161f6e03571c6c8d918c815d9dd9ae6a73fe260784135d",
+      "stage": "native-10-candidate-requalified-fff03063-normal-silver-phone",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+      "attachmentName": "identity10-phone-story-earned-final-light_0_8409A066-FC52-449E-B013-B2768FBFE8DB.png",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual normal-phone Silver earned result: exact19,000 of12,000 span uses the shared static result role inside the complete sentence. Separate19,000 this-clear accounting remains distinct; outcome and primary next decision remain dominant.",
+      "stateSlug": "silver-round-summary",
+      "deviceSlug": "iphone-17e",
+      "variant": "default-text-normal-effects",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/1FB7A384-42BF-4D0A-B562-19318A8ACB81.png",
+        "sha256": "6cd99bb976edb93061161f6e03571c6c8d918c815d9dd9ae6a73fe260784135d",
+        "bytes": 3095838
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/manifest.json",
+          "sha256": "6110ff93765ee22cabc6baea5856b129ac0fcfdc63b0aaaae0319f70848b589e",
+          "bytes": 6387
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "1FB7A384-42BF-4D0A-B562-19318A8ACB81.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-phone-story-earned-final-light_0_8409A066-FC52-449E-B013-B2768FBFE8DB.png",
+          "timestamp": 1792934007.492
+        },
+        "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-receipt.json",
+          "sha256": "19158d4ea7b708c337f603de626dba63948eed442110bdcd486cd2d7cd16dfbd",
+          "bytes": 204
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-summary.json",
+          "sha256": "1c8722408ad10dd4f5f65f462e3503bf3ba6a8c64e3893df656348bdbfa36c72",
+          "bytes": 740,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "originalNativeCommand": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.b088afcf5e",
+          "-destination",
+          "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+          "-only-testing:StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+          "-resultBundlePath",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone.xcresult",
+          "test-without-building"
+        ]
+      },
+      "canonicalFilename": "dev-fff03063__silver-round-summary__iphone-17e__default-text-normal-effects.jpg",
+      "independentExactExportReview": "PENDING_DIRECT_REVIEW_OF_THIS_RETAINED_JPEG_AND_RAW_PAIR",
+      "codecIdlePreflight": {
+        "checkedUTC": "2026-10-25T13:49:38.254622+00:00",
+        "conflictingProcesses": [],
+        "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-round-summary__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "1a612293fa537e6e0a4f3d95d3c127d3fa54db6d4361fc62a12747cf3e86c85c",
+        "bytes": 646627,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-round-summary__iphone-17e__default-text-normal-effects.jpg",
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "mode": "RGB",
+          "format": "JPEG",
+          "iccProfileSHA256": null
+        },
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/1FB7A384-42BF-4D0A-B562-19318A8ACB81.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-round-summary__iphone-17e__default-text-normal-effects.jpg"
+        ],
+        "codecReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-02-silver-summary-receipt.json",
+          "sha256": "a9f863f86583db50a1916c7478e5957cb74f6904a010751ebf73bcbce5ab8971",
+          "bytes": 176
+        },
+        "codecLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-02-silver-summary.log",
+          "sha256": "95e2ef56167e17e371342798265b34df26b0a04b29105c2c41ddfafc60874273",
+          "bytes": 486
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false,
+        "quality": 80
+      }
+    },
+    {
+      "id": "03-baseline-lantern-summary",
+      "kind": "baseline-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/0042A869-E606-4CBD-BE4D-8BFAF636C8CB.png",
+      "rawSHA256": "60e548027ffdebc2930ddbf9e15a02d018be107c983e704ea13dba5648503cba",
+      "stage": "native-10-baseline-faed226d-last-clear-tablet",
+      "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+      "attachmentName": "last-clear-tablet-result-whole-score-end_0_BF005C0B-3897-4794-B8F0-0ECC414EC96D.png",
+      "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "sourceHead": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+      "runtime": "dev.06a3229203",
+      "state": "Accepted-Goal9 AX5 actual-Calm tablet baseline: complete156,000/150,000 round sentence at this native scroll position. The title is partly above the viewport; later result accounting occupies other positions. Already legible.",
+      "stateSlug": "lantern-round-summary",
+      "deviceSlug": "ipad-pro13-m5",
+      "variant": "ax5-calm-effects",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/0042A869-E606-4CBD-BE4D-8BFAF636C8CB.png",
+        "sha256": "60e548027ffdebc2930ddbf9e15a02d018be107c983e704ea13dba5648503cba",
+        "bytes": 5983863
+      },
+      "rawMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+        "runtime": "dev.06a3229203",
+        "kind": "accepted-main baseline",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/manifest.json",
+          "sha256": "23826123440c4a7cff254cdc36fec17a7fa29c0d535b50e7e4b753fb52911052",
+          "bytes": 17133
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "0042A869-E606-4CBD-BE4D-8BFAF636C8CB.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "last-clear-tablet-result-whole-score-end_0_BF005C0B-3897-4794-B8F0-0ECC414EC96D.png",
+          "timestamp": 1792930108.517
+        },
+        "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-receipt.json",
+          "sha256": "b7f7ea1e026741997dbe75f1b9d0136e9db73cb5da7a8b3753f0f5edcedf06e1",
+          "bytes": 189
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-summary.json",
+          "sha256": "993a1333c1bcfd34d6babdc624d64bb624d10c904d04ff68eddcdfcba7ee3b79",
+          "bytes": 753,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "originalNativeCommand": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.06a3229203",
+          "-destination",
+          "platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "-only-testing:StarfallUITests/LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+          "-resultBundlePath",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet.xcresult",
+          "test-without-building"
+        ]
+      },
+      "canonicalFilename": "dev-faed226d__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg",
+      "independentExactExportReview": "PENDING_DIRECT_REVIEW_OF_THIS_RETAINED_JPEG_AND_RAW_PAIR",
+      "codecIdlePreflight": {
+        "checkedUTC": "2026-10-25T13:49:38.587712+00:00",
+        "conflictingProcesses": [],
+        "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-faed226d__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "8f01f6ccd52fe8574622213609a1e85610eb1f9e2f2c531e9a0d90aa79715245",
+        "bytes": 1005397,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-faed226d__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "metadata": {
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "mode": "RGB",
+          "format": "JPEG",
+          "iccProfileSHA256": null
+        },
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/0042A869-E606-4CBD-BE4D-8BFAF636C8CB.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-faed226d__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg"
+        ],
+        "codecReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-03-baseline-lantern-summary-receipt.json",
+          "sha256": "d7607987cece55feeb395958cd99363e2ce1e3b7637cb2d4b6bfb01422d59833",
+          "bytes": 186
+        },
+        "codecLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-03-baseline-lantern-summary.log",
+          "sha256": "19b0ca343b33b14218f99bdd9f7f47bde920dc8904a12b18615fc432a4bd2f4e",
+          "bytes": 484
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false,
+        "quality": 80
+      }
+    },
+    {
+      "id": "04-lantern-summary",
+      "kind": "candidate-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/43C66955-6CE6-418A-9CAD-F2301C776F98.png",
+      "rawSHA256": "556fc99a54dba556e7952c77f75b50226b201f3b749ffee16f25e3aec21b2f03",
+      "stage": "native-10-candidate-requalified-fff03063-last-clear-full-board-tablet",
+      "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+      "attachmentName": "last-clear-tablet-result-whole-score-end_0_FBAE8B80-CFCD-4E8B-9D97-53401DA69654.png",
+      "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual AX5 Calm tablet: complete156,000/150,000 round sentence receives native instrument emphasis with natural wrapping. Title partly above this viewport; later optional content continues. Separate58,000 this-clear is a different context.",
+      "stateSlug": "lantern-round-summary",
+      "deviceSlug": "ipad-pro13-m5",
+      "variant": "ax5-calm-effects",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/43C66955-6CE6-418A-9CAD-F2301C776F98.png",
+        "sha256": "556fc99a54dba556e7952c77f75b50226b201f3b749ffee16f25e3aec21b2f03",
+        "bytes": 5962785
+      },
+      "rawMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/manifest.json",
+          "sha256": "df2ef7443d02288bd301a8e76f3c20d56cb7e068dbfaf9c7013f669e45272e8a",
+          "bytes": 17135
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "43C66955-6CE6-418A-9CAD-F2301C776F98.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "last-clear-tablet-result-whole-score-end_0_FBAE8B80-CFCD-4E8B-9D97-53401DA69654.png",
+          "timestamp": 1792934389.644
+        },
+        "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-receipt.json",
+          "sha256": "01aadb1028adecc349b9cf83a1e3fbeadcce7ee48d6dc3f316904c1710c3b68d",
+          "bytes": 213
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-summary.json",
+          "sha256": "ec0a598ff5b59e923e27d752184e9128b373c67f5d15ff7eae6705017783e7e5",
+          "bytes": 753,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "originalNativeCommand": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.b088afcf5e",
+          "-destination",
+          "platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "-only-testing:StarfallUITests/LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+          "-resultBundlePath",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet.xcresult",
+          "test-without-building"
+        ]
+      },
+      "canonicalFilename": "dev-fff03063__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg",
+      "independentExactExportReview": "PENDING_DIRECT_REVIEW_OF_THIS_RETAINED_JPEG_AND_RAW_PAIR",
+      "codecIdlePreflight": {
+        "checkedUTC": "2026-10-25T13:49:38.974700+00:00",
+        "conflictingProcesses": [],
+        "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "558a1942b0b04062f183d35a436a409404e5afc04245138db58f22ba6fab9eb6",
+        "bytes": 997950,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "metadata": {
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "mode": "RGB",
+          "format": "JPEG",
+          "iccProfileSHA256": null
+        },
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/43C66955-6CE6-418A-9CAD-F2301C776F98.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg"
+        ],
+        "codecReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-04-lantern-summary-receipt.json",
+          "sha256": "24b6ec102643271011ad5518a899fd1b088baf0eba080f8dda067dcc26199222",
+          "bytes": 177
+        },
+        "codecLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-04-lantern-summary.log",
+          "sha256": "8bfa231121419937a9a39ed0e8dd49123ba6a4ee0679b583ea479fefc1022d70",
+          "bytes": 490
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false,
+        "quality": 80
+      }
+    },
+    {
+      "id": "05-lantern-last-clear-return",
+      "kind": "candidate-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/FC328EFA-D410-4F83-AD21-107506A60A89.png",
+      "rawSHA256": "2f4e1f86e9b0acd5efed5a4e309647c056d7e246abfe3247db42bdf2021f3c21",
+      "stage": "native-10-candidate-requalified-fff03063-last-clear-full-board-tablet",
+      "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+      "attachmentName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear_0_BEC85F02-DA7B-4BE4-938C-264D3F32B559.room-end",
+      "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual AX5 Calm Last-clear reader end with58,000 this-clear, six survivors,22 refills,49 occupied and Return. This is a separate native reader position from the156,000/150,000 round summary, not a whole-page composition.",
+      "stateSlug": "lantern-last-clear-return",
+      "deviceSlug": "ipad-pro13-m5",
+      "variant": "ax5-calm-effects",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/FC328EFA-D410-4F83-AD21-107506A60A89.png",
+        "sha256": "2f4e1f86e9b0acd5efed5a4e309647c056d7e246abfe3247db42bdf2021f3c21",
+        "bytes": 4815484
+      },
+      "rawMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/manifest.json",
+          "sha256": "df2ef7443d02288bd301a8e76f3c20d56cb7e068dbfaf9c7013f669e45272e8a",
+          "bytes": 17135
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "FC328EFA-D410-4F83-AD21-107506A60A89.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear_0_BEC85F02-DA7B-4BE4-938C-264D3F32B559.room-end",
+          "timestamp": 1792934381.568
+        },
+        "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-receipt.json",
+          "sha256": "01aadb1028adecc349b9cf83a1e3fbeadcce7ee48d6dc3f316904c1710c3b68d",
+          "bytes": 213
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-summary.json",
+          "sha256": "ec0a598ff5b59e923e27d752184e9128b373c67f5d15ff7eae6705017783e7e5",
+          "bytes": 753,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "originalNativeCommand": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.b088afcf5e",
+          "-destination",
+          "platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "-only-testing:StarfallUITests/LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+          "-resultBundlePath",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet.xcresult",
+          "test-without-building"
+        ]
+      },
+      "canonicalFilename": "dev-fff03063__lantern-last-clear-return__ipad-pro13-m5__ax5-calm-effects.jpg",
+      "independentExactExportReview": "PENDING_DIRECT_REVIEW_OF_THIS_RETAINED_JPEG_AND_RAW_PAIR",
+      "codecIdlePreflight": {
+        "checkedUTC": "2026-10-25T13:49:39.359346+00:00",
+        "conflictingProcesses": [],
+        "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-last-clear-return__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "c16365e4b0ffc6bb8c2c33c379836eba870bf77bb6ce47d21956072a67ea795b",
+        "bytes": 889323,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-last-clear-return__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "metadata": {
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "mode": "RGB",
+          "format": "JPEG",
+          "iccProfileSHA256": null
+        },
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/FC328EFA-D410-4F83-AD21-107506A60A89.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-last-clear-return__ipad-pro13-m5__ax5-calm-effects.jpg"
+        ],
+        "codecReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-05-lantern-last-clear-return-receipt.json",
+          "sha256": "8674dac7596309c4af701dbab101958301b96ce507b2c23ff5578ffdf1d9ed69",
+          "bytes": 187
+        },
+        "codecLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-05-lantern-last-clear-return.log",
+          "sha256": "74810d1d3b323bad689f57d5f2860c3ba224f69a2d37bae9e2a0fcc457d7d03a",
+          "bytes": 514
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false,
+        "quality": 80
+      }
+    },
+    {
+      "id": "06-silver-live",
+      "kind": "candidate-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/95737B7E-9C35-4844-81B3-E71C8512256B.png",
+      "rawSHA256": "92541080445106327a9fbde3bc8ea5d98e8ae67b01e929f971278244b7371cd8",
+      "stage": "native-10-candidate-requalified-fff03063-normal-silver-phone",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+      "attachmentName": "identity10-phone-story-automatic-pattern-return_0_D9F854F2-4EC5-4C95-B9ED-06831950C696.png",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual normal-phone Silver clear still:19,000/12,000 live HUD over continuous scenery and the shown board before ceremony. No steady-density,49-occupied, exact-onset or continuous-motion claim.",
+      "stateSlug": "silver-clear-hud",
+      "deviceSlug": "iphone-17e",
+      "variant": "default-text-normal-effects",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/95737B7E-9C35-4844-81B3-E71C8512256B.png",
+        "sha256": "92541080445106327a9fbde3bc8ea5d98e8ae67b01e929f971278244b7371cd8",
+        "bytes": 4846644
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/manifest.json",
+          "sha256": "6110ff93765ee22cabc6baea5856b129ac0fcfdc63b0aaaae0319f70848b589e",
+          "bytes": 6387
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "95737B7E-9C35-4844-81B3-E71C8512256B.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-phone-story-automatic-pattern-return_0_D9F854F2-4EC5-4C95-B9ED-06831950C696.png",
+          "timestamp": 1792934003.998
+        },
+        "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-receipt.json",
+          "sha256": "19158d4ea7b708c337f603de626dba63948eed442110bdcd486cd2d7cd16dfbd",
+          "bytes": 204
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-summary.json",
+          "sha256": "1c8722408ad10dd4f5f65f462e3503bf3ba6a8c64e3893df656348bdbfa36c72",
+          "bytes": 740,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "originalNativeCommand": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.b088afcf5e",
+          "-destination",
+          "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+          "-only-testing:StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+          "-resultBundlePath",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone.xcresult",
+          "test-without-building"
+        ]
+      },
+      "canonicalFilename": "dev-fff03063__silver-clear-hud__iphone-17e__default-text-normal-effects.jpg",
+      "independentExactExportReview": "PENDING_DIRECT_REVIEW_OF_THIS_RETAINED_JPEG_AND_RAW_PAIR",
+      "codecIdlePreflight": {
+        "checkedUTC": "2026-10-25T13:49:39.688840+00:00",
+        "conflictingProcesses": [],
+        "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-clear-hud__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "199a8d775d0cad033ef8ed8a2c761e4ac865debb7414f1f39c0ca56c8a31c003",
+        "bytes": 891543,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-clear-hud__iphone-17e__default-text-normal-effects.jpg",
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "mode": "RGB",
+          "format": "JPEG",
+          "iccProfileSHA256": null
+        },
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/95737B7E-9C35-4844-81B3-E71C8512256B.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-clear-hud__iphone-17e__default-text-normal-effects.jpg"
+        ],
+        "codecReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-06-silver-live-receipt.json",
+          "sha256": "ad798cb2f02d90da581629706d962770c5661eb208b71b22fb0153612eacef31",
+          "bytes": 173
+        },
+        "codecLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-06-silver-live.log",
+          "sha256": "7ea34ac4bcb1980cd42967d1395ee4ae38f017b2593fe85b3565308022573532",
+          "bytes": 476
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false,
+        "quality": 80
+      }
+    },
+    {
+      "id": "07-silver-home-return",
+      "kind": "candidate-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/38ED6B46-764C-429D-9EF7-14F705A720EB.png",
+      "rawSHA256": "d2d0d893a163a8495e49f6a1d64683084820b70a3c626ab06984face6d24fbec",
+      "stage": "native-10-candidate-requalified-fff03063-normal-silver-phone",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+      "attachmentName": "identity10-phone-home-retained-silver-ending_0_DF3C0738-5CF9-4957-BB0C-0EF37606D3E1.png",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual Home after the real Silver repair: retained19,000/12,000 completion and View last sky. This visible menu portion does not depict all places.",
+      "stateSlug": "home-retained-silver",
+      "deviceSlug": "iphone-17e",
+      "variant": "default-text-normal-effects",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/38ED6B46-764C-429D-9EF7-14F705A720EB.png",
+        "sha256": "d2d0d893a163a8495e49f6a1d64683084820b70a3c626ab06984face6d24fbec",
+        "bytes": 3985916
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/manifest.json",
+          "sha256": "6110ff93765ee22cabc6baea5856b129ac0fcfdc63b0aaaae0319f70848b589e",
+          "bytes": 6387
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "38ED6B46-764C-429D-9EF7-14F705A720EB.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-phone-home-retained-silver-ending_0_DF3C0738-5CF9-4957-BB0C-0EF37606D3E1.png",
+          "timestamp": 1792934022.053
+        },
+        "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-receipt.json",
+          "sha256": "19158d4ea7b708c337f603de626dba63948eed442110bdcd486cd2d7cd16dfbd",
+          "bytes": 204
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-summary.json",
+          "sha256": "1c8722408ad10dd4f5f65f462e3503bf3ba6a8c64e3893df656348bdbfa36c72",
+          "bytes": 740,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "originalNativeCommand": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.b088afcf5e",
+          "-destination",
+          "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+          "-only-testing:StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+          "-resultBundlePath",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone.xcresult",
+          "test-without-building"
+        ]
+      },
+      "canonicalFilename": "dev-fff03063__home-retained-silver__iphone-17e__default-text-normal-effects.jpg",
+      "independentExactExportReview": "PENDING_DIRECT_REVIEW_OF_THIS_RETAINED_JPEG_AND_RAW_PAIR",
+      "codecIdlePreflight": {
+        "checkedUTC": "2026-10-25T13:49:40.031938+00:00",
+        "conflictingProcesses": [],
+        "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__home-retained-silver__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "c94bc8c5c048b28f5b222fc9ac4da15ea27e4511becbabddefb60586aa3f06ad",
+        "bytes": 725421,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__home-retained-silver__iphone-17e__default-text-normal-effects.jpg",
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "mode": "RGB",
+          "format": "JPEG",
+          "iccProfileSHA256": null
+        },
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/38ED6B46-764C-429D-9EF7-14F705A720EB.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__home-retained-silver__iphone-17e__default-text-normal-effects.jpg"
+        ],
+        "codecReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-07-silver-home-return-receipt.json",
+          "sha256": "cc887d293a07f9c17d02c4c73c440b1d6040d54bf46a3e05dce1b12c2ab421b3",
+          "bytes": 180
+        },
+        "codecLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-07-silver-home-return.log",
+          "sha256": "35c6c42ee6349b1a018d8b892cae241fc0d88d35f573275eff21669e02b5e529",
+          "bytes": 494
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false,
+        "quality": 80
+      }
+    },
+    {
+      "id": "08-silver-entry",
+      "kind": "candidate-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/C5F2BBD3-74F6-4BE0-9B5B-FABF22363996.png",
+      "rawSHA256": "57e56252f5cb5d16193daa61d8ae08ca48baec4d3336faff75d8c554e76f0c65",
+      "stage": "native-10-candidate-requalified-fff03063-normal-silver-phone",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+      "attachmentName": "identity10-phone-current-silver-help-entry-start_0_A5F60432-E497-46D6-BE3D-1E9703F12841.png",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual concise current Silver Entry and Begin at normal phone text, with the12,000 objective. Longer Help remains in its existing native reader; terminal score styling does not leak into Entry.",
+      "stateSlug": "silver-entry",
+      "deviceSlug": "iphone-17e",
+      "variant": "default-text-normal-effects",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/C5F2BBD3-74F6-4BE0-9B5B-FABF22363996.png",
+        "sha256": "57e56252f5cb5d16193daa61d8ae08ca48baec4d3336faff75d8c554e76f0c65",
+        "bytes": 4562666
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/manifest.json",
+          "sha256": "6110ff93765ee22cabc6baea5856b129ac0fcfdc63b0aaaae0319f70848b589e",
+          "bytes": 6387
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "C5F2BBD3-74F6-4BE0-9B5B-FABF22363996.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-phone-current-silver-help-entry-start_0_A5F60432-E497-46D6-BE3D-1E9703F12841.png",
+          "timestamp": 1792933984.045
+        },
+        "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-receipt.json",
+          "sha256": "19158d4ea7b708c337f603de626dba63948eed442110bdcd486cd2d7cd16dfbd",
+          "bytes": 204
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-summary.json",
+          "sha256": "1c8722408ad10dd4f5f65f462e3503bf3ba6a8c64e3893df656348bdbfa36c72",
+          "bytes": 740,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "originalNativeCommand": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.b088afcf5e",
+          "-destination",
+          "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+          "-only-testing:StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+          "-resultBundlePath",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone.xcresult",
+          "test-without-building"
+        ]
+      },
+      "canonicalFilename": "dev-fff03063__silver-entry__iphone-17e__default-text-normal-effects.jpg",
+      "independentExactExportReview": "PENDING_DIRECT_REVIEW_OF_THIS_RETAINED_JPEG_AND_RAW_PAIR",
+      "codecIdlePreflight": {
+        "checkedUTC": "2026-10-25T13:49:40.381306+00:00",
+        "conflictingProcesses": [],
+        "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-entry__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "ef80d6bfcaf165b13104d1578f36a438a7a42626f32d0015c1a5ebf3927ff51b",
+        "bytes": 854104,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-entry__iphone-17e__default-text-normal-effects.jpg",
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "mode": "RGB",
+          "format": "JPEG",
+          "iccProfileSHA256": null
+        },
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/C5F2BBD3-74F6-4BE0-9B5B-FABF22363996.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-entry__iphone-17e__default-text-normal-effects.jpg"
+        ],
+        "codecReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-08-silver-entry-receipt.json",
+          "sha256": "a2178f0848fd3c5abf508a90893e2e0e51bc5c412df67a1ab06b9a491d10e569",
+          "bytes": 174
+        },
+        "codecLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-08-silver-entry.log",
+          "sha256": "8558f1bc67d25cd6a4de300eb06926d86cbcf2a487614400111ad5fbcead1686",
+          "bytes": 474
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false,
+        "quality": 80
+      }
+    },
+    {
+      "id": "09-open-sky-ending",
+      "kind": "candidate-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/F2432840-C120-4DC6-B430-46F290C2090B.png",
+      "rawSHA256": "ca832ab81f2b8badd0dd0bc4340e4a1d52c426140bb6a1cc0150a7f66cea634b",
+      "stage": "native-10-candidate-requalified-fff03063-open-sky-phone",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+      "attachmentName": "identity10-phone-open-sky-earned-ending_0_37038E6F-4157-4986-8B9B-AE4F518B269D.png",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Normal phone historical authored-Dusk horizontalFive fixture: a real five-star trace earns5, then later showers block column1. Complete5-starlight result and ending decisions. This is not current random-supply or campaign evidence.",
+      "stateSlug": "open-sky-ending",
+      "deviceSlug": "iphone-17e",
+      "variant": "default-text-normal-effects",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/F2432840-C120-4DC6-B430-46F290C2090B.png",
+        "sha256": "ca832ab81f2b8badd0dd0bc4340e4a1d52c426140bb6a1cc0150a7f66cea634b",
+        "bytes": 2950320
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/manifest.json",
+          "sha256": "16f17feb19020232cad69920c45bb8d1057b42ca1594f89a345ecbda9a85d93b",
+          "bytes": 5397
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "F2432840-C120-4DC6-B430-46F290C2090B.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-phone-open-sky-earned-ending_0_37038E6F-4157-4986-8B9B-AE4F518B269D.png",
+          "timestamp": 1792934722.535
+        },
+        "testIdentifier": "IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay",
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-receipt.json",
+          "sha256": "c5e702a3c9bfc63ac7ae1ec035fa87db694c4713f4bb2a14e2e4242e5ed49992",
+          "bytes": 199
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-summary.json",
+          "sha256": "2b0fe137662a777a855edd609062b5c21a400adb10d8db8d768dee862ee3ca19",
+          "bytes": 741,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "originalNativeCommand": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.b088afcf5e",
+          "-destination",
+          "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+          "-only-testing:StarfallUITests/IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay",
+          "-resultBundlePath",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone.xcresult",
+          "test-without-building"
+        ]
+      },
+      "canonicalFilename": "dev-fff03063__open-sky-ending__iphone-17e__default-text-normal-effects.jpg",
+      "independentExactExportReview": "PENDING_DIRECT_REVIEW_OF_THIS_RETAINED_JPEG_AND_RAW_PAIR",
+      "codecIdlePreflight": {
+        "checkedUTC": "2026-10-25T13:49:40.708183+00:00",
+        "conflictingProcesses": [],
+        "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__open-sky-ending__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "fe7166caaf70b4a4152e82f5152cc9039bc7183a743045fe6e3b353f3a9654aa",
+        "bytes": 501136,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__open-sky-ending__iphone-17e__default-text-normal-effects.jpg",
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "mode": "RGB",
+          "format": "JPEG",
+          "iccProfileSHA256": null
+        },
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/F2432840-C120-4DC6-B430-46F290C2090B.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__open-sky-ending__iphone-17e__default-text-normal-effects.jpg"
+        ],
+        "codecReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-09-open-sky-ending-receipt.json",
+          "sha256": "399a407799bc6061b752bfb1d7683c2b08719a177205d65d4502abd5976e7b02",
+          "bytes": 177
+        },
+        "codecLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-09-open-sky-ending.log",
+          "sha256": "15f57e4f902a7acd9fd91f66e6044762955fbc864056cdc009df98fa5ab8ffe6",
+          "bytes": 478
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false,
+        "quality": 80
+      }
+    },
+    {
+      "id": "10-full-board-result",
+      "kind": "candidate-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/ACDCE604-8B4A-4B7B-ABCB-7C539F57E68D.png",
+      "rawSHA256": "a930788bffa15f495f4607c744ad581ec54d861831cae5dfb82ee1c5e65ac35a",
+      "stage": "native-10-candidate-requalified-fff03063-full-board-phone",
+      "testIdentifier": "FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay()",
+      "attachmentName": "full-board-default-won_0_802FCF09-F5AC-4723-B90D-5CD485C217F4.png",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual current Lantern Full Board6 ten-exchange156,000/150,000 win on normal phone. Full committed round sentence and next-location/New sky/Replay decisions; optional mastery continues below the viewport.",
+      "stateSlug": "lantern-full-board-result",
+      "deviceSlug": "iphone-17e",
+      "variant": "default-text-normal-effects",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/ACDCE604-8B4A-4B7B-ABCB-7C539F57E68D.png",
+        "sha256": "a930788bffa15f495f4607c744ad581ec54d861831cae5dfb82ee1c5e65ac35a",
+        "bytes": 2570849
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/manifest.json",
+          "sha256": "d82eeb513f3bb89c838eff61c7f1fb969826da05db5ea4baa9bf9bb457b3fc2f",
+          "bytes": 3019
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "ACDCE604-8B4A-4B7B-ABCB-7C539F57E68D.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "full-board-default-won_0_802FCF09-F5AC-4723-B90D-5CD485C217F4.png",
+          "timestamp": 1792934935.918
+        },
+        "testIdentifier": "FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay",
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-receipt.json",
+          "sha256": "812ab6df7d9737b449b6743a610014972f71bec352b6a162686426232c316262",
+          "bytes": 201
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-summary.json",
+          "sha256": "6d4f0be45a0b879fa13abcf557f7705b46faf6cc631cece119fcc847f5886025",
+          "bytes": 741,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "originalNativeCommand": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.b088afcf5e",
+          "-destination",
+          "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+          "-only-testing:StarfallUITests/FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay",
+          "-resultBundlePath",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone.xcresult",
+          "test-without-building"
+        ]
+      },
+      "canonicalFilename": "dev-fff03063__lantern-full-board-result__iphone-17e__default-text-normal-effects.jpg",
+      "independentExactExportReview": "PENDING_DIRECT_REVIEW_OF_THIS_RETAINED_JPEG_AND_RAW_PAIR",
+      "codecIdlePreflight": {
+        "checkedUTC": "2026-10-25T13:49:41.083011+00:00",
+        "conflictingProcesses": [],
+        "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-full-board-result__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "5bc8c7760be97bb3610fae6ce2be23f61078b2682752e8be572e24c4c47678af",
+        "bytes": 544421,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-full-board-result__iphone-17e__default-text-normal-effects.jpg",
+        "metadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "mode": "RGB",
+          "format": "JPEG",
+          "iccProfileSHA256": null
+        },
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/ACDCE604-8B4A-4B7B-ABCB-7C539F57E68D.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-full-board-result__iphone-17e__default-text-normal-effects.jpg"
+        ],
+        "codecReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-10-full-board-result-receipt.json",
+          "sha256": "d126e146817e0ae03b6bb1f9e3850ffdbb6ccab0e1e1d498c05fb95ea0153756",
+          "bytes": 179
+        },
+        "codecLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-10-full-board-result.log",
+          "sha256": "6a3442108dd72cd43eac0bfca8e23b392a72fd4c7328af4d56068a415d7d259e",
+          "bytes": 494
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false,
+        "quality": 80
+      }
+    },
+    {
+      "id": "11-places-retained-full-board",
+      "kind": "candidate-native",
+      "source": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/B90A24D5-AAF9-4BC6-8CFC-25238DF7E93B.png",
+      "rawSHA256": "fcf51fe78570736561b3a1379dc51f01b7519e8cec63711b85bef701cfc90c6f",
+      "stage": "native-10-candidate-requalified-fff03063-mode-guidance-tablet",
+      "testIdentifier": "IdentityJourneyInteractionTests/testLargestCalmModeGuidanceCancellationAndExactContinue()",
+      "attachmentName": "identity10-tablet-map-back-retains-full-board-mode_0_55E7F492-4284-4325-BA1A-E3BAE621EA73.png",
+      "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "sourceHead": "fff03063ddd02ed947e7524a090a599ee20fd063",
+      "runtime": "dev.b088afcf5e",
+      "state": "Actual iPad Pro13 M5/iOS27,AX5 with real Settings Calm. After Replay/New previews were cancelled, Places retains Full Board42,000/150,000 beside the distinct new-visit150,000 objective; Continue and Start again are fully visible. Actual scrolled list position; later places and whole-page coverage are not shown.",
+      "stateSlug": "places-retained-full-board",
+      "deviceSlug": "ipad-pro13-m5",
+      "variant": "ax5-calm-effects",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/B90A24D5-AAF9-4BC6-8CFC-25238DF7E93B.png",
+        "sha256": "fcf51fe78570736561b3a1379dc51f01b7519e8cec63711b85bef701cfc90c6f",
+        "bytes": 5061963
+      },
+      "rawMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/manifest.json",
+          "sha256": "6161fe91bc1dd1e6052fc094aef1f78da366a4cb751718638d1b916754f16da4",
+          "bytes": 11146
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "B90A24D5-AAF9-4BC6-8CFC-25238DF7E93B.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-tablet-map-back-retains-full-board-mode_0_55E7F492-4284-4325-BA1A-E3BAE621EA73.png",
+          "timestamp": 1792935169.475
+        },
+        "testIdentifier": "IdentityJourneyInteractionTests/testLargestCalmModeGuidanceCancellationAndExactContinue()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/IdentityJourneyInteractionTests/testLargestCalmModeGuidanceCancellationAndExactContinue",
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-receipt.json",
+          "sha256": "36aadf0807db4aacfe862e17918c217f23c7fbacfc34ed3a427b8cc615bb546b",
+          "bytes": 205
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-summary.json",
+          "sha256": "9688352ac0761722c5bce0ae3e95add01a063f5416946d6470ce72a3f5f8ba71",
+          "bytes": 752,
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": []
+        },
+        "originalNativeCommand": [
+          "xcodebuild",
+          "-project",
+          "Starfall.xcodeproj",
+          "-scheme",
+          "Starfall",
+          "-configuration",
+          "Debug",
+          "-derivedDataPath",
+          "/private/tmp/starfall-hud-stack-20261024/Integration",
+          "-parallel-testing-enabled",
+          "NO",
+          "-collect-test-diagnostics",
+          "never",
+          "-jobs",
+          "4",
+          "ARCHS=arm64",
+          "ONLY_ACTIVE_ARCH=YES",
+          "STARFALL_BUILD_ID=dev.b088afcf5e",
+          "-destination",
+          "platform=iOS Simulator,id=3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "-only-testing:StarfallUITests/IdentityJourneyInteractionTests/testLargestCalmModeGuidanceCancellationAndExactContinue",
+          "-resultBundlePath",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet.xcresult",
+          "test-without-building"
+        ]
+      },
+      "canonicalFilename": "dev-fff03063__places-retained-full-board__ipad-pro13-m5__ax5-calm-effects.jpg",
+      "independentExactExportReview": "PENDING_DIRECT_REVIEW_OF_THIS_RETAINED_JPEG_AND_RAW_PAIR",
+      "codecIdlePreflight": {
+        "checkedUTC": "2026-10-25T13:49:41.410096+00:00",
+        "conflictingProcesses": [],
+        "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__places-retained-full-board__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "b9bbe9da1d88b2854a2efb1e7f2c8e4454ecf15c17309aaa8f178b9c039db642",
+        "bytes": 952354,
+        "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__places-retained-full-board__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "metadata": {
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "mode": "RGB",
+          "format": "JPEG",
+          "iccProfileSHA256": null
+        },
+        "command": [
+          "sips",
+          "-s",
+          "format",
+          "jpeg",
+          "-s",
+          "formatOptions",
+          "80",
+          "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/B90A24D5-AAF9-4BC6-8CFC-25238DF7E93B.png",
+          "--out",
+          "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__places-retained-full-board__ipad-pro13-m5__ax5-calm-effects.jpg"
+        ],
+        "codecReceipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-11-places-retained-full-board-receipt.json",
+          "sha256": "f58a8b0494f4cfd908d7d2d098b2489f83a9ffab51c8ceaafa11054bb87f0232",
+          "bytes": 188
+        },
+        "codecLog": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-11-places-retained-full-board.log",
+          "sha256": "1d09dd36e4553c46c0d9d866433939e6208a3faba9ab2561e3ed997e2a70fedc",
+          "bytes": 509
+        },
+        "wholeFrame": true,
+        "cropResizeRetouch": false,
+        "quality": 80
+      }
+    }
+  ],
+  "transform": "One serial sips JPEG80 per selected original. Original pixel/display dimensions and effective EXIF orientation preserved; no crop/resize/retouch.",
+  "mechanicalScope": {
+    "candidateCore": 352,
+    "candidateHosted": 17,
+    "candidateNativeExecutions": 7,
+    "candidateNativeUniqueMethods": 7,
+    "baselineNativeExecutions": 2,
+    "baselineNativeUniqueMethods": 2,
+    "initialCandidateNativeExecutions": 5,
+    "initialCandidateNativePassed": 4,
+    "initialCandidateNativeFailed": 1,
+    "overallNativeExecutions": 14,
+    "overallUniqueNativeMethods": 7
+  },
+  "visualAcceptance": "PENDING independent direct whole retained-JPEG/raw pair review; counts/conversion do not decide visual quality.",
+  "limits": [
+    "Original whole native XCTest stills only. Baselinefaed/06a and candidatefff/b088 remain distinct.",
+    "No decoded movie frames, continuous motion/performance, actualVoiceOver, minimum-iOS17, physical-device or human-recognition claim.",
+    "JPEG80 is a lossy viewing artifact; original PNGs own any exact RGB/contrast measurement."
+  ],
+  "finishedUTC": "2026-10-25T13:49:41.603105+00:00",
+  "finalIdleCheck": {
+    "checkedUTC": "2026-10-25T13:49:41.820106+00:00",
+    "conflictingProcesses": [],
+    "parser": "Actual ps pid,args executable basename; Python/MCP wrappers ignored; no cleanup"
+  }
+}

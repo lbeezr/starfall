@@ -54,6 +54,33 @@ struct SkyPressureCue: Equatable {
     }
 }
 
+/// Static terminal copy keeps one native reading and one authoritative score span.
+enum SkyResultSummary {
+    static func content(_ text: String, scoreLabel: String?) -> AttributedString {
+        var content = AttributedString(text)
+        guard let scoreLabel, scoreRange(in: text, scoreLabel: scoreLabel) != nil,
+              let range = content.range(of: scoreLabel) else { return content }
+        content[range].font = StarfallTheme.Typography.instrumentScore
+        return content
+    }
+
+    // Unknown or ambiguous copy remains completely readable without guessing.
+    static func scoreRange(in text: String, scoreLabel: String?) -> Range<String.Index>? {
+        guard let scoreLabel, !scoreLabel.isEmpty,
+              let range = text.range(of: scoreLabel),
+              text.range(of: scoreLabel, range: range.upperBound..<text.endIndex) == nil else { return nil }
+        if range.lowerBound > text.startIndex {
+            let preceding = text[text.index(before: range.lowerBound)]
+            guard !preceding.isLetter && !preceding.isNumber else { return nil }
+        }
+        if range.upperBound < text.endIndex {
+            let following = text[range.upperBound]
+            guard !following.isLetter && !following.isNumber else { return nil }
+        }
+        return range
+    }
+}
+
 /// Exact native values remain independent of decorative materials and animations.
 struct SkyScoreInstrument: View {
     let score: Int

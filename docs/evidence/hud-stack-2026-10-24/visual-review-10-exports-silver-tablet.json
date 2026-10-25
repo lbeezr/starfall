@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "status": "PASS",
+  "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+  "reviewer": "hud_audit; independent direct whole-original and exact-retained-JPEG review",
+  "recordedUTC": "2026-10-25T13:56:42.496387+00:00",
+  "scope": "Onlycaptures10 rows01\u201305: five exactPNG/JPEG pairs, all10 whole images directly viewed. Rows06\u201311 require their separately named independent reviewers; no overallgoal adoption.",
+  "candidateSource": "fff03063ddd02ed947e7524a090a599ee20fd063",
+  "candidateRuntime": "dev.b088afcf5e",
+  "baselineSource": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+  "baselineRuntime": "dev.06a3229203",
+  "acceptedMainAtBaseline": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+  "captureIndex": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-10.json",
+    "sha256": "002db82d198321124ff1eda3679f733d013c019f2ffa42f424e59f66aecd1b8e",
+    "bytes": 84254
+  },
+  "ownedPairIDs": [
+    "01-baseline-silver-summary",
+    "02-silver-summary",
+    "03-baseline-lantern-summary",
+    "04-lantern-summary",
+    "05-lantern-last-clear-return"
+  ],
+  "pairCount": 5,
+  "wholeFilesDirectlyViewed": 10,
+  "referenceRecords": {
+    "sourceRecord": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-10.json",
+      "sha256": "2c3876b2e3ab16f2432c71ac2ce91a3d589729df59fe207681288a563e710a2e",
+      "bytes": 7188
+    },
+    "verificationRecord": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-10.json",
+      "sha256": "c3dd0bcbbf4367dcee69b7c6198243f40f395be011c1694c13973e0c9213c748",
+      "bytes": 32635
+    },
+    "baselineVerification": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-10-baseline.json",
+      "sha256": "98ac6350f4b3bed347210e03274ee555adfa3b6e573ab3340093ee335868fd79",
+      "bytes": 10955
+    },
+    "sourceSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-10-candidate-requalified-fff03063.json",
+      "sha256": "a4a5637622f7867a04a344280b6b185378db9e486f551fa7aaed8f777d3c0195",
+      "bytes": 187955
+    },
+    "selection": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/goal10-requalified-captures-selection.json",
+      "sha256": "7a55a135ae64cce4a623f3d1273461b6d6769d1196b3b22da3c88a05d419f7ad",
+      "bytes": 14527
+    },
+    "helper": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/export-goal10-requalified-captures.py",
+      "sha256": "ca719f32d7538aba7c95e61c40fbea74395a0251e69c30a83551d01ef831be22",
+      "bytes": 22873
+    },
+    "grant": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/grant-10-requalification-1200-1400.json",
+      "sha256": "5a837a3793d95166cf46cbdfd18ff88cfefbf088db1b9dbf6e6a02db2211224f",
+      "bytes": 1124
+    }
+  },
+  "images": [
+    {
+      "id": "01-baseline-silver-summary",
+      "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+      "rawOriginalDirectlyViewedWhole": true,
+      "retainedJPEGDirectlyViewedWhole": true,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-attachments/538E91F2-5A10-4D94-9DD6-C444245A9E33.png",
+        "sha256": "4071eced12ef732b8cc739d50714269fffc1b3bb1f27d0914a937fe8e29b4ab7",
+        "bytes": 3093282
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-faed226d__silver-round-summary__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "67e31d728b39b188a2d9ec0f8514e02295e5a766a4b2fd42c21281a9829ed080",
+        "bytes": 642450
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "exportMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "mode": "RGB",
+        "format": "JPEG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+        "runtime": "dev.06a3229203",
+        "kind": "accepted-main baseline",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "kind": "baseline-native",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+      "variant": "default-text-normal-effects",
+      "captionAsIndexed": "Accepted-Goal9 baseline: actual normal-phone Silver earned result,19,000 of12,000 round summary with separate19,000 this-clear accounting. Already legible; retained as hierarchy comparison.",
+      "captionVerdict": "PASS_BOUNDED_CONTEXT_ACCURATE",
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-attachments/manifest.json",
+          "sha256": "ba16c0ca1dc2b2fd5e85fa3fc1df04bb88107fe6dae50cf8673c9576cb4e100b",
+          "bytes": 6389
+        },
+        "attachmentName": "identity10-phone-story-earned-final-light_0_7AE5387F-31A4-499D-8207-E81451494158.png",
+        "attachmentEpoch": 1792929732.055,
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-receipt.json",
+          "sha256": "bec0bbd330e49428243fa39450168abe3fc52d9d9924a8aed9548a5cf23e566c",
+          "bytes": 186
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-identity-phone-summary.json",
+          "sha256": "8e7e6b90438ea6758c4ed4e912f34bd06ef6d5bc249283b46d2d59649c8e266b",
+          "bytes": 741
+        }
+      },
+      "codecReceipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-01-baseline-silver-summary-receipt.json",
+        "sha256": "8e76c207eefd97011051e67b186ab3903b3172164ef242eca606313a850b61ce",
+        "bytes": 185
+      },
+      "wholeFrame": true,
+      "cropResizeRetouch": false,
+      "qualityAsRecorded": 80,
+      "finding": "JPEG preserves the legible accepted baseline supporting-weight19k/12k sentence, restored title, full primary/secondary decisions and separate19k this-clear5k+14k accounting withLast earned light. Baseline remains a hierarchy comparison, not a numeric-reading failure."
+    },
+    {
+      "id": "02-silver-summary",
+      "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+      "rawOriginalDirectlyViewedWhole": true,
+      "retainedJPEGDirectlyViewedWhole": true,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/1FB7A384-42BF-4D0A-B562-19318A8ACB81.png",
+        "sha256": "6cd99bb976edb93061161f6e03571c6c8d918c815d9dd9ae6a73fe260784135d",
+        "bytes": 3095838
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__silver-round-summary__iphone-17e__default-text-normal-effects.jpg",
+        "sha256": "1a612293fa537e6e0a4f3d95d3c127d3fa54db6d4361fc62a12747cf3e86c85c",
+        "bytes": 646627
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "exportMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ],
+        "mode": "RGB",
+        "format": "JPEG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "kind": "candidate-native",
+      "testIdentifier": "IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding()",
+      "variant": "default-text-normal-effects",
+      "captionAsIndexed": "Actual normal-phone Silver earned result: exact19,000 of12,000 span uses the shared static result role inside the complete sentence. Separate19,000 this-clear accounting remains distinct; outcome and primary next decision remain dominant.",
+      "captionVerdict": "PASS_BOUNDED_CONTEXT_ACCURATE",
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/manifest.json",
+          "sha256": "6110ff93765ee22cabc6baea5856b129ac0fcfdc63b0aaaae0319f70848b589e",
+          "bytes": 6387
+        },
+        "attachmentName": "identity10-phone-story-earned-final-light_0_8409A066-FC52-449E-B013-B2768FBFE8DB.png",
+        "attachmentEpoch": 1792934007.492,
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-receipt.json",
+          "sha256": "19158d4ea7b708c337f603de626dba63948eed442110bdcd486cd2d7cd16dfbd",
+          "bytes": 204
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-summary.json",
+          "sha256": "1c8722408ad10dd4f5f65f462e3503bf3ba6a8c64e3893df656348bdbfa36c72",
+          "bytes": 740
+        }
+      },
+      "codecReceipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-02-silver-summary-receipt.json",
+        "sha256": "a9f863f86583db50a1916c7478e5957cb74f6904a010751ebf73bcbce5ab8971",
+        "bytes": 176
+      },
+      "wholeFrame": true,
+      "cropResizeRetouch": false,
+      "qualityAsRecorded": 80,
+      "finding": "JPEG preserves the current exact19k/12k serif-emphasized span within the complete sentence, primary result decision and separate19k this-clear5k+14k accounting/Last earned light. The original whole-viewport hierarchy distinction remains visible."
+    },
+    {
+      "id": "03-baseline-lantern-summary",
+      "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+      "rawOriginalDirectlyViewedWhole": true,
+      "retainedJPEGDirectlyViewedWhole": true,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/0042A869-E606-4CBD-BE4D-8BFAF636C8CB.png",
+        "sha256": "60e548027ffdebc2930ddbf9e15a02d018be107c983e704ea13dba5648503cba",
+        "bytes": 5983863
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-faed226d__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "8f01f6ccd52fe8574622213609a1e85610eb1f9e2f2c531e9a0d90aa79715245",
+        "bytes": 1005397
+      },
+      "rawMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "exportMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "mode": "RGB",
+        "format": "JPEG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+        "runtime": "dev.06a3229203",
+        "kind": "accepted-main baseline",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "kind": "baseline-native",
+      "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+      "variant": "ax5-calm-effects",
+      "captionAsIndexed": "Accepted-Goal9 AX5 actual-Calm tablet baseline: complete156,000/150,000 round sentence at this native scroll position. The title is partly above the viewport; later result accounting occupies other positions. Already legible.",
+      "captionVerdict": "PASS_BOUNDED_CONTEXT_ACCURATE",
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/manifest.json",
+          "sha256": "23826123440c4a7cff254cdc36fec17a7fa29c0d535b50e7e4b753fb52911052",
+          "bytes": 17133
+        },
+        "attachmentName": "last-clear-tablet-result-whole-score-end_0_BF005C0B-3897-4794-B8F0-0ECC414EC96D.png",
+        "attachmentEpoch": 1792930108.517,
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-receipt.json",
+          "sha256": "b7f7ea1e026741997dbe75f1b9d0136e9db73cb5da7a8b3753f0f5edcedf06e1",
+          "bytes": 189
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-summary.json",
+          "sha256": "993a1333c1bcfd34d6babdc624d64bb624d10c904d04ff68eddcdfcba7ee3b79",
+          "bytes": 753
+        }
+      },
+      "codecReceipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-03-baseline-lantern-summary-receipt.json",
+        "sha256": "d7607987cece55feeb395958cd99363e2ce1e3b7637cb2d4b6bfb01422d59833",
+        "bytes": 186
+      },
+      "wholeFrame": true,
+      "cropResizeRetouch": false,
+      "qualityAsRecorded": 80,
+      "finding": "JPEG preserves the actualAX5 Calm baseline156k/150k sentence, supporting-weight native wrapping and visible result decisions. This is a legible historical round-summary context, not58k this-clear or an entire long page."
+    },
+    {
+      "id": "04-lantern-summary",
+      "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+      "rawOriginalDirectlyViewedWhole": true,
+      "retainedJPEGDirectlyViewedWhole": true,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/43C66955-6CE6-418A-9CAD-F2301C776F98.png",
+        "sha256": "556fc99a54dba556e7952c77f75b50226b201f3b749ffee16f25e3aec21b2f03",
+        "bytes": 5962785
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-round-summary__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "558a1942b0b04062f183d35a436a409404e5afc04245138db58f22ba6fab9eb6",
+        "bytes": 997950
+      },
+      "rawMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "exportMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "mode": "RGB",
+        "format": "JPEG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "kind": "candidate-native",
+      "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+      "variant": "ax5-calm-effects",
+      "captionAsIndexed": "Actual AX5 Calm tablet: complete156,000/150,000 round sentence receives native instrument emphasis with natural wrapping. Title partly above this viewport; later optional content continues. Separate58,000 this-clear is a different context.",
+      "captionVerdict": "PASS_BOUNDED_CONTEXT_ACCURATE",
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/manifest.json",
+          "sha256": "df2ef7443d02288bd301a8e76f3c20d56cb7e068dbfaf9c7013f669e45272e8a",
+          "bytes": 17135
+        },
+        "attachmentName": "last-clear-tablet-result-whole-score-end_0_FBAE8B80-CFCD-4E8B-9D97-53401DA69654.png",
+        "attachmentEpoch": 1792934389.644,
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-receipt.json",
+          "sha256": "01aadb1028adecc349b9cf83a1e3fbeadcce7ee48d6dc3f316904c1710c3b68d",
+          "bytes": 213
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-summary.json",
+          "sha256": "ec0a598ff5b59e923e27d752184e9128b373c67f5d15ff7eae6705017783e7e5",
+          "bytes": 753
+        }
+      },
+      "codecReceipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-04-lantern-summary-receipt.json",
+        "sha256": "24b6ec102643271011ad5518a899fd1b088baf0eba080f8dda067dcc26199222",
+        "bytes": 177
+      },
+      "wholeFrame": true,
+      "cropResizeRetouch": false,
+      "qualityAsRecorded": 80,
+      "finding": "JPEG preserves the freshAX5 Calm exact156k/150k span emphasis and naturally taller wrapping inside the complete sentence, with visibleVisit/New/Replay/Back controls. Upper title/context and lowerReview continuation retain their actual viewport limits."
+    },
+    {
+      "id": "05-lantern-last-clear-return",
+      "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+      "rawOriginalDirectlyViewedWhole": true,
+      "retainedJPEGDirectlyViewedWhole": true,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/FC328EFA-D410-4F83-AD21-107506A60A89.png",
+        "sha256": "2f4e1f86e9b0acd5efed5a4e309647c056d7e246abfe3247db42bdf2021f3c21",
+        "bytes": 4815484
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-captures/dev-fff03063__lantern-last-clear-return__ipad-pro13-m5__ax5-calm-effects.jpg",
+        "sha256": "c16365e4b0ffc6bb8c2c33c379836eba870bf77bb6ce47d21956072a67ea795b",
+        "bytes": 889323
+      },
+      "rawMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "mode": "RGB",
+        "format": "PNG",
+        "iccProfileSHA256": null
+      },
+      "exportMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 1,
+        "actualEXIF274": 1,
+        "displayPixels": [
+          2064,
+          2752
+        ],
+        "mode": "RGB",
+        "format": "JPEG",
+        "iccProfileSHA256": null
+      },
+      "sourceIdentity": {
+        "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "runtime": "dev.b088afcf5e",
+        "kind": "candidate",
+        "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+      },
+      "kind": "candidate-native",
+      "testIdentifier": "LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay()",
+      "variant": "ax5-calm-effects",
+      "captionAsIndexed": "Actual AX5 Calm Last-clear reader end with58,000 this-clear, six survivors,22 refills,49 occupied and Return. This is a separate native reader position from the156,000/150,000 round summary, not a whole-page composition.",
+      "captionVerdict": "PASS_BOUNDED_CONTEXT_ACCURATE",
+      "attachmentProvenance": {
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/manifest.json",
+          "sha256": "df2ef7443d02288bd301a8e76f3c20d56cb7e068dbfaf9c7013f669e45272e8a",
+          "bytes": 17135
+        },
+        "attachmentName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear_0_BEC85F02-DA7B-4BE4-938C-264D3F32B559.room-end",
+        "attachmentEpoch": 1792934381.568,
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-receipt.json",
+          "sha256": "01aadb1028adecc349b9cf83a1e3fbeadcce7ee48d6dc3f316904c1710c3b68d",
+          "bytes": 213
+        },
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-summary.json",
+          "sha256": "ec0a598ff5b59e923e27d752184e9128b373c67f5d15ff7eae6705017783e7e5",
+          "bytes": 753
+        }
+      },
+      "codecReceipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/codec-10-fff03063-05-lantern-last-clear-return-receipt.json",
+        "sha256": "8674dac7596309c4af701dbab101958301b96ce507b2c23ff5578ffdf1d9ed69",
+        "bytes": 187
+      },
+      "wholeFrame": true,
+      "cropResizeRetouch": false,
+      "qualityAsRecorded": 80,
+      "finding": "JPEG preserves separate58k points this clear, six survivors,22refills/49occupied, final15k phase text and complete fixedReturn. Preceding ingredient prose remains offscreen at this different reader position; no full-page or simultaneous156k summary claim."
+    }
+  ],
+  "metadataAudit": {
+    "method": "IndependentSHA256/bytes, PNGIHDR/eXIf andJPEGSOF/APP1EXIF headers parsed withPythonstdlib; no image decoding/conversion for metadata. Native manifest identity and completed leafreceipt/summary checked perrow.",
+    "phoneStoredAndEffectiveDimensions": [
+      1170,
+      2532
+    ],
+    "tabletStoredAndEffectiveDimensions": [
+      2064,
+      2752
+    ],
+    "allRawAndRetainedActualEXIF274": 1,
+    "dimensionOrOrientationMismatchCount": 0,
+    "hashMismatchCount": 0,
+    "reviewerTransforms": "None. Direct whole-file tool display may downsample; original and retained files remain unchanged.",
+    "codecScope": "Existing serialsipsJPEG80 whole exports have exit0 receipts. Reviewer launched no codec/export/decoder/native controller."
+  },
+  "visualJudgment": {
+    "fidelity": "PASS_BOUNDED: allfive retainedJPEGs preserve original whole viewport, essential glyphs and complete visible numeric/text content. No conversion-created crop,rotation,reflow or unreadable essentialcontent observed.",
+    "comparison": "Baselinephone/tablet remain legible historical comparisons; current exact-score emphasis survivesJPEG export without losing sentence continuity or result-decision priority.",
+    "separateAccounting": "01/02 show cumulative19k/12k and separate19k thisclear;03/04 cumulative156k/150k;05 separate58k thisclear with sixsurvivors/22refills/49 andReturn. Contexts stay distinct.",
+    "lossyDegradation": "Mild fine painting/enamel softness and tonal compression visible at whole-view comparison; no material readability/context loss. ExactRGB/contrast evidence belongs to originalPNG.",
+    "captionVerdict": "PASS_BOUNDED: indexed captions preserve acceptedbaseline/current, actualnative/defaultnormal versusAX5Calm, actualscrollposition and distinctround/action context. No hosted proposal is relabelednative in these five rows.",
+    "adoption": "Five-pair fidelityPASS only; full11export aggregate and overall mechanics/visual adoption/merge/publication remain coordinator-owned."
+  },
+  "limits": [
+    "No personalview or verdict for rows06\u201311 from this record.",
+    "Tablet originals/JPEGs show actualscroll positions rather than complete long result/reader pages; offscreen continuations remain offscreen.",
+    "No motion,continuous smoothness,onset/latency,refillingress,actualVoiceOver,physical-device,minimum-iOS17,human-recognition or complete-matrix claim.",
+    "JPEG80 is lossy; originalPNG owns exactpixel/color/contrast evidence.",
+    "All frozen source/native/baseline/captureindex files remain unchanged; only this assigned newreport written."
+  ]
+}

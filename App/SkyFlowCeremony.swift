@@ -283,10 +283,15 @@ enum SkyFlowAction: Equatable {
         }
     }
 
+    private var summaryText: Text {
+        guard terminal else { return Text(dialogueLine.text) }
+        return Text(SkyResultSummary.content(dialogueLine.text, scoreLabel: result?.scoreLabel))
+    }
+
     private var revealedActions: some View {
         terminalReadingSurface {
             VStack(spacing: StarfallTheme.Spacing.large) {
-                Text(dialogueLine.text)
+                summaryText
                     .font(StarfallTheme.Typography.supporting)
                     .foregroundStyle(StarfallTheme.Colors.textPrimary)
                     .multilineTextAlignment(.center)

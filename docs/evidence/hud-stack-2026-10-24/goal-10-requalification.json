@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "issue": 391,
+  "phase": "candidate-requalified",
+  "status": "TEST_READINESS_CORRECTION_AWAITING_COMMITTED_FREEZE_AND_FRESH_QUALIFICATION",
+  "recordedUTC": "2026-10-25T12:55:28.968322+00:00",
+  "acceptedBaseMain": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+  "priorCandidateHead": "3d6950e6e39e7496521e73edfdbf0c7834da5668",
+  "baselineHead": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+  "runtime": "dev.b088afcf5e",
+  "failedHistory": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/failure-10-3d6950e6-practice-settlement.json",
+    "sha256": "34801bd71e4c769bdf00acdb7da2b78fe17ea45fb5ee207cf763a331730f4ad0",
+    "bytes": 3185
+  },
+  "originalAcceptance": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-acceptance.json",
+    "sha256": "995540df6b7690de663e5d1df150c63b257f27e383ac9cc56991d90b6b921d27",
+    "bytes": 23587
+  },
+  "originalReadAhead": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-10-read-ahead.json",
+    "sha256": "47c60d8d2b16292c2ecc8c102253b06d4549368c87e21ecec073432826b9cba3",
+    "bytes": 15950
+  },
+  "grant": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/grant-10-requalification-1200-1400.json",
+    "sha256": "5a837a3793d95166cf46cbdfd18ff88cfefbf088db1b9dbf6e6a02db2211224f",
+    "bytes": 1124
+  },
+  "changedRuntimeOwners": [
+    "App/FallingSkyHUD.swift",
+    "App/SkyFlowCeremony.swift"
+  ],
+  "changedTestOwners": [
+    "AppTests/SkyScorePresentationTests.swift",
+    "UITests/ModePracticeInteractionTests.swift"
+  ],
+  "correctionFromPriorCandidate": [
+    "UITests/ModePracticeInteractionTests.swift only; unchanged existing10s bounded predicate gains whole-board settled precondition before retained-state sampling"
+  ],
+  "runtimeQualification": "All568 App/runtime inputs and b088 fingerprint remain byte-identical to initial candidate. The separate167-file test snapshot changes exactly ModePracticeInteractionTests.swift. Actual new commit/input hashes are stamped before fresh build; no future HEAD/result invented here.",
+  "expectedCounts": {
+    "core": 352,
+    "hosted": 17,
+    "nativeExecutions": 7,
+    "nativeUniqueMethods": 7
+  },
+  "executionPolicy": "Fresh all11 original stages on corrected committed source, no reuse or relabeling of stopped-failure prior manifest. Same full method/startup/export bounds, normal/Calm contexts, assertions and firstSilver same-execution movie.",
+  "visualPolicy": "Official SkyResultSummary remains the only App refinement. Independently inspect source-bound complete native default/AX5 screens and exact retained exports, with sampled normal motion separate. Every observed new visual failure holds this same goal open.",
+  "integration": "Individual verified PR closes391 only after full acceptance; parent381 closes after final merge. ActualVO/physical/minimum-iOS/human/performance scope remains separate209."
+}

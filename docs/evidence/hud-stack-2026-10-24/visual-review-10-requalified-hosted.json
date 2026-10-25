@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "reviewer": "/root/hud_goal_review",
+  "reviewedUTC": "2026-10-25T13:25:31.496442+00:00",
+  "status": "PASS_BOUNDED_REQUALIFIED_HOSTED_TERMINAL_SUMMARY_FIXTURES",
+  "findings": [],
+  "decision": "Direct fresh review of all six new AX5 terminal-summary specimens and two existing score specimens passes within hosted-image scope. No old-source image is relabeled as fresh. Full native/whole-journey, sampled motion and exact retained-export acceptance remain separate.",
+  "sourceIdentity": {
+    "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+    "runtime": "dev.b088afcf5e",
+    "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+    "baselineHead": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+    "perFileSourceSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-10-candidate-requalified-fff03063.json",
+      "sha256": "a4a5637622f7867a04a344280b6b185378db9e486f551fa7aaed8f777d3c0195",
+      "bytes": 187955
+    },
+    "runtimeInputCount": 568,
+    "testInputCount": 167,
+    "sourceInventory": {
+      "hostedMethods": 823,
+      "developmentPhoneUIMethods": 262,
+      "actualVoiceOverDeferredMethods": 6
+    },
+    "changedRuntimeOwners": [
+      "App/FallingSkyHUD.swift",
+      "App/SkyFlowCeremony.swift"
+    ],
+    "changedTestOwners": [
+      "AppTests/SkyScorePresentationTests.swift",
+      "UITests/ModePracticeInteractionTests.swift"
+    ],
+    "sourceSpecification": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/goal10-requalified-source-spec.json",
+      "sha256": "d58dfd2f72b86a2476cebddb97496ae3bb0c0be99f634578530d865c2856cce7",
+      "bytes": 668
+    },
+    "plan": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/goal10-requalified-plan.json",
+      "sha256": "a8c6dcad6e4b088aeca3adda8b4f7b4d356484c711eeac928c4a0c6b7e752d9e",
+      "bytes": 6931
+    },
+    "grant": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/grant-10-requalification-1200-1400.json",
+      "sha256": "5a837a3793d95166cf46cbdfd18ff88cfefbf088db1b9dbf6e6a02db2211224f",
+      "bytes": 1124
+    }
+  },
+  "immutableHostedStage": {
+    "label": "hosted-10-candidate-requalified-fff03063-hosted-result-and-journey",
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-summary.json",
+      "sha256": "642e06fbd1871885ea21385f39c283df9c9615f11d70059d9bc4909285281d64",
+      "bytes": 909
+    },
+    "counts": {
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    "runtimeWarnings": [],
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "deviceName": "Starfall HUD Stack dcf3 Tablet",
+      "modelName": "iPad Pro 13-inch (M5)",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-receipt.json",
+      "sha256": "49b6a9b85d638df9a09439f22f984c9f3d094d133b8def1a02706ab23ae309eb",
+      "bytes": 207
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey.log",
+      "sha256": "72bfc4b71258ecbe8a7c38953c818a822f7fa0e65201feb5dce93ccf45d6769e",
+      "bytes": 12792
+    },
+    "exportReceipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-export-receipt.json",
+      "sha256": "355d168f04d5822b0b6b0a19c5dc5195138a560fbfb9b5968c105f1c5fb81903",
+      "bytes": 214
+    },
+    "exportLog": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-export.log",
+      "sha256": "32fdfe11414d37cd04a195201c07e05ad5ff1f062769b6c3c46e943cc6186ed0",
+      "bytes": 674
+    },
+    "attachmentManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-attachments/manifest.json",
+      "sha256": "591d51b3677d84cfb6b075ec610d0672c0d1ed52b6f6322e0be5a422d441afa2",
+      "bytes": 4531
+    },
+    "mutableTopCommandsManifestSHAIntentionallyNotBound": true
+  },
+  "visualMethod": {
+    "freshWholeOriginalPNGsDirectlyViewed": 8,
+    "terminalAX5Fixtures": 6,
+    "existingCompleteAndLiveScoreSpecimens": 2,
+    "role": "Registered terminal result-summary role applies the existing dynamic instrumentScore to one complete scoreLabel. Reason/coda and primary ink remain clear. Source/interaction checks own one-Text AX semantics; screenshots do not establish actualVoiceOver or element count.",
+    "defaultQualification": "Test mechanically measured .large versus accessibility5; only AX5 terminal fixtures were captured/reviewed. Existing live-caption image is not default terminal visual proof.",
+    "otherSelectedTests": "All remaining selected hosted methods are mechanical-only in this review."
+  },
+  "images": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-attachments/DB3FA5FC-F775-4B7D-BF15-4540822C2612.png",
+      "sha256": "cc39bc52a497ca53f39032abeea16cc116b9e1793e535cb6c3b7f7bf39ff461e",
+      "bytes": 6432,
+      "pixels": [
+        220,
+        72
+      ],
+      "wholeOriginalDirectlyViewed": true,
+      "testIdentifier": "SkyScorePresentationTests/testCompleteStaticReadingGrowsAtLargestTextAndCompactEquationFitsReceipt()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "exportedFileName": "DB3FA5FC-F775-4B7D-BF15-4540822C2612.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "score-live-cumulative-components_0_B8A29921-895C-40B1-9353-928A7DA1E879.png",
+        "timestamp": 1792933561.571
+      },
+      "scope": "Existing rendered score component specimen; not an actual terminal viewport.",
+      "verdict": "PASS_BOUNDED_HOSTED_SPECIMEN",
+      "observation": "Complete compact 2 CHAIN! +19,000 and 9,000 base+3,000 size+7,000 chain remain readable."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-attachments/7AFBF6E9-4357-4EA5-9B1E-9E1DA96975A8.png",
+      "sha256": "83a675933828c3251fa73bb73d2e96d33de8c2ea194f2919ffd9eede179023e0",
+      "bytes": 19117,
+      "pixels": [
+        390,
+        171
+      ],
+      "wholeOriginalDirectlyViewed": true,
+      "testIdentifier": "SkyScorePresentationTests/testCompleteStaticReadingGrowsAtLargestTextAndCompactEquationFitsReceipt()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "exportedFileName": "7AFBF6E9-4357-4EA5-9B1E-9E1DA96975A8.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "score-complete-committed-components_0_4545F81B-F1E5-4C9B-A4DD-48B7667A76F0.png",
+        "timestamp": 1792933561.562
+      },
+      "scope": "Existing rendered score component specimen; not an actual terminal viewport.",
+      "verdict": "PASS_BOUNDED_HOSTED_SPECIMEN",
+      "observation": "Complete two-phase components (5,000 then 14,000) and 19,000 points this clear remain readable."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-attachments/1F04838D-71E1-4D82-B9BD-01400E2DECCA.png",
+      "sha256": "0ef5fe5abf2b0b509669fd6c58e3cf7863b8f7e3aa8f5bbade47a31ab0eb0153",
+      "bytes": 38203,
+      "pixels": [
+        452,
+        331
+      ],
+      "wholeOriginalDirectlyViewed": true,
+      "testIdentifier": "SkyScorePresentationTests/testTerminalSummaryKeepsNativeLargestTextReflowForTargetAndOpenSkyResults()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "exportedFileName": "1F04838D-71E1-4D82-B9BD-01400E2DECCA.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "hosted-terminal-summary-open-sky-AX5-width-420-content-fixture_0_DD3F281A-25D0-497E-995E-9DB111EFE023.png",
+        "timestamp": 1792933561.623
+      },
+      "scope": "AX5 ImageRenderer content fixture, proposed text width330 or420 plus16pt padding; no actual whole-device/committed-route claim.",
+      "verdict": "PASS_BOUNDED_HOSTED_SPECIMEN",
+      "observation": "Complete reason, full authoritative score phrase and coda are readable. Existing semibold serif emphasis is confined to the score phrase, with supporting surrounding text, natural wrapping and no visible clipped/overlapping lines."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-attachments/FA1FFFD9-3722-4459-A096-D91112363E58.png",
+      "sha256": "cc1d55abc0f8dc8898de49e262908375ae9161d65a1295dbbd9aef40b4e4b7a8",
+      "bytes": 41259,
+      "pixels": [
+        362,
+        451
+      ],
+      "wholeOriginalDirectlyViewed": true,
+      "testIdentifier": "SkyScorePresentationTests/testTerminalSummaryKeepsNativeLargestTextReflowForTargetAndOpenSkyResults()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "exportedFileName": "FA1FFFD9-3722-4459-A096-D91112363E58.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "hosted-terminal-summary-open-sky-AX5-width-330-content-fixture_0_01226C74-BEF8-4A8C-A621-85AC281782BF.png",
+        "timestamp": 1792933561.619
+      },
+      "scope": "AX5 ImageRenderer content fixture, proposed text width330 or420 plus16pt padding; no actual whole-device/committed-route claim.",
+      "verdict": "PASS_BOUNDED_HOSTED_SPECIMEN",
+      "observation": "Complete reason, full authoritative score phrase and coda are readable. Existing semibold serif emphasis is confined to the score phrase, with supporting surrounding text, natural wrapping and no visible clipped/overlapping lines."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-attachments/54FFBCDA-1A7F-4441-A2D4-88F806B2601C.png",
+      "sha256": "10ad0d08a9bcf3747ce031174680926bb15491c731d8577d917d6b67fa71db21",
+      "bytes": 46948,
+      "pixels": [
+        452,
+        451
+      ],
+      "wholeOriginalDirectlyViewed": true,
+      "testIdentifier": "SkyScorePresentationTests/testTerminalSummaryKeepsNativeLargestTextReflowForTargetAndOpenSkyResults()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "exportedFileName": "54FFBCDA-1A7F-4441-A2D4-88F806B2601C.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "hosted-terminal-summary-full-board-AX5-width-420-content-fixture_0_8AE00325-3A8D-45C8-BE40-1CE335582314.png",
+        "timestamp": 1792933561.614
+      },
+      "scope": "AX5 ImageRenderer content fixture, proposed text width330 or420 plus16pt padding; no actual whole-device/committed-route claim.",
+      "verdict": "PASS_BOUNDED_HOSTED_SPECIMEN",
+      "observation": "Complete reason, full authoritative score phrase and coda are readable. Existing semibold serif emphasis is confined to the score phrase, with supporting surrounding text, natural wrapping and no visible clipped/overlapping lines."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-attachments/A66DDF59-EA8B-4669-8E39-8CC5EA311782.png",
+      "sha256": "3ef1d2ecee32364809c3d509a0f9d170a7b7ee3581cd48885916b913f539ce6e",
+      "bytes": 50622,
+      "pixels": [
+        362,
+        629
+      ],
+      "wholeOriginalDirectlyViewed": true,
+      "testIdentifier": "SkyScorePresentationTests/testTerminalSummaryKeepsNativeLargestTextReflowForTargetAndOpenSkyResults()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "exportedFileName": "A66DDF59-EA8B-4669-8E39-8CC5EA311782.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "hosted-terminal-summary-full-board-AX5-width-330-content-fixture_0_F4F6435A-A10F-440F-B2CA-65478A896435.png",
+        "timestamp": 1792933561.609
+      },
+      "scope": "AX5 ImageRenderer content fixture, proposed text width330 or420 plus16pt padding; no actual whole-device/committed-route claim.",
+      "verdict": "PASS_BOUNDED_HOSTED_SPECIMEN",
+      "observation": "Complete reason, full authoritative score phrase and coda are readable. Existing semibold serif emphasis is confined to the score phrase, with supporting surrounding text, natural wrapping and no visible clipped/overlapping lines."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-attachments/039FB5CB-3504-4B41-8C5A-ACBF04AA48CC.png",
+      "sha256": "affef0c7d6fc25be7893a5870c36804933ccc5d543dc30a14f4b704623811647",
+      "bytes": 58659,
+      "pixels": [
+        452,
+        509
+      ],
+      "wholeOriginalDirectlyViewed": true,
+      "testIdentifier": "SkyScorePresentationTests/testTerminalSummaryKeepsNativeLargestTextReflowForTargetAndOpenSkyResults()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "exportedFileName": "039FB5CB-3504-4B41-8C5A-ACBF04AA48CC.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "hosted-terminal-summary-silver-AX5-width-420-content-fixture_0_B10CC90B-34CD-4AAA-AFC1-E613717AB486.png",
+        "timestamp": 1792933561.603
+      },
+      "scope": "AX5 ImageRenderer content fixture, proposed text width330 or420 plus16pt padding; no actual whole-device/committed-route claim.",
+      "verdict": "PASS_BOUNDED_HOSTED_SPECIMEN",
+      "observation": "Complete reason, full authoritative score phrase and coda are readable. Existing semibold serif emphasis is confined to the score phrase, with supporting surrounding text, natural wrapping and no visible clipped/overlapping lines."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-10-candidate-requalified-fff03063-hosted-result-and-journey-attachments/E0BF99F6-830C-43EC-855D-C72D2FA2A4A9.png",
+      "sha256": "6b08014fd7bc1551967d1794d4b0c76806c3d8dfda72c2c75bd5e7f62433cf55",
+      "bytes": 57793,
+      "pixels": [
+        362,
+        629
+      ],
+      "wholeOriginalDirectlyViewed": true,
+      "testIdentifier": "SkyScorePresentationTests/testTerminalSummaryKeepsNativeLargestTextReflowForTargetAndOpenSkyResults()",
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "exportedFileName": "E0BF99F6-830C-43EC-855D-C72D2FA2A4A9.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "hosted-terminal-summary-silver-AX5-width-330-content-fixture_0_2603C8D2-B543-4CB1-8232-A2CCC8463C33.png",
+        "timestamp": 1792933561.597
+      },
+      "scope": "AX5 ImageRenderer content fixture, proposed text width330 or420 plus16pt padding; no actual whole-device/committed-route claim.",
+      "verdict": "PASS_BOUNDED_HOSTED_SPECIMEN",
+      "observation": "Complete reason, full authoritative score phrase and coda are readable. Existing semibold serif emphasis is confined to the score phrase, with supporting surrounding text, natural wrapping and no visible clipped/overlapping lines."
+    }
+  ],
+  "limits": [
+    "Content/component images on shared skyTop only: no whole UIWindow, safe area, result actions/scrolling, Entry/Home or earned-native-route claim.",
+    "FullBoard156,000/150,000 and OpenSky5 are explicit content fixtures, separate from committed native outcomes and campaign progression.",
+    "No contrast ratio, continuous motion/performance, actualVoiceOver, physical-device, minimum-iOS17 or full candidate/adoption claim."
+  ]
+}

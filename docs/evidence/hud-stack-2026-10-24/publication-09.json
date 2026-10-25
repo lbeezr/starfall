@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "recordedUTC": "2026-10-25T11:50:23Z",
+  "repository": "lbeezr/starfall",
+  "pullRequest": {
+    "number": 410,
+    "url": "https://github.com/lbeezr/starfall/pull/410",
+    "merged": true,
+    "mergedAt": "2026-10-25T11:50:02Z",
+    "head": "b97c07a99a67f1c4cefe8420f5fd9d6767640ebd",
+    "mergeCommit": "0fa65a7a1d54940ae1118227159138f49580dd4a"
+  },
+  "reviewedLocalHead": "2911bc0cdabeaf180d3ed7681b52595fa4dab4e0",
+  "testedSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+  "runtime": "dev.06a3229203",
+  "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+  "reviewedTree": "e76ea8fd2d823d3bac748304a495ce9f6e90671b",
+  "publishedTree": "e76ea8fd2d823d3bac748304a495ce9f6e90671b",
+  "mergedMainTree": "e76ea8fd2d823d3bac748304a495ce9f6e90671b",
+  "treeEquality": "GitHub create_tree matched the reviewed local tree. Fetched published head and merged main both match by git diff --exit-code and identical tree SHA.",
+  "publishedSourceDifferencesFromTested": "Documentation and evidence only; all 568 runtime and 167 test input records were compared against the merged commit and match the original pre-Debug snapshot.",
+  "verification": {
+    "core": 352,
+    "hosted": 18,
+    "mainNativeExecutions": 7,
+    "mainNativeUniqueMethods": 6,
+    "failed": 0,
+    "skipped": 0,
+    "builds": [
+      "Debug",
+      "Release"
+    ],
+    "separateNormalMotionNativeExecutions": 1,
+    "separateNormalMotionUniqueMethods": 1,
+    "separateCaptureOnlyNativeExecutions": 1,
+    "captureAdditionalUniqueCoverage": 0,
+    "sampledMotionFrames": 10,
+    "retainedExportPairs": 13,
+    "historicalRejectedCounterexamples": 2
+  },
+  "commitStatuses": [],
+  "pullRequestWorkflowRuns": [],
+  "remoteCIQualification": "Empty remote lists establish no remote CI pass; concrete local source-bound validation is recorded separately.",
+  "issue": {
+    "number": 390,
+    "state": "closed",
+    "stateReason": "completed",
+    "closedAt": "2026-10-25T11:50:03Z"
+  },
+  "projectProjection": {
+    "status": "unavailable",
+    "qualification": "No canonical GitHub Projects query/update capability is exposed; Project Done is not inferred from issue closure."
+  },
+  "integration": "Goal10 activates only after this verified individual main merge. Earlier Goal1–8 and failed Goal9 records remain unchanged.",
+  "heavyOperations": "All owned Goal9 controllers, recorders, decoders and image conversions stopped and explicit early handback occurred at11:30:10 UTC. A separate Goal10 grant is required."
+}

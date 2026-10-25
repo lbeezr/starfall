@@ -1,0 +1,845 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "status": "BOUNDED_BASELINE_PASS_WITH_HIERARCHY_REFINEMENT_OPPORTUNITY",
+  "reviewer": "hud_audit; independent whole-original review before implementer verdict",
+  "recordedUTC": "2026-10-25T12:26:05.417887+00:00",
+  "scope": "Fresh actual AX5 Calm Full Board tablet baseline only. All31 original whole PNGs inspected. Candidate implementation/adoption and normal-phone baseline remain separate records.",
+  "source": {
+    "commit": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+    "runtime": "dev.06a3229203",
+    "acceptedBaseMain": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+    "snapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-10-baseline-journeys-faed226d.json",
+      "sha256": "7863cf3dd2c9fd39d172ffcb47262b850b0b806f96d00391dcc636fdeb1ad52e",
+      "bytes": 187449
+    },
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "workingTreeRuntimeDifferencesAtPrebuild": [],
+    "workingTreeTestDifferencesAtPrebuild": [],
+    "relevantFrozenFileInputs": [
+      {
+        "path": "App/SkyFlowCeremony.swift",
+        "bytes": 32195,
+        "gitBlob": "958b387c33eb771f56e36df5706b1f632b143c57",
+        "sha256": "aba9cf2f6c807cf69c7e7147f413fad92b15099b2d94df7938fba67ab42642a2"
+      },
+      {
+        "path": "App/SkyFlowSnapshots.swift",
+        "bytes": 6460,
+        "gitBlob": "af298cb6cd4f517a62a16fd0a24d377340bdfa6f",
+        "sha256": "9e8035b04a9d164f086edc62052a0ff2def14914eb527186029a485bb079eb89"
+      },
+      {
+        "path": "App/StarfallTheme.swift",
+        "bytes": 25525,
+        "gitBlob": "4aaeb4bd4a017549b8f3f0bc8dd30ab5c5d98bac",
+        "sha256": "a6b2604fc5dc11475ca2abfaa5c1c6c34b3c15c1d23a2b77335d727b4182b950"
+      },
+      {
+        "path": "App/SkyScoreExplanationView.swift",
+        "bytes": 2770,
+        "gitBlob": "debc0d9b82dfa153f6a3187461154a256551cb92",
+        "sha256": "1210f67f76494e8838f947537ad46bd20e1b8efdd5f649a44b575c34cea5a284"
+      },
+      {
+        "path": "App/SkyLastClearView.swift",
+        "bytes": 10719,
+        "gitBlob": "6c953fd0c383aa21f3df671fae347aee2f57ecf1",
+        "sha256": "7b11dd1cf862b2b7a1b84429880c9a0a51d16609ed26b39342c4a2c80f83aa9d"
+      },
+      {
+        "path": "UITests/LastClearRecapInteractionTests.swift",
+        "bytes": 39243,
+        "gitBlob": "17054aef76f4b5879d246c0e3f0c2c8e90d85f59",
+        "sha256": "14e29be5cc665ddcf00de41900e872ef49a68497629e900c38bfe2b1eab58a2f"
+      }
+    ],
+    "sourceTimingLimit": "Root began candidate edits after key baseline images had been reviewed. This report binds frozenfaed Git inputs/prebuild735 snapshot and finalized original captures; it makes no later working-tree App/test match claim."
+  },
+  "grant": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/grant-10-1200-1320.json",
+    "sha256": "a9ebadac1b6e52c53d800e8ae8590e7d3204e9c25e42d15f9f84dc1e210987f7",
+    "bytes": 2623
+  },
+  "reference": {
+    "approvedConcept": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+      "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+      "bytes": 2479182
+    },
+    "wholeConceptDirectlyViewed": true,
+    "use": "Materials and hierarchy direction, not a native AX5 terminal-layout oracle.",
+    "officialSystemAtBaseline": {
+      "path": "docs/design/GAME_UI_SYSTEM.md",
+      "commit": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+      "gitBlob": "99483b08664c9d28e409b39caed5af03b8d30ea5",
+      "sha256": "a565ead46b24f2d84926e14a2c74535b775643c203996ec9503fc9b4c9bf9ada",
+      "bytes": 44938,
+      "proof": "Frozen Git object, not a current working-tree match claim."
+    },
+    "visualAcceptanceAtBaseline": {
+      "path": "docs/design/UI_PRODUCTION.md",
+      "commit": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+      "gitBlob": "1338de229c7f563ed1e9dac8f2a9a4abe2d2c64a",
+      "sha256": "604670a225d0f9846de76630ca06b6665502939b5ce01503f4ef7d4ec28e240a",
+      "bytes": 12080,
+      "proof": "Frozen Git object, not a current working-tree match claim."
+    }
+  },
+  "mechanicalContext": {
+    "method": "StarfallUITests/LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-summary.json",
+      "sha256": "993a1333c1bcfd34d6babdc624d64bb624d10c904d04ff68eddcdfcba7ee3b79",
+      "bytes": 753
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-receipt.json",
+      "sha256": "b7f7ea1e026741997dbe75f1b9d0136e9db73cb5da7a8b3753f0f5edcedf06e1",
+      "bytes": 189
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet.log",
+      "sha256": "b2a2255d8be9c8e12f1c66a9c5bfdc6002acd6a5dc1bea78c0d93001677ad534",
+      "bytes": 369432
+    },
+    "reportedPassed": 1,
+    "reportedFailed": 0,
+    "reportedSkipped": 0,
+    "reportedRuntimeWarnings": [],
+    "stageSeconds": 428.485,
+    "resultSeconds": 427.423,
+    "executionAllowanceSeconds": 600,
+    "supervisorLimitSeconds": 660.0,
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "deviceName": "Starfall HUD Stack dcf3 Tablet",
+      "modelName": "iPad Pro 13-inch (M5)",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "mode": "Actual AX5 native font category and Settings Calm on; Calm restored off before exact Replay.",
+    "exportOnlyCompletion": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-10-baseline-faed226d-tablet-export-completion.json",
+      "sha256": "a0d1e143f128fc5d2d9f10af942cf99bd5600d6ac4ca5b55aa99c89a7ec4a5a2",
+      "bytes": 22168
+    },
+    "originalStoppedManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-10-baseline-faed226d.json",
+      "sha256": "64c0c879a39c0c941d15ae0315a7b7e66b7c9e1983ac9795bb3bf19e6f982890",
+      "bytes": 20719
+    },
+    "admissionHistory": "Both original native methods exited0; late foreign-controller detection stopped the original runner before tablet summary/export. Export-only completion finalized this existing result with no rerun/build. Original STOP64c0 history remains. No exclusive-whole-host or assigned performance-cause claim."
+  },
+  "captures": {
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/manifest.json",
+      "sha256": "23826123440c4a7cff254cdc36fec17a7fa29c0d535b50e7e4b753fb52911052",
+      "bytes": 17133
+    },
+    "wholeOriginalCount": 31,
+    "distinctPNGByteIdentities": 28,
+    "allWholeOriginalsDirectlyViewed": true,
+    "metadataMethod": "PNG IHDR and eXIf/TIFF274 headers; no conversion.",
+    "rasterTransformationByReviewer": "None; original paths viewed whole. Tool presentation may downsample.",
+    "nonimageAttachments": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/061CA939-CCEB-4E87-A8B0-551639238D38.txt",
+        "sha256": "71497835d4db7dcf971adba605a69cb1750344e1716dde12af06ff92912154b2",
+        "bytes": 336
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/3854A712-7D52-4568-ADDF-D92ABA272457.txt",
+        "sha256": "5faf71926d1c658ab87b8946f829f48dc9f7ed088f19869d5e1c90b5c0dc057b",
+        "bytes": 26
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/BA869E0C-3C3E-4BBE-B7F4-1AA3D055CBF4.txt",
+        "sha256": "71497835d4db7dcf971adba605a69cb1750344e1716dde12af06ff92912154b2",
+        "bytes": 336
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/20295AC1-ED91-4A15-AB20-978A2BBDA888.txt",
+        "sha256": "09998a219b8011ef7ea5dd4b4311da01b382da753e97d133faddb9133a69d549",
+        "bytes": 25
+      }
+    ],
+    "images": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/19CFAD64-29B6-4711-B79F-42697F3BC881.png",
+        "sha256": "b16e9af8b52b90596ec85bb20c70139085c30e325a09d1497b3167b47e0cf708",
+        "bytes": 4848804,
+        "captureName": "last-clear-tablet-actual-calm-on_0_93E80140-4F9D-4F3E-8222-5720A14E4FC9.png",
+        "timestamp": 1792929844.267,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Actual Settings Calm is on; full native labels and pinned Done readable over retained board."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/66EC1B27-A1BF-4540-88F7-6C8DCDA820EF.png",
+        "sha256": "6804b3d0b8d8e0443dca6bec665e664b2cda8b7d13fca14738a3e05c01b6a753",
+        "bytes": 5021564,
+        "captureName": "last-clear-tablet-live-mode-end_0_0B30A170-AEBA-4A27-9F72-5BC9608B719D.png",
+        "timestamp": 1792929870.911,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Live Last clear opening: Full Board mode, Clear1 diagram and complete pinned Return; lower ingredient prose continues off viewport."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/45D00EF0-514E-4064-AF8B-C3B4116B1AD7.png",
+        "sha256": "6804b3d0b8d8e0443dca6bec665e664b2cda8b7d13fca14738a3e05c01b6a753",
+        "bytes": 5021564,
+        "captureName": "last-clear-tablet-live-first-diagram-end_0_BBEFFF36-9815-497C-84D9-BB31D70BC30B.png",
+        "timestamp": 1792929872.913,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Live first diagram is complete with outlined cleared set, native coordinate prose starts below; Return remains distinct."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/A9DF28AB-A88A-4607-835D-2818CC548004.png",
+        "sha256": "3b99b3a46aa009bc2eb501f851b0f83fb13058e3a94b5f862d0e0f18397fa0e8",
+        "bytes": 5031099,
+        "captureName": "last-clear-tablet-passive-board-pan_0_2CB96517-DA10-457B-BB76-D1C2C7B8A50B.png",
+        "timestamp": 1792929875.254,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "After native pan beginning over passive diagram, content moves under fixed Last clear/Return; diagram and visible prose remain readable."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/9CE65125-8C8E-4869-9823-ECF8BB3A7985.png",
+        "sha256": "3cae774261f21142ec20c4b72e9d63256f9f7a63ecbcd1a761bb054018db3a86",
+        "bytes": 4991696,
+        "captureName": "last-clear-tablet-live-whole-action-end_0_5A1C99CB-A018-4D26-88C2-293D21BCF10E.png",
+        "timestamp": 1792929900.09,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Live recap end: final15k phase,4star refill and exact42k this-clear total readable with Return."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/5901ED33-1CAF-4AA0-8B83-454BA1B332E9.png",
+        "sha256": "d1c1f5d1dcb393df64d8e3734f82faa1400fafa6ca9af45ec90f5970a8aee21e",
+        "bytes": 4991010,
+        "captureName": "last-clear-tablet-entry-back-retains-recap-end_0_D94F3231-ECCA-4FC9-BDD6-E30DB2C65A28.png",
+        "timestamp": 1792929945.135,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Entry-back retained recap preserves same42k whole-action account and Return; no substituted round total."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/3408EA97-EC0E-43FF-8DEB-A75101EBD5AD.png",
+        "sha256": "874340627d4b2a9ca8c8f451312c73091a4503cca7b4e07985e2ca841b2cb7d0",
+        "bytes": 4869718,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear_0_11CEA361-495B-4CB7-B1B8-3672BBBC803F.mode-end",
+        "timestamp": 1792930013.089,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Terminal recap opening: Full Board mode and simultaneous Clear1 cross+line diagram, with reader header/Return fixed."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/78C3A525-1EF7-445E-8A17-7884F0E87685.png",
+        "sha256": "874340627d4b2a9ca8c8f451312c73091a4503cca7b4e07985e2ca841b2cb7d0",
+        "bytes": 4869718,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.phase_0_1EF9ACBE-7005-4085-A505-11B7DF39C862.1-end",
+        "timestamp": 1792930015.26,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Clear1 header/complete simultaneous-pattern diagram readable; ingredient prose continues below actual viewport."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/7DFA9261-8FAC-49FA-BC71-EBD52AC2B69D.png",
+        "sha256": "874340627d4b2a9ca8c8f451312c73091a4503cca7b4e07985e2ca841b2cb7d0",
+        "bytes": 4869718,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.diagram_0_1D39D3E7-41F9-4CC7-A40B-0950EDA1880B.1-end",
+        "timestamp": 1792930017.608,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Complete Clear1 diagram inspected: outlined cross+separate line over native miniature; no continuous game-motion claim."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/EBADEF2B-E9A6-4414-A995-227387B7BBE7.png",
+        "sha256": "0a56b5e41dcb488f26bc46c5490488a6458085ec72264f5e8aa83a72d533dcc3",
+        "bytes": 4895300,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.ingredients_0_3632528C-EC12-4BF2-AA38-16CAEF577D79.1-end",
+        "timestamp": 1792930024.946,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Clear1 complete coordinate ingredient paragraph visible at this scroll position; diagram top lies above viewport."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/A5527DD7-2505-430D-9F41-A941C9B4DCF5.png",
+        "sha256": "f520a1016dab069670d03fdb4808f02c194c710c7f131461f0d6ff75a1ea77e2",
+        "bytes": 4848681,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.score_0_27CDF15C-B3CC-45CF-80A1-FB5252D28BC0.1-end",
+        "timestamp": 1792930030.954,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Clear1 exact10stars/10light,10k base+7k size=17k fully readable; Return fixed."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/DA077685-5B8B-4411-8A2D-0F86511AA031.png",
+        "sha256": "59a579f0cd25cdd8bd6f0d4eabeea99034ff03f2074600a6bfeaa08ffcac4e81",
+        "bytes": 4828382,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.phase_0_2CE69C98-C1A7-4769-B7AE-912101E4F75D.2-end",
+        "timestamp": 1792930036.216,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Clear1 refill10 and next Clear2 heading visible at their actual continuation position; preceding prose partially offscreen."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/CCF36A04-37EC-4538-B354-DDDFCAFB9BB9.png",
+        "sha256": "62046c36964e4ffdc3accdbfabc9f2577e59b82c643f306bd33852641a749b40",
+        "bytes": 4869838,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.diagram_0_AD8564E5-E331-4F93-B700-3320199EFA6F.2-end",
+        "timestamp": 1792930042.361,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Clear2 complete miniature visible with outlined purple paths and survivor diamonds; prior Clear1 accounting occupies upper continuation."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/D5067943-91C7-41DB-BD86-AFFE8159F1DE.png",
+        "sha256": "ac9b88fbc6d6c057c48043fbff794273a2d249a632a22e7859c9959adf7db030",
+        "bytes": 4876146,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.ingredients_0_55D785D0-789D-4E34-972F-B695540C5C28.2-end",
+        "timestamp": 1792930051.41,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Clear2 complete ingredient-coordinate paragraph readable; upper miniature partly clipped by native scroll boundary."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/C16E234D-0C59-4D30-8708-A1D028CB1F71.png",
+        "sha256": "1b269ddce9139fd41c4c72d67ad3618098e05177a4bf5b9a2e87cf61349fdf39",
+        "bytes": 4851277,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.score_0_C75720C9-3B64-4C30-8AF1-A791CD12BF02.2-end",
+        "timestamp": 1792930059.833,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Clear2 exact8stars/8light,8k base+5k size+13k chain=26k visible; Return fixed."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/815A77B0-39CF-4CA7-AA79-5C463FF68332.png",
+        "sha256": "d60eaa39658a4474ec9a5b8bdcb20c316d00e845a8c17a743547a16322a17527",
+        "bytes": 4847505,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.phase_0_110A20E4-A661-4FAD-B601-720F4B5ADE29.3-end",
+        "timestamp": 1792930064.701,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Clear2 refill8 and next Clear3 heading readable; preceding ingredient continuation above."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/9D29F64A-45DF-476C-B39A-D1FED04B755B.png",
+        "sha256": "0888cb3206ace76f86d927d8cf577780513a9ce945ffa4a928da66afca95f594",
+        "bytes": 4877383,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.diagram_0_E1676AF0-780F-4AFB-88A2-CB040D8266BB.3-end",
+        "timestamp": 1792930071.461,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Clear3 complete miniature shows outlined four-star line plus survivor diamonds; no animation inferred."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/1EE715FF-FB13-45B0-97F4-0B44BB134D0D.png",
+        "sha256": "e8fe6b8976d755f3f8dee3cc3d8b6daa8cd487c6442d35a50b15ef4c40a9665c",
+        "bytes": 4868731,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.ingredients_0_A849A47E-B730-4476-BAF0-AE2971C3D630.3-end",
+        "timestamp": 1792930079.254,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Clear3 complete four-cell coordinate ingredients visible under diagram and legends; Return fixed."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/02CB5DE2-B235-49B0-8D85-FE656AA2B79F.png",
+        "sha256": "8eda3d1d7c340e59603acaf34c7b5c5c99f4f8fce89a5afed4661f04be8dfce4",
+        "bytes": 4850414,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear.score_0_75F1059A-B4F3-4CB3-AA19-1676813B75AB.3-end",
+        "timestamp": 1792930085.92,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Clear3 exact4stars/4light,4k base+1k size+10k chain=15k fully readable."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/C80D0E20-9F0A-49E7-AEE2-1D28A2549CAF.png",
+        "sha256": "64381a73379ad039ad7a947125470a505c78321628a9ee2aa4ebd171afc7bb0b",
+        "bytes": 4833278,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear_0_F889547C-1877-4E45-A8F8-9EFEB4ED3668.total-end",
+        "timestamp": 1792930090.896,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Recap total58k points this clear fully visible, distinct from cumulative round156k and target150k."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/50C16116-D704-4BD7-8F0D-9B9C19BEEC73.png",
+        "sha256": "561cbf980b9256fd494240bded2111eb505d4cd63952044377c97c2fa9e510e1",
+        "bytes": 4830953,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear_0_8E5C2D43-6D52-4B26-9C45-61D2B0D02E12.survivors-end",
+        "timestamp": 1792930095.453,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Recap58k total and6survivors fully readable together; Return fixed."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/DC1E6C83-59CD-4F43-8D42-5E53911F713E.png",
+        "sha256": "dee61c68927558d43bc3c5a2a6fd1142070c2a9591cdc6ff9bce6f55c5c2f5fe",
+        "bytes": 4822502,
+        "captureName": "last-clear-tablet-simultaneous-three-phase-finish-sky.lastClear_0_D6FC6881-C840-4ACE-B733-720DD277BCD7.room-end",
+        "timestamp": 1792930101.448,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Recap end fully shows58k,6survivors,22refills and49stars after clear, with Return."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/C7F677FB-6E28-419B-9D65-E8C77DFA642E.png",
+        "sha256": "22f0b326b58b31bacc8abec025a87df502587c875dd9204ba876cda23649941b",
+        "bytes": 5983249,
+        "captureName": "last-clear-tablet-result-heading-end_0_6F0FBE9D-5003-4D2B-8503-BB176AE564B3.png",
+        "timestamp": 1792930106.942,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Result restored heading partly above actual scroll position; complete156k of150k sentence and primary/secondary decisions legible."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/0042A869-E606-4CBD-BE4D-8BFAF636C8CB.png",
+        "sha256": "60e548027ffdebc2930ddbf9e15a02d018be107c983e704ea13dba5648503cba",
+        "bytes": 5983863,
+        "captureName": "last-clear-tablet-result-whole-score-end_0_BF005C0B-3897-4794-B8F0-0ECC414EC96D.png",
+        "timestamp": 1792930108.517,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Round summary156k of150k fully legible in supporting-weight prose; no visual emphasis distinguishes it within that sentence."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/6E164905-C61F-474F-BEC8-72B387E50A1C.png",
+        "sha256": "8565db0922320d07fa585df6a9982bec984e34e4d824aefb5f0f7aa4b13a6fda",
+        "bytes": 5729337,
+        "captureName": "last-clear-tablet-result-sky.mastery.result_0_119615B9-FF79-4A1F-A1B3-67EA1D1E223D.rating-end",
+        "timestamp": 1792930113.918,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Result decisions precede optional mastery;3of3 earned visible; round sentence upper continuation offscreen."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/61A2696A-13F5-4BBB-9BBD-DE44A089803E.png",
+        "sha256": "480f1a18f358ef4fcb49cfefaaaba0214da91ad9e813e92128bbbd44a453dc61",
+        "bytes": 5682453,
+        "captureName": "last-clear-tablet-result-sky.mastery.result.goal_0_EFDB4295-304E-4423-BE55-BA4D1856DDAB.cascade-end",
+        "timestamp": 1792930118.955,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Optional mastery3of3 and Make a chain prose readable; prior result decisions occupy upper continuation."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/99B70076-8552-491F-8842-46F9A5601265.png",
+        "sha256": "3a19ab1f3d090d06927deb5c5d4bcabf9410815c851c0f37d1f3e287be9c54de",
+        "bytes": 5674602,
+        "captureName": "last-clear-tablet-result-sky.mastery.result.goal_0_3AFC33D4-C133-4CED-A187-4321E4A33638.largeClear-end",
+        "timestamp": 1792930126.071,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Both optional goal checks and complete Clear8stars-at-once explanation visible; result page continues below."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/27E9A04D-BF2C-4C34-80CB-92F0F7DD6E20.png",
+        "sha256": "d830a23d2b52d2bac271926aabd560db3c34ea54208c287a4d4d208fa3816e76",
+        "bytes": 5768332,
+        "captureName": "last-clear-tablet-result-best-end_0_0DFBC1F7-A7BC-4BA4-95D4-CFC3C5B80FD2.png",
+        "timestamp": 1792930131.479,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Optional mastery nonblocking/Replay/best-completed-run explanation readable at actual scroll position."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/40D77FCB-47B3-40CF-8FF2-7EDE197BBCAE.png",
+        "sha256": "c4b1f30bcd49e32af0a694c91d1b1271b9c8cfca1aba3ebc003206df70dd99ed",
+        "bytes": 5785063,
+        "captureName": "last-clear-tablet-result-whole-clear-total-end_0_B219D357-28FD-4817-BF75-6109B2FB3107.png",
+        "timestamp": 1792930141.995,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Result optional phase equations17k+26k+15k and bold58k this-clear total readable together, separate from earlier156k round-summary viewport."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/979336E9-2A51-46E1-AC0E-51B8FB40FA4F.png",
+        "sha256": "ed0389469e6635f08d30848a9fa9521834cd1876cfee16edf463fc6bcd47f4c8",
+        "bytes": 4847832,
+        "captureName": "last-clear-tablet-actual-calm-restored-off_0_7BD57D1D-E6AE-42A8-8311-DADBD1C29331.png",
+        "timestamp": 1792930201.304,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Actual Settings Calm restored off, native labels and pinned Done remain readable; no cause assigned to stage duration."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/FFB0BE28-BE5F-4968-BA13-7E662B83AE42.png",
+        "sha256": "dce566eeafbbcc94605a70e95fd7f07612afb34036aeaafde72c730ab25d2861",
+        "bytes": 6956575,
+        "captureName": "last-clear-tablet-exact-replay-no-recap_0_EB97AA30-8FF0-4B7A-9B85-E790A1886F80.png",
+        "timestamp": 1792930218.78,
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ],
+          "orientation": "portrait"
+        },
+        "wholeOriginalDirectlyViewed": true,
+        "finding": "Exact Replay opening0/150k Full Board, current stars/ceiling and partial native guide visible; lower guide continuation is outside this still."
+      }
+    ]
+  },
+  "visualJudgment": {
+    "baselineLegibility": "PASS_BOUNDED: exact156,000 of150,000 round summary,58,000 this-clear total, all three phase equations and the pictured full native reading/actions are legible at their actual separate scroll positions. No numeric-reading or terminal-summary clipping failure is assigned to this accepted baseline.",
+    "hierarchyFinding": "The round score/objective remains part of one supporting-weight completion sentence; optional this-clear58k has the stronger existing serif total role. This is a restrained hierarchy opportunity, consistent with the independently inspected normal-phone baseline.",
+    "recommendation": "Compare a registered static terminal-summary role emphasizing the exact authoritative scoreLabel span while preserving the full sentence, one native Text/spoken label, primary result decision priority and natural AX5 wrapping. This does not justify new surfaces, copy changes or a broader result redesign.",
+    "specificAccounting": "Result156,000 of150,000 is cumulative committed round progress. Last clear58,000=17,000+26,000+15,000, with6survivors/22refills/49occupied, is a separate transaction. Earlier live recap42,000 and later58,000 are separate captured actions; do not conflate them.",
+    "candidateAcceptance": [
+      "Whole default-phone and AX5-tablet result comparisons must make round score/objective easier to locate without losing sentence continuity or title/action hierarchy.",
+      "Retain exact scoreLabel/full spoken label/one experiment.score element, outcome identity and native full-font scroll extent.",
+      "Preserve complete Last clear accounting, original input/Return/Replay/world/save checks and legitimate Calm restoration.",
+      "Retain actual scroll-position limits; do not claim the entire multi-page reader and board are simultaneously visible."
+    ]
+  },
+  "limits": [
+    "All31 whole originals were personally inspected; their viewport edges intentionally omit offscreen preceding/following prose or parts of the underlying board.",
+    "Pinned Last clear/Return and the shown result decisions do not establish actual VoiceOver or giant Text activation.",
+    "No complete multi-page-in-one-still or complete result heading at every scrolled position claim.",
+    "These are static native screenshots, not continuous motion, frame-pacing, latency or performance evidence.",
+    "Foreign controller was observed late; visual review does not assign an overlap-related timing cause or claim whole-host exclusivity.",
+    "No physical-device, minimum-iOS, measured physical contrast, human recognition or enjoyment acceptance; no candidate verdict."
+  ]
+}

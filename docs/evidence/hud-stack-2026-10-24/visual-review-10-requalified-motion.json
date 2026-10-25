@@ -1,0 +1,794 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "status": "BOUNDED_PASS",
+  "verdict": "PASS",
+  "reviewer": "hud_audit; independent direct whole-frame sampled-motion review",
+  "recordedUTC": "2026-10-25T13:46:31.766835+00:00",
+  "scope": "All16 decoded whole native Silver phone samples from the same original fresh normalSilver execution. This is sampled clear/survivor-fall/return/result readability evidence, not a continuous-motion or additional-native acceptance.",
+  "source": {
+    "commit": "fff03063ddd02ed947e7524a090a599ee20fd063",
+    "runtime": "dev.b088afcf5e",
+    "acceptedBaseMain": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+    "snapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-10-candidate-requalified-fff03063.json",
+      "sha256": "a4a5637622f7867a04a344280b6b185378db9e486f551fa7aaed8f777d3c0195",
+      "bytes": 187955
+    },
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "workingTreeRuntimeDifferencesAtPrebuild": [],
+    "workingTreeTestDifferencesAtPrebuild": [],
+    "changedAppOwners": [
+      "App/FallingSkyHUD.swift",
+      "App/SkyFlowCeremony.swift"
+    ],
+    "changedTestOwners": [
+      "AppTests/SkyScorePresentationTests.swift",
+      "UITests/ModePracticeInteractionTests.swift"
+    ],
+    "relevantFrozenInputs": [
+      {
+        "path": "App/FallingSkyHUD.swift",
+        "bytes": 19464,
+        "gitBlob": "6e6dc9ada086aa1ffb7d2a04c6cebed106629447",
+        "sha256": "643c51d2babdac067c3b8b0abffa4074fb92d54fcd14901a64366ee7fbda24fc"
+      },
+      {
+        "path": "App/SkyFlowCeremony.swift",
+        "bytes": 32386,
+        "gitBlob": "ecce346e659648332b0a856bd879316fbe5bca02",
+        "sha256": "d89296c75634acb47d5b3754da1a88a53194a61acf2a5be5ad4637dd18117023"
+      },
+      {
+        "path": "App/SkyFlowSnapshots.swift",
+        "bytes": 6460,
+        "gitBlob": "af298cb6cd4f517a62a16fd0a24d377340bdfa6f",
+        "sha256": "9e8035b04a9d164f086edc62052a0ff2def14914eb527186029a485bb079eb89"
+      },
+      {
+        "path": "App/SkyLastClearView.swift",
+        "bytes": 10719,
+        "gitBlob": "6c953fd0c383aa21f3df671fae347aee2f57ecf1",
+        "sha256": "7b11dd1cf862b2b7a1b84429880c9a0a51d16609ed26b39342c4a2c80f83aa9d"
+      },
+      {
+        "path": "App/SkyScoreExplanationView.swift",
+        "bytes": 2770,
+        "gitBlob": "debc0d9b82dfa153f6a3187461154a256551cb92",
+        "sha256": "1210f67f76494e8838f947537ad46bd20e1b8efdd5f649a44b575c34cea5a284"
+      },
+      {
+        "path": "AppTests/SkyScorePresentationTests.swift",
+        "bytes": 13926,
+        "gitBlob": "ce888b2380abdfb65d902f0f0a0a68f07abaaf5e",
+        "sha256": "3ffc9d4fefe712a814cf97f8a5aa96180bbecaa6abaffdb878191906d1c62d25"
+      },
+      {
+        "path": "UITests/IdentityJourneyInteractionTests.swift",
+        "bytes": 36384,
+        "gitBlob": "db8de32814463b13c008a8628db077b524ade24a",
+        "sha256": "3d859f3cca764b70fbeeae3d0647d61625ee1d73f77811ce89e7fa8cdad1dcbe"
+      },
+      {
+        "path": "UITests/ModePracticeInteractionTests.swift",
+        "bytes": 9068,
+        "gitBlob": "722ece20b83bc94235ceb13cca703d3a7e990b99",
+        "sha256": "0b053969df2f4684a66ea958c5a33b72de941c1b04f40490894fd5b878fe6fc4"
+      }
+    ],
+    "appEquivalenceToInitialCandidate": "All568 runtime inputs byte-identical to initial3d6950e6. Requalification is a fresh native execution; no earlier result counts are reused.",
+    "testCorrection": "Only additional test-owner delta beyond initial3d is ModePracticeInteractionTests score-helper readiness: exact score, cell-enabled and explicit nonsettling board in the original10-second condition. Original failed qualification and original review records remain historical."
+  },
+  "reference": {
+    "freshPhoneStillReview": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-requalified-silver-phone.json",
+      "sha256": "e5809b16052e006a587f5ce4225f300f12e6836d89a53ea461336e77134ca0ea",
+      "bytes": 29355
+    },
+    "approvedConcept": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+      "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+      "bytes": 2479182
+    },
+    "approvedConceptPreviouslyDirectlyViewed": true,
+    "registeredTerminalRole": {
+      "name": "Terminal result summary / SkyResultSummary",
+      "roster": {
+        "path": "docs/design/GAME_UI_SYSTEM.md",
+        "commit": "fff03063ddd02ed947e7524a090a599ee20fd063",
+        "gitBlob": "8976f8fa19ec76f65d772e0a7794dfd01c21594a",
+        "sha256": "58ea5386b87124f900a996efd3510a6a61adcfdd68be278fb510739d2600900c",
+        "bytes": 45607,
+        "proof": "Frozen requalified candidate Git object."
+      },
+      "contract": "One static native terminal ceremony text; exact complete authoritative scoreLabel span uses existing instrumentScore face, reason/coda stay supporting; one spoken summary/ID, unchanged context/surfaces/scroll/actions. Missing/ambiguous/embedded partial matches stay fully readable without emphasis."
+    },
+    "direction": "Official native instrument/terminal text and existing source-local reward roles; material/hierarchy comparison, not an assumption that supplied samples prove every motion state."
+  },
+  "nativeExecution": {
+    "method": "StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+    "sameOriginalNativeExecution": true,
+    "supplementalExecutions": 0,
+    "counts": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "runtimeWarnings": [],
+    "stageSeconds": 143.543,
+    "resultSeconds": 142.435,
+    "mode": "Original normalSilver method explicitly selects systemReduceMotionoff and calmEffectsNO; Startsky shown while automatic clock is paused, preserving normal presentation motion.",
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-summary.json",
+      "sha256": "1c8722408ad10dd4f5f65f462e3503bf3ba6a8c64e3893df656348bdbfa36c72",
+      "bytes": 740
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-receipt.json",
+      "sha256": "19158d4ea7b708c337f603de626dba63948eed442110bdcd486cd2d7cd16dfbd",
+      "bytes": 204
+    },
+    "completedLeaf": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/completed-native-10-silver-stage-fff03063.json",
+      "sha256": "ed163db46077baa216054160ec93b07bede1702dee86b230a8e12434426eca2f",
+      "bytes": 20708
+    },
+    "noCountInflation": "Movie is from this same method execution; no additional or supplemental native execution counted."
+  },
+  "decoderEvidence": {
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-10-fff03063-completion-silver-manifest.json",
+      "sha256": "ace1a562e86d19b7cdd4766b48860b407b429a5fea1cc88e5cd85dbc62c13eaf",
+      "bytes": 29183
+    },
+    "manifestStatus": "DECODE_COMPLETE; independent sampled-motion visual review still required",
+    "decoder": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/extract-video-frames",
+      "sha256": "fbb14db25f9072ce7a61e043a2a4c3d0ecd916e96cf1b73a2508d5c0d12154ed",
+      "bytes": 92104
+    },
+    "decoderSource": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/extract-video-frames.swift",
+      "sha256": "7a36f54ac35dfeb0b4eadca61661f2b8c7d3ae147dc23870c564c837b9621fe6",
+      "bytes": 1307
+    },
+    "helper": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/decode-goal10-silver-fff03063-completion.py",
+      "sha256": "073cddcba0e8041d4a9adc097da43808c610828cac7601a2d6e2a2734d89e526",
+      "bytes": 18601
+    },
+    "decoderCommand": [
+      "/private/tmp/starfall-hud-stack-20261024/extract-video-frames",
+      "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone.mp4",
+      "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames",
+      "81.718",
+      "82.118",
+      "82.318",
+      "82.518",
+      "82.718",
+      "82.918",
+      "83.118",
+      "83.318",
+      "83.518",
+      "83.718",
+      "84.018",
+      "84.418",
+      "84.918",
+      "85.912",
+      "86.412",
+      "86.912"
+    ],
+    "wrapperCommand": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/scripts/simulator-command.py",
+      "--receipt",
+      "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-extract-receipt.json",
+      "silver-10-fff03063-completion-pattern-result-extract",
+      "90",
+      "/private/tmp/starfall-hud-stack-20261024/extract-video-frames",
+      "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone.mp4",
+      "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames",
+      "81.718",
+      "82.118",
+      "82.318",
+      "82.518",
+      "82.718",
+      "82.918",
+      "83.118",
+      "83.318",
+      "83.518",
+      "83.718",
+      "84.018",
+      "84.418",
+      "84.918",
+      "85.912",
+      "86.412",
+      "86.912"
+    ],
+    "receipt": {
+      "stage": "silver-10-fff03063-completion-pattern-result-extract",
+      "startedUTC": "2026-10-25T13:39:31.463265+00:00",
+      "elapsedSeconds": 2.335,
+      "limitSeconds": 90.0,
+      "exitCode": 0,
+      "error": null
+    },
+    "receiptFile": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-extract-receipt.json",
+      "sha256": "10beff0d19f20d8d338061096e9dfcb81537e14f9c488dc431cc2eae98aae7e5",
+      "bytes": 193
+    },
+    "decoderLog": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-extract.log",
+      "sha256": "c3d55c0c86d929a4cf8ee53a99aa90cb77a2ff49f19b887a27ec0bd3be756ed9",
+      "bytes": 1074
+    },
+    "reviewerDecoderExecution": "None. Coordinator completed the owned sequential decoder after all controllers/build/Core stopped. This reviewer only reads finalized PNGs and metadata.",
+    "transform": "Decoder applies preferred track transform and writes original1170x2532 whole PNGs. No crop, resize, retouch or JPEG conversion by reviewer."
+  },
+  "movie": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone.mp4",
+    "sha256AsBoundByFinalizedManifest": "66e5b6d7eb203c12dc9c1e44677da35dcfaa8d92e4534842627e5fee3b73d797",
+    "bytesAsBoundByFinalizedManifest": 172472621,
+    "durationSecondsAsBoundByFinalizedManifest": 143.69166666666666,
+    "independentRawMovieDecodeOrPlaybackByReviewer": false
+  },
+  "timing": {
+    "originalAttachmentAnchors": [
+      {
+        "token": "automatic-pattern-return",
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "95737B7E-9C35-4844-81B3-E71C8512256B.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-phone-story-automatic-pattern-return_0_D9F854F2-4EC5-4C95-B9ED-06831950C696.png",
+          "timestamp": 1792934003.998
+        },
+        "originalStill": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/95737B7E-9C35-4844-81B3-E71C8512256B.png",
+          "sha256": "92541080445106327a9fbde3bc8ea5d98e8ae67b01e929f971278244b7371cd8",
+          "bytes": 4846644
+        },
+        "epoch": 1792934003.998
+      },
+      {
+        "token": "story-earned-final-light",
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "1FB7A384-42BF-4D0A-B562-19318A8ACB81.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "identity10-phone-story-earned-final-light_0_8409A066-FC52-449E-B013-B2768FBFE8DB.png",
+          "timestamp": 1792934007.492
+        },
+        "originalStill": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/1FB7A384-42BF-4D0A-B562-19318A8ACB81.png",
+          "sha256": "6cd99bb976edb93061161f6e03571c6c8d918c815d9dd9ae6a73fe260784135d",
+          "bytes": 3095838
+        },
+        "epoch": 1792934007.492
+      }
+    ],
+    "movieZeroEpochBookends": [
+      1792933920.857475,
+      1792933921.080317
+    ],
+    "intervalWidthSeconds": 0.22284197807312012,
+    "nominalMediaZeroEpochUsed": 1792933921.080317,
+    "actualPTSRange": [
+      81.71333333333334,
+      86.9
+    ],
+    "basis": "Actual decodedPTS plus recorderprocess/ready bracket and original attachment epochs. No gesture-timingTXT exists for this method.",
+    "interpretation": "Per-frame possible offsets preserve the0.22284197807312012-second bookend uncertainty; no exact gesture/onset, transition duration, latency or media-zero claim."
+  },
+  "captures": {
+    "wholeFrameCount": 16,
+    "allWholeOriginalsDirectlyViewed": true,
+    "distinctPNGByteIdentities": 15,
+    "metadataMethod": "PNG IHDR/eXIf headers independently read; image hashes verified against immutable decoder manifest. Whole view presentation may downsample.",
+    "frames": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0081.718.png",
+        "sha256": "187d304ea1b91779d4f7164695c8099b79096b6c8637763cd95672cba8c12de0",
+        "bytes": 4677237,
+        "sequence": 1,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 81.71333333333334,
+        "requestedMediaTimeSeconds": 81.718,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          -1.4271914958953857,
+          -1.2043495178222656
+        ],
+        "visualPhase": "pre-exchange-board",
+        "finding": "Opening0/12k with readable five ordered forecast columns6,1,2,4,5, help, timer/pause and footerStart/Next; recognizable actual star bodies over continuous Silver scenery."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0082.118.png",
+        "sha256": "c2bc4cc2d434434205f6da4c1569e025a9913ac1a838b1db49defe5142a29ae0",
+        "bytes": 4677370,
+        "sequence": 2,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 82.1,
+        "requestedMediaTimeSeconds": 82.118,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          -1.040524959564209,
+          -0.8176829814910889
+        ],
+        "visualPhase": "pre-exchange-board",
+        "finding": "Same actual opening before the support exchange; protected score/forecast and visible native actions remain readable."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0082.318.png",
+        "sha256": "4467f3abbade6ed70009e6d293449ebfb3e972ae6f30dcbe22ad12ab4de6a51e",
+        "bytes": 4677374,
+        "sequence": 3,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 82.3,
+        "requestedMediaTimeSeconds": 82.318,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          -0.8405249118804932,
+          -0.617682933807373
+        ],
+        "visualPhase": "pre-exchange-board",
+        "finding": "Opening remains in view at this sample; no clear/onset timing inferred from consecutive near-identical stills."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0082.518.png",
+        "sha256": "3a81c97c9ec1c62e723d2b9dda84e75b655aeaeefd1fe5a532e15c7d5494d42e",
+        "bytes": 4678993,
+        "sequence": 4,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 82.50333333333333,
+        "requestedMediaTimeSeconds": 82.518,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          -0.6371915340423584,
+          -0.4143495559692383
+        ],
+        "visualPhase": "visible-support-exchange",
+        "finding": "Aqua/Rose exchange positions and small contact marks are visible near the lower support. Score remains0/12k in this sample; stars, ceiling and controls remain distinct."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0082.718.png",
+        "sha256": "db44aca94afd068e996fa2b46eb360743eaf487c5ed83443f37a114c5fb6dc5f",
+        "bytes": 4999287,
+        "sequence": 5,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 82.71166666666667,
+        "requestedMediaTimeSeconds": 82.718,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          -0.42885828018188477,
+          -0.20601630210876465
+        ],
+        "visualPhase": "committed-terminal-score-before-phase-paint",
+        "finding": "Committed19k/12k score is visible while the first Rose pattern is still pictured. Forecast/footer are withdrawn in this terminal progression; score, timer and pause remain distinct."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0082.918.png",
+        "sha256": "181d9ee966392cefc1a4754530670d663cd11f60c8e5e2dc361ed947f1022177",
+        "bytes": 4951151,
+        "sequence": 6,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 82.88,
+        "requestedMediaTimeSeconds": 82.918,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          -0.2605247497558594,
+          -0.03768277168273926
+        ],
+        "visualPhase": "committed-terminal-score-before-phase-paint",
+        "finding": "Same committed19k/12k and pre-clear star arrangement immediately before the sampled first-phase return; no unseen animation boundary inferred."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0083.118.png",
+        "sha256": "f2319d2bb16760b49474d52d93a6e18928d046943480091a6757a07342de873a",
+        "bytes": 4877714,
+        "sequence": 7,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 83.115,
+        "requestedMediaTimeSeconds": 83.118,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          -0.02552485466003418,
+          0.19731712341308594
+        ],
+        "visualPhase": "first-clear-return-and-survivor-fall",
+        "finding": "Rose column bodies have departed, pink vertical source figure/return streaks and Line!+5,000 with4,000base+1,000size are visible. Aqua survivor is pictured between its former and lower position. The committed round total remains readable."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0083.318.png",
+        "sha256": "cd9aeabc8ed839418d6177a301db74232b9bbc6fb5663be7830b2d7d3c886e1a",
+        "bytes": 4924431,
+        "sequence": 8,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 83.30666666666667,
+        "requestedMediaTimeSeconds": 83.318,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          0.16614174842834473,
+          0.38898372650146484
+        ],
+        "visualPhase": "first-return-and-lower-survivor",
+        "finding": "Pink figure/packet lies higher in the viewport; the Aqua survivor is now at the lower row beside other Aqua stars. First-phase5k caption, score and surviving stars remain readable."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0083.518.png",
+        "sha256": "b05f501f8c63347fba028fca25d1e093899cad922c3c157004646e1d53b8c29b",
+        "bytes": 4956437,
+        "sequence": 9,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 83.51666666666667,
+        "requestedMediaTimeSeconds": 83.518,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          0.3761417865753174,
+          0.5989837646484375
+        ],
+        "visualPhase": "second-clear-source-return",
+        "finding": "The lower Aqua run has cleared; teal horizontal source figure, survivor diamond and upward packet streaks are visible.2CHAIN!+19,000 is readable above the ceiling on the restored stone, with less contrast than the protected round instrument."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0083.718.png",
+        "sha256": "9c8d2d40c3473062a7c1f0cf30019c20913452bcf5b7082fab67b369a0031053",
+        "bytes": 4930402,
+        "sequence": 10,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 83.68666666666667,
+        "requestedMediaTimeSeconds": 83.718,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          0.5461418628692627,
+          0.7689838409423828
+        ],
+        "visualPhase": "second-return-in-flight",
+        "finding": "Teal packet streaks are high in the viewport while the diamond-marked horizontal figure remains over the lower board. Other live star bodies remain recognizable;2CHAIN!+19,000 and protected19k/12k are readable."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0084.018.png",
+        "sha256": "534e7a53042c1c206d94c93f24ccfc14b87dbdfe634917e5f977b1ce81b8fa68",
+        "bytes": 2586314,
+        "sequence": 11,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 84.01666666666667,
+        "requestedMediaTimeSeconds": 84.018,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          0.8761417865753174,
+          1.0989837646484375
+        ],
+        "visualPhase": "terminal-summary-and-accounting",
+        "finding": "Terminal restored title, exact emphasized19k/12k complete sentence, primary VisitFrostfruit, New/Replay/Back/Review decisions,5k+14k phase equations and separate19k this-clear total are visible with Last earned light figure."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0084.418.png",
+        "sha256": "0b48f401edec183f15543f548d0177dcee6633d0356166df2e8e675e41bc365e",
+        "bytes": 2795150,
+        "sequence": 12,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 84.415,
+        "requestedMediaTimeSeconds": 84.418,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          1.27447509765625,
+          1.4973170757293701
+        ],
+        "visualPhase": "terminal-summary-and-accounting",
+        "finding": "Same complete result context remains readable; no source-local return overlays cover the native sentence or actions."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0084.918.png",
+        "sha256": "2d4f07e7906cf3aff64bfd26ea36b2e3d6ba08965d7b8cee81ae5e1f42c4454d",
+        "bytes": 2796162,
+        "sequence": 13,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 84.85333333333334,
+        "requestedMediaTimeSeconds": 84.918,
+        "attachmentAnchor": "automatic-pattern-return",
+        "attachmentEpoch": 1792934003.998,
+        "possibleActualAttachmentOffsetSeconds": [
+          1.71280837059021,
+          1.93565034866333
+        ],
+        "visualPhase": "terminal-summary-and-accounting",
+        "finding": "Result and separate-clear accounting remain stable in the supplied sample, with continuous restored painting around the official reading surface."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0085.912.png",
+        "sha256": "e4be564f6d3665ec1fd3b3b01680127a468b9fb373ba988314cdaebb5052bf53",
+        "bytes": 2796034,
+        "sequence": 14,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 85.905,
+        "requestedMediaTimeSeconds": 85.912,
+        "attachmentAnchor": "story-earned-final-light",
+        "attachmentEpoch": 1792934007.492,
+        "possibleActualAttachmentOffsetSeconds": [
+          -0.729525089263916,
+          -0.5066831111907959
+        ],
+        "visualPhase": "terminal-summary-and-accounting",
+        "finding": "Sample near the final-light attachment anchor shows clear title/round-summary/action hierarchy and exact separate-clear accounting; no latency inference from anchor proximity."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0086.412.png",
+        "sha256": "0d0e1f10a097c575337bb76bba6bfd27ea97f59944b54121ba3caab90341384f",
+        "bytes": 2796019,
+        "sequence": 15,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 86.40166666666667,
+        "requestedMediaTimeSeconds": 86.412,
+        "attachmentAnchor": "story-earned-final-light",
+        "attachmentEpoch": 1792934007.492,
+        "possibleActualAttachmentOffsetSeconds": [
+          -0.23285841941833496,
+          -0.010016441345214844
+        ],
+        "visualPhase": "terminal-summary-and-accounting",
+        "finding": "Emphasized round span remains within the complete sentence; separate19k this-clear total and small Last earned light figure remain distinguishable."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/silver-10-fff03063-completion-pattern-result-frames/frame-0086.912.png",
+        "sha256": "e4be564f6d3665ec1fd3b3b01680127a468b9fb373ba988314cdaebb5052bf53",
+        "bytes": 2796034,
+        "sequence": 16,
+        "wholeOriginalDirectlyViewed": true,
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "orientation": "portrait",
+          "preferredTrackTransformAppliedByDecoder": true
+        },
+        "actualMediaTimeSeconds": 86.9,
+        "requestedMediaTimeSeconds": 86.912,
+        "attachmentAnchor": "story-earned-final-light",
+        "attachmentEpoch": 1792934007.492,
+        "possibleActualAttachmentOffsetSeconds": [
+          0.2654750347137451,
+          0.48831701278686523
+        ],
+        "visualPhase": "terminal-summary-and-accounting",
+        "finding": "Final supplied whole frame retains readable complete result sentence, decisions and accounting, with no blank scene-sized rectangle or transient effect covering essential text."
+      }
+    ]
+  },
+  "visualJudgment": {
+    "sampledSequence": "PASS_BOUNDED: supplied samples visibly include opening/support exchange, firstRose clear with pink source return, lower Aqua survivor, secondAqua clear with diamond/teal return, and terminal native summary/accounting. No required clear\u2192return\u2192result category is missing from this bounded sample set; unsampled boundaries remain unknown.",
+    "instrumentsAndControls": "Score/target, ordered five forecasts and native footer/utility are readable before commit. Protected committed19k/12k remains readable during both sampled return phases. The terminal title, exact-span19k/12k sentence and Visit/New/Replay/Back/Review hierarchy remain readable afterwards.",
+    "sceneAndStars": "Every supplied whole sample retains painted Silver scenery and recognizable actual star bodies where the stage presents them. Source-local effects leave surviving stars and the round instrument readable in these samples; no blank scene-sized rectangle observed.",
+    "transientRewardLimit": "2CHAIN!+19,000 is paler over the restored stone than the protected instrument, but readable in the supplied whole frames. This is not a global/physical contrast measurement or all-skies readability claim.",
+    "terminalAccounting": "The result separately shows first5k and later14k equations,19k points this clear, one survivor and Last earned light. The cumulative19k/12k span remains inside the full unchanged terminal sentence.",
+    "notCovered": "No incoming-shower/refill ingress, FullBoard refills, full movie, continuous smoothness or exact phase-onset timing is covered by these16samples.",
+    "overallDecision": "Only this sampled current-source motion/readability slice passes; coordinator owns complete Goal10 acceptance and publication."
+  },
+  "limits": [
+    "All16 actual decoded whole frames were directly viewed in actualPTS order; this is not continuous video playback.",
+    "Sixteen samples cannot establish frame pacing, smoothness between samples, exact onsets/latency/durations or every return-flight position.",
+    "Recorder process/ready bookends differ by0.22284197807312012seconds; attachment anchors are capture timestamps rather than measured gesture starts.",
+    "No refill-ingress, automatic shower, whole scene-family matrix, actualVoiceOver, physical-device or minimum-iOS acceptance.",
+    "No measured physical contrast, human recognition or enjoyment inference.",
+    "No new simulator/controller/recorder/decoder/conversion operation by reviewer, no App/test/HEAD change, and no overall adoption/merge/publication claim."
+  ]
+}

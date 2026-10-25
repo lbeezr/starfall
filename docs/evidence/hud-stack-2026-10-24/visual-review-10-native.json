@@ -1,0 +1,630 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "status": "PASS_BOUNDED_NATIVE_REVIEW_CONJUNCTION",
+  "verdict": "PASS",
+  "head": "fff03063ddd02ed947e7524a090a599ee20fd063",
+  "runtime": "dev.b088afcf5e",
+  "recordedUTC": "2026-10-25T13:51:24.659661+00:00",
+  "reviewMethod": "Root checked exact independent review bytes, source identities and disjoint method/image coverage; this conjunction adds no pixel judgment beyond the linked independent whole-original reviews.",
+  "reviews": [
+    {
+      "reference": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-requalified-silver-phone.json",
+        "sha256": "e5809b16052e006a587f5ce4225f300f12e6836d89a53ea461336e77134ca0ea",
+        "bytes": 29355
+      },
+      "coverage": [
+        "normal-silver-phone"
+      ],
+      "wholeNativePNGs": 13
+    },
+    {
+      "reference": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-requalified-last-clear-tablet.json",
+        "sha256": "bfe7da39471f3be765303e3057433c43aecb06e24b5e362d067de8df78be3728",
+        "bytes": 56337
+      },
+      "coverage": [
+        "last-clear-full-board-tablet"
+      ],
+      "wholeNativePNGs": 31
+    },
+    {
+      "reference": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-requalified-ending-native.json",
+        "sha256": "19b493845b2a4a8faaa230dda8d6b575f2cd34a65395a11a34bc54b2d14146d8",
+        "bytes": 34950
+      },
+      "coverage": [
+        "open-sky-phone",
+        "full-board-phone"
+      ],
+      "wholeNativePNGs": 17
+    },
+    {
+      "reference": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-requalified-mode-native.json",
+        "sha256": "524c71fe032a26770c2f6bc8fbc5ce57a66aa46871439bf738f3b6606c658bc6",
+        "bytes": 46952
+      },
+      "coverage": [
+        "mode-practice-phone",
+        "mode-guidance-tablet",
+        "mode-practice-tablet"
+      ],
+      "wholeNativePNGs": 32
+    }
+  ],
+  "counts": {
+    "nativeMethods": 7,
+    "nativeExecutions": 7,
+    "wholeOriginalPNGsDirectlyViewed": 93,
+    "distinctPNGByteIdentities": 82
+  },
+  "images": [
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/7511A5D9-1E98-4F5A-8B67-ACF9766EFCFB.png",
+      "sha256": "f7a9928c48890c4cd492d5b3a1ef6cafff4b3ba2b88428b407a8d9251360e913",
+      "bytes": 3415248
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/C7802292-37EE-4510-9785-885B05996AB0.png",
+      "sha256": "51cf6028d23231710ab23b42dd5a59e18dc770c8ada77b4e00834318f16d322e",
+      "bytes": 3045089
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/2F7C29FC-1DEE-4F57-9E16-097DCD51D0EF.png",
+      "sha256": "8760d7f5a4db14b241e503e8c59961984f5fabe42d071d8be27e42d2a754214e",
+      "bytes": 3053760
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/3BAC0BA7-B5B7-42BD-94A2-F954850106A8.png",
+      "sha256": "850fb3bd4f6fa3acd22d5b3893aae834115a0abbab19e73a1de74168aac03e4d",
+      "bytes": 3061157
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/7B0E3960-3015-46F8-B007-3177A1A85BFB.png",
+      "sha256": "b199d5a9e108606e51f49a37a3ceb4db7f49e5b9de5bf344ff51c6ffb7479148",
+      "bytes": 3054213
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/A3E5CF17-77FD-46FE-A38E-78CFB6963347.png",
+      "sha256": "46709ab89aa94bd0e8c58906a6e7ff58f35a3243db47ba484e79bacc6d793b6d",
+      "bytes": 3054238
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/C5F2BBD3-74F6-4BE0-9B5B-FABF22363996.png",
+      "sha256": "57e56252f5cb5d16193daa61d8ae08ca48baec4d3336faff75d8c554e76f0c65",
+      "bytes": 4562666
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/1517C910-820F-4C4A-BE10-6AEB1EDF49BB.png",
+      "sha256": "57e56252f5cb5d16193daa61d8ae08ca48baec4d3336faff75d8c554e76f0c65",
+      "bytes": 4562666
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/95737B7E-9C35-4844-81B3-E71C8512256B.png",
+      "sha256": "92541080445106327a9fbde3bc8ea5d98e8ae67b01e929f971278244b7371cd8",
+      "bytes": 4846644
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/1FB7A384-42BF-4D0A-B562-19318A8ACB81.png",
+      "sha256": "6cd99bb976edb93061161f6e03571c6c8d918c815d9dd9ae6a73fe260784135d",
+      "bytes": 3095838
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/38ED6B46-764C-429D-9EF7-14F705A720EB.png",
+      "sha256": "d2d0d893a163a8495e49f6a1d64683084820b70a3c626ab06984face6d24fbec",
+      "bytes": 3985916
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/77E6C7C5-7115-49BC-B92C-942C52EC5028.png",
+      "sha256": "af331e48eb9c5202b3da461185c5e656e8b7d2998adbd804d8557b39e31e7686",
+      "bytes": 3095832
+    },
+    {
+      "id": "normal-silver-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-normal-silver-phone-attachments/33B29D21-FBC7-40C2-BB96-9070D793D82E.png",
+      "sha256": "d7defb8032c5245f3a9412bf0ccdf23edb7a753756850c95c1c1a7e412ae301e",
+      "bytes": 3943815
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/9F13097E-B23B-4EBD-AF0E-AB6D1B3B85EF.png",
+      "sha256": "b27684d0203e4a0241c74ac94bfd6c3927dbb146750b51dc53d735e239419e23",
+      "bytes": 4846675
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/11C3A49C-0A05-4483-AE8C-1C60F28391CC.png",
+      "sha256": "617dc06a9e954fae90b020cca4af80bd9f2bcb42f2027b1012d82d7c1a2a8632",
+      "bytes": 5019506
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/6D0FA968-A2D5-4DBC-8147-C09D6F7F68C4.png",
+      "sha256": "617dc06a9e954fae90b020cca4af80bd9f2bcb42f2027b1012d82d7c1a2a8632",
+      "bytes": 5019506
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/8E975DF6-92B9-48A5-8DEF-5B21EC18DB5A.png",
+      "sha256": "cacb4e07214b1bb5b0eb0de8f284f531064aacbf4023b7e394beb27676d807ff",
+      "bytes": 5028994
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/51C8399C-8118-4DEA-9C28-299CB77D7CF6.png",
+      "sha256": "aa508321f4bd730c1951c19ff21689f0a7d437e686c29faa990e50bbb49ce1df",
+      "bytes": 4990014
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/C014B670-17F7-4C27-9B2D-B21A44A9879C.png",
+      "sha256": "563705691c1a8ed9be78350dc90570f768ad7def00b49ec1065e59c85ed33d4d",
+      "bytes": 4989203
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/BFCABDF6-AFAC-4190-8FC0-403E32D10AF8.png",
+      "sha256": "38575cb1331e07382940eb2f030428621369569e76b757602e8cf1fd43c14123",
+      "bytes": 4864269
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/20BEBCB0-6E23-4E24-BCAB-E9C8FE3CBB2B.png",
+      "sha256": "38575cb1331e07382940eb2f030428621369569e76b757602e8cf1fd43c14123",
+      "bytes": 4864269
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/BF8D3D8D-41D6-4925-884C-7442636E9C0B.png",
+      "sha256": "38575cb1331e07382940eb2f030428621369569e76b757602e8cf1fd43c14123",
+      "bytes": 4864269
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/A4CB3456-1CDF-4ED0-B6F1-F00B4CEEA0E4.png",
+      "sha256": "0aab3f53172b3f0c7fd0c548b64423702df0678fa1a9403ede6a39253304d338",
+      "bytes": 4894583
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/922FCB9E-4B3D-4D79-B3A6-514A7CFC8245.png",
+      "sha256": "1409b396ef015b1d51ba168f0a44f5a45647814fa3bbc460b8a8e8be6aa506bc",
+      "bytes": 4844747
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/B1AE3B29-C42E-4516-8DD5-EE2B088F9830.png",
+      "sha256": "c9f3ec808de91d36cee97a21e7b0afad862845a6d7169f6a61aedb9c661ff03e",
+      "bytes": 4824030
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/149BC52E-F7C0-4A1F-BEDB-63DCA3534C09.png",
+      "sha256": "3aada0f83b592afc64efd63aef829a8314957fdeba603172e06954882fa9298f",
+      "bytes": 4866771
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/3F6FE1AE-2221-4186-822B-5A8D3674691F.png",
+      "sha256": "1ec7b7a028f35c50791c2b1a7600d7b0554744653bb6b21f29b0265f3dc177b1",
+      "bytes": 4870897
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/2307876A-1100-499D-9A8B-281F572A738A.png",
+      "sha256": "9c9a77938caa534a70b1a907c6da0ad220e003cdd1e8240f37880d96ecce2cc9",
+      "bytes": 4845277
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/B9A3FF71-AD91-4AB6-8D69-65AA5718561C.png",
+      "sha256": "2799d431db147cc4cdf179c9ae4a8c8d9e5d5bfc52cf98749dee67be27433b87",
+      "bytes": 4850892
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/512A6FF7-925F-48B3-801C-C59526CBF363.png",
+      "sha256": "5278ae99bab2aad957ef0991c3d0563bf5f10d1fdffa0e34845018f9e9c675b4",
+      "bytes": 4873855
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/6DA3C28F-0860-4465-A70E-863DEED62679.png",
+      "sha256": "b85c0dbbdf9ab24a49a4a858125e36d401db281d34af5aa7284bd8f0e6646b51",
+      "bytes": 4862724
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/54A5BFCF-16B7-4D51-9D17-BD0A6EB7DEEB.png",
+      "sha256": "d93e220f173f853b81a295fa2e5b74214ee6cc9391894a4db923ee4a1343d5f5",
+      "bytes": 4845859
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/BCB17EEE-FF72-463D-8E5D-F0F9510BB677.png",
+      "sha256": "c3fb8abfe2a2928fcdfddcc77e250f2df5fcccab4ce366ff119640c84e80cc82",
+      "bytes": 4827134
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/8A5D85A7-2964-479F-BA5D-98A1CB6614CB.png",
+      "sha256": "67c4e79a5f09f7347487df72c16344263bbce80ea273b947dcc50f86bc2be500",
+      "bytes": 4825446
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/FC328EFA-D410-4F83-AD21-107506A60A89.png",
+      "sha256": "2f4e1f86e9b0acd5efed5a4e309647c056d7e246abfe3247db42bdf2021f3c21",
+      "bytes": 4815484
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/8251B992-8371-4175-AE8E-F87EFD831D05.png",
+      "sha256": "e85b8b071b9ccc8fbbcd496cba50e99ef5b236bf5f9b65081b9cbd60338d562f",
+      "bytes": 5961968
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/43C66955-6CE6-418A-9CAD-F2301C776F98.png",
+      "sha256": "556fc99a54dba556e7952c77f75b50226b201f3b749ffee16f25e3aec21b2f03",
+      "bytes": 5962785
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/F7EAEF13-BACA-42C9-9347-AE9D10FE28DC.png",
+      "sha256": "3433bc099e02a4b8ef226753f34c6c9e0532e2511e6ce067c97b47f377078f51",
+      "bytes": 5656380
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/9228F9CE-C649-47FC-82C9-8098BA5A0907.png",
+      "sha256": "d00b0fa85250fdc50f98ff01e497db48d60da4b863816de485ff1304e5b8db65",
+      "bytes": 5677199
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/D5D7F6E1-1788-4633-93B9-A3F6EB8AA7CF.png",
+      "sha256": "bd951ea3227ece84d4b61fe096c69170323418044437f6f81477912aa8fb0b8f",
+      "bytes": 5625435
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/762D39F7-914E-4D3B-A006-B9FED96742C5.png",
+      "sha256": "a2f0f24bd9bccb2b9e9de902012f36f3be7b54d50ab12770bea7df0cc8318751",
+      "bytes": 5766793
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/7C970160-80E8-46E1-BD66-BC07AA428693.png",
+      "sha256": "2f8a3b45713505200432ee17e5d5ecaa44f55b3895f94d061f3175abf0fae3c8",
+      "bytes": 5781378
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/3A08FA8A-1794-44AE-A561-6A101A157ED3.png",
+      "sha256": "e47463e26bc1b79c64975ecdcb75c3ef7aba5c2755ef063c4168547ece27aa32",
+      "bytes": 4845715
+    },
+    {
+      "id": "last-clear-full-board-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-last-clear-full-board-tablet-attachments/A4F5E7D7-D496-464B-97EF-628C55F4BE67.png",
+      "sha256": "4eb59cfb91b64e3ddd77963af09ea766e9acc9183e5856ad4baeeea19b7ca1ac",
+      "bytes": 6955356
+    },
+    {
+      "id": "open-sky-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/9883D353-A9A3-48C3-95B8-0B56C2D608B1.png",
+      "sha256": "72971ca921387252984cba05d71da92c39cce44ba31ec4ef25d26f796352dbe8",
+      "bytes": 3327582
+    },
+    {
+      "id": "open-sky-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/9337C6CB-B9A1-4587-A09E-DF3C3F3A4C5C.png",
+      "sha256": "7fb0c97785e3a5657334c12a5d5fca88cba12eea381905f5a49e5b2086e7c325",
+      "bytes": 2950551
+    },
+    {
+      "id": "open-sky-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/A601B092-0C6B-4201-AA52-C56EC2BB7F24.png",
+      "sha256": "f8637c9db300b79ed0dae8f1d1a6611bb2cc903bb9ff4dd72e7b8867d5980870",
+      "bytes": 3475110
+    },
+    {
+      "id": "open-sky-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/660E1D77-A342-46BA-8DB6-0BAA433C455C.png",
+      "sha256": "f8637c9db300b79ed0dae8f1d1a6611bb2cc903bb9ff4dd72e7b8867d5980870",
+      "bytes": 3475110
+    },
+    {
+      "id": "open-sky-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/F2432840-C120-4DC6-B430-46F290C2090B.png",
+      "sha256": "ca832ab81f2b8badd0dd0bc4340e4a1d52c426140bb6a1cc0150a7f66cea634b",
+      "bytes": 2950320
+    },
+    {
+      "id": "open-sky-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/3FC3C17C-D5B6-4FB6-8706-63E03DF56DBB.png",
+      "sha256": "8466cf3f99570fdf6adeb868b6d6ee731cb94370f9bf846b173f6891d47ed8ae",
+      "bytes": 3395753
+    },
+    {
+      "id": "open-sky-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/289CBBDB-90E3-412E-B1F7-F98326E267AC.png",
+      "sha256": "33eac33b4715e5147697c55d8d1db867d753952ee61d6418380e490bb84c301b",
+      "bytes": 3478766
+    },
+    {
+      "id": "open-sky-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/9FFC6F83-01D0-4D9D-B3C3-21756FFE5FEF.png",
+      "sha256": "33eac33b4715e5147697c55d8d1db867d753952ee61d6418380e490bb84c301b",
+      "bytes": 3478766
+    },
+    {
+      "id": "open-sky-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/70AFD052-F58E-404A-9F4B-96BFCFDF64D9.png",
+      "sha256": "64bb71526d409a5c8d238adc4784e7627794f1764ef5c9735d41934f11368af2",
+      "bytes": 2659450
+    },
+    {
+      "id": "open-sky-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/682B3895-3EF6-4F5E-9073-939B1D216D6B.png",
+      "sha256": "0de6c45447ce8f3d7e2effa868da3cf730e3c4a775bc952842de5e38778e1109",
+      "bytes": 2659338
+    },
+    {
+      "id": "open-sky-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-open-sky-phone-attachments/D6E81A75-3CEA-49BB-B2B8-D063D5AE6A79.png",
+      "sha256": "f7a9928c48890c4cd492d5b3a1ef6cafff4b3ba2b88428b407a8d9251360e913",
+      "bytes": 3415248
+    },
+    {
+      "id": "full-board-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/719118AF-A7BC-46FE-90A5-A470BB15E813.png",
+      "sha256": "eea80e49950bb67e2fb62fdaeb72d9677ae79d799cce147f664f01fd452886a3",
+      "bytes": 3583243
+    },
+    {
+      "id": "full-board-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/ACDCE604-8B4A-4B7B-ABCB-7C539F57E68D.png",
+      "sha256": "a930788bffa15f495f4607c744ad581ec54d861831cae5dfb82ee1c5e65ac35a",
+      "bytes": 2570849
+    },
+    {
+      "id": "full-board-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/2616665B-B0C3-42F9-BA79-70B6E3687979.png",
+      "sha256": "dc1a3de4fcd108797b84089508cde965ea4b024c6140bb371f39eea2c34506e7",
+      "bytes": 3553137
+    },
+    {
+      "id": "full-board-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/2C089D38-0346-405A-968E-3D8E215624C7.png",
+      "sha256": "eea80e49950bb67e2fb62fdaeb72d9677ae79d799cce147f664f01fd452886a3",
+      "bytes": 3583243
+    },
+    {
+      "id": "full-board-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/EE35B234-D5C6-4E50-9AE5-C8F4A588A3CB.png",
+      "sha256": "8894f8db0e13213f51934eb4e5acbc061f759ba2fad13fc3dbe2d638e8ac2c92",
+      "bytes": 3618700
+    },
+    {
+      "id": "full-board-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-full-board-phone-attachments/53CF808F-FB10-4B3C-9D10-EA58023D5018.png",
+      "sha256": "7559981e79f6ac799da75f4631d4477feb2c48b922b4cc4c34bff96f1d860dd8",
+      "bytes": 3576687
+    },
+    {
+      "id": "mode-practice-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-practice-phone-attachments/9D6D8C2E-C533-46AF-A8B0-6404FD687D17.png",
+      "sha256": "03cd8efebd70337f85291854ef16ef160f9cf7b486f39bffabf790ec7e2671f1",
+      "bytes": 2576978
+    },
+    {
+      "id": "mode-practice-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-practice-phone-attachments/B733B01C-CBCE-43E1-81B8-95EBBE54D9C8.png",
+      "sha256": "9454b0e93279d4793d823f07b2f94818bea50e5c7944ec7f3222faf25f2cc90f",
+      "bytes": 2535474
+    },
+    {
+      "id": "mode-practice-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-practice-phone-attachments/242E8B9D-0CD4-4475-8450-589C87B817A4.png",
+      "sha256": "f167e6bd5a4604c4b21f2ba0704ab887f8acac83d83b054fef41fbde02d6065c",
+      "bytes": 2436312
+    },
+    {
+      "id": "mode-practice-phone",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-practice-phone-attachments/71C2431B-CD82-4ECC-873F-ED63DEFA9A5B.png",
+      "sha256": "814b7711a4970342218226fecb0caec3357213254eac1b1812a1995352e9e94d",
+      "bytes": 2440022
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/9360C43B-E6E8-461F-BFEC-7673B352D631.png",
+      "sha256": "f4b2915f0109e695fc6c6b172813b3b1d2e99d963c68093b26f0cdf4df8e5b4c",
+      "bytes": 6404572
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/8FE7480B-B2E5-45E7-A219-9A6AE6009C8C.png",
+      "sha256": "8fd539e93cf0753a5473ce813e5c760f83fe0b9d98e5c14ca5e4ce7691864031",
+      "bytes": 4664102
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/87EBBEC1-F77C-40DE-852E-7ADBE9EDCBC5.png",
+      "sha256": "5fa8156e468c930aa39c85c00ce0b1cccd6a5af63bebe32bde105bba8198658b",
+      "bytes": 4626764
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/A0CFFCC3-2248-4265-8FFE-AD745CA586C5.png",
+      "sha256": "e8ca467aca8ff6ccbff926582272ee19ef2040bbd7affc179dd6b96d4b4007a0",
+      "bytes": 4630240
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/95D935D7-5E50-4B7F-826E-B47B06E03A8F.png",
+      "sha256": "0e37954b86d3c92d52b5053f1b372f4350c6a954653c62a398ccd9f1444b63e2",
+      "bytes": 4632154
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/B0AAFF6E-755C-4097-8002-0E389D98D85D.png",
+      "sha256": "94ea8d32830a79e079b46fb84be05e20fbd2361dc5089f4712bea6dbc6381179",
+      "bytes": 4631532
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/EB8AB056-F7CA-4754-AE44-6AEBFE937646.png",
+      "sha256": "39145b6d8c44d0e4760f61b876feb1fd1b8ec2943ee142ebbd88cf90f76f5c45",
+      "bytes": 4628534
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/D3E0A0CD-7DB6-4945-8AFB-ED9314EDD62F.png",
+      "sha256": "235a97dee22be16253f7c087bf7b8921dacc921d80cf755b2a172641ebf5c95f",
+      "bytes": 4628897
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/E8FC0FE4-2B9C-4F3C-BD89-4C103BF21D1C.png",
+      "sha256": "20d794b61ef7fc2f48b8f8f681636507221149f07a225a7b140e64c000405e0d",
+      "bytes": 4627203
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/5C947D74-3302-4CCE-B23F-50D3CA96F8E0.png",
+      "sha256": "4f1ad162450f029d5ce9d01935db635008a012683f456a6ee79b2e737dbb2725",
+      "bytes": 4636698
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/1E844CBC-1F65-45FB-9FB4-F49B56F26453.png",
+      "sha256": "c44468d4bd5b1d518f45483d4677b2a2406bc80f31effbc1da983cfea562de77",
+      "bytes": 4635431
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/7B0AB43A-DEAA-4C15-9CC8-AAC162F296C6.png",
+      "sha256": "071b76d5c528f8fe09df33e20d2b08eeddb0a1f0c0654e71462105686b68b42a",
+      "bytes": 4633659
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/DF99722E-2ADF-496B-BD3C-E85C6BCBF029.png",
+      "sha256": "09d356ad122f085a0dd3dbf3c8ceeb7400a4cd52134aec77f7c4b2bbd2fc0b32",
+      "bytes": 4633797
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/EB41D6D8-AE3F-484D-9D9E-73DA0C7E9922.png",
+      "sha256": "10ff88638b315dbeb72f262c4a1b5158c850d3ec0c0aab9c72ce5054256c4980",
+      "bytes": 6678017
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/AE7CE227-E810-479A-9995-7D86DB0787D3.png",
+      "sha256": "10ff88638b315dbeb72f262c4a1b5158c850d3ec0c0aab9c72ce5054256c4980",
+      "bytes": 6678017
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/AB0FDF43-146E-45B2-B588-8A5770E97977.png",
+      "sha256": "e43a72b6f467ad2f7e2dc479440372cd1c6906ddb96cdfd877bd0bbc232a620e",
+      "bytes": 7009389
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/B0E79AC3-D266-4956-ADE3-27B7A71D520B.png",
+      "sha256": "f2bdffdca4a5d1f4b62926f52fd8e02ccf6b2bcd9fafb8d4182e51cdad84fc07",
+      "bytes": 6650814
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/0225D237-1CBA-421D-BB62-E8CAC96ED409.png",
+      "sha256": "8d8a923235c9ed94dbda831fc3d323eab387081994f7cb18b9ecd130e75b3f02",
+      "bytes": 6952255
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/B90A24D5-AAF9-4BC6-8CFC-25238DF7E93B.png",
+      "sha256": "fcf51fe78570736561b3a1379dc51f01b7519e8cec63711b85bef701cfc90c6f",
+      "bytes": 5061963
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/47A61696-6F0E-4EAA-BCF6-B7D884A426AA.png",
+      "sha256": "f7403b872762bcb1cb85d7fa8a31626b47fd9d7cc6fa2fec907c19aec4911294",
+      "bytes": 5947972
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/6DB6C96A-59AD-4DA0-BF44-FC3EA1AEC68C.png",
+      "sha256": "5a8f29795bd0c82248c5fa20b6f7636d91a9dddb72568c249fd494d8af883d33",
+      "bytes": 6644213
+    },
+    {
+      "id": "mode-guidance-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-guidance-tablet-attachments/F365AEC0-BEF9-462A-8E9F-C1E34D1480F4.png",
+      "sha256": "5fb8dfb9a13534842cc57425ba68e07556e05d0fe57531ee1915f29bd470088d",
+      "bytes": 4764178
+    },
+    {
+      "id": "mode-practice-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-practice-tablet-attachments/B6CADB06-2359-4DA2-99F9-5474BAF88129.png",
+      "sha256": "b55ef848196865bbb8cc9f5af5311257d88a6de62708b1431126cc9497c957b4",
+      "bytes": 3531101
+    },
+    {
+      "id": "mode-practice-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-practice-tablet-attachments/1A1B57D7-003C-4B72-8210-CC89AFC579AC.png",
+      "sha256": "b37ad5a28ba755e20b5f7a85e42602f1d9db748849930c77e2969f79a95e8c10",
+      "bytes": 3509656
+    },
+    {
+      "id": "mode-practice-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-practice-tablet-attachments/CCF9C488-B34D-4D15-97D6-EFA3093C0ECD.png",
+      "sha256": "b55ef848196865bbb8cc9f5af5311257d88a6de62708b1431126cc9497c957b4",
+      "bytes": 3531101
+    },
+    {
+      "id": "mode-practice-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-practice-tablet-attachments/718A5D14-3BEF-43FF-8E3D-1744AEF31161.png",
+      "sha256": "b37ad5a28ba755e20b5f7a85e42602f1d9db748849930c77e2969f79a95e8c10",
+      "bytes": 3509656
+    },
+    {
+      "id": "mode-practice-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-practice-tablet-attachments/50F56908-117E-498D-8401-A5DA441DED56.png",
+      "sha256": "58610e3993ed4ce9a26a0df4db1aaaa26f7b53e005b66afd8a297f5ed6955e90",
+      "bytes": 3425170
+    },
+    {
+      "id": "mode-practice-tablet",
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-10-candidate-requalified-fff03063-mode-practice-tablet-attachments/685AAFBE-8AF3-40B4-A0AF-71772D5EE20B.png",
+      "sha256": "de7675c78ce6db49499c7f6d0d87b83605e7ee95ca9ef58059a116b4e8231357",
+      "bytes": 4255446
+    }
+  ],
+  "limits": [
+    "Selected iOS27 Simulator phone/tablet methods only; source inventory is not a full matrix pass.",
+    "Intermediate scroll positions bound visible content; no simultaneous whole-page visibility claim. Practice exit reachability and preserved exact round state are separately evidenced in the mode review.",
+    "Hosted fixtures, exact-export fidelity and sampled motion require separate reviews. No actual VoiceOver, physical device, minimum-iOS execution, human recognition or continuous performance claim."
+  ]
+}

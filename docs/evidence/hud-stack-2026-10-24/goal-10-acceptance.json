@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "goal": 10,
+  "issue": 391,
+  "issueURL": "https://github.com/lbeezr/starfall/issues/391",
+  "title": "Complete native journey cohesion",
+  "status": "IMPLEMENTED_STATIC_ROLE_CANDIDATE_UNVERIFIED",
+  "recordedUTC": "2026-10-25T11:55:16.140876+00:00",
+  "baseMain": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+  "baseRuntime": "dev.06a3229203",
+  "predecessor": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/publication-09.json",
+    "sha256": "251359a09a3d1110b652dd4223ea43a2a9c0f476dc4b84c40a44257d7f5a8a42",
+    "bytes": 2537,
+    "pullRequest": 410,
+    "mergedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+    "runtime": "dev.06a3229203",
+    "tree": "e76ea8fd2d823d3bac748304a495ce9f6e90671b",
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "testedInputEquality": 735,
+    "issue390": "closed/completed",
+    "projectProjection": "unavailable; issue completion does not imply Project Done"
+  },
+  "owner": "HUD coordinator/root; this packet defines observable acceptance and proposed ownership, not an implemented or adopted style.",
+  "issueSource": {
+    "url": "https://github.com/lbeezr/starfall/issues/391",
+    "title": "[HUD 10/10] Complete native journey cohesion",
+    "retrievedUTC": "2026-10-25T11:55:16.140876+00:00",
+    "stateAtRetrieval": "open",
+    "playerOutcome": "Carry the proven instrument language across Entry/play/pause/result/Map/return. Fix remaining visible inconsistencies in shared owners, verify real journeys and earlier outcomes, and record retain/revise decisions with honest remaining human/device evidence.",
+    "visibleNormalAppRefinementRequired": true,
+    "dependency": "Verified individual main merge of390; satisfied by PR410/publication09 before Goal10 activation.",
+    "delivery": "One complete verified default-main PR with Closes#391 and Refs#381; confirm completed issue and canonical ProjectDone or record projection unavailable. ActualVoiceOver, physical comfort/performance and human recognition remain separate;209 stays open for its actual physical scope."
+  },
+  "hypothesis": "Terminal exact score remains legible in supporting reason/coda prose while live instrument values and optional this-clear totals use stronger shared roles. A restrained pure static result role could make that score easier to locate across the journey. Fresh normal-phone and AX5-tablet baselines decide the final treatment.",
+  "literalProposedOwners": {
+    "App": [
+      "App/FallingSkyHUD.swift",
+      "App/SkyFlowCeremony.swift"
+    ],
+    "likelyHostedTest": "AppTests/SkyScorePresentationTests.swift",
+    "status": "Proposed only; root chooses exact implementation/test ownership after baseline. Official roster/HUDguide registration is required before using a missing role."
+  },
+  "candidateContract": {
+    "status": "PROPOSED_CONTRACT_ONLY; NOT_REGISTERED_OR_IMPLEMENTED",
+    "context": "Static terminal won/full result summary, distinct from live play and optional Last clear accounting.",
+    "observableOutcome": "The exact terminal round total is easier to locate as part of the proven instrument language while outcome heading and primary next decision remain dominant. Round total and this-clear total remain distinct.",
+    "contentAndSemantics": "Retain every original dialogueLine.text word and order, complete native wrapping, exactly one experiment.score native element with unchanged dialogueLine.spokenText, outcome accessibility value and SkyResultSnapshot.announcement. SkyResultSnapshot remains the committed value owner; no score calculation or rewritten localized prose.",
+    "sharedOwner": "A small pure native result-summary presentation in FallingSkyHUD, composed by SkyFlowCeremony. Reuse current registered typography/ink after baseline review; register any missing static role in the official roster before production use.",
+    "styleDecision": "UNSELECTED until both fresh native baselines are reviewed. Existing instrumentScore/primary ink or a restrained exact-score-span treatment are options, not adopted decisions. Any new content-selection seam requires meaningful complete-content/singular-selection tests.",
+    "liveComponentBoundary": "Do not reuse full SkyScoreInstrument for the terminal reader: live.score anchor, scenery protection,44pt floor, objective-width reservation, glyph/accessibility and receiver context are gameplay-specific. No new Store/clock/scene/award capability.",
+    "preservation": [
+      "Existing fitted terminal surfaces, painting, retained board/final-light figure and reader scroll ownership.",
+      "All primary/Replay/New/Map/Home/LastClear actions, cancellation, saved/world/RNG bytes, pause/deadline policy and normal/quiet ceremony timing.",
+      "Full DynamicType/native targets; no clipping, minimumScaleFactor, truncation, runtime font measurement or geometry/state added only to fit type."
+    ],
+    "art": "No new art is justified by current source research. An extra icon or duplicate score row is outside the smallest option; any demonstrated missing asset must be registered and proved separately before use."
+  },
+  "scope": [
+    "Normal app Entry/play/pause/result/Map/return visible cohesion, narrowed to the shared static terminal-score presentation after baseline.",
+    "Preserve all acceptedGoals1\u20139 roles, including adjacent short-landscape reading, complete native fonts/targets, common board mapping,80pt returns, source/receipt cancellation, native scene transfer and correctedmenu navigation.",
+    "Current Story/Silver and FullBoard exact terminal totals, ordinary historical OpenSky loss sibling, normal phone and actualAX5Calm tablet; one static result role must not leak into Entry/welcome or gameplay instruments."
+  ],
+  "acceptance": [
+    "Satisfy issue391 through one visible normal-app shared-owner refinement chosen after two fresh current-accepted9 native baselines; a report-only closure is insufficient.",
+    "Independently inspect complete source-bound normal-phone Silver19,000/12,000 and actualAX5Calm-tablet FullBoard156,000/150,000 baseline and candidate viewports before adopting a style. Preserve exact scroll-position and partial-page limits.",
+    "Make the exact terminal round total easier to locate while outcome heading and primary next decision remain dominant. Keep156,000 round versus58,000 this-clear and19,000 round versus its constituent clears distinct; no duplicate/misleading displayed score.",
+    "Render every original plain-text word and order with full native DynamicType and wrapping; retain exactlyone experiment.score element with complete original spoken text, unchanged outcome value and terminal announcement. If exact-score content is selected for emphasis, use known copied score/catalogue structure with meaningful whole-content/unique-selection regression rather than numeric regex or test-mirrored font constants.",
+    "Use only registered official roles in their documented context. Register any missing pure static terminal role before production use; do not transplant liveSkyScoreInstrument anchors/protection/clock-like semantics or add artwork without demonstrated need.",
+    "Keep Entry/Help/play/pause/result/Map/Home/LastClear/Replay and practice return usable through real journeys, complete decisions before optional accounting, with full targets and existing fitted surfaces/painting/retained final board/earned-light identity.",
+    "Preserve offlineiOS17+, score/rules/RNG/saves/world/progression/replay/cadence, clock remainder, input/source cancellation, one board/nativeAX mapping and current scene-host ownership. No alternate target, backend/accounts/monetization or phoneinstallation.",
+    "Run appropriate352Core, affected hosted/native input and Debug simulator build, hygiene and diff. Release/membership for resources/routing/fixtures. Freeze literal source/test owners, input/product/catalogue identities, exact selected counts and unchanged method/process bounds; no weakened checks, blanket retries or forced quiet.",
+    "Separate Core/build/interaction/still/observed motion and actualVoiceOver/physical evidence. Independent whole-native and exact retained-export reviews compare approved direction/official contexts; every known new visible failure keeps Goal10 open. Retain/revise decisions and actual remaining human/device scope, including209, remain explicit.",
+    "Merge one complete verified default-main PR with Closes#391 and Refs#381, confirm completed issue and canonical ProjectDone or record unavailable projection. Do not declare the ten-goal stack complete before this individual verified merge."
+  ],
+  "freshBaseline": {
+    "status": "NOT_RUN_FOR_GOAL10; STYLE_DECISION_PENDING_BOTH_FRESH_NATIVE_BASELINES",
+    "source": "Future activation-docs-only commit off accepted0fa, exact HEAD not yet known. All735 runtime/test inputs and06a runtime expected unchanged; root must stamp actual pre-build inputs/products.",
+    "nativeMethods": [
+      {
+        "selector": "StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+        "methodAllowanceSeconds": 240,
+        "context": "normal phone",
+        "purpose": "Fresh baseline and candidate: actualSilver19k/12k; Entry/Help/play/pause/result/Map/Home/return/cold and worldbytes."
+      },
+      {
+        "selector": "StarfallUITests/LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+        "methodAllowanceSeconds": 600,
+        "context": "AX5 tablet with actualCalm",
+        "purpose": "Fresh baseline and candidate:156k/150k round versus58k clear; whole-score/result read, mastery and Replay unchanged."
+      }
+    ],
+    "nativeExecutions": 2,
+    "nativeUniqueMethods": 2,
+    "originalMethodAllowancesSeconds": [
+      240,
+      600
+    ],
+    "proposedCanonicalSupervisorSeconds": [
+      300,
+      660
+    ],
+    "budgetQualification": "240/600 are unchanged method limits verified in current source.300/660 are planned method+60startup process allowances, not measured durations; actual canonical commands/bounds must be frozen by root.",
+    "requiredCaptures": [
+      "Normal phone actualSilver19,000/12,000 round result with current outcome/decision and clear-total context, then Entry/play/pause/Map/Home/return gates from the unchanged method.",
+      "Actual AX5 tablet with genuineCalm:156,000/150,000 round versus58,000 this-clear; exact current scroll positions/fullReturn/actions and unchanged mastery/Replay reading gates."
+    ],
+    "decision": "Inspect complete source-bound native viewports independently before selecting the smallest static result-role refinement. Historical accepted8/9 frames suggest a hierarchy opportunity; they do not replace these fresh baselines or establish a new contrast failure.",
+    "completedSource": "faed226d46044bc41f3b9a2ed0e54961b9ed62a4",
+    "mechanics": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-10-baseline-faed226d-tablet-export-completion.json",
+      "sha256": "a0d1e143f128fc5d2d9f10af942cf99bd5600d6ac4ca5b55aa99c89a7ec4a5a2",
+      "bytes": 22168
+    },
+    "phoneReview": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-10-baseline-phone.json",
+      "sha256": "55e89c3cda814e501506ec852cd57c25c4fe656af1816054f9d4b171ce69f465",
+      "bytes": 21790
+    },
+    "tabletKeyOriginals": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/0042A869-E606-4CBD-BE4D-8BFAF636C8CB.png",
+        "sha256": "60e548027ffdebc2930ddbf9e15a02d018be107c983e704ea13dba5648503cba",
+        "bytes": 5983863
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-10-baseline-faed226d-last-clear-tablet-attachments/40D77FCB-47B3-40CF-8FF2-7EDE197BBCAE.png",
+        "sha256": "c4b1f30bcd49e32af0a694c91d1b1271b9c8cfca1aba3ebc003206df70dd99ed",
+        "bytes": 5785063
+      }
+    ],
+    "finding": "Both complete original methods pass2/0/0. Phone all13 originals independently reviewed; tablet complete-score and separate whole-clear originals independently reviewed before role selection, with remaining tablet whole-screen review still being sealed. Baselines are legible; round-score emphasis is a hierarchy refinement, not a numeric-reading failure. Tablet summary and58k whole-clear occupy different native scroll positions.",
+    "resourceHistory": "Original controller methods completed before a foreign-controller admission stop held the tablet export. Later export-only completion qualifies actual summaries without any native rerun; original stopped manifest remains unchanged. No exclusive-host or performance claim."
+  },
+  "proposedExistingChecks": {
+    "status": "EXACT_EXISTING_PROPOSAL_STATICALLY_RESOLVED; NOT_EXECUTED_FOR_GOAL10",
+    "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+    "hostedExistingCount": 15,
+    "hostedSelectors": [
+      "StarfallAppTests/SkyFlowStateTests/testResultSnapshotsExplainOrdinaryAndChallengeOverflowAfterRestore",
+      "StarfallAppTests/SkyFlowStateTests/testResultSnapshotKeepsTheActualWinningScoreIncludingOvershoot",
+      "StarfallAppTests/SkyFlowStateTests/testRestoredResultLeavesTheFullCanvasLandmarkBandClearAcrossSafeAreas",
+      "StarfallAppTests/SkyFlowStateTests/testScenicResultReflowIsLimitedToSuccessfulRestoration",
+      "StarfallAppTests/FallingSkyStoreTests/testCeremonyOwnsTerminalSpeechWithoutSuppressingExplicitPlayFeedback",
+      "StarfallAppTests/SkyEntryReturnTests/testWonAndLostRoundCancellationReturnsToTheSameCommittedResult",
+      "StarfallAppTests/SkyEntryReturnTests/testReplayAndNewCancellationPreservePauseAndTheFrozenClockRemainder",
+      "StarfallAppTests/SkyEntryReturnTests/testPracticeAndPreferencesPreserveTheRememberedRoundOrigin",
+      "StarfallAppTests/SkyEntryReturnTests/testMapAndExplicitHomeKeepTheirSeparateReturnDestinations",
+      "StarfallAppTests/SkyFlowStateTests/testBeginRejectsDuplicateAndStaleEntryActions",
+      "StarfallAppTests/SkyFlowStateTests/testContinueRetainsPauseChoiceAndClockRemainder",
+      "StarfallAppTests/FinalLightPresentationTests/testOnlyTerminalCurrentResultAdmitsTheSessionSignature",
+      "StarfallAppTests/SkyScorePresentationTests/testCompleteStaticReadingGrowsAtLargestTextAndCompactEquationFitsReceipt",
+      "StarfallAppTests/SkyLastClearPresentationTests/testNativeCaptionsGrowAtLargestTextAndCompletePageKeepsTheExistingReader",
+      "StarfallAppTests/ModePracticeTests/testBothModeDiscoveriesKeepEitherCommittedRoundAndJourneyByteForByte"
+    ],
+    "nativeExistingExecutions": 7,
+    "nativeExistingUniqueMethods": 7,
+    "nativeSelectors": [
+      {
+        "selector": "StarfallUITests/IdentityJourneyInteractionTests/testNormalStoryRepairHomeAndRetainedEnding",
+        "methodAllowanceSeconds": 240,
+        "context": "normal phone",
+        "purpose": "Fresh baseline and candidate: actualSilver19k/12k; Entry/Help/play/pause/result/Map/Home/return/cold and worldbytes."
+      },
+      {
+        "selector": "StarfallUITests/LastClearRecapInteractionTests/testLargestCalmFullBoardLastClearSimultaneousPatternsAndExactReplay",
+        "methodAllowanceSeconds": 600,
+        "context": "AX5 tablet with actualCalm",
+        "purpose": "Fresh baseline and candidate:156k/150k round versus58k clear; whole-score/result read, mastery and Replay unchanged."
+      },
+      {
+        "selector": "StarfallUITests/IdentityJourneyInteractionTests/testNormalHomeOpenSkyTraceEndingAndReplay",
+        "methodAllowanceSeconds": 420,
+        "context": "normal phone",
+        "purpose": "Non-target terminal sibling: actual5-star trace, no-award blocked-column loss, retained result and Replay."
+      },
+      {
+        "selector": "StarfallUITests/FullBoardLanternInteractionTests/testNormalMotionFullBoardRefillRestoreWinAndReplay",
+        "methodAllowanceSeconds": 300,
+        "context": "normal phone",
+        "purpose": "Full Board Entry/refill/settings/background/restore/win/Replay; exact supply and no showers."
+      },
+      {
+        "selector": "StarfallUITests/ModePracticeInteractionTests/testBothEntryDiscoveriesPreserveSelectedModeAndRetainedFullBoard",
+        "methodAllowanceSeconds": 360,
+        "context": "normal phone",
+        "purpose": "Both pending-mode practices and return without changing committed round/world."
+      },
+      {
+        "selector": "StarfallUITests/IdentityJourneyInteractionTests/testLargestCalmModeGuidanceCancellationAndExactContinue",
+        "methodAllowanceSeconds": 360,
+        "context": "AX5 tablet, existingCalm context",
+        "purpose": "Entry/Help/settings/read-return/continue with complete facts and frozen pause remainder."
+      },
+      {
+        "selector": "StarfallUITests/ModePracticeInteractionTests/testLargestTextEntryDiscoveriesRetainPausedFallingSky",
+        "methodAllowanceSeconds": 360,
+        "context": "AX5 tablet, existing test context",
+        "purpose": "Practice/Entry cancellation and exact retained paused round."
+      }
+    ],
+    "allowanceQualification": "All seven original method limits were reread in accepted9 source:240,600,420,300,360,360,360 seconds. Root freezes full process/startup/export limits; no shortened limit, blanket retry, assertion weakening or forced quiet.",
+    "conditionalAddition": "Likely AppTests/SkyScorePresentationTests.swift only if the new result-content seam needs a meaningful complete plain/spoken text or unique-span regression. Add its actual count to15; do not create a screenshot test mirroring font modifiers. If live value-core code changes, add the existing six-figure score/target and affected reading probes before final freeze.",
+    "otherChecks": "352 Core, Debug/test build, hygiene and diff. Release/membership if routing/resources/fixtures/project owners change; literal final counts/owners and product catalogue identity are frozen after the chosen candidate."
+  },
+  "sourceRead": {
+    "acceptedMain": "0fa65a7a1d54940ae1118227159138f49580dd4a",
+    "owners": [
+      {
+        "path": "App/FallingSkyHUD.swift",
+        "sha256": "37d73fb803765a7f56efa53e0cfdf752165a4500267118ccb5835b6b2ab0cc88",
+        "bytes": 18152,
+        "matchesAcceptedMain9": true
+      },
+      {
+        "path": "App/SkyFlowCeremony.swift",
+        "sha256": "aba9cf2f6c807cf69c7e7147f413fad92b15099b2d94df7938fba67ab42642a2",
+        "bytes": 32195,
+        "matchesAcceptedMain9": true
+      },
+      {
+        "path": "App/StarfallTheme.swift",
+        "sha256": "a6b2604fc5dc11475ca2abfaa5c1c6c34b3c15c1d23a2b77335d727b4182b950",
+        "bytes": 25525,
+        "matchesAcceptedMain9": true
+      },
+      {
+        "path": "App/SkyFlowState.swift",
+        "sha256": "448ade8d83a62ff87e8cb46171c88889f30ec797e323e0ffd82e62adc60ecf42",
+        "bytes": 8966,
+        "matchesAcceptedMain9": true
+      },
+      {
+        "path": "AppTests/SkyScorePresentationTests.swift",
+        "sha256": "2bf8725ef151a639ccb427ea5afa45932569c462724ab8ba296c48fef0d5df94",
+        "bytes": 9395,
+        "matchesAcceptedMain9": true
+      }
+    ],
+    "qualification": "Current working bytes match accepted9. Baseline activation-docs-only commit and actual runner/input stamp are not known yet; no source fingerprint is invented for an unbuilt candidate."
+  },
+  "resourceWindow": {
+    "status": "EXPLICIT_FUTURE_WINDOW_GRANTED; NO_HEAVY_BEFORE_START",
+    "grant": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/grant-10-1200-1320.json",
+      "sha256": "a9ebadac1b6e52c53d800e8ae8590e7d3204e9c25e42d15f9f84dc1e210987f7",
+      "bytes": 2623
+    },
+    "startUTC": "2026-10-25T12:00:00Z",
+    "endUTC": "2026-10-25T13:20:00Z",
+    "executionOwner": "root coordinator only",
+    "qualification": "Grant is permission for future bounded work, not an execution/result. Baseline runner must fit full method/startup/export budget before each start; no assumed extension. This documentation worker performs no build/controller/recording/decoder/export."
+  },
+  "freezeRequirements": {
+    "status": "IMPLEMENTED_CANDIDATE_AWAITING_EXACT_SOURCE_FREEZE_AND_EXECUTION",
+    "required": [
+      "Actual activation-docs baselineHEAD and all735 unchanged runtime/test records; embedded06a product proof.",
+      "Independent normalphone/AX5tablet baseline findings and smallest registered static-role/style decision.",
+      "Exact App/test/doc write owners and any meaningful additional test count beyond15existing; preserve original seven method allowances.",
+      "New candidate source/runtime snapshot and bounded canonical checks/exports inside explicit window; no assumed extension."
+    ]
+  },
+  "evidencePlan": {
+    "source": "source-10.json after actual frozen input proof",
+    "mechanics": "verification-10.json after actual completed selected checks",
+    "captures": "captures-10.json and original-dimension retained exports after independent selection",
+    "visual": "Separate fresh baseline, current candidate whole-native/hosted and exact-export reviews; observed normal motion separately if affected"
+  },
+  "outOfScope": [
+    "Broad navigation rewrite, new themes/fonts/art families or global supporting-role promotion.",
+    "Rules/objectives/RNG/saves/replay/shower cadence, new network/account/backend/SDK/analytics/monetization/target or automation.",
+    "Other-root unpublished source adoption or speculative component framework.",
+    "ActualVoiceOver/physical/minimum-iOS/human or continuous-motion/performance acceptance without separate execution."
+  ],
+  "currentResults": {
+    "baseline": "Originaltwo methods+Debugmechanicallypass2/0/0 viaexport-onlycompletion; independentphone/keytablet findings support hierarchyrefinement.",
+    "AppChanges": [
+      "App/FallingSkyHUD.swift",
+      "App/SkyFlowCeremony.swift"
+    ],
+    "newHostedMethods": 2,
+    "candidateChecks": "NOT_RUN",
+    "candidateNativeScreens": "NOT_CAPTURED",
+    "candidateAdoption": "PENDING_REQUIRED_MECHANICS_AND_INDEPENDENT_REVIEWS"
+  },
+  "historyPolicy": "Preserve all frozenGoal1\u20139 source/verification/visual/capture/publication/failure evidence. StaleGoal10draft is privately preserved unchanged; earlier private research supplies hypotheses only.",
+  "updatedUTC": "2026-10-25T12:21:55Z",
+  "styleDecision": {
+    "role": "SkyResultSummary: shared pure static attributed-text role in FallingSkyHUD; terminal context only",
+    "emphasis": "Existing StarfallTheme.Typography.instrumentScore for exactly one complete known scoreLabel; all other text, ink, line wrapping and spoken label unchanged. No new view/AX wrapper.",
+    "fallback": "Keep full original text if label missing/nonunique or matching only inside another word/number.",
+    "owners": [
+      "App/FallingSkyHUD.swift",
+      "App/SkyFlowCeremony.swift",
+      "AppTests/SkyScorePresentationTests.swift"
+    ],
+    "additionalHostedMethods": 2,
+    "plannedNewSelectors": [
+      "StarfallAppTests/SkyScorePresentationTests/testTerminalSummarySelectsOnlyOneCompleteCommittedScoreAndPreservesAllCopy",
+      "StarfallAppTests/SkyScorePresentationTests/testTerminalSummaryKeepsNativeLargestTextReflowForTargetAndOpenSkyResults"
+    ],
+    "registration": "docs/design/GAME_UI_SYSTEM.md shared-component roster updated before App implementation.",
+    "acceptance": "Candidate still must pass17hosted/7original native/Core352/builds and independent whole-native, exact-export and bounded normal-motion review before adoption.",
+    "candidateRuntime": "dev.b088afcf5e"
+  }
+}
