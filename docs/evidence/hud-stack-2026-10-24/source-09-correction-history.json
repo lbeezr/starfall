@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "HISTORICAL_STOPPED_CANDIDATES; NO_ADOPTION",
+  "recordedUTC": "2026-10-25T10:02:28.994229+00:00",
+  "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+  "scope": "Six completed stopped probe phases only:52f,8eb,6b,14,e4,fc. Initial925e records remain separately frozen. Current250fb74e experiment is excluded while active. No continuation plan rewrite or App/test/HEAD mutation by this collector.",
+  "initial925eRecords": [
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-09-initial-candidate.json",
+      "sha256": "a34f70f856e1f4f3758168a2d570cdc647192fd6e41011d64903f1c873e3870a",
+      "bytes": 4399
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-initial-candidate.json",
+      "sha256": "b9fff0ab25b4a1df0e58c76ff6c8ac97cb57762431bed7e725a4ab7cd6ad6fa3",
+      "bytes": 25254
+    }
+  ],
+  "attempts": [
+    {
+      "checkpoint": "52f3e266bc344a7c0c5735c2953047b8fdda4325",
+      "phase": "candidate-second",
+      "runtime": "dev.4ebb3db952",
+      "status": "STOPPED_FAILED_PARTIAL; NOT_ADOPTED",
+      "source": {
+        "inputSnapshot": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-second-52f3e266.json",
+          "sha256": "c5da51235f4da0311e6b3f856fe93d8e658551c44ce1f2542c0b2cb27c9ea44f",
+          "bytes": 188083
+        },
+        "runtimeCount": 568,
+        "testInputCount": 167,
+        "changedRuntimeOwners": [
+          "App/FallingSkyView.swift",
+          "App/SkyReadingPlayfield.swift",
+          "Starfall.xcodeproj/project.pbxproj"
+        ],
+        "changedTestOwners": [
+          "AppTests/SkyReadingPlayfieldTests.swift",
+          "UITests/FullBoardLanternInteractionTests.swift",
+          "UITests/ObservatoryInteractionTests.swift",
+          "UITests/SkyFlowInteractionTests.swift"
+        ],
+        "inventory": {
+          "hostedMethods": 821,
+          "developmentPhoneUIMethods": 262,
+          "actualVoiceOverDeferredMethods": 6
+        },
+        "preparedUTC": "2026-10-25T09:30:08.806321+00:00",
+        "runnerStartedUTC": "2026-10-25T09:30:09.450523+00:00",
+        "DebugStartedUTC": "2026-10-25T09:30:10.118039+00:00",
+        "dumpPredatesRunnerAndDebug": true,
+        "committedTreeInputBlobMatches": 735,
+        "scope": "Frozen helper computed contentSHA/Gitblob/canonicalruntime before run; collector matches all735 recorded paths/blobs to the exact historical committed tree, not current working-tree bytes."
+      },
+      "commands": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-second-52f3e266.json",
+        "sha256": "5e29fd75a5d34ca12b2b5399c1b2d5f71ef963170b48605a24c2c065775ce9a7",
+        "bytes": 10443
+      },
+      "runner": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/run-goal09-sequential.py",
+        "sha256": "21099b1628ca4d5bba63144e318a0f381b7726eaa9ce677dfdaaa3f442041f7a",
+        "bytes": 14505
+      },
+      "prepareHelper": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/prepare-goal09-source.py",
+        "sha256": "f525c33a9232f160bec94f8d10e946c6c032af19480f45f7834792c1e565d07f",
+        "bytes": 8292
+      }
+    },
+    {
+      "checkpoint": "8eb9f8f7880839e8c5b8759ed663fc3d301984da",
+      "phase": "candidate-third",
+      "runtime": "dev.ea65df280b",
+      "status": "STOPPED_FAILED_PARTIAL; NOT_ADOPTED",
+      "source": {
+        "inputSnapshot": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-third-8eb9f8f7.json",
+          "sha256": "4186b7b947adfd09b91bd53c20a41c254eff71bfb606120950f154dce0f4feb1",
+          "bytes": 188080
+        },
+        "runtimeCount": 568,
+        "testInputCount": 167,
+        "changedRuntimeOwners": [
+          "App/FallingSkyView.swift",
+          "App/SkyReadingPlayfield.swift",
+          "Starfall.xcodeproj/project.pbxproj"
+        ],
+        "changedTestOwners": [
+          "AppTests/SkyReadingPlayfieldTests.swift",
+          "UITests/FullBoardLanternInteractionTests.swift",
+          "UITests/ObservatoryInteractionTests.swift",
+          "UITests/SkyFlowInteractionTests.swift"
+        ],
+        "inventory": {
+          "hostedMethods": 821,
+          "developmentPhoneUIMethods": 262,
+          "actualVoiceOverDeferredMethods": 6
+        },
+        "preparedUTC": "2026-10-25T09:35:19.053475+00:00",
+        "runnerStartedUTC": "2026-10-25T09:35:19.724514+00:00",
+        "DebugStartedUTC": "2026-10-25T09:35:20.354924+00:00",
+        "dumpPredatesRunnerAndDebug": true,
+        "committedTreeInputBlobMatches": 735,
+        "scope": "Frozen helper computed contentSHA/Gitblob/canonicalruntime before run; collector matches all735 recorded paths/blobs to the exact historical committed tree, not current working-tree bytes."
+      },
+      "commands": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-third-8eb9f8f7.json",
+        "sha256": "56800851273a35e566bad173b2c200bf61eabf7a17ed2384f530a507989bbd10",
+        "bytes": 10388
+      },
+      "runner": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/run-goal09-sequential.py",
+        "sha256": "21099b1628ca4d5bba63144e318a0f381b7726eaa9ce677dfdaaa3f442041f7a",
+        "bytes": 14505
+      },
+      "prepareHelper": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/prepare-goal09-source.py",
+        "sha256": "f525c33a9232f160bec94f8d10e946c6c032af19480f45f7834792c1e565d07f",
+        "bytes": 8292
+      }
+    },
+    {
+      "checkpoint": "6b252af2a8937976371e103686f6a09b067aa038",
+      "phase": "candidate-verified",
+      "runtime": "dev.ea65df280b",
+      "status": "STOPPED_FAILED_PARTIAL; NOT_ADOPTED",
+      "source": {
+        "inputSnapshot": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-verified-6b252af2.json",
+          "sha256": "4e3605b054d0e9c8407b36185c568ac95e4831cdb8eab6c040c45be90f1c7dee",
+          "bytes": 188089
+        },
+        "runtimeCount": 568,
+        "testInputCount": 167,
+        "changedRuntimeOwners": [
+          "App/FallingSkyView.swift",
+          "App/SkyReadingPlayfield.swift",
+          "Starfall.xcodeproj/project.pbxproj"
+        ],
+        "changedTestOwners": [
+          "AppTests/SkyReadingPlayfieldTests.swift",
+          "UITests/FullBoardLanternInteractionTests.swift",
+          "UITests/ObservatoryInteractionTests.swift",
+          "UITests/SkyFlowInteractionTests.swift"
+        ],
+        "inventory": {
+          "hostedMethods": 821,
+          "developmentPhoneUIMethods": 262,
+          "actualVoiceOverDeferredMethods": 6
+        },
+        "preparedUTC": "2026-10-25T09:37:02.759263+00:00",
+        "runnerStartedUTC": "2026-10-25T09:37:03.532246+00:00",
+        "DebugStartedUTC": "2026-10-25T09:37:04.217208+00:00",
+        "dumpPredatesRunnerAndDebug": true,
+        "committedTreeInputBlobMatches": 735,
+        "scope": "Frozen helper computed contentSHA/Gitblob/canonicalruntime before run; collector matches all735 recorded paths/blobs to the exact historical committed tree, not current working-tree bytes."
+      },
+      "commands": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-verified-6b252af2.json",
+        "sha256": "b58b888a0de38744cf7f5a718574f2b26361d2bd632a089cc35c9f5dde5a3554",
+        "bytes": 12021
+      },
+      "runner": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/run-goal09-sequential.py",
+        "sha256": "21099b1628ca4d5bba63144e318a0f381b7726eaa9ce677dfdaaa3f442041f7a",
+        "bytes": 14505
+      },
+      "prepareHelper": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/prepare-goal09-source.py",
+        "sha256": "f525c33a9232f160bec94f8d10e946c6c032af19480f45f7834792c1e565d07f",
+        "bytes": 8292
+      }
+    },
+    {
+      "checkpoint": "14d703175be202eb1928ddb38d84629d42f75e60",
+      "phase": "candidate-compact-guide",
+      "runtime": "dev.7767997926",
+      "status": "STOPPED_FAILED_PARTIAL; NOT_ADOPTED",
+      "source": {
+        "inputSnapshot": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-compact-guide-14d70317.json",
+          "sha256": "5038ee98b10748d6da3e955e33c87ce6d641580b24f5209bbfbae7b13ef203d8",
+          "bytes": 188104
+        },
+        "runtimeCount": 568,
+        "testInputCount": 167,
+        "changedRuntimeOwners": [
+          "App/FallingSkyView.swift",
+          "App/SkyReadingPlayfield.swift",
+          "Starfall.xcodeproj/project.pbxproj"
+        ],
+        "changedTestOwners": [
+          "AppTests/SkyReadingPlayfieldTests.swift",
+          "UITests/FullBoardLanternInteractionTests.swift",
+          "UITests/ObservatoryInteractionTests.swift",
+          "UITests/SkyFlowInteractionTests.swift"
+        ],
+        "inventory": {
+          "hostedMethods": 821,
+          "developmentPhoneUIMethods": 262,
+          "actualVoiceOverDeferredMethods": 6
+        },
+        "preparedUTC": "2026-10-25T09:44:07.003369+00:00",
+        "runnerStartedUTC": "2026-10-25T09:44:07.678938+00:00",
+        "DebugStartedUTC": "2026-10-25T09:44:08.307223+00:00",
+        "dumpPredatesRunnerAndDebug": true,
+        "committedTreeInputBlobMatches": 735,
+        "scope": "Frozen helper computed contentSHA/Gitblob/canonicalruntime before run; collector matches all735 recorded paths/blobs to the exact historical committed tree, not current working-tree bytes."
+      },
+      "commands": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-compact-guide-14d70317.json",
+        "sha256": "1c6882c5e5ed3b872127137eda2712260f0e7a8c453f1face331e9acac2c19e9",
+        "bytes": 10561
+      },
+      "runner": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/run-goal09-sequential.py",
+        "sha256": "21099b1628ca4d5bba63144e318a0f381b7726eaa9ce677dfdaaa3f442041f7a",
+        "bytes": 14505
+      },
+      "prepareHelper": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/prepare-goal09-source.py",
+        "sha256": "f525c33a9232f160bec94f8d10e946c6c032af19480f45f7834792c1e565d07f",
+        "bytes": 8292
+      }
+    },
+    {
+      "checkpoint": "e4cf8458c4711b14519c1635366c83198ca10369",
+      "phase": "candidate-guide-diagnostic",
+      "runtime": "dev.7767997926",
+      "status": "STOPPED_FAILED_PARTIAL; NOT_ADOPTED",
+      "source": {
+        "inputSnapshot": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-guide-diagnostic-e4cf8458.json",
+          "sha256": "e3261484d3b1d7ae8e35f87cd97b1f4bc0d96c2f0e24fb9eec7efa0a75154651",
+          "bytes": 188193
+        },
+        "runtimeCount": 568,
+        "testInputCount": 167,
+        "changedRuntimeOwners": [
+          "App/FallingSkyView.swift",
+          "App/SkyReadingPlayfield.swift",
+          "Starfall.xcodeproj/project.pbxproj"
+        ],
+        "changedTestOwners": [
+          "AppTests/SkyReadingPlayfieldTests.swift",
+          "UITests/FullBoardLanternInteractionTests.swift",
+          "UITests/NativeSkyControls.swift",
+          "UITests/ObservatoryInteractionTests.swift",
+          "UITests/SkyFlowInteractionTests.swift"
+        ],
+        "inventory": {
+          "hostedMethods": 821,
+          "developmentPhoneUIMethods": 262,
+          "actualVoiceOverDeferredMethods": 6
+        },
+        "preparedUTC": "2026-10-25T09:47:45.707649+00:00",
+        "runnerStartedUTC": "2026-10-25T09:47:46.447008+00:00",
+        "DebugStartedUTC": "2026-10-25T09:47:47.161041+00:00",
+        "dumpPredatesRunnerAndDebug": true,
+        "committedTreeInputBlobMatches": 735,
+        "scope": "Frozen helper computed contentSHA/Gitblob/canonicalruntime before run; collector matches all735 recorded paths/blobs to the exact historical committed tree, not current working-tree bytes."
+      },
+      "commands": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-guide-diagnostic-e4cf8458.json",
+        "sha256": "ee7dac075bbcb0cca178d7778c54f6b2b730bdb6a63baa139ca6913b8157924e",
+        "bytes": 6798
+      },
+      "runner": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/run-goal09-sequential.py",
+        "sha256": "21099b1628ca4d5bba63144e318a0f381b7726eaa9ce677dfdaaa3f442041f7a",
+        "bytes": 14505
+      },
+      "prepareHelper": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/prepare-goal09-source.py",
+        "sha256": "f525c33a9232f160bec94f8d10e946c6c032af19480f45f7834792c1e565d07f",
+        "bytes": 8292
+      }
+    },
+    {
+      "checkpoint": "fc2500268a57d495fb918d5e18651ba72b94df7f",
+      "phase": "candidate-guide-pan",
+      "runtime": "dev.7767997926",
+      "status": "STOPPED_FAILED_PARTIAL; NOT_ADOPTED",
+      "source": {
+        "inputSnapshot": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-guide-pan-fc250026.json",
+          "sha256": "0e157e120f10fb53871999c73582abfc40557e316436c962d1a89f61ed130875",
+          "bytes": 188172
+        },
+        "runtimeCount": 568,
+        "testInputCount": 167,
+        "changedRuntimeOwners": [
+          "App/FallingSkyView.swift",
+          "App/SkyReadingPlayfield.swift",
+          "Starfall.xcodeproj/project.pbxproj"
+        ],
+        "changedTestOwners": [
+          "AppTests/SkyReadingPlayfieldTests.swift",
+          "UITests/FullBoardLanternInteractionTests.swift",
+          "UITests/NativeSkyControls.swift",
+          "UITests/ObservatoryInteractionTests.swift",
+          "UITests/SkyFlowInteractionTests.swift"
+        ],
+        "inventory": {
+          "hostedMethods": 821,
+          "developmentPhoneUIMethods": 262,
+          "actualVoiceOverDeferredMethods": 6
+        },
+        "preparedUTC": "2026-10-25T09:55:20.312980+00:00",
+        "runnerStartedUTC": "2026-10-25T09:55:27.871983+00:00",
+        "DebugStartedUTC": "2026-10-25T09:55:28.544852+00:00",
+        "dumpPredatesRunnerAndDebug": true,
+        "committedTreeInputBlobMatches": 735,
+        "scope": "Frozen helper computed contentSHA/Gitblob/canonicalruntime before run; collector matches all735 recorded paths/blobs to the exact historical committed tree, not current working-tree bytes."
+      },
+      "commands": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-guide-pan-fc250026.json",
+        "sha256": "0cd55d7e2941980ba8abb84abdff8df22512dbc6f734985ed97c0d5507971a66",
+        "bytes": 6709
+      },
+      "runner": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/run-goal09-sequential.py",
+        "sha256": "21099b1628ca4d5bba63144e318a0f381b7726eaa9ce677dfdaaa3f442041f7a",
+        "bytes": 14505
+      },
+      "prepareHelper": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/prepare-goal09-source.py",
+        "sha256": "f525c33a9232f160bec94f8d10e946c6c032af19480f45f7834792c1e565d07f",
+        "bytes": 8292
+      }
+    }
+  ],
+  "runtimeEquivalenceChecks": [
+    {
+      "left": "8eb9f8f7",
+      "right": "6b252af2",
+      "all568RuntimeInputRecordsEqual": true,
+      "meaning": "Test-only exact physical-grid extent checkpoint; its later native guide failure remains a failure."
+    },
+    {
+      "left": "14d70317",
+      "right": "e4cf8458",
+      "all568RuntimeInputRecordsEqual": true,
+      "meaning": "Passive diagnostic test-only checkpoint; no App change is inferred from another failed run."
+    },
+    {
+      "left": "e4cf8458",
+      "right": "fc250026",
+      "all568RuntimeInputRecordsEqual": true,
+      "meaning": "Measured-coordinate gesture test-only checkpoint; its final unchanged message-hittability failure remains a failure."
+    }
+  ],
+  "limits": [
+    "Source arrays bind exact historical committed trees and original prebuild input snapshots; later worktree or overwritten shared product bytes are not historical proof.",
+    "Current250fb74e experiment and all future qualification are excluded. No current-source/visual/interaction acceptance follows from these historical inputs."
+  ]
+}

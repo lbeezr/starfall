@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "BOUNDED_PASS",
+  "reviewer": "hud_audit",
+  "recordedUTC": "2026-10-25T11:06:18.137938+00:00",
+  "scope": "All6 current-source Observatory orientation native whole PNGs: before/after one real lower-right-cell input in portrait, landscapeLeft and landscapeRight. Debug fixture regression scope.",
+  "source": {
+    "commit": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "initialPrebuildSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+      "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+      "bytes": 188241
+    },
+    "resumePreflightSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-remaining-5c05ecef.json",
+      "sha256": "6612d37cc04c50eebc8946082f33b3602b22f12ef68dc1351265b565089cd61a",
+      "bytes": 188280
+    },
+    "sameInputProof": "Reviewer compared the complete568runtime and167test entry arrays; they are exactly equal across initial and resumed snapshots. Both report empty input differences.",
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "historicalBoundary": "No earlier040 or6b frame is relabeled as current5c evidence."
+  },
+  "nativeMechanics": {
+    "selector": "ObservatoryInteractionTests/testSupportedOrientationsPreserveNativeTargets",
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-summary.json",
+      "sha256": "ead34ce60801cac10b40a4aa0480a48897945abf84fd8eab459e829d6beceb81",
+      "bytes": 741
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-receipt.json",
+      "sha256": "912fd997695cc1e14440e6a16b6a4432b99787b122064f5c2b64d1b234f83db0",
+      "bytes": 223
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone.log",
+      "sha256": "c94355cfc82806e0d600d8afd353003471586a9cd4d838e3fbc53754ae842ee4",
+      "bytes": 23300
+    },
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "testElapsedSeconds": 42.232,
+    "stageElapsedSeconds": 50.392,
+    "methodAllowanceSeconds": 240,
+    "supervisorBoundSeconds": 300,
+    "environment": {
+      "architecture": "arm64",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "checkedContract": "Actual viewport rotation; middle native cell centered between its own left/right native columns; retired painting hotspot actions absent; actual lower-right cell revealed with44pt minimum width/height; native coordinate tap yields exact cell value as score in each fresh fixture.",
+    "scopeSeparation": "Method asserts interaction and mapping; six stills independently assess visible composition and do not establish full guide or animation quality."
+  },
+  "reference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182,
+    "wholeViewedPreviously": true,
+    "role": "Approved Play visual hierarchy/material comparison only"
+  },
+  "raw": {
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/manifest.json",
+      "sha256": "43da7f1d2543133579afa0c39116e256b045987f6866b43a00062fd765f9edfb",
+      "bytes": 3074
+    },
+    "wholeOriginalPNGCount": 6,
+    "personallyViewedWholeCount": 6,
+    "frames": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/A384F58E-7AB9-4B7F-9CF1-F01691FF0FF6.png",
+        "sha256": "fbbf225166eb1512038e866513a7a575d2d4b99b7e4e10e1e77adc973499530e",
+        "bytes": 3658748,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "attachmentName": "Observatory-native-orientation-before-input-1_0_FD803FC1-5C0C-4271-BA22-A00203290DB5.png",
+        "attachmentTimestamp": 1792925762.641,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original PNG; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/6245D34A-8CCF-4D41-A6AB-287C2421826A.png",
+        "sha256": "2971d7ae88acf774237347e4d84473a2371f814a8aa7e819b99a8e6f0675080a",
+        "bytes": 3599574,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "attachmentName": "Observatory-native-orientation-1_0_4254B9C5-8336-426B-B6CD-27A442B10CE7.png",
+        "attachmentTimestamp": 1792925766.257,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original PNG; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/87A14A58-410C-4018-8219-FE2E22B83F8B.png",
+        "sha256": "69ea2abb156c6ed0ae08d6eb3c990baaf33fda0dc1db1683fe72e401aa98ac2b",
+        "bytes": 4284241,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "attachmentName": "Observatory-native-orientation-before-input-3_0_DB8F5DF2-CD87-4B73-A4F7-3D835BED2FCE.png",
+        "attachmentTimestamp": 1792925774.736,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original PNG; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/C17141C9-06CE-48E4-BFA9-C3248348B395.png",
+        "sha256": "d6ccc2e8a7e27b0acdcd42f9b1dbae59c40ebe164c6d93585942714ca8aed626",
+        "bytes": 4289722,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "attachmentName": "Observatory-native-orientation-3_0_21A4EFA4-69EB-45EC-9ECF-6FBA653BAA48.png",
+        "attachmentTimestamp": 1792925781.046,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original PNG; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/38FFC904-7A40-4F2B-BCE4-4A246B5D7371.png",
+        "sha256": "ae19de1d29dd4c0012ff79a001c2d43b1274d518ab67b407cec19d910ea1e481",
+        "bytes": 4287326,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "attachmentName": "Observatory-native-orientation-before-input-4_0_DD819B9B-21DB-4DEA-A8E8-E0B01FDF99E5.png",
+        "attachmentTimestamp": 1792925789.692,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original PNG; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/1A0FFC74-A256-4FEF-B220-495E64227935.png",
+        "sha256": "ca9b21d0c3517103a1cb44ddbe3ba036101e7ec478b8cdfccd2331f687cc7971",
+        "bytes": 4300957,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "attachmentName": "Observatory-native-orientation-4_0_3BC9AC05-BAEA-4904-8BE4-2F2914693968.png",
+        "attachmentTimestamp": 1792925795.774,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original PNG; no crop, conversion or retouch"
+      }
+    ]
+  },
+  "observations": [
+    "Portrait before-input frame shows the complete 0 score, three ordered incoming 4/5/6 facts, full ceiling strip and dense actual stars above reachable ordinary Resume sky/Next shower captions. Painting and native instruments remain distinct.",
+    "Both actual landscape orientations use a quiet left-side score/pause/forecast area with a substantial right-side current star field. The three forecast digits and help glyph remain recognizable, and score 0 becomes 4 after the real input in all orientations.",
+    "The Dusk center and gray individual neighboring star bodies are authored historical/debug fixture elements; they are not a flat gray scene-surface failure or a new ordinary survival policy.",
+    "The after-input frames retain readable score/forecast and current stars. Fading +4 receipt samples are transient and faint; these stills do not prove readable receipt onset or continuous animation.",
+    "The landscape after-input screenshots show the top ceiling badges partly above the visible window at that native board scroll position. These six images are excluded as complete-ceiling-clearance evidence; the separate current Story reveal and hosted strict projection records own that property. No HUD text or current-star body is covered by the left instrument area."
+  ],
+  "decision": {
+    "verdict": "BOUNDED_PASS",
+    "reason": "No blocking current-source instrument readability, star dominance, scenery or input-layout problem in these six orientation samples. Exact native lower-right input outcomes are separately reported by the passing original method.",
+    "overallGoalStatus": "No overall Goal9 adoption; complete ceiling, AX guide, navigation and other native acceptance belong to separate current-source records."
+  },
+  "limits": [
+    "This is one iPhone17e Simulator/iOS27 debug fixture case at3x, not ordinary Story, FullBoard, actual VoiceOver, physical device or minimumOS validation.",
+    "Two portrait originals 1170x2532 and four landscape originals 2532x1170 were viewed whole. No image export/resize/retouch was performed by this reviewer.",
+    "Lower guide/footer and complete ceiling are outside some landscape capture positions. No claim of full guide reading, all-action reachability from pixels or complete-ceiling visibility across every scroll offset.",
+    "No sampled video, continuous motion, frame pacing, human-recognition or contrast-ratio claim.",
+    "No App/test/HEAD changes, build, controller, AV decode or export was performed by this reviewer."
+  ]
+}

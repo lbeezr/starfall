@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "reviewedUTC": "2026-10-25T09:41:37.594379+00:00",
+  "status": "HOLD_HISTORICAL_CANDIDATE_SECOND_GUIDE_FAILURE",
+  "source": {
+    "commit": "52f3e266bc344a7c0c5735c2953047b8fdda4325",
+    "runtime": "dev.4ebb3db952",
+    "sourceSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-second-52f3e266.json",
+      "sha256": "c5da51235f4da0311e6b3f856fe93d8e658551c44ce1f2542c0b2cb27c9ea44f",
+      "bytes": 188083
+    },
+    "qualification": "Independent review of finalized52f candidate-second originals only; not current8eb/6b source acceptance."
+  },
+  "mechanics": {
+    "selector": "StarfallUITests/SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+    "methodAllowanceSeconds": 300,
+    "processLimitSeconds": 360,
+    "methodElapsedSeconds": 121.146,
+    "stageElapsedSeconds": 125.546,
+    "exitCode": 65,
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-second-52f3e266-landscape-ax5-summary.json",
+      "sha256": "22eda02ce1780960f85aeb2f944190a819468de5e34e7f202714cc2dd3f81b51",
+      "bytes": 1292
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-second-52f3e266-landscape-ax5-receipt.json",
+      "sha256": "654cda53e67d696019649205a3d0dcd49953570a928c569c6a895e048518bfcf",
+      "bytes": 194
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-second-52f3e266-landscape-ax5.log",
+      "sha256": "6acd711a43b761cef16d47e718f947fab27165be7f287bdcd59223892d733b4e",
+      "bytes": 85885
+    },
+    "failure": [
+      {
+        "failureText": "Failed to unable to perform Swipe up on \"sky.dialogue.reading\" ScrollView: visible frame is empty, which may happen if the element is offscreen.",
+        "targetName": "StarfallUITests",
+        "testIdentifier": 1,
+        "testIdentifierString": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery()",
+        "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+        "testName": "testLargestQuietLandscapeStoryPressureAndCommittedRecovery()"
+      }
+    ],
+    "qualification": "Original test reaches currentLantern4 full/near/forecast/Help and actual5000 clear, then fails in NativeSkyControls.swift:307 while swiping sky.dialogue.reading because its visibleframe is empty. No blanket retry or success claim; XCTest framework internalgesture retries are retained in rawlog."
+  },
+  "scope": {
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-second-52f3e266-landscape-ax5-attachments/manifest.json",
+      "sha256": "dbce99955c6d9cfdc000313e539d5b1b3b02154b453c54c77143e3f31a0783b4",
+      "bytes": 42936
+    },
+    "wholePNGCount": 7,
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "scenario": "Actual AX5phone portraitpreparation thenactualLandscapeLeft. Natural Lantern4 four-shower full2/near1,3,4,5,6, CalmYES. No resettablehistorical18-light fixture used."
+  },
+  "visualVerdict": {
+    "result": "HOLD",
+    "positiveBoundedFindings": [
+      "Adjacent composition restores a visible right-hand starfield and complete scaled ceiling while score/target/Pause remain pinnedleft; continuouspainting remains intact.",
+      "Actual scrolledforecast screenshots show allfive ordered destinationdigits together. Separate scrollpositions showtitle/Help andnear facts; offscreencontent is not falsely labeled absent or simultaneous.",
+      "Actual5000 earnedscore and pink returnedline are visible, with no observed overlap between that returnedfigure and leftscore."
+    ],
+    "blockingFinding": "The completed journey cannot read the recoveryguide: actualnative innerguide has emptyvisibleframe and native gesture fails. The retained earned-recovery still also has no visibleguide; a partially improved starfield is not adoption.",
+    "captionQualification": "The7F98 screenshot named complete-current-room-facts depicts complete nearfact plus a partially clipped fullfact, not simultaneouscomplete facts. Later per-fact captures on correctedsource are required for that visual claim.",
+    "noAdditionalVisibleDefectClaim": "No extra color/contrast/target defect is invented from missing coverage. This record does not claim sampledcontinuousmotion or exactreceiptage."
+  },
+  "images": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-second-52f3e266-landscape-ax5-attachments/9D752561-1264-4E5C-BE30-740743D8A5A1.png",
+      "sha256": "4fd0f1e642554df92fe9e5273916cbfc39ee4c33650a883256bb2711434789a1",
+      "bytes": 3520226,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2532,
+        1170
+      ],
+      "name": "pressure-landscape-largest-earned-recovery_0_F896FC77-05BC-4534-8D73-6E08B25B22A1.png",
+      "timestamp": 1792920727.242,
+      "directWholeImageViewed": true,
+      "observed": "After actualclear: complete5000/150000 score, changed settledstararrangement and small pink returned-line figure in fixedrightband. Recoveryguide/awardnumber are not visible; does not prove complete receipt/guide reading."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-second-52f3e266-landscape-ax5-attachments/23F7E649-AFCB-4D5A-9B54-0D49807FD939.png",
+      "sha256": "0f1bbb6a14206e41f6c233e9a7137683d9d01368b40dd181026f39095a81c103",
+      "bytes": 3223937,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2532,
+        1170
+      ],
+      "name": "pressure-landscape-largest-full_0_06325B87-AA4A-40DF-B51D-0CD6CB5E73BB.png",
+      "timestamp": 1792920719.673,
+      "directWholeImageViewed": true,
+      "observed": "Facts returned upward: full Next columns title andHelp visible, lower forecast continues beyond bottom. Right-hand ceiling/stars remain visible. Capture name full is not evidence allleftfacts are simultaneously displayed."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-second-52f3e266-landscape-ax5-attachments/BE9F52A5-B5A1-45D0-88C2-E7E1C8A5944B.png",
+      "sha256": "5b54306921d5510dc26062a334b2fecc665e60baa9298e0c8f555b5820ae1380",
+      "bytes": 3208134,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2532,
+        1170
+      ],
+      "name": "pressure-landscape-forecast-target-4_0_BC48326A-5796-47D2-9C4F-6142A1D37191.png",
+      "timestamp": 1792920716.382,
+      "directWholeImageViewed": true,
+      "observed": "Later target4 capture also visibly contains allfive destinationdigits; score/ceiling/stars unchanged. No separate targetselection is inferred."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-second-52f3e266-landscape-ax5-attachments/5D4420A3-2DA5-4D4E-80EB-51C80654A39E.png",
+      "sha256": "8faf1a87a253c6a20ded6ebc10c5087f6db31208b8d92ccfce49e7bdbc72787c",
+      "bytes": 3208297,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2532,
+        1170
+      ],
+      "name": "pressure-landscape-forecast-target-0_0_63110C3D-5AA4-448B-A247-E458DBE7BFA7.png",
+      "timestamp": 1792920709.286,
+      "directWholeImageViewed": true,
+      "observed": "Five destinationdigits7/6/1/2/4 visibly coexist in scrolled grid below pinnedscore; exact ceiling/full2 and star rows remain right. Forecast title/Help are above this scroll position."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-second-52f3e266-landscape-ax5-attachments/7F98B297-410E-4B2E-B18D-0F59DA254336.png",
+      "sha256": "4d2c68b8fe94d9db3c6112a5fbea47f8e356b2ad461ebd5af31ebd4af79e8fdb",
+      "bytes": 3388345,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2532,
+        1170
+      ],
+      "name": "pressure-landscape-complete-current-room-facts_0_DAE014BF-E59E-4007-8195-9B1249503BBE.png",
+      "timestamp": 1792920703.574,
+      "directWholeImageViewed": true,
+      "observed": "Facts scrolled to complete1space1,3,4,5,6 near-summary. Full fact firstlineColumn2 is clipped under pinnedscore at top of facts viewport, so this single image does not show complete full+near facts together. Complete ceiling and current stars remain right."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-second-52f3e266-landscape-ax5-attachments/6E24786C-5076-42E5-8364-25E209756248.png",
+      "sha256": "f9f551035c801053782461af9ce8cc062f1813dfe905e752b1a574a33e1a42a7",
+      "bytes": 3432593,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2532,
+        1170
+      ],
+      "name": "pressure-landscape-largest-before-reveal_0_D096B4D5-3285-4DD4-96E8-48E1DFE9BA53.png",
+      "timestamp": 1792920689.434,
+      "directWholeImageViewed": true,
+      "observed": "Actual landscape afterrotation before reveal: native score/target andPause pinned left; top of forecast title/firstrow visible left; several occupied star rows visible right. A partially clipped row at right scroll edge is visible, not all49cells simultaneously."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-second-52f3e266-landscape-ax5-attachments/E35216E5-2FF1-4F1B-8D29-EBE4CE8111F7.png",
+      "sha256": "da1b6be798d6b714e1e05a871f9a0a9550dd2e4e78397ba848a527c40210ac4f",
+      "bytes": 3101527,
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "name": "pressure-full-largest_0_AFBECBD0-9CB2-4A9F-A181-FB1E98CC913F.png",
+      "timestamp": 1792920686.847,
+      "directWholeImageViewed": true,
+      "observed": "Portrait full-state preparation: complete0/150000, compact forecast and full/near facts, ceiling and occupied stars."
+    }
+  ],
+  "limits": [
+    "Seven finalized stills viewed directly against the approvedPlay direction previously inspected; no render, conversion, crop or decoder operation performed.",
+    "Actual allfivechip/Help geometry assertions and real5000commit are mechanical sub-outcomes; this failed method supplies no finalfifthshower, completeguide, Replay or globalGoal9PASS.",
+    "No candidate-third orcandidate-verified image is reused or judged here; their eventualfinalcapture review is separate.",
+    "ActualVoiceOver, physicalreading, minOS, continuousmotion and exactlatency remain unperformed."
+  ]
+}

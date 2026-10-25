@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "HISTORICAL_MANUAL_TOOL_ROUTE_NOT_COMPLETED_NO_MENU_IMAGE_ACCEPTED",
+  "source": {
+    "head": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "runtimeAndTestChanges": []
+  },
+  "preflight": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/manual-menu-09-fresh1141-preflight.json",
+    "sha256": "2a9011d54483da47b7de3f5e79a41996a9209c1f5c47c645456c4e692bd5d590",
+    "bytes": 9087
+  },
+  "timeline": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/manual-menu-09-fresh1141-tool-route.json",
+    "sha256": "5f9fb09a99025aea764ec14e0f13990d469361372801a34ba8e042474eeba8d5",
+    "bytes": 38803
+  },
+  "observed": {
+    "startedUTC": "2026-10-25T11:14:45.793Z",
+    "endedUTC": "2026-10-25T11:19:12.132Z",
+    "elapsedSeconds": 266.339,
+    "boundSeconds": 600,
+    "actionCounts": {
+      "launch_app_sim": 1,
+      "snapshot_ui": 5,
+      "tap": 3,
+      "wait_for_ui": 2,
+      "swipe": 1,
+      "screenshot": 1,
+      "open_sim": 1,
+      "stop_app_sim": 1
+    },
+    "result": "Home Story Mode was reported enabled; three simulated taps and one inner-reader swipe did not advance this manual tool route. A bounded world.page wait timed out. No menu pixels or navigation PASS is inferred.",
+    "imageQualification": "The one tool screenshot was an optimized369x800JPEG Home image, not an original-resolution menu screen; it is excluded from visual acceptance and exports.",
+    "cleanup": "Owned App60316 and runtime-log helpers60307/60364 were stopped and ps confirmed none remained at11:19:14UTC."
+  },
+  "limits": "No App, test or privateSDK cause is assigned. Existing main FullBoard native PASS and its exact five-pan Settings geometry remain valid separately. A capture-only duplicate of the original native case is the next artifact path; its result is not yet claimed here.",
+  "recordedUTC": "2026-10-25T11:21:16.688573+00:00"
+}

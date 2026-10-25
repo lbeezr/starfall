@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "issue": 390,
+  "issueURL": "https://github.com/lbeezr/starfall/issues/390",
+  "title": "Whole-HUD adaptive layouts",
+  "status": "ADOPTED_BOUNDED_DEVELOPMENT_SLICE_INDIVIDUAL_MERGE_PENDING",
+  "recordedUTC": "2026-10-25T09:08:07.547640+00:00",
+  "readAgainstCommit": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+  "activation": "Goal8 mergedPR409/main6a2; Goal9 source5c has named development qualification with individual merge pending. Goal10 stays queued until Goal9 individual verified merge.",
+  "publication08": {
+    "path": "docs/evidence/hud-stack-2026-10-24/publication-08.json",
+    "sha256": "1edd8471df68398c09abae7819fb489798aa0a1f45da64b18711057ac62aaa39",
+    "bytes": 2425,
+    "pullRequest": 409,
+    "mergedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "issue389": "closed/completed",
+    "projectProjection": "unavailable; do not infer Project Done"
+  },
+  "planningBoundary": "Only current accepted-main source and official roles inform this plan. Earlier unaccepted parallel-source assumptions are discarded; no unpublished other-root source or candidate is adopted.",
+  "staleReadAheadPreservation": {
+    "privatePath": "/private/tmp/starfall-hud-stack-20261024/goal-09-read-ahead-preactivation-stale-e4bfc332d1cb.json",
+    "sha256": "e4bfc332d1cb6a86d714153823a72328c07c8c5ec736d2ee1797e22b10dbb197",
+    "bytes": 10449,
+    "meaning": "Exact untracked pre-activation draft preserved privately before this current-source rewrite. It is not current acceptance or implementation evidence."
+  },
+  "alreadyAccepted": [
+    "Goals1/2: one continuous painting, complete intrinsic native header, shared numeric roles and earned-line symbol/objective reservation; full native targets and one board/hit/accessibility/receipt projection.",
+    "Goals3/4: official fitted scenery protection and stable shared utility/contact glyph roles. Existing active input and disabled/selected semantics remain.",
+    "Goals5/6: one ordered forecast row, timing-only ordinary trail with semantic shared forecast, exact current full/near facts and compact portrait automaticStory instruments; practice and FullBoard remain distinct.",
+    "Goal7: source-local exceptional light, scaled ceiling-safe award/figure boundaries, compact non-island portrait Survival reading and existing80pt return reserve.",
+    "Goal8: stronger exact reader totals and explicit native scene ownership/transfer/current-owner teardown. Original reading layout, clocks/saves and complete reader roles remain. Initial gray/rejected-candidate and isolated-pan histories stay preserved."
+  ],
+  "sourceFacts": [
+    {
+      "owner": "App/SkyReadingPlayfield.swift / SkyReadingLayout",
+      "fact": "One continuous painting now backs adjacent instrument/play columns for local short-wide proposals. Complete score and Pause stay pinned; forecast/current-room facts scroll independently. The other column reserves existing80pt returns and the common native board/ceiling/guide mapping. Existing contextual play/next actions retain full45pt targets and complete spoken names. Essential menu navigation precedes optional Mastery."
+    },
+    {
+      "owner": "App/FallingSkyView.swift:readingPlayfield/edgeHeader",
+      "fact": "Explicit local geometry feeds official header/return/board/guide slots; allocated header width and full-font vertical score fitting retain the common board projection. Tall/portrait/practice composition stays in context."
+    },
+    {
+      "owner": "App/FallingSkyMenu.swift",
+      "fact": "Same essential navigation precedes optionalMastery; current original8pan bound reaches completeSettingsrow on actualAX5phone. No action/copy/target deletion."
+    },
+    {
+      "owner": "UITests/NativeSkyControls.swift",
+      "fact": "Only new short-sidebar landscape with Text center outside reader uses real-reader hittability/window containment, unchanged whole spoken label, native inner scrollbars100%, complete native subheadline final-line band and whole final capture. Four-pan/exact fullText-bottom/action/outcome gates remain. Other profiles retain Text.isHittable. This is readability evidence, not Text activation or actualVoiceOver."
+    }
+  ],
+  "baselineHypothesis": {
+    "status": "REPRODUCED_CURRENT_ACCEPTED_MAIN_FAILURE_RETAINED_AS_HISTORY",
+    "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "testOnlyCheckpoint": "a8377c2c1e244db4d6a4718ba2483d8fb7f0e67c",
+    "runtime": "dev.2c4e822ca7",
+    "appDifferencesFromAcceptedMain": [],
+    "sourceSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-baseline-a8377c2c.json",
+      "sha256": "72583414c666f6eb2843fbe5ccdccfb5d1c8310b76772fb3f0d22a7e83b7a54c",
+      "bytes": 185468
+    },
+    "commands": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-baseline-a8377c2c.json",
+      "sha256": "1587e47e9dddf6182a976f63880b98a5b8713e9fa3bb4649e05898fa7c6a3563",
+      "bytes": 7820
+    },
+    "review": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-baseline-short-landscape.json",
+      "sha256": "68a691e852e96ccda202650423fc2ad0b2c250f40ffd931980303ef6570c7792",
+      "bytes": 34850
+    },
+    "observation": "Actual AX5 phone landscape owning scroll frame{{0.0,432.3},{844.0,0.0}} has no remaining playable viewport after the complete header and80pt return plus16pt outsets. Hosted667x375/852x393 also expose insufficient complete native occupied-cell space; silhouettes and complete cell rectangles are distinguished.",
+    "nativeResult": "Baseline native1failed,0passed,0skipped before recovery; hosted1failed with13 logged assertions, not13 distinct tests. These failures remain failed.",
+    "qualification": "a837 App is byte-identical accepted6a2/Goal8. Synthetic local windows inherit documented host insets; actual rotation is separately bound. Longer waits/pan bounds do not correct the measured zero-height allocation."
+  },
+  "candidateBoundary": {
+    "status": "IMPLEMENTED_AND_QUALIFIED_FOR_NAMED_DEVELOPMENT_SLICE; INDIVIDUAL_MERGE_PENDING",
+    "officialRole": "Shared short-landscape reading composition",
+    "owners": [
+      "App/FallingSkyMenu.swift",
+      "App/FallingSkyView.swift",
+      "App/SkyReadingPlayfield.swift",
+      "Starfall.xcodeproj/project.pbxproj"
+    ],
+    "visibleRefinement": "One continuous painting now backs adjacent instrument/play columns for local short-wide proposals. Complete score and Pause stay pinned; forecast/current-room facts scroll independently. The other column reserves existing80pt returns and the common native board/ceiling/guide mapping. Existing contextual play/next actions retain full45pt targets and complete spoken names. Essential menu navigation precedes optional Mastery.",
+    "mapping": "Full native fonts and44forecast/48utility targets, existing80return and one board/hit/AX/receipt projection remain; portrait/tall/practice siblings use their existing composition.",
+    "oracleCorrection": "Only new short-sidebar landscape with Text center outside reader uses real-reader hittability/window containment, unchanged whole spoken label, native inner scrollbars100%, complete native subheadline final-line band and whole final capture. Four-pan/exact fullText-bottom/action/outcome gates remain. Other profiles retain Text.isHittable. This is readability evidence, not Text activation or actualVoiceOver.",
+    "removedExperiments": "SkyDialogueBubble exactly matches accepted6a2. Label-only and explicit activation-point experiments failed and were removed; no AppAX correction or SDK cause is claimed.",
+    "scope": "No Core/rules/RNG/save/clock/assets/artwork/network/SDK/target change; no Goal10 implementation."
+  },
+  "combinedStates": [
+    "Current ordered forecast and its selected column together with actual full/one-space facts and an expanded guide, with quiet labels below score priority.",
+    "A real committed clear receipt and subsequent legitimate current-forecast selection. A move retires old selection; never retain/inject stale selection to fabricate simultaneity. If native timing cannot sample coexistence, report the missing phase rather than infer it.",
+    "Naturally earned points/objective plus separate clearly labeled long-score component stress specimens; no synthetic totals labeled as earned gameplay.",
+    "FullBoard mode/no-shower contract, tutorial lesson/clearance, calibrated island variant, manual trace, live-empty native scene and reader/Return cancellation remain sibling checks."
+  ],
+  "verificationCandidates": {
+    "status": "FINAL_EXECUTED_SELECTED_CHECKS; initial proposals remain in planningHistory",
+    "hostedCount": 18,
+    "mainNativeExecutionCount": 7,
+    "mainNativeUniqueMethods": 6,
+    "sourceOfTruth": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09.json",
+      "sha256": "3265b782063cb029c4a5142e3beb92fce75917b3a36aebb9bd710232b1503a15",
+      "bytes": 39845
+    },
+    "literalSelectorsAndBounds": "Exact18hosted and seven main native selector/device/method/process records are preserved in verification-09.checks; do not infer full inventory execution."
+  },
+  "limits": [
+    "Named selected hosted/native/sampled-motion/exact-export scopes only, no full matrix, continuous motion/performance, actualVoiceOver, physical-device, minimum-iOS or human-recognition claim.",
+    "Scroll slices do not establish simultaneous complete whole pages: phone landscape lower rows/AX apron and guide can be offscreen; menu row raster does not show covered34kscore or allMastery.",
+    "The scoped short-sidebar guide-end oracle is a test/readability correction, not an AppText activation fix. OriginalBubble reverted to accepted6a2; label/activation experiments and all earlier failures remain historical; no privateSDKcause assigned.",
+    "Old historical Debug Info.plist hashes in frozen initial/correction records describe contemporaneously measured products at reused DerivedData paths. Those old product files were not separately retained and are now naturally overwritten by06a products; do not repair hashes or imply they verify current bytes. Archived source/log/capture evidence remains.",
+    "The failed manualMCP route never supplied accepted menu pixels; optimizedHomeJPEG excluded. Later original FullBoard capture-only duplicate supplies current wholemenu row with zero new unique coverage.",
+    "Goal9 individual merge/issue completion/publication remain pending. Goal10 implementation remains queued until that verified merge; no PR number or ProjectDone claim is invented."
+  ],
+  "planningHistory": {
+    "qualification": "Original activation planning predates the reproduced baseline and implementation. Exact complete original JSON is preserved by the committed Git revision and the private byte-identical snapshot; it is not current evidence. Original acceptance criteria remain unchanged at top level of acceptance.json.",
+    "originalRecordedUTC": "2026-10-25T09:08:07.547640+00:00",
+    "originalStatus": "CURRENT_ACCEPTED_MAIN_PLAN_NOT_IMPLEMENTED",
+    "originalGitVersion": {
+      "commit": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+      "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-09-read-ahead.json",
+      "sha256": "97110801a12680ad627e8524ad29bb30157538a849e3a6f07ce2dbb1afa3f366",
+      "bytes": 9934
+    },
+    "privateByteIdenticalSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/goal-09-read-ahead-before-final-adoption.json",
+      "sha256": "97110801a12680ad627e8524ad29bb30157538a849e3a6f07ce2dbb1afa3f366",
+      "bytes": 9934
+    },
+    "originalHypothesis": "At short landscape height, complete stacked forecast/pressure/native header plus the fixed return band may consume too much reading viewport. Current accepted-main counterexample has not yet been captured.",
+    "originalBaselineStatus": "NOT_REPRODUCED_ON_CURRENT_MAIN; no layout failure or candidate outcome inferred from source, old draft or another root.",
+    "originalCandidateStatus": "NOT_IMPLEMENTED; precise local fit rule and role contract follow baseline",
+    "proposalQualification": "Initial13-existing-hosted/six-native proposals were source selections, not completed checks. Final selected18hosted/seven main executions/six unique methods supersede those proposals only as current results; original lists remain in the exact Git snapshot."
+  },
+  "updatedUTC": "2026-10-25T11:45:33.574840+00:00",
+  "currentSource": {
+    "head": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "totalCanonicalInputs": 735,
+    "sourceRecord": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-09.json",
+      "sha256": "03b8c1b7da9017328a63f012b477c94e8a84f57806d7ed6aad940e6c9c880ec0",
+      "bytes": 8706
+    },
+    "qualification": "Full literal owners, per-file hashes and original/later dump timing are bound by source09; no separate current-main acceptance is inferred before merge."
+  },
+  "currentResults": {
+    "main": {
+      "core": 352,
+      "hosted": 18,
+      "nativeExecutions": 7,
+      "nativeUniqueMethods": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    "normalMotionSupplement": {
+      "nativeExecutions": 1,
+      "uniqueMethods": 1,
+      "separateFromMain": true,
+      "commandManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-5c05ecef-supplemental-motion-fresh1141.json",
+        "sha256": "1d538e768f85421e216449d492f9603e6dedb56815be515e82605fef0c449bf3",
+        "bytes": 52970
+      },
+      "visualReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-motion.json",
+        "sha256": "e3af1e3507c5c0d267567e4b9f30297ffba5b91dff85d480889c4da7939a40c2",
+        "bytes": 21235
+      }
+    },
+    "menuCaptureDuplicate": {
+      "nativeExecutions": 1,
+      "additionalUniqueCoverage": 0,
+      "separateFromMain": true,
+      "mechanics": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-menu-capture.json",
+        "sha256": "23b36f149a5c5607543835cd5e579994650af5d2d6b81d8f535a2a51fbf5cbd2",
+        "bytes": 5422
+      },
+      "nativeVisual": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-menu-capture.json",
+        "sha256": "d7f126996b8e52b3f4996a4f9a148db011aa5f069d48644685d7e1cae553e6e5",
+        "bytes": 20183
+      }
+    },
+    "nativeExecutionsAcrossSeparateCurrentScopes": 9,
+    "Debug": "PASS",
+    "Release": "PASS",
+    "runtimeWarnings": [],
+    "retainedExports": {
+      "count": 13,
+      "bytes": 7687225,
+      "index": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-09.json",
+        "sha256": "bf75810dbbdafc9940ac76a01a96817bf8093a836ebc349f327da18abc87cacd",
+        "bytes": 73487
+      },
+      "exactVisualGate": "PASS_BOUNDED_EXACT_RETAINED_EXPORTS",
+      "review": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-exports.json",
+        "sha256": "f0797b09252b7bec55d2bc070f5e9f0b5393bc4c6950e0b7af8e7b2fb0890554",
+        "bytes": 76591
+      },
+      "fidelityPassedPairs": 13,
+      "historicalRejectedCounterexamplesPreserved": 2,
+      "qualification": "All13 exact conversions pass fidelity; the two historical baseline counterexamples remain product failures, not current-source visual passes."
+    },
+    "inventory": {
+      "hostedMethods": 821,
+      "developmentPhoneUIMethods": 262,
+      "actualVoiceOverDeferredMethods": 6
+    },
+    "claim": "Selected execution counts, not full discovered matrix. Main7 plus normal1 plus capture-only1 remain distinct; capture duplicate supplies no additional unique method."
+  },
+  "evidence": {
+    "source": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-09.json",
+      "sha256": "03b8c1b7da9017328a63f012b477c94e8a84f57806d7ed6aad940e6c9c880ec0",
+      "bytes": 8706
+    },
+    "mechanics": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09.json",
+      "sha256": "3265b782063cb029c4a5142e3beb92fce75917b3a36aebb9bd710232b1503a15",
+      "bytes": 39845
+    },
+    "captures": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-09.json",
+      "sha256": "bf75810dbbdafc9940ac76a01a96817bf8093a836ebc349f327da18abc87cacd",
+      "bytes": 73487
+    },
+    "native": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-native.json",
+      "sha256": "59ca0a4b5221f289e75a126bd6a6bc77225c603da164e17e70b75589215573b8",
+      "bytes": 53786
+    },
+    "hosted": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-hosted.json",
+      "sha256": "62498c307a059eddd21a7aa25155cd98faccf59748e6d94df6a01e6ad2f50e0b",
+      "bytes": 56648
+    },
+    "motion": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-motion.json",
+      "sha256": "e3af1e3507c5c0d267567e4b9f30297ffba5b91dff85d480889c4da7939a40c2",
+      "bytes": 21235
+    },
+    "menuMechanics": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-menu-capture.json",
+      "sha256": "23b36f149a5c5607543835cd5e579994650af5d2d6b81d8f535a2a51fbf5cbd2",
+      "bytes": 5422
+    },
+    "menuNative": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-menu-capture.json",
+      "sha256": "d7f126996b8e52b3f4996a4f9a148db011aa5f069d48644685d7e1cae553e6e5",
+      "bytes": 20183
+    },
+    "manualToolHistory": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-menu-tool-history.json",
+      "sha256": "f221577a0a5e0c0bbc94bd2e1b270fd3d38c398109443040d8a61fd58182ca46",
+      "bytes": 1938
+    },
+    "baselineNativeHosted": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-baseline-short-landscape.json",
+      "sha256": "68a691e852e96ccda202650423fc2ad0b2c250f40ffd931980303ef6570c7792",
+      "bytes": 34850
+    },
+    "baselineTabletSibling": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-baseline-tablet.json",
+      "sha256": "9aa9b3833dd2a744c1929a9b604d104c7520c3af2f2b8f26f596fa5bf4d84933",
+      "bytes": 18599
+    },
+    "fullBoardNative": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-navigation-full-board.json",
+      "sha256": "ede69c857698d97de6c5710e899ab0f323cf1bf0bc6dfb6469b5143a04688553",
+      "bytes": 27323
+    },
+    "retainedExports": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-exports.json",
+      "sha256": "f0797b09252b7bec55d2bc070f5e9f0b5393bc4c6950e0b7af8e7b2fb0890554",
+      "bytes": 76591
+    }
+  },
+  "publication": {
+    "status": "INDIVIDUAL_PR_MERGE_PENDING",
+    "goal10": "QUEUED_UNTIL_GOAL9_INDIVIDUAL_VERIFIED_MERGE",
+    "issue390": "No new closure/ProjectDone assertion; root confirms after merge"
+  },
+  "baseAcceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+  "baseAcceptedRuntime": "dev.2c4e822ca7",
+  "candidateRuntime": "dev.06a3229203"
+}

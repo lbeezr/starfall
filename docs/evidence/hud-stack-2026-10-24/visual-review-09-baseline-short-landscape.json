@@ -1,0 +1,552 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "reviewedUTC": "2026-10-25T09:21:18.216964+00:00",
+  "status": "REJECTED_BASELINE_SHORT_LANDSCAPE_VIEWPORT_STARVATION",
+  "source": {
+    "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "testCheckpoint": "a8377c2c1e244db4d6a4718ba2483d8fb7f0e67c",
+    "runtime": "dev.2c4e822ca7",
+    "sourceSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-baseline-a8377c2c.json",
+      "sha256": "72583414c666f6eb2843fbe5ccdccfb5d1c8310b76772fb3f0d22a7e83b7a54c",
+      "bytes": 185468
+    },
+    "appDifferencesFromMain": [],
+    "testOnlyChanges": [
+      "AppTests/SkyReadingPlayfieldTests.swift",
+      "UITests/ObservatoryInteractionTests.swift",
+      "UITests/SkyFlowInteractionTests.swift"
+    ],
+    "qualification": "App source is unchanged from accepted Goal8 main. Newly added baseline tests expose a residual short-landscape contract failure; no candidate product change is represented."
+  },
+  "reference": {
+    "path": "docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "region": "Approved middle Play screen; directly viewed during this baseline review sequence"
+  },
+  "visualVerdict": {
+    "result": "REJECT",
+    "primaryFailure": "Actual rotated AX5 phone has no remaining playable board viewport. Its header consumes the short landscape composition, unlike the approved star-field-first Play direction.",
+    "supportingFindings": [
+      "Hosted AX5 short windows likewise show no board/ceiling/action area;667pt-width lower near-status text is additionally clipped.",
+      "Default hosted short windows show one jewel row initially but cannot retain seven complete native occupied cells when the full ceiling is revealed;852 default has7 initially and1 after ceiling reveal,667 default has0 complete cells at both positions.",
+      "Default667 initial visibly paints seven jewel silhouettes. The0 count describes complete native cell rectangles, not absent jewel pixels; this review does not mislabel that image as starless."
+    ],
+    "responsibleBoundary": "The pinned header plus fixed96pt return reserve compete for a finite short landscape height. Actual native scroll frame y432.3,height0 confirms starvation before any edge pan; this is not resolved by a longer wait or larger gesture budget. Root owns the shared composition correction."
+  },
+  "nativeFailure": {
+    "selector": "StarfallUITests/SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+    "methodAllowanceSeconds": 300,
+    "methodElapsedSeconds": 65.535,
+    "stageElapsedSeconds": 69.248,
+    "callsite": "UITests/SkyFlowInteractionTests.swift:220, app.revealSkyControls([topStar])",
+    "guard": "UITests/NativeSkyControls.swift, requested complete target height must fit actual owning viewport",
+    "failure": "Requested sky targets cannot fit together",
+    "logTimeSeconds": 65.02,
+    "actualOwningScrollFrame": "{{0.0, 432.3}, {844.0, 0.0}}",
+    "phase": "After natural four-shower full/near Story state in portrait and actualLandscapeLeft; before recovery clear/5000 receipt/fifth shower. No recovery result or receipt proof is claimed."
+  },
+  "hostedQualification": {
+    "selector": "StarfallAppTests/SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars",
+    "methodElapsedSeconds": 14.649,
+    "counts": "one failed method with13 logged assertion failures, not13 distinct tests",
+    "profiles": [
+      {
+        "capture": "short-landscape-crowded-story-852x393-AX5-ceiling-revealed-frames_0_519A40C2-3BDC-4243-BA66-03E29680D17B.txt",
+        "visibleCompleteOccupiedCells": 0,
+        "diagnostics": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/12C3F1ED-2C30-4C8A-BF9D-6957A74E5C88.txt",
+          "sha256": "ee3cbca9c73edc8607e0e371dbdce4c55f00b7d155d1be8c8c73c681dd7d7c58",
+          "bytes": 1603
+        }
+      },
+      {
+        "capture": "short-landscape-crowded-story-852x393-AX5-initial-frames_0_E089C179-B34A-4C51-A5E1-C9750F9C11E2.txt",
+        "visibleCompleteOccupiedCells": 0,
+        "diagnostics": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/E1176038-FFF2-4B28-82BC-9D15126A24E6.txt",
+          "sha256": "da05431abf21bf6f145a8d42a6aa1b8052330c789951041e4e75a478a9d415fc",
+          "bytes": 1643
+        }
+      },
+      {
+        "capture": "short-landscape-crowded-story-852x393-default-ceiling-revealed-frames_0_00560445-40A8-4F81-BF12-0AA6E9C10010.txt",
+        "visibleCompleteOccupiedCells": 1,
+        "diagnostics": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/0F643EC9-5214-4942-A287-79D50B585266.txt",
+          "sha256": "9c42f444c98c0325905b5d2ff314851a33ccb2897dbebd3b0dd5f01c816dc124",
+          "bytes": 1650
+        }
+      },
+      {
+        "capture": "short-landscape-crowded-story-852x393-default-initial-frames_0_E25D1C0A-2DA9-4EDB-BC8E-C82A94093DAC.txt",
+        "visibleCompleteOccupiedCells": 7,
+        "diagnostics": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/E63DD035-DB2C-4A3C-8C23-AB3F6E7F328B.txt",
+          "sha256": "29ff11afef15697c3d0d81a9bc42832302497929de13b43d8b089f33cc3972d2",
+          "bytes": 1668
+        }
+      },
+      {
+        "capture": "short-landscape-crowded-story-667x375-AX5-ceiling-revealed-frames_0_F9C040A9-0960-41E7-BF91-1065F28730CB.txt",
+        "visibleCompleteOccupiedCells": 0,
+        "diagnostics": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/24B37A33-C663-4415-A6D6-DB14FF4C967D.txt",
+          "sha256": "899f35fd3a3bf977da5fab6fc3d7bd8266363d9233d61ce499832ac438cbfb69",
+          "bytes": 1657
+        }
+      },
+      {
+        "capture": "short-landscape-crowded-story-667x375-AX5-initial-frames_0_0D74D353-9A78-4F12-9CC0-A483EA05AC09.txt",
+        "visibleCompleteOccupiedCells": 0,
+        "diagnostics": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/A7DAE845-9A3D-490C-A9C3-E6F121A42BA0.txt",
+          "sha256": "2e87125943e4aa8c8b25ec3737f74f333cde14b4307df9a967f2f0bfdd23fd4a",
+          "bytes": 1697
+        }
+      },
+      {
+        "capture": "short-landscape-crowded-story-667x375-default-ceiling-revealed-frames_0_8916374F-A137-44D4-809E-18EB748F1895.txt",
+        "visibleCompleteOccupiedCells": 0,
+        "diagnostics": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/AB1BDB35-1448-49D9-8F55-D80ECD2DB87B.txt",
+          "sha256": "856da9c4221f5dccf826864515d476ccfd0f302c04f247640a68583b2f08d0ca",
+          "bytes": 1677
+        }
+      },
+      {
+        "capture": "short-landscape-crowded-story-667x375-default-initial-frames_0_BBB44D39-6C48-4587-BE91-CAA49D1F4835.txt",
+        "visibleCompleteOccupiedCells": 0,
+        "diagnostics": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/8E22F8B7-33DB-4286-A519-314667853253.txt",
+          "sha256": "fa7b850a274ce076e988af4cb3e991001fe50666542f27ca675dd6f877f40634",
+          "bytes": 1695
+        }
+      }
+    ],
+    "safeAreaCaveat": "Synthetic667x375 and852x393 local windows retain the actual host scene portrait safeInsets top47/bottom34 and actual scene bounds390x844. These are bounded hosted layout probes, not native orientation captures.",
+    "state": "Actual production-root FallingSkyView, natural committed Lantern4 after four publicCore showers; full2, near1/3/4/5/6; isolateddefaults/ManualRainClock now0. sceneReadytrue,suspendedfalse.",
+    "projection": "Local native canvas and scene both have900pt height and common mapping; logged local dimensions/common-space physical-edge gates do not fail. A settled readiness flag alone does not establish usable space.",
+    "scroll": "Hosted ceiling-reveal uses programmatic actual UIScrollView offset only; it is extent/layout evidence and not native pan acceptance."
+  },
+  "groups": [
+    {
+      "kind": "HOSTED_SYNTHETIC_LOCAL_WINDOWS",
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/manifest.json",
+        "sha256": "7297efbbeab1135f35570b3ca10e0d42a8f2b9a1b5cf72bef737df6eb590d800",
+        "bytes": 11972
+      },
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-summary.json",
+        "sha256": "852a901b786b7cc9f772a775352f0000372ef6fd29931337462cbd0d6ca569c8",
+        "bytes": 1344
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-receipt.json",
+        "sha256": "cd21244fc283d9036508c8ed58f6eba81208495e2e4a7d7ef0e352eae258fa4c",
+        "bytes": 171
+      },
+      "log": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c.log",
+        "sha256": "f034eb0ea4262541a3e51a690f5621b6cac21c980474d59136aeb03efce84baf",
+        "bytes": 11979
+      },
+      "counts": {
+        "totalTestCount": 1,
+        "passedTests": 0,
+        "failedTests": 1,
+        "skippedTests": 0
+      },
+      "stageElapsedSeconds": 23.754,
+      "exitCode": 65,
+      "limitSeconds": 180.0,
+      "runtimeWarnings": [],
+      "summaryFailures": [
+        {
+          "failureText": "XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial crowded 667x375-default placement must settle on at least seven fully visible actual stars",
+          "targetName": "StarfallAppTests",
+          "testIdentifier": 1,
+          "testIdentifierString": "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallAppTests/SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars",
+          "testName": "testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()"
+        }
+      ],
+      "loggedAssertionFailureCount": 13,
+      "loggedAssertionFailures": [
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:461: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial crowded 667x375-default placement must settle on at least seven fully visible actual stars",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:462: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertGreaterThanOrEqual failed: (\"0\") is less than (\"7\") - Crowded 667x375-default must retain a playable native star field",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:501: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertGreaterThanOrEqual failed: (\"0\") is less than (\"7\") - Revealing the crowded 667x375-default ceiling must retain seven fully visible actual stars",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:461: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial crowded 667x375-AX5 placement must settle on at least seven fully visible actual stars",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:462: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertGreaterThanOrEqual failed: (\"0\") is less than (\"7\") - Crowded 667x375-AX5 must retain a playable native star field",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:495: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertTrue failed - The complete 667x375-AX5 header must fit the native window",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:498: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertTrue failed - The complete scaled 667x375-AX5 ceiling must be reachable",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:501: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertGreaterThanOrEqual failed: (\"0\") is less than (\"7\") - Revealing the crowded 667x375-AX5 ceiling must retain seven fully visible actual stars",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:501: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertGreaterThanOrEqual failed: (\"1\") is less than (\"7\") - Revealing the crowded 852x393-default ceiling must retain seven fully visible actual stars",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:461: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial crowded 852x393-AX5 placement must settle on at least seven fully visible actual stars",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:462: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertGreaterThanOrEqual failed: (\"0\") is less than (\"7\") - Crowded 852x393-AX5 must retain a playable native star field",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:498: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertTrue failed - The complete scaled 852x393-AX5 ceiling must be reachable",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:501: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertGreaterThanOrEqual failed: (\"0\") is less than (\"7\") - Revealing the crowded 852x393-AX5 ceiling must retain seven fully visible actual stars"
+      ],
+      "images": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/A907A746-F5CA-40F0-B7EC-31DEEAFAB24C.png",
+          "sha256": "4b65cb30b3089998d5b7334cb90c9cd6c8cdce1ef3797955bc285ad42ce0ddae",
+          "bytes": 8634230,
+          "storedPixels": [
+            2556,
+            1179
+          ],
+          "exifOrientation": 1,
+          "displayPixels": [
+            2556,
+            1179
+          ],
+          "name": "short-landscape-crowded-story-852x393-AX5-ceiling-revealed_0_FF24A60C-CBFD-40BE-A2A0-BAB5ECB46071.png",
+          "timestamp": 1792919605.096,
+          "testIdentifier": "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()",
+          "directWholeImageViewed": true,
+          "verdict": "REJECT",
+          "observed": "852x393 AX5 ceiling attempt still has no board/ceiling/actions; measured scroll viewport is empty."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/2DF28FA6-3C53-4DF7-84A7-7A93E9D49694.png",
+          "sha256": "4b65cb30b3089998d5b7334cb90c9cd6c8cdce1ef3797955bc285ad42ce0ddae",
+          "bytes": 8634230,
+          "storedPixels": [
+            2556,
+            1179
+          ],
+          "exifOrientation": 1,
+          "displayPixels": [
+            2556,
+            1179
+          ],
+          "name": "short-landscape-crowded-story-852x393-AX5-initial_0_9A1A3F0C-AF59-4CC7-8BFE-C38DBD75FC24.png",
+          "timestamp": 1792919604.722,
+          "testIdentifier": "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()",
+          "directWholeImageViewed": true,
+          "verdict": "REJECT",
+          "observed": "852x393 AX5 initial: full score/forecast/full+near text remains readable, but instruments consume the window and no playable stars/ceiling/actions are visible."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/3FC66D33-14AD-44C2-A766-21DF4D38C17F.png",
+          "sha256": "0842000afcabe0ff1b84b38035773c6e0810c2f7e8a221623dc5518a5d70871a",
+          "bytes": 10574626,
+          "storedPixels": [
+            2556,
+            1179
+          ],
+          "exifOrientation": 1,
+          "displayPixels": [
+            2556,
+            1179
+          ],
+          "name": "short-landscape-crowded-story-852x393-default-ceiling-revealed_0_E62546EB-14F4-4654-9415-91E62A80B547.png",
+          "timestamp": 1792919600.718,
+          "testIdentifier": "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()",
+          "directWholeImageViewed": true,
+          "verdict": "REJECT",
+          "observed": "852x393 default ceiling-revealed: ceiling and single top comet are visible; next row cuts at bottom. Only1 occupied native cell fits, below the seven-cell contract."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/EB77440F-96EA-459A-9ADA-A88EFBCA8969.png",
+          "sha256": "3e7f2a476e83f4d51dd0003e353b0bac1805b60b673e5921921d6a302368f9a2",
+          "bytes": 10651135,
+          "storedPixels": [
+            2556,
+            1179
+          ],
+          "exifOrientation": 1,
+          "displayPixels": [
+            2556,
+            1179
+          ],
+          "name": "short-landscape-crowded-story-852x393-default-initial_0_197C9299-4EC1-4A3C-8948-8EE7C8539414.png",
+          "timestamp": 1792919600.304,
+          "testIdentifier": "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()",
+          "directWholeImageViewed": true,
+          "verdict": "REJECT",
+          "observed": "852x393 default initial: seven actual occupied cells fit by geometry, but only one jewel row is presented and footer actions are partly clipped. Ceiling is offscreen at this initial scroll."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/C9D0DD2F-4773-44D5-A239-5144F04F6C66.png",
+          "sha256": "7357c78c84fdaecb691c3577c0ea489f7fd68d27704fc43b7f6e7f388f299a8f",
+          "bytes": 6001881,
+          "storedPixels": [
+            2001,
+            1125
+          ],
+          "exifOrientation": 1,
+          "displayPixels": [
+            2001,
+            1125
+          ],
+          "name": "short-landscape-crowded-story-667x375-AX5-ceiling-revealed_0_E5291D48-B244-4519-B6D1-3427F0CB08A3.png",
+          "timestamp": 1792919599.217,
+          "testIdentifier": "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()",
+          "directWholeImageViewed": true,
+          "verdict": "REJECT",
+          "observed": "667x375 AX5 ceiling attempt remains visually identical in composition: no board/ceiling/actions visible and lower one-space text clips."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/22267533-7E29-4EA1-B0D6-0DB808D2FC6F.png",
+          "sha256": "7357c78c84fdaecb691c3577c0ea489f7fd68d27704fc43b7f6e7f388f299a8f",
+          "bytes": 6001881,
+          "storedPixels": [
+            2001,
+            1125
+          ],
+          "exifOrientation": 1,
+          "displayPixels": [
+            2001,
+            1125
+          ],
+          "name": "short-landscape-crowded-story-667x375-AX5-initial_0_5D7E0BF1-9DCF-426E-9D1D-99469317CA0F.png",
+          "timestamp": 1792919598.929,
+          "testIdentifier": "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()",
+          "directWholeImageViewed": true,
+          "verdict": "REJECT",
+          "observed": "667x375 AX5 initial: oversized pinned score/forecast/full+near facts occupy the whole window; lower one-space text clips, no board/ceiling/actions visible."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/BC203CF3-839A-473D-B19D-D4EAAAEFBABC.png",
+          "sha256": "3ab31696e5fe242fb814fdad26ea7123a8b14f4341e7c0fd47dec6348e9e3ccd",
+          "bytes": 8315247,
+          "storedPixels": [
+            2001,
+            1125
+          ],
+          "exifOrientation": 1,
+          "displayPixels": [
+            2001,
+            1125
+          ],
+          "name": "short-landscape-crowded-story-667x375-default-ceiling-revealed_0_57357FB2-8B33-4D8B-B18D-6846312067A9.png",
+          "timestamp": 1792919595.02,
+          "testIdentifier": "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()",
+          "directWholeImageViewed": true,
+          "verdict": "REJECT",
+          "observed": "667x375 default ceiling-revealed: warning strip is visible, while only the isolated top-column comet is painted and complete occupied native cells remain0. Cannot preserve seven complete cells with the ceiling."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/8844AF68-E27B-4C45-9257-30C77AD920BB.png",
+          "sha256": "14ca4efe0bef361ea13c1c275d49304b43f4d37cbd7e34fcd81f192942568560",
+          "bytes": 8363137,
+          "storedPixels": [
+            2001,
+            1125
+          ],
+          "exifOrientation": 1,
+          "displayPixels": [
+            2001,
+            1125
+          ],
+          "name": "short-landscape-crowded-story-667x375-default-initial_0_E96EEE7E-3801-47C5-A890-BBDF40289BD9.png",
+          "timestamp": 1792919594.462,
+          "testIdentifier": "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()",
+          "directWholeImageViewed": true,
+          "verdict": "REJECT",
+          "observed": "667x375 default initial: seven whole jewel silhouettes are painted, but the lower actions are clipped and measured complete native occupied-cell count is0; jewel ink is not the native hit-cell rectangle."
+        }
+      ],
+      "textEvidence": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/AB8816DC-001D-444C-B667-3C95E362AC20.txt",
+          "sha256": "751f07c910fc95cc4de159618c38cd4b62a54ba63b87041afa7f29bf344e4cf9",
+          "bytes": 258,
+          "name": "short-landscape-crowded-story-852x393-AX5-physical-projection_0_B11657D6-2035-4063-A3CE-E352B476473A.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/3C5C5651-0841-4077-89A9-D20B5C49064C.txt",
+          "sha256": "9f3d0cddb17abcadd2f3dbe446370c13515ba0274847de12fe0bcd56e758c273",
+          "bytes": 328,
+          "name": "short-landscape-crowded-story-852x393-AX5-ceiling-geometry_0_C5C732B6-E798-483C-AEFC-8AD4C4D43E7F.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/12C3F1ED-2C30-4C8A-BF9D-6957A74E5C88.txt",
+          "sha256": "ee3cbca9c73edc8607e0e371dbdce4c55f00b7d155d1be8c8c73c681dd7d7c58",
+          "bytes": 1603,
+          "name": "short-landscape-crowded-story-852x393-AX5-ceiling-revealed-frames_0_519A40C2-3BDC-4243-BA66-03E29680D17B.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/E1176038-FFF2-4B28-82BC-9D15126A24E6.txt",
+          "sha256": "da05431abf21bf6f145a8d42a6aa1b8052330c789951041e4e75a478a9d415fc",
+          "bytes": 1643,
+          "name": "short-landscape-crowded-story-852x393-AX5-initial-frames_0_E089C179-B34A-4C51-A5E1-C9750F9C11E2.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/60B4F05B-8EDC-4356-BADE-BDB2BB2F3E08.txt",
+          "sha256": "c659c5fe904d2b1c55420307766a7fb8c7228a11493280df6eb13a7afe20eacb",
+          "bytes": 280,
+          "name": "short-landscape-crowded-story-852x393-default-physical-projection_0_4BB84E7C-2EFF-4259-B322-D5CB93B52951.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/53394F05-6623-4DC5-9410-0FBDE3BA3968.txt",
+          "sha256": "f8aa5981fb1e1340a5f333f3628a59d7e3a3b51a09e9b0a985270524ab6fdd5b",
+          "bytes": 333,
+          "name": "short-landscape-crowded-story-852x393-default-ceiling-geometry_0_C86E3127-021D-4C35-9FF9-1F0E4ED0A093.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/0F643EC9-5214-4942-A287-79D50B585266.txt",
+          "sha256": "9c42f444c98c0325905b5d2ff314851a33ccb2897dbebd3b0dd5f01c816dc124",
+          "bytes": 1650,
+          "name": "short-landscape-crowded-story-852x393-default-ceiling-revealed-frames_0_00560445-40A8-4F81-BF12-0AA6E9C10010.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/E63DD035-DB2C-4A3C-8C23-AB3F6E7F328B.txt",
+          "sha256": "29ff11afef15697c3d0d81a9bc42832302497929de13b43d8b089f33cc3972d2",
+          "bytes": 1668,
+          "name": "short-landscape-crowded-story-852x393-default-initial-frames_0_E25D1C0A-2DA9-4EDB-BC8E-C82A94093DAC.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/26166E36-AC46-4646-92B4-F6D85F61970A.txt",
+          "sha256": "894d30cdcee2df168fd94cb1484346f670b78d4e1726df227025103693a94a69",
+          "bytes": 258,
+          "name": "short-landscape-crowded-story-667x375-AX5-physical-projection_0_D0795DB5-188B-4425-B6A5-33AA3B4CBD20.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/3B49E7B1-51A9-4D14-A32F-48CE4E49788D.txt",
+          "sha256": "5282c693cfce3bf37ca8ab0349dd256c01f37142335feb86e7917e911245b62d",
+          "bytes": 340,
+          "name": "short-landscape-crowded-story-667x375-AX5-ceiling-geometry_0_435262F5-A869-476A-AEE7-930D2752CDD9.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/24B37A33-C663-4415-A6D6-DB14FF4C967D.txt",
+          "sha256": "899f35fd3a3bf977da5fab6fc3d7bd8266363d9233d61ce499832ac438cbfb69",
+          "bytes": 1657,
+          "name": "short-landscape-crowded-story-667x375-AX5-ceiling-revealed-frames_0_F9C040A9-0960-41E7-BF91-1065F28730CB.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/A7DAE845-9A3D-490C-A9C3-E6F121A42BA0.txt",
+          "sha256": "2e87125943e4aa8c8b25ec3737f74f333cde14b4307df9a967f2f0bfdd23fd4a",
+          "bytes": 1697,
+          "name": "short-landscape-crowded-story-667x375-AX5-initial-frames_0_0D74D353-9A78-4F12-9CC0-A483EA05AC09.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/35183ACC-67E5-49DE-94A7-75DB4849A1B3.txt",
+          "sha256": "0ea9efb77e7223efff33b6361b2b60221d6c6cc4bb9846a86c951258124a4c80",
+          "bytes": 280,
+          "name": "short-landscape-crowded-story-667x375-default-physical-projection_0_EE5632EE-F8AC-465E-B00C-9152C8F295AF.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/4714A8D1-9407-4006-A50F-27292F71CC23.txt",
+          "sha256": "2a6d4a4df9e9b1a128a327b0cc9e54fe7a3f2fdda45a79737f9672870d4c4c6c",
+          "bytes": 332,
+          "name": "short-landscape-crowded-story-667x375-default-ceiling-geometry_0_10C22824-4A21-4ABA-A93C-B81FDF8BE80F.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/AB1BDB35-1448-49D9-8F55-D80ECD2DB87B.txt",
+          "sha256": "856da9c4221f5dccf826864515d476ccfd0f302c04f247640a68583b2f08d0ca",
+          "bytes": 1677,
+          "name": "short-landscape-crowded-story-667x375-default-ceiling-revealed-frames_0_8916374F-A137-44D4-809E-18EB748F1895.txt"
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/8E22F8B7-33DB-4286-A519-314667853253.txt",
+          "sha256": "fa7b850a274ce076e988af4cb3e991001fe50666542f27ca675dd6f877f40634",
+          "bytes": 1695,
+          "name": "short-landscape-crowded-story-667x375-default-initial-frames_0_BBB44D39-6C48-4587-BE91-CAA49D1F4835.txt"
+        }
+      ]
+    },
+    {
+      "kind": "ACTUAL_NATIVE_DEVICE_ROTATION",
+      "manifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-baseline-a8377c2c-landscape-ax5-attachments/manifest.json",
+        "sha256": "06de7b5cf6a479df7de2a9d539bafe6d12f39f7c69aaa97d27386858ba1d6b6c",
+        "bytes": 22537
+      },
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-baseline-a8377c2c-landscape-ax5-summary.json",
+        "sha256": "eab8272904f08c01a3d024a26f4bad2f9c881468044af35dc3f2e7f6562ef691",
+        "bytes": 1196
+      },
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-baseline-a8377c2c-landscape-ax5-receipt.json",
+        "sha256": "26977d42d352e04cb5f9f8a557602d783dd52ab4f2497e8e8ee1dce4a1f468d9",
+        "bytes": 185
+      },
+      "log": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-baseline-a8377c2c-landscape-ax5.log",
+        "sha256": "49a68e33d90c2f98e97f8af534f384cd7d09127bfec885d82e17c2d80509d554",
+        "bytes": 43165
+      },
+      "counts": {
+        "totalTestCount": 1,
+        "passedTests": 0,
+        "failedTests": 1,
+        "skippedTests": 0
+      },
+      "stageElapsedSeconds": 69.248,
+      "exitCode": 65,
+      "limitSeconds": 360.0,
+      "runtimeWarnings": [],
+      "summaryFailures": [
+        {
+          "failureText": "failed - Requested sky targets cannot fit together",
+          "targetName": "StarfallUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+          "testName": "testLargestQuietLandscapeStoryPressureAndCommittedRecovery()"
+        }
+      ],
+      "loggedAssertionFailureCount": 1,
+      "loggedAssertionFailures": [
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/UITests/SkyFlowInteractionTests.swift:220: error: -[StarfallUITests.SkyFlowInteractionTests testLargestQuietLandscapeStoryPressureAndCommittedRecovery] : failed - Requested sky targets cannot fit together"
+      ],
+      "images": [
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-baseline-a8377c2c-landscape-ax5-attachments/2C4A7A37-D1C1-41C6-A17B-9DD08767DE46.png",
+          "sha256": "f3b120d7f319351963ce5b469daeadcaafa66cc77984f9624526925b39a1a009",
+          "bytes": 3190650,
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 8,
+          "displayPixels": [
+            2532,
+            1170
+          ],
+          "name": "pressure-landscape-largest-before-reveal_0_B4333267-4160-437F-83EF-0BDA7942CCFD.png",
+          "timestamp": 1792919672.659,
+          "testIdentifier": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery()",
+          "directWholeImageViewed": true,
+          "verdict": "REJECT",
+          "observed": "Actual native AX5 landscape: complete score/forecast/full+near header occupies the whole390pt-height viewport. No playable star, ceiling strip, guide or footer action is visible; root scroll has zero height."
+        },
+        {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-baseline-a8377c2c-landscape-ax5-attachments/30608FEF-7330-40F5-8F6B-FA1EFD600723.png",
+          "sha256": "da1b6be798d6b714e1e05a871f9a0a9550dd2e4e78397ba848a527c40210ac4f",
+          "bytes": 3101527,
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "exifOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "name": "pressure-full-largest_0_CD914161-C2A7-43D4-B163-54DA9AEBD503.png",
+          "timestamp": 1792919670.737,
+          "testIdentifier": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery()",
+          "directWholeImageViewed": true,
+          "verdict": "PASS_CONTEXT_ONLY",
+          "observed": "Actual native AX5 portrait full-state context shows complete score, compact five-entry forecast and full/near facts, ceiling badges and multiple star rows; this is the successful preparation context, not a landscape pass."
+        }
+      ],
+      "textEvidence": []
+    }
+  ],
+  "limits": [
+    "No App/test edits, builds, controllers, decoding, export conversion or native rerun performed by reviewer.",
+    "This rejection does not supersede the separately passing default large-tablet historicalKite18-light baseline.",
+    "Actual phone evidence here is AX5/CalmYES with inherited system motion; the synthetic hosted cases requestCalmNO and record systemReduceMotionfalse. Do not treat them as identical timing conditions.",
+    "No selected-column focus, six-figure earned score, real5000 receipt, full animation, actualVoiceOver or physical-device acceptance is supplied by these failed cases.",
+    "Goal9 remains open until corrected source is independently reviewed and the original strict gates pass; these failures/history must be preserved."
+  ]
+}

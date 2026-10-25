@@ -228,61 +228,29 @@ import StarfallCore
     }
 
     /// One continuous painting backs the pinned instruments and reading viewport.
-    /// Crop only the unused crown of the foreground canvas, keeping SpriteKit,
-    /// native cells, ceiling and receipt sources on their original common mapping.
+    /// The reading component composes only explicit geometry, visibility and
+    /// official slots; Core state and the shared board mapping stay here.
     private func readingPlayfield(viewport: CGSize, landscape: Bool) -> some View {
-        let canvas = Self.readingCanvas(viewport: viewport, accessible: largeText)
-        let mapping = LandingGeometry(size: canvas.size)
+        let sidebarWidth = store.tutorial == nil ? SkyReadingLayout.sidebarWidth(viewport: viewport) : nil
         let clearance = SkyCeilingOverlay.requiredTopClearance(markerHeight: ceilingMarkerHeight)
+        let availableWidth = viewport.width - (sidebarWidth.map { $0 + StarfallTheme.Spacing.small } ?? 0)
+        let canvasWidth = sidebarWidth == nil ? availableWidth : SkyReadingLayout.canvasWidth(
+            availableWidth: availableWidth, viewportHeight: viewport.height, ceilingClearance: clearance)
+        let canvasViewport = CGSize(width: canvasWidth, height: viewport.height)
+        let canvas = Self.readingCanvas(viewport: canvasViewport, accessible: largeText)
+        let mapping = LandingGeometry(size: canvas.size)
         // Cropping can never consume part of the reserved ceiling strip when
         // UIKit aligns the shared canvas to physical pixels.
         let crop = max(0, ((mapping.arenaFrame.minY - clearance) * displayScale).rounded(.down) / displayScale)
-        return ZStack {
-            scenery(landscape: landscape).ignoresSafeArea()
-            VStack(spacing: 0) {
-                if !showingCeremony && !settings {
-                    edgeHeader(island: false, ceiling: SkyCeilingSnapshot(game: store.game, mapping: mapping),
-                               compactReading: compactStoryInstruments && !landscape)
-                        .padding(.horizontal, StarfallTheme.Spacing.medium)
-                        .padding(.top, StarfallTheme.Spacing.compact)
-                    // Exact figure returns need fixed sky while the cells scroll.
-                    // This region now belongs to the same painting as the HUD.
-                    Color.clear.frame(height: 80)
-                        .starlightAnchor(.constellationReturn)
-                        .padding(.vertical, StarfallTheme.Spacing.small)
-                        .allowsHitTesting(false).accessibilityHidden(true)
-                }
-                GeometryReader { readingViewport in
-                    ScrollViewReader { reader in
-                    ScrollView {
-                        VStack(spacing: StarfallTheme.Spacing.small) {
-                            board(expanded: true, landscape: landscape, showsScenery: false)
-                                .frame(height: canvas.size.height)
-                                .offset(y: -crop)
-                                .frame(height: canvas.visibleHeight - crop, alignment: .top).clipped()
-                                .allowsHitTesting(!settings && !showingCeremony)
-                                .accessibilityHidden(settings || showingCeremony)
-                                .id("sky.readingBoard")
-                            if !showingCeremony && !settings {
-                                guide(compact: false, maximumHeight: max(240, readingViewport.size.height - 2 * StarfallTheme.Spacing.medium))
-                                    .padding(.horizontal, StarfallTheme.Spacing.medium)
-                                    .padding(.bottom, StarfallTheme.Spacing.medium)
-                                    .frame(maxWidth: .infinity)
-                            }
-                        }
-                    }
-                    .scrollBounceBehavior(.basedOnSize)
-                    .task {
-                        // A compact reader starts on the current stars, rather
-                        // than the empty rows above the survivor opening.
-                        await Task.yield()
-                        guard !Task.isCancelled else { return }
-                        reader.scrollTo("sky.readingBoard", anchor: .bottom)
-                    }
-                    }
-                }
-            }
-        }
+        return SkyReadingPlayfield(
+            canvasSize: canvas.size, visibleHeight: canvas.visibleHeight, crop: crop,
+            isCovered: showingCeremony || settings, sidebarWidth: sidebarWidth,
+            pinsAward: sidebarWidth != nil && !largeText,
+            scenery: scenery(landscape: landscape),
+            header: edgeHeader(island: false, ceiling: SkyCeilingSnapshot(game: store.game, mapping: mapping),
+                               compactReading: compactStoryInstruments && !landscape, sidebar: sidebarWidth != nil),
+            board: board(expanded: true, landscape: landscape, showsScenery: false),
+            guide: { height in guide(compact: false, maximumHeight: height, compactActions: sidebarWidth != nil) })
     }
 
     /// Practice keeps the lesson and its progression visible. Crop only unused
@@ -365,60 +333,97 @@ import StarfallCore
         }
     }
 
-    private func edgeHeader(island: Bool, stacked: Bool = false, ceiling: SkyCeilingSnapshot? = nil, compactReading: Bool = false) -> some View {
+    private func edgeHeader(island: Bool, stacked: Bool = false, ceiling: SkyCeilingSnapshot? = nil,
+                            compactReading: Bool = false, sidebar: Bool = false) -> some View {
         let renderedForecastSource = forecastSource
-        let inspectionSource = headerInspectionSource(renderedForecastSource)
         let showsMode = store.game.challenge == .firstLight || store.game.challenge == .ribbonCrossing
         let compactHeader = compactReading && largeText
         return VStack(spacing: StarfallTheme.Spacing.compact) {
-            if compactHeader {
-                HStack(alignment: .top, spacing: StarfallTheme.Spacing.small) {
-                    scoreLabel
-                    VStack(spacing: StarfallTheme.Spacing.compact) {
-                        skyMenuButton
-                        showerTrail(island: false, width: StarfallTheme.Layout.compactShowerTrailWidth)
-                        Text(SkyCopy.text(store.showerCountdown.arriving ? .forecastCompactNow : .forecastCompactNext))
-                            .font(StarfallTheme.Typography.instrumentLabel)
-                            .foregroundStyle(StarfallTheme.Colors.textSecondary)
-                            .starfallSceneryProtection()
-                            .accessibilityHidden(true)
-                    }
-                }
-            } else if largeText || stacked {
-                stackedHeader(island: island)
-            } else {
+            if sidebar {
                 ViewThatFits(in: .horizontal) {
-                    HStack(spacing: StarfallTheme.Spacing.small) {
+                    HStack(alignment: .top, spacing: StarfallTheme.Spacing.small) {
                         scoreLabel
-                        Spacer(minLength: StarfallTheme.Spacing.small)
-                        if !island { showerTrail(island: false) }
+                        Spacer(minLength: 0)
                         skyMenuButton
+                    }.fixedSize(horizontal: true, vertical: false)
+                    VStack(alignment: .leading, spacing: StarfallTheme.Spacing.compact) {
+                        skyMenuButton.frame(maxWidth: .infinity, alignment: .trailing)
+                        scoreLabel
                     }
-                    stackedHeader(island: island)
                 }
+                .fixedSize(horizontal: false, vertical: true)
+                ScrollView {
+                    VStack(spacing: StarfallTheme.Spacing.small) {
+                        if !store.game.usesFullBoardRefill {
+                            showerTrail(island: false, width: StarfallTheme.Layout.compactShowerTrailWidth)
+                        }
+                        headerDetails(ceiling: ceiling, compact: true, source: renderedForecastSource)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.bottom, StarfallTheme.Spacing.small)
+                }
+                .scrollBounceBehavior(.basedOnSize)
+                .accessibilityIdentifier("sky.header.details")
+            } else {
+                if compactHeader {
+                    HStack(alignment: .top, spacing: StarfallTheme.Spacing.small) {
+                        scoreLabel
+                        VStack(spacing: StarfallTheme.Spacing.compact) {
+                            skyMenuButton
+                            showerTrail(island: false, width: StarfallTheme.Layout.compactShowerTrailWidth)
+                            Text(SkyCopy.text(store.showerCountdown.arriving ? .forecastCompactNow : .forecastCompactNext))
+                                .font(StarfallTheme.Typography.instrumentLabel)
+                                .foregroundStyle(StarfallTheme.Colors.textSecondary)
+                                .starfallSceneryProtection()
+                                .accessibilityHidden(true)
+                        }
+                    }
+                } else if largeText || stacked {
+                    stackedHeader(island: island)
+                } else {
+                    ViewThatFits(in: .horizontal) {
+                        HStack(spacing: StarfallTheme.Spacing.small) {
+                            scoreLabel
+                            Spacer(minLength: StarfallTheme.Spacing.small)
+                            if !island { showerTrail(island: false) }
+                            skyMenuButton
+                        }
+                        stackedHeader(island: island)
+                    }
+                }
+                headerDetails(ceiling: ceiling, compact: compactHeader, source: renderedForecastSource,
+                              showsForecastTitle: !compactHeader)
             }
-            if showsMode && store.game.usesFullBoardRefill {
-                modeLabel
-            }
-            if !store.game.isOver && !store.game.usesFullBoardRefill && !store.forecast.isEmpty {
-                SkyForecastDestinations(forecast: store.forecast, arriving: store.showerCountdown.arriving,
-                                        selectedID: forecastInspection?.entry(in: forecastSource)?.id,
-                                        select: { inspectForecast($0, source: renderedForecastSource) },
-                                        inspectShower: inspectionSource.map { source in { inspectShower(source: source) } },
-                                        inspectionEnabled: !store.busy, showsTitle: !compactHeader)
-                    .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
-            }
-            occupiedSpaceStatus(ceiling, compact: compactHeader)
         }
-        // The reading viewport may scroll, but its pinned instruments must
-        // retain the complete native text height under a finite height proposal.
-        .fixedSize(horizontal: false, vertical: true)
+        // Pinned portrait instruments retain their intrinsic text height. The
+        // short-landscape facts instead own a finite scrolling reading column.
+        .fixedSize(horizontal: false, vertical: !sidebar)
         .frame(maxWidth: 620)
         .frame(maxWidth: .infinity)
         .starlightAnchor(.header)
         .accessibilityElement(children: .contain)
         .accessibilityValue(showsMode ? SkyCopy.text(store.game.usesFullBoardRefill ? .fullBoardRefill : .fallingSkyMode) : "")
         .accessibilityIdentifier("sky.header")
+    }
+
+    private func headerDetails(ceiling: SkyCeilingSnapshot?, compact: Bool,
+                               source: SkyForecastInspection.Source?, showsForecastTitle: Bool = true) -> some View {
+        let inspectionSource = headerInspectionSource(source)
+        let showsMode = store.game.challenge == .firstLight || store.game.challenge == .ribbonCrossing
+        return VStack(spacing: StarfallTheme.Spacing.compact) {
+            if showsMode && store.game.usesFullBoardRefill {
+                modeLabel
+            }
+            if !store.game.isOver && !store.game.usesFullBoardRefill && !store.forecast.isEmpty {
+                SkyForecastDestinations(forecast: store.forecast, arriving: store.showerCountdown.arriving,
+                                        selectedID: forecastInspection?.entry(in: forecastSource)?.id,
+                                        select: { inspectForecast($0, source: source) },
+                                        inspectShower: inspectionSource.map { source in { inspectShower(source: source) } },
+                                        inspectionEnabled: !store.busy, showsTitle: showsForecastTitle)
+                    .shadow(color: StarfallTheme.Colors.skyTop, radius: 2)
+            }
+            occupiedSpaceStatus(ceiling, compact: compact)
+        }
     }
 
     private func oneSpaceColumns(in ceiling: SkyCeilingSnapshot?) -> [SkyCeilingSnapshot.Column] {
@@ -500,7 +505,8 @@ import StarfallCore
         }
     }
 
-    @ViewBuilder private func guide(compact: Bool, maximumHeight: CGFloat? = nil, narrow: Bool = false, externalControls: Bool = false) -> some View {
+    @ViewBuilder private func guide(compact: Bool, maximumHeight: CGFloat? = nil, narrow: Bool = false,
+                                    externalControls: Bool = false, compactActions: Bool = false) -> some View {
         if let run = store.tutorial {
             VStack(spacing: StarfallTheme.Spacing.medium) {
                 let hasControls = run.showsPauseControl || run.showsShowerControl
@@ -532,26 +538,34 @@ import StarfallCore
                                embedded: false, externalControls: externalControls, embeddedInk: StarfallTheme.Colors.textPrimary) {
                 if store.isPaused && !externalControls && !store.game.usesFullBoardRefill {
                     ViewThatFits(in: .horizontal) {
-                        HStack(spacing: StarfallTheme.Spacing.small) { pauseControl; showerControl }
+                        HStack(spacing: StarfallTheme.Spacing.small) {
+                            pauseControl(iconOnly: compactActions); showerControl(iconOnly: compactActions)
+                        }
                             .fixedSize(horizontal: true, vertical: false)
-                        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) { pauseControl; showerControl }
+                        VStack(alignment: .leading, spacing: StarfallTheme.Spacing.small) {
+                            pauseControl(iconOnly: compactActions); showerControl(iconOnly: compactActions)
+                        }
                     }
                     .buttonStyle(StarfallGameButtonStyle(backdrop: .scenery))
                 }
             }
         }
     }
-    private var pauseControl: some View {
+    private var pauseControl: some View { pauseControl(iconOnly: false) }
+
+    private func pauseControl(iconOnly: Bool) -> some View {
         let title = store.isPaused ? (store.game.turns == 0 ? SkyCopy.text(.actionStart) : SkyCopy.text(.actionResume)) : SkyCopy.text(.actionPause)
         return Button { store.togglePause() } label: {
-            StarfallActionLabel(title: title, glyph: store.isPaused ? .play : .pause)
+            StarfallActionLabel(title: title, glyph: store.isPaused ? .play : .pause, iconOnly: iconOnly)
         }
             .accessibilityLabel(title)
             .disabled(store.suspended).accessibilityIdentifier("experiment.pause")
     }
-    private var showerControl: some View {
+    private var showerControl: some View { showerControl(iconOnly: false) }
+
+    private func showerControl(iconOnly: Bool) -> some View {
         Button { store.callShower() } label: {
-            StarfallActionLabel(title: SkyCopy.text(.actionNext), glyph: .next)
+            StarfallActionLabel(title: SkyCopy.text(.actionNext), glyph: .next, iconOnly: iconOnly)
         }
             .accessibilityLabel(SkyCopy.text(.actionNext))
             .disabled(store.busy || store.suspended).accessibilityIdentifier("experiment.next")

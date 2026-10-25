@@ -1,0 +1,412 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "STOPPED_INITIAL_CANDIDATE_HOSTED_FAILURE; NOT_ACCEPTED",
+  "recordedUTC": "2026-10-25T09:32:37.997113+00:00",
+  "testedCommit": "925e706c361c6a76e6584f6ec523a2e1e5447497",
+  "runtime": "dev.16067e7f5c",
+  "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+  "commands": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-first-925e706c.json",
+    "sha256": "7f0411416997d0afa8fec1ac397b7321d5be0e13ba6753ca421ed332a7e65968",
+    "bytes": 10389
+  },
+  "rawSourceSnapshot": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-first-925e706c.json",
+    "sha256": "06e0521bdd8035a08cc050a7f4023fe854d3aba94bc5028c0b7b3dcaddb4d8de",
+    "bytes": 188080
+  },
+  "runner": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/run-goal09-sequential.py",
+    "sha256": "21099b1628ca4d5bba63144e318a0f381b7726eaa9ce677dfdaaa3f442041f7a",
+    "bytes": 14505
+  },
+  "sourcePrepareHelper": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/prepare-goal09-source.py",
+    "sha256": "f525c33a9232f160bec94f8d10e946c6c032af19480f45f7834792c1e565d07f",
+    "bytes": 8292
+  },
+  "resultExporter": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/export-completed-04.py",
+    "sha256": "fcfeabfb4314dfc835ff942d9180a063a74b3df6d917e80f85330dfb9758a0cf",
+    "bytes": 1222
+  },
+  "sharedWindowEndUTC": "2026-10-25T10:16:10Z",
+  "deadlineReserveSeconds": 20,
+  "plannedCounts": {
+    "hosted": 6,
+    "nativeExecutions": 2,
+    "nativeUniqueMethods": 2,
+    "core": 0
+  },
+  "executedCounts": {
+    "Debug": "PASS",
+    "hostedMethods": 6,
+    "hostedPassed": 2,
+    "hostedFailed": 4,
+    "hostedSkipped": 0,
+    "hostedAssertionFailures": 15,
+    "nativeExecutions": 0,
+    "Release": "UNRUN_NOT_SELECTED_IN_FIRST_PROBE",
+    "Core": "UNRUN_NOT_SELECTED_IN_FIRST_PROBE"
+  },
+  "summary": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-first-925e706c-layout-summary.json",
+    "sha256": "7342f7e631e8ae58745a5ed3959f72776b9f136bb29a4af74594ad13a464de92",
+    "bytes": 4035
+  },
+  "hostedCounts": {
+    "totalTestCount": 6,
+    "passedTests": 2,
+    "failedTests": 4,
+    "skippedTests": 0,
+    "result": "Failed",
+    "runtimeWarnings": []
+  },
+  "device": {
+    "architecture": "arm64",
+    "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "deviceName": "Starfall HUD Stack dcf3 Phone",
+    "modelName": "iPhone 17e",
+    "osBuildNumber": "24A434",
+    "osVersion": "27.0",
+    "platform": "iOS Simulator"
+  },
+  "Debug": {
+    "kind": "debug",
+    "name": "debug",
+    "nominalBoundSeconds": 180,
+    "label": "build-09-candidate-first-925e706c-debug",
+    "command": [
+      "xcodebuild",
+      "-project",
+      "Starfall.xcodeproj",
+      "-scheme",
+      "Starfall",
+      "-configuration",
+      "Debug",
+      "-derivedDataPath",
+      "/private/tmp/starfall-hud-stack-20261024/Integration",
+      "-parallel-testing-enabled",
+      "NO",
+      "-collect-test-diagnostics",
+      "never",
+      "-jobs",
+      "4",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "STARFALL_BUILD_ID=dev.16067e7f5c",
+      "-destination",
+      "generic/platform=iOS Simulator",
+      "build-for-testing"
+    ],
+    "actualLimitSeconds": 180.0,
+    "receipt": {
+      "stage": "build-09-candidate-first-925e706c-debug",
+      "startedUTC": "2026-10-25T09:25:52.970461+00:00",
+      "elapsedSeconds": 14.824,
+      "limitSeconds": 180.0,
+      "exitCode": 0,
+      "error": null
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/build-09-candidate-first-925e706c-debug.log",
+      "sha256": "fc8cb9901f2986b65015f95d4626c132ff586f455160dfa687e2a4e8b2b50765",
+      "bytes": 163261
+    },
+    "productProof": {
+      "configuration": "Debug",
+      "runtime": "dev.16067e7f5c",
+      "info": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+        "sha256": "4775ebffdf1b835e3f16e4d02384b10f4db419393c7e6ae0811c7577d0fd6263",
+        "bytes": 1402
+      },
+      "catalogue": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/observatory-dialogue.json",
+        "sha256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+        "bytes": 96334
+      }
+    },
+    "status": "passed"
+  },
+  "hostedStage": {
+    "kind": "hosted",
+    "name": "layout",
+    "nominalBoundSeconds": 240,
+    "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "selectors": [
+      "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars",
+      "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+      "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes",
+      "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted",
+      "SkyReadingPlayfieldTests/testActualOpenSkySceneAcrossFiveStarsEmptySuspensionAndNextShower",
+      "SkyReadingPlayfieldTests/testNativeSceneTransferRejectsRetiringHostUpdatesAndTeardown"
+    ],
+    "label": "hosted-09-candidate-first-925e706c-layout",
+    "expectedTests": 6,
+    "command": [
+      "xcodebuild",
+      "-project",
+      "Starfall.xcodeproj",
+      "-scheme",
+      "Starfall",
+      "-configuration",
+      "Debug",
+      "-derivedDataPath",
+      "/private/tmp/starfall-hud-stack-20261024/Integration",
+      "-parallel-testing-enabled",
+      "NO",
+      "-collect-test-diagnostics",
+      "never",
+      "-jobs",
+      "4",
+      "ARCHS=arm64",
+      "ONLY_ACTIVE_ARCH=YES",
+      "STARFALL_BUILD_ID=dev.16067e7f5c",
+      "-destination",
+      "platform=iOS Simulator,id=89BC6263-797D-4573-838E-E238A90D0D79",
+      "-only-testing:StarfallAppTests/SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars",
+      "-only-testing:StarfallAppTests/SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+      "-only-testing:StarfallAppTests/SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes",
+      "-only-testing:StarfallAppTests/SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted",
+      "-only-testing:StarfallAppTests/SkyReadingPlayfieldTests/testActualOpenSkySceneAcrossFiveStarsEmptySuspensionAndNextShower",
+      "-only-testing:StarfallAppTests/SkyReadingPlayfieldTests/testNativeSceneTransferRejectsRetiringHostUpdatesAndTeardown",
+      "-resultBundlePath",
+      "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-first-925e706c-layout.xcresult",
+      "test-without-building"
+    ],
+    "actualLimitSeconds": 240.0,
+    "receipt": {
+      "stage": "hosted-09-candidate-first-925e706c-layout",
+      "startedUTC": "2026-10-25T09:26:09.494777+00:00",
+      "elapsedSeconds": 37.102,
+      "limitSeconds": 240.0,
+      "exitCode": 65,
+      "error": null
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-first-925e706c-layout.log",
+      "sha256": "32b2d3454720850a275708ce1e1921ac22fe80523268308d694abcb66f6e80b9",
+      "bytes": 22513
+    },
+    "exportExitCode": 0,
+    "exportReceipt": {
+      "stage": "hosted-09-candidate-first-925e706c-layout-export",
+      "startedUTC": "2026-10-25T09:26:48.100763+00:00",
+      "elapsedSeconds": 0.26,
+      "limitSeconds": 90.0,
+      "exitCode": 0,
+      "error": null
+    },
+    "exportLog": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-first-925e706c-layout-export.log",
+      "sha256": "8cc3879d7641c07aed65547057a3435a742ecc3220cd12f1d96429967eec67b3",
+      "bytes": 549
+    }
+  },
+  "completedExport": {
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-first-925e706c-layout-export-receipt.json",
+      "sha256": "fdf5e78d063fe69bdb68d08eeaedc2b9eac85330c7e0d3273ee9505b020d2413",
+      "bytes": 188
+    },
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-first-925e706c-layout-attachments/manifest.json",
+      "sha256": "424a1dcd4ec88898387dbd81790897c51d2c25f50521d75baa84882dee163f80",
+      "bytes": 50355
+    },
+    "status": "Completed summary+attachment export after primary hosted failure; exportPASS does not convert test failure intoPASS"
+  },
+  "unrunNativeStages": [
+    {
+      "selector": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+      "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "methodAllowanceSeconds": 300,
+      "processBoundSeconds": 360,
+      "status": "UNRUN_AFTER_HOSTED_FAILURE; listed command is a plan, not execution"
+    },
+    {
+      "selector": "SkyFlowInteractionTests/testLandscapeStoryPressureAndCommittedRecovery",
+      "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "methodAllowanceSeconds": 300,
+      "processBoundSeconds": 360,
+      "status": "UNRUN_AFTER_HOSTED_FAILURE; listed command is a plan, not execution"
+    }
+  ],
+  "stop": {
+    "status": "stopped",
+    "stopType": "RuntimeError",
+    "stopReason": "Primary test failure retained: hosted-09-candidate-first-925e706c-layout exit=65",
+    "elapsedSeconds": 56.645
+  },
+  "passedHostedMethods": [
+    "SkyReadingPlayfieldTests/testActualOpenSkySceneAcrossFiveStarsEmptySuspensionAndNextShower",
+    "SkyReadingPlayfieldTests/testNativeSceneTransferRejectsRetiringHostUpdatesAndTeardown"
+  ],
+  "failedHostedMethods": [
+    {
+      "failureText": "XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial AX5 placement must settle on actual opening stars: board=Optional((47.0, 37.0, 281.0, 900.0)); offset=(0.0, 470.0); visible=0",
+      "targetName": "StarfallAppTests",
+      "testIdentifier": 2,
+      "testIdentifierString": "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted()",
+      "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallAppTests/SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted",
+      "testName": "testBusySetupPreservesHeaderWhileInspectionIsMuted()"
+    },
+    {
+      "failureText": "XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial crowded AX5 placement must settle on at least seven fully visible actual stars",
+      "targetName": "StarfallAppTests",
+      "testIdentifier": 3,
+      "testIdentifierString": "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()",
+      "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallAppTests/SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes",
+      "testName": "testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes()"
+    },
+    {
+      "failureText": "XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial reading placement must settle on actual opening stars: window=(0.0, 0.0, 375.0, 667.0); host=(0.0, 0.0, 375.0, 667.0); header=(59.0, 4.0, 257.0, 633.6666666666666); score=(67.33333333333333, 4.0, 136.33333333333331, 316.66666666666663); return=(47.0, 645.6666666666666, 281.0, 80.0); board=(47.0, 37.0, 281.0, 900.0); light=(113.66666666666666, 40.666666666666664, 22.333333333333343, 22.333333333333336); scenery=(82.66666666666666, 10.666666666666666, 86.0, 90.0)",
+      "targetName": "StarfallAppTests",
+      "testIdentifier": 5,
+      "testIdentifierString": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()",
+      "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallAppTests/SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+      "testName": "testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()"
+    },
+    {
+      "failureText": "XCTAssertGreaterThanOrEqual failed: (\"44.333333333333336\") is less than (\"46.666666666666664\") - The actual sidebar score must retain the complete official native font",
+      "targetName": "StarfallAppTests",
+      "testIdentifier": 6,
+      "testIdentifierString": "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()",
+      "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallAppTests/SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars",
+      "testName": "testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars()"
+    }
+  ],
+  "allRawAssertionFailures": [
+    {
+      "logLine": 51,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:682: error: -[StarfallAppTests.SkyReadingPlayfieldTests testBusySetupPreservesHeaderWhileInspectionIsMuted] : XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial AX5 placement must settle on actual opening stars: board=Optional((47.0, 37.0, 281.0, 900.0)); offset=(0.0, 470.0); visible=0"
+    },
+    {
+      "logLine": 69,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:305: error: -[StarfallAppTests.SkyReadingPlayfieldTests testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes] : XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial crowded AX5 placement must settle on at least seven fully visible actual stars"
+    },
+    {
+      "logLine": 70,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:306: error: -[StarfallAppTests.SkyReadingPlayfieldTests testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes] : XCTAssertGreaterThanOrEqual failed: (\"0\") is less than (\"7\") - Crowded AX5 must retain a playable native star field"
+    },
+    {
+      "logLine": 71,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:339: error: -[StarfallAppTests.SkyReadingPlayfieldTests testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes] : XCTAssertTrue failed - The complete AX5 header must fit the native window"
+    },
+    {
+      "logLine": 72,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:342: error: -[StarfallAppTests.SkyReadingPlayfieldTests testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes] : XCTAssertTrue failed - The complete scaled AX5 ceiling must be reachable"
+    },
+    {
+      "logLine": 73,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:345: error: -[StarfallAppTests.SkyReadingPlayfieldTests testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes] : XCTAssertGreaterThanOrEqual failed: (\"0\") is less than (\"7\") - Revealing the crowded AX5 ceiling must retain seven fully visible actual stars"
+    },
+    {
+      "logLine": 84,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:90: error: -[StarfallAppTests.SkyReadingPlayfieldTests testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls] : XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial reading placement must settle on actual opening stars: window=(0.0, 0.0, 375.0, 667.0); host=(0.0, 0.0, 375.0, 667.0); header=(59.0, 4.0, 257.0, 633.6666666666666); score=(67.33333333333333, 4.0, 136.33333333333331, 316.66666666666663); return=(47.0, 645.6666666666666, 281.0, 80.0); board=(47.0, 37.0, 281.0, 900.0); light=(113.66666666666666, 40.666666666666664, 22.333333333333343, 22.333333333333336); scenery=(82.66666666666666, 10.666666666666666, 86.0, 90.0)"
+    },
+    {
+      "logLine": 85,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:124: error: -[StarfallAppTests.SkyReadingPlayfieldTests testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls] : XCTAssertTrue failed - The fixed return must fit its window: window=(0.0, 0.0, 375.0, 667.0); host=(0.0, 0.0, 375.0, 667.0); header=(59.0, 4.0, 257.0, 633.6666666666666); score=(67.33333333333333, 4.0, 136.33333333333331, 316.66666666666663); return=(47.0, 645.6666666666666, 281.0, 80.0); board=(47.0, 37.0, 281.0, 900.0); light=(113.66666666666666, 40.666666666666664, 22.333333333333343, 22.333333333333336); scenery=(82.66666666666666, 10.666666666666666, 86.0, 90.0)"
+    },
+    {
+      "logLine": 86,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:143: error: -[StarfallAppTests.SkyReadingPlayfieldTests testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls] : XCTAssertGreaterThanOrEqual failed: (\"0\") is less than (\"7\") - Compact reading must open on fully visible actual stars"
+    },
+    {
+      "logLine": 93,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:90: error: -[StarfallAppTests.SkyReadingPlayfieldTests testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls] : XCTAssertEqual failed: (\"0\") is not equal to (\"2\") - Initial reading placement must settle on actual opening stars: window=(0.0, 0.0, 1024.0, 1366.0); host=(0.0, 0.0, 1024.0, 1366.0); header=(59.0, 4.0, 906.0, 198.66666666666666); score=(234.66666666666666, 4.0, 451.0, 63.33333333333333); return=(47.0, 210.66666666666666, 930.0, 79.99999999999997); board=(47.0, 24.333333333333314, 930.0, 1346.0000000000002); light=(310.3333333333333, 82.0, 61.333333333333314, 61.333333333333314); scenery=(225.33333333333331, 0.0, 235.33333333333331, 245.66666666666666)"
+    },
+    {
+      "logLine": 94,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:127: error: -[StarfallAppTests.SkyReadingPlayfieldTests testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls] : XCTAssertEqual failed: (\"(47.0, 24.333333333333314, 930.0, 1346.0000000000002)\") is not equal to (\"(47.0, 24.333333333333314, 930.0, 1346.0)\")"
+    },
+    {
+      "logLine": 95,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:159: error: -[StarfallAppTests.SkyReadingPlayfieldTests testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls] : XCTAssertEqual failed: (\"(47.0, 24.333333333333314, 930.0, 1346.0000000000002)\") is not equal to (\"(47.0, 24.333333333333314, 930.0, 1346.0)\")"
+    },
+    {
+      "logLine": 103,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:562: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertGreaterThanOrEqual failed: (\"44.333333333333336\") is less than (\"46.666666666666664\") - The actual sidebar score must retain the complete official native font"
+    },
+    {
+      "logLine": 108,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:562: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertGreaterThanOrEqual failed: (\"129.33333333333334\") is less than (\"130.66666666666666\") - The actual sidebar score must retain the complete official native font"
+    },
+    {
+      "logLine": 113,
+      "text": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/AppTests/SkyReadingPlayfieldTests.swift:562: error: -[StarfallAppTests.SkyReadingPlayfieldTests testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars] : XCTAssertGreaterThanOrEqual failed: (\"44.333333333333336\") is less than (\"46.666666666666664\") - The actual sidebar score must retain the complete official native font"
+    }
+  ],
+  "relatedRawMeasurements": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-first-925e706c-layout-attachments/EDFB02D2-EBFF-4223-9DCD-9ACAC1D05185.txt",
+      "sha256": "e9bc9aaf71b6d27ae7390b01eff1a00e770070da074959e1f7c823feecd62a88",
+      "bytes": 2223,
+      "attachmentName": "reading-score-measurement-1024x1366-maximum-text_0_65FBE368-EE50-4654-A18A-347F1D94ED53.txt",
+      "testIdentifier": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-first-925e706c-layout-attachments/9EC43CE1-1581-4767-A83C-9A1D707B7E64.txt",
+      "sha256": "8bea581164edc0a3bb6120273e361cebc101cba25c6e777f0048fddfa4eff8ba",
+      "bytes": 171,
+      "attachmentName": "reading-receipt-state-375x667-maximum-text_0_4A9F4700-BCA8-45AA-A526-AE301C3A728A.txt",
+      "testIdentifier": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-first-925e706c-layout-attachments/17A1C13C-DB71-406C-BA9D-766015CA530D.txt",
+      "sha256": "e32cbf1ed003af5b2a90ab8a05a3854ab8e0092514c365c03f19cc81994f08d9",
+      "bytes": 2265,
+      "attachmentName": "reading-score-measurement-375x667-maximum-text_0_D20531B6-0F49-46D5-8E29-ACF2F4E2984F.txt",
+      "testIdentifier": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-first-925e706c-layout-attachments/F8CBDE53-186A-447B-934B-6B0A2E6CE7BE.txt",
+      "sha256": "7b34fb7d8b0274991e75d36d1ecbfdad36bc33657cae76bba652ca73ab416eba",
+      "bytes": 410,
+      "attachmentName": "reading-layout-375x667-maximum-text_0_3A6D4594-118F-4BD6-A452-3916CBE15028.txt",
+      "testIdentifier": "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls()"
+    }
+  ],
+  "failureClassification": [
+    {
+      "scope": "Three portrait-shaped hosted reading/busy/crowded fixtures",
+      "observed": "Retained failures include zero complete stars,633.6667pt compact header,80pt return below its667pt window and narrowed281pt canvas beginningx47. Raw attached score measurement reports inherited safeAreaInsets(top0,left47,bottom20,right0).",
+      "provenance": "Exact failed log/TXT measurements above. Coordinator reports landscape device/safe-area inheritance from the preceding baseline native failure; a portrait-sized hosted UIWindow alone does not reset actual device orientation.",
+      "interpretation": "These are genuine failed hosted gates in this environment, not proof that the correct actual portrait route regressed. They remain failures; a fresh orientation-safe native/hosted run is required. Do not delete or qualify them intoPASS."
+    },
+    {
+      "scope": "Synthetic1024x1366 mapping equality",
+      "observed": "Log retains930x1346.0000000000002 versus930x1346.0 CGRect equality failures plus initial-settle failure.",
+      "interpretation": "Cross-framework fractional mismatch is recorded independently from complete-star/containment failures. No assertion or tolerance is weakened in this record."
+    },
+    {
+      "scope": "New short-landscape score guard",
+      "observed": "Original guard failed44.333333333333336<46.666666666666664 and129.33333333333334<130.66666666666666 across supplied profiles.",
+      "interpretation": "Actual full-font sizing versus measurement allocation is under diagnosis. New52f uses vertical fixedSize in the pinned compound and measures the allocated header width; these are correction hypotheses until fresh source-bound checks/native originals pass. No exclusive cause or completed fix is claimed."
+    }
+  ],
+  "nextCandidate": {
+    "head": "52f3e266bc344a7c0c5735c2953047b8fdda4325",
+    "runtime": "dev.4ebb3db952",
+    "qualification": "Coordinator reports Debug\u2192AX5nativeFIRST\u2192six hosted\u2192normalnative planned, with failure-safe portrait restoration and Inspect48 coverage. This initial925e record makes no claim for active52f results."
+  },
+  "limits": [
+    "Mechanical failure history only; this collector has not supplied a visual verdict for925e screenshots. Existing frozen independent reviews remain unchanged.",
+    "All fifteen assertions and four failed-method counts are retained; zero runtimeWarnings/zero skips do not establish layout acceptance.",
+    "No actualVoiceOver, physical/minimum-iOS, continuous motion/performance, or successful current/corrected native/Release/Core claim.",
+    "Continuation of925e is blocked. Goal9 stays open; known current failures cannot be deferred toGoal10."
+  ],
+  "DebugReceiptFile": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/build-09-candidate-first-925e706c-debug-receipt.json",
+    "sha256": "844d66efec908bdd46f553fa3a5b86e102c37392ff4ce52ae4f9bcd0016d1c48",
+    "bytes": 182
+  },
+  "hostedReceiptFile": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-first-925e706c-layout-receipt.json",
+    "sha256": "70edcdede3773366754960e274f273c8d19dfd3b4661d017ba2385a4561c51e7",
+    "bytes": 185
+  }
+}

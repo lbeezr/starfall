@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "reviewedUTC": "2026-10-25T11:10:55.901013+00:00",
+  "status": "PASS_BOUNDED_CURRENT_SOURCE_KITE_REGRESSION",
+  "source": {
+    "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "originalPrebuildSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+      "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+      "bytes": 188241
+    },
+    "buildFinishSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-buildfinish-5c05ecef.json",
+      "sha256": "5282d739b6deb0c0b7dec8116cc284db604eaacd7b919a86e6c14100e09f99b2",
+      "bytes": 188253
+    },
+    "resumeSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-remaining-5c05ecef.json",
+      "sha256": "6612d37cc04c50eebc8946082f33b3602b22f12ef68dc1351265b565089cd61a",
+      "bytes": 188280
+    },
+    "sourceProof": "All568runtime+167test per-file records match original2c06/buildfinish5282/actualresume6612. Current5c frames, not040 or historicalGoal6 frames."
+  },
+  "mechanics": {
+    "selector": "StarfallUITests/HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay",
+    "methodAllowanceSeconds": 300,
+    "methodElapsedSeconds": 194.778,
+    "stageElapsedSeconds": 199.135,
+    "supervisorBoundSeconds": 360.0,
+    "counts": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "runtimeWarnings": [],
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-receipt.json",
+      "sha256": "02689ea167a975cc878b30ce8e97a8f567e764ba42137d0884c5078811226637",
+      "bytes": 213
+    },
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-summary.json",
+      "sha256": "7dd2729792592b4a6d165b0387d08c43e8f47dad5eafc63197e5c66fde049076",
+      "bytes": 740
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone.log",
+      "sha256": "5180f0e4584a8e20082fe81f52c33d0352500bfb8f4b7f80bf4e443e685778aa",
+      "bytes": 126489
+    },
+    "exportReceipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-export-receipt.json",
+      "sha256": "7d76ecc758dbaff3e1f9bcaa4cc08b06463f1f76c86353024bf980b0525e9428",
+      "bytes": 217
+    },
+    "qualification": "Original exact forecast/round/save/background/cold/replay/world outcomes and complete guide/pan/hit gates pass separately from this visual judgment."
+  },
+  "scope": {
+    "attachmentManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/manifest.json",
+      "sha256": "248555fc82e331d04e8df8a6ec2f5f19b4d07c170023b81e761e787fc3d106da",
+      "bytes": 4522
+    },
+    "wholePNGCount": 9,
+    "byteUniquePNGCount": 7,
+    "allOriginalsDirectlyViewed": true,
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "encounter": "Actual current KiteHarbor revision4 headroom encounter,17000point objective, ordinary native exchanges/showers. Debug world-legacy-review grants entry access; this is not proof that a player earned all prior campaign unlocks. Unlike the separate OpenSky historicalhorizontalFive witness, Kite uses current points/accounting.",
+    "routeAccounting": "High5k branch is followed by exactReplay/reset. Winning branch starts0again, earns7k, takes one real shower, earns5k to12k, performs four non-clearing setup moves, then earns6k to18k. Do not add the preReplay5k to the winning branch. Final4stars/5light gives5000base+1000size=6000 lastclear, separate from18000round/17000objective.",
+    "motionSettings": "Unchanged native method explicitly sets/restores actualsystemReduceMotion off; CalmNO on ordinary currentKite. This does not turn stills into continuous-motion evidence."
+  },
+  "reference": {
+    "image": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+      "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+      "bytes": 2479182
+    },
+    "region": "Approved middlePlay screen and official instrument/guide/result roles",
+    "directlyViewed": true
+  },
+  "visualVerdict": {
+    "result": "PASS",
+    "findings": [],
+    "reasons": [
+      "Opening retains dominant full jewel field, complete ceiling/column1and2 one-space markers, score0/17000, distinct five forecast destinations and reachable Pause/Help/action ink over continuous painting.",
+      "High5k and low7k whole guide captures retain complete numeric accounting and room sentences with distinct Close; native full fonts are readable. Their start/end pairs are byte-identical because the requested full text already fits.",
+      "At12000 the guide shows the entire5k clear and Column1 has room again while the independent pinned status correctly remains Column2 is full. The guide reading position scrolls the ceiling/top star partially out of view; these frames are not evidence that the complete ceiling is simultaneously visible.",
+      "Following setup returns the complete column2 full marker and replaces the earlier recovery wording with Star moved. What can you line up? The guide and stars retain distinct space.",
+      "The actual earned result has complete KiteHarbor restored heading,18000of17000 paragraph, distinct VisitSeedMoon/Newsky/Replay/Observatory/Reviewlastclear actions and6000lastclear accounting. No gray scene rectangle, obscured essential result ink or accidental receipt/header collision is visible."
+    ]
+  },
+  "recommendedRetainedExports": [
+    {
+      "file": "10FDF127-69F0-420C-87B8-2BD1BB38316F.png",
+      "state": "CurrentKite4 ordinary opening0/17000; columns1and2 have1spaceeach."
+    },
+    {
+      "file": "ECF99EF4-F866-475A-A271-C99796CEFC5A.png",
+      "state": "Real currentKite recovery12k/17k, column2 remainsfull, complete5k/column1roomagain guide; ceiling/toprow partly scrolledout."
+    },
+    {
+      "file": "81E99817-4B0E-45D6-96CB-856610365B3A.png",
+      "state": "Actual18k earnedresult/17kobjective with separate6k lastclear, Debugentryaccess not earnedpriorcampaign."
+    }
+  ],
+  "images": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/81E99817-4B0E-45D6-96CB-856610365B3A.png",
+      "sha256": "958b33981ae7e5f3955bff1a006020e6c99c3533e60aad7048f45e873de3d992",
+      "bytes": 2984141,
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "attachmentName": "headroom-phone-immediate-earned-result_0_118645EA-D58F-4467-B2A3-48AF8D3BBABA.png",
+      "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "directWholeOriginalViewed": true,
+      "visualVerdict": "PASS_BOUNDED"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/590220D0-3416-41D8-8813-033EC7641547.png",
+      "sha256": "5d8735080d2c1f93fd67d071f8275736cb4a137b052053281582ae288b7f7f2d",
+      "bytes": 3658604,
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "attachmentName": "headroom-phone-following-setup-without-stale-claim_0_684D9788-49DB-40CB-B8DB-2E12BBB314B1.png",
+      "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "directWholeOriginalViewed": true,
+      "visualVerdict": "PASS_BOUNDED"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/ECF99EF4-F866-475A-A271-C99796CEFC5A.png",
+      "sha256": "99f0fb89df6ee60dfb75bed32b8b4ed936dfc530256189082b29b5a77241892a",
+      "bytes": 3605994,
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "attachmentName": "headroom-phone-real-full-column-recovery-end_0_EA703266-8153-437E-B9A2-06D51533EEA4.png",
+      "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "directWholeOriginalViewed": true,
+      "visualVerdict": "PASS_BOUNDED"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/DA46E1CB-8825-456E-B2A2-0B273D705BDD.png",
+      "sha256": "ed685f24d303af93f41628b147990771298cb178c30c98dd51f9c02bbeeded90",
+      "bytes": 3606271,
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "attachmentName": "headroom-phone-real-full-column-recovery-start_0_F1D3EF4A-A0CA-4DCA-B573-A610108FC6C8.png",
+      "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "directWholeOriginalViewed": true,
+      "visualVerdict": "PASS_BOUNDED"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/A4C87BA2-F732-49FF-9A63-FEC83F837580.png",
+      "sha256": "f487b842030e7b37578af202f4ebb052ff838fb0a551a1807c3ff03ebff49eed",
+      "bytes": 3607433,
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "attachmentName": "headroom-phone-low-five-spaces-end_0_F4E41368-D287-49D2-8B3A-A4C9B4C6B84F.png",
+      "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "directWholeOriginalViewed": true,
+      "visualVerdict": "PASS_BOUNDED"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/08352E40-5DA4-426D-B43D-5B54B820080E.png",
+      "sha256": "f487b842030e7b37578af202f4ebb052ff838fb0a551a1807c3ff03ebff49eed",
+      "bytes": 3607433,
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "attachmentName": "headroom-phone-low-five-spaces-start_0_2B651FC8-B033-42B1-B872-ADA59589A069.png",
+      "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "directWholeOriginalViewed": true,
+      "visualVerdict": "PASS_BOUNDED",
+      "byteIdenticalTo": "A4C87BA2-F732-49FF-9A63-FEC83F837580.png"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/DAA11B9B-1BCC-447E-A647-F5DABD9C55BD.png",
+      "sha256": "ea5af0cf120ececa9603494442382a82b37c91670c6be0f40cc8f425bb36f0f0",
+      "bytes": 3588326,
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "attachmentName": "headroom-phone-high-column-four-spaces-end_0_268534BB-403F-4303-847D-E63487C491FF.png",
+      "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "directWholeOriginalViewed": true,
+      "visualVerdict": "PASS_BOUNDED"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/8FAE8577-2804-4C39-BF05-D24D7612DB65.png",
+      "sha256": "ea5af0cf120ececa9603494442382a82b37c91670c6be0f40cc8f425bb36f0f0",
+      "bytes": 3588326,
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "attachmentName": "headroom-phone-high-column-four-spaces-start_0_97270A55-8CDD-44A9-8223-03749DBD5E63.png",
+      "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "directWholeOriginalViewed": true,
+      "visualVerdict": "PASS_BOUNDED",
+      "byteIdenticalTo": "DAA11B9B-1BCC-447E-A647-F5DABD9C55BD.png"
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/10FDF127-69F0-420C-87B8-2BD1BB38316F.png",
+      "sha256": "e2f6a6b50d423082360a6918804e6088aeceef8b04a89343ccf0d4475dddfd8a",
+      "bytes": 3656609,
+      "metadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 1
+      },
+      "attachmentName": "headroom-phone-one-space-opening_0_2FD7EB9A-75E1-4F6E-ADF0-4E5D17D8491F.png",
+      "testIdentifier": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay()",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "directWholeOriginalViewed": true,
+      "visualVerdict": "PASS_BOUNDED"
+    }
+  ],
+  "limits": [
+    "These named default-phone portrait states do not establish short-landscape, AX5 or wholeGoal9 acceptance; other source-bound reviews remain separate.",
+    "Background/cold/exactReplay/world marking are separately asserted in the passing method; not every such state has a retained whole image.",
+    "Nine stills do not prove continuous animation, framepacing, exact receipt age, contact latency, human comprehension, physical comfort or accessibility interaction.",
+    "No actualVoiceOver, physical-device, minimum-iOS17, IncreaseContrast or ReduceTransparency execution is claimed.",
+    "Original failures/admission stops remain historical; this bounded current-source PASS does not erase them or accept exports before exact review."
+  ]
+}

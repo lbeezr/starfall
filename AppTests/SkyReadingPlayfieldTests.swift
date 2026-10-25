@@ -355,6 +355,253 @@ final class SkyReadingPlayfieldTests: XCTestCase {
         }
     }
 
+    @MainActor func testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars() async throws {
+        let sceneDeadline = ContinuousClock.now + .seconds(3)
+        var availableScene = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
+        while availableScene == nil && ContinuousClock.now < sceneDeadline {
+            try await Task.sleep(for: .milliseconds(20))
+            availableScene = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
+        }
+        let scene = try XCTUnwrap(availableScene, "The crowded Story probe requires a connected window scene")
+        let previous = scene.windows.first(where: \.isKeyWindow)
+        var crowded = FallingSky.freshChallenge(.firstLight)
+        XCTAssertEqual(crowded.challengeRevision, 4)
+        for _ in 0..<4 { _ = try XCTUnwrap(crowded.letStarsFall()) }
+        // Synthetic local windows on the current actual host; these dimensions
+        // do not claim a native device orientation or tablet trait override.
+        let profiles: [(CGSize, DynamicTypeSize, UIContentSizeCategory, String)] = [
+            (CGSize(width: 667, height: 375), .large, .large, "667x375-default"),
+            (CGSize(width: 667, height: 375), .accessibility5, .accessibilityExtraExtraExtraLarge, "667x375-AX5"),
+            (CGSize(width: 852, height: 393), .large, .large, "852x393-default"),
+            (CGSize(width: 852, height: 393), .accessibility5, .accessibilityExtraExtraExtraLarge, "852x393-AX5")
+        ]
+        for (size, textSize, category, name) in profiles {
+            let suite = "Starfall.ShortLandscapeHeader.\(UUID())", defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+            defer { defaults.removePersistentDomain(forName: suite) }
+            defaults.set(try SkySaveArchive.encode(crowded), forKey: SkySaveArchive.key)
+            defaults.set(false, forKey: "calmEffects"); defaults.set(false, forKey: "soundEnabled")
+            let clock = ManualRainClock()
+            let store = FallingSkyStore(defaults: defaults, arguments: [], clock: clock)
+            let window = UIWindow(windowScene: scene)
+            window.frame = CGRect(origin: .zero, size: size)
+            var observed: [StarlightAnchor: CGRect] = [:]
+            let host = UIHostingController(rootView: FallingSkyView(store: store,
+                flow: SkyFlowState(arguments: ["--starfalls-reset", "--technique-review"]))
+                .defaultAppStorage(defaults)
+                .environment(\.scenePhase, .active)
+                .environment(\.dynamicTypeSize, textSize)
+                .overlayPreferenceValue(StarlightAnchors.self) { anchors in
+                    GeometryReader { geometry in
+                        let origin = geometry.frame(in: .global).origin
+                        let rects = anchors.mapValues { geometry[$0].offsetBy(dx: origin.x, dy: origin.y) }
+                        Color.clear.onAppear { observed = rects }
+                            .onChange(of: rects) { _, value in observed = value }
+                    }.allowsHitTesting(false)
+                })
+            let container = UIViewController()
+            window.rootViewController = container; container.view.frame = window.bounds
+            container.addChild(host); host.view.frame = container.view.bounds
+            host.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            container.view.addSubview(host.view); host.didMove(toParent: container)
+            window.makeKeyAndVisible()
+            defer { store.setSuspended(true); window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+            let ready = ContinuousClock.now + .seconds(3)
+            while (!store.sceneReady || store.suspended || store.scene.view == nil ||
+                   observed[.board] == nil || observed[.header] == nil || observed[.score] == nil) && ContinuousClock.now < ready {
+                try await Task.sleep(for: .milliseconds(20))
+            }
+            XCTAssertTrue(store.sceneReady); XCTAssertFalse(store.suspended)
+            let canvas = try XCTUnwrap(store.scene.view)
+            var ancestor: UIView? = canvas
+            while ancestor != nil && !(ancestor is UIScrollView) { ancestor = ancestor?.superview }
+            let scroll = ancestor as? UIScrollView
+            let physicalScale = window.screen.scale
+            func physicalEdges(_ frame: CGRect) -> [CGFloat] {
+                [frame.minX, frame.minY, frame.maxX, frame.maxY].map { ($0 * physicalScale).rounded() }
+            }
+            func sameCanvasProjection(_ frame: CGRect?) -> Bool {
+                guard let frame else { return false }
+                let actual = window.convert(canvas.bounds, from: canvas)
+                // Independent global bounding-box conversions may differ by an
+                // ulp. Placement is exact on the physical grid; local dimensions
+                // remain exact in the separate native/SpriteKit assertion.
+                return frame.origin == actual.origin && physicalEdges(frame) == physicalEdges(actual)
+            }
+            func viewport() -> CGRect {
+                window.bounds.intersection(scroll.map { window.convert($0.bounds, from: $0) } ?? window.bounds)
+            }
+            func visibleStars() -> Int {
+                guard let board = observed[.board], let header = observed[.header] else { return 0 }
+                let mapping = LandingGeometry(size: canvas.bounds.size)
+                return (0..<49).filter { index in
+                    let cell = Cell(index / 7, index % 7)
+                    let frame = mapping.frame(cell).offsetBy(dx: board.minX, dy: board.minY)
+                    return crowded.gem(at: cell) != nil && viewport().contains(frame) && !header.intersects(frame)
+                }.count
+            }
+            func capture(_ stage: String) {
+                let facts = XCTAttachment(string: "textSize=\(textSize); proposedLocalSize=\(size); window=\(window.bounds); windowSafeInsets=\(window.safeAreaInsets); hostSafeInsets=\(host.view.safeAreaInsets); windowTraits=\(window.traitCollection); sceneCoordinateBounds=\(scene.coordinateSpace.bounds); host=\(window.convert(host.view.bounds, from: host.view)); anchors=\(observed); canvas=\(window.convert(canvas.bounds, from: canvas)); canvasBounds=\(canvas.bounds); sceneSize=\(store.scene.size); viewport=\(viewport()); scrollOffset=\(String(describing: scroll?.contentOffset)); visibleOccupiedCells=\(visibleStars()); sceneReady=\(store.sceneReady); suspended=\(store.suspended); calmEffects=false; inheritedSystemReduceMotion=\(UIAccessibility.isReduceMotionEnabled); static committed four-shower Lantern, no pan or animation claim")
+                facts.name = "short-landscape-crowded-story-\(name)-\(stage)-frames"; facts.lifetime = .keepAlways; add(facts)
+                let image = XCTAttachment(image: windowImage(window))
+                image.name = "short-landscape-crowded-story-\(name)-\(stage)"; image.lifetime = .keepAlways; add(image)
+            }
+            let placementDeadline = ContinuousClock.now + .seconds(3)
+            var lastBoard: CGRect?, lastHeader: CGRect?, lastOffset: CGPoint?, stableSamples = 0
+            while stableSamples < 2 && ContinuousClock.now < placementDeadline {
+                await Task.yield(); host.view.layoutIfNeeded()
+                let board = observed[.board], header = observed[.header], offset = scroll?.contentOffset
+                if board != nil, header != nil, board == lastBoard, header == lastHeader, offset == lastOffset,
+                   sameCanvasProjection(board), visibleStars() >= 7 {
+                    stableSamples += 1
+                } else { stableSamples = 0 }
+                lastBoard = board; lastHeader = header; lastOffset = offset
+                if stableSamples < 2 { try await Task.sleep(for: .milliseconds(20)) }
+            }
+            capture("initial")
+            XCTAssertEqual(stableSamples, 2, "Initial crowded \(name) placement must settle on at least seven fully visible actual stars")
+            XCTAssertGreaterThanOrEqual(visibleStars(), 7, "Crowded \(name) must retain a playable native star field")
+
+            // Reveal the real ceiling through its existing scroll owner. This
+            // proves layout extent and separation, not native pan acceptance.
+            if let scroll {
+                scroll.setContentOffset(CGPoint(x: scroll.contentOffset.x, y: -scroll.adjustedContentInset.top), animated: false)
+                let ceilingDeadline = ContinuousClock.now + .seconds(2)
+                stableSamples = 0; lastBoard = nil; lastOffset = nil
+                while stableSamples < 2 && ContinuousClock.now < ceilingDeadline {
+                    await Task.yield(); host.view.layoutIfNeeded()
+                    let board = observed[.board], offset = scroll.contentOffset
+                    if board != nil, board == lastBoard, offset == lastOffset,
+                       offset.y == -scroll.adjustedContentInset.top,
+                       sameCanvasProjection(board) { stableSamples += 1 }
+                    else { stableSamples = 0 }
+                    lastBoard = board; lastOffset = offset
+                    if stableSamples < 2 { try await Task.sleep(for: .milliseconds(20)) }
+                }
+                XCTAssertEqual(stableSamples, 2, "The actual scroll owner must settle with the complete ceiling revealed")
+            }
+            capture("ceiling-revealed")
+            let board = try XCTUnwrap(observed[.board]), header = try XCTUnwrap(observed[.header])
+            let score = try XCTUnwrap(observed[.score])
+            let snapshot = try XCTUnwrap(SkyCeilingSnapshot(game: store.game, mapping: LandingGeometry(size: canvas.bounds.size)))
+            let markerHeight = UIFontMetrics(forTextStyle: .caption1).scaledValue(
+                for: SkyCeilingOverlay.baseMarkerHeight,
+                compatibleWith: UITraitCollection(preferredContentSizeCategory: category))
+            let clearance = SkyCeilingOverlay.requiredTopClearance(markerHeight: markerHeight)
+            let ceiling = CGRect(x: board.minX + snapshot.arena.minX,
+                                 y: board.minY + snapshot.arena.minY - clearance,
+                                 width: snapshot.arena.width, height: clearance)
+            let geometry = XCTAttachment(string: "header=\(header); score=\(score); actualCanvas=\(board); sharedCeiling=\(ceiling); scaledMarkerHeight=\(markerHeight); clearance=\(clearance); viewport=\(viewport()); fullyVisibleOccupiedCells=\(visibleStars())")
+            geometry.name = "short-landscape-crowded-story-\(name)-ceiling-geometry"; geometry.lifetime = .keepAlways; add(geometry)
+            XCTAssertTrue(window.bounds.contains(header), "The complete \(name) header must fit the native window")
+            XCTAssertTrue(header.contains(score), "The complete score must remain inside the crowded header")
+            XCTAssertTrue(markerHeight.isFinite && markerHeight > 0)
+            XCTAssertTrue(viewport().contains(ceiling), "The complete scaled \(name) ceiling must be reachable")
+            let overlapsCeilingHorizontally = header.minX < ceiling.maxX && ceiling.minX < header.maxX
+            if overlapsCeilingHorizontally {
+                XCTAssertLessThanOrEqual(header.maxY, ceiling.minY,
+                                        "A vertically stacked header must remain above the complete ceiling")
+            }
+            XCTAssertFalse(header.intersects(ceiling), "Sidebar or stacked instruments must remain disjoint from the complete ceiling")
+            XCTAssertGreaterThanOrEqual(visibleStars(), 7, "Revealing the crowded \(name) ceiling must retain seven fully visible actual stars")
+            let actualCanvas = window.convert(canvas.bounds, from: canvas)
+            XCTAssertEqual(board.origin, actualCanvas.origin)
+            XCTAssertEqual(physicalEdges(board), physicalEdges(actualCanvas))
+            let projection = XCTAttachment(string: "rawAnchor=\(board); rawNative=\(actualCanvas); actualScreenScale=\(physicalScale); anchorPixelEdges=\(physicalEdges(board)); nativePixelEdges=\(physicalEdges(actualCanvas)); exactLocalCanvas=\(canvas.bounds.size); exactLocalScene=\(store.scene.size)")
+            projection.name = "short-landscape-crowded-story-\(name)-physical-projection"; projection.lifetime = .keepAlways; add(projection)
+            XCTAssertEqual(canvas.bounds.size, store.scene.size, "Header reflow must retain the native SpriteKit projection")
+            XCTAssertEqual(snapshot.warnings.filter { $0.pressure == .full }.map(\.number), [2])
+            XCTAssertEqual(snapshot.warnings.filter { $0.pressure == .oneSpace }.map(\.number), [1, 3, 4, 5, 6])
+            let returnBand = try XCTUnwrap(observed[.constellationReturn])
+            XCTAssertTrue(window.bounds.contains(returnBand))
+            XCTAssertGreaterThan(returnBand.width, 0); XCTAssertGreaterThan(returnBand.height, 0)
+            XCTAssertFalse(returnBand.intersects(header))
+            XCTAssertFalse(returnBand.intersects(viewport()), "Fixed returned figures stay outside the clipped native board viewport")
+            if textSize.isAccessibilitySize {
+                XCTAssertNil(observed[.award], "AX keeps its existing below-board native-font award apron")
+                let award = StarlightCelebrationOverlay.awardRegion(board: board, header: header, accessible: true,
+                                                                   ceilingClearance: clearance)
+                XCTAssertGreaterThan(award.width, 0); XCTAssertGreaterThan(award.height, 0)
+                XCTAssertTrue(board.contains(award))
+                XCTAssertFalse(award.intersects(header))
+                XCTAssertGreaterThanOrEqual(award.minY, board.minY + snapshot.arena.maxY)
+                XCTAssertLessThanOrEqual(award.maxY, board.minY + LandingGeometry(size: board.size, largeHeader: true).accessibleCanvasEnd)
+            } else {
+                let award = try XCTUnwrap(observed[.award], "Short-landscape ordinary awards use the actual fixed return region")
+                XCTAssertEqual(award, returnBand)
+                XCTAssertTrue(window.bounds.contains(award))
+                XCTAssertGreaterThan(award.width, 0); XCTAssertGreaterThan(award.height, 0)
+                XCTAssertFalse(award.intersects(header)); XCTAssertFalse(award.intersects(viewport()))
+            }
+
+            // Inspect the actual sibling native facts scroll owner. Programmatic
+            // reveal proves extent and layout only; native pans remain separate.
+            func descendants(_ root: UIView) -> [UIView] {
+                root.subviews.flatMap { [$0] + descendants($0) }
+            }
+            let factsScroll = try XCTUnwrap(descendants(host.view).compactMap { $0 as? UIScrollView }.first { candidate in
+                let frame = window.convert(candidate.bounds, from: candidate)
+                return (scroll.map { candidate !== $0 } ?? true) && frame.height > 0
+                    && frame.intersects(header) && frame.midX < viewport().minX
+            }, "The short-landscape facts require their own actual native scroll owner")
+            let factsViewport = window.convert(factsScroll.bounds, from: factsScroll)
+            XCTAssertTrue(window.bounds.contains(factsViewport))
+            XCTAssertGreaterThan(factsViewport.width, 0); XCTAssertGreaterThan(factsViewport.height, 0)
+            XCTAssertFalse(factsViewport.intersects(viewport()))
+            func nativeSize<Content: View>(_ content: Content, width: CGFloat) -> CGSize {
+                let measure = UIHostingController(rootView: content.environment(\.dynamicTypeSize, textSize))
+                measure.safeAreaRegions = []
+                container.addChild(measure); measure.view.frame = CGRect(x: 0, y: 0, width: width, height: size.height)
+                measure.view.isHidden = true; container.view.addSubview(measure.view); measure.didMove(toParent: container)
+                defer { measure.willMove(toParent: nil); measure.view.removeFromSuperview(); measure.removeFromParent() }
+                measure.view.layoutIfNeeded()
+                return measure.sizeThatFits(in: CGSize(width: width, height: .greatestFiniteMagnitude))
+            }
+            let requiredScore = nativeSize(SkyScoreInstrument(score: crowded.displayScore,
+                target: crowded.displayTarget, hint: ""), width: header.width)
+            XCTAssertGreaterThan(requiredScore.height, 0)
+            XCTAssertGreaterThanOrEqual(score.height + 1 / physicalScale, requiredScore.height,
+                                        "The actual sidebar score must retain the complete official native font")
+            let nearText = SkyCopy.text(.pressureOneSpaceCompactMany, values: ["columns": "1,3,4,5,6"])
+            let fullText = try XCTUnwrap(SkyPressureCue(game: crowded)).text
+            let requiredFacts = nativeSize(VStack(spacing: 0) {
+                StarfallStatusText(text: fullText, role: .instrument)
+                StarfallStatusText(text: nearText, role: .instrument)
+            }, width: factsViewport.width)
+            XCTAssertGreaterThan(requiredFacts.height, 0)
+            XCTAssertGreaterThanOrEqual(factsScroll.contentSize.height, requiredFacts.height,
+                                        "Native full/near facts must retain at least their complete measured native-font extent")
+            let topOffset = -factsScroll.adjustedContentInset.top
+            let bottomOffset = max(topOffset, factsScroll.contentSize.height - factsScroll.bounds.height
+                                   + factsScroll.adjustedContentInset.bottom)
+            for (stage, offset) in [("facts-top", topOffset), ("facts-bottom", bottomOffset)] {
+                factsScroll.setContentOffset(CGPoint(x: factsScroll.contentOffset.x, y: offset), animated: false)
+                let revealDeadline = ContinuousClock.now + .seconds(3)
+                var stable = 0
+                while stable < 2 && ContinuousClock.now < revealDeadline {
+                    await Task.yield(); host.view.layoutIfNeeded()
+                    // UIKit aligns scrolling to the physical grid; the derived
+                    // bottom extent can differ from that value by one CGFloat
+                    // ulp. Require the exact same physical pixel, as for the
+                    // independent native/anchor projection above.
+                    if (factsScroll.contentOffset.y * physicalScale).rounded() == (offset * physicalScale).rounded() {
+                        stable += 1
+                    } else { stable = 0 }
+                    if stable < 2 { try await Task.sleep(for: .milliseconds(20)) }
+                }
+                XCTAssertEqual(stable, 2, "The actual native facts owner must reach its bounded full extent")
+                let detail = XCTAttachment(string: "factsViewport=\(factsViewport); contentSize=\(factsScroll.contentSize); offset=\(factsScroll.contentOffset); requestedOffset=\(offset); actualPhysicalPixel=\((factsScroll.contentOffset.y * physicalScale).rounded()); requestedPhysicalPixel=\((offset * physicalScale).rounded()); insets=\(factsScroll.adjustedContentInset); nativeRequiredFacts=\(requiredFacts); actualScore=\(score); nativeRequiredScore=\(requiredScore); return=\(returnBand); explicitAward=\(String(describing: observed[.award])); actualBoardViewport=\(viewport()); programmatic reveal only")
+                detail.name = "short-landscape-\(name)-\(stage)-native-facts"; detail.lifetime = .keepAlways; add(detail)
+                capture(stage)
+                XCTAssertEqual(observed[.board], board, "Facts scrolling cannot move the native board")
+                XCTAssertEqual(observed[.score], score); XCTAssertEqual(observed[.header], header)
+                XCTAssertEqual(canvas.bounds.size, store.scene.size)
+                XCTAssertGreaterThanOrEqual(visibleStars(), 7)
+                XCTAssertEqual(store.game, crowded); XCTAssertEqual(clock.now, 0)
+            }
+            XCTAssertEqual(store.game, crowded); XCTAssertEqual(clock.now, 0)
+        }
+    }
+
     @MainActor func testBusySetupPreservesHeaderWhileInspectionIsMuted() async throws {
         let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
         let previous = scene.windows.first(where: \.isKeyWindow)

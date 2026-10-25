@@ -222,7 +222,8 @@ final class SkyFlowInteractionTests: XCTestCase {
             .min { $0.frame.width * $0.frame.height < $1.frame.width * $1.frame.height }
         func visibleBoardViewport() -> CGRect {
             let bounds = app.frame.intersection(scroll?.frame ?? app.frame)
-            let top = max(bounds.minY, header.exists ? header.frame.maxY + 4 : bounds.minY)
+            let coversBoard = header.exists && header.frame.maxX > bounds.minX && header.frame.minX < bounds.maxX
+            let top = max(bounds.minY, coversBoard ? header.frame.maxY + 4 : bounds.minY)
             return CGRect(x: bounds.minX, y: top, width: bounds.width, height: max(0, bounds.maxY - top))
         }
         // Revealing the lower Next shower action can scroll the top boundary
@@ -258,7 +259,18 @@ final class SkyFlowInteractionTests: XCTestCase {
         let full = app.staticTexts.matching(identifier: "sky.pressure")
         XCTAssertLessThanOrEqual(full.count, 1)
         let fullFrame = full.firstMatch.exists ? full.firstMatch.frame : nil
+        let details = app.scrollViews["sky.header.details"]
+        if details.exists {
+            for (index, fact) in ((full.firstMatch.exists ? [full.firstMatch] : []) + [near.firstMatch]).enumerated() {
+                app.revealSkyControls([fact])
+                XCTAssertTrue(details.frame.contains(fact.frame), "Every complete room fact must be readable in its own column")
+                XCTAssertTrue(headerFrame.contains(fact.frame))
+                capture(app, "pressure-landscape-complete-current-room-fact-\(index)")
+            }
+            capture(app, "pressure-landscape-complete-current-room-facts")
+        }
         for frame in [nearFrame] + (fullFrame.map { [$0] } ?? []) {
+            if !details.exists {
             XCTAssertTrue(app.frame.contains(frame), "Every current-room fact must fit the viewport: \(frame)")
             // AX aggregate edges use Float32 while native Text retains CGFloat.
             // Compare each edge at their common precision without adding tolerance.
@@ -267,6 +279,7 @@ final class SkyFlowInteractionTests: XCTestCase {
                 && Float(frame.maxX) <= Float(headerFrame.maxX)
                 && Float(frame.maxY) <= Float(headerFrame.maxY),
                 "Current-room facts must fit the pinned header: fact \(frame), header \(headerFrame)")
+            }
             XCTAssertFalse(frame.intersects(forecastFrame),
                            "Current room and ordered destinations occupy separate space: \(frame), \(forecastFrame)")
         }
@@ -292,7 +305,25 @@ final class SkyFlowInteractionTests: XCTestCase {
             XCTAssertTrue(description.hasSuffix("column \(column)"), description)
         }
         XCTAssertTrue(descriptions[3].hasPrefix("Rose"), "The incoming Rose names full column 2")
-        XCTAssertTrue(app.frame.contains(forecast.frame), "Every destination must fit in the visible header")
+        let details = app.scrollViews["sky.header.details"]
+        if details.exists {
+            let destinations = forecast.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "sky.forecast.star.")).allElementsBoundByIndex
+            XCTAssertEqual(destinations.count, 5)
+            for (index, destination) in destinations.enumerated() {
+                app.revealSkyControls([destination])
+                XCTAssertTrue(details.frame.contains(destination.frame))
+                XCTAssertGreaterThanOrEqual(destination.frame.width, 44)
+                XCTAssertGreaterThanOrEqual(destination.frame.height, 44)
+                if index == 0 || index == 4 { capture(app, "pressure-landscape-forecast-target-\(index)") }
+            }
+            let inspect = app.buttons["sky.showerInspection.open"]
+            app.revealSkyControls([inspect])
+            XCTAssertTrue(details.frame.contains(inspect.frame))
+            XCTAssertGreaterThanOrEqual(inspect.frame.width, 48)
+            XCTAssertGreaterThanOrEqual(inspect.frame.height, 48)
+        } else {
+            XCTAssertTrue(app.frame.contains(forecast.frame), "Every destination must fit in the visible header")
+        }
     }
 
     @MainActor private func reachFullStoryColumn(largest: Bool = false, quiet: Bool = false) -> XCUIApplication {
@@ -333,10 +364,32 @@ final class SkyFlowInteractionTests: XCTestCase {
         return app
     }
 
-    @MainActor private func verifyStoryRecovery(largest: Bool, quiet: Bool) {
+    @MainActor private func verifyStoryRecovery(largest: Bool, quiet: Bool,
+                                               orientation: UIDeviceOrientation? = nil) {
         let app = reachFullStoryColumn(largest: largest, quiet: quiet)
         defer { app.terminate() }
         let pressure = app.staticTexts["sky.pressure"], board = app.otherElements["experiment.board"]
+        if let orientation {
+            let beforeBoard = board.value as? String
+            let beforeScore = app.staticTexts["experiment.score"].label
+            let forecast = app.descendants(matching: .any).matching(identifier: "sky.forecast.destinations").firstMatch
+            let beforeForecast = forecast.value as? String
+            XCUIDevice.shared.orientation = orientation
+            let landscape = orientation == .landscapeLeft || orientation == .landscapeRight
+            let rotated = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+                landscape ? app.frame.width > app.frame.height : app.frame.height > app.frame.width
+            }, object: nil).wait(timeout: 5)
+            // Capture the actual settled-or-timeout native viewport before a
+            // strict geometry gate can stop this diagnostic baseline.
+            capture(app, largest ? "pressure-landscape-largest-before-reveal" : "pressure-landscape-default-before-reveal")
+            XCTAssertTrue(rotated, "Wait for the actual application viewport to rotate")
+            XCTAssertEqual(board.value as? String, beforeBoard)
+            XCTAssertEqual(app.staticTexts["experiment.score"].label, beforeScore)
+            XCTAssertEqual(forecast.value as? String, beforeForecast)
+            revealStoryCeiling(app, oneSpaceColumns: [1, 3, 4, 5, 6])
+            assertFifthForecast(app)
+            capture(app, largest ? "pressure-landscape-largest-full" : "pressure-landscape-default-full")
+        }
         if !largest {
             let retained = board.value as? String
             app.terminate(); app.launchArguments = ["--sky-flow-review", "-calmEffects", "NO"]; app.launch()
@@ -361,6 +414,9 @@ final class SkyFlowInteractionTests: XCTestCase {
                                                object: message).wait(timeout: 8))
         XCTAssertTrue(message.label.contains(5_000.formatted()))
         XCTAssertEqual(app.staticTexts["experiment.score"].label, "\(5_000.formatted()) of \(150_000.formatted()) starlight collected")
+        if orientation != nil {
+            capture(app, largest ? "pressure-landscape-largest-earned-recovery" : "pressure-landscape-default-earned-recovery")
+        }
         XCTAssertFalse(pressure.exists)
         let ceiling = app.descendants(matching: .any).matching(identifier: "sky.ceiling").firstMatch
         XCTAssertTrue(XCTNSPredicateExpectation(
@@ -379,7 +435,15 @@ final class SkyFlowInteractionTests: XCTestCase {
         assertFifthForecast(app)
         capture(app, largest ? "pressure-recovered-largest" : "pressure-recovered-default")
         let next = app.buttons["experiment.next"]
-        app.revealSkyControls([next]); next.tap()
+        app.revealSkyControls([next])
+        if orientation != nil {
+            for action in [app.buttons["experiment.pause"], next] {
+                XCTAssertGreaterThanOrEqual(action.frame.width, 44)
+                XCTAssertGreaterThanOrEqual(action.frame.height, 44)
+                XCTAssertTrue(action.isHittable)
+            }
+        }
+        next.tap()
         XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
             next.isEnabled && (board.value as? String)?.hasPrefix("5 showers") == true
         }, object: nil).wait(timeout: 8))
@@ -394,6 +458,23 @@ final class SkyFlowInteractionTests: XCTestCase {
 
     @MainActor func testLargestQuietStoryPressureAndRecoveryRemainReadable() {
         verifyStoryRecovery(largest: true, quiet: true)
+    }
+
+    @MainActor func testLandscapeStoryPressureAndCommittedRecovery() {
+        executionTimeAllowance = 300
+        addTeardownBlock { @MainActor in XCUIDevice.shared.orientation = .portrait }
+        requireNormalMotion()
+        XCUIDevice.shared.orientation = .portrait
+        defer { XCUIDevice.shared.orientation = .portrait }
+        verifyStoryRecovery(largest: false, quiet: false, orientation: .landscapeLeft)
+    }
+
+    @MainActor func testLargestQuietLandscapeStoryPressureAndCommittedRecovery() {
+        executionTimeAllowance = 300
+        addTeardownBlock { @MainActor in XCUIDevice.shared.orientation = .portrait }
+        XCUIDevice.shared.orientation = .portrait
+        defer { XCUIDevice.shared.orientation = .portrait }
+        verifyStoryRecovery(largest: true, quiet: true, orientation: .landscapeLeft)
     }
 
     @MainActor func testIdleFullStoryColumnReachesTheActualBlockedArrival() {

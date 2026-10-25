@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "reviewedUTC": "2026-10-25T11:31:39.263803+00:00",
+  "status": "PASS_BOUNDED_EXACT_EXPORT_ROWS_06_THROUGH_09",
+  "captureIndex": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-09.json",
+    "sha256": "bf75810dbbdafc9940ac76a01a96817bf8093a836ebc349f327da18abc87cacd",
+    "bytes": 73487
+  },
+  "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+  "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+  "runtime": "dev.06a3229203",
+  "scope": {
+    "rowsOneBased": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "rowCount": 4,
+    "rawAndRetainedPairsDirectlyViewed": 4,
+    "claim": "Onlythese four selectedpairs; not the othernine rows or overall13-export acceptance. Source/readability and captionlimits reviewed independently of mechanicalpasses."
+  },
+  "reference": {
+    "image": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+      "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+      "bytes": 2479182
+    },
+    "region": "ApprovedmiddlePlay direction: subordinateofficialinstruments overcontinuousscenery withdominantplayablejewels",
+    "directlyViewed": true
+  },
+  "verdict": {
+    "result": "PASS",
+    "findings": [],
+    "reasons": [
+      "Allfourraw/JPEGpairs retain exact recordedpixel dimensions andEXIF8; phone1170x2532 displays2532x1170, tablet2064x2752 displays2752x2064. No accidentalflip/rotation/crop is visible.",
+      "Essential text,glyphs,sourcefigure/receipt andjewels retain visible legibility; JPEG80doesnot introduce a materialcontent orhierarchydefect in the reviewedpairs.",
+      "Caption scope correctly distinguishes actualphone fromlegacytabletattachmentname, actualtablet, currentStory fromFullBoard andpartialbelowfold/scrollingcontent fromcompletefactclaims."
+    ]
+  },
+  "images": [
+    {
+      "indexPositionOneBased": 6,
+      "id": "06-current-phone-ax5-guide-end",
+      "kind": "candidate-native",
+      "stateCaption": "ActualAX5Calmphone short-landscape guide at nativeinner100percent end, fullfont final-lineband; originalcomplete spokenlabel and separate45pt contextualactions. No Textactivation or actualVoiceOver claim.",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "device": {
+        "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "name": "Starfall HUD Stack dcf3 Phone"
+      },
+      "testIdentifier": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery()",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/44750EFD-0A14-4642-8BF5-4F8F4DB30E98.png",
+        "sha256": "b5ce02009a46024d1851c773daebae456558130cc07799285a1b62293ab157ce",
+        "bytes": 3098902
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/06-current-phone-ax5-guide-end.jpg",
+        "sha256": "6ed4ebbf50cdf7f3eeabb47526f23333768f9406219f46a7a648cb2eea54184b",
+        "bytes": 452828
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 8,
+        "displayedPixels": [
+          2532,
+          1170
+        ]
+      },
+      "exportMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 8,
+        "displayedPixels": [
+          2532,
+          1170
+        ]
+      },
+      "rawOriginalDirectlyViewedWhole": true,
+      "retainedJPEGDirectlyViewedWhole": true,
+      "verdict": "PASS",
+      "findings": [],
+      "conversionFidelity": "Upright landscapeorientation/wholeframe/contentmatch; no materialJPEG80 loss to essential numeric,label,guide,figure orjewel readability. JPEG is not used for contrast-ratio/RGB claims.",
+      "readability": "Complete final sentence end2hasroomagain and Close are visible; play/next contextualglyphs remain distinct. Score5000/150000 stays complete in the leftpinned instrument.",
+      "captionQualification": "The longText is scrolled to its final line; the preceding visible line is clipped at the reader top and the leftforecast continues belowfold. This is final-line/readability evidence, not simultaneouswholeguide/allforecast facts, Textactivation or actualVoiceOver."
+    },
+    {
+      "indexPositionOneBased": 7,
+      "id": "07-current-phone-normal-earned-recovery",
+      "kind": "candidate-native",
+      "stateCaption": "Actualnormalphone landscape afterlegitimate Storyexchange:5,000/150,000 exactscore andLine+5,000 receipt inrightreturnregion; fiveorderedforecastfacts andcurrentone-space list inleftreader. Still only, not continuousmotion.",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "device": {
+        "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "name": "Starfall HUD Stack dcf3 Phone"
+      },
+      "testIdentifier": "SkyFlowInteractionTests/testLandscapeStoryPressureAndCommittedRecovery()",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/0A0C1DB8-E36D-4BBF-B196-BEF1F799BB6D.png",
+        "sha256": "f50b57c5360de0f4527e2a860f62fca53bd803b2b538d2057027b1f068997d23",
+        "bytes": 3921110
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/07-current-phone-normal-earned-recovery.jpg",
+        "sha256": "0aaf15f1120259ae79c7a786cdda501411b69a6b0eb0ea619c91502eb845eff8",
+        "bytes": 652109
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 8,
+        "displayedPixels": [
+          2532,
+          1170
+        ]
+      },
+      "exportMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 8,
+        "displayedPixels": [
+          2532,
+          1170
+        ]
+      },
+      "rawOriginalDirectlyViewedWhole": true,
+      "retainedJPEGDirectlyViewedWhole": true,
+      "verdict": "PASS",
+      "findings": [],
+      "conversionFidelity": "Upright landscapeorientation/wholeframe/contentmatch; no materialJPEG80 loss to essential numeric,label,guide,figure orjewel readability. JPEG is not used for contrast-ratio/RGB claims.",
+      "readability": "Complete5000/150000 score, fiveforecast destinations7/6/1/2/4, one-space list1/3/4/5/6, Line+5000 and4000base+1000size are readable; source figure/receipt stay in the rightreturn region above visible stars.",
+      "captionQualification": "Normal earned Storyexchange, stillonly. No continuousmotion, preciseage or completeceiling-at-thisscroll-position claim."
+    },
+    {
+      "indexPositionOneBased": 8,
+      "id": "08-current-phone-full-board-landscape",
+      "kind": "candidate-native",
+      "stateCaption": "ActualAX5CalmPHONE FullBoard landscape aftersecondrealexchange:34,000/150,000 and49actualstars. Legacyattachmentname says tablet; actualdeviceisphone. FullBoard correctly has no showerforecast.",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "device": {
+        "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "name": "Starfall HUD Stack dcf3 Phone"
+      },
+      "testIdentifier": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore()",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/2FDBBCAB-FEDC-4036-AA56-98ACE00D8CA6.png",
+        "sha256": "cc93a0ce4a4d55f1b5802be05b37de5438f0911a269a1c829757cb811d42e638",
+        "bytes": 3631445
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/08-current-phone-full-board-landscape.jpg",
+        "sha256": "e6140ad2460d806ff17f17996f3a1a5022c4e3b09b5a03bef99d8ebd19cf8ecd",
+        "bytes": 630612
+      },
+      "rawMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 8,
+        "displayedPixels": [
+          2532,
+          1170
+        ]
+      },
+      "exportMetadata": {
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": 8,
+        "displayedPixels": [
+          2532,
+          1170
+        ]
+      },
+      "rawOriginalDirectlyViewedWhole": true,
+      "retainedJPEGDirectlyViewedWhole": true,
+      "verdict": "PASS",
+      "findings": [],
+      "conversionFidelity": "Upright landscapeorientation/wholeframe/contentmatch; no materialJPEG80 loss to essential numeric,label,guide,figure orjewel readability. JPEG is not used for contrast-ratio/RGB claims.",
+      "readability": "Complete34000/150000 score and FullBoard clearsrefillandcascade label fit atAX5. The right playfield has large complete jewel rows and retained figure slots; no showerforecast is depicted.",
+      "captionQualification": "ActualPHONE89BC; legacyrawattachment says tablet.49is committednativeboard count, not a claimall49stars are visible simultaneously in this shortlandscapeviewport; lowerrows requireboardscroll."
+    },
+    {
+      "indexPositionOneBased": 9,
+      "id": "09-current-tablet-full-board-landscape",
+      "kind": "candidate-native",
+      "stateCaption": "ActualAX5CalmTABLET FullBoard landscape aftersecondrealexchange:34,000/150,000 and49actualstars. No showerforecast. LaterSettings/background/coldrestore are separate methodproof/stills.",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "device": {
+        "id": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "name": "Starfall HUD Stack dcf3 Tablet"
+      },
+      "testIdentifier": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore()",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/0E57DCDF-7945-4A58-BC5C-CD7DC954A2BB.png",
+        "sha256": "05e8d7ae185bf68517d0db9837caf7fb49524b89964dd317b860d6e79972d610",
+        "bytes": 7468879
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/09-current-tablet-full-board-landscape.jpg",
+        "sha256": "14ae75d495e2778d91a1aeb519dd44e8c1e44ae20f8ebb8b12c925e2f00dc3f5",
+        "bytes": 1216287
+      },
+      "rawMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 8,
+        "displayedPixels": [
+          2752,
+          2064
+        ]
+      },
+      "exportMetadata": {
+        "pixels": [
+          2064,
+          2752
+        ],
+        "orientation": 8,
+        "displayedPixels": [
+          2752,
+          2064
+        ]
+      },
+      "rawOriginalDirectlyViewedWhole": true,
+      "retainedJPEGDirectlyViewedWhole": true,
+      "verdict": "PASS",
+      "findings": [],
+      "conversionFidelity": "Upright landscapeorientation/wholeframe/contentmatch; no materialJPEG80 loss to essential numeric,label,guide,figure orjewel readability. JPEG is not used for contrast-ratio/RGB claims.",
+      "readability": "ActualTABLET3C37 retains complete34000/150000 score, FullBoard description, two returnfigures, completeceiling and seven-by-seven jewel field over continuous painting.",
+      "captionQualification": "Bottom+19000 belongs to the AX below-board receipt apron and extends belowfold in this still; it is not completeawardglyph proof. LaterSettings/background/coldrestore remain separate method/still evidence."
+    }
+  ],
+  "limits": [
+    "Fourstatic retainedpairs only; otherrows are assignedto otherreviewers and require aggregateacceptance.",
+    "No completeAXapronawardglyph claim; visiblepartialbelowfoldreceiptis intentionallybounded.",
+    "No actualVoiceOver/Textactivation, physicaldevice,minOS,continuousanimation,framepacing,preciselatency or measuredcontrast-ratio claim.",
+    "NormalandCalm/AX5sources remain distinct; mechanical49starcount is not recast asall49visibleinphoneframe."
+  ]
+}

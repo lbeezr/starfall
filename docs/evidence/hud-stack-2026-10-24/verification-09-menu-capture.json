@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "MECHANICAL_CAPTURE_ONLY_DUPLICATE_PASS; independent actual menu-frame review remains separate",
+  "testedCommit": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+  "runtime": "dev.06a3229203",
+  "scope": "One original FullBoardLargestphone native method repeated solely to obtain missing real menu pixels; unchanged assertions, source and products. It neither replaces main results nor supplies additional unique coverage.",
+  "counts": {
+    "additionalNativeExecutions": 1,
+    "additionalUniqueCoverage": 0,
+    "failed": 0,
+    "skipped": 0
+  },
+  "duplicateOfMainSelector": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+  "mainVerification": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09.json",
+    "sha256": "3265b782063cb029c4a5142e3beb92fce75917b3a36aebb9bd710232b1503a15",
+    "bytes": 39845
+  },
+  "originalMainPhoneCase": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-summary.json",
+    "sha256": "51c464abc09f264d557a7d2d515c2f8a4ca7da433b4bdbf05fc40654b2b2396e",
+    "bytes": 741
+  },
+  "commandManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-5c05ecef-menu-capture-fresh1141.json",
+    "sha256": "527f85bf62d5a816684ed627c4f5fbdf0adbec7a7229b5d78258caab8fe2692e",
+    "bytes": 53184
+  },
+  "selectedMethod": {
+    "selector": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+    "methodAllowanceSeconds": 240,
+    "supervisorBoundSeconds": 300,
+    "fullStartBudgetSeconds": 470,
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141-receipt.json",
+      "sha256": "4a0bfcc3550d0d237eaa3f4713630735da583e8d06a068bb2060d97ca75405b1",
+      "bytes": 185
+    },
+    "elapsedSeconds": 119.547,
+    "limitSeconds": 300.0,
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141-summary.json",
+      "sha256": "cd73b2f2b21939913655b468ea5afa4d484fb0b246ca5930d53f0d4fc129ff0c",
+      "bytes": 741
+    },
+    "counts": {
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "runtimeWarnings": []
+  },
+  "sourceSnapshots": {
+    "snapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+      "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+      "bytes": 188241
+    },
+    "buildFinishSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-buildfinish-5c05ecef.json",
+      "sha256": "5282d739b6deb0c0b7dec8116cc284db604eaacd7b919a86e6c14100e09f99b2",
+      "bytes": 188253
+    },
+    "resumeSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-remaining-5c05ecef.json",
+      "sha256": "6612d37cc04c50eebc8946082f33b3602b22f12ef68dc1351265b565089cd61a",
+      "bytes": 188280
+    }
+  },
+  "workingTreeRuntimeOrTestDifferences": [],
+  "recording": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141.mp4",
+      "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "processStartEpoch": 1792927354.9696078,
+      "pid": 67411,
+      "processGroup": 67411,
+      "command": [
+        "xcrun",
+        "simctl",
+        "io",
+        "89BC6263-797D-4573-838E-E238A90D0D79",
+        "recordVideo",
+        "--codec=h264",
+        "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141.mp4"
+      ],
+      "readyEpoch": 1792927355.173642,
+      "recordLogPath": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141-recording.log",
+      "stopRequestedEpoch": 1792927474.791389,
+      "recorderExit": 0,
+      "finishedEpoch": 1792927475.1093838,
+      "sha256": "3d196285ad2c02d26dbeef307ad3912e60812107dae6c89604e0884b8be66850",
+      "bytes": 167970585,
+      "finalization": "Owned recorder exited0 after SIGINT; container/frames remain undecoded"
+    }
+  ],
+  "decoderManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-09-5c05ecef-menu-capture-fresh1141-manifest.json",
+    "sha256": "f4b6f6e85abc04d7526d903a3d8c69d518d0e6dc01f21f49e3e3d4170eec4918",
+    "bytes": 63916
+  },
+  "decodedWholeFrameCount": 20,
+  "decodeStatus": "MENU_DECODE_COMPLETE; independent actual menu-row frame review still required",
+  "frameTransformation": "Original whole PNGs, preferred track transform applied, original pixel dimensions; no crop/resize/retouch/JPEG. Independent selected-frame review does not imply all20rawframes were visually reviewed.",
+  "manualToolHistory": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-menu-tool-history.json",
+    "sha256": "f221577a0a5e0c0bbc94bd2e1b270fd3d38c398109443040d8a61fd58182ca46",
+    "bytes": 1938
+  },
+  "limits": "Capture provenance only. Independent actual Settings-row visual judgment and exact retained-export review are required before adoption. No continuous-motion, latency, actualVoiceOver, physical-device or human recognition acceptance.",
+  "recordedUTC": "2026-10-25T11:25:48.171446+00:00"
+}

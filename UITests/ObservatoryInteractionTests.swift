@@ -151,8 +151,9 @@ extension ObservatoryInteractionTests {
 
 
     @MainActor func testSupportedOrientationsPreserveNativeTargets() {
-        let orientations: [UIDeviceOrientation] = UIDevice.current.userInterfaceIdiom == .pad
-            ? [.portrait, .landscapeLeft, .landscapeRight] : [.portrait]
+        executionTimeAllowance = 240
+        addTeardownBlock { @MainActor in XCUIDevice.shared.orientation = .portrait }
+        let orientations: [UIDeviceOrientation] = [.portrait, .landscapeLeft, .landscapeRight]
         defer { XCUIDevice.shared.orientation = .portrait }
         for orientation in orientations {
             XCUIDevice.shared.orientation = orientation
@@ -161,11 +162,15 @@ extension ObservatoryInteractionTests {
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
                 landscape ? app.frame.width > app.frame.height : app.frame.height > app.frame.width
             }, object: nil).wait(timeout: 5), "Wait for the actual application viewport to rotate")
+            capture(app, "Observatory-native-orientation-before-input-\(orientation.rawValue)")
             let middle = app.buttons["experiment.cell.3.3"]
-            XCTAssertEqual(middle.frame.midX, app.frame.midX, accuracy: 1)
+            let left = app.buttons["experiment.cell.3.0"], right = app.buttons["experiment.cell.3.6"]
+            XCTAssertEqual(middle.frame.midX, (left.frame.midX + right.frame.midX) / 2, accuracy: 1,
+                           "Native input stays centered in its local playable column")
             XCTAssertFalse(app.buttons["landing.telescope"].exists)
             XCTAssertFalse(app.buttons["landing.lantern"].exists)
             let back = app.buttons["experiment.cell.6.6"]
+            app.revealSkyControls([back])
             XCTAssertGreaterThanOrEqual(back.frame.width, 44)
             XCTAssertGreaterThanOrEqual(back.frame.height, 44)
             let value = Int((back.value as! String).split(separator: ";").last!.split(separator: " ")[0])!

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "HISTORICAL_ORCHESTRATION_PREFLIGHT_FAILURES; no native PASS or visual acceptance inferred",
+  "recordedUTC": "2026-10-25T11:12:25.321430+00:00",
+  "source": {
+    "head": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "productionOrTestChangesForTheseCorrections": []
+  },
+  "attempts": [
+    {
+      "kind": "supplemental menu capture",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/manual-menu-09-5c05ecef-aborted.json",
+        "sha256": "11deb011da98c32879fb42a3ebb15359818334abd44027c8e00c7bc6b5d6a0ce",
+        "bytes": 455
+      },
+      "result": {
+        "status": "ABORTED_NO_CAPTURE_NO_VISUAL_ACCEPTANCE",
+        "reason": "Global idle preflight detected another target on an unrelated simulator. Orchestration mistakenly continued to launch own app, then immediately stopped it before UI interaction or screenshot. No foreign process was stopped.",
+        "ownAppPID": 20794,
+        "ownLogHelperPIDs": [
+          20784,
+          20858
+        ],
+        "remainingOwnProcessRows": "",
+        "recordedUTC": "2026-10-25T10:39:32.914666+00:00"
+      },
+      "correction": "All later dependent launch calls are conditional on successful preflight; no screenshot from this aborted launch exists or is admitted."
+    },
+    {
+      "kind": "read-only supplemental movie preflight",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/supplemental-09-fresh1141-preflight-rejection.json",
+        "sha256": "5fb528f63f07552efedac3fe558b1559312b7d2241bd936603a8a98e47681acc",
+        "bytes": 1241
+      },
+      "result": {
+        "goal": 9,
+        "status": "PREFLIGHT_REJECTED_NO_LAUNCH_NO_RECORDING_NO_TEST_EXECUTION",
+        "observedUTC": "2026-10-25T11:08:32Z",
+        "oldHelper": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/run-goal09-supplemental-motion-5c05ecef-fresh1141.py",
+          "sha256": "0bf59cb15ac57eba515a98ab16a2e5ec8e52e2c18c04c9f87343a22dc88b3655",
+          "bytes": 29634
+        },
+        "reason": "1141 helper expected newgrant SHA7f15 but retained the old1111 grant path, causing exact hash/deadline guard rejection before any output or native invocation.",
+        "faultyGrantPath": "/private/tmp/starfall-hud-stack-20261024/grant-09-fresh-1111.json",
+        "correctGrant": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/grant-09-fresh-1141.json",
+          "sha256": "7f15b2edf35a4798f49eae93386dd281a1ce511ee1d0ee8b17275efee28544eb",
+          "bytes": 580
+        },
+        "correction": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/run-goal09-supplemental-motion-5c05ecef-fresh1141-r2.py",
+          "sha256": "16274622b88612c03d2669e431c52f336e6f4438d80294217d5c86518b63878e",
+          "bytes": 29634
+        },
+        "sourceUnchanged": "Current5c runtime06a/all735inputs unchanged. All11 main stages preserve PASS; no passing test repeated to correct this helper-only preflight error."
+      },
+      "correction": "NewR2 private helper fixes only the grant pathname; all sealed old helpers remain unchanged. Qualified main native/hosted/Core/build results are preserved, with no passing-test repetition."
+    }
+  ],
+  "limits": "These are tooling/preflight incidents, not product regressions or completed native test failures. A future successful manual capture and the independently reviewed movie retain separate current-source records."
+}

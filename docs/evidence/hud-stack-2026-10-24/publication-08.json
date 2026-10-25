@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "goal": 8,
+  "recordedUTC": "2026-10-25T09:03:35Z",
+  "repository": "lbeezr/starfall",
+  "pullRequest": {
+    "number": 409,
+    "url": "https://github.com/lbeezr/starfall/pull/409",
+    "merged": true,
+    "mergedAt": "2026-10-25T09:02:54Z",
+    "head": "5cc4297d95940e253e4adc1ccd8f6cbe2341a42d",
+    "mergeCommit": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f"
+  },
+  "reviewedLocalHead": "d54b058e946de271b7baf134d5bf52fe0442f2b4",
+  "testedSource": "5a0cf19535639f9f385122d17318f28278ce179b",
+  "runtime": "dev.2c4e822ca7",
+  "baseMain": "c81b59eec28c03f5d7fa9a6dd45af413124ae65d",
+  "reviewedTree": "73c11462c6b2c76b503ff75c1bd4ef77428c3ef5",
+  "publishedTree": "73c11462c6b2c76b503ff75c1bd4ef77428c3ef5",
+  "mergedMainTree": "73c11462c6b2c76b503ff75c1bd4ef77428c3ef5",
+  "treeEquality": "Verified by GitHub create_tree equality and local git diff --exit-code between reviewed local, fetched published head and fetched main merge.",
+  "publishedSourceDifferencesFromTested": "Documentation and evidence only. App/test/resource/rule inputs are identical; App/README.md is the only changed path within build/test folders.",
+  "verification": {
+    "core": 352,
+    "hosted": 17,
+    "nativePrimaryExecutions": 6,
+    "failed": 0,
+    "skipped": 0,
+    "builds": [
+      "Debug",
+      "Release"
+    ],
+    "supplementalNative": 1,
+    "supplementalMethod": "CascadeReturnInteractionTests/testNormalTwoPhaseChainSeparateActionsAndReplay",
+    "sampledMotionFrames": 10,
+    "distinctMotionHashes": 9,
+    "retainedExportPairs": 14
+  },
+  "commitStatuses": [],
+  "pullRequestWorkflowRuns": [],
+  "remoteCIQualification": "Empty remote lists establish no remote CI pass; concrete local source-bound validation is recorded separately.",
+  "issue": {
+    "number": 389,
+    "state": "closed",
+    "stateReason": "completed",
+    "closedAt": "2026-10-25T09:02:55Z"
+  },
+  "projectProjection": {
+    "status": "unavailable",
+    "qualification": "No canonical GitHub Projects query/update capability is exposed; Project Done is not inferred from issue closure."
+  },
+  "integration": "Goal 9 implementation activates only after this verified individual main merge; Goal 10 waits for Goal 9.",
+  "heavyOperations": "All owned controllers, recorders, decoders and image conversions stopped; explicit early handback delivered to the authorized coordinator at08:51:30 UTC. Fresh grant required for Goal 9."
+}

@@ -1,0 +1,622 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "reviewer": "hud_read_ahead independent reviewer; no App implementation",
+  "status": "PASS_BOUNDED_AX5_NATIVE_STILLS; OVERALL_GOAL9_PENDING",
+  "recordedUTC": "2026-10-25T10:20:31.360744+00:00",
+  "source": {
+    "head": "040e2861b42d8ae1c085bf6fe522549d850621cf",
+    "runtime": "dev.7767997926",
+    "snapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-reader-end-040e2861.json",
+      "sha256": "3b3772d134e5e33cd41ec974a631dd59aa76776ad9dfd366a2a11e6c2d8fc77e",
+      "bytes": 188175
+    },
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "historicalCommittedBlobMatches": 735,
+    "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "changedAppOwners": [
+      "App/FallingSkyView.swift",
+      "App/SkyReadingPlayfield.swift",
+      "Starfall.xcodeproj/project.pbxproj"
+    ],
+    "changedTestOwners": [
+      "AppTests/SkyReadingPlayfieldTests.swift",
+      "UITests/FullBoardLanternInteractionTests.swift",
+      "UITests/NativeSkyControls.swift",
+      "UITests/ObservatoryInteractionTests.swift",
+      "UITests/SkyFlowInteractionTests.swift"
+    ],
+    "SkyDialogueBubbleBytesEqualAcceptedMain": true,
+    "preparedUTC": "2026-10-25T10:11:20.977151+00:00",
+    "buildTestAffectingDirtyPathsAtPreflight": []
+  },
+  "commands": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-reader-end-040e2861.json",
+    "sha256": "7573a1bdf798489beb56821150584a1e1ea4b3303c5ea69c2208bb190aa47496",
+    "bytes": 7431
+  },
+  "mechanicsSeparate": {
+    "selector": "StarfallUITests/SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-summary.json",
+      "sha256": "ddf8ebe2467215560f9f26022b01a6fa5642b12cc37e6804e95929649468fec5",
+      "bytes": 740
+    },
+    "counts": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "runtimeWarnings": [],
+    "stageElapsedSeconds": 165.287,
+    "methodAllowanceSeconds": 300,
+    "supervisorSeconds": 360,
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "fifthShower": "After final recovered still the original method physically taps Next and asserts5showers, no loss and unchanged5,000/150,000. This is completed native interaction/source+summary proof; no retained still shows fifth-shower landing."
+  },
+  "reference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182
+  },
+  "officialContext": [
+    "GAME_UI_SYSTEM registered short-landscape reading and protected instrument roles",
+    "HUD guide approved middle Play and common projection",
+    "UI_PRODUCTION independent complete-native-screen criteria"
+  ],
+  "wholeViewportVerdict": "Bounded PASS for all16 named actualAX5 native stills. Full-scaled sidebar instruments and independent facts leave a broad current-star field at right after native reveal, preserving continuous scenery and avoiding the rejected full-width header consuming the board. Exact score/target and Pause stay distinct, protected ink is visibly readable, and complete actual guide-final line fits. Deliberate facts/guide scroll positions explain partial previous/following content. No known current visual failure is found in this tranche.",
+  "geometryAndOrientation": {
+    "storedPixelsAll": [
+      1170,
+      2532
+    ],
+    "portraitCount": 1,
+    "landscapeCount": 15,
+    "portraitNativeViewportPoints": [
+      390,
+      844
+    ],
+    "landscapeNativeViewportPoints": [
+      844,
+      390
+    ],
+    "scale": 3,
+    "EXIF8Mapping": "display(x,y) -> raw(1169-y,x). Raw1170x2532 displays2532x1170. First EXIF1 frame is identity. No rotated or edited file generated.",
+    "scope": "Complete hardware viewports directly viewed with view_image detail original. Content intentionally outside the active scrolling viewport is not claimed simultaneously visible."
+  },
+  "manifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/manifest.json",
+    "sha256": "fbf4f915abb469a91945a2947a79d24ad55de71fc8c4a0e22a6e430022c6b92f",
+    "bytes": 8635
+  },
+  "originalPNGCount": 16,
+  "directlyViewedOriginalPNGCount": 16,
+  "excludedOriginalPNGs": [],
+  "frames": [
+    {
+      "order": 1,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/C8F48187-7D5A-44B6-99BB-E70C606E73FA.png",
+        "sha256": "da1b6be798d6b714e1e05a871f9a0a9550dd2e4e78397ba848a527c40210ac4f",
+        "bytes": 3101527
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "C8F48187-7D5A-44B6-99BB-E70C606E73FA.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-full-largest_0_36DB5A46-44DD-48EB-96A9-5AF5DB01672B.png",
+        "timestamp": 1792923172.595
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Portrait starting4-shower full pressure: complete0/150,000, Next7/6/1/2/4, Column2 full and1space1,3,4,5,6. Lower board continues below viewport."
+    },
+    {
+      "order": 2,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/41D1D222-4809-4E91-BFC7-53649DE9A87D.png",
+        "sha256": "2c8f5259f5890a11121db35a835a4b12ecb0931f9b854c0b3770c06c50d6d91b",
+        "bytes": 3432884
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "41D1D222-4809-4E91-BFC7-53649DE9A87D.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-largest-before-reveal_0_4BBFE074-76BC-4881-BC21-308C6595E630.png",
+        "timestamp": 1792923175.179
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Landscape before native reveal: fixed complete score/target and Pause. Left first forecast row and lower current board rows visible; ceiling above this deliberate scroll position."
+    },
+    {
+      "order": 3,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/3ABD729A-05FA-4313-8836-8686A0C8396D.png",
+        "sha256": "650cffb74872d73fdddee55a6242bb1c5005452ff2fb9b4410ffb6f25626de3e",
+        "bytes": 3291805
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "3ABD729A-05FA-4313-8836-8686A0C8396D.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-complete-current-room-fact-0_0_83D532AA-95A8-40F7-8EBB-BFBF01B3DC1D.png",
+        "timestamp": 1792923186.37
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Complete Column2 is full fact at its own left scroll position; full right ceiling badges and current top stars visible, separate from fixed instrument."
+    },
+    {
+      "order": 4,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/938DA4DA-7107-49A2-8AEE-DECDCB66EBA4.png",
+        "sha256": "4d2c68b8fe94d9db3c6112a5fbea47f8e356b2ad461ebd5af31ebd4af79e8fdb",
+        "bytes": 3388345
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "938DA4DA-7107-49A2-8AEE-DECDCB66EBA4.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-complete-current-room-fact-1_0_42E44650-CE64-4308-8AA5-1EAF45DEBAC6.png",
+        "timestamp": 1792923189.372
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Complete1space1,3,4,5,6 fact. Previous full fact partly above left viewport through deliberate scrolling."
+    },
+    {
+      "order": 5,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/BF96A272-C33D-4B7E-A5FD-7FAE234A460A.png",
+        "sha256": "4d2c68b8fe94d9db3c6112a5fbea47f8e356b2ad461ebd5af31ebd4af79e8fdb",
+        "bytes": 3388345
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "BF96A272-C33D-4B7E-A5FD-7FAE234A460A.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-complete-current-room-facts_0_3CFA2284-FF08-4B4C-A643-D7DF57B225FE.png",
+        "timestamp": 1792923189.514
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Aggregate room-facts capture at same near-fact scroll position. No claim full and near are simultaneously fully visible."
+    },
+    {
+      "order": 6,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/7FE55204-6BAD-48F1-BED3-206CC65E10DF.png",
+        "sha256": "8faf1a87a253c6a20ded6ebc10c5087f6db31208b8d92ccfce49e7bdbc72787c",
+        "bytes": 3208297
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "7FE55204-6BAD-48F1-BED3-206CC65E10DF.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-forecast-target-0_0_1B6A65D4-97E0-4953-B9C8-98444DFF49D2.png",
+        "timestamp": 1792923195.128
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Complete five family/column pairs7/6/1/2/4 across two columns/three rows, with complete right ceiling/current stars. Filename target0 does not by itself prove selected locator state."
+    },
+    {
+      "order": 7,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/151765FD-F6EB-4599-AD51-A541E4C8FE17.png",
+        "sha256": "5b54306921d5510dc26062a334b2fecc665e60baa9298e0c8f555b5820ae1380",
+        "bytes": 3208134
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "151765FD-F6EB-4599-AD51-A541E4C8FE17.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-forecast-target-4_0_170876B1-0F37-44B3-B8A3-1ABEFC40ACED.png",
+        "timestamp": 1792923201.785
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Same complete forecast at target4 witness. Native target bounds/touch remain mechanical evidence."
+    },
+    {
+      "order": 8,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/04E00B64-9150-4939-995B-A2F3031974E3.png",
+        "sha256": "0f1bbb6a14206e41f6c233e9a7137683d9d01368b40dd181026f39095a81c103",
+        "bytes": 3223937
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "04E00B64-9150-4939-995B-A2F3031974E3.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-largest-full_0_95BE69C0-93FB-48A7-AB08-7E0FCA056620.png",
+        "timestamp": 1792923204.819
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Full-pressure final reading position: complete Next columns title, Help and first forecast row; later rows intentionally below left viewport."
+    },
+    {
+      "order": 9,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/446287B3-EAE3-401C-9CC9-96FC609DA82B.png",
+        "sha256": "4fd0f1e642554df92fe9e5273916cbfc39ee4c33650a883256bb2711434789a1",
+        "bytes": 3520226
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "446287B3-EAE3-401C-9CC9-96FC609DA82B.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-largest-earned-recovery_0_D5A77A76-B77B-4998-B40A-6423518E1D16.png",
+        "timestamp": 1792923212.085
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Committed5,000/150,000, real changed star field and pink returned figure in right return region. Quiet sampled state, no continuous flight claim."
+    },
+    {
+      "order": 10,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/06DF8CA2-4120-4173-AAFA-D94F7CAE041E.png",
+        "sha256": "09cba4b93696918cfcb48aeb2ecbc2aeca2a7561fd258e3940835c1e01f0e8f6",
+        "bytes": 3097366
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "06DF8CA2-4120-4173-AAFA-D94F7CAE041E.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "short-landscape-guide-after-action-reveal_1_F34B7B86-89CF-4E8A-9AF6-16A16784F31B.png",
+        "timestamp": 1792923227.296
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Guide after action reveal: beginning of long message and later intentionally clipped text inside inner reader. Complete Close plus separate play/next glyph actions within screen."
+    },
+    {
+      "order": 11,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/7A057295-056F-49A8-8BCD-2747534CBCBA.png",
+        "sha256": "6df3391457bcea755b4048444f7c3e8ed2f80c28e2213ef2a491f20d0c93baf1",
+        "bytes": 3099039
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "7A057295-056F-49A8-8BCD-2747534CBCBA.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "short-landscape-guide-final-line_1_9BBD5975-C3B9-4D0E-838B-1000FC1A54CA.png",
+        "timestamp": 1792923232.205
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Guide final pan: complete final2hasroomagain line including period above Close. Prior line is deliberately partial at top; Close/play/next remain visible."
+    },
+    {
+      "order": 12,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/07673FA8-27D2-410B-92C9-8D291A34C4A0.png",
+        "sha256": "7bf61401b28aefd29a7ab6c272ea0efbb7d4b07b6e53fd3b69c5eceeb1e393e6",
+        "bytes": 3312803
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "07673FA8-27D2-410B-92C9-8D291A34C4A0.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-complete-current-room-fact-0_0_91360DE1-AD9A-4D32-8F19-FB39B30E16D0.png",
+        "timestamp": 1792923246.161
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Recovery near-only1space1,3,4,5,6 complete at its left scroll position. Column2 full status/badge retired."
+    },
+    {
+      "order": 13,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/1F43C2F1-A1A4-4F6D-BD8F-A735BFCAA8BA.png",
+        "sha256": "7bf61401b28aefd29a7ab6c272ea0efbb7d4b07b6e53fd3b69c5eceeb1e393e6",
+        "bytes": 3312803
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "1F43C2F1-A1A4-4F6D-BD8F-A735BFCAA8BA.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-complete-current-room-facts_0_E81AE7BA-ED36-434E-ACFE-ED73B4F34F6B.png",
+        "timestamp": 1792923246.302
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Aggregate recovery facts at same near-only position; fixed5,000 score and current stars retain hierarchy."
+    },
+    {
+      "order": 14,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/1C2283ED-DF2E-4A72-B04F-5B8DB028AF4F.png",
+        "sha256": "ea2445a0c15678b16bd59471a38de06cfcdbc51ff98dde876da15fc2b25b556c",
+        "bytes": 3203453
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "1C2283ED-DF2E-4A72-B04F-5B8DB028AF4F.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-forecast-target-0_0_DC211E80-B43C-4F1B-9A7F-9546B8D11EF4.png",
+        "timestamp": 1792923250.622
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Recovery complete five forecast pairs7/6/1/2/4; column2 warning absent while other one-space badges persist."
+    },
+    {
+      "order": 15,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/E1C74F71-4263-45D2-9C98-2AC4AB3340E9.png",
+        "sha256": "0a0162b11261389e592c090d637ba7f157215316bee55d277da199e0b18f5129",
+        "bytes": 3203352
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "E1C74F71-4263-45D2-9C98-2AC4AB3340E9.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-landscape-forecast-target-4_0_328AF0F2-211E-4BBB-BA4F-8510C2B93C65.png",
+        "timestamp": 1792923257.191
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Same complete recovery forecast. No selected-state inference from filename."
+    },
+    {
+      "order": 16,
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/8F5C05B0-DB31-469A-AF57-58227574F47A.png",
+        "sha256": "3c697a18ff258dab3cd15070836ecae330cccda07a9018e0f10c89f5c2c064ca",
+        "bytes": 3218459
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "8F5C05B0-DB31-469A-AF57-58227574F47A.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "pressure-recovered-largest_0_A59BC1E8-E341-45CF-A21E-0EC7737F6055.png",
+        "timestamp": 1792923260.152
+      },
+      "directWholeOriginalView": true,
+      "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+      "finding": "Final recovered still before fifth-shower action: complete Next columns/Help and first forecast row; later rows below left viewport.5,000/150,000 fixed, column2 recovered."
+    }
+  ],
+  "finalGuideDiagnostic": {
+    "file": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-reader-end-040e2861-landscape-ax5-attachments/E301166A-51C8-47D3-A63F-10E42DBD858C.txt",
+      "sha256": "9f7b99d70baa7abe849dd58139de52572a79434bdfb75a88bd750d5d902be374",
+      "bytes": 33953
+    },
+    "observedHeader": "application=(0.0, 0.0, 844.0, 390.0); reader=(379.0, 146.0, 394.0, 93.66666666666663); message=(379.0, -457.0, 394.0, 696.6666666666666); actions=[(580.0, 339.0, 45.0, 45.0)]",
+    "nativeBar100PercentTreeOccurrences": 2,
+    "visualFinding": "Final line2hasroomagain including period is completely visible above Close. Earlier words are intentionally partial above the reader, not final-line clipping."
+  },
+  "oracleCorrection": "A scoped test-oracle correction, not AppAXfix or all-original-assertions-unchanged. Bounded4pans, fullTextbottom and actions remain. Only short-sidebar profile with longTextcenter outside the innerreader substitutes complete unchanged spokenlabel, fully-contained hittable innerreader, allnativebars100% and an entire UIFont.subheadline.lineHeight finalband. Other profiles retain originalText.isHittable. Historical invalid activationpoint failures remain sealed; no SDK cause assigned.",
+  "limits": [
+    "This accepts only namedAX5 legitimatequiet native still hierarchy/legibility/geometry; active continuation and overallGoal9 remain pending.",
+    "No standalone longText activationpoint/hittability, actualVoiceOver, physical/minimum-iOS, continuous motion or full contrast certification.",
+    "No whole guide or all facts/forecast in one simultaneous still; these are sequential native reading views.",
+    "Target bounds/common mapping, complete reading/input gates and fifth-shower outcome are mechanical proof separate from still judgment.",
+    "No retained JPEG/exact-export review here. Later test-only continuation source equivalence must be bound explicitly.",
+    "Earlier rejected candidates and frozen histories/reviews remain unchanged."
+  ]
+}

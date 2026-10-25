@@ -76,9 +76,6 @@ struct FallingSkyMenu: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .accessibilityIdentifier("experiment.roundSummary")
                 }
-                if let mastery {
-                    SkyMenuSection(mastery.modeTitle) { SkyMasteryView(snapshot: mastery) }
-                }
                 SkyMenuRule()
                 VStack(spacing: StarfallTheme.Spacing.compact) {
                     if let lastClear {
@@ -126,6 +123,10 @@ struct FallingSkyMenu: View {
                         .accessibilityIdentifier("sky.home")
                 }
                 .buttonStyle(StarfallButtonStyle(role: .quiet, expands: true))
+                if let mastery {
+                    SkyMenuRule()
+                    SkyMenuSection(mastery.modeTitle) { SkyMasteryView(snapshot: mastery) }
+                }
                 #if DEBUG
                 SkyMenuRule()
                 NavigationLink {

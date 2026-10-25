@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "PASS_BOUNDED_WHOLE_NATIVE_MENU_ROW",
+  "verdict": "PASS_BOUNDED_MENU_ROW_AND_PINNED_CONTROLS",
+  "reviewer": "hud_read_ahead independent original whole-frame reviewer; no App implementation, controller, recording, decoder or export operations",
+  "recordedUTC": "2026-10-25T11:27:13.956553+00:00",
+  "source": {
+    "head": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "originalSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+      "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+      "bytes": 188241
+    },
+    "resumeSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-remaining-5c05ecef.json",
+      "sha256": "6612d37cc04c50eebc8946082f33b3602b22f12ef68dc1351265b565089cd61a",
+      "bytes": 188280
+    },
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "identicalOriginalAndResumeRecords": 735,
+    "qualification": "Original2c06 pre-Debug snapshot and later6612 resume dump have identical735 records; later dump timing is not represented as pre-original-Debug. Menu helper reports no runtime/test differences before/after capture."
+  },
+  "reference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182
+  },
+  "officialContext": "Existing SkyMenuSurface fixed header/footer and native scrolling reading body; essential navigation before optional Mastery. Complete native fonts/targets retained, fitted official menu material distinct from active-play instruments.",
+  "mechanicsSeparate": {
+    "commands": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-5c05ecef-menu-capture-fresh1141.json",
+      "sha256": "527f85bf62d5a816684ed627c4f5fbdf0adbec7a7229b5d78258caab8fe2692e",
+      "bytes": 53184
+    },
+    "status": "MENU_CAPTURE_NATIVE_AND_RECORDING_PASS; independent menu-frame review pending",
+    "selector": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+    "counts": {
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "runtimeWarnings": [],
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141-summary.json",
+      "sha256": "cd73b2f2b21939913655b468ea5afa4d484fb0b246ca5930d53f0d4fc129ff0c",
+      "bytes": 741
+    },
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "receipt": {
+      "stage": "native-09-5c05ecef-menu-capture-fresh1141",
+      "startedUTC": "2026-10-25T11:22:35.199468+00:00",
+      "elapsedSeconds": 119.547,
+      "limitSeconds": 300.0,
+      "exitCode": 0,
+      "error": null
+    },
+    "receiptFile": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141-receipt.json",
+      "sha256": "4a0bfcc3550d0d237eaa3f4713630735da583e8d06a068bb2060d97ca75405b1",
+      "bytes": 185
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141.log",
+      "sha256": "70645a345b15bee323a1585fa85a9d6b1f1a58e5c3d32e2a612adf0d9b2fb54c",
+      "bytes": 67356
+    },
+    "methodAllowanceSeconds": 240,
+    "supervisorBoundSeconds": 300,
+    "minimumStartBudgetSeconds": 470,
+    "export": {
+      "command": [
+        "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+        "/private/tmp/starfall-hud-stack-20261024/export-completed-04.py",
+        "native-09-5c05ecef-menu-capture-fresh1141"
+      ],
+      "wrapperCommand": [
+        "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+        "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/scripts/simulator-command.py",
+        "--receipt",
+        "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141-export-receipt.json",
+        "native-09-5c05ecef-menu-capture-fresh1141-export",
+        "90",
+        "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+        "/private/tmp/starfall-hud-stack-20261024/export-completed-04.py",
+        "native-09-5c05ecef-menu-capture-fresh1141"
+      ],
+      "wrapperPID": 69296,
+      "exitCode": 0,
+      "receipt": {
+        "stage": "native-09-5c05ecef-menu-capture-fresh1141-export",
+        "startedUTC": "2026-10-25T11:24:35.209240+00:00",
+        "elapsedSeconds": 0.27,
+        "limitSeconds": 90.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "receiptFile": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141-export-receipt.json",
+        "sha256": "7a74df65bb5726be9b2cae487347d8d4b8604c227a934529dd09b7e2062f5961",
+        "bytes": 188
+      },
+      "log": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141-export.log",
+        "sha256": "4fcca9277d456f944551af99187ba9dfd6ba9dbe10e8378fde002458984e63c3",
+        "bytes": 546
+      }
+    },
+    "qualification": "One capture-only duplicate of an already-passing main phone method; zero extra unique coverage and no replacement of the main result. Main remains7 executions/6unique, normal-motion supplement1 separately, menu duplicate1 separately:9 native executions across these scopes, not eight."
+  },
+  "recording": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141.mp4",
+    "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "processStartEpoch": 1792927354.9696078,
+    "pid": 67411,
+    "processGroup": 67411,
+    "command": [
+      "xcrun",
+      "simctl",
+      "io",
+      "89BC6263-797D-4573-838E-E238A90D0D79",
+      "recordVideo",
+      "--codec=h264",
+      "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141.mp4"
+    ],
+    "readyEpoch": 1792927355.173642,
+    "recordLogPath": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141-recording.log",
+    "stopRequestedEpoch": 1792927474.791389,
+    "recorderExit": 0,
+    "finishedEpoch": 1792927475.1093838,
+    "sha256": "3d196285ad2c02d26dbeef307ad3912e60812107dae6c89604e0884b8be66850",
+    "bytes": 167970585,
+    "finalization": "Owned recorder exited0 after SIGINT; container/frames remain undecoded"
+  },
+  "decoder": {
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-09-5c05ecef-menu-capture-fresh1141-manifest.json",
+      "sha256": "f4b6f6e85abc04d7526d903a3d8c69d518d0e6dc01f21f49e3e3d4170eec4918",
+      "bytes": 63916
+    },
+    "status": "MENU_DECODE_COMPLETE; independent actual menu-row frame review still required",
+    "movie": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141.mp4",
+      "sha256": "3d196285ad2c02d26dbeef307ad3912e60812107dae6c89604e0884b8be66850",
+      "bytes": 167970585,
+      "durationSeconds": 119.7,
+      "metadataLimit": "H264 recorder command, finalized bytes/hash, AV duration and preferred-transform whole-frame dimensions; no separately measured encodedfps/driver pacing."
+    },
+    "receipt": {
+      "stage": "menu-09-5c05ecef-fresh1141-phone-extract",
+      "startedUTC": "2026-10-25T11:24:59.498753+00:00",
+      "elapsedSeconds": 1.838,
+      "limitSeconds": 90.0,
+      "exitCode": 0,
+      "error": null
+    },
+    "receiptFile": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-extract-receipt.json",
+      "sha256": "94506e43834f58e1a5b57f2cdcefdd43ca5c46ee072700aa08d37826b789c79a",
+      "bytes": 181
+    },
+    "decoderLog": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-extract.log",
+      "sha256": "08baf0083b50574fa5535ec0c2036220e390d84a9363cc5918781e75c82c2d83",
+      "bytes": 1276
+    },
+    "recordingEpochUncertainty": {
+      "movieZeroEpochInterval": [
+        1792927354.9696078,
+        1792927355.173642
+      ],
+      "intervalWidthSeconds": 0.20403409004211426,
+      "nominalMediaZeroEpochUsed": 1792927355.173642,
+      "limit": "Recorder process-start/readiness bookends only. No exact media-zero, row-arrival latency, interaction pacing or phase-boundary claim. Attachment epoch follows fully visible row geometry, not a gesture-start timestamp."
+    },
+    "wholeFramesDecoded": 20,
+    "wholeOriginalFramesDirectlyViewed": 3,
+    "limits": "All three are original whole1170x2532 decoded native H264 frames with preferred track transform applied. Source PNG EXIF metadata is bound per image. No new decoding, resampling, cropping, retouch or JPEG operation by this reviewer."
+  },
+  "geometrySeparate": {
+    "file": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-menu-capture-fresh1141-attachments/A565D1F3-8A4B-4E42-8A1E-27DD790B52A1.txt",
+      "sha256": "acee191c8551e60bc7cd5d534f0952d8a8b1300b6c67070e263bd902937c4ea8",
+      "bytes": 1560
+    },
+    "attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "exportedFileName": "A565D1F3-8A4B-4E42-8A1E-27DD790B52A1.txt",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "settings-reveal-geometry_0_3AC4463C-9FDB-4A3D-90F0-AA336A795EEB.txt",
+      "timestamp": 1792927444.375
+    },
+    "firstObservation": "Attempt 1: bounds=(40.0, 2010.3333333333333, 310.0, 133.33333333333326); viewport=(8.0, 159.33333333333331, 374.0, 419.6666666666667); scroll=Optional((8.0, 159.33333333333331, 374.0, 419.6666666666667))",
+    "finalObservation": "Attempt 6: bounds=(40.0, 439.6666666666666, 310.0, 133.3333333333332); viewport=(8.0, 159.33333333333331, 374.0, 419.6666666666667); scroll=Optional((8.0, 159.33333333333326, 374.0, 419.66666666666674))",
+    "actualPans": 5,
+    "attachmentEpoch": 1792927444.375,
+    "qualification": "Final native Settings bounds y439.667..573 lie inside reader y159.333..579 after5 pans, within original8pan allowance. Epoch follows geometry validation, not gesture onset; recording media-zero uncertainty remains0.204034s."
+  },
+  "inspectedFrames": [
+    {
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0088.801.png",
+        "sha256": "bf489bf536df46ec99d438e9e5012f63fb621689a46c991cfa67da341c082fc4",
+        "bytes": 1660683
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": null,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "decoderFrameRecord": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0088.801.png",
+        "sha256": "bf489bf536df46ec99d438e9e5012f63fb621689a46c991cfa67da341c082fc4",
+        "bytes": 1660683,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 88.801,
+        "actualMediaTimeSeconds": 88.79666666666667,
+        "requestedMenuGeometryOffsetSeconds": -0.4,
+        "possibleActualMenuGeometryOffsetSeconds": [
+          -0.6087255477905273,
+          -0.4046914577484131
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false
+      },
+      "directWholeOriginalView": true,
+      "finding": "Earlier moving scroll slice: Settings is still partly below the reading viewport; Sky menu header and full Return footer remain fixed."
+    },
+    {
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.001.png",
+        "sha256": "495821ea65dad0d29d710ace3c1c6da9f41898626533c003b56084d3bcd764ad",
+        "bytes": 1711822
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": null,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "decoderFrameRecord": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.001.png",
+        "sha256": "495821ea65dad0d29d710ace3c1c6da9f41898626533c003b56084d3bcd764ad",
+        "bytes": 1711822,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 89.001,
+        "actualMediaTimeSeconds": 88.99,
+        "requestedMenuGeometryOffsetSeconds": -0.2,
+        "possibleActualMenuGeometryOffsetSeconds": [
+          -0.4153921604156494,
+          -0.21135807037353516
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false
+      },
+      "directWholeOriginalView": true,
+      "finding": "Complete Settings & help glyph, both text lines and chevron fit above the footer separator; complete Find a move also fits. Pinned Sky menu and full Return to sky remain readable. Preceding last-clear row intentionally begins above the viewport; no whole-row/page claim for it."
+    },
+    {
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.201.png",
+        "sha256": "b36ecf261dfa6bcb7ca7057325eb8534f4a75dad0fa24535221b25f753bb453b",
+        "bytes": 1711728
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": null,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "decoderFrameRecord": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.201.png",
+        "sha256": "b36ecf261dfa6bcb7ca7057325eb8534f4a75dad0fa24535221b25f753bb453b",
+        "bytes": 1711728,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 89.201,
+        "actualMediaTimeSeconds": 89.19166666666666,
+        "requestedMenuGeometryOffsetSeconds": 0.0,
+        "possibleActualMenuGeometryOffsetSeconds": [
+          -0.21372556686401367,
+          -0.009691476821899414
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false
+      },
+      "directWholeOriginalView": true,
+      "finding": "Complete Settings & help glyph, both text lines and chevron fit above the footer separator; complete Find a move also fits. Pinned Sky menu and full Return to sky remain readable. Preceding last-clear row intentionally begins above the viewport; no whole-row/page claim for it."
+    }
+  ],
+  "excludedUnviewedFramePaths": [
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0086.201.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0086.401.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0086.601.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0086.801.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0087.001.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0087.201.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0087.401.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0087.601.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0087.801.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0088.001.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0088.201.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0088.401.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0088.601.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.401.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.601.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.801.png",
+    "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0090.001.png"
+  ],
+  "selectedForRetention": {
+    "raw": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.201.png",
+      "sha256": "b36ecf261dfa6bcb7ca7057325eb8534f4a75dad0fa24535221b25f753bb453b",
+      "bytes": 1711728
+    },
+    "metadata": {
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "EXIF274": null,
+      "displayPixels": [
+        1170,
+        2532
+      ]
+    },
+    "frameRecord": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.201.png",
+      "sha256": "b36ecf261dfa6bcb7ca7057325eb8534f4a75dad0fa24535221b25f753bb453b",
+      "bytes": 1711728,
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "requestedMediaTimeSeconds": 89.201,
+      "actualMediaTimeSeconds": 89.19166666666666,
+      "requestedMenuGeometryOffsetSeconds": 0.0,
+      "possibleActualMenuGeometryOffsetSeconds": [
+        -0.21372556686401367,
+        -0.009691476821899414
+      ],
+      "preferredTrackTransformApplied": true,
+      "wholeFrame": true,
+      "cropResizeRetouchOrJPEG": false
+    },
+    "caption": "Actual AX5 Calm phone menu after five bounded native pans; complete Settings & help and pinned Sky menu/Return are visible in the retained34,000-point Full Board journey. Score itself is covered; this is not whole-Mastery-page evidence."
+  },
+  "visualFinding": "Bounded PASS. Actual89.191667s frame shows the complete current Settings row clear of both pinned header and Return footer, with recognizable glyph, full two-line label and chevron over the official opaque menu reading surface. The prior partially visible scroll slice progresses to this complete row; it is not a whole-page or continuous-motion judgment. Underlying34k FullBoard context is established by the original method and source-bound journey, not by visible score ink inside this menu frame.",
+  "priorManualRoute": {
+    "record": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/manual-menu-09-fresh1141-tool-route.json",
+      "sha256": "5f9fb09a99025aea764ec14e0f13990d469361372801a34ba8e042474eeba8d5",
+      "bytes": 38803
+    },
+    "status": "MANUAL_UI_ROUTE_NOT_COMPLETED_NO_MENU_IMAGE_ACCEPTED",
+    "qualification": "MCP route remained on Home despite taps and a swipe. Its optimized Home JPEG is excluded from acceptance. No private-SDK cause, product menu fault or successful manual menu interaction is inferred; this later original native duplicate supplies the actual menu raster."
+  },
+  "limits": [
+    "Only3of20 decoded wholeframes directly viewed;17 paths explicitly excluded. The selected still proves complete Settings row and pinned header/footer, not every menu/Mastery row or the whole page.",
+    "No actual VoiceOver, physical-device, minimum-iOS, continuous animation, exact latency, complete contrast or manual-human UI claim. H264 compression and media-zero bookend uncertainty remain.",
+    "The original FullBoard method pass, target geometry, five native pans and subsequent activation/restore are mechanical scopes separate from visual judgment. Capture-only duplicate adds no unique method coverage.",
+    "This file does not adopt Goal9 or grant exact-JPEG export acceptance. Frozen original phone/tablet review and historical failures remain unchanged."
+  ]
+}

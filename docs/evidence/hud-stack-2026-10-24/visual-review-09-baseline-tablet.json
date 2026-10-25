@@ -1,0 +1,390 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "reviewer": "Independent subagent /root/hud_goal_review",
+  "reviewedUTC": "2026-10-25T09:14:52.388649+00:00",
+  "status": "PASS_BOUNDED_ACCEPTED_MAIN_TABLET_BASELINE",
+  "source": {
+    "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "compiledTestsCheckpoint": "5a0cf19535639f9f385122d17318f28278ce179b",
+    "runtime": "dev.2c4e822ca7",
+    "productProof": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-products.json",
+      "sha256": "655b2ab7c1889c85e854ed595e384f3f24f2223472f229059c05cce55e1a41af",
+      "bytes": 1388
+    },
+    "qualification": "Accepted Goal8 products; App/test/build source byte-identical except documentation. Existing tablet rotation method unchanged."
+  },
+  "mechanics": {
+    "selector": "StarfallUITests/KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput",
+    "methodAllowanceSeconds": 300,
+    "processLimitSeconds": 360.0,
+    "stageElapsedSeconds": 172.693,
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-summary.json",
+      "sha256": "927c4ee7d9405be7d0fb0ec665f2ecfc5db77f1c40958ddbea2857340bd33338",
+      "bytes": 753
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-receipt.json",
+      "sha256": "c9f730f38e9dd7cf956d32b767aa49ae0e9f9c60755af271a1959c3778e3f400",
+      "bytes": 179
+    },
+    "qualification": "Existing exact49cell/mapped corners/center, actual landscape native clear, portrait return and second clear gates passed; these interaction outcomes are separate from this direct visual review."
+  },
+  "scope": {
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/manifest.json",
+      "sha256": "40958605f7990d85357e4e421744769b19f282274a4775e04a250cf48ab9feb4",
+      "bytes": 7496
+    },
+    "pngRows": 15,
+    "byteUniquePNGs": 15,
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "deviceName": "Starfall HUD Stack dcf3 Tablet",
+      "modelName": "iPad Pro 13-inch (M5)",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "scenario": "Default text, actual iPad portrait/landscape. Calm NO and actual system Reduce Motion disabled/restored by existing native Settings helper. Reset-only --dialogue-review --world-legacy-review --kite-restoration-review fixtures retain historical18-light manual mechanics.",
+    "actualNativeSequence": "5/18 portrait to landscape, actual clear to9/18, portrait retains9/18, second native clear to13/18.",
+    "independentMilestones": "Separate reset-only score0/5/9/14/18 samples in each orientation.25/75 names are milestone labels; public percent assertions are28/78 for scores5/14. The18/18 result captures are fixtures, not earned wins in this method.",
+    "orientation": "All originals store2064x2752;8 portrait useEXIF1 and7 landscape useEXIF8, displayed2752x2064. Reviewed upright whole frames; no source image was edited, converted or rotated."
+  },
+  "reference": {
+    "image": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+      "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+      "bytes": 2479182
+    },
+    "region": "Approved middle Play screen",
+    "directlyViewed": true,
+    "contract": "Official active-play instruments over continuous scenery with playable stars dominant; concept is visual direction, not layout/native proof."
+  },
+  "visualVerdict": {
+    "result": "PASS",
+    "reasons": [
+      "All fifteen whole original images retain continuous painted scenery, clear full jewel silhouettes, complete ceiling line and distinct compact edge instruments. No flat gray render rectangle or clipped board strip is visible.",
+      "Portrait and landscape preserve the same central star field and spacing, with score/target, Next columns4/5/6 and Help visibly complete. The quiet header and footer remain subordinate to stars/scenery.",
+      "The two actual-clear followup guides are readable and separated from the star rows, with distinct Close and Resume sky/Next shower actions. Portrait and landscape result fixtures retain complete headings, body copy and result actions.",
+      "The five independently reset art milestones change restored sails/lighting while retaining the same native playfield composition; no overlapping essential HUD ink is visible in the named frames."
+    ],
+    "findings": []
+  },
+  "limits": [
+    "This accepted-main baseline establishes only the named default-text, large-tablet historical-mechanic composition and real rotation/input scope.",
+    "It does not establish short-phone landscape, AX5, current Kite4 17000-point objective, full/one-space pressure, selected forecast, six-figure targets or simultaneous current receipt layout.",
+    "Fifteen stills do not prove continuous animation, frame pacing, exact receipt age, contact latency or physical-device readability.",
+    "No actual VoiceOver, Increase Contrast, Reduce Transparency or minimum-OS acceptance is claimed.",
+    "This is not Goal9 candidate acceptance; upcoming accepted-main short-landscape/AXphone and any corrected-source final checks remain separate."
+  ],
+  "images": [
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/65038CA0-0147-40E7-B963-0B4F48D9824F.png",
+      "sha256": "489dbba6a9dbc220bbd3959331b7cce8b79d5ee9e5a46667d54ba4a94271ff65",
+      "bytes": 7287520,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-landscape-scene-100-score-18-normal-motion_0_C7C7E729-1E9A-4670-8031-22E7583A5FBC.png",
+      "timestamp": 1792919463.9,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Independently reset actual landscape18/18 result fixture; complete result actions and supporting text."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/9D729117-5D58-4EC4-9A38-B2D902A472C1.png",
+      "sha256": "9380ddc13826ab0e394b56f9ef712e9aa8c8902f4f44c402f17e3f9d9a3ef616",
+      "bytes": 7474147,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-landscape-scene-75-score-14-normal-motion_0_847009E6-99E1-4697-9C08-6A7936D588BE.png",
+      "timestamp": 1792919454.606,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Independently reset actual landscape14/18 artwork fixture (78% public restoration)."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/C5F3265E-A92D-4C2C-9D86-3DD5DD7D9BEA.png",
+      "sha256": "b74b2b6dd504f9eaa495889ea52ed8aa154c8f76653351b795d617aac754c9c1",
+      "bytes": 7505571,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-landscape-scene-50-score-9-normal-motion_0_67E30307-EF9C-48A3-88BB-7B3219CF01F0.png",
+      "timestamp": 1792919444.353,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Independently reset actual landscape9/18 artwork fixture (50% public restoration)."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/31436E17-852D-4999-A529-8E8D8657A1A8.png",
+      "sha256": "04907e0aa420f4bffd11091a9c73d36acdb956b26328ec6fbfae8512ab5cb10b",
+      "bytes": 7363470,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-landscape-scene-25-score-5-normal-motion_0_A9E6F3CC-5949-4BD4-A845-C5E04DFCBED6.png",
+      "timestamp": 1792919434.138,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Independently reset actual landscape5/18 artwork fixture (28% public restoration)."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/450FA295-2F99-4BEC-9233-D4F811A2B20F.png",
+      "sha256": "1a4f2cf5fd5fc93531731969387433e6d8b11070ff708d3486ded94bae297b05",
+      "bytes": 7364613,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-landscape-scene-0-score-0-normal-motion_0_3E6495C4-34A0-4F5E-AD76-28FAF1496147.png",
+      "timestamp": 1792919423.901,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Independently reset actual landscape0/18 artwork fixture."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/46B9FC08-61FB-4442-B63F-3484F138364B.png",
+      "sha256": "07794f7b2fc91c302170b4e7551c3e54e402f5897226a035c8e8aefb0fee2f9e",
+      "bytes": 6717643,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-portrait-scene-100-score-18-normal-motion_0_5E8F8B0C-5048-402C-9110-15F8134B4E93.png",
+      "timestamp": 1792919412.964,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Independently reset portrait18/18 result fixture; complete restored heading/body and four result actions."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/403563E7-CAAD-4A07-B9F0-D64E808F8F16.png",
+      "sha256": "1ee926159079bd90e51b96b56ffa5b7bc373d3e2ca3c0824065de3b2a64a42dd",
+      "bytes": 6907878,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-portrait-scene-75-score-14-normal-motion_0_4A565643-8AF6-47E0-A1A8-C662CF0B4E1C.png",
+      "timestamp": 1792919403.654,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Independently reset portrait14/18 artwork fixture (78% public restoration,75 milestone label)."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/17F158E7-A9A6-452A-8C19-583DFAEB1EDC.png",
+      "sha256": "d721d491db274347bbf9fd4d00b831f935864d884f05c1057fd92c3198819535",
+      "bytes": 6889308,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-portrait-scene-50-score-9-normal-motion_0_F22E36A4-69E2-4810-826C-0C2B61FAE6A1.png",
+      "timestamp": 1792919393.412,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Independently reset portrait9/18 artwork fixture (50% public restoration)."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/5ED48A7E-121E-4E9E-B321-D9D8DC91A083.png",
+      "sha256": "a227f216af35998a26df0a7ad9c9109d4c2357f838487abdaed27464e9048422",
+      "bytes": 6675011,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-portrait-scene-25-score-5-normal-motion_0_DD6964F4-AF18-4DBF-AA59-813F6890C83B.png",
+      "timestamp": 1792919383.246,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Independently reset portrait5/18 artwork fixture (28% public restoration,25 milestone label)."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/86672359-E16A-4880-82D1-D9F49CB3A78D.png",
+      "sha256": "fe01feb8dbf217ee566cec3040bc408544ea86cf46134df96d432809e0289462",
+      "bytes": 6754384,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-portrait-scene-0-score-0-normal-motion_0_5D06E260-92DC-4FF9-9421-B35CDC3EECEB.png",
+      "timestamp": 1792919372.924,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Independently reset portrait0/18 artwork fixture."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/091F126A-8296-48C7-BC8A-063B7A8DEEE1.png",
+      "sha256": "bb5880223c13fdb2514ef1dbc824a8770030f39ca8e4a4256cb41d29da3dbb07",
+      "bytes": 6736698,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-portrait-after-second-native-clear-normal-motion_0_4209191B-8BE5-482E-A7AC-AF9AE9137ED9.png",
+      "timestamp": 1792919362.417,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Portrait13/18 after second real4-light clear; source cells differ and complete followup guide remains below stars."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/5B31FCCB-A0AF-4482-8479-53053676C29B.png",
+      "sha256": "e9c1d99a0be5c6ec61895c182523bbdef1884dd3d9a595cb6a514888f3c0925c",
+      "bytes": 6787506,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-portrait-retained-after-landscape-clear-normal-motion_0_F0B67D9A-5BDA-46F4-9A6D-40AB3CDB81FC.png",
+      "timestamp": 1792919356.278,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Portrait9/18 retains landscape clear; portrait Pip guide and Close/footer stay outside stars."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/FEE1A866-087E-411E-8F87-05C845430DD4.png",
+      "sha256": "6fe35b71ac6d48bbf45d904285e0d8d0cfa818694c45f800131a33a503cfda4d",
+      "bytes": 7469065,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-landscape-after-native-clear-normal-motion_0_3BB227F9-1FD6-43A2-8F05-64B8CC3AA79E.png",
+      "timestamp": 1792919350.863,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Actual landscape9/18 after real4-light clear; guide completely readable above actions; stars remain separate."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/0A24B7E4-E769-418E-847C-C8DA239644B8.png",
+      "sha256": "20387cd1bb70c3f772613871725d75dd379fbb9e8dfad831aa6c8b6889bf04dd",
+      "bytes": 7363394,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 8,
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-landscape-retained-before-clear-normal-motion_0_5685AF3A-0AF6-4BBF-AD1D-8840530DA7AA.png",
+      "timestamp": 1792919344.491,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Actual landscape5/18 before clear; same visible star arrangement with complete ceiling and controls."
+    },
+    {
+      "path": "/private/tmp/starfall-hud-stack-20261024/baseline-09-from-08-tablet-rotation-attachments/1C62746D-DD4F-447C-8A33-799F754D4031.png",
+      "sha256": "8a5871bf90a4ec01488a3e907d84717d21325ba1831c20fedc4c682cd8bb45ca",
+      "bytes": 6675069,
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "exifOrientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "testIdentifier": "KiteHarborInteractionTests/testTabletRotationKeepsKiteRestorationAndNativeInput()",
+      "name": "kite-tablet-portrait-before-rotation-normal-motion_0_6068F044-6578-4B35-A761-6C53FC4B52B0.png",
+      "timestamp": 1792919339.056,
+      "directWholeImageViewed": true,
+      "visualVerdict": "PASS_BOUNDED_BASELINE",
+      "observed": "Portrait5/18 before real rotation; three full occupied rows, separated header and footer."
+    }
+  ]
+}

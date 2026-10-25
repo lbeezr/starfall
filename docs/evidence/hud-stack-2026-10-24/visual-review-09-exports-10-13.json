@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "PASS_BOUNDED_EXACT_EXPORT_ROWS_10_TO_13",
+  "verdict": "PASS_BOUNDED_EXACT_EXPORTS",
+  "reviewer": "hud_read_ahead independent native/original and exact-retained-export reviewer; no image/product implementation",
+  "recordedUTC": "2026-10-25T11:31:10.129048+00:00",
+  "captureIndex": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-09.json",
+    "sha256": "bf75810dbbdafc9940ac76a01a96817bf8093a836ebc349f327da18abc87cacd",
+    "bytes": 73487
+  },
+  "source": {
+    "head": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f"
+  },
+  "scope": {
+    "indexPositionsOneBased": [
+      10,
+      11,
+      12,
+      13
+    ],
+    "pairCount": 4,
+    "directlyViewedWholeOriginalCount": 4,
+    "directlyViewedWholeRetainedJPEGCount": 4,
+    "totalFilesDirectlyViewed": 8,
+    "otherNinePairsReviewed": false,
+    "rawAndExportHashesVerified": 8,
+    "rawAndExportDimensionsAndOrientationVerified": 8,
+    "duplicateWithinThisShard": false
+  },
+  "reference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182
+  },
+  "rows": [
+    {
+      "indexPositionOneBased": 10,
+      "id": "10-current-phone-corner-after-input",
+      "kind": "candidate-native",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/1A0FFC74-A256-4FEF-B220-495E64227935.png",
+        "sha256": "ca9b21d0c3517103a1cb44ddbe3ba036101e7ec478b8cdfccd2331f687cc7971",
+        "bytes": 4300957
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/10-current-phone-corner-after-input.jpg",
+        "sha256": "79503ff3dd41387ddafc8c272220e49b5576c0e3c72f56d53f561bd9703cd6e9",
+        "bytes": 751950
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 6,
+        "normalizedDisplayOrientation": 6,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 6,
+        "normalizedDisplayOrientation": 6,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "metadataMatchesIndex": true,
+      "directWholeOriginalView": true,
+      "directWholeRetainedJPEGView": true,
+      "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+      "finding": "The complete score4, Pause glyph, Next columns4/5/6 and Help remain readable at the same positions. Native-sized current stars remain clear on the right over continuous scenery. The top badges and bottom rows are only partial in this actual scrolling-board state, identically in both files. The faint +4/component receipt is also faithfully retained; no opacity or continuous-motion conclusion follows from this still.",
+      "captionQualification": "Actual default-text normal-effects phone landscapeRight after projected corner contact; original native method supplies input/outcome proof. No claim that every ceiling badge or49cells is simultaneously visible, or that this historical points context is currentStory progression.",
+      "indexedCaption": "ActualCalmNO/default-textphone landscapeRight afterrealprojected cornercontact; exact committed result verifiedby nativecase. Wholeframe orientation frommetadata, not filename alone.",
+      "conversion": "Full original stored dimensions and orientation preserved. JPEG80 introduces slight smoothing in fine scenic texture/glow; no consequential visible text, glyph, target or layout relation loss found."
+    },
+    {
+      "indexPositionOneBased": 11,
+      "id": "11-current-open-sky-empty-reader-return",
+      "kind": "candidate-native",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/415CAE4C-F3F6-47F2-B001-A25C730C8116.png",
+        "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+        "bytes": 3260806
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/11-current-open-sky-empty-reader-return.jpg",
+        "sha256": "08c20a0e11840ee21914ac5adb95d0901a939dc8800cc9ed1bcd7bdce16e71de",
+        "bytes": 444927
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "metadataMatchesIndex": true,
+      "directWholeOriginalView": true,
+      "directWholeRetainedJPEGView": true,
+      "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+      "finding": "Both files show exact5 points, complete forecast4/5/6, clear Pause and a genuinely empty live arena backed by continuous painting. No gray empty-sky rectangle is visible. The readable Spark message remains identical; the lower Close label extends beyond this current viewport in both files, so complete guide-action visibility is not established by this still.",
+      "captionQualification": "HistoricalhorizontalFive five-star trace/LastClear return; no currentStoryrepair progression or whole-reader-page claim. Empty arena is intended committed content, not missing stars inferred from a screenshot alone.",
+      "indexedCaption": "Actualnormalphone historicalhorizontalFive fixture after the exact five-star trace and Last clear return:5 raw points, genuinely empty live board and continuous painting. This is not currentStoryrepair progression.",
+      "conversion": "Full original stored dimensions and orientation preserved. JPEG80 introduces slight smoothing in fine scenic texture/glow; no consequential visible text, glyph, target or layout relation loss found."
+    },
+    {
+      "indexPositionOneBased": 12,
+      "id": "12-current-kite-exact-result",
+      "kind": "candidate-native",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/81E99817-4B0E-45D6-96CB-856610365B3A.png",
+        "sha256": "958b33981ae7e5f3955bff1a006020e6c99c3533e60aad7048f45e873de3d992",
+        "bytes": 2984141
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/12-current-kite-exact-result.jpg",
+        "sha256": "9846c19a213bddaa3bc7ce8d261fac9bc1af3407a0eed95931d84c98f756af7f",
+        "bytes": 526287
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "metadataMatchesIndex": true,
+      "directWholeOriginalView": true,
+      "directWholeRetainedJPEGView": true,
+      "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+      "finding": "Kite Harbor restored title, complete18,000 of17,000 prose and all visible action captions remain clear. Lastclear6,000 is visibly distinct from the round18,000; Last earned light figure/label survive the conversion. Panel/scenery balance and lower visible page slice are unchanged.",
+      "captionQualification": "Currentrevision4 Kite winning route; debug-access context is not earned preceding campaign progression. Visible finalclear accounting is6,000, not18,000; wholelower-accounting-page and futureGoal10hierarchy acceptance are outside this conversion review.",
+      "indexedCaption": "Actualnormalphone currentrevision4 KiteHarbor result18,000 of17,000 after the real recovery/winning route. The6,000 finalclear is distinct from round total; no wholelower-accounting-page claim. The legacydebug route grants access, not earned priorcampaign progression.",
+      "conversion": "Full original stored dimensions and orientation preserved. JPEG80 introduces slight smoothing in fine scenic texture/glow; no consequential visible text, glyph, target or layout relation loss found."
+    },
+    {
+      "indexPositionOneBased": 13,
+      "id": "13-current-native-menu-settings-row",
+      "kind": "candidate-menu-movie-frame",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.201.png",
+        "sha256": "b36ecf261dfa6bcb7ca7057325eb8534f4a75dad0fa24535221b25f753bb453b",
+        "bytes": 1711728
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/13-current-native-menu-settings-row.jpg",
+        "sha256": "40cdbe1a95adfd3d5976c120331f7cdc6b2c05b143cb953ddfe097fcc94f48d4",
+        "bytes": 376603
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": null,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": null,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "metadataMatchesIndex": true,
+      "directWholeOriginalView": true,
+      "directWholeRetainedJPEGView": true,
+      "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+      "finding": "The complete two-line Settings & help label, gear and chevron remain clear between the pinned Sky menu heading and full Return to sky footer. Find a move remains complete. Review lastclear begins above the current viewport identically in both files; this is intentional scroll position, not a conversion defect.",
+      "captionQualification": "Original H264 native capture-only duplicate, preferred track transform applied; not the failed MCP optimizedHome image. Source journey is34kFullBoard/AX5/Calm, with score itself covered. No wholeMastery-page or manual-human interaction claim.",
+      "indexedCaption": "Actual AX5 Calm phone menu after five bounded native pans; complete Settings & help and pinned header/Return are visible in the retained34,000-point Full Board journey. Score itself is covered; this is not whole-Mastery-page evidence.",
+      "conversion": "Full original stored dimensions and orientation preserved. JPEG80 introduces slight smoothing in fine scenic texture/glow; no consequential visible text, glyph, target or layout relation loss found."
+    }
+  ],
+  "method": "All eight files directly viewed whole with view_image detail original. SHA256 and byte sizes independently recomputed. Stored dimensions/EXIF274 read directly from PNG IHDR/eXIf or JPEG SOF/APP1 TIFF without rendering/transforms. Display comparison uses EXIF-aware original viewers; no image rewrite/export/codec/controller by reviewer.",
+  "orientationQualification": "Row10 stores1170x2532 with EXIF6 and displays2532x1170; both raw and JPEG retain6. Rows11/12 are upright EXIF1. Decoded row13 raw has no EXIF274 orientation tag, already upright after preferred-track transform; index default1 is normalized orientation, not a claim a raw tag exists. JPEG tag presence is separately recorded.",
+  "summary": "Bounded PASS for all four exact raw/JPEG pairs. No mislabeled provenance or meaningful conversion-induced readability/orientation/layout loss found. All named actual-state and scroll/covered-score qualifications remain attached.",
+  "limits": [
+    "This shard covers only rows10\u201313, not the other nine exports or the full device/text/state matrix.",
+    "No completeguide/Close claim from row11, no completeceiling/49cell claim from row10, no wholeMasterypage or visible34kscore claim from row13.",
+    "One menu capture-only duplicate adds no unique coverage and is separate from main7 and normal-motion1; failed MCPHome image remains excluded.",
+    "No actualVoiceOver, physical-device, minimum-iOS, motion/latency/performance, completecontrast or human-reading claim. Lossy JPEG fidelity is judged visually, not as pixel identity.",
+    "This exact-export shard does not itself adopt Goal9, erase historical failures or establish new gameplay/rule outcomes."
+  ]
+}
