@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "goal": 1,
+  "pullRequest": "https://github.com/lbeezr/starfall/pull/402",
+  "publishedHead": "31e7bd7d396ee0430061de20989feb77014ce3b4",
+  "mergeCommit": "8e196ccbaf1173e8c1cecf1ea2f47dd81e24b97c",
+  "mergedAtUTC": "2026-10-25T00:11:28Z",
+  "reviewedLocalCommit": "2bb8f2778ce5579a58d8ad5ab10f5ad9332e45d1",
+  "reviewedAndPublishedTree": "a0854caa9d32f1ac870d7db86d2a5c8474a28c9a",
+  "runtime": "dev.3ebf052fca",
+  "verification": "Fetched remote head and main; git diff --exit-code HEAD origin/codex/hud-goal-01-native-correction and then HEAD origin/main both zero before starting goal2. Trees identical.",
+  "issue": {
+    "number": 382,
+    "state": "closed",
+    "stateReason": "completed",
+    "verifiedVia": "GitHub fetch_issue after merge"
+  },
+  "projectDone": {
+    "status": "unavailable",
+    "reason": "Connected GitHub tools expose no Projects/GraphQL item projection. Completed issue confirmed; canonical Project Done not independently read."
+  },
+  "remoteCI": "Combined commit-status endpoint returned an empty statuses list; no remote CI pass claimed. Source-bound local selected checks and independent visual review are recorded separately.",
+  "nextGoal": {
+    "number": 2,
+    "issue": 383,
+    "branch": "codex/hud-goal-02-instrument-type",
+    "base": "8e196ccbaf1173e8c1cecf1ea2f47dd81e24b97c",
+    "status": "read-only planning while authorized other UI work completes frozen-source acceptance; no goal2 App implementation yet"
+  }
+}

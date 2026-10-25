@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "status": "DEVELOPMENT_SLICE_ACCEPTED; publication pending",
+  "status": "DEVELOPMENT_SLICE_ACCEPTED_AND_MERGED",
   "recordedUTC": "2026-10-24T22:49:15.821865+00:00",
   "goal": 1,
   "issue": 382,
   "nextGoal": {
     "issue": 383,
-    "status": "pending individual goal1 main merge"
+    "status": "active after individual PR402 main merge"
   },
   "scope": "Mechanical correction evidence only. Earlier passes, failed iterations and rejected candidates remain historical; no final development, visual or delivery acceptance is claimed.",
   "historicalEvidence": {
@@ -2405,7 +2405,7 @@
   "sourceEvidenceNote": "Historical source entries preserve snapshot file identities/hashes and input counts; their exact path/hash maps remain in the named raw snapshots. All15 current contact-candidate input hashes are copied below. Reported visual rejections are retained as history; this mechanical record supplies no independent visual verdict. The natural-header entry preserves its exact base-plus-two-dirty-input snapshot and binds those verified input hashes to d5d02a7b/dev.402680814f. Reused preflight output paths are separately classified; earlier results are not re-counted as product failures. Packet snapshot records b7aa58f7 plus three exact dirty inputs matching bf5e6d23. ec40c9a3 changes only two UITest files and retains identical App bytes. Updated814/260 discovery derives from the integrated main271fd source; historical799/259 extraction counts remain unchanged. Reader extent runs add only AppTests/SkyDialogueTests.swift at recorded dirty hashes on ec40c9a3; the second bytes match subsequent commit3fe9f9a8. App diff bf5e6d23..3fe9f9a8 is empty; current discovery815/260 does not change earlier run counts.",
   "updatedUTC": "2026-10-25T00:03:57.011613+00:00",
   "visualStatus": "BOUNDED_VISUAL_PASS for identified native states/exports; see independent visual record",
-  "integrationStatus": "Main271fd integrated locally; correction publication pending",
+  "integrationStatus": "PR402 merged8e196ccb; exact reviewed/published tree confirmed; issue382completed; Projectprojection unavailable",
   "candidateHistory": [
     {
       "statusAtPriorHandoff": "mechanically-verified",
@@ -2662,6 +2662,6 @@
     "scope": "Official-role HUD correction and identified native phone/tablet composition; retained exports independently reviewed",
     "mechanical": "Selected gates only, exact-source scopes stated; prior native failures preserved",
     "residual": "Earlier unfinished Sunny pan stalls under overlapping simulator UI work have unproved cause. Unchanged isolated native case passes; recurrence instrumentation is recorded in ENGINEERING.",
-    "publication": "pending; next goal cannot implement before individual main merge"
+    "publication": "publication-01-correction.json"
   }
 }

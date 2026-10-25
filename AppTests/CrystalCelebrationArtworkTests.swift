@@ -54,12 +54,61 @@ final class CrystalCelebrationArtworkTests: XCTestCase {
         XCTAssertNil(family.run("café")); XCTAssertNil(family.run("☄️")); XCTAssertNil(family.run(String(repeating: "A", count: 41)))
     }
 
-    @MainActor func testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking() {
-        func size(_ score: Int, target: Int, width: CGFloat, textSize: DynamicTypeSize) -> CGSize {
-            let view = SkyScoreInstrument(score: score, target: target, hint: "")
-                .environment(\.dynamicTypeSize, textSize)
-            return UIHostingController(rootView: view).sizeThatFits(in: CGSize(width: width, height: 2_000))
+    @MainActor func testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking() async throws {
+        let sceneDeadline = ContinuousClock.now + .seconds(3)
+        var availableScene = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
+        while availableScene == nil && ContinuousClock.now < sceneDeadline {
+            try await Task.sleep(for: .milliseconds(20))
+            availableScene = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first
         }
+        let scene = try XCTUnwrap(availableScene), previous = scene.windows.first(where: \.isKeyWindow)
+        let window = UIWindow(windowScene: scene)
+        window.frame = CGRect(x: 0, y: 0, width: 375, height: 667)
+        window.backgroundColor = UIColor(StarfallTheme.Colors.skyTop)
+        let container = UIViewController()
+        window.rootViewController = container; container.view.frame = window.bounds; window.makeKeyAndVisible()
+        defer { window.isHidden = true; window.rootViewController = nil; previous?.makeKey() }
+        let pixel = 1 / window.screen.scale
+        var diagnostics: [String] = [], sizes: [String: CGSize] = [:]
+        func measured<Content: View>(_ content: Content, width: CGFloat, textSize: DynamicTypeSize,
+                                     label: String, capture: Bool = false) -> CGSize {
+            let key = "\(label)-\(width)-\(textSize)"
+            if let cached = sizes[key] { return cached }
+            let host = UIHostingController(rootView: content.environment(\.dynamicTypeSize, textSize)
+                .environment(\.colorScheme, .dark))
+            // Plain-parent siblings inherit window traits. Measurement alone
+            // ignores safe areas, which must not inflate the text requirement.
+            host.safeAreaRegions = []
+            container.addChild(host)
+            host.view.frame = CGRect(x: 12, y: window.safeAreaInsets.top + 12, width: width, height: 600)
+            host.view.backgroundColor = .clear; host.view.isHidden = !capture
+            container.view.addSubview(host.view); host.didMove(toParent: container)
+            defer { host.willMove(toParent: nil); host.view.removeFromSuperview(); host.removeFromParent() }
+            host.view.layoutIfNeeded()
+            let fitted = host.sizeThatFits(in: CGSize(width: width, height: .greatestFiniteMagnitude))
+            XCTAssertTrue(fitted.width.isFinite && fitted.height.isFinite && fitted.width > 0 && fitted.height > 0,
+                          "Native measurement must be positive and finite: \(key)=\(fitted)")
+            diagnostics.append("\(key)=\(fitted)")
+            sizes[key] = fitted
+            if capture {
+                host.view.frame.size = fitted; host.view.layoutIfNeeded()
+                let image = UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
+                    window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+                }
+                let attachment = XCTAttachment(image: image)
+                attachment.name = "score-component-\(key)"; attachment.lifetime = .keepAlways; add(attachment)
+            }
+            return fitted
+        }
+        func size(_ score: Int, target: Int?, width: CGFloat, textSize: DynamicTypeSize) -> CGSize {
+            let capture = textSize == .accessibility5
+                && ((width == 300 && ((target == 150_000 && [0, 15_000].contains(score))
+                    || (target == 220_000 && score == 220_000) || (target == nil && score == 15_000)))
+                    || (width == 240 && target == 150_000 && [0, 149_000].contains(score)))
+            return measured(SkyScoreInstrument(score: score, target: target, hint: ""),
+                width: width, textSize: textSize, label: "\(score)-of-\(target.map(String.init) ?? "none")", capture: capture)
+        }
+        // Retain the original above-objective and narrow-width stress cases.
         for target in [150000, 220000] {
             let regular = size(149000, target: target, width: 300, textSize: .large)
             let accessible = size(149000, target: target, width: 300, textSize: .accessibility5)
@@ -71,6 +120,62 @@ final class CrystalCelebrationArtworkTests: XCTestCase {
                                  "Exact six-figure totals must wrap instead of shrinking their native text")
             XCTAssertGreaterThanOrEqual(compact.height, accessible.height)
         }
+        let cases: [(Int, Int?)] = [(0, 150_000), (15_000, 150_000), (149_000, 150_000), (150_000, 150_000),
+                                    (219_000, 220_000), (220_000, 220_000), (0, nil), (15_000, nil), (220_000, nil)]
+        for textSize in [DynamicTypeSize.large, .accessibility5] {
+            // The original narrow proposals remain; 620 also exercises a wide
+            // native instrument without prescribing one fixed row count.
+            for width in [CGFloat(240), 300, 620] {
+                var reserved: [Int: CGSize] = [:]
+                for (score, target) in cases {
+                    let actual = size(score, target: target, width: width, textSize: textSize)
+                    let context = "score=\(score), target=\(String(describing: target)), width=\(width), text=\(textSize)"
+                    XCTAssertLessThanOrEqual(actual.width, width + 1, context)
+                    // Keep the complete 24-point symbol and existing 8-point gap
+                    // when proposing native text; widening the symbol steals
+                    // the narrow objective's final unbroken line.
+                    let textWidth = width - 24 - StarfallTheme.Spacing.small
+                    let earned = measured(Text(score.formatted()).font(StarfallTheme.Typography.instrumentScore)
+                        .monospacedDigit().fixedSize(horizontal: false, vertical: true),
+                        width: textWidth, textSize: textSize, label: "earned-\(score)")
+                    let originalRole = measured(Text(score.formatted()).font(StarfallTheme.Typography.gameTitle)
+                        .monospacedDigit().fixedSize(horizontal: false, vertical: true),
+                        width: textWidth, textSize: textSize, label: "native-serif-\(score)")
+                    XCTAssertEqual(earned, originalRole, "The shared score role retains its complete native serif font: \(context)")
+                    var requiredHeight = earned.height
+                    if let target {
+                        let objective = measured(Text("/ \(target.formatted())")
+                            .font(StarfallTheme.Typography.instrumentTarget).monospacedDigit()
+                            .fixedSize(horizontal: false, vertical: true),
+                            width: textWidth, textSize: textSize, label: "objective-\(target)")
+                        let originalObjective = measured(Text("/ \(target.formatted())")
+                            .font(StarfallTheme.Typography.gameTitle.weight(.regular)).monospacedDigit()
+                            .fixedSize(horizontal: false, vertical: true),
+                            width: textWidth, textSize: textSize, label: "native-objective-\(target)")
+                        XCTAssertEqual(objective, originalObjective,
+                            "The shared target role retains its complete native serif font: \(context)")
+                        let inline = measured((Text("\(score.formatted()) ").font(StarfallTheme.Typography.instrumentScore)
+                            + Text("/ \(target.formatted())").font(StarfallTheme.Typography.instrumentTarget))
+                            .monospacedDigit().fixedSize(), width: width, textSize: textSize,
+                            label: "complete-inline-\(score)-\(target)")
+                        if inline.width > textWidth {
+                            requiredHeight = earned.height + StarfallTheme.Spacing.compact + objective.height
+                        } else { requiredHeight = max(earned.height, objective.height) }
+                        if textSize.isAccessibilitySize {
+                            if let first = reserved[target] {
+                                XCTAssertEqual(actual, first, "Earning toward one objective preserves its reserved AX layout: \(context)")
+                            } else { reserved[target] = actual }
+                        }
+                    }
+                    XCTAssertGreaterThanOrEqual(actual.height + pixel, requiredHeight,
+                        "Complete native earned/objective text must fit; only pixel rounding is allowed: \(context)")
+                }
+            }
+        }
+        let attachment = XCTAttachment(string: "Component fitting only; synthetic totals are not earned-game histories. "
+            + "Optical alignment still requires whole-native-screen review. Window traits=\(window.traitCollection)\n"
+            + diagnostics.joined(separator: "\n"))
+        attachment.name = "score-native-font-and-boundary-measurements"; attachment.lifetime = .keepAlways; add(attachment)
     }
 
     @MainActor func testMalformedOrIncompleteFamilyFallsBackAndCachesFailure() throws {

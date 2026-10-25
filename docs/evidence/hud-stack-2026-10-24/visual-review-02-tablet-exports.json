@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "goal": 2,
+  "reviewer": "hud_goal_review, independent of implementation and overall visual-review-02.json",
+  "verdict": "PASS for the four identified actual-native tablet exports; one stale folder caption needs correction.",
+  "scope": "Direct visual comparison of each retained JPEG with its exact indexed raw PNG and the approved concept's middle Play screen. No App/test edits, builds or controller operations.",
+  "source": {
+    "testedCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+    "acceptedBaseMain": "8e196ccbaf1173e8c1cecf1ea2f47dd81e24b97c",
+    "embeddedBuildID": "dev.f4ecc1c437",
+    "identityEvidence": "captures-02.json and source-02-final.json; identity was not inferred from screenshot appearance.",
+    "device": "Actual native iPad Pro 13-inch M5 simulator, iOS 27.0, AX5, indexed actual Settings Calm context",
+    "physicalDeviceEvidence": false
+  },
+  "reference": "docs/design/interface/observatory-game-ui-concept-2026-10-19.png, middle Play panel; concept direction only",
+  "integrity": {
+    "method": "Recomputed SHA-256 with Python hashlib; independently read raw/export pixel dimensions with sips. Opened all eight images for direct inspection.",
+    "rawHashesMatched": "4 of 4",
+    "exportHashesMatched": "4 of 4",
+    "dimensions": "All eight files are 2064 x 2752 pixels; retained files are JPEG and raw files are PNG.",
+    "encoding": "Index declares JPEG80, no retouch/crop. This review verifies hashes, full dimensions and visible correspondence; it does not independently reconstruct encoder settings.",
+    "pairs": [
+      {
+        "export": "goal-02-captures/dev-f4ecc1c437__tablet-ax5-calm__opening.jpg",
+        "raw": "/private/tmp/starfall-hud-stack-20261024/tablet-02-ac78832a-calm-attachments/32D4371C-FA21-4C39-B363-DC8DE6B61E0A.png",
+        "rawSHA256": "d946b10da99e04f7bc033b54b6f55ef5b1a45489496a10d73ac624e608f9c424",
+        "exportSHA256": "be7f9ea4af0e03ed48e946d43575d2e97e78c7cfccc26571ffb2d5e0fecec3c0",
+        "observedState": "Complete 0 / 150,000, unselected forecast destinations 6, 1, 2, 4, 5, and ordinary opening stars."
+      },
+      {
+        "export": "goal-02-captures/dev-f4ecc1c437__tablet-ax5-calm__selected-column-6.jpg",
+        "raw": "/private/tmp/starfall-hud-stack-20261024/tablet-02-ac78832a-calm-attachments/8A24D586-F5AE-40D2-A8BF-57E74BEB52FF.png",
+        "rawSHA256": "dddbaad72868fdfe9305192f5c4c803e5879937259212a4afb183d11798562c1",
+        "exportSHA256": "99040fe611ffdb28fa3704627e92940514b9fdae646e496dcf67ec2555c1d42c",
+        "observedState": "Same visible opening and complete 0 / 150,000; first forecast destination 6 is underlined and the corresponding board column has a distinct dashed outline."
+      },
+      {
+        "export": "goal-02-captures/dev-f4ecc1c437__tablet-ax5-calm__earned-15000.jpg",
+        "raw": "/private/tmp/starfall-hud-stack-20261024/tablet-02-ac78832a-calm-attachments/2F830D74-5785-4EE8-8EC7-B84AA802A090.png",
+        "rawSHA256": "5e77d5f1bed0b3efb5f062a08e4b6d1c3602225f6352aa5c9ed8cc5a279c9806",
+        "exportSHA256": "8508f5aa6d77d403eee8b585189662ccd0c68524273fd11a3316c0acfe092dd0",
+        "observedState": "Complete 15,000 / 150,000; forecast underline and board-column outline retired. Spark's visible text identifies a 2-clear chain and +15,000 starlight."
+      },
+      {
+        "export": "goal-02-captures/dev-f4ecc1c437__tablet-ax5-calm__full-board-opening.jpg",
+        "raw": "/private/tmp/starfall-hud-stack-20261024/tablet-02-ac78832a-calm-attachments/491706D1-5282-400A-AE2E-D2CE90D59065.png",
+        "rawSHA256": "1fea5e52df961c62e7c9ea83c0506b304d39bd34fa50708afabfd8ba721c79d2",
+        "exportSHA256": "eefe355fec731d183a688d58f97d480d48ea1fed4e7f0ab667c03d89caff742f",
+        "observedState": "Complete 0 / 150,000 and two-line Full Board · clears refill and cascade label; all 49 opening pieces visible, with no shower forecast or column focus."
+      }
+    ]
+  },
+  "visualFindings": [
+    "All score and objective digits, commas and slashes are complete. The small amber symbol sits beside the earned digits' visual center in both 0 and 15,000 states; it does not displace or overlap the target.",
+    "Exact serif score figures remain visually distinct from the supporting sans-serif forecast and mode text. All five forecast numbers and accompanying family glyphs remain separated and legible; the help glyph is distinct.",
+    "The continuous painted scene and central star field retain the middle Play reference's hierarchy. AX text protection is more prominent than in the concept, but stays above the playable stars; the fully populated Full Board remains the dominant central object.",
+    "No export introduces a visible missing stroke, clipped digit, lost selection dash or changed composition relative to its raw PNG. Minor JPEG texture softening does not obscure essential HUD ink."
+  ],
+  "captionReview": {
+    "index": "The four source/runtime/device/state captions agree with the inspected states. The Full Board caption explicitly excludes the later 42,000-point refill; this review makes no visual claim for it.",
+    "documentationFinding": "goal-02-captures/README.md still says actual phone/tablet journey captures remain pending. Its owner should update that stale sentence when integrating the completed capture index."
+  },
+  "limits": [
+    "Four static AX5 Calm tablet states only. This export verdict does not establish normal-motion animation, actual VoiceOver, physical-device quality or overall goal acceptance.",
+    "The images depict 0 and 15,000 toward 150,000. Six-figure earned totals, a 220,000 target, terminal results and the later 42,000-point Full Board refill require their separate mechanical or visual evidence.",
+    "The earned and Full Board captures show the start of a lower guide viewport with further content outside the image. They do not prove the complete guide is simultaneously visible or that its end was reached.",
+    "Source history and earned-event provenance remain bound to the indexed native run; a still image alone does not prove the input sequence or save/clock behavior."
+  ]
+}

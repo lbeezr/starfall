@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "goal": 2,
+  "issue": 383,
+  "status": "Bounded development slice verified; individual publication/merge pending.",
+  "recordedUTC": "2026-10-25T00:14:30.653284+00:00",
+  "baseCommit": "8e196ccbaf1173e8c1cecf1ea2f47dd81e24b97c",
+  "branch": "codex/hud-goal-02-instrument-type",
+  "dependency": "Goal 1 correction merged through PR402/main 8e196ccb. Carry its accepted outcomes and unresolved reader-pan recurrence condition forward. The UI-flow coordinator explicitly released goal 2 to finish/publish independently on that accepted main; no pending separate UI-flow branch is adopted or a publication prerequisite.",
+  "playerOutcome": "Exact HUD values read as values, supporting labels remain quieter, and the 24-point score star visually belongs to the earned-score line when the objective wraps.",
+  "owners": {
+    "roles": "App/StarfallTheme.swift",
+    "scoreAndTarget": "App/FallingSkyHUD.swift:SkyScoreInstrument",
+    "forecast": "App/SkyForecastDestinations.swift",
+    "modeAndPressure": "App/StarfallTheme.swift:StarfallStatusText.instrument; App/FallingSkyView.swift:edgeHeader"
+  },
+  "alreadyImplementedInGoal 1": [
+    "Complete natural header/score height under finite reading proposals.",
+    "Native serif headline score and target, monospaced digits, AX objective-width reservation, full scaling and complete spoken score.",
+    "Shared caption role for instrument mode/pressure, five independent 44-point forecast targets and one 48-point inspection utility.",
+    "Continuous scenery, fitted protection, fixed return/light anchors and exact board/receipt projection."
+  ],
+  "smallestVisibleCandidate": {
+    "numericRoles": "Implemented in shared owner: score/target preserve their full native serif roles; forecast numbers use caption semibold and monospaced digits while instrument labels keep the existing quieter caption role.",
+    "alignment": "Implemented private earned-line alignment: the unchanged 24\u00d724-point symbol follows the earned value through inline, stacked and targetless layouts. Existing AX objective-width reservation now also covers the stacked earned line; no additional symbol width, font shrinking or clock/state owner.",
+    "scope": "Prepared in three existing official App owners with one extended existing score-fit method; no new method, font/asset, framework, fixture route, rule or save change."
+  },
+  "scoreCases": [
+    {
+      "score": 0,
+      "target": 150000
+    },
+    {
+      "score": 15000,
+      "target": 150000
+    },
+    {
+      "score": 149000,
+      "target": 150000
+    },
+    {
+      "score": 150000,
+      "target": 150000
+    },
+    {
+      "score": 219000,
+      "target": 220000
+    },
+    {
+      "score": 220000,
+      "target": 220000
+    }
+  ],
+  "componentContract": [
+    "Every supplied integer and its complete formatted target remains visible native text, with one exact experiment.score spoken description and unchanged hint/identity.",
+    "Preserve the existing 24-point symbol width/height, primary serif full-font measurement, native-line positivity and complete-component height gates.",
+    "At 375-point AX5 actual header allocation, preserve complete earned and target lines; the symbol refinement must not create an extra target wrap. The artificial 240-point stress proposal may use additional complete lines rather than clipping or shrinking.",
+    "For one objective at a fixed allocated width/text size, 0, 15,000, 149,000 and 150,000 retain reserved AX score width/height. The existing actual0-to15000 clear must not move the board or receipt anchors.",
+    "Forecast numbers remain attached to their exact immutable ordered stars, including repeats; label/value distinction cannot change current/arriving labels, selected state, native order or 44/48-point targets.",
+    "Falling Sky remains the exact header AX value without a redundant visible banner; Full Board mode remains visible and has no shower forecast. Pressure retains its factual full text and full scaling.",
+    "Optical success is reviewed on the complete native screen: the star belongs to the first earned line, values separate from quieter labels, and neither header nor typography steals playfield dominance."
+  ],
+  "matrix": [
+    {
+      "profile": "375x667 / AX5",
+      "evidence": "Existing actual-root hosted reading slice plus same-component score extremes; native375 evidence only if an actual matching simulator is selected later.",
+      "states": "All six display-only score tuples; real 0 to 15,000 clear; initial current stars and fixed receipt/light anchors.",
+      "reject": "Truncated target, extra target wrap caused by symbol width, centered-between-lines star, compressed native font or shifted board after earning."
+    },
+    {
+      "profile": "390x844 phone / default",
+      "evidence": "Existing normal-motion native Lantern selection/inspection case and same-component score extremes.",
+      "states": "Exact0/150000, forecast labels/digits, selected/unselected, inspector Return; six-figure display-only component states.",
+      "reject": "New hierarchy dominates stars; duplicate controls or changed exact spoken/ordered facts."
+    },
+    {
+      "profile": "390x844 phone / AX5",
+      "evidence": "Existing quiet pressure/recovery native case and isolated largest-text reader; normal-motion actual-root hosted slice.",
+      "states": "Full pressure text and recovery, complete targets, unchanged reader final-line/control gates; no forced quiet substitution.",
+      "reject": "Clipped facts, displaced fixed controls, unreadable target or recurring stalled reader under its existing strict gates."
+    },
+    {
+      "profile": "1032\u00d71376 actual tablet / AX5; 1024\u00d71366 synthetic hosted large window",
+      "evidence": "The actual iPad Pro 13-inch M5 native AX5 Calm journey passed on its 1032\u00d71376-point viewport and real tablet artwork. The phone-hosted 1024\u00d71366 window remains synthetic. Default wide component fits are hosted evidence, not an actual-tablet default-text capture.",
+      "states": "All six component tuples; real 0 to 15,000 chain; visible Full Board context; forecast absence after mode replacement.",
+      "reject": "Tiny disconnected instruments, full-size text compressed, glyph aligned to whole block, or any changed source/round outcome."
+    }
+  ],
+  "smallestTestExtensions": [
+    {
+      "selector": "StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking",
+      "methodCount": 1,
+      "proposal": "Extend the existing method across the six exact tuples, existing 300/240-point proposals and default/AX5. Use the supported plain-parent attached sibling measurement when comparing actual native type; do not reuse detached safe-area-inflated expectations. Preserve all original assertions and add finite positive/full-role content fit and stable objective reservation. Attach a small same-component specimen for first-line optical review."
+    },
+    {
+      "selector": "StarfallAppTests/SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+      "methodCount": 1,
+      "proposal": "Retain the existing 375 AX5/tablet real-root oracle and real 15,000 clear. Record symbol/earned-line alignment facts or captures without changing 24-point width, official serif multiline gates, complete stars, true canvas mapping, fixed anchors or real receipt age. Keep high synthetic tuples in the fast component method rather than expanding this animated integration case."
+    },
+    {
+      "selector": "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+      "methodCount": 1,
+      "proposal": "Use its existing exact score/forecast/inspection helper and capture the visible type refinement; retain every exact label, 44/48 target, nonoverlap, source and unchanged-round outcome."
+    },
+    {
+      "selector": "StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard",
+      "methodCount": 1,
+      "proposal": "Keep actual-Calm selection, exact 15,000 chain and Full Board outcomes; inspect earned-line symbol at 0 and 15,000 and coherent supporting labels without broadening this long journey."
+    }
+  ],
+  "plannedHostedSelection": {
+    "status": "Prepared; complete final selection not executed yet. Two selected methods already passed the corrected intermediate slice, recorded separately below.",
+    "expectedExecutedMethods": 13,
+    "expectedFailedMethods": 0,
+    "expectedSkippedMethods": 0,
+    "selectors": [
+      "StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking",
+      "StarfallAppTests/SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+      "StarfallAppTests/SkyForecastDestinationsTests/testFifthLanternPreviewKeepsItsActualFamiliesAndOneBasedDestinationsInOrder",
+      "StarfallAppTests/SkyForecastDestinationsTests/testRepeatedColumnsAndUnsortedIdentitiesStayAttachedToTheirOrderedStars",
+      "StarfallAppTests/SkyForecastDestinationsTests/testColoredAndRetainedColorlessRolesUseTheirExistingIdentityDescriptions",
+      "StarfallAppTests/SkyForecastDestinationsTests/testReadingTheForecastPreservesSavedStateAndTheNextRandomContinuation",
+      "StarfallAppTests/SkyForecastDestinationsTests/testStateLabelsAndColumnHintExplainTheNumbersWithoutPredictingRisk",
+      "StarfallAppTests/SkyForecastDestinationsTests/testBothFullBoardVersionsHaveNoShowerDestinations",
+      "StarfallAppTests/SavedRoundModeTests/testCurrentFallingSkyProgressNamesItsSavedMode",
+      "StarfallAppTests/SavedRoundModeTests/testCurrentFullBoardProgressNamesItsSavedModeWithTheSameTarget",
+      "StarfallAppTests/SkyHeadroomFeedbackTests/testHighClearReallyRecoversFourSpacesAfterTheSameShowerFillsBothLeftColumns",
+      "StarfallAppTests/StarlightCelebrationTests/testPacketInkAndShadowLeaveTheScoreReadableAtBothDestinations",
+      "StarfallAppTests/StarlightCelebrationTests/testHeaderRegistrationPreservesNestedScoreBoardAndRestorationLight"
+    ],
+    "countBasis": "1 score fit + 1 actual reading integration + 6 forecast facts + 2 saved-mode promises + 1 factual pressure recovery + 2 existing packet/header-anchor methods = 13 existing methods.",
+    "selectorAudit": "All 13 selectors match current source declarations. The two SavedRoundMode names in the earlier record were already exact; verified rather than replaced. Class-wide selections are expanded here to explicit methods to make the count reviewable."
+  },
+  "plannedNativeSelection": {
+    "expectedExecutedMethods": 4,
+    "phone": [
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+      "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable",
+      "StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable"
+    ],
+    "tablet": [
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testLargestCalmLanternForecastFocusRetiresBeforeFullBoard"
+    ],
+    "ownership": "Execute on accepted main 8e196ccb plus this isolated goal 2, with one actual native controller at a time and explicitly owned devices. These four existing selectors are prepared, not reservations or passes. Tablet-only method remains separate from the development phone inventory.",
+    "status": "All four preselected native methods executed and passed with zero failures/skips. See verification-02.json; phone and actual-tablet visual scopes are separately recorded.",
+    "phoneMethodCount": 3,
+    "tabletMethodCount": 1,
+    "expectedFailedMethods": 0,
+    "expectedSkippedMethods": 0
+  },
+  "counts": {
+    "baselineHostedDiscovery": 815,
+    "baselineDevelopmentUIDiscovery": 260,
+    "proposedNewMethods": 0,
+    "expectedDiscoveryAfterExtensions": "No new methods. Fresh source inventory confirms 815 hosted/260 development UI; this is separate from the selected 13 hosted/four native passes."
+  },
+  "evidenceLimits": "Synthetic boundary totals establish component fit, not naturally earned histories. Real15000 remains the integration witness. Hosted fitting, native interaction, optical still review, observed motion, actual VoiceOver and physical-device acceptance remain separate.",
+  "delivery": "Finish verification and publish one individual PR closing #383 from accepted main 8e196ccb plus isolated goal 2. Do not adopt/publish unaccepted separate UI-flow source or wait for its integration. Reconcile any genuinely accepted main changes before final checks/merge; activate goal 3 only after this verified individual merge.",
+  "verificationPerformed": "Core 352, 13 selected hosted methods, three phone native methods and one actual-tablet native method passed with zero failures/skips. Debug/test and Release builds, hygiene and diff checks passed. Independent complete native-screen and all 13 retained-export reviews passed for the recorded scope; see verification-02.json and both visual review records.",
+  "preparedScope": "Three official owners only: shared existing-size roles, caption semibold numbers, private earned-line center alignment. Existing score fit method extended; no new methods, resources, rules, saves or fixture route.",
+  "executedEvidence": {
+    "record": "docs/evidence/hud-stack-2026-10-24/verification-02.json",
+    "firstCandidate": {
+      "source": "d4fa6d0a",
+      "runtime": "dev.dae88b2f01",
+      "buildSeconds": 10.695,
+      "selectedMethods": 2,
+      "passedMethods": 1,
+      "failedMethods": 1,
+      "skippedMethods": 0,
+      "assertionFailures": 2,
+      "commandSeconds": 9.679,
+      "cause": "Strict 240-point AX width reservation exposed different zero/15k versus six-digit widths in stacked earned candidate; original failure retained."
+    },
+    "correctedCandidate": {
+      "source": "87f846df",
+      "runtime": "dev.f4ecc1c437",
+      "buildSeconds": 6.82,
+      "selectedMethods": 2,
+      "passedMethods": 2,
+      "failedMethods": 0,
+      "skippedMethods": 0,
+      "commandSeconds": 10.323
+    },
+    "latestExecutedSlice": {
+      "source": "3705d9a9",
+      "runtime": "dev.f4ecc1c437",
+      "appDelta": "None from 87f846df; test-only 240-point optical exports added.",
+      "buildSeconds": 4.419,
+      "selectedMethods": 2,
+      "passedMethods": 2,
+      "failedMethods": 0,
+      "skippedMethods": 0,
+      "testSuiteSeconds": 6.863,
+      "commandSeconds": 10.977,
+      "selectors": [
+        "StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking",
+        "StarfallAppTests/SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls"
+      ]
+    },
+    "countLimit": "Intermediate runs are retained individually and are not aggregated into the final selection. Final source-bound evidence is 13 hosted methods and phone 3/tablet 1, all passing with zero failures/skips.",
+    "visual": "Final independent phone/tablet and all 13 retained-export reviews pass for the bounded development slice. See visual-review-02.json and visual-review-02-tablet-exports.json."
+  },
+  "remainingRequiredChecks": "Exact published-tree verification, individual goal 2 merge and completed issue confirmation. Required source-bound local mechanics and independent native/export visual review have passed; inventory counts remain distinct from executed counts.",
+  "finalWitness": "Source ac78832a; computed and embedded final native build ID dev.f4ecc1c437; accepted main 8e196ccb. The actual tablet viewport is 1032\u00d71376 points. The 42,000-point Full Board refill has mechanical evidence; its retained image depicts the earlier opening."
+}

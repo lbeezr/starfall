@@ -1,6 +1,6 @@
 # A coherent set of native HUD instruments
 
-**Status:** Goal 1 correction accepted for the documented development slice; publication pending, then goal 2 · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
+**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 verified for development; individual merge pending · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
 
 The user authorized [ten ordered HUD refinements](https://github.com/lbeezr/starfall/issues/381), with each goal tested and merged before the next implementation. Each pass retains the previous accepted behavior and corrects its current presentation seam in the normal app. Existing Observatory materials, native controls, rules, saves, replay, clocks and board mapping remain authoritative.
 
@@ -8,12 +8,12 @@ The user authorized [ten ordered HUD refinements](https://github.com/lbeezr/star
 
 The user rejected goal 1's appearance after its initial merge in [PR #392](https://github.com/lbeezr/starfall/pull/392). The optional **Inspect next shower** action uses a menu component role and becomes an oversized enamel headline in active play. The tablet composition also disconnects the instruments from the scenery. These failures conflict with the [official game UI system](../../design/GAME_UI_SYSTEM.md) and [native production workflow](../../design/UI_PRODUCTION.md), even though the action's target, row placement and state preservation passed their mechanical checks.
 
-The initial development-adoption verdict below is superseded. Its source identities, capture bytes/hashes, successful tests, earlier failures and original inspection statement remain historical evidence; they do not establish visual acceptance. [Goal 1 / #382](https://github.com/lbeezr/starfall/issues/382) is reopened for correction. [Goal 2 / #383](https://github.com/lbeezr/starfall/issues/383) is held until goal 1's corrected composition passes independent comparison with the approved reference and official component roles. Correct the oversized optional action and disconnected scenery now; later goals must not postpone a known failure.
+The initial development-adoption verdict below is superseded. Its source identities, capture bytes/hashes, successful tests, earlier failures and original inspection statement remain historical evidence; they do not establish visual acceptance. [Goal 1 / #382](https://github.com/lbeezr/starfall/issues/382) was reopened for correction, and goal 2 was held until the corrected composition passed independent comparison with the approved reference and official component roles. That correction subsequently merged in #402. The rejected action and disconnected scenery were corrected in goal 1; later goals did not inherit a known visual failure.
 
 | Order | Outcome | Issue | Integration |
 | --- | --- | --- | --- |
-| 1 | Expanded HUD reading order | [#382](https://github.com/lbeezr/starfall/issues/382) | Corrected native slice independently reviewed; correction merge pending |
-| 2 | Coherent instrument typography | [#383](https://github.com/lbeezr/starfall/issues/383) | Held pending goal 1 correction and acceptance |
+| 1 | Expanded HUD reading order | [#382](https://github.com/lbeezr/starfall/issues/382) | Corrected native slice reviewed; merged #402, issue completed |
+| 2 | Coherent instrument typography | [#383](https://github.com/lbeezr/starfall/issues/383) | Native checks and independent screen/export review passed; individual merge pending |
 | 3 | Readability across every sky | [#384](https://github.com/lbeezr/starfall/issues/384) | After goal 2 merge |
 | 4 | Shared control states and glyph craft | [#385](https://github.com/lbeezr/starfall/issues/385) | After goal 3 merge |
 | 5 | One coherent forecast instrument | [#386](https://github.com/lbeezr/starfall/issues/386) | After goal 4 merge |
@@ -42,7 +42,32 @@ Rendered App source is `bf5e6d23`, runtime `dev.3ebf052fca`; test checkpoint `3f
 
 Two earlier native runs stalled before Sunny's final line during overlapping simulator UI work. Their frames and failure image remain failures. The same unchanged case passed with one native controller active; an eight-second sample mostly waited for events. The cause is unproved, and neither an assertion nor performance fix is claimed. [Engineering](../../ENGINEERING.md) records the recurrence trigger and passive pan/offset investigation. All 12-pan, overlap, full-final-line, target and fixed-control gates remain. Visual acceptance does not erase this interaction uncertainty.
 
-No actual VoiceOver, minimum-iOS execution, physical reading/comfort, human enjoyment or sustained-performance acceptance is claimed. The corrected components are adopted for this development slice; goal 2 implementation starts only after the correction's individual main merge. Original PR #392 evidence below remains historical and visually rejected.
+No actual VoiceOver, minimum-iOS execution, physical reading/comfort, human enjoyment or sustained-performance acceptance is claimed. The corrected components are adopted for this development slice. [PR #402](https://github.com/lbeezr/starfall/pull/402) merged as `8e196ccb`, with byte-identical reviewed/published trees and issue #382 completed. [Publication proof](publication-01-correction.json) records the unavailable Project projection honestly; goal 2 now follows this individual main merge. Original PR #392 evidence below remains historical and visually rejected.
+
+## Goal 2: instrument typography
+
+**Status:** Native checks and independent whole-screen/export review passed for this development slice; individual merge pending.
+
+The score's existing 24-point star follows the earned line when its exact objective reflows. Shared `instrumentScore`, `instrumentTarget`, `instrumentLabel` and `instrumentNumber` roles retain the official native sizes and full Dynamic Type. Forecast digits gain a modest semibold weight; supporting labels remain quieter. Mode/pressure and control-state ink stay in their existing shared owners. No general caption consumer changes.
+
+The first 240-point AX5 check exposed a missing width reservation in the stacked score fallback. The shared component now reserves the objective's digit width in both fitting paths. All original guards remain. Two retained stress specimens show complete glyphs on three lines; the 375-point hosted production header retains the complete objective on its second line. Display-only high totals are component evidence, not earned-game histories.
+
+Tested source is `ac78832a`, based on accepted main `8e196ccb`. [Source proof](source-02-final.json) matches all 567 committed runtime inputs to the working tree; the computed fingerprint is `dev.f4ecc1c437`. Final native products explicitly embed that same build ID. Earlier component products embedded `dev.local`; their fingerprint labels are source identities, not observed embedded labels. Later evidence edits do not change App or test source.
+
+| Evidence | Result and scope |
+| --- | --- |
+| Core | 352 passed, zero failures/skips |
+| Affected hosted | 13 existing score, forecast, mode, headroom and receipt methods passed, zero failures/skips |
+| Native phone | Default normal selection/inspection/Return; AX5 quiet actual pressure/recovery; AX5 normal complete Sunny/Spark readers all passed |
+| Actual tablet | AX5 real Settings Calm, three selections, real 15,000-point chain, new Full Board and 42,000-point refill passed; the retained Full Board frame precedes that refill |
+| Build | Debug/test and Release passed; source discovery remains 815 hosted/260 development UI methods, not full executed-pass counts |
+| Visual | Independent whole-screen and exact retained-export review passes the named phone/tablet states; no depicted current visual failure remains |
+
+[Acceptance](goal-02-acceptance.json), [mechanical history and commands](verification-02.json), [capture index](captures-02.json) and [independent visual review](visual-review-02.json) and [tablet export review](visual-review-02-tablet-exports.json) preserve their separate scopes. The new unchanged isolated reader pass is additional bounded evidence; earlier goal 1 pan failures retain their unassigned cause and engineering recurrence trigger. Actual VoiceOver, physical reading/comfort, minimum-iOS execution and complete animation/performance acceptance remain separate. No alternate route, new asset family, rule, save, clock or receipt timing change is introduced.
+
+![Native default-text phone, selected forecast column 6](goal-02-captures/dev-f4ecc1c437__phone-default__selected-column-6.jpg)
+
+Native iPhone 17e, iOS 27.0, normal effects, actual paused Lantern opening. Source `ac78832a` / embedded `dev.f4ecc1c437`; raw and exact JPEG export passed independent review. This current-frame example does not replace the separate AX5 phone/tablet evidence.
 
 ## Goal 1 initial implementation: mechanical results retained
 

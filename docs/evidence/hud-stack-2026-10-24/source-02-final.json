@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "goal": 2,
+  "testedCommit": "ac78832a66146b0c23c49a0af5ef05453d533219",
+  "baseMain": "8e196ccbaf1173e8c1cecf1ea2f47dd81e24b97c",
+  "runtimeInputFingerprint": "dev.f4ecc1c437",
+  "committedRuntimeInputCount": 567,
+  "workingTreeBuildDifferences": [],
+  "embeddedFinalNativeBuildID": "dev.f4ecc1c437",
+  "intermediateBuildLabel": "Earlier hosted products used default embedded dev.local; f4ecc1c437 in component evidence denotes the independently calculated runtime-input fingerprint, not an observed embedded label. Native acceptance Debug product was rebuilt with explicit STARFALL_BUILD_ID.",
+  "sdk": "iphonesimulator27.1",
+  "xcodeBuild": "27A9275",
+  "simulators": [
+    {
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-27-0",
+      "name": "Starfall HUD Stack dcf3 Phone",
+      "udid": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceType": "com.apple.CoreSimulator.SimDeviceType.iPhone-17e"
+    },
+    {
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-27-0",
+      "name": "Starfall HUD Stack dcf3 Tablet",
+      "udid": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+      "deviceType": "com.apple.CoreSimulator.SimDeviceType.iPad-Pro-13-inch-M5-12GB"
+    }
+  ],
+  "dirtyDocumentationOnly": [
+    "docs/evidence/hud-stack-2026-10-24/goal-02-acceptance.json"
+  ],
+  "untrackedResearchOnly": "goal03\u201310 read-ahead JSONs; excluded from goal2 publication",
+  "proof": "All committed runtime/build input bytes matched the working tree and canonical build_id without creating a full archive; exact published tree equality remains required before merge.",
+  "rawInputManifest": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-02-ac78832a.json",
+  "laterEvidenceEdits": "Later changes are documentation and retained captures only; App and test sources have no working-tree differences. Final publication must compare the exact Git tree before merge."
+}

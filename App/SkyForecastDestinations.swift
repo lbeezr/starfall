@@ -80,7 +80,7 @@ struct SkyForecastSnapshot: Equatable, Sendable {
                     .accessibilityIdentifier("sky.showerInspection.open")
                 }
             }
-            .font(StarfallTheme.Typography.skyCaption)
+            .font(StarfallTheme.Typography.instrumentLabel)
             .foregroundStyle(StarfallTheme.Colors.textSecondary)
             .starfallSceneryProtection()
             .accessibilityElement(children: .contain)
@@ -104,6 +104,7 @@ struct SkyForecastSnapshot: Equatable, Sendable {
                         .resizable().scaledToFit().frame(width: 18, height: 18)
                         .accessibilityHidden(true)
                     Text(String(entry.column))
+                        .font(StarfallTheme.Typography.instrumentNumber)
                         .monospacedDigit()
                         .fixedSize(horizontal: true, vertical: false)
                 }
