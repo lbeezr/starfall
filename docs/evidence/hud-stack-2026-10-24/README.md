@@ -1,6 +1,6 @@
 # A coherent set of native HUD instruments
 
-**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 verified for development; individual merge pending · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
+**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 verified for its development slice, merge next · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
 
 The user authorized [ten ordered HUD refinements](https://github.com/lbeezr/starfall/issues/381), with each goal tested and merged before the next implementation. Each pass retains the previous accepted behavior and corrects its current presentation seam in the normal app. Existing Observatory materials, native controls, rules, saves, replay, clocks and board mapping remain authoritative.
 
@@ -13,8 +13,8 @@ The initial development-adoption verdict below is superseded. Its source identit
 | Order | Outcome | Issue | Integration |
 | --- | --- | --- | --- |
 | 1 | Expanded HUD reading order | [#382](https://github.com/lbeezr/starfall/issues/382) | Corrected native slice reviewed; merged #402, issue completed |
-| 2 | Coherent instrument typography | [#383](https://github.com/lbeezr/starfall/issues/383) | Native checks and independent screen/export review passed; individual merge pending |
-| 3 | Readability across every sky | [#384](https://github.com/lbeezr/starfall/issues/384) | After goal 2 merge |
+| 2 | Coherent instrument typography | [#383](https://github.com/lbeezr/starfall/issues/383) | Verified and merged #403; issue completed |
+| 3 | Readability across every sky | [#384](https://github.com/lbeezr/starfall/issues/384) | Verified pause-only scenic separation and independent native/export review; individual merge next |
 | 4 | Shared control states and glyph craft | [#385](https://github.com/lbeezr/starfall/issues/385) | After goal 3 merge |
 | 5 | One coherent forecast instrument | [#386](https://github.com/lbeezr/starfall/issues/386) | After goal 4 merge |
 | 6 | Specific, calm pressure feedback | [#387](https://github.com/lbeezr/starfall/issues/387) | After goal 5 merge |
@@ -46,7 +46,7 @@ No actual VoiceOver, minimum-iOS execution, physical reading/comfort, human enjo
 
 ## Goal 2: instrument typography
 
-**Status:** Native checks and independent whole-screen/export review passed for this development slice; individual merge pending.
+**Status:** Verified for this development slice and merged in [PR #403](https://github.com/lbeezr/starfall/pull/403), main `1ed733bb`; issue #383 is completed.
 
 The score's existing 24-point star follows the earned line when its exact objective reflows. Shared `instrumentScore`, `instrumentTarget`, `instrumentLabel` and `instrumentNumber` roles retain the official native sizes and full Dynamic Type. Forecast digits gain a modest semibold weight; supporting labels remain quieter. Mode/pressure and control-state ink stay in their existing shared owners. No general caption consumer changes.
 
@@ -63,11 +63,38 @@ Tested source is `ac78832a`, based on accepted main `8e196ccb`. [Source proof](s
 | Build | Debug/test and Release passed; source discovery remains 815 hosted/260 development UI methods, not full executed-pass counts |
 | Visual | Independent whole-screen and exact retained-export review passes the named phone/tablet states; no depicted current visual failure remains |
 
-[Acceptance](goal-02-acceptance.json), [mechanical history and commands](verification-02.json), [capture index](captures-02.json) and [independent visual review](visual-review-02.json) and [tablet export review](visual-review-02-tablet-exports.json) preserve their separate scopes. The new unchanged isolated reader pass is additional bounded evidence; earlier goal 1 pan failures retain their unassigned cause and engineering recurrence trigger. Actual VoiceOver, physical reading/comfort, minimum-iOS execution and complete animation/performance acceptance remain separate. No alternate route, new asset family, rule, save, clock or receipt timing change is introduced.
+[Acceptance](goal-02-acceptance.json), [mechanical history and commands](verification-02.json), [capture index](captures-02.json) and [independent visual review](visual-review-02.json) and [tablet export review](visual-review-02-tablet-exports.json) preserve their separate scopes. [Publication proof](publication-02.json) confirms identical reviewed/published/main trees and completed issue state; the canonical Project projection remains unavailable. The new unchanged isolated reader pass is additional bounded evidence; earlier goal 1 pan failures retain their unassigned cause and engineering recurrence trigger. Actual VoiceOver, physical reading/comfort, minimum-iOS execution and complete animation/performance acceptance remain separate. No alternate route, new asset family, rule, save, clock or receipt timing change is introduced.
 
 ![Native default-text phone, selected forecast column 6](goal-02-captures/dev-f4ecc1c437__phone-default__selected-column-6.jpg)
 
 Native iPhone 17e, iOS 27.0, normal effects, actual paused Lantern opening. Source `ac78832a` / embedded `dev.f4ecc1c437`; raw and exact JPEG export passed independent review. This current-frame example does not replace the separate AX5 phone/tablet evidence.
+
+## Goal 3: pause separation over scenery
+
+**Status:** Adopted for the named development slice; individual main merge next. Goal 4 remains held until that merge.
+
+The viewport pause now opts into the official utility style’s fitted scenery backdrop. Its actual glyph stays 20 points within the existing 24-point visual allocation and 48-point target. The existing 82% nightglass, 8-point visual-only outset and 3-point feather follow the visual before the outer target. Help stays clear within its protected forecast group; tutorial Close and other utilities retain clear defaults. Existing pressed, disabled and focused treatments remain. No trail, board, rule, save, clock, resource or membership owner changes.
+
+The original pearl fill can blend into bright wood/stone; its dark authored contour still distinguishes the whole symbol. A source survey ranks 105 registered paintings across seven places, five milestones and three compositions. Its 350 candidate samples are source-derived regions, not measured native bounds or contrast certification. Matched actual Seed frames show selected pearl/background RGB ratios changing from 1.085–3.417 to 8.921–11.534. Actual darker Frostfruit states remain distinct. These composited selected pixels establish neither every glyph edge nor physical recognition; [#209](https://github.com/lbeezr/starfall/issues/209) stays open.
+
+Tested App and test source is `4d7cfa21`, based on accepted main `1ed733bb`; [source proof](source-03-final.json) matches all 567 committed runtime inputs. Debug and Release products explicitly embed `dev.189706f888`. The only App owners are `StarfallTheme` and `FallingSkyView`. Final evidence edits do not change tested runtime/test bytes.
+
+| Evidence | Result and scope |
+| --- | --- |
+| Core | 352 passed, zero failures/skips |
+| Affected hosted | 12 existing artwork, score, reading, forecast, restoration and header methods passed |
+| Native phone | Three methods passed: default current Lantern selection/inspection/Return; AX5 quiet full-column pressure/recovery; AX5 normal complete Sunny/Spark reading |
+| Actual tablet | Two methods passed: normal-effect Seed portrait/landscape real clears and darker dense Frostfruit completion; historical 18-light fixtures establish material/input states, not current revision rules |
+| Builds | Debug/test and Release passed; no runtime warnings in the selected result summaries; three expected AppIntents extraction-skip warnings |
+| Visual | Independent complete native-screen review and all eleven final export/raw pairs pass for the named states; no known current visible failure found |
+
+[Acceptance](goal-03-acceptance.json), [verification and exact commands](verification-03.json), [capture index](captures-03.json), [native review](visual-review-03.json) and [final export review](visual-review-03-exports.json) retain their separate scopes. The export reviewer caught an opening image that duplicated the selected state. It was replaced with the already captured genuine unselected opening and independently rechecked; the correction history remains. Source images are untouched. JPEG80 exports retain full dimensions and orientation; RGB sampling uses the original PNGs.
+
+The unchanged isolated Sunny/Spark method passes again with its original 12-pan and complete-final-line gates. Earlier intermittent pan failures retain their unassigned cause and engineering recurrence trigger; this pass does not establish a performance fix. Increased Contrast, Reduced Transparency, platform focus, native disabled appearance, actual VoiceOver, physical reading/comfort, minimum-iOS execution and continuous animation/performance acceptance remain unperformed. No alternate route remains.
+
+| Bright native Seed, preceding accepted source | Same state, shared pause protection |
+| --- | --- |
+| ![Baseline Seed wide viewport](goal-03-captures/dev-f4ecc1c437__tablet-wide__seed-0-baseline.jpg) | ![Candidate Seed wide viewport](goal-03-captures/dev-189706f888__tablet-wide__seed-0.jpg) |
 
 ## Goal 1 initial implementation: mechanical results retained
 

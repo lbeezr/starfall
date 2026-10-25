@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "goal": 3,
+  "status": "Source-bound exports prepared; independent exact-export review pending",
+  "capturedEnvironment": "Xcode27A9275/SDK27.1; native iOS27.0 iPhone17e390x844@3x and iPadPro13M5 portrait1032x1376/wide1376x1032@2x simulators; no physical-device claim",
+  "count": 11,
+  "bytes": 9605016,
+  "pixelMeasurement": "All quantitative RGB pairs use original sRGB PNGs, never lossy JPEGs or resized previews. Landscape storage2064x2752 retains EXIF8; upright display2752x2064.",
+  "items": [
+    {
+      "id": "dev-f4ecc1c437__tablet-wide__seed-0-baseline",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-03-captures/dev-f4ecc1c437__tablet-wide__seed-0-baseline.jpg",
+      "exportSHA256": "2e1621b678be0f239a5248b6da061eeec75b961badc98b44d8e84b8676b5c66c",
+      "exportBytes": 1189599,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-attachments/A914DAE3-CFF6-42ED-92BD-F548E9383355.png",
+      "rawSHA256": "89968411d2fa8d8344dcac61d599260852bff1e08a84440bdfdc559e53f6eac6",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 8,
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "scale": 2,
+      "viewportPoints": [
+        1376.0,
+        1032.0
+      ],
+      "state": "Historical Seed0/18, normal effects, baseline",
+      "compiledCheckpoint": "ac78832a66146b0c23c49a0af5ef05453d533219",
+      "embeddedBuildID": "dev.f4ecc1c437",
+      "format": "sips JPEG80; original storage dimensions and EXIF orientation; no crop, resize or retouch"
+    },
+    {
+      "id": "dev-189706f888__tablet-wide__seed-0",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-03-captures/dev-189706f888__tablet-wide__seed-0.jpg",
+      "exportSHA256": "056fff99a12f0f6475c4a216c6361bbedd98e7041b7186ff3b715ea03b84f374",
+      "exportBytes": 1189053,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-seed-attachments/73768AB0-B9AD-433C-8D12-41FDA2C4E0E9.png",
+      "rawSHA256": "147fdc47c381005bc32e80fd21130fa703806e3ec749c6a4c0ce73daa60f23b4",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 8,
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "scale": 2,
+      "viewportPoints": [
+        1376.0,
+        1032.0
+      ],
+      "state": "Historical Seed0/18, normal effects, bright wide comparison",
+      "compiledCheckpoint": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+      "embeddedBuildID": "dev.189706f888",
+      "format": "sips JPEG80; original storage dimensions and EXIF orientation; no crop, resize or retouch"
+    },
+    {
+      "id": "dev-189706f888__tablet-portrait__seed-0",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-03-captures/dev-189706f888__tablet-portrait__seed-0.jpg",
+      "exportSHA256": "bef4207c08b84c9e99efd1282c23873935e1e2db5ac7e33618b37ef91a4db460",
+      "exportBytes": 1147376,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-seed-attachments/F0ADD823-953C-4A9A-BAA4-3E102EE851C5.png",
+      "rawSHA256": "646bf5969eb04518b72d91f10f8ee2c8d8179e62e26dbf6b7eb15b20ab7b035b",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "viewportPoints": [
+        1032.0,
+        1376.0
+      ],
+      "state": "Historical Seed0/18, normal effects, portrait",
+      "compiledCheckpoint": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+      "embeddedBuildID": "dev.189706f888",
+      "format": "sips JPEG80; original storage dimensions and EXIF orientation; no crop, resize or retouch"
+    },
+    {
+      "id": "dev-189706f888__phone-default__lantern-opening",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-03-captures/dev-189706f888__phone-default__lantern-opening.jpg",
+      "exportSHA256": "e2015aef81a7b6b8ca0c0538882365e5a6ae12872820839c0c471a6598fcd070",
+      "exportBytes": 524766,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-default-attachments/6B385ABB-9066-441F-8BED-BAF8CB9C0D3C.png",
+      "rawSHA256": "e83047f7d6f8329ebbf2151b037efb10225fd33c84b6236e91da794a325421e2",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "viewportPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Current Lantern Falling Sky0/150000, unselected opening, default text, normal effects, paused",
+      "compiledCheckpoint": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+      "embeddedBuildID": "dev.189706f888",
+      "format": "sips JPEG80; original storage dimensions and EXIF orientation; no crop, resize or retouch"
+    },
+    {
+      "id": "dev-189706f888__phone-default__selected-column-6",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-03-captures/dev-189706f888__phone-default__selected-column-6.jpg",
+      "exportSHA256": "9c7c0312d4b1a428c6623655b3aa8cd887126fb107de4f19b063b9a2c13e81ce",
+      "exportBytes": 543334,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-default-attachments/CE2474C3-7D28-454D-A716-88EE43FC5BB6.png",
+      "rawSHA256": "4f1c37599ed25d2d0d11bad168dbdeebbe5f0b1f1a5809851a5642203085dccf",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "viewportPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Current Lantern0/150000, selected actual forecast column6, default text, normal effects, paused",
+      "compiledCheckpoint": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+      "embeddedBuildID": "dev.189706f888",
+      "format": "sips JPEG80; original storage dimensions and EXIF orientation; no crop, resize or retouch"
+    },
+    {
+      "id": "dev-189706f888__phone-ax5-quiet__full-column-2",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-03-captures/dev-189706f888__phone-ax5-quiet__full-column-2.jpg",
+      "exportSHA256": "8b2cbb706e8c9ec0b76c754b07762abe6d98c007852459a0f2760c6c609be095",
+      "exportBytes": 566234,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-pressure-attachments/B5494EDB-6708-44F1-A9F4-495C09018D66.png",
+      "rawSHA256": "f8021534a3e5ff8c150d15544a36d19ade675d6c75df1bd49a56d4a7be48081a",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "viewportPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Current Lantern full-column2 pressure, AX5, legitimate quiet",
+      "compiledCheckpoint": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+      "embeddedBuildID": "dev.189706f888",
+      "format": "sips JPEG80; original storage dimensions and EXIF orientation; no crop, resize or retouch"
+    },
+    {
+      "id": "dev-189706f888__phone-ax5-quiet__recovered-column-2",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-03-captures/dev-189706f888__phone-ax5-quiet__recovered-column-2.jpg",
+      "exportSHA256": "a7c3b9a93d1d43373c0ce84e79aa63debc00734ba0a17a811e0d2e2e19fd0bb6",
+      "exportBytes": 567568,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-pressure-attachments/AFE64F06-5C0C-42A7-B4A0-6E97C5CC2F38.png",
+      "rawSHA256": "7e36b10b009588c55881e5989921e0da751ec58794cd281fb4368878dc326324",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "viewportPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Current Lantern committed5000-point recovery, AX5, legitimate quiet",
+      "compiledCheckpoint": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+      "embeddedBuildID": "dev.189706f888",
+      "format": "sips JPEG80; original storage dimensions and EXIF orientation; no crop, resize or retouch"
+    },
+    {
+      "id": "dev-189706f888__phone-ax5-normal__sunny-reading-end",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-03-captures/dev-189706f888__phone-ax5-normal__sunny-reading-end.jpg",
+      "exportSHA256": "9d3ee940d7d18ba42fe5b091fe9e88408a3838858e7c4efc26d681012004e3a6",
+      "exportBytes": 456533,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-reader-attachments/7B467505-34D1-46CB-B334-854EDA2D8E10.png",
+      "rawSHA256": "64d21d892f9c639fae7cb8712decec0e40b50e4132c9ad26c514b49b38ed765c",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "viewportPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Sunny actual AX5 full-reader final phrase over restored Lantern scenery; normal effects",
+      "compiledCheckpoint": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+      "embeddedBuildID": "dev.189706f888",
+      "format": "sips JPEG80; original storage dimensions and EXIF orientation; no crop, resize or retouch"
+    },
+    {
+      "id": "dev-189706f888__phone-ax5-normal__spark-reading-end",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-03-captures/dev-189706f888__phone-ax5-normal__spark-reading-end.jpg",
+      "exportSHA256": "37f961b6bf8b394445aef4cc84c5c2e525db848bd9b99ada58907e2eed500816",
+      "exportBytes": 380867,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-03-4d7cfa21-reader-attachments/2EB21598-C482-4D4A-A7AD-210225EB0992.png",
+      "rawSHA256": "6431367cf4952c032121e1094dfcf0c2c40734c357baea413c9f1c111260dfa3",
+      "storedPixels": [
+        1170,
+        2532
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        1170,
+        2532
+      ],
+      "scale": 3,
+      "viewportPoints": [
+        390.0,
+        844.0
+      ],
+      "state": "Spark actual AX5 full-reader final words and native actions; normal effects",
+      "compiledCheckpoint": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+      "embeddedBuildID": "dev.189706f888",
+      "format": "sips JPEG80; original storage dimensions and EXIF orientation; no crop, resize or retouch"
+    },
+    {
+      "id": "dev-189706f888__tablet-wide__frostfruit-dense-75",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-03-captures/dev-189706f888__tablet-wide__frostfruit-dense-75.jpg",
+      "exportSHA256": "fc221e38bd29c7a05d588142dfe5bb50b235fc0356c3108da9b9443907d720de",
+      "exportBytes": 1528966,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-frost-attachments/651C0BB1-68F2-4A6E-BE83-B0040A642A9B.png",
+      "rawSHA256": "528e6b2374c7a1f671a495d7345b0c04537e85788dec8609e2de745d206dac81",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 8,
+      "displayPixels": [
+        2752,
+        2064
+      ],
+      "scale": 2,
+      "viewportPoints": [
+        1376.0,
+        1032.0
+      ],
+      "state": "Historical Frostfruit14/18 dense49-star board,75 artwork stage, normal effects, darker wide comparator",
+      "compiledCheckpoint": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+      "embeddedBuildID": "dev.189706f888",
+      "format": "sips JPEG80; original storage dimensions and EXIF orientation; no crop, resize or retouch"
+    },
+    {
+      "id": "dev-189706f888__tablet-portrait__frostfruit-dense-75",
+      "retainedPath": "docs/evidence/hud-stack-2026-10-24/goal-03-captures/dev-189706f888__tablet-portrait__frostfruit-dense-75.jpg",
+      "exportSHA256": "7d12859b14b2a7c73d1fae77ca77087200997c761e3bfe64a4e3232214a7a949",
+      "exportBytes": 1510720,
+      "rawPath": "/private/tmp/starfall-hud-stack-20261024/tablet-03-4d7cfa21-frost-attachments/07F45C1D-D8BB-45E2-82AD-3AB19A17D91F.png",
+      "rawSHA256": "ef0e1a77ba17c29cacb054cafbbc6f8f387dbe00d13255febb5dca78519d2bf9",
+      "storedPixels": [
+        2064,
+        2752
+      ],
+      "orientation": 1,
+      "displayPixels": [
+        2064,
+        2752
+      ],
+      "scale": 2,
+      "viewportPoints": [
+        1032.0,
+        1376.0
+      ],
+      "state": "Historical Frostfruit14/18 dense49-star board,75 artwork stage, normal effects, portrait",
+      "compiledCheckpoint": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+      "embeddedBuildID": "dev.189706f888",
+      "format": "sips JPEG80; original storage dimensions and EXIF orientation; no crop, resize or retouch"
+    }
+  ],
+  "correctionBeforeMerge": "Independent reviewer caught the initial opening entry pointed to7D818970 (returned selected6), byte-identical to CE2474C3. Beforemerge, replace onlythat exportedentry with genuineunselected6B385ABB from the samecompletedtest, confirmedagainst source order and wholePNG. No native rerun, source change or unique image loss."
+}

@@ -495,7 +495,7 @@ import StarfallCore
         Button { if let tutorialExit { tutorialExit() } else { menu = .game } } label: {
             ObservatoryIcon(tutorialExit == nil ? .pause : .close, size: 20)
         }
-            .buttonStyle(StarfallUtilityButtonStyle())
+            .buttonStyle(StarfallUtilityButtonStyle(backdrop: tutorialExit == nil ? .scenery : .clear))
             .disabled(scenePhase != .active || store.suspended)
             .accessibilityLabel(tutorialExit == nil ? SkyCopy.text(.menuTitle) : SkyCopy.text(.practiceExit))
             .accessibilityHint(SkyCopy.text(tutorialExit == nil ? .menuHint : .practiceExitHint))

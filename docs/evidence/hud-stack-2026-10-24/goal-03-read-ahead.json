@@ -1,0 +1,145 @@
+{
+  "goal": 3,
+  "status": "Historical read-ahead, superseded by goal-03-acceptance.json and verified 4d7cfa21/dev.189706f888. Original hypotheses and planned gaps below are not completed evidence.",
+  "issue": {
+    "url": "https://github.com/lbeezr/starfall/issues/384",
+    "title": "[HUD 3/10] Readability across every sky",
+    "stateAtRead": "open",
+    "dependsOn": "https://github.com/lbeezr/starfall/issues/383",
+    "requiredOutcome": "Measure actual shared HUD foreground/backdrop combinations and ship a visible bounded shared contrast refinement that retains scenery and restrained ornament. Keep physical contrast issue209 open."
+  },
+  "readAgainst": {
+    "head": "87f846df3870df5d5af8740c6f5185d61bf66805",
+    "pendingGoal2": "FallingSkyHUD has the stacked earned-line objective-width reservation correction pending verification. Refresh source/captures after goal2 merge before any goal3 implementation.",
+    "executedForThisReadAhead": "Source/issue inspection only; no App/test changes, builds, native controllers or acceptance runs."
+  },
+  "inheritedCoverage": [
+    "Goal1 fitted nightglass already protects exact score, complete forecast group, instrument status and explicitly scenic gameplay actions. Default82%/8pt visual-only outset/3pt feather; opaque core/no feather with Increased Contrast or Reduced Transparency.",
+    "Goal1 retained Sunny failure samples and corrected bounded6.39:1–15.29:1 adjacent RGB samples. These are selected source-bound samples, not all-font/all-sky or physical contrast certification.",
+    "Goal2 pending roles preserve serif score/regular secondary target, caption label, full scaling and component-owned state ink; caption destination numbers become semibold."
+  ],
+  "candidateResiduals": [
+    {
+      "priority": 1,
+      "element": "Straight comet trail",
+      "owner": "App/FallingSkyHUD.swift:SkyShowerTrail.content; composed by App/FallingSkyView.swift:showerTrail",
+      "facts": "Fixed132×28 regular path;16pt forecast miniatures; existing4pt90%-skyTop track underlay plus1pt48%-secondary track; paused opacity0.85. No fitted scenery protection. Island path has separate calibrated geometry and black camera fill.",
+      "status": "Unprotected is a source fact; insufficient readability is unproved. Sample meaningful head/miniature contours against actual adjacent backdrop, including paused/running and quiet/normal phases; decorative low-opacity tail is not itself a text-contrast failure.",
+      "smallestConditionalRefinement": "Only after a reproduced failure, register/use existing fitted protection on the straight trail after its existing intrinsic frame, keeping132×28/path positions/miniatures/countdown unchanged. Keep the calibrated island branch unchanged unless separately reproduced. Inspect outsets beside score/forecast so the local material does not merge into a header shelf."
+    },
+    {
+      "priority": 2,
+      "element": "Top menu/pause utility",
+      "owner": "App/FallingSkyView.swift:skyMenuButton; App/StarfallTheme.swift:StarfallUtilityButtonStyle",
+      "facts": "Existing rendered20pt pause inside official24pt visual/48pt target, material press/focus states and dark shadow; idle scenic backdrop is clear. Forecast help is already inside the protected forecast group.",
+      "status": "Candidate only; no current measured failure. Check bright cloud/brass/white landmark intersections, preserving enabled versus disabled distinctions.",
+      "smallestConditionalRefinement": "If this is the reproduced weak element, design/register a narrow optional scenic backdrop in the existing shared utility style, retaining clear default and unchanged48pt hit/focus/press contract. Avoid screen-local backing."
+    },
+    {
+      "priority": 3,
+      "element": "Protected text/material edges across the remaining skies",
+      "owner": "App/StarfallTheme.swift:StarfallSceneryProtection; App/RestorationEnvironment.swift:RestorationLayout",
+      "facts": "Complete forecast/score backing exists. Current proof samples do not exhaust every glyph edge, milestone, composition or contrast/transparency state.",
+      "status": "Coverage gap, not a product defect. Do not globally darken materials merely because a particular location was not sampled."
+    }
+  ],
+  "backdropMatrix": {
+    "locations": [
+      "Lantern Landing",
+      "Ribbon Crossing",
+      "Kite Harbor",
+      "Seed Moon",
+      "Silver Pools",
+      "Frostfruit Orchard",
+      "Sunwheel Mill"
+    ],
+    "assetFamilies": [
+      "LanternLanding",
+      "RibbonCrossing",
+      "KiteHarbor",
+      "SeedMoon",
+      "SilverPools",
+      "FrostfruitOrchard",
+      "SunwheelMill"
+    ],
+    "milestones": [
+      0,
+      25,
+      50,
+      75,
+      100
+    ],
+    "compositions": [
+      "phone",
+      "tabletPortrait",
+      "tabletLandscape"
+    ],
+    "plannedCombinations": 105,
+    "executedCombinations": 0,
+    "mapping": "Use RestorationArtwork.asset/sourceSize and RestorationLayout.imageFrame, including registered nonuniform source dimensions; sample actual component rectangles after this native mapping. Overall image luminance is insufficient.",
+    "brightDarkSelection": "For every location compare unrestored and lit75/100 states at the actual top/header/footer coordinates; retain the worst local bright and dark samples and inspect intermediate25/50 milestones. Rank extrema from rendered samples rather than assuming a whole location is bright or dark.",
+    "stateMeaning": "100% Story artwork normally belongs to completion. Label static material samples accordingly; current Open Sky legitimately uses fully restored Lantern scenery via FallingSkyView fallback.",
+    "textAndMotion": [
+      "default text",
+      "accessibility5",
+      "normal effects with actual live phase",
+      "legitimate Calm or system Reduce Motion state",
+      "Increased Contrast",
+      "Reduced Transparency"
+    ],
+    "samplingLimit": "Use existing GAME_UI_SYSTEM proposed4.5:1 baseline for ordinary essential text. Record exact core foreground/adjacent background coordinates, source/runtime, scale and active/disabled state. Keep nontext contour observations separate; RGB stills do not prove physical recognition or continuous motion."
+  },
+  "existingFixtureRoutes": {
+    "restorationArgs": [
+      "--starfalls-reset",
+      "--dialogue-review",
+      "--<lantern|ribbon|kite|seed|silver|frostfruit|sunwheel>-restoration-review=<score>"
+    ],
+    "historicalScoresForArtMilestones": [
+      0,
+      5,
+      9,
+      14,
+      18
+    ],
+    "denseOption": "--restoration-dense",
+    "limit": "ObservatoryReviewFixture.game(challenge:) retains historical18-light rules. These exact routes are useful for scenery/material states, not current-rule journey or current six-figure objective claims. Score18 is terminal.",
+    "sunnyCounterexample": [
+      "--starfalls-reset",
+      "--dialogue-review",
+      "--observatory-review",
+      "-calmEffects",
+      "NO"
+    ],
+    "normalJourneyOwner": "Current actual visits/retained rounds remain owned by existing WorldJourney/ForecastColumnInspection/current challenge native cases; do not add a player route or alternate app for contrast review."
+  },
+  "existingVerificationOwners": [
+    "AppTests/SkyReadingPlayfieldTests.swift: strict real-root compact/large score, board and receipt-anchor probe",
+    "AppTests/SkyDialogueTests.swift:testIslandPlacementFallsBackForUnknownSmallAndAccessibleLayouts and testEveryForecastStarFinishesOnBothPathsBeforeReset",
+    "UITests/PacingCueUITests.swift:testNormalForecastApproachesBeforeTheShower, testQuietForecastApproachesBeforeTheShower, testSystemReduceMotionForecastApproachesBeforeTheShower",
+    "UITests/SkyDialogueInteractionTests.swift:testNormalMotionForecastCompletesSeveralAutomaticCycles and testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable",
+    "UITests/ForecastColumnInspectionInteractionTests.swift: default phone selection/inspection and actual AX5 tablet FullBoard sibling",
+    "UITests/ObservatoryInteractionTests.swift:LandingPlaceInteractionTests existing seven-location shared material/target paths; historical fixture limits apply",
+    "UITests/RestorationInteractionScenarios.swift: existing composition/orientation/quiet/dense fixture owner; current challenge tests retain their own rule/version coverage"
+  ],
+  "activationAndAcceptance": [
+    "Wait for verified goal2 main merge, then bind a fresh exact source and inspect its actual native backdrop samples before choosing a patch.",
+    "Select the smallest reproduced shared readability failure. Issue384 requires a visible refinement; an audit alone does not close it, and an ordinal alone does not justify adding backing.",
+    "Prove one worst-case native slice first. Retain whole-viewport default/AX5 phone and relevant tablet portrait/landscape comparison, plus normal/quiet state evidence as affected.",
+    "Keep original targets, fixed trail geometry, forecast order/selection/inspection, actual countdown/clock and board/receipt mappings. Preserve all prior outcomes and existing zero-failure/zero-skip gates.",
+    "Record mechanical, inspected visual, sampled animation, actual VoiceOver and physical-device evidence separately. Keep issue209 open; no installation or merge acceptance is established by this plan."
+  ],
+  "activatedAfter": {
+    "pullRequest": 403,
+    "main": "1ed733bb8e38d309576867618a52186cb9e0e58d",
+    "issue383": "closed/completed"
+  },
+  "activationSource": "1ed733bb8e38d309576867618a52186cb9e0e58d",
+  "supersededBy": [
+    "goal-03-acceptance.json",
+    "source-03-final.json",
+    "verification-03.json",
+    "visual-review-03.json",
+    "visual-review-03-exports.json"
+  ]
+}

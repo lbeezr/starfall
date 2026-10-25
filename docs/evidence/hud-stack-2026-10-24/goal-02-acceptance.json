@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "goal": 2,
   "issue": 383,
-  "status": "Bounded development slice verified; individual publication/merge pending.",
+  "status": "Verified for the bounded development slice; merged PR #403/main 1ed733bb, issue #383 completed.",
   "recordedUTC": "2026-10-25T00:14:30.653284+00:00",
   "baseCommit": "8e196ccbaf1173e8c1cecf1ea2f47dd81e24b97c",
   "branch": "codex/hud-goal-02-instrument-type",
@@ -201,6 +201,7 @@
     "countLimit": "Intermediate runs are retained individually and are not aggregated into the final selection. Final source-bound evidence is 13 hosted methods and phone 3/tablet 1, all passing with zero failures/skips.",
     "visual": "Final independent phone/tablet and all 13 retained-export reviews pass for the bounded development slice. See visual-review-02.json and visual-review-02-tablet-exports.json."
   },
-  "remainingRequiredChecks": "Exact published-tree verification, individual goal 2 merge and completed issue confirmation. Required source-bound local mechanics and independent native/export visual review have passed; inventory counts remain distinct from executed counts.",
-  "finalWitness": "Source ac78832a; computed and embedded final native build ID dev.f4ecc1c437; accepted main 8e196ccb. The actual tablet viewport is 1032\u00d71376 points. The 42,000-point Full Board refill has mechanical evidence; its retained image depicts the earlier opening."
+  "remainingRequiredChecks": "Completed; publication-02.json confirms exact published/main tree identity and issue completion. The canonical Project projection is unavailable and is not claimed.",
+  "finalWitness": "Source ac78832a; computed and embedded final native build ID dev.f4ecc1c437; accepted main 8e196ccb. The actual tablet viewport is 1032\u00d71376 points. The 42,000-point Full Board refill has mechanical evidence; its retained image depicts the earlier opening.",
+  "publication": "publication-02.json"
 }

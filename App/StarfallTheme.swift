@@ -303,8 +303,10 @@ private struct StarfallPanelStyle: ViewModifier {
     }
 }
 
-/// The rendered object is the visible control; the clear target remains generous.
+/// The rendered object stays small; scenic protection fits inside the clear target.
 struct StarfallUtilityButtonStyle: ButtonStyle {
+    enum Backdrop { case clear, scenery }
+    var backdrop: Backdrop = .clear
     @Environment(\.isEnabled) private var isEnabled
     @Environment(\.isFocused) private var isFocused
 
@@ -315,6 +317,7 @@ struct StarfallUtilityButtonStyle: ButtonStyle {
             .brightness(configuration.isPressed ? -0.14 : 0)
             .scaleEffect(configuration.isPressed ? 0.92 : 1)
             .shadow(color: .black.opacity(0.5), radius: 1.5, y: 1)
+            .starfallSceneryProtection(backdrop == .scenery)
             .frame(width: StarfallTheme.Layout.preferenceTarget, height: StarfallTheme.Layout.preferenceTarget)
             .overlay {
                 if isFocused { Circle().strokeBorder(StarfallTheme.Colors.focus, lineWidth: 2).padding(4) }

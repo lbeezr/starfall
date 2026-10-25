@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "goal": 3,
+  "issue": 384,
+  "status": "Adopted for the named development slice: mechanical, whole-native-screen and final retained-export reviews pass; individual merge next.",
+  "baseCommit": "1ed733bb8e38d309576867618a52186cb9e0e58d",
+  "branch": "codex/hud-goal-03-scenic-readability",
+  "playerOutcome": "The viewport pause symbol stays distinct over bright scenery while remaining small beside the playable stars.",
+  "motivation": "Actual native samples place pearl pause fill near 2:1 against adjacent lit wood, while its dark authored edge remains distinct. This motivates a robustness refinement; it does not establish that the full symbol became unrecognizable or revoke earlier bounded visual passes.",
+  "sourceSurvey": {
+    "assets": 105,
+    "families": 7,
+    "milestones": 5,
+    "compositions": 3,
+    "candidateRegions": 350,
+    "script": "/private/tmp/starfall-hud-stack-20261024/goal03-source-sampling/scan.py",
+    "scriptSHA256": "2d6d469dbb4845c6cf369935d73c49210de4c989cd345cf57020cfbe0600fe9d",
+    "results": "/private/tmp/starfall-hud-stack-20261024/goal03-source-sampling/results.json",
+    "resultsSHA256": "0220cc56b294163f081872a7716587314cdb4c17d6ac4e3a9770fdfc4f9d4003",
+    "meaning": "All registered asset bytes, dimensions and exact focal/aspect-fill transforms checked against accepted main. Source-derived candidate HUD rectangles rank backgrounds only. They are not measured native bounds, contrast ratios or 105 actual gameplay captures.",
+    "nativeSelection": "Seed Moon wide 0/25/50 percent supplies the brightest candidate pause intersection; Lantern lit wood and dark sky provide existing source-bound phone comparisons. Completed 100 percent paintings are labeled result states."
+  },
+  "componentProposal": {
+    "owner": "App/StarfallTheme.swift:StarfallUtilityButtonStyle",
+    "role": "Backdrop.clear remains default; Backdrop.scenery explicitly reuses starfallSceneryProtection behind the intrinsic24-point visual, after existing press/scale/shadow treatment and before the48-point target.",
+    "callSite": "App/FallingSkyView.swift:skyMenuButton, only when tutorialExit == nil; tutorial Close explicitly retains.clear.",
+    "registration": "Registered official utility backdrop; bounded native development slice adopted after independent native and final export reviews.",
+    "material": "Existing82-percent nightglass,8-point visual-only outset,3-point feather; existing opaque/no-feather Reduced Transparency or Increased Contrast branch. No new asset or token.",
+    "excluded": "Tutorial Close retains.clear: source exposure and historical captures do not prove a weak contour. Forecast Help stays clear within its already protected group. Straight/island countdown trails and all other utilities stay unchanged; no essential active-trail loss was reproduced."
+  },
+  "observableAcceptance": [
+    "The original20-point pause raster,24-point intrinsic visual,48-point native target, label/hint/identity and action remain unchanged. Practice Close explicitly keeps its prior clear presentation.",
+    "Protection follows fitted content without adding layout padding, moving the header/board, changing hit cells or creating an accessibility element. Preserve exact score and receipt/light anchors.",
+    "Matched native Seed Moon bright-landscape samples strengthen pearl-versus-immediately-adjacent material separation. Inspect the complete contour and whole screen; do not interpret selected pixel pairs as whole-glyph certification.",
+    "Whole native default and AX5 phone and relevant actual-tablet portrait/landscape screens retain restrained instruments, continuous scenery, exact values and dominant stars. Reject a large bezel or merged header shelf.",
+    "Preserve existing pressed scale/brightness, disabled raster treatment and focus overlay. Existing opaque accessibility fallback remains owned by the shared protection modifier; record any state not actually exercised.",
+    "Native menu/inspection Return and pressure recovery preserve the retained round and existing targets. AX5 Sunny menu open/Done return and complete-reader gates remain unchanged. Keep every original assertion and zero-skip gate.",
+    "No rule, save, RNG, shower cadence, artwork, packet timing or route changes. All preceding HUD outcomes remain required."
+  ],
+  "plannedChecks": {
+    "baseline": "Existing SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput on unchanged explicitly stamped dev.f4ecc1c437 products. Historical18-light review fixtures prove material/input/orientation only, not current Seed4 rules.",
+    "core": "swift test; existing352 methods expected with zero failures/skips",
+    "hosted": [
+      "StarfallAppTests/ObservatoryArtworkTests/testEveryRenderedGlyphLoadsAsRegisteredOriginalArtwork",
+      "StarfallAppTests/CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking",
+      "StarfallAppTests/SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+      "StarfallAppTests/SkyForecastDestinationsTests",
+      "StarfallAppTests/RestorationPresentationTests/testEveryRestorationAssetIsPackagedAtTheRegisteredAspectRatio",
+      "StarfallAppTests/RestorationPresentationTests/testSeedLandscapePaintingsFillCanvasAtTheirActualPixelAspectRatio",
+      "StarfallAppTests/StarlightCelebrationTests/testHeaderRegistrationPreservesNestedScoreBoardAndRestorationLight"
+    ],
+    "hostedExpected": 12,
+    "nativePhone": [
+      "StarfallUITests/ForecastColumnInspectionInteractionTests/testNormalLanternSupportingRowKeepsForecastInspectionRound",
+      "StarfallUITests/SkyFlowInteractionTests/testLargestQuietStoryPressureAndRecoveryRemainReadable",
+      "StarfallUITests/SkyDialogueInteractionTests/testLargestTextChatReflowsBelowBoardAndPreviewRemainsUsable"
+    ],
+    "nativeTablet": [
+      "StarfallUITests/SeedMoonInteractionTests/testTabletRotationKeepsSeedRestorationAndNativeInput"
+    ],
+    "build": "Existing scheme Debug build-for-testing; no resources/routing/membership changes proposed. Run Release if scope expands into those boundaries.",
+    "batch": "python3 scripts/ci-hygiene.py and git diff --check",
+    "newMethods": 0
+  },
+  "review": "Independent reviewer compares complete actual native captures and retained exports with the approved middle Play reference before merge. Mechanical results and visual verdict remain separate; current visual failures keep this goal open.",
+  "limits": "Source ranking, selected composited RGB pairs, native interaction and inspected stills do not establish physical recognition, every glyph edge, continuous animation, actual VoiceOver or minimum-iOS acceptance. Issue209 remains open. No phone installation is requested.",
+  "delivery": "Merge only this verified individual goal closing384, then activate goal4. Exclude the separate unaccepted UI-flow branch. Preserve the explicit two earlier reader-pan failures and their recurrence instrumentation trigger.",
+  "baselineExecuted": {
+    "source": "accepted main1ed733bb, compiled App/test checkpointac78832a",
+    "embeddedBuildID": "dev.f4ecc1c437",
+    "receipt": "/private/tmp/starfall-hud-stack-20261024/tablet-03-f4-baseline-receipt.json",
+    "elapsedSeconds": 202.924,
+    "exitCode": 0,
+    "expectedMethods": 1,
+    "actualCounts": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "runtimeWarnings": []
+    },
+    "candidateDifference": "Baseline products are unchanged goal2; working tree contained unbuilt goal3 App candidate during the run. These are not candidate screenshots.",
+    "captures": 16,
+    "landscapeStorage": "Actual1376x1032-point landscape is stored as2064x2752 pixels with EXIF8; oriented display2752x2064. Pixel analysis must record raw/display coordinate mapping."
+  },
+  "scopeDecision": "Independent source/capture review byhud_goal_review recommends pause-only. Existing practiceClose is unchanged; no separate unaccepted UI-flow geometry/API/source is adopted.",
+  "currentF4SunnySourceBridge": {
+    "rawPath": "/private/tmp/starfall-hud-stack-20261024/phone-02-ac78832a-reader-attachments/02521447-9BC5-4B18-AD39-640CE902AA28.png",
+    "rawSHA256": "ad90acac553310049ec1bbc07777c857bf6f89b82bcdb9d99acf524426a6270a",
+    "compiledCheckpoint": "ac78832a66146b0c23c49a0af5ef05453d533219",
+    "verifiedEmbeddedID": "dev.f4ecc1c437",
+    "result": "All four pause pearl/brass/edge/wood RGB points at(1070,220),(1081,220),(1082,220),(1086,220) exactly match the historical Goal1 Sunny pairs in baseline-native-samples-03.json. This current immediate-parent baseline is available for the Goal3 matched Sunny comparison.",
+    "scope": "Actual390x844 AX5 Sunny final-line reader; original1170x2532 sRGB PNG. No candidate rendering yet."
+  },
+  "baselinePointAudit": {
+    "seedFile": "baseline-seed-native-03.json",
+    "rawHashesAndDimensionsVerified": 5,
+    "exactPairsOrientationAndRatiosVerified": 15,
+    "performedBy": "root independent raw-byte/pixel audit",
+    "candidateAcceptance": false
+  },
+  "additionalDarkNativeSelection": {
+    "selector": "StarfallUITests/FrostfruitOrchardInteractionTests/testTabletDenseFrostfruitCompletionKeepsNativeInput",
+    "status": "Prepared before execution, conditional on remaining exclusive window; existing method, no source/newmethod change.",
+    "reason": "Independent tablet review correctly labels old Lantern dark pixels as prior-source context only. Add a current-candidate darker-backdrop witness rather than claim that context is a new rendering. Source-ranked Frostfruit wide75 pause region has medianY0.104/p95Y0.193 versus Seed wide75 medianY0.801/p95Y0.940; actual native bounds/pixels and whole-screen review remain required.",
+    "scope": "Existing real normal-motion dense native win in both tablet orientations, historical18-light fixture. It does not prove currentFrostfruit8 rules or a whole-sky contrast pass.",
+    "expectedMethods": 1,
+    "expectedFailures": 0,
+    "expectedSkips": 0,
+    "newMethods": 0,
+    "outerBoundSeconds": 210,
+    "caseSourceAllowanceSeconds": 180
+  },
+  "completedEvidence": {
+    "testedCommit": "4d7cfa217d53a6e39deff2ba9418941aa5c99bd8",
+    "embeddedBuildID": "dev.189706f888",
+    "source": "source-03-final.json",
+    "verification": "verification-03.json",
+    "nativeReview": "visual-review-03.json",
+    "exportReview": "visual-review-03-exports.json",
+    "captureIndex": "captures-03.json",
+    "adoption": "Only the viewport pause utility opts into the shared scenery backdrop. Known visible failure found: none in named current states. Clear default/tutorial Close/Help, original targets and existing state treatments remain."
+  }
+}
