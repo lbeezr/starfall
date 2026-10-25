@@ -1,6 +1,6 @@
 # A coherent set of native HUD instruments
 
-**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 merged in [PR #404](https://github.com/lbeezr/starfall/pull/404); goal 4 merged in [PR #405](https://github.com/lbeezr/starfall/pull/405); goal 5 merged in [PR #406](https://github.com/lbeezr/starfall/pull/406); goal 6 merged in [PR #407](https://github.com/lbeezr/starfall/pull/407); goal 7 merged in [PR #408](https://github.com/lbeezr/starfall/pull/408); goal 8 verified; individual merge pending · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
+**Status:** Goal 1 correction merged in [PR #402](https://github.com/lbeezr/starfall/pull/402); goal 2 merged in [PR #403](https://github.com/lbeezr/starfall/pull/403); goal 3 merged in [PR #404](https://github.com/lbeezr/starfall/pull/404); goal 4 merged in [PR #405](https://github.com/lbeezr/starfall/pull/405); goal 5 merged in [PR #406](https://github.com/lbeezr/starfall/pull/406); goal 6 merged in [PR #407](https://github.com/lbeezr/starfall/pull/407); goal 7 merged in [PR #408](https://github.com/lbeezr/starfall/pull/408); goal 8 merged in [PR #409](https://github.com/lbeezr/starfall/pull/409) as `6a2acb17`; goal 9 qualified for bounded development, individual merge pending · **Owner:** HUD coordinator, worktree dcf3 · **Started:** October 24, 2026
 
 The user authorized [ten ordered HUD refinements](https://github.com/lbeezr/starfall/issues/381), with each goal tested and merged before the next implementation. Each pass retains the previous accepted behavior and corrects its current presentation seam in the normal app. Existing Observatory materials, native controls, rules, saves, replay, clocks and board mapping remain authoritative.
 
@@ -18,9 +18,9 @@ The initial development-adoption verdict below is superseded. Its source identit
 | 4 | Shared control states and glyph craft | [#385](https://github.com/lbeezr/starfall/issues/385) | Verified and merged #405; issue completed |
 | 5 | One coherent forecast instrument | [#386](https://github.com/lbeezr/starfall/issues/386) | Verified and merged #406; issue completed |
 | 6 | Specific, calm pressure feedback | [#387](https://github.com/lbeezr/starfall/issues/387) | Merged #407; issue completed |
-| 7 | Causal move-to-earned-light attention | [#388](https://github.com/lbeezr/starfall/issues/388) | Merged in [PR #408](https://github.com/lbeezr/starfall/pull/408) as `c81b59ee`, completing issue #388. Goal 8 is active after this verified individual merge. |
-| 8 | Consistent optional detail readers | [#389](https://github.com/lbeezr/starfall/issues/389) | Adopted for named corrected development slice; individual verified merge pending |
-| 9 | Whole-HUD adaptive layouts | [#390](https://github.com/lbeezr/starfall/issues/390) | After goal 8 merge |
+| 7 | Causal move-to-earned-light attention | [#388](https://github.com/lbeezr/starfall/issues/388) | Merged #408 as `c81b59ee`; issue completed |
+| 8 | Consistent optional detail readers | [#389](https://github.com/lbeezr/starfall/issues/389) | Verified and merged [#409](https://github.com/lbeezr/starfall/pull/409) as `6a2acb17`; issue completed |
+| 9 | Whole-HUD adaptive layouts | [#390](https://github.com/lbeezr/starfall/issues/390) | Adopted named `5c05ecef` / `dev.06a3229203` development slice; [source and bounded evidence](#goal-9-local-adaptive-composition), individual merge pending |
 | 10 | Complete native journey cohesion | [#391](https://github.com/lbeezr/starfall/issues/391) | After goal 9 merge |
 
 ## Goal 1 correction: native and visual acceptance
@@ -203,7 +203,7 @@ No actual VoiceOver, physical reading/comfort, minimum-iOS, human recognition or
 
 ## Goal 8: exact whole-clear reader totals
 
-**Status:** Adopted for the named corrected development slice at source `5a0cf19535639f9f385122d17318f28278ce179b` / `dev.2c4e822ca7`, on accepted main `c81b59ee`. Individual verified merge is pending; Goal 9 waits for it.
+**Status:** Adopted for the named corrected development slice at source `5a0cf19535639f9f385122d17318f28278ce179b` / `dev.2c4e822ca7`, based on accepted main `c81b59ee`. Merged in [PR #409](https://github.com/lbeezr/starfall/pull/409) as `6a2acb17`, completing issue #389. [Publication proof](publication-08.json) binds identical reviewed/published/main trees; empty remote checks establish no remote CI pass and canonical Project Done is unavailable. Goal 9 is active after this individual verified merge.
 
 Complete Last clear and multi-phase terminal totals use existing `skyHeading` and primary ink. Native full fonts, equations, IDs, passive diagrams, context, existing surfaces/Return and single-phase terminal omission retain their owners. Rendering correction: Exact whole-clear totals use the existing official serif heading and primary ink. The registered FallingSkySceneSurface owns an explicitly transparent native SKView, detaches the prior owner before transfer, ignores unchanged requests from retiring hosts, and releases only its current attachment. The original layout, scene body, common coordinate mapping and Store clock/save policies retain their ownership. Temporary instrumentation and the short diagnostic UI method were removed; a focused hosted regression covers transfer, stale updates and teardown. Cause scope: The initial private SpriteView compositor mechanism remains unproven; no cause is assigned to the two font modifiers or an established pre-existing defect. The passive trace at 6cdad635 proves the first native-host candidate let an old host detach a newer scene attachment, leaving readiness false. Explicit transfer and current-owner teardown correct that witnessed boundary. Corrected source 5a0cf195 passes the actual empty reader/return/cold states, full original six-case suite, and independent native/export reviews. Supplemental normal-cascade samples establish clear/fall/post-clear visibility only; no new-shower or refill ingress, exact latency, continuous frame pacing, actual VoiceOver or physical-device acceptance is inferred.
 
@@ -220,3 +220,27 @@ Initial881 remains held evidence: three early Open Sky frames contain a gray sce
 Final source 5a0cf195: actual AX5 Calm ordinary Lantern Full Board terminal accounting: complete 17,000+26,000+15,000 phase equations and58,000 points this clear. The 156,000 completed-round score/actions were read separately above this scroll position; ordinary round, not practice. Exact retained whole native still at `5a0cf195` / `dev.2c4e822ca7`; the captured scroll position limits which surrounding facts are visible.
 
 No actual VoiceOver, physical-device, minimum-iOS, continuous-motion/performance or human-recognition claim. Still visibility is limited to each actual captured scroll position. Earlier isolated-reader pan uncertainty and its engineering trigger remain open.
+
+## Goal 9: local adaptive composition
+
+**Status:** Adopted for the named development slice at `5c05ecef` / `dev.06a3229203`; individual PR merge remains pending. Goal 10 stays queued until Goal 9 merges.
+
+The accepted-main short-landscape baseline reproduced a zero-height AX5 board viewport. Shared `SkyReadingPlayfield` now allocates adjacent instruments and play from the local viewport: complete score/Pause stay fixed, forecast/pressure facts scroll separately, the existing 80-point return and one common board/hit/receipt mapping remain. Native fonts and targets stay full-sized; contextual play/next glyph actions keep their 45-point gameplay targets and complete spoken names. Essential pause-menu navigation precedes optional Mastery reading.
+
+352 Core tests, eighteen hosted methods and seven main native executions covering six unique methods pass with zero failures/skips, plus Debug and Release. One normal-motion supplemental native method and its inspected samples remain separate. One further capture-only duplicate of the already-passing largest-text Full Board phone method supplies the missing complete menu-row raster, with zero additional unique coverage: seven main plus one normal-motion plus one capture-only execution, nine native executions across those separate scopes. A scoped short-sidebar reader-oracle correction verifies the actual hittable inner reader, complete unchanged spoken text, native scroll bars at 100% and a full native final-line band after the same bounded four pans. Other profiles keep the original Text.isHittable gate. It is not an App Text-activation fix or an assigned private-SDK cause.
+
+[Final source](source-09.json), [selected verification](verification-09.json), [independent native review](visual-review-09-final-native.json), [hosted review](visual-review-09-final-hosted.json), [retained captures](captures-09.json), [exact-export review](visual-review-09-final-exports.json) and [sampled-motion review](visual-review-09-final-motion.json), [capture-only duplicate mechanics](verification-09-menu-capture.json), [complete menu-row review](visual-review-09-menu-capture.json) and [failed manual-route history](verification-09-menu-tool-history.json) retain separate evidence.
+
+Independent source-bound hosted/native, exact-export and sampled-motion reviews pass only their named states. The earlier MCP route did not advance Home despite taps and a swipe; its optimized Home JPEG is excluded from acceptance and its tool-route failure remains preserved. The later capture-only original native method supplies complete Settings-row pixels with pinned header/Return; no whole-Mastery-page, manual-human UI or private-SDK-cause claim follows. This is not a full matrix, continuous-motion/performance, actual VoiceOver, physical-device, minimum-iOS or human-recognition claim. Failed candidates, the 040 menu HOLD and admission-only partial runs retain their original records.
+
+| Historical AX5 landscape failure | Corrected AX5 landscape reading |
+| --- | --- |
+| ![Historical native phone with no board viewport](goal-09-captures/01-baseline-ax5-zero-viewport.jpg) | ![Native phone with fixed score and adjacent current stars](goal-09-captures/05-current-phone-ax5-landscape-pressure.jpg) |
+
+Actual iPhone 17e, iOS 27, AX5, paused Story pressure. The historical `a8377c2c` test checkpoint uses App bytes equal to accepted `6a2acb17` / `dev.2c4e822ca7`; the corrected screen is `5c05ecef` / `dev.06a3229203`. The corrected forecast reader shows its actual upper scroll position; other facts are read separately. Both whole native originals and these exact exports were independently inspected.
+
+![Normal native landscape after the genuine 5,000-point recovery](goal-09-captures/07-current-phone-normal-earned-recovery.jpg)
+
+Same corrected source, default text, actual 5,000/150,000 Story recovery and complete Line! +5,000 accounting. This whole still establishes the captured composition; normal motion has its separate sampled review.
+
+Historical initial/correction records retain their measured Debug product hashes, but their reused DerivedData `Info.plist` paths now contain the final product; those old product files were not separately retained. Their frozen source, logs and captures remain historical evidence. All referenced current final products and source files match their sealed records.

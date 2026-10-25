@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "reviewer": "hud_read_ahead independent whole-native reviewer; no App implementation",
+  "status": "PASS_BOUNDED_PHONE_AND_TABLET_NATIVE_STILLS",
+  "recordedUTC": "2026-10-25T10:31:31.112516+00:00",
+  "source": {
+    "head": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "snapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+      "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+      "bytes": 188241
+    },
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "historicalCommittedBlobMatches": 735,
+    "changedAppOwners": [
+      "App/FallingSkyMenu.swift",
+      "App/FallingSkyView.swift",
+      "App/SkyReadingPlayfield.swift",
+      "Starfall.xcodeproj/project.pbxproj"
+    ],
+    "changedTestOwners": [
+      "AppTests/SkyReadingPlayfieldTests.swift",
+      "UITests/FullBoardLanternInteractionTests.swift",
+      "UITests/NativeSkyControls.swift",
+      "UITests/ObservatoryInteractionTests.swift",
+      "UITests/SkyFlowInteractionTests.swift"
+    ],
+    "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "preparedUTC": "2026-10-25T10:26:00.487254+00:00",
+    "workingTreeRuntimeDifferences": [],
+    "workingTreeTestDifferences": []
+  },
+  "reference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182
+  },
+  "officialContexts": [
+    "GAME_UI_SYSTEM: protected instrument and local reading allocation, fullnativefonts, exactFullBoard context",
+    "SharedSkyMenuSurface/fittedreader and registeredquietnavigation before optionalMastery",
+    "HUDguide/UI_PRODUCTION complete-source-bound-native-screen acceptance"
+  ],
+  "phone": {
+    "verdict": "PASS_BOUNDED_WHOLE_PHONE_STILLS",
+    "mechanicsSeparate": {
+      "selector": "StarfallUITests/FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-summary.json",
+        "sha256": "51c464abc09f264d557a7d2d515c2f8a4ca7da433b4bdbf05fc40654b2b2396e",
+        "bytes": 741
+      },
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      },
+      "runtimeWarnings": [],
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-receipt.json",
+        "sha256": "163e7a1f1c2839a82599b888708c2bf2a1226ebe659f92e4c2bc3a5add21c4dc",
+        "bytes": 208
+      },
+      "receiptValues": {
+        "stage": "native-09-candidate-navigation-5c05ecef-full-board-largest-phone",
+        "startedUTC": "2026-10-25T10:26:19.311655+00:00",
+        "elapsedSeconds": 119.648,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "methodAllowanceSeconds": 240,
+      "supervisorSeconds": 300,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      }
+    },
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/manifest.json",
+      "sha256": "0d748360767c1e8cffb285db7454cd8ca61f6019a5cc55de7566ee4ca9850978",
+      "bytes": 3046
+    },
+    "originalPNGCount": 5,
+    "directlyViewedWholeOriginalPNGCount": 5,
+    "frames": [
+      {
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/89083DA6-B517-4200-B7BD-504A0D1B5336.png",
+          "sha256": "ee05da43ee711b661bce1eac701da78cb1eb6cf285ac99465d4bee747109d7bb",
+          "bytes": 3155184
+        },
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ]
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "89083DA6-B517-4200-B7BD-504A0D1B5336.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "full-board-largest-choice_0_80BBE43C-023B-4C63-BC78-6D749EBD4908.png",
+          "timestamp": 1792924024.701
+        },
+        "directWholeOriginalView": true,
+        "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+        "finding": "ActualphoneAX5 Entry choice scroll position retains FullBoard selection and completeBegin; preceding copy intentionally above viewport, no whole-page claim."
+      },
+      {
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/BB60FC00-E75A-43E9-B5FC-267EA9B7ACBF.png",
+          "sha256": "05f5251358e170c444b998339379180b70378bf9afc11337dda157230e037674",
+          "bytes": 3336413
+        },
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ]
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "BB60FC00-E75A-43E9-B5FC-267EA9B7ACBF.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "full-board-largest-portrait-refill_0_BC23AF66-E740-4E66-8235-628B4932CF0A.png",
+          "timestamp": 1792924037.535
+        },
+        "directWholeOriginalView": true,
+        "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+        "finding": "Actualphone portrait15,000/150,000 refill retains fullscaled score/target and FullBoard context, two causal figures above board and complete7x7starfield."
+      },
+      {
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/2FDBBCAB-FEDC-4036-AA56-98ACE00D8CA6.png",
+          "sha256": "cc93a0ce4a4d55f1b5802be05b37de5438f0911a269a1c829757cb811d42e638",
+          "bytes": 3631445
+        },
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIF274": 8,
+          "displayPixels": [
+            2532,
+            1170
+          ]
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "2FDBBCAB-FEDC-4036-AA56-98ACE00D8CA6.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "full-board-largest-tablet-landscape-refill_0_15AD6619-31AF-4D8C-B888-0985A42330F6.png",
+          "timestamp": 1792924048.739
+        },
+        "directWholeOriginalView": true,
+        "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+        "finding": "ActualPHONE landscape34,000/150,000 despitelegacytabletlandscape name. Fullscore/mode stay left; currentstars and separate returnedfigures occupy right. Lowerrows continue below viewport."
+      },
+      {
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/FE15370B-33E5-4D07-88AB-78ABC283F37F.png",
+          "sha256": "998ae6d1f927db67cf44463b4ad642115b836ae397622a5337f017c784c0f779",
+          "bytes": 2019780
+        },
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ]
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "FE15370B-33E5-4D07-88AB-78ABC283F37F.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "full-board-largest-settings_0_F5B30486-14EF-427C-AD0B-9FEBE9BAF5DE.png",
+          "timestamp": 1792924071.654
+        },
+        "directWholeOriginalView": true,
+        "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+        "finding": "Actual Settings&help page after successful native menu-row activation: title, Sound&Haptics labels/values and fullDone readable. Calm is partly below currentviewport; no all-settings-facts claim. No retained still shows the preceding menu Settingsrow itself."
+      },
+      {
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/4A015C18-924B-4A46-AE06-8920F8856A6D.png",
+          "sha256": "3f051251865eb9218d223a04603198acf65a9e175af6f2a7e96fbfaf5f599930",
+          "bytes": 3371678
+        },
+        "metadata": {
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "EXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ]
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "deviceName": "Starfall HUD Stack dcf3 Phone",
+          "exportedFileName": "4A015C18-924B-4A46-AE06-8920F8856A6D.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "full-board-largest-restored_0_BD25EF86-6A5C-4207-80C7-50C81DA10B34.png",
+          "timestamp": 1792924097.045
+        },
+        "directWholeOriginalView": true,
+        "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+        "finding": "Actual cold-restored portrait34,000/150,000, complete7x7retained starfield and unchangedFullBoard context. Session-only figure omitted on coldrestore; no timedforecast/Nextcue introduced."
+      }
+    ],
+    "SettingsGeometry": {
+      "file": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/DFC00996-DA70-426E-AB74-85B28B09A96A.txt",
+        "sha256": "acee191c8551e60bc7cd5d534f0952d8a8b1300b6c67070e263bd902937c4ea8",
+        "bytes": 1560
+      },
+      "firstObservation": "Attempt 1: bounds=(40.0, 2010.3333333333333, 310.0, 133.33333333333326); viewport=(8.0, 159.33333333333331, 374.0, 419.6666666666667); scroll=Optional((8.0, 159.33333333333331, 374.0, 419.6666666666667))",
+      "finalObservation": "Attempt 6: bounds=(40.0, 439.6666666666666, 310.0, 133.3333333333332); viewport=(8.0, 159.33333333333331, 374.0, 419.6666666666667); scroll=Optional((8.0, 159.33333333333326, 374.0, 419.66666666666674))",
+      "actualPans": 5,
+      "qualification": "NativeSettings row reachedy439.667..573 within reader159.333..579 using5actualpans, insideunchanged8bound; successful activation and Settingspage still complete formerfailure path. No menu-row raster is retained."
+    },
+    "orientation": "4portraitEXIF1 and1landscapeEXIF8, allstored1170x2532; portraitnative390x844, landscapenative844x390,3x. EXIF8display(x,y)->raw(1169-y,x). Legacytabletlandscape filename never overrides actualiPhone17e metadata.",
+    "visualVerdict": "No known visible failure in these5actualphone states. Fullscaledexactscore and FullBoard context, current7x7portraitstarfield, landscapeplay/return separation, continuouspainting and actualSettings/Done readability remaincoherent. LongEntry/Settings text is intentionallyscrollable; stills do not prove whole-pagevisibility."
+  },
+  "tablet": {
+    "verdict": "PASS_BOUNDED_WHOLE_TABLET_STILLS",
+    "mechanicsSeparate": {
+      "selector": "StarfallUITests/FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-summary.json",
+        "sha256": "e51071335cb6059ff8efd95b73e37a239a5dd0480d7a29f0f959bfec4ab468b9",
+        "bytes": 752
+      },
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      },
+      "runtimeWarnings": [],
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-receipt.json",
+        "sha256": "1f51d7db7968caa693c9bab6b148a68d15126f3e45e6439db5c48cd6cb1187cc",
+        "bytes": 218
+      },
+      "receiptValues": {
+        "stage": "native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet",
+        "startedUTC": "2026-10-25T10:56:40.359658+00:00",
+        "elapsedSeconds": 97.957,
+        "limitSeconds": 300.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "methodAllowanceSeconds": 240,
+      "supervisorSeconds": 300,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "deviceName": "Starfall HUD Stack dcf3 Tablet",
+        "modelName": "iPad Pro 13-inch (M5)",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "log": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet.log",
+        "sha256": "17dec4c11a0f5d06efc8fe0a817db7dbdc66d948be66c01fff6f2d289f2cc2bc",
+        "bytes": 49575
+      },
+      "exportReceipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-export-receipt.json",
+        "sha256": "63f5aa7e81a3e62dcc52a5f5f3d2054c7ee9a0d0444e9572d6966ee7e23d4964",
+        "bytes": 223
+      },
+      "exportLog": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-export.log",
+        "sha256": "ab11779f6724e1a79480f7fa37ade34c3dbfb1ea8271c9e6099764062247ae31",
+        "bytes": 717
+      }
+    },
+    "resumptionSource": {
+      "snapshot": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-remaining-5c05ecef.json",
+        "sha256": "6612d37cc04c50eebc8946082f33b3602b22f12ef68dc1351265b565089cd61a",
+        "bytes": 188280
+      },
+      "preparedUTC": "2026-10-25T10:55:45.619257+00:00",
+      "runtimeRecordsEqualOriginalSnapshot": 568,
+      "testRecordsEqualOriginalSnapshot": 167,
+      "totalIdenticalRecords": 735,
+      "qualification": "Later resumption dump, not a pre-original-Debug snapshot. All runtime/test records exactly equal the original 2c06 snapshot and the same committed 5c head; no runtime or test dirty inputs."
+    },
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/manifest.json",
+      "sha256": "d57d4f88c36e70567d5feb04613809f6234b7aa175f372735026155d4abec1d2",
+      "bytes": 3052
+    },
+    "originalPNGCount": 5,
+    "directlyViewedWholeOriginalPNGCount": 5,
+    "frames": [
+      {
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/E941DFF7-6369-4808-9143-22A43361915A.png",
+          "sha256": "4577f6743fb3b9834d4e459c4bb56c4b9a9d14d773b2cf86ef2c6e1cd16e21a6",
+          "bytes": 6524544
+        },
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "EXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ]
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "E941DFF7-6369-4808-9143-22A43361915A.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "full-board-largest-choice_0_24F8F839-0CA2-4ECB-B0CC-3C6A371D252E.png",
+          "timestamp": 1792925836.242
+        },
+        "directWholeOriginalView": true,
+        "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+        "finding": "Portrait Entry choice at its actual scroll position: Full Board is selected and complete Begin is visible. Earlier copy is above this viewport; the optional mastery explanation and current choice remain legible without a whole-page claim."
+      },
+      {
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/2D9F6A06-C9E2-47E6-92C3-03D41B045891.png",
+          "sha256": "76322348cc8f73515ba8a1d358ab722cbdd5e5a742514d1bdd61fc5385979e42",
+          "bytes": 6981568
+        },
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "EXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ]
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "2D9F6A06-C9E2-47E6-92C3-03D41B045891.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "full-board-largest-portrait-refill_0_25628346-999D-4585-98A1-3B37FE8A8B37.png",
+          "timestamp": 1792925849.329
+        },
+        "directWholeOriginalView": true,
+        "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+        "finding": "Portrait after first exchange: exact 15,000 / 150,000 and Full Board mode retain full native type. The complete ceiling and all 49 stars are visible, with separate returned figures above the board and +15,000 in the lower apron. The guide card begins below the board and continues beyond the viewport; its entire message/actions are not established by this still."
+      },
+      {
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/0E57DCDF-7945-4A58-BC5C-CD7DC954A2BB.png",
+          "sha256": "05e8d7ae185bf68517d0db9837caf7fb49524b89964dd317b860d6e79972d610",
+          "bytes": 7468879
+        },
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "EXIF274": 8,
+          "displayPixels": [
+            2752,
+            2064
+          ]
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "0E57DCDF-7945-4A58-BC5C-CD7DC954A2BB.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "full-board-largest-tablet-landscape-refill_0_133876D9-16E9-449E-9128-4951529D03A5.png",
+          "timestamp": 1792925858.519
+        },
+        "directWholeOriginalView": true,
+        "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+        "finding": "Actual tablet landscape after second exchange: complete 34,000 / 150,000 and mode, separate returned figures, ceiling and all 49 stars remain clear over one continuous painting. The AX +19,000 receipt reaches and continues into the lower viewport edge in the registered scrollable below-board apron; this is not proof that the complete receipt glyphs are simultaneously visible. No guide text is visible in this scroll slice."
+      },
+      {
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/6FBF52A8-54B9-424F-82B5-48659B8DCD67.png",
+          "sha256": "81ea02373f788b4783f9b1b4b2bd974a2f2d4e1052c0df40f3bebe02159ac1c1",
+          "bytes": 4844724
+        },
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "EXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ]
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "6FBF52A8-54B9-424F-82B5-48659B8DCD67.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "full-board-largest-settings_0_FCECC46A-8E31-4987-911C-EFC80C705D85.png",
+          "timestamp": 1792925875.222
+        },
+        "directWholeOriginalView": true,
+        "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+        "finding": "Portrait Settings & help page: complete title, Sound, Haptics, Calm effects, How to play and Done fit in the actual tablet viewport, with readable native labels and toggles on the official panel. This is the destination page after native menu-row activation, not a raster witness of the preceding menu Settings row."
+      },
+      {
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/633B8BB5-BBDB-4991-8B52-04C680818F73.png",
+          "sha256": "da7a776fdeb15dd7101177ee433868689c3f39f10ddd0444684267853a370353",
+          "bytes": 6959929
+        },
+        "metadata": {
+          "storedPixels": [
+            2064,
+            2752
+          ],
+          "EXIF274": 1,
+          "displayPixels": [
+            2064,
+            2752
+          ]
+        },
+        "attachment": {
+          "configurationName": "Test Scheme Action",
+          "deviceId": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "deviceName": "Starfall HUD Stack dcf3 Tablet",
+          "exportedFileName": "633B8BB5-BBDB-4991-8B52-04C680818F73.png",
+          "isAssociatedWithFailure": false,
+          "suggestedHumanReadableName": "full-board-largest-restored_0_06DBAC17-92F5-4B31-B099-C8DA9FA23C99.png",
+          "timestamp": 1792925896.583
+        },
+        "directWholeOriginalView": true,
+        "verdict": "PASS_BOUNDED_VISIBLE_STATE",
+        "finding": "Cold-restored portrait: exact 34,000 / 150,000, mode, ceiling and retained complete 7x7 starfield remain visible; session-only returned figures are absent. The Twinkle guide is a partially visible scrollable content slice. Full Board introduces no forecast/Next action."
+      }
+    ],
+    "SettingsGeometry": {
+      "file": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/9D0DF046-AF7C-44F2-B8A9-525AB2A5B11D.txt",
+        "sha256": "1b150e81408c82cf6adea34a62f5823f962e3d49f5bd0eae472d6c6abff63f7c",
+        "bytes": 536
+      },
+      "firstObservation": "Attempt 1: bounds=(308.0, 1364.5, 416.0, 133.5); viewport=(276.0, 112.5, 480.0, 1074.5); scroll=Optional((276.0, 112.5, 480.0, 1074.5))",
+      "finalObservation": "Attempt 3: bounds=(308.0, 1039.5, 416.0, 133.5); viewport=(276.0, 112.5, 480.0, 1074.5); scroll=Optional((276.0, 112.5, 480.0, 1074.5))",
+      "actualPans": 2,
+      "qualification": "Settings row reaches y1039.5..1173 inside reader y112.5..1187 after two actual pans, inside unchanged eight-pan bound. Native geometry/activation plus the Settings page proves this path; no retained still depicts the menu row itself."
+    },
+    "orientation": "Four portrait EXIF1 and one landscape EXIF8, all stored2064x2752. Actual native portrait1032x1376 and landscape1376x1032 at2x. EXIF8 display(x,y)->raw(2063-y,x). Actual iPad Pro13-inch(M5)/iOS27.0 simulator, AX5 and legitimate quiet/Calm context; no physical-device claim.",
+    "visualVerdict": "Bounded PASS for the five directly inspected whole native tablet states. Full score/target and mode, separated returns, complete ceiling/current49 stars and the Settings destination remain coherent with the approved Play hierarchy. The scrollable AX apron/guide can extend below the initial viewport; complete landscape receipt or whole-guide reading is explicitly outside these stills."
+  },
+  "earlier040Failure": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-full-board-040-hold.json",
+    "sha256": "5c3d269d7daafbafad44d82ac1bbad1eddcabf984a4c1c86285974baa20642af",
+    "bytes": 9932
+  },
+  "limits": [
+    "Bounded current5c phone/tablet still review only; overallGoal9 adoption, remaining native/motion scopes, retained exact exports and manual menu-row raster evidence remain separate pending gates.",
+    "Phone landscape does not show all49cells simultaneously; tablet landscape does show the complete7x7 current starfield, while its AX +19,000 below-board receipt intersects the lower screen edge. No complete receipt/guide reading claim follows from that scroll slice.",
+    "Native49-cell/rotation/state equality, Settings activation within the original8-pan allowance, background/coldrestore and targetgeometry are mechanical evidence separate from still judgment. Settings destination pages are visible; the preceding menu row itself is absent from all ten retained originals.",
+    "Phone Settings page shows only its current scroll slice; tablet Settings page shows its named labels and Done. Neither image proves every possible preference/help-page state.",
+    "No actualVoiceOver, physical/minimum-iOS, standaloneTextactivation, continuousmotion, platformfocus, completecontrast, fullmatrix or wholeEntry/guide-pageclaim.",
+    "Earlier040AXPASS and failed menu history remain source-bound history; the scoped guide-end oracle is not an AppTextactivationfix and no exclusiveSDKcause is assigned.",
+    "Current remaining-phase commands manifest is active and is not hashed as final. Only stable snapshots, finalized per-stage receipt/summary/log and completed attachment manifest are bound here."
+  ],
+  "completedUTC": "2026-10-25T11:04:43.477086+00:00",
+  "aggregate": {
+    "verdict": "PASS_BOUNDED_NAMED_WHOLE_NATIVE_STATES",
+    "actualDeviceConfigurations": 2,
+    "originalPNGCount": 10,
+    "directlyViewedWholeOriginalPNGCount": 10,
+    "nativeExecutionsSeparate": 2,
+    "uniqueNativeMethods": 1,
+    "nativePassed": 2,
+    "nativeFailed": 0,
+    "nativeSkipped": 0,
+    "runtimeWarnings": [],
+    "judgment": "No new visible essential-control, score/mode, ceiling/star or material overlap failure found in these ten source-bound phone/tablet frames. Native interaction summaries remain separate from visual judgment; long scroll content is not simultaneously visible. Overall Goal9 adoption, other native scopes, exact-export and manual menu-row raster review are not granted by this record."
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "FROZEN_TESTED_SOURCE; visual adoption is separate",
+  "testedCommit": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+  "runtime": "dev.06a3229203",
+  "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+  "recordedUTC": "2026-10-25T11:13:24.678995+00:00",
+  "changedCommittedInputs": [
+    {
+      "path": "App/FallingSkyMenu.swift",
+      "bytes": 12477,
+      "gitBlob": "7457b9d93eae30de0272e8a4f5678d4d8b1b07a7",
+      "sha256": "98ef7981b667d0aa2ca0f1af58b112d207b6c5478d8481b4fa6693068176afb0"
+    },
+    {
+      "path": "App/FallingSkyView.swift",
+      "bytes": 63657,
+      "gitBlob": "61f6eac37b7ceee2ee06770f772197d62119e83e",
+      "sha256": "ca86da18cb7b510938794654c3a2be23c68040f1a603fdb86d7bc1bbaab4ffcb"
+    },
+    {
+      "path": "App/SkyReadingPlayfield.swift",
+      "bytes": 5089,
+      "gitBlob": "0f67d0c8ba4ff5600966ef26f61cf6aa726db5fe",
+      "sha256": "d857f166d9894bd6c1e590b79a4a77d7accb29f690d6c1a6bb252648805195fb"
+    },
+    {
+      "path": "Starfall.xcodeproj/project.pbxproj",
+      "bytes": 74346,
+      "gitBlob": "1ca8ab22d0e89d8210f19dff99241532c8b77e79",
+      "sha256": "b6026e1948c8f50016f2370151aabdd1cda8b0f820e14ea78f78cceee8dc6adb"
+    },
+    {
+      "path": "AppTests/SkyReadingPlayfieldTests.swift",
+      "bytes": 70920,
+      "gitBlob": "d2168b7b2a2c87f97365ca3d78a49e294ed5d243",
+      "sha256": "73e5e69ced8412f77cba7221e8fd93b1edbd4922a76f74a1459e2fdde75f602f"
+    },
+    {
+      "path": "UITests/FullBoardLanternInteractionTests.swift",
+      "bytes": 15726,
+      "gitBlob": "c7fe850521f124c185c2f39434f1100c8ee69a06",
+      "sha256": "a6a7b08ae5fcb2cb837c6d036cf80710aa9f0a99ce3c6d06d810bceefcf856ad"
+    },
+    {
+      "path": "UITests/NativeSkyControls.swift",
+      "bytes": 24731,
+      "gitBlob": "8720c13d8d357dc96fad68b4ec82e163507ef82b",
+      "sha256": "d0f502f20b258a04de1aa93bc01b04ac98beacfe570bd6c4bd33b726b4d29099"
+    },
+    {
+      "path": "UITests/ObservatoryInteractionTests.swift",
+      "bytes": 38242,
+      "gitBlob": "ef7bf898cb53a53a0fb851c56bc375c4c9dec1d1",
+      "sha256": "7106ae070a22e76160a024e78b89c622a30ae93a1a5f4793f9e1a1576f1397af"
+    },
+    {
+      "path": "UITests/SkyFlowInteractionTests.swift",
+      "bytes": 61321,
+      "gitBlob": "29a1e892c4aaba3400978ed0931420430cd9a92c",
+      "sha256": "97c62ef5c10aea8f06d6cbf47eff7e156ec50c339c17ba8703f8c8bacf9c5807"
+    }
+  ],
+  "canonicalInputs": {
+    "runtime": 568,
+    "testFiles": 167,
+    "perPhaseSnapshots": {
+      "snapshot": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+        "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+        "bytes": 188241
+      },
+      "buildFinishSnapshot": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-buildfinish-5c05ecef.json",
+        "sha256": "5282d739b6deb0c0b7dec8116cc284db604eaacd7b919a86e6c14100e09f99b2",
+        "bytes": 188253
+      },
+      "resumeSnapshot": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-remaining-5c05ecef.json",
+        "sha256": "6612d37cc04c50eebc8946082f33b3602b22f12ef68dc1351265b565089cd61a",
+        "bytes": 188280
+      }
+    },
+    "perFilePrebuildDump": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+      "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+      "bytes": 188241
+    },
+    "proof": {
+      "snapshot": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+        "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+        "bytes": 188241
+      },
+      "buildFinishSnapshot": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-buildfinish-5c05ecef.json",
+        "sha256": "5282d739b6deb0c0b7dec8116cc284db604eaacd7b919a86e6c14100e09f99b2",
+        "bytes": 188253
+      },
+      "resumeSnapshot": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-remaining-5c05ecef.json",
+        "sha256": "6612d37cc04c50eebc8946082f33b3602b22f12ef68dc1351265b565089cd61a",
+        "bytes": 188280
+      },
+      "prepareHelper": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/prepare-goal09-source.py",
+        "sha256": "f525c33a9232f160bec94f8d10e946c6c032af19480f45f7834792c1e565d07f",
+        "bytes": 8292
+      },
+      "sourceSpecification": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/goal09-candidate-navigation-remaining-5c05ecef-source-spec.json",
+        "sha256": "9069f3dfa9cda0f0247866b3727e9cd62edbb51759c795dab8ff84f8457125a2",
+        "bytes": 747
+      },
+      "runtimeInputCount": 568,
+      "testInputCount": 167,
+      "workingTreeRuntimeDifferences": [],
+      "workingTreeTestDifferences": [],
+      "checkedUTC": "2026-10-25T11:13:24.254908+00:00"
+    }
+  },
+  "workingTreeBuildAffectingDifferences": [],
+  "excludedWorkingTreeMaterial": "Documentation/evidence, plus untracked stale Goal10 draft; no runtime/test differences. Future draft is excluded from publication.",
+  "implementation": "One continuous painting; local short-landscape adjacent official instruments/play; complete pinned score/Pause, independent forecast/room-fact reading; existing80pt return; shared board/hit/receipt mapping and native45pt icon-only paused controls. Existing pause navigation precedes optional mastery reading, correcting the nativeAX5 phone Settings reveal within unchanged8panbound.",
+  "productionExperimentsRemoved": "SkyDialogueBubble exactly matches accepted6a2. Label-only and explicit activation-point experiments failed and were removed; no AppAX correction or SDK cause is claimed.",
+  "oracleCorrection": "Only new short-sidebar landscape with Text center outside reader uses real-reader hittability/window containment, unchanged whole spoken label, native inner scrollbars100%, complete native subheadline final-line band and whole final capture. Four-pan/exact fullText-bottom/action/outcome gates remain. Other profiles retain Text.isHittable. This is readability evidence, not Text activation or actualVoiceOver.",
+  "history": [
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-09-correction-history.json",
+      "sha256": "bb1839e6f05c4e5e13a407b9b2bfe00a170a298bfcc93df56bc15b202c73b100",
+      "bytes": 16128
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-09-initial-candidate.json",
+      "sha256": "a34f70f856e1f4f3758168a2d570cdc647192fd6e41011d64903f1c873e3870a",
+      "bytes": 4399
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-040-partial.json",
+      "sha256": "16446b0a475021cf2884d84ea1f474f12f73828ba1c973f00474c34052db7db4",
+      "bytes": 17507
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-correction-history.json",
+      "sha256": "d65e94b79bb00dbcdafd9ac588a2ebb95e749a93c77ca8088f5448e474db61d8",
+      "bytes": 60965
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-initial-candidate.json",
+      "sha256": "b9fff0ab25b4a1df0e58c76ff6c8ac97cb57762431bed7e725a4ab7cd6ad6fa3",
+      "bytes": 25254
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-native-label-history.json",
+      "sha256": "a98b01cf9bb1627374fd649853f8e9a6427f1f09ab8aa93da5acef1a77c4b110",
+      "bytes": 7924
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-preflight-history.json",
+      "sha256": "950e65e4196ccc268e794d6ca5b5e6f6321c9669b4253f2d9a2e4f1050b4f6c8",
+      "bytes": 3489
+    },
+    {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-visible-point-history.json",
+      "sha256": "8bdba7dddd53c3764295ca4b77b849ab4c10e5ae66a3ec1164c2120bc07095ac",
+      "bytes": 8772
+    }
+  ],
+  "membership": "SkyReadingPlayfield explicitly belongs to the normal Starfall Sources phase; Debug/Release commands and unchanged target identity/catalogue are bound in verification09.",
+  "scope": "No Core/rules/RNG/save/clock/artwork/assets/network/SDK/target changes; actualVoiceOver, physical/minimum-iOS/human acceptance remain separate."
+}

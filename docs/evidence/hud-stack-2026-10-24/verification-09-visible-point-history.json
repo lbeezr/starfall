@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "HISTORICAL_NATIVE_INTERACTION_HOLD; NOT_ADOPTED",
+  "recordedUTC": "2026-10-25T10:13:30.888337+00:00",
+  "checkpoint": "cf4f6d96ae6a4d2ba2178d7b64fa039b8c939faf",
+  "runtime": "dev.81b896a55d",
+  "commands": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-guide-visible-point-cf4f6d96.json",
+    "sha256": "793c0a36baff7c1bafa804cb4f58ae964550cebaa51d0a0f79a9d552daa40783",
+    "bytes": 6848
+  },
+  "snapshot": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-guide-visible-point-cf4f6d96.json",
+    "sha256": "56186c5221e5bed405f669641c8e8c476237757c3d276039f2b4ec9cb59150f9",
+    "bytes": 188274
+  },
+  "source": {
+    "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "committedTreeBlobMatches": 735,
+    "changedRuntimeOwners": [
+      "App/FallingSkyView.swift",
+      "App/SkyDialogueBubble.swift",
+      "App/SkyReadingPlayfield.swift",
+      "Starfall.xcodeproj/project.pbxproj"
+    ],
+    "changedTestOwners": [
+      "AppTests/SkyReadingPlayfieldTests.swift",
+      "UITests/FullBoardLanternInteractionTests.swift",
+      "UITests/NativeSkyControls.swift",
+      "UITests/ObservatoryInteractionTests.swift",
+      "UITests/SkyFlowInteractionTests.swift"
+    ],
+    "inventory": {
+      "hostedMethods": 821,
+      "developmentPhoneUIMethods": 262,
+      "actualVoiceOverDeferredMethods": 6
+    },
+    "preparedUTC": "2026-10-25T10:03:50.840234+00:00",
+    "runnerStartedUTC": "2026-10-25T10:03:58.052197+00:00",
+    "DebugStartedUTC": "2026-10-25T10:03:58.770169+00:00",
+    "inputDumpPredatesRunnerAndDebug": true,
+    "qualification": "Historical frozen snapshot/committed blobs only; later shared product/worktree is not historical proof."
+  },
+  "candidate": "Visible-point guide accessibility variant; it did not resolve original experiment.message StaticText isHittable failure.",
+  "completedStages": [
+    {
+      "kind": "debug",
+      "label": "build-09-candidate-guide-visible-point-cf4f6d96-debug",
+      "nominalBoundSeconds": 180,
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/build-09-candidate-guide-visible-point-cf4f6d96-debug-receipt.json",
+        "sha256": "8cb3094537a1547a80d4797b68154568766b3f7f42799bd128841ae22241b5e6",
+        "bytes": 195
+      },
+      "receiptValues": {
+        "stage": "build-09-candidate-guide-visible-point-cf4f6d96-debug",
+        "startedUTC": "2026-10-25T10:03:58.770169+00:00",
+        "elapsedSeconds": 6.101,
+        "limitSeconds": 180.0,
+        "exitCode": 0,
+        "error": null
+      },
+      "log": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/build-09-candidate-guide-visible-point-cf4f6d96-debug.log",
+        "sha256": "8a906b0c5a073f19f7a3703313d504d939aacaf23bc17459ebadf6a10a0498fb",
+        "bytes": 79457
+      },
+      "status": "PASS"
+    },
+    {
+      "kind": "native",
+      "label": "native-09-candidate-guide-visible-point-cf4f6d96-landscape-ax5",
+      "nominalBoundSeconds": 360,
+      "receipt": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-guide-visible-point-cf4f6d96-landscape-ax5-receipt.json",
+        "sha256": "9f376fbd3c7589621e4b7b0a310f3c88c392333b162547d8d5332eb0a5fae6ae",
+        "bytes": 207
+      },
+      "receiptValues": {
+        "stage": "native-09-candidate-guide-visible-point-cf4f6d96-landscape-ax5",
+        "startedUTC": "2026-10-25T10:04:06.169781+00:00",
+        "elapsedSeconds": 129.111,
+        "limitSeconds": 360.0,
+        "exitCode": 65,
+        "error": null
+      },
+      "log": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-guide-visible-point-cf4f6d96-landscape-ax5.log",
+        "sha256": "37e4c69bb740b0232cab0b1408ae5156db8f98521056fc930e2dab9d6028aae2",
+        "bytes": 90256
+      },
+      "status": "FAILED",
+      "selector": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+      "methodAllowanceSeconds": 300,
+      "startupAllowanceSeconds": 60,
+      "summary": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-guide-visible-point-cf4f6d96-landscape-ax5-summary.json",
+        "sha256": "a4c5f39c2335174783a43e0e98cdc68e46c3244f78035b9047df4902905d9299",
+        "bytes": 1291
+      },
+      "counts": {
+        "totalTestCount": 1,
+        "passedTests": 0,
+        "failedTests": 1,
+        "skippedTests": 0
+      },
+      "runtimeWarnings": [],
+      "testFailures": [
+        {
+          "failureText": "Failed to determine hittability of \"experiment.message\" StaticText: Activation point invalid and no suggested hit points based on element frame",
+          "targetName": "StarfallUITests",
+          "testIdentifier": 1,
+          "testIdentifierString": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery()",
+          "testIdentifierURL": "test://com.apple.xcode/Starfall/StarfallUITests/SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+          "testName": "testLargestQuietLandscapeStoryPressureAndCommittedRecovery()"
+        }
+      ],
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "modelName": "iPhone 17e",
+        "osBuildNumber": "24A434",
+        "osVersion": "27.0",
+        "platform": "iOS Simulator"
+      },
+      "finalizedExport": {
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-guide-visible-point-cf4f6d96-landscape-ax5-export-receipt.json",
+          "sha256": "1488c407095d5bcd981605ff79589025a05fce56fbdd78c6938db1bdc87beda1",
+          "bytes": 210
+        },
+        "receiptValues": {
+          "stage": "native-09-candidate-guide-visible-point-cf4f6d96-landscape-ax5-export",
+          "startedUTC": "2026-10-25T10:06:17.127957+00:00",
+          "elapsedSeconds": 0.431,
+          "limitSeconds": 90.0,
+          "exitCode": 0,
+          "error": null
+        },
+        "exitCode": 0,
+        "manifest": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-guide-visible-point-cf4f6d96-landscape-ax5-attachments/manifest.json",
+          "sha256": "12d4888bd6ab74d0349a7b5a62d00b98ffbac853d281c31ecaf46a41568f3383",
+          "bytes": 44390
+        }
+      }
+    }
+  ],
+  "reportedFinalPane": {
+    "raw": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-guide-visible-point-cf4f6d96-landscape-ax5-attachments/DC2902C2-584E-45C5-BA25-24711B9C03A4.png",
+      "sha256": "6df3391457bcea755b4048444f7c3e8ed2f80c28e2213ef2a491f20d0c93baf1",
+      "bytes": 3099039
+    },
+    "storedPixels": [
+      1170,
+      2532
+    ],
+    "captureName": "short-landscape-guide-final-line",
+    "qualification": "Finalized capture metadata bound only, not independently viewed by this mechanical collector. Coordinator reports actual native reading bar100% and complete final whole text; this does not turn failed Text.isHittable intoPASS."
+  },
+  "stop": {
+    "stopType": "RuntimeError",
+    "stopReason": "Primary test failure retained: native-09-candidate-guide-visible-point-cf4f6d96-landscape-ax5 exit=65",
+    "elapsedSeconds": 140.178
+  },
+  "unrun": [
+    "No hosted stages selected in this bounded2-stage probe.",
+    "No later default native, final continuation, Release or Core selected/executed by this manifest."
+  ],
+  "subsequent040Scope": "Not a pass claim: coordinator reports SkyDialogueBubble restored byte-for-byte to accepted6a2, runtime776. The active040 probe separately corrects the short-sidebar/center-offscreen test oracle: original bounded4pans, fullTextbottom/actions and complete spokenlabel; contained hittable innerreader, nativebars100% and full UIFont.subheadline.lineHeight finalband. OriginalText.isHittable remains for otherprofiles. This must be called a scoped oracle correction, not an AppAXfix or all-original-assertions-unchanged.",
+  "resourceGrant": {
+    "runner": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/run-goal09-sequential-extended.py",
+      "sha256": "bc37aa162f65015bf5a7bb5d9bf60d0f349cec7e87d590e33e2b5cb19f08e3f2",
+      "bytes": 14505
+    },
+    "sharedWindowEndUTC": "2026-10-25T10:41:10Z",
+    "deadlineReserveSeconds": 20
+  },
+  "limits": [
+    "No SDK/private accessibility cause is established.",
+    "No overall native reading, visual, actualVoiceOver, physical, animation, minimum-iOS or Goal9adoption acceptance.",
+    "All earlier frozen records unchanged. Active040 result/bundle is excluded; only finalizedcf4 manifest/summaries/files were read."
+  ]
+}

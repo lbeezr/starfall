@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "BOUNDED_PASS",
+  "reviewer": "hud_audit",
+  "recordedUTC": "2026-10-25T11:19:09.482468+00:00",
+  "scope": "Independent direct inspection of all10 whole decoded native first-chain samples from the separately recorded current5c normal two-phase case; not continuous video review",
+  "source": {
+    "commit": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "initialSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+      "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+      "bytes": 188241
+    },
+    "resumedSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-remaining-5c05ecef.json",
+      "sha256": "6612d37cc04c50eebc8946082f33b3602b22f12ef68dc1351265b565089cd61a",
+      "bytes": 188280
+    },
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "sameInputProof": "Reviewer compared complete568runtime+167test entry arrays across initial2c06 and resumed6612 snapshots; equal. Decoder pre/post source checks report empty input differences.",
+    "commands": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-5c05ecef-supplemental-motion-fresh1141.json",
+      "sha256": "1d538e768f85421e216449d492f9603e6dedb56815be515e82605fef0c449bf3",
+      "bytes": 52970
+    },
+    "nativeHelperR2": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/run-goal09-supplemental-motion-5c05ecef-fresh1141-r2.py",
+      "sha256": "16274622b88612c03d2669e431c52f336e6f4438d80294217d5c86518b63878e",
+      "bytes": 29634
+    },
+    "decoderWrapperR2": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/decode-goal09-supplemental-motion-5c05ecef-fresh1141-r2.py",
+      "sha256": "15433c67a7cf78dca253e95075089508c22d2876dcadf108288579d21e1608fb",
+      "bytes": 21025
+    },
+    "preflightHistory": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-preflight-history.json",
+      "sha256": "950e65e4196ccc268e794d6ca5b5e6f6321c9669b4253f2d9a2e4f1050b4f6c8",
+      "bytes": 3489
+    },
+    "historyBoundary": "The earlier stale grant-path helper was rejected before launch/output. No failed product run was retried or erased by this completed R2 helper run."
+  },
+  "supplementalNative": {
+    "selector": "CascadeReturnInteractionTests/testNormalTwoPhaseChainSeparateActionsAndReplay",
+    "counts": {
+      "totalTestCount": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "skippedTests": 0
+    },
+    "runtimeWarnings": [],
+    "testElapsedSeconds": 117.945,
+    "stageElapsedSeconds": 122.204,
+    "methodAllowanceSeconds": 240,
+    "supervisorBoundSeconds": 300,
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-supplemental-motion-fresh1141-summary.json",
+      "sha256": "bd8532ed8ef1f02bf4aeaf2013ffb3b07ae8c4e5afc72a887a7ae45cbc7b5a6c",
+      "bytes": 740
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-supplemental-motion-fresh1141-receipt.json",
+      "sha256": "6dbdc2efa3ed26ebe8d252808953b0cbac5dacaba8d0357b74d79f70af6d99bf",
+      "bytes": 192
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-supplemental-motion-fresh1141.log",
+      "sha256": "ceaea105dd3b399878665e16b99dd3a4e911febd7eec985af282ad4e044292b6",
+      "bytes": 65401
+    },
+    "separation": "This is one supplemental native execution, excluded from the main7executions/6unique-method acceptance. Original exact phase/accounting/separate-action/Replay checks remain mechanical evidence; this sampled review does not personally verify every later state."
+  },
+  "reference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182,
+    "wholeViewedPreviously": true,
+    "role": "Approved Play hierarchy/material reference only"
+  },
+  "recording": {
+    "movie": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-supplemental-motion-fresh1141.mp4",
+      "sha256": "c1dfd71549c2ad862ee845a0200a3fd02845ef9dda2bd9e6a47dd84a07585de3",
+      "bytes": 148561036,
+      "durationSeconds": 122.37666666666667,
+      "metadataLimit": "H264 recorder command, finalized bytes/hash, AV duration and preferred-transform whole-frame dimensions; no separately measured encodedfps/driver pacing."
+    },
+    "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+    "codec": "h264, owned simctl recordVideo command",
+    "processStartEpoch": 1792926593.981802,
+    "readyEpoch": 1792926594.193386,
+    "stopRequestedEpoch": 1792926716.479844,
+    "recorderExit": 0,
+    "recordLog": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-supplemental-motion-fresh1141-recording.log",
+      "sha256": "0162c8fc2b7399c7aecff9114d6812f721ffc6564e087c208bcc2fdce7f3cbd2",
+      "bytes": 280
+    },
+    "movieIdentityScope": "Sealed movieSHA and preferred-transform decoder metadata are bound from finalized manifest; reviewer did not decode, transcode or play the full movie."
+  },
+  "decode": {
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/rawdecode-09-5c05ecef-supplemental-motion-fresh1141-manifest.json",
+      "sha256": "a87803da053cc8e90c22037aa1b2c79f039fc61619339a8176fdd3731a833a1a",
+      "bytes": 56548
+    },
+    "decoderExecutable": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/extract-video-frames",
+      "sha256": "fbb14db25f9072ce7a61e043a2a4c3d0ecd916e96cf1b73a2508d5c0d12154ed",
+      "bytes": 92104
+    },
+    "decoderSource": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/extract-video-frames.swift",
+      "sha256": "7a36f54ac35dfeb0b4eadca61661f2b8c7d3ae147dc23870c564c837b9621fe6",
+      "bytes": 1307
+    },
+    "wrapperR2": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/decode-goal09-supplemental-motion-5c05ecef-fresh1141-r2.py",
+      "sha256": "15433c67a7cf78dca253e95075089508c22d2876dcadf108288579d21e1608fb",
+      "bytes": 21025
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-extract-receipt.json",
+      "sha256": "683576c7fccbf61e3de75faf2ba449f107e178673321036ccb6b627c8fb2194a",
+      "bytes": 193
+    },
+    "receiptFacts": {
+      "stage": "motion-09-5c05ecef-fresh1141-two-phase-phone-extract",
+      "startedUTC": "2026-10-25T11:12:44.896134+00:00",
+      "elapsedSeconds": 1.193,
+      "limitSeconds": 90.0,
+      "exitCode": 0,
+      "error": null
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-extract.log",
+      "sha256": "38be4e6e67cbee44d73a1c01e01d089c0997c23061832592aba515db752fb458",
+      "bytes": 726
+    },
+    "wholeTransform": "AV preferredTrackTransform applied. Each PNG retains whole1170x2532 frame; no resize, crop, retouch or JPEG stage.",
+    "frameCount": 10,
+    "distinctPNGByteIdentities": 9,
+    "personallyViewedWholeCount": 10,
+    "frames": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-frames/frame-0047.346.png",
+        "sha256": "bb3a8f8f4d6d569601e4a84530a9d1de7a2d177f8aaef0711063ee3dbe24c8bd",
+        "bytes": 2924734,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 47.346,
+        "actualMediaTimeSeconds": 47.32833333333333,
+        "requestedGestureOffsetSeconds": 0.2,
+        "possibleActualGestureOffsetSeconds": [
+          -0.029599666595458984,
+          0.18198442459106445
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original decoded PNG at original1170x2532",
+        "observation": "Initial complete0/150,000 and five incoming6/1/2/4/5 facts, substantial current stars and continuous painting. Time interval may precede gesture; no exact onset claim."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-frames/frame-0047.846.png",
+        "sha256": "8df1d2471fa4937e5ded2b9ee76eadb8779b798b28845585146f6354b75cba8d",
+        "bytes": 2751579,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 47.846,
+        "actualMediaTimeSeconds": 47.83,
+        "requestedGestureOffsetSeconds": 0.7,
+        "possibleActualGestureOffsetSeconds": [
+          0.47206687927246094,
+          0.6836509704589844
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original decoded PNG at original1170x2532",
+        "observation": "Committed15,000/150,000 and complete forecasts remain readable; guide begins2-clear15,000accounting. Current star layout is still near its opening; this is an observed sampled state, not a timing defect inference."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-frames/frame-0048.346.png",
+        "sha256": "a5e212143e73721bdb49669de53bcf2d90e829384b4f73990430148924ddeafe",
+        "bytes": 2802937,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 48.346,
+        "actualMediaTimeSeconds": 48.333333333333336,
+        "requestedGestureOffsetSeconds": 1.2,
+        "possibleActualGestureOffsetSeconds": [
+          0.9754002094268799,
+          1.1869843006134033
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original decoded PNG at original1170x2532",
+        "observation": "Changed survivor positions and faint early2CHAIN/+15,000; essential score/forecast remain clear. No scene-sized flat backing appears."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-frames/frame-0048.846.png",
+        "sha256": "fca2a5fe8c3a0d08d6f61c2d28112ff293aa581efbee8b3644f5572beb07f7e5",
+        "bytes": 2733189,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 48.846,
+        "actualMediaTimeSeconds": 48.84,
+        "requestedGestureOffsetSeconds": 1.7,
+        "possibleActualGestureOffsetSeconds": [
+          1.4820668697357178,
+          1.6936509609222412
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original decoded PNG at original1170x2532",
+        "observation": "Bright2CHAIN/+15,000 with one square in upper receipt area and another lower source-local square; surviving star bodies remain distinct below."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-frames/frame-0049.346.png",
+        "sha256": "afbe256ed95eef84237902e2b47b458ddd66cf2009be6da40a8ff7918def2a1b",
+        "bytes": 2722621,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 49.346,
+        "actualMediaTimeSeconds": 49.345,
+        "requestedGestureOffsetSeconds": 2.2,
+        "possibleActualGestureOffsetSeconds": [
+          1.9870669841766357,
+          2.198651075363159
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original decoded PNG at original1170x2532",
+        "observation": "Both receipt squares aligned in the upper return area, complete2CHAIN/+15,000; current stars remain below and Help is back to active appearance."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-frames/frame-0049.846.png",
+        "sha256": "7385d12f3e290b2f855b93c0ebf354727eb09f8a2efcd5b628bf5e63f2a2c752",
+        "bytes": 2681237,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 49.846,
+        "actualMediaTimeSeconds": 49.845,
+        "requestedGestureOffsetSeconds": 2.7,
+        "possibleActualGestureOffsetSeconds": [
+          2.4870669841766357,
+          2.698651075363159
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original decoded PNG at original1170x2532",
+        "observation": "Receipt squares and large label gone; score/forecasts and settled-looking survivor positions remain. No new-refill entry is visible."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-frames/frame-0050.346.png",
+        "sha256": "325f650762b8ed17aeeedbf7c2bdd73efa95b3b56aae50815924c00dabc372b6",
+        "bytes": 2607270,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 50.346,
+        "actualMediaTimeSeconds": 50.345,
+        "requestedGestureOffsetSeconds": 3.2,
+        "possibleActualGestureOffsetSeconds": [
+          2.9870669841766357,
+          3.198651075363159
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original decoded PNG at original1170x2532",
+        "observation": "Stable-looking survivor layout with complete score/forecasts and continuous painting; partial guide continues below viewport."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-frames/frame-0050.846.png",
+        "sha256": "325f650762b8ed17aeeedbf7c2bdd73efa95b3b56aae50815924c00dabc372b6",
+        "bytes": 2607270,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 50.846,
+        "actualMediaTimeSeconds": 50.83166666666666,
+        "requestedGestureOffsetSeconds": 3.7,
+        "possibleActualGestureOffsetSeconds": [
+          3.47373366355896,
+          3.6853177547454834
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original decoded PNG at original1170x2532",
+        "observation": "Same PNGbytes as prior sample at a different actualPTS; no freeze, frame-rate or continuous-motion conclusion."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-frames/frame-0051.346.png",
+        "sha256": "f8000dea1118129435be2bb752b32fd1ea26e3eb13a69927346655b525f5c1e3",
+        "bytes": 2607428,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 51.346,
+        "actualMediaTimeSeconds": 51.345,
+        "requestedGestureOffsetSeconds": 4.2,
+        "possibleActualGestureOffsetSeconds": [
+          3.9870669841766357,
+          4.198651075363159
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original decoded PNG at original1170x2532",
+        "observation": "Stable-looking current stars and clear instruments; no new arrival witnessed."
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/motion-09-5c05ecef-fresh1141-two-phase-phone-frames/frame-0051.846.png",
+        "sha256": "56b38f69d52aa1596b094cd4a465823878adb5604a5f3397cab29429bfb835ff",
+        "bytes": 2607558,
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "requestedMediaTimeSeconds": 51.846,
+        "actualMediaTimeSeconds": 51.845,
+        "requestedGestureOffsetSeconds": 4.7,
+        "possibleActualGestureOffsetSeconds": [
+          4.487066984176636,
+          4.698651075363159
+        ],
+        "preferredTrackTransformApplied": true,
+        "wholeFrame": true,
+        "cropResizeRetouchOrJPEG": false,
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original decoded PNG at original1170x2532",
+        "observation": "Stable-looking current stars and clear instruments; partial bottom guide limits remain."
+      }
+    ]
+  },
+  "timing": {
+    "timingAttachment": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-supplemental-motion-fresh1141-attachments/8A2B8611-B1A3-4E79-9C84-E7ED15A9029E.txt",
+      "sha256": "79ec8818aaf1f3acf73b9c97bb8fa605d56eedb5e8ab8f8c3551a05d24c8e8b3",
+      "bytes": 168
+    },
+    "attachmentManifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-5c05ecef-supplemental-motion-fresh1141-attachments/manifest.json",
+      "sha256": "13e9d738179f7a850ea442df71af8854aba034b4fcb84cb63ef822f1cecfe823",
+      "bytes": 3575
+    },
+    "gestureStartEpoch": 1792926641.339735,
+    "captureEndEpoch": 1792926642.193404,
+    "requestedGestureOffsetsSeconds": [
+      0.2,
+      0.7,
+      1.2,
+      1.7,
+      2.2,
+      2.7,
+      3.2,
+      3.7,
+      4.2,
+      4.7
+    ],
+    "actualPTSSeconds": [
+      47.32833333333333,
+      47.83,
+      48.333333333333336,
+      48.84,
+      49.345,
+      49.845,
+      50.345,
+      50.83166666666666,
+      51.345,
+      51.845
+    ],
+    "recordingEpochUncertainty": {
+      "movieZeroEpochInterval": [
+        1792926593.981802,
+        1792926594.193386
+      ],
+      "intervalWidthSeconds": 0.21158409118652344,
+      "nominalMediaZeroEpochUsed": 1792926594.193386,
+      "limit": "Recorder process-start/readiness bookends only. No exact media-zero, gesture latency, frame-pacing or phase-boundary claim."
+    },
+    "interpretation": "ActualPTS orders10separate samples. Process-start/readiness interval0.21158409118652344s prevents exact media-zero, gesture onset, latency or phase-boundary assertions; first possible offset spans-0.029600..0.181984s."
+  },
+  "observations": [
+    "Painting is present across every sampled phase. No flat gray scene-sized surface, visible scenery seam or whole-board flash masks current stars in these 10 frames.",
+    "The score stays complete at 15,000/150,000 after the committed clear; five forecast facts 6/1/2/4/5 remain ordered and readable. Their normal dimmed Help state during early presentation is visibly separate from essential digits.",
+    "Source-local square presentation and bright 2 CHAIN/+15,000 label occupy the return area, leaving the score, forecast and recognizable survivor star bodies distinct. A faint early-label sample is retained as transient evidence, not a fully readable peak.",
+    "Observed star layouts change between samples and later look settled; the sample supports a bounded clear/survivor presentation witness. No new supply/refill ingress is seen, and none is claimed.",
+    "The bottom guide shows 2-clear/+15,000 and 8,000 base + 2,000 size + 5,000 chain accounting lines but extends below the viewport. Complete guide reading/action reachability is not established by these samples."
+  ],
+  "decision": {
+    "verdict": "BOUNDED_PASS",
+    "reason": "Within all10 supplied whole samples, normal chain presentation preserves painting, recognizable current stars and readable essential instruments, with source-local receipt separation. No blocking visual failure found in this sampled scope.",
+    "overallGoalStatus": "No overall adoption or publication claim. Main native/mechanical, full guide, manual navigation and exact retained exports belong to separate records."
+  },
+  "limits": [
+    "Actual normal-motion iPhone17e Simulator/iOS27 portrait sample at3x; no landscape chain, AX5 motion, tablet motion, actual VoiceOver, physical-device or minimumOS claim.",
+    "Ten samples over requested 0.2..4.7 s at 0.5 s spacing are not continuous animation inspection. No frame pacing, freeze, dropped-frame, exact latency or unseen phase claim; two different PTS have identical PNG bytes.",
+    "No refill entry is personally witnessed; do not generalize surviving-star changes to supply ingress.",
+    "Only current-scene samples are reviewed; later separate actions, cold state or Replay are passing method outcomes, not personally viewed movie states in this record.",
+    "Complete bottom guide and actions are partly below these frames. Full canonical detail/readability proof remains separate.",
+    "No reviewer build, simulator controller, AV decode, conversion, export or App/test/HEAD mutation."
+  ]
+}

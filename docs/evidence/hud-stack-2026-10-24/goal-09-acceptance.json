@@ -1,0 +1,465 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "issue": 390,
+  "issueURL": "https://github.com/lbeezr/starfall/issues/390",
+  "title": "Whole-HUD adaptive layouts",
+  "status": "ADOPTED_BOUNDED_DEVELOPMENT_SLICE_INDIVIDUAL_MERGE_PENDING",
+  "recordedUTC": "2026-10-25T09:08:07.547640+00:00",
+  "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+  "baseRuntime": "dev.2c4e822ca7",
+  "predecessor": {
+    "path": "docs/evidence/hud-stack-2026-10-24/publication-08.json",
+    "sha256": "1edd8471df68398c09abae7819fb489798aa0a1f45da64b18711057ac62aaa39",
+    "bytes": 2425,
+    "pullRequest": 409,
+    "mergedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "issue389": "closed/completed",
+    "projectProjection": "unavailable; do not infer Project Done"
+  },
+  "owner": "HUD coordinator/root; source-bound development qualification, individual merge pending",
+  "issueSource": {
+    "retrievedUTC": "2026-10-25T09:08:07.547640+00:00",
+    "state": "open",
+    "playerOutcome": "Refine combined HUD composition for compact phone, landscape, tablet and largest text using local viewport proposals. Preserve previous roles, board mapping and complete targets; inspect combined forecast/pressure/reward states and actual corner input.",
+    "visibleNormalAppRefinementRequired": true
+  },
+  "hypothesis": "Current accepted-main baseline reproduced short-landscape viewport starvation; current shared adjacent reading corrects it for the named qualified development slice.",
+  "baselineRequired": {
+    "status": "REPRODUCED_CURRENT_ACCEPTED_MAIN_FAILURE_RETAINED_AS_HISTORY",
+    "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "testOnlyCheckpoint": "a8377c2c1e244db4d6a4718ba2483d8fb7f0e67c",
+    "runtime": "dev.2c4e822ca7",
+    "appDifferencesFromAcceptedMain": [],
+    "sourceSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-baseline-a8377c2c.json",
+      "sha256": "72583414c666f6eb2843fbe5ccdccfb5d1c8310b76772fb3f0d22a7e83b7a54c",
+      "bytes": 185468
+    },
+    "commands": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-baseline-a8377c2c.json",
+      "sha256": "1587e47e9dddf6182a976f63880b98a5b8713e9fa3bb4649e05898fa7c6a3563",
+      "bytes": 7820
+    },
+    "review": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-baseline-short-landscape.json",
+      "sha256": "68a691e852e96ccda202650423fc2ad0b2c250f40ffd931980303ef6570c7792",
+      "bytes": 34850
+    },
+    "observation": "Actual AX5 phone landscape owning scroll frame{{0.0,432.3},{844.0,0.0}} has no remaining playable viewport after the complete header and80pt return plus16pt outsets. Hosted667x375/852x393 also expose insufficient complete native occupied-cell space; silhouettes and complete cell rectangles are distinguished.",
+    "nativeResult": "Baseline native1failed,0passed,0skipped before recovery; hosted1failed with13 logged assertions, not13 distinct tests. These failures remain failed.",
+    "qualification": "a837 App is byte-identical accepted6a2/Goal8. Synthetic local windows inherit documented host insets; actual rotation is separately bound. Longer waits/pan bounds do not correct the measured zero-height allocation."
+  },
+  "candidate": {
+    "status": "IMPLEMENTED_AND_QUALIFIED_FOR_NAMED_DEVELOPMENT_SLICE; INDIVIDUAL_MERGE_PENDING",
+    "officialRole": "Shared short-landscape reading composition",
+    "owners": [
+      "App/FallingSkyMenu.swift",
+      "App/FallingSkyView.swift",
+      "App/SkyReadingPlayfield.swift",
+      "Starfall.xcodeproj/project.pbxproj"
+    ],
+    "visibleRefinement": "One continuous painting now backs adjacent instrument/play columns for local short-wide proposals. Complete score and Pause stay pinned; forecast/current-room facts scroll independently. The other column reserves existing80pt returns and the common native board/ceiling/guide mapping. Existing contextual play/next actions retain full45pt targets and complete spoken names. Essential menu navigation precedes optional Mastery.",
+    "mapping": "Full native fonts and44forecast/48utility targets, existing80return and one board/hit/AX/receipt projection remain; portrait/tall/practice siblings use their existing composition.",
+    "oracleCorrection": "Only new short-sidebar landscape with Text center outside reader uses real-reader hittability/window containment, unchanged whole spoken label, native inner scrollbars100%, complete native subheadline final-line band and whole final capture. Four-pan/exact fullText-bottom/action/outcome gates remain. Other profiles retain Text.isHittable. This is readability evidence, not Text activation or actualVoiceOver.",
+    "removedExperiments": "SkyDialogueBubble exactly matches accepted6a2. Label-only and explicit activation-point experiments failed and were removed; no AppAX correction or SDK cause is claimed.",
+    "scope": "No Core/rules/RNG/save/clock/assets/artwork/network/SDK/target change; no Goal10 implementation."
+  },
+  "scope": [
+    "Existing local FallingSkyView composition and shared official HUD components only. Choose the smallest measured local reflow; retain normal-app routing, existing scenery and all prior accepted roles.",
+    "Compact phone portrait and short landscape; relevant actual tablet portrait/landscape; default, ordinary larger text and AX5; normal effects plus independently genuine Calm/quiet context.",
+    "Combined current forecast/selection, full/near pressure, real clear award/return and guide. Preserve actual playable corners after layout/rotation, and the exact committed round/save/score/deadline.",
+    "Register a missing reusable variant/role before App use; no new art unless the current official assets demonstrably lack the required role."
+  ],
+  "acceptance": [
+    "Demonstrate one visible normal-app composition improvement against a source-bound current-main baseline; name exact runtime, local viewport/safe insets, text/motion context and observed state.",
+    "Retain full intrinsic native text, exact score/target/ordered facts and existing44pt forecast/48pt utility targets, with no overlap of essential ink/targets or protective-outset inflation of semantic bounds.",
+    "A constrained populated opening must expose useful complete actual stars and the full ceiling after bounded reveal; preserve all existing seven-visible-star floors where their current fixtures require them. A genuinely empty Core board is explicitly separate from viewport starvation.",
+    "Keep native SpriteKit bodies, hit/accessibility cells, ceiling, selected column and receipt/source anchors on one mapping through resize/rotation/scroll. Actual corner contact and a legitimate automatic Story exchange must yield the same exact Core result; a hittable flag or pure geometry alone is insufficient.",
+    "Receipt typography and exact topology remain readable and clear of the full scaled ceiling/header/score/next legal choices; preserve existing greater-than20pt/full-containment guards and80pt return recognition until a measured shared contract is deliberately requalified. Do not silently drop title/components to fit.",
+    "Native current-source forecast selection retires on commit/replacement; pressure uses committed current warnings and complete spoken facts; FullBoard has no shower forecast/inspection; tutorial/island/manual roles remain in context.",
+    "Layout and native host transfer keep the single existing deadline, save/world/RNG/replay and source-cancellation contracts. Verify reader/Return, background/re-entry and relevant current-owner teardown; no private-SpriteView mechanism or previous pan-cause claim is inferred.",
+    "Independent whole-native-screen and exact retained-export review compares named phone/tablet/default/largest/normal/quiet states against approved middlePlay and official roles before the implementer verdict. A known current visual failure blocks this goal, not Goal10.",
+    "Run352Core, affected hosted/native input, Debug simulator build, hygiene and diff. Routing changes also requireRelease/membership. Freeze exact selectors, selected counts, bounded condition waits and unchanged method/process allowances; no weakened guards, blanket retries or forced quiet.",
+    "Merge one complete verified PR with Closes#390 and Refs#381, confirm issue completed and canonical ProjectDone or record projection unavailability. Goal10 implementation starts only after that individual verified merge."
+  ],
+  "proposedProfiles": [
+    {
+      "kind": "hosted local proposal, not device proof",
+      "sizesPoints": [
+        [
+          375,
+          667
+        ],
+        [
+          667,
+          375
+        ],
+        [
+          852,
+          393
+        ]
+      ],
+      "text": [
+        "default/large",
+        "XXXlarge where it changes fitting",
+        "AX5"
+      ],
+      "states": [
+        "current opening",
+        "natural full/near pressure",
+        "real receipt/current selection",
+        "expanded guide"
+      ]
+    },
+    {
+      "kind": "hosted tablet local proposal, not actual iPad art/orientation proof",
+      "sizesPoints": [
+        [
+          768,
+          1024
+        ],
+        [
+          1024,
+          768
+        ],
+        [
+          1024,
+          1366
+        ]
+      ],
+      "text": [
+        "default",
+        "AX5"
+      ],
+      "states": [
+        "fit-preserving sibling",
+        "FullBoard no-shower sibling",
+        "live receipt"
+      ]
+    },
+    {
+      "kind": "actual dedicated native phone/tablet",
+      "sizesPoints": "Measure actual current viewport/safe areas after each supported orientation settles; do not relabel synthetic host sizes as device evidence.",
+      "text": [
+        "default",
+        "AX5"
+      ],
+      "motion": [
+        "explicit normal/systemReduceMotionoff when observing motion",
+        "actual Settings Calm/quiet separately"
+      ],
+      "states": [
+        "actual corner dispatch",
+        "current selection/pressure",
+        "genuine receipt and Return",
+        "background/rotation preserves exact round"
+      ]
+    }
+  ],
+  "existingSelectorProposal": {
+    "status": "FINAL_EXECUTED_SELECTED_CHECKS; initial proposals remain in planningHistory",
+    "hosted": [
+      "SkyReadingPlayfieldTests/testShortLandscapeCrowdedStoryKeepsCompleteHeaderCeilingAndCurrentStars",
+      "SkyReadingPlayfieldTests/testReadingPlayfieldKeepsSceneryAndReceiptAnchorsFixedWhileTheNativeBoardScrolls",
+      "SkyReadingPlayfieldTests/testCrowdedStoryHeaderKeepsNearFactsClearOfTheCeilingAcrossTextSizes",
+      "SkyReadingPlayfieldTests/testBusySetupPreservesHeaderWhileInspectionIsMuted",
+      "SkyReadingPlayfieldTests/testActualOpenSkySceneAcrossFiveStarsEmptySuspensionAndNextShower",
+      "SkyReadingPlayfieldTests/testNativeSceneTransferRejectsRetiringHostUpdatesAndTeardown",
+      "CrystalCelebrationArtworkTests/testSixFigureScoreAndTargetReflowAtLargeTextWithoutShrinking",
+      "StarlightCelebrationTests/testCrowdedCurrentSkyAwardsAtCompactLargeAndMaximumText",
+      "StarlightCelebrationTests/testAwardLetteringLeavesEveryPlayableRowClear",
+      "CascadeReturnTests/testChronologicalSlotsKeepEachExactTopologyAndReserveSeparateLabelAndHUDSpace",
+      "SkyForecastInspectionTests/testColumnBoundsMatchOnlyTheSelectedBoardColumnAcrossViewportSizes",
+      "SkyCeilingOverlayTests/testBoundaryAndColumnMarkersShareTheTopRowMappingAcrossLayouts",
+      "SkyFlowStateTests/testSceneDetachmentSynchronouslyFreezesAndRejectsADueClock",
+      "SkyFlowStateTests/testCoalescedReadinessBounceReadmitsOnlyThroughRevisionObservation",
+      "SkyFlowStateTests/testReadinessBounceCannotReadmitThroughAModalOrBackgroundGate",
+      "SkyScorePresentationTests/testCompleteStaticReadingGrowsAtLargestTextAndCompactEquationFitsReceipt",
+      "SkyLastClearPresentationTests/testNativeCaptionsGrowAtLargestTextAndCompletePageKeepsTheExistingReader",
+      "SkyDialogueTests/testSunnyMaximumTextReaderOwnsItsHitRegionAndFullNativeContentExtent"
+    ],
+    "hostedCount": 18,
+    "mainNativeExecutions": [
+      {
+        "selector": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+        "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "methodAllowanceSeconds": 240,
+        "supervisorBoundSeconds": 300.0,
+        "elapsedSeconds": 119.648
+      },
+      {
+        "selector": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+        "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "methodAllowanceSeconds": 300,
+        "supervisorBoundSeconds": 360.0,
+        "elapsedSeconds": 170.478
+      },
+      {
+        "selector": "SkyFlowInteractionTests/testLandscapeStoryPressureAndCommittedRecovery",
+        "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "methodAllowanceSeconds": 300,
+        "supervisorBoundSeconds": 360.0,
+        "elapsedSeconds": 151.789
+      },
+      {
+        "selector": "ObservatoryInteractionTests/testSupportedOrientationsPreserveNativeTargets",
+        "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "methodAllowanceSeconds": 240,
+        "supervisorBoundSeconds": 300.0,
+        "elapsedSeconds": 50.392
+      },
+      {
+        "selector": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+        "device": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+        "methodAllowanceSeconds": 240,
+        "supervisorBoundSeconds": 300.0,
+        "elapsedSeconds": 97.957
+      },
+      {
+        "selector": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss",
+        "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "methodAllowanceSeconds": 420,
+        "supervisorBoundSeconds": 480.0,
+        "elapsedSeconds": 366.545
+      },
+      {
+        "selector": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay",
+        "device": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "methodAllowanceSeconds": 300,
+        "supervisorBoundSeconds": 360.0,
+        "elapsedSeconds": 199.135
+      }
+    ],
+    "mainNativeExecutionCount": 7,
+    "mainNativeUniqueMethods": 6,
+    "sourceOfTruth": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09.json",
+      "sha256": "3265b782063cb029c4a5142e3beb92fce75917b3a36aebb9bd710232b1503a15",
+      "bytes": 39845
+    }
+  },
+  "freezeRequirements": {
+    "status": "FROZEN_SOURCE_SELECTED_CHECKS_AND_INDEPENDENT_REVIEW_PASSED; INDIVIDUAL_MERGE_PENDING",
+    "source": {
+      "head": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+      "runtime": "dev.06a3229203",
+      "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+      "runtimeInputs": 568,
+      "testInputs": 167,
+      "totalCanonicalInputs": 735,
+      "originalPreDebugSnapshot": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+        "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+        "bytes": 188241
+      },
+      "laterResumeSnapshot": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-remaining-5c05ecef.json",
+        "sha256": "6612d37cc04c50eebc8946082f33b3602b22f12ef68dc1351265b565089cd61a",
+        "bytes": 188280
+      },
+      "sourceQualification": "All735 committed runtime/test records agree across the original2c06 pre-Debug dump and later5282/6612 dumps. Later dumps are not claimed to predate original Debug. No runtime/test/build-affecting differences.",
+      "changedRuntimeOwners": [
+        "App/FallingSkyMenu.swift",
+        "App/FallingSkyView.swift",
+        "App/SkyReadingPlayfield.swift",
+        "Starfall.xcodeproj/project.pbxproj"
+      ],
+      "changedTestOwners": [
+        "AppTests/SkyReadingPlayfieldTests.swift",
+        "UITests/FullBoardLanternInteractionTests.swift",
+        "UITests/NativeSkyControls.swift",
+        "UITests/ObservatoryInteractionTests.swift",
+        "UITests/SkyFlowInteractionTests.swift"
+      ]
+    },
+    "mechanics": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09.json",
+      "sha256": "3265b782063cb029c4a5142e3beb92fce75917b3a36aebb9bd710232b1503a15",
+      "bytes": 39845
+    },
+    "qualification": "No source/test/HEAD mutation by this documentation update; explicit grants and historical partial admissions remain preserved in mechanics."
+  },
+  "evidencePlan": {
+    "source": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/source-09.json",
+      "sha256": "03b8c1b7da9017328a63f012b477c94e8a84f57806d7ed6aad940e6c9c880ec0",
+      "bytes": 8706
+    },
+    "mechanics": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09.json",
+      "sha256": "3265b782063cb029c4a5142e3beb92fce75917b3a36aebb9bd710232b1503a15",
+      "bytes": 39845
+    },
+    "captures": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-09.json",
+      "sha256": "bf75810dbbdafc9940ac76a01a96817bf8093a836ebc349f327da18abc87cacd",
+      "bytes": 73487
+    },
+    "native": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-native.json",
+      "sha256": "59ca0a4b5221f289e75a126bd6a6bc77225c603da164e17e70b75589215573b8",
+      "bytes": 53786
+    },
+    "hosted": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-hosted.json",
+      "sha256": "62498c307a059eddd21a7aa25155cd98faccf59748e6d94df6a01e6ad2f50e0b",
+      "bytes": 56648
+    },
+    "motion": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-motion.json",
+      "sha256": "e3af1e3507c5c0d267567e4b9f30297ffba5b91dff85d480889c4da7939a40c2",
+      "bytes": 21235
+    },
+    "menuMechanics": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-menu-capture.json",
+      "sha256": "23b36f149a5c5607543835cd5e579994650af5d2d6b81d8f535a2a51fbf5cbd2",
+      "bytes": 5422
+    },
+    "menuNative": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-menu-capture.json",
+      "sha256": "d7f126996b8e52b3f4996a4f9a148db011aa5f069d48644685d7e1cae553e6e5",
+      "bytes": 20183
+    },
+    "manualToolHistory": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-menu-tool-history.json",
+      "sha256": "f221577a0a5e0c0bbc94bd2e1b270fd3d38c398109443040d8a61fd58182ca46",
+      "bytes": 1938
+    },
+    "baselineNativeHosted": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-baseline-short-landscape.json",
+      "sha256": "68a691e852e96ccda202650423fc2ad0b2c250f40ffd931980303ef6570c7792",
+      "bytes": 34850
+    },
+    "baselineTabletSibling": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-baseline-tablet.json",
+      "sha256": "9aa9b3833dd2a744c1929a9b604d104c7520c3af2f2b8f26f596fa5bf4d84933",
+      "bytes": 18599
+    },
+    "fullBoardNative": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-navigation-full-board.json",
+      "sha256": "ede69c857698d97de6c5710e899ab0f323cf1bf0bc6dfb6469b5143a04688553",
+      "bytes": 27323
+    },
+    "retainedExports": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-exports.json",
+      "sha256": "f0797b09252b7bec55d2bc070f5e9f0b5393bc4c6950e0b7af8e7b2fb0890554",
+      "bytes": 76591
+    }
+  },
+  "outOfScope": [
+    "Goal10 implementation",
+    "Rules/objectives/RNG/saves/replay/shower cadence or gameplay delay",
+    "New app target/network/accounts/backend/monetization/paid assets/analytics",
+    "Phone installation, new automation or private other-root unpublished source adoption",
+    "ActualVoiceOver/physical comfort or performance/human recognition claims; #209 stays separate"
+  ],
+  "currentResults": {
+    "main": {
+      "core": 352,
+      "hosted": 18,
+      "nativeExecutions": 7,
+      "nativeUniqueMethods": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    "normalMotionSupplement": {
+      "nativeExecutions": 1,
+      "uniqueMethods": 1,
+      "separateFromMain": true,
+      "commandManifest": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-5c05ecef-supplemental-motion-fresh1141.json",
+        "sha256": "1d538e768f85421e216449d492f9603e6dedb56815be515e82605fef0c449bf3",
+        "bytes": 52970
+      },
+      "visualReview": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-motion.json",
+        "sha256": "e3af1e3507c5c0d267567e4b9f30297ffba5b91dff85d480889c4da7939a40c2",
+        "bytes": 21235
+      }
+    },
+    "menuCaptureDuplicate": {
+      "nativeExecutions": 1,
+      "additionalUniqueCoverage": 0,
+      "separateFromMain": true,
+      "mechanics": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/verification-09-menu-capture.json",
+        "sha256": "23b36f149a5c5607543835cd5e579994650af5d2d6b81d8f535a2a51fbf5cbd2",
+        "bytes": 5422
+      },
+      "nativeVisual": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-menu-capture.json",
+        "sha256": "d7f126996b8e52b3f4996a4f9a148db011aa5f069d48644685d7e1cae553e6e5",
+        "bytes": 20183
+      }
+    },
+    "nativeExecutionsAcrossSeparateCurrentScopes": 9,
+    "Debug": "PASS",
+    "Release": "PASS",
+    "runtimeWarnings": [],
+    "retainedExports": {
+      "count": 13,
+      "bytes": 7687225,
+      "index": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-09.json",
+        "sha256": "bf75810dbbdafc9940ac76a01a96817bf8093a836ebc349f327da18abc87cacd",
+        "bytes": 73487
+      },
+      "exactVisualGate": "PASS_BOUNDED_EXACT_RETAINED_EXPORTS",
+      "review": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-exports.json",
+        "sha256": "f0797b09252b7bec55d2bc070f5e9f0b5393bc4c6950e0b7af8e7b2fb0890554",
+        "bytes": 76591
+      },
+      "fidelityPassedPairs": 13,
+      "historicalRejectedCounterexamplesPreserved": 2,
+      "qualification": "All13 exact conversions pass fidelity; the two historical baseline counterexamples remain product failures, not current-source visual passes."
+    },
+    "inventory": {
+      "hostedMethods": 821,
+      "developmentPhoneUIMethods": 262,
+      "actualVoiceOverDeferredMethods": 6
+    },
+    "claim": "Selected execution counts, not full discovered matrix. Main7 plus normal1 plus capture-only1 remain distinct; capture duplicate supplies no additional unique method."
+  },
+  "historyPolicy": "Preserve all original planning and immutable source/verification/visual/capture/failure history. Reused old product paths are qualified, never relabeled or rehashed as current.",
+  "planningHistory": {
+    "qualification": "Original activation planning predates the reproduced baseline and implementation. Exact complete original JSON is preserved by the committed Git revision and the private byte-identical snapshot; it is not current evidence. Original acceptance criteria remain unchanged at top level of acceptance.json.",
+    "originalRecordedUTC": "2026-10-25T09:08:07.547640+00:00",
+    "originalStatus": "DRAFT_ACCEPTANCE_CURRENT_MAIN_BASELINE_REQUIRED",
+    "originalGitVersion": {
+      "commit": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+      "repositoryPath": "docs/evidence/hud-stack-2026-10-24/goal-09-acceptance.json",
+      "sha256": "8a763645ae72da580cdd1c6d43e59e7dc8dec7bf77dbaa3df9e97439e754b506",
+      "bytes": 13089
+    },
+    "privateByteIdenticalSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/goal-09-acceptance-before-final-adoption.json",
+      "sha256": "8a763645ae72da580cdd1c6d43e59e7dc8dec7bf77dbaa3df9e97439e754b506",
+      "bytes": 13089
+    },
+    "originalHypothesis": "Complete stacked instruments and the fixed passive return can leave inadequate short-landscape reading space. This needs a current-main baseline before any responsible owner or correction is accepted.",
+    "originalBaselineStatus": "NOT_REPRODUCED_ON_CURRENT_MAIN; no layout failure or candidate outcome inferred from source, old draft or another root.",
+    "originalCandidateStatus": "NOT_IMPLEMENTED; precise local fit rule and role contract follow baseline",
+    "proposalQualification": "Initial13-existing-hosted/six-native proposals were source selections, not completed checks. Final selected18hosted/seven main executions/six unique methods supersede those proposals only as current results; original lists remain in the exact Git snapshot."
+  },
+  "updatedUTC": "2026-10-25T11:45:33.562995+00:00",
+  "publication": {
+    "status": "INDIVIDUAL_PR_MERGE_PENDING",
+    "goal10": "QUEUED_UNTIL_GOAL9_INDIVIDUAL_VERIFIED_MERGE",
+    "issue390": "No new closure/ProjectDone assertion; root confirms after merge"
+  },
+  "acceptanceAssessment": {
+    "originalCriteriaPreserved": true,
+    "developmentSlice": "Named source/input/interaction/still/sampled-motion and exact13-export reviews pass. Original merge/publication criterion remains pending; this is bounded development adoption, not completion or a full matrix.",
+    "mergeCriterion": "PENDING: original final criterion remains unfulfilled until individual PR merge/issue confirmation."
+  },
+  "limits": [
+    "Named selected hosted/native/sampled-motion/exact-export scopes only, no full matrix, continuous motion/performance, actualVoiceOver, physical-device, minimum-iOS or human-recognition claim.",
+    "Scroll slices do not establish simultaneous complete whole pages: phone landscape lower rows/AX apron and guide can be offscreen; menu row raster does not show covered34kscore or allMastery.",
+    "The scoped short-sidebar guide-end oracle is a test/readability correction, not an AppText activation fix. OriginalBubble reverted to accepted6a2; label/activation experiments and all earlier failures remain historical; no privateSDKcause assigned.",
+    "Old historical Debug Info.plist hashes in frozen initial/correction records describe contemporaneously measured products at reused DerivedData paths. Those old product files were not separately retained and are now naturally overwritten by06a products; do not repair hashes or imply they verify current bytes. Archived source/log/capture evidence remains.",
+    "The failed manualMCP route never supplied accepted menu pixels; optimizedHomeJPEG excluded. Later original FullBoard capture-only duplicate supplies current wholemenu row with zero new unique coverage.",
+    "Goal9 individual merge/issue completion/publication remain pending. Goal10 implementation remains queued until that verified merge; no PR number or ProjectDone claim is invented."
+  ]
+}

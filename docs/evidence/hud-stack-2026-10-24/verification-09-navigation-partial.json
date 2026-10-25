@@ -1,0 +1,506 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "PARTIAL_5C_PASS_ONLY; REMAINING_NATIVE_UNRUN; NO_ADOPTION",
+  "recordedUTC": "2026-10-25T10:48:27.329580+00:00",
+  "checkpoint": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+  "runtime": "dev.06a3229203",
+  "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+  "source": {
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "historicalCommittedBlobMatches": 735,
+    "changedAppOwners": [
+      "App/FallingSkyMenu.swift",
+      "App/FallingSkyView.swift",
+      "App/SkyReadingPlayfield.swift",
+      "Starfall.xcodeproj/project.pbxproj"
+    ],
+    "changedTestOwners": [
+      "AppTests/SkyReadingPlayfieldTests.swift",
+      "UITests/FullBoardLanternInteractionTests.swift",
+      "UITests/NativeSkyControls.swift",
+      "UITests/ObservatoryInteractionTests.swift",
+      "UITests/SkyFlowInteractionTests.swift"
+    ],
+    "inventory": {
+      "hostedMethods": 821,
+      "developmentPhoneUIMethods": 262,
+      "actualVoiceOverDeferredMethods": 6
+    },
+    "initialInputDump": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+      "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+      "bytes": 188241
+    },
+    "laterBuildfinishInputDump": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-buildfinish-5c05ecef.json",
+      "sha256": "5282d739b6deb0c0b7dec8116cc284db604eaacd7b919a86e6c14100e09f99b2",
+      "bytes": 188253
+    },
+    "all568RuntimeAnd167TestRecordsEqual": true,
+    "timing": "Original2c06 dump prepared2026-10-25T10:26:00.487254+00:00 precedes originalDebug2026-10-25T10:26:12.481631+00:00. Later5282 dump prepared2026-10-25T10:36:31.532478+00:00 belongs to laterbuildfinish; it does not predate originalDebug. Both bind the same735 committedinput records.",
+    "identityLimit": "Canonical committed input fingerprints and exact commands/receipts are bound. No reread of later overwritten shared product binaries is represented as historical product proof."
+  },
+  "phases": [
+    {
+      "phase": "candidate-navigation",
+      "commands": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-navigation-5c05ecef.json",
+        "sha256": "2845c04af79e62e55d8cf0f7f6441148dec18ead2df76fcaff261bdcc4beab73",
+        "bytes": 26467
+      },
+      "status": "stopped",
+      "sourceSnapshot": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+        "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+        "bytes": 188241
+      },
+      "snapshotPreparedUTC": "2026-10-25T10:26:00.487254+00:00",
+      "runnerStartedUTC": "2026-10-25T10:26:11.804099+00:00",
+      "sourcePreflight": {
+        "HEAD": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "buildAndTestAffectingDifferences": [],
+        "excludedDocumentationDifferences": []
+      },
+      "originalSharedWindowEndUTC": "2026-10-25T10:41:10Z",
+      "completedStages": [
+        {
+          "label": "build-09-candidate-navigation-5c05ecef-debug",
+          "kind": "debug",
+          "selector": null,
+          "nominalBoundSeconds": 180,
+          "receipt": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/build-09-candidate-navigation-5c05ecef-debug-receipt.json",
+            "sha256": "3de7688596ec2bbd1bdbf09c648e2f1441659dcc247a2dd7fa9fb17e06a32dfd",
+            "bytes": 186
+          },
+          "receiptValues": {
+            "stage": "build-09-candidate-navigation-5c05ecef-debug",
+            "startedUTC": "2026-10-25T10:26:12.481631+00:00",
+            "elapsedSeconds": 5.465,
+            "limitSeconds": 180.0,
+            "exitCode": 0,
+            "error": null
+          },
+          "log": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/build-09-candidate-navigation-5c05ecef-debug.log",
+            "sha256": "f14f6d09bfa55018d0258590f7e42a98af3b908fdf968d0da03a9fd3c0d6a13c",
+            "bytes": 60024
+          },
+          "status": "PASS"
+        },
+        {
+          "label": "native-09-candidate-navigation-5c05ecef-full-board-largest-phone",
+          "kind": "native",
+          "selector": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+          "nominalBoundSeconds": 300,
+          "receipt": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-receipt.json",
+            "sha256": "163e7a1f1c2839a82599b888708c2bf2a1226ebe659f92e4c2bc3a5add21c4dc",
+            "bytes": 208
+          },
+          "receiptValues": {
+            "stage": "native-09-candidate-navigation-5c05ecef-full-board-largest-phone",
+            "startedUTC": "2026-10-25T10:26:19.311655+00:00",
+            "elapsedSeconds": 119.648,
+            "limitSeconds": 300.0,
+            "exitCode": 0,
+            "error": null
+          },
+          "log": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone.log",
+            "sha256": "abd9e888a701eae3bc44d2da33203b89c1e4ec611a9b99fa627d86b26301d3bf",
+            "bytes": 67471
+          },
+          "status": "PASS",
+          "summary": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-summary.json",
+            "sha256": "51c464abc09f264d557a7d2d515c2f8a4ca7da433b4bdbf05fc40654b2b2396e",
+            "bytes": 741
+          },
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": [],
+          "finalizedExport": {
+            "receipt": {
+              "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-export-receipt.json",
+              "sha256": "03b3c8bfb19d1a9eeb1030902538112bdd4b335a04b6de9a639f1dcd020801d3",
+              "bytes": 210
+            },
+            "receiptValues": {
+              "stage": "native-09-candidate-navigation-5c05ecef-full-board-largest-phone-export",
+              "startedUTC": "2026-10-25T10:28:21.386633+00:00",
+              "elapsedSeconds": 0.3,
+              "limitSeconds": 90.0,
+              "exitCode": 0,
+              "error": null
+            },
+            "exitCode": 0,
+            "manifest": {
+              "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/manifest.json",
+              "sha256": "0d748360767c1e8cffb285db7454cd8ca61f6019a5cc55de7566ee4ca9850978",
+              "bytes": 3046
+            }
+          }
+        },
+        {
+          "label": "hosted-09-candidate-navigation-5c05ecef-accepted-regressions",
+          "kind": "hosted",
+          "selector": null,
+          "nominalBoundSeconds": 240,
+          "receipt": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-navigation-5c05ecef-accepted-regressions-receipt.json",
+            "sha256": "6d4ce050cd58d50a18034bce538741d0829a0aa37b468ba8d048b9f73fbd133e",
+            "bytes": 203
+          },
+          "receiptValues": {
+            "stage": "hosted-09-candidate-navigation-5c05ecef-accepted-regressions",
+            "startedUTC": "2026-10-25T10:28:23.122733+00:00",
+            "elapsedSeconds": 48.112,
+            "limitSeconds": 240.0,
+            "exitCode": 0,
+            "error": null
+          },
+          "log": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-navigation-5c05ecef-accepted-regressions.log",
+            "sha256": "dcd1c922effcc0156347a75f913b99f364870a09064db65702cd0df359b7ad83",
+            "bytes": 27998
+          },
+          "status": "PASS",
+          "summary": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-navigation-5c05ecef-accepted-regressions-summary.json",
+            "sha256": "c07a8e49aeb9bae7631a8492f7886d81584018335aa9dcdc1cec8bd79d23c42f",
+            "bytes": 744
+          },
+          "counts": {
+            "totalTestCount": 18,
+            "passedTests": 18,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": [],
+          "finalizedExport": {
+            "receipt": {
+              "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-navigation-5c05ecef-accepted-regressions-export-receipt.json",
+              "sha256": "832ea0ecdfe42f00f3317b63a4b069ccb45ab5ad1656f17258ccdbeca7acc62d",
+              "bytes": 208
+            },
+            "receiptValues": {
+              "stage": "hosted-09-candidate-navigation-5c05ecef-accepted-regressions-export",
+              "startedUTC": "2026-10-25T10:29:12.663826+00:00",
+              "elapsedSeconds": 0.552,
+              "limitSeconds": 90.0,
+              "exitCode": 0,
+              "error": null
+            },
+            "exitCode": 0,
+            "manifest": {
+              "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-navigation-5c05ecef-accepted-regressions-attachments/manifest.json",
+              "sha256": "9996244ddf1d6b3d90429b1d456f91c2bdb96149aa7aa699fc68c3cf42520796",
+              "bytes": 85374
+            }
+          }
+        },
+        {
+          "label": "native-09-candidate-navigation-5c05ecef-landscape-ax5",
+          "kind": "native",
+          "selector": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+          "nominalBoundSeconds": 360,
+          "receipt": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-receipt.json",
+            "sha256": "56248be6ea85a5625525c3401bf565f12c742bd0231f4aac866625716dbff323",
+            "bytes": 197
+          },
+          "receiptValues": {
+            "stage": "native-09-candidate-navigation-5c05ecef-landscape-ax5",
+            "startedUTC": "2026-10-25T10:29:14.586445+00:00",
+            "elapsedSeconds": 170.478,
+            "limitSeconds": 360.0,
+            "exitCode": 0,
+            "error": null
+          },
+          "log": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5.log",
+            "sha256": "2be11dd438cceef50ff6b2041c7640d86bf14d13911db363173bdf8fa23db763",
+            "bytes": 126036
+          },
+          "status": "PASS",
+          "summary": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-summary.json",
+            "sha256": "11275d7271ab016e5a014a59032ecbd80fea4c56444f25ba3206aaf66c305e72",
+            "bytes": 741
+          },
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": [],
+          "finalizedExport": {
+            "receipt": {
+              "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-export-receipt.json",
+              "sha256": "866a806f7c336fdb84611fe30145be8995d48e600cfcf3c9a9537b736647f21f",
+              "bytes": 201
+            },
+            "receiptValues": {
+              "stage": "native-09-candidate-navigation-5c05ecef-landscape-ax5-export",
+              "startedUTC": "2026-10-25T10:32:06.558125+00:00",
+              "elapsedSeconds": 0.374,
+              "limitSeconds": 90.0,
+              "exitCode": 0,
+              "error": null
+            },
+            "exitCode": 0,
+            "manifest": {
+              "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/manifest.json",
+              "sha256": "857bd1d974f117954067b59501ba29762c3064676ce8c32853245d3567038725",
+              "bytes": 8635
+            }
+          }
+        },
+        {
+          "label": "native-09-candidate-navigation-5c05ecef-landscape-normal",
+          "kind": "native",
+          "selector": "SkyFlowInteractionTests/testLandscapeStoryPressureAndCommittedRecovery",
+          "nominalBoundSeconds": 360,
+          "receipt": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-receipt.json",
+            "sha256": "82d1cb12cb83db221334ea409c15b82bd5777eaa15403077989e1c0e8a9c64df",
+            "bytes": 200
+          },
+          "receiptValues": {
+            "stage": "native-09-candidate-navigation-5c05ecef-landscape-normal",
+            "startedUTC": "2026-10-25T10:32:08.306923+00:00",
+            "elapsedSeconds": 151.789,
+            "limitSeconds": 360.0,
+            "exitCode": 0,
+            "error": null
+          },
+          "log": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal.log",
+            "sha256": "ac854c89a5a93c40b63a6f16d2879ffcf0358308d5f4a3fa521a0ec278b7187e",
+            "bytes": 108135
+          },
+          "status": "PASS",
+          "summary": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-summary.json",
+            "sha256": "afcf926975ca54f9cba1270997edff59a4262d50ac33c0f378eb50b92b48661c",
+            "bytes": 741
+          },
+          "counts": {
+            "totalTestCount": 1,
+            "passedTests": 1,
+            "failedTests": 0,
+            "skippedTests": 0
+          },
+          "runtimeWarnings": [],
+          "finalizedExport": {
+            "receipt": {
+              "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-export-receipt.json",
+              "sha256": "82cc7d1d1200558fb967c6ab4b38ffdca70be832722d65abd1ef660fc6dd5c06",
+              "bytes": 204
+            },
+            "receiptValues": {
+              "stage": "native-09-candidate-navigation-5c05ecef-landscape-normal-export",
+              "startedUTC": "2026-10-25T10:34:41.823189+00:00",
+              "elapsedSeconds": 0.371,
+              "limitSeconds": 90.0,
+              "exitCode": 0,
+              "error": null
+            },
+            "exitCode": 0,
+            "manifest": {
+              "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/manifest.json",
+              "sha256": "e3b0688c1a7599db4afce200d2a4c59f91b43e2d16602709d12649d9ed445209",
+              "bytes": 7693
+            }
+          }
+        }
+      ],
+      "notStartedStages": [
+        {
+          "label": "native-09-candidate-navigation-5c05ecef-observatory-orientations-phone",
+          "kind": "native",
+          "selector": "ObservatoryInteractionTests/testSupportedOrientationsPreserveNativeTargets",
+          "state": "NOT_STARTED_ADMISSION_ONLY_STOP"
+        },
+        {
+          "label": "native-09-candidate-navigation-5c05ecef-full-board-largest-tablet",
+          "kind": "native",
+          "selector": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+          "state": "NOT_STARTED_ADMISSION_ONLY_STOP"
+        },
+        {
+          "label": "native-09-candidate-navigation-5c05ecef-open-sky-last-clear-phone",
+          "kind": "native",
+          "selector": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss",
+          "state": "NOT_STARTED_ADMISSION_ONLY_STOP"
+        },
+        {
+          "label": "native-09-candidate-navigation-5c05ecef-kite-headroom-phone",
+          "kind": "native",
+          "selector": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay",
+          "state": "NOT_STARTED_ADMISSION_ONLY_STOP"
+        },
+        {
+          "label": "build-09-candidate-navigation-5c05ecef-release",
+          "kind": "release",
+          "selector": null,
+          "state": "NOT_STARTED_ADMISSION_ONLY_STOP"
+        },
+        {
+          "label": "core-09-candidate-navigation-5c05ecef-core",
+          "kind": "core",
+          "selector": null,
+          "state": "NOT_STARTED_ADMISSION_ONLY_STOP"
+        }
+      ],
+      "stop": {
+        "stopType": "RuntimeError",
+        "stopReason": "Insufficient full nominal/export allowance before native-09-candidate-navigation-5c05ecef-observatory-orientations-phone",
+        "elapsedSeconds": 511.875
+      }
+    },
+    {
+      "phase": "candidate-buildfinish",
+      "commands": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-buildfinish-5c05ecef.json",
+        "sha256": "8e627d4119b3caa9956938542c9adb7d76828d55d11012d956b6f6c860e0e456",
+        "bytes": 5304
+      },
+      "status": "mechanical-pass",
+      "sourceSnapshot": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-buildfinish-5c05ecef.json",
+        "sha256": "5282d739b6deb0c0b7dec8116cc284db604eaacd7b919a86e6c14100e09f99b2",
+        "bytes": 188253
+      },
+      "snapshotPreparedUTC": "2026-10-25T10:36:31.532478+00:00",
+      "runnerStartedUTC": "2026-10-25T10:36:37.855249+00:00",
+      "sourcePreflight": {
+        "HEAD": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "buildAndTestAffectingDifferences": [],
+        "excludedDocumentationDifferences": []
+      },
+      "originalSharedWindowEndUTC": "2026-10-25T10:41:10Z",
+      "completedStages": [
+        {
+          "label": "core-09-candidate-buildfinish-5c05ecef-core",
+          "kind": "core",
+          "selector": null,
+          "nominalBoundSeconds": 120,
+          "receipt": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/core-09-candidate-buildfinish-5c05ecef-core-receipt.json",
+            "sha256": "d24560418d11d3541c346732c4c5e1d49d8fbd8b32964d95512b75845f890728",
+            "bytes": 186
+          },
+          "receiptValues": {
+            "stage": "core-09-candidate-buildfinish-5c05ecef-core",
+            "startedUTC": "2026-10-25T10:36:39.618820+00:00",
+            "elapsedSeconds": 43.298,
+            "limitSeconds": 120.0,
+            "exitCode": 0,
+            "error": null
+          },
+          "log": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/core-09-candidate-buildfinish-5c05ecef-core.log",
+            "sha256": "36876d26df7e4dd2761b9fb68fe970d5b95161d10728530951159a66b992a9ad",
+            "bytes": 100776
+          },
+          "status": "PASS",
+          "coreResult": {
+            "passed": 352,
+            "failed": 0,
+            "skipped": 0
+          }
+        },
+        {
+          "label": "build-09-candidate-buildfinish-5c05ecef-release",
+          "kind": "release",
+          "selector": null,
+          "nominalBoundSeconds": 180,
+          "receipt": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/build-09-candidate-buildfinish-5c05ecef-release-receipt.json",
+            "sha256": "cd32f671f79807b7011d789670106b68c54e5ef869180af97f98447e4330ad4a",
+            "bytes": 190
+          },
+          "receiptValues": {
+            "stage": "build-09-candidate-buildfinish-5c05ecef-release",
+            "startedUTC": "2026-10-25T10:37:26.195145+00:00",
+            "elapsedSeconds": 22.748,
+            "limitSeconds": 180.0,
+            "exitCode": 0,
+            "error": null
+          },
+          "log": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/build-09-candidate-buildfinish-5c05ecef-release.log",
+            "sha256": "bd3e78e28614f2445d0eb2b688f2061615ed107d281b521a26c121ad92ef8dd2",
+            "bytes": 42055
+          },
+          "status": "PASS"
+        }
+      ],
+      "notStartedStages": [],
+      "stop": {
+        "elapsedSeconds": 72.245
+      }
+    }
+  ],
+  "currentCompletedTotals": {
+    "Debug": "PASS5.465s in originalnavigation phase",
+    "hosted": {
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0
+    },
+    "native": {
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "methods": [
+        "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore on phone",
+        "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery on phone",
+        "SkyFlowInteractionTests/testLandscapeStoryPressureAndCommittedRecovery on phone"
+      ]
+    },
+    "Core": {
+      "passed": 352,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 43.298,
+      "phase": "candidate-buildfinish"
+    },
+    "Release": {
+      "status": "PASS",
+      "elapsedSeconds": 22.748,
+      "phase": "candidate-buildfinish"
+    }
+  },
+  "remainingNative": {
+    "count": 4,
+    "state": "UNRUN_AT_THIS_SNAPSHOT",
+    "methods": [
+      "ObservatoryInteractionTests/testSupportedOrientationsPreserveNativeTargets on phone",
+      "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore on actualtablet",
+      "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss on phone",
+      "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay on phone"
+    ],
+    "plannedFinalTotal": "7executions/6unique only after these4originalmethod executions complete; no full-count acceptance now."
+  },
+  "admissionStop": "Originalmain runner stopped before Observatory because its unchanged10:41:10 deadline could not admit full nominal+export allowance. No test was started/truncated for that denial; no primary testfailure occurred in these5completed stages. Release/Core were unrun under original labels and later passed separately at exactsamehead/runtime.",
+  "supplementalMenuAttempt": "Coordinator reports manual menu capture aborted before any screenshot. No image, native-pass count or visual acceptance is admitted from it.",
+  "resourceQualification": "Coordinator reports a fresh grant through11:11UTC while waiting for global hostidle. It does not rewrite original10:41:10 deadlines/receipts or imply any remainingmethod was run.",
+  "limits": [
+    "Immutable partialhistory only. Does not overwrite futurestandard source-09.json/verification-09.json, currentpartiallycompletevisualaggregate or frozenearlierhistories.",
+    "No adoption, overallnative/visual/exact-export/motion/actualVoiceOver/physical/minimum-iOS claim. Independent currentphone review remains separately bounded; actualtabletreview pending.",
+    "Goal10 remainsunimplemented untilGoal9 individual verifiedmerge."
+  ]
+}

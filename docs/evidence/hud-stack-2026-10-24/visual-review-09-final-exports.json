@@ -1,0 +1,1781 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "PASS_BOUNDED_EXACT_RETAINED_EXPORTS",
+  "verdict": "PASS",
+  "captureIndex": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/captures-09.json",
+    "sha256": "bf75810dbbdafc9940ac76a01a96817bf8093a836ebc349f327da18abc87cacd",
+    "bytes": 73487
+  },
+  "source": {
+    "head": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f"
+  },
+  "method": "Mechanical aggregation of three explicitly SHA-bound independent direct whole-original/retained-JPEG reviews; this helper reads only JSON and PNG/JPEG headers, hashes file bytes and makes no new visual judgment.",
+  "reviewBindings": {
+    "01-05": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-01-05.json",
+      "sha256": "cd0d7d9e02a3cbb35c93859b48440e64a8fe28e2af56ccb561c8864d27adb8e1",
+      "bytes": 18143
+    },
+    "06-09": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-06-09.json",
+      "sha256": "46a94c175714aba2f8c6c366b8b9e93c2f0db4007bae6f5d0fc4504c101e01e4",
+      "bytes": 13402
+    },
+    "10-13": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-10-13.json",
+      "sha256": "2c10a005fbc70b660941ba2614802ca9b70854809919a2da0a0e4f427172d8c8",
+      "bytes": 13449
+    }
+  },
+  "scope": {
+    "retainedPairCount": 13,
+    "wholeOriginalReviewFlagsVerified": 13,
+    "wholeRetainedJPEGReviewFlagsVerified": 13,
+    "exactOnceIndexCoverage": true,
+    "exportFidelityPASS": 13,
+    "historicalRejectedCounterexamplesPreserved": 2,
+    "claim": "The exact thirteen retained source-bound image pairs only; no full matrix or automatic product adoption."
+  },
+  "qualificationCounts": {
+    "main": {
+      "nativeExecutions": 7,
+      "nativeUniqueMethods": 6,
+      "hosted": 18,
+      "core": 352
+    },
+    "normalMotionSupplement": {
+      "executions": 1,
+      "additionalUniqueMethods": 1,
+      "separateFromMain": true
+    },
+    "menuCaptureOnlyDuplicate": {
+      "executions": 1,
+      "additionalUniqueMethods": 0,
+      "separateFromMain": true
+    },
+    "actualNativeExecutionsIncludingSeparateSupplements": 9,
+    "actualNativeUniqueMethodsIncludingSupplements": 7,
+    "limit": "Counts supply context, not new executions or a full native/hosted coverage claim from this export aggregator."
+  },
+  "rows": [
+    {
+      "indexPositionOneBased": 1,
+      "id": "01-baseline-ax5-zero-viewport",
+      "kind": "baseline-native",
+      "sourceIdentity": {
+        "appSource": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "testSource": "a8377c2c1e244db4d6a4718ba2483d8fb7f0e67c",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Historical accepted-main failed counterexample; not candidate PASS"
+      },
+      "stateCaption": "Historical acceptedGoal8 App at baseline testsa837, actualAX5Calmphone landscape: zero-height board reader; no stars or ceiling. Baselinefailure retained.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-baseline-a8377c2c-landscape-ax5-attachments/2C4A7A37-D1C1-41C6-A17B-9DD08767DE46.png",
+        "sha256": "f3b120d7f319351963ce5b469daeadcaafa66cc77984f9624526925b39a1a009",
+        "bytes": 3190650
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/01-baseline-ax5-zero-viewport.jpg",
+        "sha256": "df6158055e4c9c23eae67d21747f0b82b5942f7c2f2919017c565c9833756225",
+        "bytes": 541393
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "rawOriginalDirectlyViewedWhole"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "retainedJPEGDirectlyViewedWhole"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS_BOUNDED_EXACT_EXPORT_FIDELITY"
+          ]
+        ]
+      },
+      "productQualification": "REJECTED_HISTORICAL_ACCEPTED_MAIN_COUNTEREXAMPLE",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-01-05.json",
+        "sha256": "cd0d7d9e02a3cbb35c93859b48440e64a8fe28e2af56ccb561c8864d27adb8e1",
+        "bytes": 18143
+      },
+      "reviewedRow": {
+        "id": "01-baseline-ax5-zero-viewport",
+        "kind": "baseline-native",
+        "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-baseline-a8377c2c-landscape-ax5-attachments/2C4A7A37-D1C1-41C6-A17B-9DD08767DE46.png",
+          "sha256": "f3b120d7f319351963ce5b469daeadcaafa66cc77984f9624526925b39a1a009",
+          "bytes": 3190650
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/01-baseline-ax5-zero-viewport.jpg",
+          "sha256": "df6158055e4c9c23eae67d21747f0b82b5942f7c2f2919017c565c9833756225",
+          "bytes": 541393
+        },
+        "rawMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 8,
+          "actualEXIF274": 8,
+          "displayPixels": [
+            2532,
+            1170
+          ],
+          "displayOrientation": "landscape",
+          "mode": "RGB",
+          "measurement": "Direct PNG IHDR/eXIf or JPEG SOF/APP1 TIFF tag274 parsing; absent EXIF normalized to1; no pixel conversion or mutation."
+        },
+        "exportMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 8,
+          "actualEXIF274": 8,
+          "displayPixels": [
+            2532,
+            1170
+          ],
+          "displayOrientation": "landscape",
+          "mode": "RGB",
+          "measurement": "Direct PNG IHDR/eXIf or JPEG SOF/APP1 TIFF tag274 parsing; absent EXIF normalized to1; no pixel conversion or mutation."
+        },
+        "rawOriginalDirectlyViewedWhole": true,
+        "retainedJPEGDirectlyViewedWhole": true,
+        "viewer": "original whole image for raw and retained JPEG; orientation applied by viewer",
+        "sourceIdentity": {
+          "appSource": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+          "testSource": "a8377c2c1e244db4d6a4718ba2483d8fb7f0e67c",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+          "status": "Historical accepted-main failed counterexample; not candidate PASS"
+        },
+        "sourceState": "Historical acceptedGoal8 App at baseline testsa837, actualAX5Calmphone landscape: zero-height board reader; no stars or ceiling. Baselinefailure retained.",
+        "baselineProductStatus": "REJECTED_HISTORICAL_COUNTEREXAMPLE; fidelityPASS is not product acceptance",
+        "finding": "The retained JPEG preserves the actual landscape orientation and whole failed baseline: complete large score/forecast/pressure consume the available reader, with no current board stars or ceiling visible. This is rejected product context; export fidelity passes and does not adopt that baseline.",
+        "conversionAssessment": "Mild lossy softening of fine painting texture is visible; no material loss of essential digits, captions, badge symbols, whole-frame relation or orientation at the inspected size. No lossless-equality claim."
+      }
+    },
+    {
+      "indexPositionOneBased": 2,
+      "id": "02-baseline-short-default-ceiling",
+      "kind": "baseline-hosted",
+      "sourceIdentity": {
+        "appSource": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "testSource": "a8377c2c1e244db4d6a4718ba2483d8fb7f0e67c",
+        "runtime": "dev.2c4e822ca7",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Historical accepted-main failed counterexample; not candidate PASS"
+      },
+      "stateCaption": "Historical667x375 default local hosted proposal with inherited native safeareas; ceilingreveal exposes no complete native occupied cells. Syntheticproposal, not actualdeviceorientation.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/BC203CF3-839A-473D-B19D-D4EAAAEFBABC.png",
+        "sha256": "3ab31696e5fe242fb814fdad26ea7123a8b14f4341e7c0fd47dec6348e9e3ccd",
+        "bytes": 8315247
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/02-baseline-short-default-ceiling.jpg",
+        "sha256": "f118b7427a3c06af1477773a3110bf641b63e7dd99fa6ae06ac0fe0a3520adb9",
+        "bytes": 497132
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          2001,
+          1125
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          2001,
+          1125
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          2001,
+          1125
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          2001,
+          1125
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "rawOriginalDirectlyViewedWhole"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "retainedJPEGDirectlyViewedWhole"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS_BOUNDED_EXACT_EXPORT_FIDELITY"
+          ]
+        ]
+      },
+      "productQualification": "REJECTED_HISTORICAL_ACCEPTED_MAIN_COUNTEREXAMPLE",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-01-05.json",
+        "sha256": "cd0d7d9e02a3cbb35c93859b48440e64a8fe28e2af56ccb561c8864d27adb8e1",
+        "bytes": 18143
+      },
+      "reviewedRow": {
+        "id": "02-baseline-short-default-ceiling",
+        "kind": "baseline-hosted",
+        "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-baseline-a8377c2c-attachments/BC203CF3-839A-473D-B19D-D4EAAAEFBABC.png",
+          "sha256": "3ab31696e5fe242fb814fdad26ea7123a8b14f4341e7c0fd47dec6348e9e3ccd",
+          "bytes": 8315247
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/02-baseline-short-default-ceiling.jpg",
+          "sha256": "f118b7427a3c06af1477773a3110bf641b63e7dd99fa6ae06ac0fe0a3520adb9",
+          "bytes": 497132
+        },
+        "rawMetadata": {
+          "pixels": [
+            2001,
+            1125
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2001,
+            1125
+          ],
+          "displayOrientation": "landscape",
+          "mode": "RGBA",
+          "measurement": "Direct PNG IHDR/eXIf or JPEG SOF/APP1 TIFF tag274 parsing; absent EXIF normalized to1; no pixel conversion or mutation."
+        },
+        "exportMetadata": {
+          "pixels": [
+            2001,
+            1125
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2001,
+            1125
+          ],
+          "displayOrientation": "landscape",
+          "mode": "RGB",
+          "measurement": "Direct PNG IHDR/eXIf or JPEG SOF/APP1 TIFF tag274 parsing; absent EXIF normalized to1; no pixel conversion or mutation."
+        },
+        "rawOriginalDirectlyViewedWhole": true,
+        "retainedJPEGDirectlyViewedWhole": true,
+        "viewer": "original whole image for raw and retained JPEG; orientation applied by viewer",
+        "sourceIdentity": {
+          "appSource": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+          "testSource": "a8377c2c1e244db4d6a4718ba2483d8fb7f0e67c",
+          "runtime": "dev.2c4e822ca7",
+          "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+          "status": "Historical accepted-main failed counterexample; not candidate PASS"
+        },
+        "sourceState": "Historical667x375 default local hosted proposal with inherited native safeareas; ceilingreveal exposes no complete native occupied cells. Syntheticproposal, not actualdeviceorientation.",
+        "baselineProductStatus": "REJECTED_HISTORICAL_COUNTEREXAMPLE; fidelityPASS is not product acceptance",
+        "finding": "Both wholes preserve the default667x375 hosted baseline: readable header and revealed ceiling consume nearly all height, with one low painted comet body remaining visible. The indexed failure is strict complete-native-cell geometry, not a claim that no star painting exists. JPEG retains that failure distinction and all essential ink.",
+        "conversionAssessment": "Mild lossy softening of fine painting texture is visible; no material loss of essential digits, captions, badge symbols, whole-frame relation or orientation at the inspected size. No lossless-equality claim."
+      }
+    },
+    {
+      "indexPositionOneBased": 3,
+      "id": "03-current-short-default-ceiling",
+      "kind": "candidate-hosted",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "stateCaption": "Current667x375 default local hosted proposal afterceilingreveal; adjacent officialinstruments andplay retain complete native stars. Hostedproposal only.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-navigation-5c05ecef-accepted-regressions-attachments/1EEFED52-3C76-4223-B267-6D1041332A56.png",
+        "sha256": "6755f2f4210e77f2f919259959b86b01a002dd7bbed6369dca32b29cecffc33f",
+        "bytes": 8137653
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/03-current-short-default-ceiling.jpg",
+        "sha256": "63778b02c8de065ac9a48e64ba2231089d219b5d1aa5462ea1eb1ec42b83eed0",
+        "bytes": 489260
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          2001,
+          1125
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          2001,
+          1125
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          2001,
+          1125
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          2001,
+          1125
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "rawOriginalDirectlyViewedWhole"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "retainedJPEGDirectlyViewedWhole"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS_BOUNDED_EXACT_EXPORT_FIDELITY"
+          ]
+        ]
+      },
+      "productQualification": "Named current-source slice; separate native/hosted visual reviews own product acceptance",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-01-05.json",
+        "sha256": "cd0d7d9e02a3cbb35c93859b48440e64a8fe28e2af56ccb561c8864d27adb8e1",
+        "bytes": 18143
+      },
+      "reviewedRow": {
+        "id": "03-current-short-default-ceiling",
+        "kind": "candidate-hosted",
+        "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-navigation-5c05ecef-accepted-regressions-attachments/1EEFED52-3C76-4223-B267-6D1041332A56.png",
+          "sha256": "6755f2f4210e77f2f919259959b86b01a002dd7bbed6369dca32b29cecffc33f",
+          "bytes": 8137653
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/03-current-short-default-ceiling.jpg",
+          "sha256": "63778b02c8de065ac9a48e64ba2231089d219b5d1aa5462ea1eb1ec42b83eed0",
+          "bytes": 489260
+        },
+        "rawMetadata": {
+          "pixels": [
+            2001,
+            1125
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2001,
+            1125
+          ],
+          "displayOrientation": "landscape",
+          "mode": "RGBA",
+          "measurement": "Direct PNG IHDR/eXIf or JPEG SOF/APP1 TIFF tag274 parsing; absent EXIF normalized to1; no pixel conversion or mutation."
+        },
+        "exportMetadata": {
+          "pixels": [
+            2001,
+            1125
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            2001,
+            1125
+          ],
+          "displayOrientation": "landscape",
+          "mode": "RGB",
+          "measurement": "Direct PNG IHDR/eXIf or JPEG SOF/APP1 TIFF tag274 parsing; absent EXIF normalized to1; no pixel conversion or mutation."
+        },
+        "rawOriginalDirectlyViewedWhole": true,
+        "retainedJPEGDirectlyViewedWhole": true,
+        "viewer": "original whole image for raw and retained JPEG; orientation applied by viewer",
+        "sourceIdentity": {
+          "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "runtime": "dev.06a3229203",
+          "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+          "status": "Goal9 candidate; exact-export visual judgment pending"
+        },
+        "sourceState": "Current667x375 default local hosted proposal afterceilingreveal; adjacent officialinstruments andplay retain complete native stars. Hostedproposal only.",
+        "baselineProductStatus": "Current candidate state; export review does not independently adopt Goal9",
+        "finding": "Both wholes preserve the current667x375 hosted sibling: complete score, five ordered forecast digits, full/near facts on the left; distinct full ceiling and at least one full row of recognizable current stars on the right. Bottommost stars are partly beyond the viewport in both originals. JPEG does not change the composition; this remains a local hosted proposal, not actual device orientation.",
+        "conversionAssessment": "Mild lossy softening of fine painting texture is visible; no material loss of essential digits, captions, badge symbols, whole-frame relation or orientation at the inspected size. No lossless-equality claim."
+      }
+    },
+    {
+      "indexPositionOneBased": 4,
+      "id": "04-current-phone-ax5-portrait-pressure",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "stateCaption": "ActualAX5Calmphone portrait pressure preparation; complete score/full+near currentfacts and native ceiling. This is the tall sibling, not landscapeproof.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/79678371-FE66-4D04-9C1B-A0C406DF2334.png",
+        "sha256": "da1b6be798d6b714e1e05a871f9a0a9550dd2e4e78397ba848a527c40210ac4f",
+        "bytes": 3101527
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/04-current-phone-ax5-portrait-pressure.jpg",
+        "sha256": "284073ae3057de3ded7feab30eb23dfa437501ed41bb5b39ae0f9fb7e5e54ca7",
+        "bytes": 565923
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "rawOriginalDirectlyViewedWhole"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "retainedJPEGDirectlyViewedWhole"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS_BOUNDED_EXACT_EXPORT_FIDELITY"
+          ]
+        ]
+      },
+      "productQualification": "Named current-source slice; separate native/hosted visual reviews own product acceptance",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-01-05.json",
+        "sha256": "cd0d7d9e02a3cbb35c93859b48440e64a8fe28e2af56ccb561c8864d27adb8e1",
+        "bytes": 18143
+      },
+      "reviewedRow": {
+        "id": "04-current-phone-ax5-portrait-pressure",
+        "kind": "candidate-native",
+        "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/79678371-FE66-4D04-9C1B-A0C406DF2334.png",
+          "sha256": "da1b6be798d6b714e1e05a871f9a0a9550dd2e4e78397ba848a527c40210ac4f",
+          "bytes": 3101527
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/04-current-phone-ax5-portrait-pressure.jpg",
+          "sha256": "284073ae3057de3ded7feab30eb23dfa437501ed41bb5b39ae0f9fb7e5e54ca7",
+          "bytes": 565923
+        },
+        "rawMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "displayOrientation": "portrait",
+          "mode": "RGB",
+          "measurement": "Direct PNG IHDR/eXIf or JPEG SOF/APP1 TIFF tag274 parsing; absent EXIF normalized to1; no pixel conversion or mutation."
+        },
+        "exportMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 1,
+          "actualEXIF274": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ],
+          "displayOrientation": "portrait",
+          "mode": "RGB",
+          "measurement": "Direct PNG IHDR/eXIf or JPEG SOF/APP1 TIFF tag274 parsing; absent EXIF normalized to1; no pixel conversion or mutation."
+        },
+        "rawOriginalDirectlyViewedWhole": true,
+        "retainedJPEGDirectlyViewedWhole": true,
+        "viewer": "original whole image for raw and retained JPEG; orientation applied by viewer",
+        "sourceIdentity": {
+          "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "runtime": "dev.06a3229203",
+          "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+          "status": "Goal9 candidate; exact-export visual judgment pending"
+        },
+        "sourceState": "ActualAX5Calmphone portrait pressure preparation; complete score/full+near currentfacts and native ceiling. This is the tall sibling, not landscapeproof.",
+        "baselineProductStatus": "Current candidate state; export review does not independently adopt Goal9",
+        "finding": "Both portrait wholes retain the complete native0/150,000 at maximum text, all five forecast digits, full/near sentences and full ceiling badges with actual stars below. JPEG keeps digit edges and glyph recognition adequate; tall sibling only, not landscape or whole-board proof.",
+        "conversionAssessment": "Mild lossy softening of fine painting texture is visible; no material loss of essential digits, captions, badge symbols, whole-frame relation or orientation at the inspected size. No lossless-equality claim."
+      }
+    },
+    {
+      "indexPositionOneBased": 5,
+      "id": "05-current-phone-ax5-landscape-pressure",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "stateCaption": "ActualAX5Calmphone landscape full pressure: pinned complete score/Pause beside stars; independent details-reader position witnesses a subset of currentfacts, with other positions reviewed separately.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/ECFA60BC-7E91-4F7B-AB88-E02C64FD1114.png",
+        "sha256": "0f1bbb6a14206e41f6c233e9a7137683d9d01368b40dd181026f39095a81c103",
+        "bytes": 3223937
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/05-current-phone-ax5-landscape-pressure.jpg",
+        "sha256": "054952cd17f163308d2f366d078788a7c7f6d1a9fb7a507fd92409268b5f1413",
+        "bytes": 541914
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "rawOriginalDirectlyViewedWhole"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "retainedJPEGDirectlyViewedWhole"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS_BOUNDED_EXACT_EXPORT_FIDELITY"
+          ]
+        ]
+      },
+      "productQualification": "Named current-source slice; separate native/hosted visual reviews own product acceptance",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-01-05.json",
+        "sha256": "cd0d7d9e02a3cbb35c93859b48440e64a8fe28e2af56ccb561c8864d27adb8e1",
+        "bytes": 18143
+      },
+      "reviewedRow": {
+        "id": "05-current-phone-ax5-landscape-pressure",
+        "kind": "candidate-native",
+        "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/ECFA60BC-7E91-4F7B-AB88-E02C64FD1114.png",
+          "sha256": "0f1bbb6a14206e41f6c233e9a7137683d9d01368b40dd181026f39095a81c103",
+          "bytes": 3223937
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/05-current-phone-ax5-landscape-pressure.jpg",
+          "sha256": "054952cd17f163308d2f366d078788a7c7f6d1a9fb7a507fd92409268b5f1413",
+          "bytes": 541914
+        },
+        "rawMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 8,
+          "actualEXIF274": 8,
+          "displayPixels": [
+            2532,
+            1170
+          ],
+          "displayOrientation": "landscape",
+          "mode": "RGB",
+          "measurement": "Direct PNG IHDR/eXIf or JPEG SOF/APP1 TIFF tag274 parsing; absent EXIF normalized to1; no pixel conversion or mutation."
+        },
+        "exportMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 8,
+          "actualEXIF274": 8,
+          "displayPixels": [
+            2532,
+            1170
+          ],
+          "displayOrientation": "landscape",
+          "mode": "RGB",
+          "measurement": "Direct PNG IHDR/eXIf or JPEG SOF/APP1 TIFF tag274 parsing; absent EXIF normalized to1; no pixel conversion or mutation."
+        },
+        "rawOriginalDirectlyViewedWhole": true,
+        "retainedJPEGDirectlyViewedWhole": true,
+        "viewer": "original whole image for raw and retained JPEG; orientation applied by viewer",
+        "sourceIdentity": {
+          "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "runtime": "dev.06a3229203",
+          "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+          "status": "Goal9 candidate; exact-export visual judgment pending"
+        },
+        "sourceState": "ActualAX5Calmphone landscape full pressure: pinned complete score/Pause beside stars; independent details-reader position witnesses a subset of currentfacts, with other positions reviewed separately.",
+        "baselineProductStatus": "Current candidate state; export review does not independently adopt Goal9",
+        "finding": "Both actual landscape wholes retain complete pinned0/150,000/Pause, bounded scrolling facts, the complete ceiling strip and visible current star rows. At this details-reader position the Next columns title and first forecasts are visible while lower facts extend below its viewport. JPEG preserves that scoped reading state; no all-facts-simultaneous claim.",
+        "conversionAssessment": "Mild lossy softening of fine painting texture is visible; no material loss of essential digits, captions, badge symbols, whole-frame relation or orientation at the inspected size. No lossless-equality claim."
+      }
+    },
+    {
+      "indexPositionOneBased": 6,
+      "id": "06-current-phone-ax5-guide-end",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "stateCaption": "ActualAX5Calmphone short-landscape guide at nativeinner100percent end, fullfont final-lineband; originalcomplete spokenlabel and separate45pt contextualactions. No Textactivation or actualVoiceOver claim.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/44750EFD-0A14-4642-8BF5-4F8F4DB30E98.png",
+        "sha256": "b5ce02009a46024d1851c773daebae456558130cc07799285a1b62293ab157ce",
+        "bytes": 3098902
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/06-current-phone-ax5-guide-end.jpg",
+        "sha256": "6ed4ebbf50cdf7f3eeabb47526f23333768f9406219f46a7a648cb2eea54184b",
+        "bytes": 452828
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "rawOriginalDirectlyViewedWhole"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "retainedJPEGDirectlyViewedWhole"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS"
+          ]
+        ]
+      },
+      "productQualification": "Named current-source slice; separate native/hosted visual reviews own product acceptance",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-06-09.json",
+        "sha256": "46a94c175714aba2f8c6c366b8b9e93c2f0db4007bae6f5d0fc4504c101e01e4",
+        "bytes": 13402
+      },
+      "reviewedRow": {
+        "indexPositionOneBased": 6,
+        "id": "06-current-phone-ax5-guide-end",
+        "kind": "candidate-native",
+        "stateCaption": "ActualAX5Calmphone short-landscape guide at nativeinner100percent end, fullfont final-lineband; originalcomplete spokenlabel and separate45pt contextualactions. No Textactivation or actualVoiceOver claim.",
+        "sourceIdentity": {
+          "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "runtime": "dev.06a3229203",
+          "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+          "status": "Goal9 candidate; exact-export visual judgment pending"
+        },
+        "device": {
+          "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "name": "Starfall HUD Stack dcf3 Phone"
+        },
+        "testIdentifier": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery()",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/44750EFD-0A14-4642-8BF5-4F8F4DB30E98.png",
+          "sha256": "b5ce02009a46024d1851c773daebae456558130cc07799285a1b62293ab157ce",
+          "bytes": 3098902
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/06-current-phone-ax5-guide-end.jpg",
+          "sha256": "6ed4ebbf50cdf7f3eeabb47526f23333768f9406219f46a7a648cb2eea54184b",
+          "bytes": 452828
+        },
+        "rawMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 8,
+          "displayedPixels": [
+            2532,
+            1170
+          ]
+        },
+        "exportMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 8,
+          "displayedPixels": [
+            2532,
+            1170
+          ]
+        },
+        "rawOriginalDirectlyViewedWhole": true,
+        "retainedJPEGDirectlyViewedWhole": true,
+        "verdict": "PASS",
+        "findings": [],
+        "conversionFidelity": "Upright landscapeorientation/wholeframe/contentmatch; no materialJPEG80 loss to essential numeric,label,guide,figure orjewel readability. JPEG is not used for contrast-ratio/RGB claims.",
+        "readability": "Complete final sentence end2hasroomagain and Close are visible; play/next contextualglyphs remain distinct. Score5000/150000 stays complete in the leftpinned instrument.",
+        "captionQualification": "The longText is scrolled to its final line; the preceding visible line is clipped at the reader top and the leftforecast continues belowfold. This is final-line/readability evidence, not simultaneouswholeguide/allforecast facts, Textactivation or actualVoiceOver."
+      }
+    },
+    {
+      "indexPositionOneBased": 7,
+      "id": "07-current-phone-normal-earned-recovery",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "stateCaption": "Actualnormalphone landscape afterlegitimate Storyexchange:5,000/150,000 exactscore andLine+5,000 receipt inrightreturnregion; fiveorderedforecastfacts andcurrentone-space list inleftreader. Still only, not continuousmotion.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/0A0C1DB8-E36D-4BBF-B196-BEF1F799BB6D.png",
+        "sha256": "f50b57c5360de0f4527e2a860f62fca53bd803b2b538d2057027b1f068997d23",
+        "bytes": 3921110
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/07-current-phone-normal-earned-recovery.jpg",
+        "sha256": "0aaf15f1120259ae79c7a786cdda501411b69a6b0eb0ea619c91502eb845eff8",
+        "bytes": 652109
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "rawOriginalDirectlyViewedWhole"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "retainedJPEGDirectlyViewedWhole"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS"
+          ]
+        ]
+      },
+      "productQualification": "Named current-source slice; separate native/hosted visual reviews own product acceptance",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-06-09.json",
+        "sha256": "46a94c175714aba2f8c6c366b8b9e93c2f0db4007bae6f5d0fc4504c101e01e4",
+        "bytes": 13402
+      },
+      "reviewedRow": {
+        "indexPositionOneBased": 7,
+        "id": "07-current-phone-normal-earned-recovery",
+        "kind": "candidate-native",
+        "stateCaption": "Actualnormalphone landscape afterlegitimate Storyexchange:5,000/150,000 exactscore andLine+5,000 receipt inrightreturnregion; fiveorderedforecastfacts andcurrentone-space list inleftreader. Still only, not continuousmotion.",
+        "sourceIdentity": {
+          "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "runtime": "dev.06a3229203",
+          "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+          "status": "Goal9 candidate; exact-export visual judgment pending"
+        },
+        "device": {
+          "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "name": "Starfall HUD Stack dcf3 Phone"
+        },
+        "testIdentifier": "SkyFlowInteractionTests/testLandscapeStoryPressureAndCommittedRecovery()",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/0A0C1DB8-E36D-4BBF-B196-BEF1F799BB6D.png",
+          "sha256": "f50b57c5360de0f4527e2a860f62fca53bd803b2b538d2057027b1f068997d23",
+          "bytes": 3921110
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/07-current-phone-normal-earned-recovery.jpg",
+          "sha256": "0aaf15f1120259ae79c7a786cdda501411b69a6b0eb0ea619c91502eb845eff8",
+          "bytes": 652109
+        },
+        "rawMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 8,
+          "displayedPixels": [
+            2532,
+            1170
+          ]
+        },
+        "exportMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 8,
+          "displayedPixels": [
+            2532,
+            1170
+          ]
+        },
+        "rawOriginalDirectlyViewedWhole": true,
+        "retainedJPEGDirectlyViewedWhole": true,
+        "verdict": "PASS",
+        "findings": [],
+        "conversionFidelity": "Upright landscapeorientation/wholeframe/contentmatch; no materialJPEG80 loss to essential numeric,label,guide,figure orjewel readability. JPEG is not used for contrast-ratio/RGB claims.",
+        "readability": "Complete5000/150000 score, fiveforecast destinations7/6/1/2/4, one-space list1/3/4/5/6, Line+5000 and4000base+1000size are readable; source figure/receipt stay in the rightreturn region above visible stars.",
+        "captionQualification": "Normal earned Storyexchange, stillonly. No continuousmotion, preciseage or completeceiling-at-thisscroll-position claim."
+      }
+    },
+    {
+      "indexPositionOneBased": 8,
+      "id": "08-current-phone-full-board-landscape",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "stateCaption": "ActualAX5CalmPHONE FullBoard landscape aftersecondrealexchange:34,000/150,000 and49actualstars. Legacyattachmentname says tablet; actualdeviceisphone. FullBoard correctly has no showerforecast.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/2FDBBCAB-FEDC-4036-AA56-98ACE00D8CA6.png",
+        "sha256": "cc93a0ce4a4d55f1b5802be05b37de5438f0911a269a1c829757cb811d42e638",
+        "bytes": 3631445
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/08-current-phone-full-board-landscape.jpg",
+        "sha256": "e6140ad2460d806ff17f17996f3a1a5022c4e3b09b5a03bef99d8ebd19cf8ecd",
+        "bytes": 630612
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "rawOriginalDirectlyViewedWhole"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "retainedJPEGDirectlyViewedWhole"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS"
+          ]
+        ]
+      },
+      "productQualification": "Named current-source slice; separate native/hosted visual reviews own product acceptance",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-06-09.json",
+        "sha256": "46a94c175714aba2f8c6c366b8b9e93c2f0db4007bae6f5d0fc4504c101e01e4",
+        "bytes": 13402
+      },
+      "reviewedRow": {
+        "indexPositionOneBased": 8,
+        "id": "08-current-phone-full-board-landscape",
+        "kind": "candidate-native",
+        "stateCaption": "ActualAX5CalmPHONE FullBoard landscape aftersecondrealexchange:34,000/150,000 and49actualstars. Legacyattachmentname says tablet; actualdeviceisphone. FullBoard correctly has no showerforecast.",
+        "sourceIdentity": {
+          "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "runtime": "dev.06a3229203",
+          "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+          "status": "Goal9 candidate; exact-export visual judgment pending"
+        },
+        "device": {
+          "id": "89BC6263-797D-4573-838E-E238A90D0D79",
+          "name": "Starfall HUD Stack dcf3 Phone"
+        },
+        "testIdentifier": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore()",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/2FDBBCAB-FEDC-4036-AA56-98ACE00D8CA6.png",
+          "sha256": "cc93a0ce4a4d55f1b5802be05b37de5438f0911a269a1c829757cb811d42e638",
+          "bytes": 3631445
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/08-current-phone-full-board-landscape.jpg",
+          "sha256": "e6140ad2460d806ff17f17996f3a1a5022c4e3b09b5a03bef99d8ebd19cf8ecd",
+          "bytes": 630612
+        },
+        "rawMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 8,
+          "displayedPixels": [
+            2532,
+            1170
+          ]
+        },
+        "exportMetadata": {
+          "pixels": [
+            1170,
+            2532
+          ],
+          "orientation": 8,
+          "displayedPixels": [
+            2532,
+            1170
+          ]
+        },
+        "rawOriginalDirectlyViewedWhole": true,
+        "retainedJPEGDirectlyViewedWhole": true,
+        "verdict": "PASS",
+        "findings": [],
+        "conversionFidelity": "Upright landscapeorientation/wholeframe/contentmatch; no materialJPEG80 loss to essential numeric,label,guide,figure orjewel readability. JPEG is not used for contrast-ratio/RGB claims.",
+        "readability": "Complete34000/150000 score and FullBoard clearsrefillandcascade label fit atAX5. The right playfield has large complete jewel rows and retained figure slots; no showerforecast is depicted.",
+        "captionQualification": "ActualPHONE89BC; legacyrawattachment says tablet.49is committednativeboard count, not a claimall49stars are visible simultaneously in this shortlandscapeviewport; lowerrows requireboardscroll."
+      }
+    },
+    {
+      "indexPositionOneBased": 9,
+      "id": "09-current-tablet-full-board-landscape",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "stateCaption": "ActualAX5CalmTABLET FullBoard landscape aftersecondrealexchange:34,000/150,000 and49actualstars. No showerforecast. LaterSettings/background/coldrestore are separate methodproof/stills.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/0E57DCDF-7945-4A58-BC5C-CD7DC954A2BB.png",
+        "sha256": "05e8d7ae185bf68517d0db9837caf7fb49524b89964dd317b860d6e79972d610",
+        "bytes": 7468879
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/09-current-tablet-full-board-landscape.jpg",
+        "sha256": "14ae75d495e2778d91a1aeb519dd44e8c1e44ae20f8ebb8b12c925e2f00dc3f5",
+        "bytes": 1216287
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2752,
+          2064
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          2064,
+          2752
+        ],
+        "actualEXIF274": 8,
+        "normalizedDisplayOrientation": 8,
+        "displayPixels": [
+          2752,
+          2064
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "rawOriginalDirectlyViewedWhole"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "retainedJPEGDirectlyViewedWhole"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS"
+          ]
+        ]
+      },
+      "productQualification": "Named current-source slice; separate native/hosted visual reviews own product acceptance",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-06-09.json",
+        "sha256": "46a94c175714aba2f8c6c366b8b9e93c2f0db4007bae6f5d0fc4504c101e01e4",
+        "bytes": 13402
+      },
+      "reviewedRow": {
+        "indexPositionOneBased": 9,
+        "id": "09-current-tablet-full-board-landscape",
+        "kind": "candidate-native",
+        "stateCaption": "ActualAX5CalmTABLET FullBoard landscape aftersecondrealexchange:34,000/150,000 and49actualstars. No showerforecast. LaterSettings/background/coldrestore are separate methodproof/stills.",
+        "sourceIdentity": {
+          "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+          "runtime": "dev.06a3229203",
+          "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+          "status": "Goal9 candidate; exact-export visual judgment pending"
+        },
+        "device": {
+          "id": "3C3726C1-8880-48AE-AC2D-4C9376250DF7",
+          "name": "Starfall HUD Stack dcf3 Tablet"
+        },
+        "testIdentifier": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore()",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/0E57DCDF-7945-4A58-BC5C-CD7DC954A2BB.png",
+          "sha256": "05e8d7ae185bf68517d0db9837caf7fb49524b89964dd317b860d6e79972d610",
+          "bytes": 7468879
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/09-current-tablet-full-board-landscape.jpg",
+          "sha256": "14ae75d495e2778d91a1aeb519dd44e8c1e44ae20f8ebb8b12c925e2f00dc3f5",
+          "bytes": 1216287
+        },
+        "rawMetadata": {
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 8,
+          "displayedPixels": [
+            2752,
+            2064
+          ]
+        },
+        "exportMetadata": {
+          "pixels": [
+            2064,
+            2752
+          ],
+          "orientation": 8,
+          "displayedPixels": [
+            2752,
+            2064
+          ]
+        },
+        "rawOriginalDirectlyViewedWhole": true,
+        "retainedJPEGDirectlyViewedWhole": true,
+        "verdict": "PASS",
+        "findings": [],
+        "conversionFidelity": "Upright landscapeorientation/wholeframe/contentmatch; no materialJPEG80 loss to essential numeric,label,guide,figure orjewel readability. JPEG is not used for contrast-ratio/RGB claims.",
+        "readability": "ActualTABLET3C37 retains complete34000/150000 score, FullBoard description, two returnfigures, completeceiling and seven-by-seven jewel field over continuous painting.",
+        "captionQualification": "Bottom+19000 belongs to the AX below-board receipt apron and extends belowfold in this still; it is not completeawardglyph proof. LaterSettings/background/coldrestore remain separate method/still evidence."
+      }
+    },
+    {
+      "indexPositionOneBased": 10,
+      "id": "10-current-phone-corner-after-input",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "stateCaption": "ActualCalmNO/default-textphone landscapeRight afterrealprojected cornercontact; exact committed result verifiedby nativecase. Wholeframe orientation frommetadata, not filename alone.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/1A0FFC74-A256-4FEF-B220-495E64227935.png",
+        "sha256": "ca9b21d0c3517103a1cb44ddbe3ba036101e7ec478b8cdfccd2331f687cc7971",
+        "bytes": 4300957
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/10-current-phone-corner-after-input.jpg",
+        "sha256": "79503ff3dd41387ddafc8c272220e49b5576c0e3c72f56d53f561bd9703cd6e9",
+        "bytes": 751950
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 6,
+        "normalizedDisplayOrientation": 6,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 6,
+        "normalizedDisplayOrientation": 6,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "directWholeOriginalView"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "directWholeRetainedJPEGView"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS_BOUNDED_EXACT_EXPORT_FIDELITY"
+          ]
+        ]
+      },
+      "productQualification": "Named current-source slice; separate native/hosted visual reviews own product acceptance",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-10-13.json",
+        "sha256": "2c10a005fbc70b660941ba2614802ca9b70854809919a2da0a0e4f427172d8c8",
+        "bytes": 13449
+      },
+      "reviewedRow": {
+        "indexPositionOneBased": 10,
+        "id": "10-current-phone-corner-after-input",
+        "kind": "candidate-native",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/1A0FFC74-A256-4FEF-B220-495E64227935.png",
+          "sha256": "ca9b21d0c3517103a1cb44ddbe3ba036101e7ec478b8cdfccd2331f687cc7971",
+          "bytes": 4300957
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/10-current-phone-corner-after-input.jpg",
+          "sha256": "79503ff3dd41387ddafc8c272220e49b5576c0e3c72f56d53f561bd9703cd6e9",
+          "bytes": 751950
+        },
+        "rawMetadata": {
+          "format": "PNG",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 6,
+          "normalizedDisplayOrientation": 6,
+          "displayPixels": [
+            2532,
+            1170
+          ]
+        },
+        "exportMetadata": {
+          "format": "JPEG",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 6,
+          "normalizedDisplayOrientation": 6,
+          "displayPixels": [
+            2532,
+            1170
+          ]
+        },
+        "metadataMatchesIndex": true,
+        "directWholeOriginalView": true,
+        "directWholeRetainedJPEGView": true,
+        "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+        "finding": "The complete score4, Pause glyph, Next columns4/5/6 and Help remain readable at the same positions. Native-sized current stars remain clear on the right over continuous scenery. The top badges and bottom rows are only partial in this actual scrolling-board state, identically in both files. The faint +4/component receipt is also faithfully retained; no opacity or continuous-motion conclusion follows from this still.",
+        "captionQualification": "Actual default-text normal-effects phone landscapeRight after projected corner contact; original native method supplies input/outcome proof. No claim that every ceiling badge or49cells is simultaneously visible, or that this historical points context is currentStory progression.",
+        "indexedCaption": "ActualCalmNO/default-textphone landscapeRight afterrealprojected cornercontact; exact committed result verifiedby nativecase. Wholeframe orientation frommetadata, not filename alone.",
+        "conversion": "Full original stored dimensions and orientation preserved. JPEG80 introduces slight smoothing in fine scenic texture/glow; no consequential visible text, glyph, target or layout relation loss found."
+      }
+    },
+    {
+      "indexPositionOneBased": 11,
+      "id": "11-current-open-sky-empty-reader-return",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "stateCaption": "Actualnormalphone historicalhorizontalFive fixture after the exact five-star trace and Last clear return:5 raw points, genuinely empty live board and continuous painting. This is not currentStoryrepair progression.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/415CAE4C-F3F6-47F2-B001-A25C730C8116.png",
+        "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+        "bytes": 3260806
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/11-current-open-sky-empty-reader-return.jpg",
+        "sha256": "08c20a0e11840ee21914ac5adb95d0901a939dc8800cc9ed1bcd7bdce16e71de",
+        "bytes": 444927
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "directWholeOriginalView"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "directWholeRetainedJPEGView"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS_BOUNDED_EXACT_EXPORT_FIDELITY"
+          ]
+        ]
+      },
+      "productQualification": "Named current-source slice; separate native/hosted visual reviews own product acceptance",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-10-13.json",
+        "sha256": "2c10a005fbc70b660941ba2614802ca9b70854809919a2da0a0e4f427172d8c8",
+        "bytes": 13449
+      },
+      "reviewedRow": {
+        "indexPositionOneBased": 11,
+        "id": "11-current-open-sky-empty-reader-return",
+        "kind": "candidate-native",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/415CAE4C-F3F6-47F2-B001-A25C730C8116.png",
+          "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+          "bytes": 3260806
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/11-current-open-sky-empty-reader-return.jpg",
+          "sha256": "08c20a0e11840ee21914ac5adb95d0901a939dc8800cc9ed1bcd7bdce16e71de",
+          "bytes": 444927
+        },
+        "rawMetadata": {
+          "format": "PNG",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 1,
+          "normalizedDisplayOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ]
+        },
+        "exportMetadata": {
+          "format": "JPEG",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 1,
+          "normalizedDisplayOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ]
+        },
+        "metadataMatchesIndex": true,
+        "directWholeOriginalView": true,
+        "directWholeRetainedJPEGView": true,
+        "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+        "finding": "Both files show exact5 points, complete forecast4/5/6, clear Pause and a genuinely empty live arena backed by continuous painting. No gray empty-sky rectangle is visible. The readable Spark message remains identical; the lower Close label extends beyond this current viewport in both files, so complete guide-action visibility is not established by this still.",
+        "captionQualification": "HistoricalhorizontalFive five-star trace/LastClear return; no currentStoryrepair progression or whole-reader-page claim. Empty arena is intended committed content, not missing stars inferred from a screenshot alone.",
+        "indexedCaption": "Actualnormalphone historicalhorizontalFive fixture after the exact five-star trace and Last clear return:5 raw points, genuinely empty live board and continuous painting. This is not currentStoryrepair progression.",
+        "conversion": "Full original stored dimensions and orientation preserved. JPEG80 introduces slight smoothing in fine scenic texture/glow; no consequential visible text, glyph, target or layout relation loss found."
+      }
+    },
+    {
+      "indexPositionOneBased": 12,
+      "id": "12-current-kite-exact-result",
+      "kind": "candidate-native",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "acceptedMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+        "status": "Goal9 candidate; exact-export visual judgment pending"
+      },
+      "stateCaption": "Actualnormalphone currentrevision4 KiteHarbor result18,000 of17,000 after the real recovery/winning route. The6,000 finalclear is distinct from round total; no wholelower-accounting-page claim. The legacydebug route grants access, not earned priorcampaign progression.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/81E99817-4B0E-45D6-96CB-856610365B3A.png",
+        "sha256": "958b33981ae7e5f3955bff1a006020e6c99c3533e60aad7048f45e873de3d992",
+        "bytes": 2984141
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/12-current-kite-exact-result.jpg",
+        "sha256": "9846c19a213bddaa3bc7ce8d261fac9bc1af3407a0eed95931d84c98f756af7f",
+        "bytes": 526287
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": 1,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "directWholeOriginalView"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "directWholeRetainedJPEGView"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS_BOUNDED_EXACT_EXPORT_FIDELITY"
+          ]
+        ]
+      },
+      "productQualification": "Named current-source slice; separate native/hosted visual reviews own product acceptance",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-10-13.json",
+        "sha256": "2c10a005fbc70b660941ba2614802ca9b70854809919a2da0a0e4f427172d8c8",
+        "bytes": 13449
+      },
+      "reviewedRow": {
+        "indexPositionOneBased": 12,
+        "id": "12-current-kite-exact-result",
+        "kind": "candidate-native",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/81E99817-4B0E-45D6-96CB-856610365B3A.png",
+          "sha256": "958b33981ae7e5f3955bff1a006020e6c99c3533e60aad7048f45e873de3d992",
+          "bytes": 2984141
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/12-current-kite-exact-result.jpg",
+          "sha256": "9846c19a213bddaa3bc7ce8d261fac9bc1af3407a0eed95931d84c98f756af7f",
+          "bytes": 526287
+        },
+        "rawMetadata": {
+          "format": "PNG",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 1,
+          "normalizedDisplayOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ]
+        },
+        "exportMetadata": {
+          "format": "JPEG",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": 1,
+          "normalizedDisplayOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ]
+        },
+        "metadataMatchesIndex": true,
+        "directWholeOriginalView": true,
+        "directWholeRetainedJPEGView": true,
+        "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+        "finding": "Kite Harbor restored title, complete18,000 of17,000 prose and all visible action captions remain clear. Lastclear6,000 is visibly distinct from the round18,000; Last earned light figure/label survive the conversion. Panel/scenery balance and lower visible page slice are unchanged.",
+        "captionQualification": "Currentrevision4 Kite winning route; debug-access context is not earned preceding campaign progression. Visible finalclear accounting is6,000, not18,000; wholelower-accounting-page and futureGoal10hierarchy acceptance are outside this conversion review.",
+        "indexedCaption": "Actualnormalphone currentrevision4 KiteHarbor result18,000 of17,000 after the real recovery/winning route. The6,000 finalclear is distinct from round total; no wholelower-accounting-page claim. The legacydebug route grants access, not earned priorcampaign progression.",
+        "conversion": "Full original stored dimensions and orientation preserved. JPEG80 introduces slight smoothing in fine scenic texture/glow; no consequential visible text, glyph, target or layout relation loss found."
+      }
+    },
+    {
+      "indexPositionOneBased": 13,
+      "id": "13-current-native-menu-settings-row",
+      "kind": "candidate-menu-movie-frame",
+      "sourceIdentity": {
+        "appSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "testSource": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+        "runtime": "dev.06a3229203",
+        "status": "Capture-only duplicate native FullBoard method; decoded original whole movie frame; no additional unique coverage"
+      },
+      "stateCaption": "Actual AX5 Calm phone menu after five bounded native pans; complete Settings & help and pinned header/Return are visible in the retained34,000-point Full Board journey. Score itself is covered; this is not whole-Mastery-page evidence.",
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.201.png",
+        "sha256": "b36ecf261dfa6bcb7ca7057325eb8534f4a75dad0fa24535221b25f753bb453b",
+        "bytes": 1711728
+      },
+      "export": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/13-current-native-menu-settings-row.jpg",
+        "sha256": "40cdbe1a95adfd3d5976c120331f7cdc6b2c05b143cb953ddfe097fcc94f48d4",
+        "bytes": 376603
+      },
+      "rawMetadata": {
+        "format": "PNG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": null,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "exportMetadata": {
+        "format": "JPEG",
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "actualEXIF274": null,
+        "normalizedDisplayOrientation": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "wholeOriginalDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "directWholeOriginalView"
+        ]
+      },
+      "wholeRetainedJPEGDirectlyViewed": {
+        "value": true,
+        "actualFields": [
+          "directWholeRetainedJPEGView"
+        ]
+      },
+      "exportFidelityVerdict": {
+        "result": "PASS",
+        "actualFields": [
+          [
+            "verdict",
+            "PASS_BOUNDED_EXACT_EXPORT_FIDELITY"
+          ]
+        ]
+      },
+      "productQualification": "Named current-source slice; separate native/hosted visual reviews own product acceptance",
+      "reviewBinding": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-exports-10-13.json",
+        "sha256": "2c10a005fbc70b660941ba2614802ca9b70854809919a2da0a0e4f427172d8c8",
+        "bytes": 13449
+      },
+      "reviewedRow": {
+        "indexPositionOneBased": 13,
+        "id": "13-current-native-menu-settings-row",
+        "kind": "candidate-menu-movie-frame",
+        "raw": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.201.png",
+          "sha256": "b36ecf261dfa6bcb7ca7057325eb8534f4a75dad0fa24535221b25f753bb453b",
+          "bytes": 1711728
+        },
+        "export": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/goal-09-captures/13-current-native-menu-settings-row.jpg",
+          "sha256": "40cdbe1a95adfd3d5976c120331f7cdc6b2c05b143cb953ddfe097fcc94f48d4",
+          "bytes": 376603
+        },
+        "rawMetadata": {
+          "format": "PNG",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "normalizedDisplayOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ]
+        },
+        "exportMetadata": {
+          "format": "JPEG",
+          "storedPixels": [
+            1170,
+            2532
+          ],
+          "actualEXIF274": null,
+          "normalizedDisplayOrientation": 1,
+          "displayPixels": [
+            1170,
+            2532
+          ]
+        },
+        "metadataMatchesIndex": true,
+        "directWholeOriginalView": true,
+        "directWholeRetainedJPEGView": true,
+        "verdict": "PASS_BOUNDED_EXACT_EXPORT_FIDELITY",
+        "finding": "The complete two-line Settings & help label, gear and chevron remain clear between the pinned Sky menu heading and full Return to sky footer. Find a move remains complete. Review lastclear begins above the current viewport identically in both files; this is intentional scroll position, not a conversion defect.",
+        "captionQualification": "Original H264 native capture-only duplicate, preferred track transform applied; not the failed MCP optimizedHome image. Source journey is34kFullBoard/AX5/Calm, with score itself covered. No wholeMastery-page or manual-human interaction claim.",
+        "indexedCaption": "Actual AX5 Calm phone menu after five bounded native pans; complete Settings & help and pinned header/Return are visible in the retained34,000-point Full Board journey. Score itself is covered; this is not whole-Mastery-page evidence.",
+        "conversion": "Full original stored dimensions and orientation preserved. JPEG80 introduces slight smoothing in fine scenic texture/glow; no consequential visible text, glyph, target or layout relation loss found."
+      }
+    }
+  ],
+  "limits": [
+    "Historical baseline product rejection is preserved even when its retained JPEG faithfully reproduces the failure.",
+    "Native whole-screen, hosted specimen, ten sampled normal-motion frames and menu capture-only duplicate keep their own source-bound reviews; they are not interchangeable.",
+    "Partial scrolled content and the AX below-board award apron are not complete-glyph/full-page claims.",
+    "No actualVoiceOver, Textactivation, physical-device, minimum-iOS, continuous-motion/pacing/latency, human-comprehension or contrast-ratio acceptance."
+  ],
+  "recordedUTC": "2026-10-25T11:42:59.617034+00:00"
+}

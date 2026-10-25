@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "BOUNDED_PASS",
+  "reviewer": "hud_audit",
+  "recordedUTC": "2026-10-25T11:01:18.953441+00:00",
+  "scope": "All16 whole current5c AX5 quiet Story native PNGs, plus2 finalized reader ownership attachments; one original portrait and15actual landscape samples. Separate current evidence, not relabeled040 pixels.",
+  "source": {
+    "commit": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "prebuildSnapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+      "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+      "bytes": 188241
+    },
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "changedOwners": [
+      "App/FallingSkyMenu.swift",
+      "App/FallingSkyView.swift",
+      "App/SkyReadingPlayfield.swift",
+      "Starfall.xcodeproj/project.pbxproj"
+    ],
+    "unchangedAcceptedGuideOwner": {
+      "path": "App/SkyDialogueBubble.swift",
+      "sha256": "7837f9279e24ee52faba9c49782ea7deb610c418626211c127013e9a9d846113",
+      "byteEqualToAcceptedBase": true,
+      "meaning": "Failed Text-label/activation-point experiments are absent. Current behavior uses accepted guide Text/reader semantics."
+    }
+  },
+  "nativeMechanics": {
+    "selector": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-summary.json",
+      "sha256": "11275d7271ab016e5a014a59032ecbd80fea4c56444f25ba3206aaf66c305e72",
+      "bytes": 741
+    },
+    "receipt": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-receipt.json",
+      "sha256": "56248be6ea85a5625525c3401bf565f12c742bd0231f4aac866625716dbff323",
+      "bytes": 197
+    },
+    "log": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5.log",
+      "sha256": "2be11dd438cceef50ff6b2041c7640d86bf14d13911db363173bdf8fa23db763",
+      "bytes": 126036
+    },
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "testElapsedSeconds": 166.068,
+    "stageElapsedSeconds": 170.478,
+    "methodAllowanceSeconds": 300,
+    "supervisorBoundSeconds": 360,
+    "environment": {
+      "architecture": "arm64",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    },
+    "motionScope": "Legitimate calmEffects YES case at maximum text; no normal-motion or system Reduce Motion state assertion is inferred from this method.",
+    "separation": "Mechanical interaction/target/outcome results are separate from these still judgments; no actual VoiceOver or Text activation test."
+  },
+  "reference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182,
+    "wholeViewedPreviously": true,
+    "role": "Approved Play material and star-dominance reference, adapted for actual maximum native text"
+  },
+  "raw": {
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/manifest.json",
+      "sha256": "857bd1d974f117954067b59501ba29762c3064676ce8c32853245d3567038725",
+      "bytes": 8635
+    },
+    "wholeOriginalPNGCount": 16,
+    "personallyViewedWholeCount": 16,
+    "frames": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/79678371-FE66-4D04-9C1B-A0C406DF2334.png",
+        "sha256": "da1b6be798d6b714e1e05a871f9a0a9550dd2e4e78397ba848a527c40210ac4f",
+        "bytes": 3101527,
+        "attachmentName": "pressure-full-largest_0_71FE2EDF-D508-4311-BD92-6AE93B440D17.png",
+        "attachmentTimestamp": 1792924220.753,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/0E0ABAF1-1748-425E-A79D-DDBC4925D11D.png",
+        "sha256": "2c8f5259f5890a11121db35a835a4b12ecb0931f9b854c0b3770c06c50d6d91b",
+        "bytes": 3432884,
+        "attachmentName": "pressure-landscape-largest-before-reveal_0_6330F8A7-A14B-4857-A7BE-0AF45F3EBE44.png",
+        "attachmentTimestamp": 1792924223.373,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/A53F9F76-10B5-4D8F-BF9D-B2C5DFAF1C57.png",
+        "sha256": "650cffb74872d73fdddee55a6242bb1c5005452ff2fb9b4410ffb6f25626de3e",
+        "bytes": 3291805,
+        "attachmentName": "pressure-landscape-complete-current-room-fact-0_0_D6711871-32E3-4C0E-9542-DC8F97EC84C3.png",
+        "attachmentTimestamp": 1792924234.806,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/DDF2D56B-7261-4D50-8079-C8C1CAC9D0D2.png",
+        "sha256": "4d2c68b8fe94d9db3c6112a5fbea47f8e356b2ad461ebd5af31ebd4af79e8fdb",
+        "bytes": 3388345,
+        "attachmentName": "pressure-landscape-complete-current-room-fact-1_0_D49374E4-1D37-485E-B21E-BB61B7A0A77C.png",
+        "attachmentTimestamp": 1792924237.905,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/5999266A-0B2F-42D3-B041-0EEDDC890D2E.png",
+        "sha256": "4d2c68b8fe94d9db3c6112a5fbea47f8e356b2ad461ebd5af31ebd4af79e8fdb",
+        "bytes": 3388345,
+        "attachmentName": "pressure-landscape-complete-current-room-facts_0_2828A484-81F6-4505-B233-60C7926A9E5E.png",
+        "attachmentTimestamp": 1792924238.046,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/65FF9ECE-1CE4-4812-BB66-6AFDCA2F6D65.png",
+        "sha256": "8faf1a87a253c6a20ded6ebc10c5087f6db31208b8d92ccfce49e7bdbc72787c",
+        "bytes": 3208297,
+        "attachmentName": "pressure-landscape-forecast-target-0_0_11C9F325-5E49-46BE-89B4-7E8A823652D4.png",
+        "attachmentTimestamp": 1792924243.694,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/FAA0130E-4B7F-41C1-B32A-A613C1AAE600.png",
+        "sha256": "5b54306921d5510dc26062a334b2fecc665e60baa9298e0c8f555b5820ae1380",
+        "bytes": 3208134,
+        "attachmentName": "pressure-landscape-forecast-target-4_0_8567D70D-1B1F-42E4-BF5D-28149130A889.png",
+        "attachmentTimestamp": 1792924250.645,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/ECFA60BC-7E91-4F7B-AB88-E02C64FD1114.png",
+        "sha256": "0f1bbb6a14206e41f6c233e9a7137683d9d01368b40dd181026f39095a81c103",
+        "bytes": 3223937,
+        "attachmentName": "pressure-landscape-largest-full_0_419B0457-FF9C-4927-B8BA-9DC40BBC4915.png",
+        "attachmentTimestamp": 1792924253.763,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/260F8EBA-32BB-4F84-9271-0951754ED455.png",
+        "sha256": "4fd0f1e642554df92fe9e5273916cbfc39ee4c33650a883256bb2711434789a1",
+        "bytes": 3520226,
+        "attachmentName": "pressure-landscape-largest-earned-recovery_0_4F6690F2-C079-4A4F-AF85-990A347961E8.png",
+        "attachmentTimestamp": 1792924261.369,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/D358281F-0ED8-49B4-8F25-4EC8E7676851.png",
+        "sha256": "09cba4b93696918cfcb48aeb2ecbc2aeca2a7561fd258e3940835c1e01f0e8f6",
+        "bytes": 3097366,
+        "attachmentName": "short-landscape-guide-after-action-reveal_1_72731BF7-D107-4737-B0AB-333FDC65B4BD.png",
+        "attachmentTimestamp": 1792924276.951,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/44750EFD-0A14-4642-8BF5-4F8F4DB30E98.png",
+        "sha256": "b5ce02009a46024d1851c773daebae456558130cc07799285a1b62293ab157ce",
+        "bytes": 3098902,
+        "attachmentName": "short-landscape-guide-final-line_1_23232918-86C1-4343-9F1B-EBD7824646EA.png",
+        "attachmentTimestamp": 1792924282.874,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/24D14D79-7A82-498F-B8E6-7B6E4AC5585A.png",
+        "sha256": "7bf61401b28aefd29a7ab6c272ea0efbb7d4b07b6e53fd3b69c5eceeb1e393e6",
+        "bytes": 3312803,
+        "attachmentName": "pressure-landscape-complete-current-room-fact-0_0_1B9D5758-AE4F-45B4-AA2C-AEDED969437B.png",
+        "attachmentTimestamp": 1792924299.869,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/AB593984-3C8B-4887-9B12-D656B606B1B3.png",
+        "sha256": "7bf61401b28aefd29a7ab6c272ea0efbb7d4b07b6e53fd3b69c5eceeb1e393e6",
+        "bytes": 3312803,
+        "attachmentName": "pressure-landscape-complete-current-room-facts_0_D7D4668B-BDEB-4572-AF4B-FD92F6790FFE.png",
+        "attachmentTimestamp": 1792924300.024,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/12D2D931-46AE-440B-A32C-D58C8EC5B7A1.png",
+        "sha256": "ea2445a0c15678b16bd59471a38de06cfcdbc51ff98dde876da15fc2b25b556c",
+        "bytes": 3203453,
+        "attachmentName": "pressure-landscape-forecast-target-0_0_177BB2C4-4026-42B8-AAD8-10C67C91CB9E.png",
+        "attachmentTimestamp": 1792924304.284,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/8B48DCC6-EB37-49EE-92C0-71FDD37395A7.png",
+        "sha256": "0a0162b11261389e592c090d637ba7f157215316bee55d277da199e0b18f5129",
+        "bytes": 3203352,
+        "attachmentName": "pressure-landscape-forecast-target-4_0_BC80CE47-E138-4DDB-B071-0D7CCD82B310.png",
+        "attachmentTimestamp": 1792924310.916,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/A91D7954-2620-437B-84B9-5C9C2625B9D0.png",
+        "sha256": "3c697a18ff258dab3cd15070836ecae330cccda07a9018e0f10c89f5c2c064ca",
+        "bytes": 3218459,
+        "attachmentName": "pressure-recovered-largest_0_6025978D-07D1-43E8-94FE-45B0C7600CD3.png",
+        "attachmentTimestamp": 1792924314.042,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "wholeOriginalViewed": true,
+        "viewMethod": "direct whole original; no crop, conversion or retouch"
+      }
+    ],
+    "readerOwnershipAttachments": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/C83091B6-D639-4407-BFF6-B1B1BEC966C4.txt",
+        "sha256": "f763196175cafdf9ed0429906c1af6779fab79da6d2c82b215307cfc751a615f",
+        "bytes": 34374,
+        "attachmentName": "short-landscape-guide-owners_0_72731BF7-D107-4737-B0AB-333FDC65B4BD.txt",
+        "attachmentTimestamp": 1792924276.81
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/C2FBEF65-309B-4044-BF29-69B0051FCEC7.txt",
+        "sha256": "141f18d19e2cd5615bd69113d1a36fc1207d1def3fbc1c1fe4ebbf999ccf02f0",
+        "bytes": 33949,
+        "attachmentName": "short-landscape-guide-final-line-owners_0_23232918-86C1-4343-9F1B-EBD7824646EA.txt",
+        "attachmentTimestamp": 1792924282.726
+      }
+    ]
+  },
+  "observations": [
+    "Initial portrait keeps the full 0/150,000 score, all five ordered destinations, full-column 2 and the one-space list in complete native text. Large ceiling badges remain distinct from the header, with actual stars below.",
+    "Actual landscape pins the complete score and target at native two-line size above scrollable facts. Forecast digits 7, 6, 1, 2, 4 are all readable together in the target0/target4 samples, with the existing star glyphs. Different scroll positions clip other facts at the details viewport edges; the bounded scrolling contract is explicit.",
+    "The full Column 2 is full sentence is entirely visible in its own sampled state, followed by the separate complete 1 space: 1, 3, 4, 5, 6 state. Other frames show one sentence partly clipped while another is in view, which is expected from the finite sidebar and does not prove all facts simultaneous.",
+    "The revealed ceiling strip shows a complete 2! full badge and complete near badges without intersecting the sidebar score/facts. Current stars retain recognizable shapes and native size in the right field. The pre-reveal frame is another legitimate board scroll position, not complete-ceiling evidence.",
+    "The 5,000 earned-recovery state preserves complete score/target and ordered forecasts. The quiet source-light sample is separate from final receipt motion evidence; its still contains no complete award label, so no award-reading claim is made.",
+    "The after-action-reveal guide frame shows the opening and Close, with lower message text intentionally clipped inside its reader. The final-line frame shows the complete ending 2 has room again and Close plus the play/next glyph actions, while the score/forecast remain in the sidebar. The reader is bounded in the right scroll column and painting remains continuous.",
+    "Recovered frames remove full column 2 from the pressure sentence and ceiling badge set, retain the same one-space list, and show current stars. No clipped score digit, gray scene-sized block or header/ceiling ink collision was found."
+  ],
+  "readerOracle": {
+    "application": [
+      0,
+      0,
+      844,
+      390
+    ],
+    "innerReader": [
+      379,
+      146,
+      394,
+      93.66666666666663
+    ],
+    "fullNativeTextAtEnd": [
+      379,
+      -457,
+      394,
+      696.6666666666666
+    ],
+    "messageMaxY": 239.66666666666663,
+    "readerMaxY": 239.66666666666663,
+    "nextAction": [
+      580,
+      339,
+      45,
+      45
+    ],
+    "pauseAction": [
+      527,
+      339,
+      45,
+      45
+    ],
+    "innerVerticalBars": "Both native inner vertical indicators report 100%; outer indicator 96% is a different owner.",
+    "fullSpokenText": "Pip. Recipe popped! +5,000 starlight. That made room. 4 stars \u00b7 4 light. 4,000 base + 1,000 size = 5,000 points. 4 more spaces above the stars in column 2. Column 2 has room again.",
+    "testMeasurementContract": "Only the new short-sidebar landscape profile with the long Text center outside the actual inner reader uses reader/window containment+hittability, unchanged full spoken label, all inner bars at 100% and a complete native UIFont.subheadline final-line band inside the reader\u00b1original1pt. Original four-pan limit, exact full-message bottom gate and native actions remain. All other profiles keep original message.isHittable.",
+    "meaning": "This is a readable-end/input-owner oracle for clipped read-only text. It is not proof of Text activation, VoiceOver focus/activation or a private platform cause."
+  },
+  "decision": {
+    "verdict": "BOUNDED_PASS",
+    "reason": "All current-source whole samples preserve complete native score typography, inspectable ordered facts, distinct full/near ceiling information and a readable final guide line above reachable native actions. No blocking visual defect within this 16-frame maximum-text slice.",
+    "overallGoalStatus": "No overall adoption from this one method; current-source other native/export/mechanical decisions are separate."
+  },
+  "limits": [
+    "Actual iPhone17e Simulator/iOS27 at3x, one legitimate quiet maximum-text case. No physical device, minimumOS, actual VoiceOver or normal-motion claim.",
+    "Sidebar and guide intentionally scroll. The stills do not prove every intermediate word was read by a person, continuous pan smoothness, exact interaction latency or animation pacing.",
+    "Full logical message remains696.6667 pt high while reader is 93.6667 pt. Its center remains offscreen at the final position; no claim that the complete Text activation point was fixed or tested.",
+    "Forecast-target attachments measure target visibility/size; they are not screenshots of selection after tapping every chip.",
+    "Current5c optional-Mastery menu ordering is outside these images and needs its own native navigation record.",
+    "All16 originals were personally viewed whole, not carried from the 040historical review. Reviewer performed no source/test/HEAD mutation, build, controller, export or AV decode."
+  ]
+}

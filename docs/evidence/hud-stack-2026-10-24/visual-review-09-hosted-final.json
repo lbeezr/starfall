@@ -1,0 +1,846 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "BOUNDED_PASS",
+  "scope": "Independent hosted whole-screen review of exact6b252af2 candidate; filename final identifies this frozen hosted tranche only",
+  "reviewer": "hud_audit",
+  "recordedUTC": "2026-10-25T09:55:48.215390+00:00",
+  "overallGoalStatus": "NO_ADOPTION_FROM_THIS_REVIEW; native acceptance belongs to its separate results. Frozen commands record a later native-stage failure.",
+  "source": {
+    "testCommit": "6b252af2a8937976371e103686f6a09b067aa038",
+    "AppCommit": "8eb9f8f7880839e8c5b8759ed663fc3d301984da",
+    "runtime": "dev.ea65df280b",
+    "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+    "snapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-verified-6b252af2.json",
+      "sha256": "4e3605b054d0e9c8407b36185c568ac95e4831cdb8eab6c040c45be90f1c7dee",
+      "bytes": 188089
+    },
+    "snapshotPreparedUTC": "2026-10-25T09:37:02.759263+00:00",
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "dirtyRuntimeInputs": [],
+    "dirtyTestInputs": [],
+    "commands": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-verified-6b252af2.json",
+      "sha256": "b58b888a0de38744cf7f5a718574f2b26361d2bd632a089cc35c9f5dde5a3554",
+      "bytes": 12021
+    },
+    "boundary": "No judgment on later9974/14d/e4 guide changes or an active bundle. The original925 HOLD record is preserved."
+  },
+  "reference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182,
+    "wholeViewed": true,
+    "scope": "Middle approved Play concept; continuous scenery, restrained native instruments and dominant playable stars. Concept is not native geometry or accessibility proof."
+  },
+  "hostedMechanics": {
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-verified-6b252af2-layout-summary.json",
+      "sha256": "80f85f03a7c0b771b094741e70962bb15c54de454aed0ef6477c9fc303183a20",
+      "bytes": 741
+    },
+    "methods": 6,
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "receipt": {
+      "stage": "hosted-09-candidate-verified-6b252af2-layout",
+      "startedUTC": "2026-10-25T09:37:11.186961+00:00",
+      "elapsedSeconds": 27.37,
+      "limitSeconds": 240.0,
+      "exitCode": 0,
+      "error": null
+    },
+    "separation": "Mechanical pass is a separate observation. Hosted programmatic scroll and static held-presentation specimens do not prove native pan, motion or complete reading."
+  },
+  "raw": {
+    "directory": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-verified-6b252af2-layout-attachments",
+    "manifest": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-verified-6b252af2-layout-attachments/manifest.json",
+      "sha256": "e4b55eec6b6ed3f208fc023db65a74668babc612df60100ced70664808120a6b",
+      "bytes": 49229
+    },
+    "wholeOriginalPNGCount": 37,
+    "shortLandscapeWholePNGs": 16,
+    "otherWholePNGs": 21,
+    "frames": [
+      {
+        "file": "E661D44C-9244-4262-BE0F-4F139A219A99.png",
+        "sha256": "36e784e021f90834b86cf30ee84be61055bdd4f91198f2141da43ecf2a874038",
+        "bytes": 9111112,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "attachmentName": "open-sky-render-boundary-five-live",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "FFD5F23A-D1E7-40B8-8CB1-7256AA262A3E.png",
+        "sha256": "1123fc369b671f4e7e072db877963e9fffd36733f68ede6fa76eff300b74e868",
+        "bytes": 8994098,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "attachmentName": "open-sky-render-boundary-empty-live",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "6EA376BA-A998-47EE-B40A-3EF4C5594EB3.png",
+        "sha256": "fc545c82f1451c260e99bc9c97360f4ebb1f3c80c16dedc2249cef9f2d9adb8e",
+        "bytes": 8900527,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "attachmentName": "open-sky-render-boundary-empty-store-suspended-without-cover",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "B4D06B52-743E-4A62-8BD5-1059FC1EE193.png",
+        "sha256": "2516dc4758bc6f8d5d1aa2a162d43c0d67403c26573df1988e495b920c56f6fb",
+        "bytes": 8787504,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "attachmentName": "open-sky-render-boundary-empty-resumed-without-cover",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "BEF197FE-49C2-464E-9288-8A3F01CCB650.png",
+        "sha256": "ff0ff2eca4782e05a4fca7ddfe579ba9dfd76069483e12bb295ed1e0dc002acc",
+        "bytes": 8828937,
+        "pixels": [
+          1170,
+          2532
+        ],
+        "orientation": "portrait",
+        "attachmentName": "open-sky-render-boundary-one-no-award-shower",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "D7EC16CA-0C7E-468E-BB73-96B5846E3FF6.png",
+        "sha256": "4d6e24375dad45c8250dc15791334bf9fc81e20a1d9d2300155db7e3c77fe4b1",
+        "bytes": 8473450,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "busy-hud-held-presenter-static-default-before",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "DE2C452A-E0F2-412F-8C25-02C5FF56613E.png",
+        "sha256": "017ba93c314bd4a2dc268710549fa0d0c94f5b6ffa84590506392eb6cf4cad03",
+        "bytes": 8613963,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "busy-hud-held-presenter-static-default-busy",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "57808F89-F626-4C1F-9B53-8B613BA91922.png",
+        "sha256": "cf0ee8d83fe6f4bb63bb22df63117856bfdf1ed9c2d6a900bbd32d0e006c5779",
+        "bytes": 8617227,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "busy-hud-held-presenter-static-default-after",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "3B3B71AB-B063-454C-ABF1-7F6010ED13A6.png",
+        "sha256": "b9cce6b91c12d305cd85cd832b4c5a6af785ca4b8157e10e91f4060fb9df3a85",
+        "bytes": 7962420,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "busy-hud-held-presenter-static-AX5-before",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "02BC85CB-9B48-4DA9-ADF8-30144E3C0DCA.png",
+        "sha256": "c2a4ac67d4f91217bed8e040579def0b1595873f0242a356f3cfb730efc1cc8b",
+        "bytes": 7957595,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "busy-hud-held-presenter-static-AX5-busy",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "5D260DD7-A58C-438C-9AA9-D4D53A3291C3.png",
+        "sha256": "14779e669c3a57eb31bedd488518a7e5e446d56330073b5c59b8ec1552e05408",
+        "bytes": 7960658,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "busy-hud-held-presenter-static-AX5-after",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "934DD86D-46FF-4942-BE44-93A97EFED388.png",
+        "sha256": "4828530700a66bb0012b2eb3831ca8418f644ddb2415f1d6c28f7486a4ecbdad",
+        "bytes": 7290133,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "crowded-story-large-initial",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "64933F76-8E7F-4AD8-9B98-5293C7363C1E.png",
+        "sha256": "3bfa2dde42c321ac45a784a1c56b1d2efe7c25aaa1f1f488f6c0360aad126455",
+        "bytes": 7157920,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "crowded-story-large-ceiling-revealed",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "D08E1CFE-5F9C-4ED4-A1A3-1DDD0A61F3AF.png",
+        "sha256": "2aa1ad114843ca3b06cd344f5cd63899ea4a3d025927f9a191be41db24caeef1",
+        "bytes": 7219469,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "crowded-story-xxxLarge-initial",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "3E9F4F18-BAF9-4002-9AE2-90ACC30239CC.png",
+        "sha256": "2a9aed38e54c9a2e64e367e1cfdac6b3458bacc30cccba77d1249a751fb14c9f",
+        "bytes": 6911042,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "crowded-story-xxxLarge-ceiling-revealed",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "FEA15AC3-3C04-4896-90CA-5A9D2992C3EA.png",
+        "sha256": "f9ee87ece1440d2b331331ec6285c04a3e96d13319ee67aae9225953ceb7898d",
+        "bytes": 6023177,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "crowded-story-AX5-initial",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "AC91246E-35E4-471B-A9CD-890B8DC3CF91.png",
+        "sha256": "a72908a2534ba6b6c5388eadbfb7377a1f8acbb1984eca9d48a6fad2c75ed430",
+        "bytes": 5439694,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "crowded-story-AX5-ceiling-revealed",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "176661C7-4638-4DDA-AE2D-72E9C54C6E10.png",
+        "sha256": "269634d7b5e976a69d500cf6ce00c2c876e4a9152331766aeb1498aeb0582b27",
+        "bytes": 6524969,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "reading-before-assertions-375x667-maximum-text",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "CD279BF1-25FB-4F94-8762-BFF3A4BC5522.png",
+        "sha256": "1787c36178ba0abfc55d702993cabd8a8cda70c69662e803f3992802da701e33",
+        "bytes": 6248612,
+        "pixels": [
+          1125,
+          2001
+        ],
+        "orientation": "portrait",
+        "attachmentName": "reading-anchors-375x667-maximum-text",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "B2C10FC2-FB45-4396-BCB8-94813B08FE78.png",
+        "sha256": "c64d2c994f69a219bcae706dacf103f1b4c63ddb25e1c58c88f7f27658a29acc",
+        "bytes": 26866313,
+        "pixels": [
+          3072,
+          4098
+        ],
+        "orientation": "portrait",
+        "attachmentName": "reading-before-assertions-1024x1366-maximum-text",
+        "wholeOriginalViewed": true,
+        "viewer": "whole resized display1367x1824"
+      },
+      {
+        "file": "ABCE7197-7ED5-4025-B293-42DF0B621097.png",
+        "sha256": "e59a93f2902e9d43d4245448013d2d22ff69f1b8bce5d2d1c83e1e7b6b9d7ea7",
+        "bytes": 27890999,
+        "pixels": [
+          3072,
+          4098
+        ],
+        "orientation": "portrait",
+        "attachmentName": "reading-anchors-1024x1366-maximum-text",
+        "wholeOriginalViewed": true,
+        "viewer": "whole resized display1367x1824"
+      },
+      {
+        "file": "8FD41F0F-EDE1-4CFF-85CB-7CB3A1E0FFC2.png",
+        "sha256": "d7394aed3a0eee1a8b73c13bc31695fae56a71ee316cf8e3f19301198232de49",
+        "bytes": 8171741,
+        "pixels": [
+          2001,
+          1125
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-667x375-default-initial",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "F41F7C8F-91EF-44A8-9857-32EB8F71E661.png",
+        "sha256": "d8e2aff169ed8ed2d650cd44992efd935cab1a797457f9c9454ab714bdab5755",
+        "bytes": 8137120,
+        "pixels": [
+          2001,
+          1125
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-667x375-default-ceiling-revealed",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "710D9D50-694E-4D49-9F78-8EE3F3654187.png",
+        "sha256": "464734fe7856ed908cc5f2965974ead1e83e5ade37cdf5412d285a4985373216",
+        "bytes": 8136763,
+        "pixels": [
+          2001,
+          1125
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-667x375-default-facts-top",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "37E4EEBA-6560-4EDA-8B15-3E8BE005CECC.png",
+        "sha256": "909e487734ed7591439950926b286ac0c449b1f8c9fb844f94c65f0a796570c4",
+        "bytes": 8137170,
+        "pixels": [
+          2001,
+          1125
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-667x375-default-facts-bottom",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "A59C55E3-A2DF-487A-926C-80EB23AC729B.png",
+        "sha256": "904e8aafcd810efbdb4ed75671e412046a10ac4431365c2bbed8d4bd3be058b6",
+        "bytes": 7731289,
+        "pixels": [
+          2001,
+          1125
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-667x375-AX5-initial",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "D3F94456-1C59-4407-A993-1AC4348ACCFA.png",
+        "sha256": "92fd7f1daa4d8c95a0d0e6c0dde3ebda52a4acbb1f59e0d940eafa48ecc59e69",
+        "bytes": 7170425,
+        "pixels": [
+          2001,
+          1125
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-667x375-AX5-ceiling-revealed",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "8E330342-686E-425A-884B-C70D7433901D.png",
+        "sha256": "92fd7f1daa4d8c95a0d0e6c0dde3ebda52a4acbb1f59e0d940eafa48ecc59e69",
+        "bytes": 7170425,
+        "pixels": [
+          2001,
+          1125
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-667x375-AX5-facts-top",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "1C0CB67D-C9A3-4DEE-BA47-89C7C0C39866.png",
+        "sha256": "f88906903790fea6a9f1d4f899a5e674d42b3afd6f28f23d4a7bdb7a5c264e5f",
+        "bytes": 7420744,
+        "pixels": [
+          2001,
+          1125
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-667x375-AX5-facts-bottom",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "E69F8A33-633F-41FF-8D6D-498B23605114.png",
+        "sha256": "2bafa1930390299edb21841cd297c049ea87e373868358fffae3dfd4a2063e30",
+        "bytes": 10410723,
+        "pixels": [
+          2556,
+          1179
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-852x393-default-initial",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "062D445D-18BE-49D1-9265-820BBB9F2DB9.png",
+        "sha256": "0f1a4a5946104a8e0f0442ec9f1b1047c889c665497fd166c669f421a64482c9",
+        "bytes": 10332656,
+        "pixels": [
+          2556,
+          1179
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-852x393-default-ceiling-revealed",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "E18D8E76-7506-41FF-9814-00A622502CF5.png",
+        "sha256": "56b2f4349fc2a401930da09f26674671578680ef742376a3466edf35423be0c2",
+        "bytes": 10332639,
+        "pixels": [
+          2556,
+          1179
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-852x393-default-facts-top",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "E2A229FF-4A90-4C43-8214-24FECF9BE5AE.png",
+        "sha256": "37502cf36dcf8c1c814d527432514284169862420c1675135eceb87d7b0734c0",
+        "bytes": 10331949,
+        "pixels": [
+          2556,
+          1179
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-852x393-default-facts-bottom",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "416A473B-10D0-4A93-99D2-EA850B1C16F3.png",
+        "sha256": "df3bfb23c91cbe71f04e8b9665ada8d1cf3766c9a5ec2383c55a37e16537c0c1",
+        "bytes": 9762579,
+        "pixels": [
+          2556,
+          1179
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-852x393-AX5-initial",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "60CFFDBD-C78C-4BB7-99D6-49011535D8DD.png",
+        "sha256": "48fd1c0ebb771a15dbe2e225b482af1c568bdcae286973999b94f30f21ed52d6",
+        "bytes": 9315294,
+        "pixels": [
+          2556,
+          1179
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-852x393-AX5-ceiling-revealed",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "0A34C635-C772-4E9E-B4CE-1E7F4D8E51AD.png",
+        "sha256": "48fd1c0ebb771a15dbe2e225b482af1c568bdcae286973999b94f30f21ed52d6",
+        "bytes": 9315294,
+        "pixels": [
+          2556,
+          1179
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-852x393-AX5-facts-top",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      },
+      {
+        "file": "BE422ADE-3377-4519-9599-EEBC5C28F6A8.png",
+        "sha256": "0fc6ee32d451534d7d2c68870b8bccb1aac628e57aafcc53611206e7963e06aa",
+        "bytes": 9681326,
+        "pixels": [
+          2556,
+          1179
+        ],
+        "orientation": "landscape",
+        "attachmentName": "short-landscape-crowded-story-852x393-AX5-facts-bottom",
+        "wholeOriginalViewed": true,
+        "viewer": "original"
+      }
+    ],
+    "geometryRecordDirectory": "/private/tmp/starfall-hud-stack-20261024/hosted-09-candidate-verified-6b252af2-layout-attachments",
+    "geometryRecords": [
+      {
+        "file": "097674FD-D62E-4C11-B8BC-18B35AE672D0.txt",
+        "sha256": "0d6763b0b16031d123aba44dcc90f7a5906a226122ec7b9032750926ecc46b88",
+        "name": "busy-hud-initial-AX5-placement"
+      },
+      {
+        "file": "C66CA1FC-B53F-4667-96FA-A0C5ECA1F2DC.txt",
+        "sha256": "b6bd002e17f21e7f7f40eac4bd0e5aad0f44b0899e8f956e802d98e7517933bd",
+        "name": "crowded-story-large-initial-frames"
+      },
+      {
+        "file": "F9F7E67B-78A9-4C10-A489-5194AB8EA670.txt",
+        "sha256": "cfddae73d4f409633684083438339fea71688723c9a8c9b6c0a8d16f9372f8a5",
+        "name": "crowded-story-large-ceiling-geometry"
+      },
+      {
+        "file": "0BC75782-88B9-4D14-B439-BDC2640CD71B.txt",
+        "sha256": "3b88944630d8fd4eba32b9a50791719eb1b53941da23569281472767c6f29079",
+        "name": "crowded-story-large-physical-projection"
+      },
+      {
+        "file": "1181A99B-1D35-4E17-9E25-75B6F4F8D2D6.txt",
+        "sha256": "d177ec450ef9ed04fe0ef0da49d1111c25bca2839bbabaa2e60ca3f446a9394c",
+        "name": "crowded-story-xxxLarge-initial-frames"
+      },
+      {
+        "file": "7F4F88AB-7144-4563-87D5-0D6ED350C458.txt",
+        "sha256": "f4129dad592e54799dedcdbed1c3d148152cf342cf48d1a3b20a01b22d02a933",
+        "name": "crowded-story-xxxLarge-ceiling-geometry"
+      },
+      {
+        "file": "25F0A2B5-4EA9-4820-B549-1E133D20D302.txt",
+        "sha256": "9a9f841dba70ae68efb119b1c53a2773483e784dcaac988ab7c100335e1b7c77",
+        "name": "crowded-story-xxxLarge-physical-projection"
+      },
+      {
+        "file": "4CC7CD6E-AF0C-404A-9D96-B8B5C1405001.txt",
+        "sha256": "87aa4093914f715ba1f55abad096721a958e2a96ca20e347f3125921e2eb102d",
+        "name": "crowded-story-AX5-initial-frames"
+      },
+      {
+        "file": "4BB55F0B-9C69-4275-B983-030134D8200D.txt",
+        "sha256": "2607fedf9b03e407cf494f39b6005203c405727fcef47911c058446721813ca5",
+        "name": "crowded-story-AX5-ceiling-geometry"
+      },
+      {
+        "file": "C10B9583-D70F-4DF5-9BE4-A53180E2336F.txt",
+        "sha256": "40deda8c734dc1fe47edd428e216e5a55e1d32ddbb3ff1e5433d7a7dbd4f8d40",
+        "name": "crowded-story-AX5-physical-projection"
+      },
+      {
+        "file": "FA945635-FD76-4168-8C88-1F5D536E4018.txt",
+        "sha256": "2a64c5024180e2b3f0d85c7af6bec927bcd85be6f34569b0a6c669bd3d0d7d1b",
+        "name": "native-scene-transfer-readiness"
+      },
+      {
+        "file": "8442B7A5-5946-406A-A62B-04732B898D31.txt",
+        "sha256": "3536ab81ef0b3d800975c8a68bfff32e42f404fc1778dc3abe97927319f4e4b1",
+        "name": "reading-layout-375x667-maximum-text"
+      },
+      {
+        "file": "10AF65D8-CCA7-41F8-821C-CF9717EAEC9C.txt",
+        "sha256": "292dc168e7a8761a203438a32c98d21afe9ca56a0dd5d4aca8c8feb232740b5b",
+        "name": "reading-score-measurement-375x667-maximum-text"
+      },
+      {
+        "file": "B309E45C-0B8E-4A1E-9F85-283F63893B6F.txt",
+        "sha256": "08c5b870e480647530741acfd44fdaf0d9166fb3e4abf415b52eb873986f0643",
+        "name": "reading-layout-1024x1366-maximum-text"
+      },
+      {
+        "file": "792D0770-412A-4C1E-A183-CD406265B794.txt",
+        "sha256": "8356d38f5eaf9e5522522c2c1f692ad9bbc090e5a4018dbbc8d927a18e495585",
+        "name": "reading-score-measurement-1024x1366-maximum-text"
+      },
+      {
+        "file": "20A7FCCF-5155-4559-82C0-36F0DAD95080.txt",
+        "sha256": "8450788d2c542dba46995678f41ab2c3b136a44bf98c8ab9fcfe28bb0e04b958",
+        "name": "short-landscape-crowded-story-667x375-default-initial-frames"
+      },
+      {
+        "file": "308C9A49-FCD0-4E48-8800-63CCA85CF4D5.txt",
+        "sha256": "faf6055eabf507276eed1a14552470c45f5961eda2f1e36dd2dbe44abee7b98a",
+        "name": "short-landscape-crowded-story-667x375-default-ceiling-geometry"
+      },
+      {
+        "file": "97DF0F23-B08B-4768-81F9-AAFADCBFBC43.txt",
+        "sha256": "e038021d9f00c1cc2c5b5f720a75f160560fbc88dcfd5c0bd32f10e80bfc1356",
+        "name": "short-landscape-crowded-story-667x375-default-physical-projection"
+      },
+      {
+        "file": "664C41FB-400F-475C-90E3-C4A7FD089724.txt",
+        "sha256": "297bc0c94ac40b8cb5df67978365fb5c0b6b26d73d46add8a8b0568ec27188f9",
+        "name": "short-landscape-667x375-default-facts-top-native-facts"
+      },
+      {
+        "file": "0F5B1554-F295-4F99-B352-87F82B6B3F54.txt",
+        "sha256": "297bc0c94ac40b8cb5df67978365fb5c0b6b26d73d46add8a8b0568ec27188f9",
+        "name": "short-landscape-667x375-default-facts-bottom-native-facts"
+      },
+      {
+        "file": "78315A75-6614-4A1C-9396-037BD168732B.txt",
+        "sha256": "027e305ac3bbb13292a07b2b56b4d732d6dfa26a7578aea5f294c3db932a4977",
+        "name": "short-landscape-crowded-story-667x375-AX5-initial-frames"
+      },
+      {
+        "file": "80018B27-2FD3-4D8A-9ACA-788825C66A53.txt",
+        "sha256": "0a0989cef61554ba93e51ea2001cfeec54c45ee4dd9544aa85131289e0f15906",
+        "name": "short-landscape-crowded-story-667x375-AX5-ceiling-geometry"
+      },
+      {
+        "file": "621FBDBA-CB2E-412A-861C-9483AB352AE2.txt",
+        "sha256": "7b269216a32fb08bc7fcd975ed4a29812573bfa4c87d37f55240b2573108a9df",
+        "name": "short-landscape-crowded-story-667x375-AX5-physical-projection"
+      },
+      {
+        "file": "6535CB6F-538E-4E6F-BE6F-CD72BAB37691.txt",
+        "sha256": "38c065b08e40dbe55b1643e74dc2ce4a2a744b864bc7fcf65c25b4235a49c4d8",
+        "name": "short-landscape-667x375-AX5-facts-top-native-facts"
+      },
+      {
+        "file": "5DD44026-CB54-4C63-9356-61B49A4B3D49.txt",
+        "sha256": "a2b4f3e907187e1795d841065541d7c600cd249f39e2c3274d04eb8c10e6fc97",
+        "name": "short-landscape-667x375-AX5-facts-bottom-native-facts"
+      },
+      {
+        "file": "9F500359-3A97-4339-887F-7C9B92D026C6.txt",
+        "sha256": "73d2eb9d1a9f4e7b8a305d89c02881ed65238481c9dac54fa5482ef6eb437e15",
+        "name": "short-landscape-crowded-story-852x393-default-initial-frames"
+      },
+      {
+        "file": "FD66B6DB-24DC-485E-81BC-68F11903ACA1.txt",
+        "sha256": "b8eb856edee5eed204ff8e3ff9a6a1b1c6fdb1ea9ce01ff9b23297502eb07698",
+        "name": "short-landscape-crowded-story-852x393-default-ceiling-geometry"
+      },
+      {
+        "file": "02BB59A2-C021-4583-B793-CAFF0DA6C8CE.txt",
+        "sha256": "a4757ac27ace3e184ffe0ff7668c99c35a03bab0fcf6a5c7784d414233b4d319",
+        "name": "short-landscape-crowded-story-852x393-default-physical-projection"
+      },
+      {
+        "file": "73535B8E-423B-405F-BEA2-A51DA7B66A6F.txt",
+        "sha256": "a73b6855769ae8ee89506a01326558dfb73ee15bc1041ac8f3124083a8b61777",
+        "name": "short-landscape-852x393-default-facts-top-native-facts"
+      },
+      {
+        "file": "2DC10E44-20CC-41D3-986F-67E9C040DC17.txt",
+        "sha256": "a73b6855769ae8ee89506a01326558dfb73ee15bc1041ac8f3124083a8b61777",
+        "name": "short-landscape-852x393-default-facts-bottom-native-facts"
+      },
+      {
+        "file": "D0D9BA86-1FF3-4713-B05A-7183C5C6BB3E.txt",
+        "sha256": "e4702cd4f96a03c4b64040385d0e61b89316e63381a7f6500b74f2e6962cf464",
+        "name": "short-landscape-crowded-story-852x393-AX5-initial-frames"
+      },
+      {
+        "file": "0B4139E1-6C55-428C-A4DC-A183ACD50AC7.txt",
+        "sha256": "fe960bc4819e5b4dad3580b2df5a17eb102ac304cbc0afa38bdb3c1c69024a2c",
+        "name": "short-landscape-crowded-story-852x393-AX5-ceiling-geometry"
+      },
+      {
+        "file": "D547DD8F-F3BE-4F35-B8E8-97D473F7D20E.txt",
+        "sha256": "085f403d6e64193e9fc8f96071920a0a10daf5f239962f0c328aac934bd0c166",
+        "name": "short-landscape-crowded-story-852x393-AX5-physical-projection"
+      },
+      {
+        "file": "F867E66B-44A1-4258-9E34-4B989117CC47.txt",
+        "sha256": "191748aaf578f682c832d794cce887c2f8c91cda4d8adc229c9883cf54b3035c",
+        "name": "short-landscape-852x393-AX5-facts-top-native-facts"
+      },
+      {
+        "file": "20C8D7FF-9608-4F6F-9A2D-AFAAED1A50BC.txt",
+        "sha256": "81a34a9c4da4fd95563323abfba3f65db269450ccf0c0a2cea7811c475958317",
+        "name": "short-landscape-852x393-AX5-facts-bottom-native-facts"
+      }
+    ],
+    "displayBoundary": "Every listed PNG directly inspected whole; no crop, retouch, conversion or decoding. Two3072x4098 originals displayed downsampled by viewer. Pixel dimensions and hashes describe original files."
+  },
+  "observations": [
+    {
+      "area": "Short landscape default667x375/852x393",
+      "verdict": "BOUNDED_PASS",
+      "detail": "The left score/pause, timing trail, five ordered forecast facts7/6/1/2/4 and full/near statuses remain legible. Right revealed badges1..6 including2! are complete and separate from the left instruments; multiple complete actual stars remain below. Scenery connects across the composition. Default facts fit without scrolling.",
+      "limit": "Initial board position intentionally clips a top partial row. Footer actions are partly below the screenshot; the reveal captures prove ceiling/board allocation, not every footer target."
+    },
+    {
+      "area": "Short landscapeAX5",
+      "verdict": "BOUNDED_PASS_FOR_ALLOCATED_INSTRUMENTS_AND_BOARD",
+      "detail": "Large exact0/150000 remains complete in two lines. Revealed scaled ceiling badges and actual stars stay distinct from the score and left scrolling facts. The bottom endpoint shows the complete compact nearlist1,3,4,5,6; the lower line does not collide with the right board.",
+      "limit": "The pinned score uses most left-column height. Top endpoint shows the large Next columns label; forecasts/full status lie between endpoints. No supplied intermediate hosted frame proves each complete forecast/full sentence or real finger reachability. Full native font preservation and programmatic endpoint extent pass separately; retain native reading/pan acceptance."
+    },
+    {
+      "area": "375x667 crowded default/XXX/AX5",
+      "verdict": "BOUNDED_PASS",
+      "detail": "Exact score and target are no longer fragmented into several digit lines. All five forecasts and complete compact full/near facts are readable. AX5initial contains actual playable stars, and revealed complete ceiling remains separated below the header.",
+      "limit": "AX5text is necessarily prominent; this is not a claim of all content visible simultaneously. Revealed ceiling reduces current-star rows within the viewport; strict≥7complete-cell gate passes."
+    },
+    {
+      "area": "375AX5 and1024AX5 receipt samples",
+      "verdict": "BOUNDED_PASS",
+      "detail": "Score15000/150000 and ordered forecasts remain readable. Inspected+5000phase receipt/source light stays below the instrument group with distinct stars. Scenery remains painted; no flat gray surface in these samples.",
+      "limit": "The+5000 receipt is a phase value while the guide names the whole15000chain. Guide text extends below the viewport; full guide, Close and native pan are not certified by these stills.1024x1366 is a local proposal on a3xPhone host, not native iPad evidence."
+    },
+    {
+      "area": "Busy before/busy/after specimens",
+      "verdict": "BOUNDED_PASS_FOR_HEADER_STATE",
+      "detail": "The Help utility visibly mutes during the held busy state and restores afterward; full score/target/forecast ink is stable. The threeAX5frames and default busy/after show real stars.",
+      "limit": "Default-before is starless and excluded as settled-board/composition evidence. Held presenter is static fixture rendering, not production normal-motion playback or real disabled-touch proof."
+    },
+    {
+      "area": "OpenSkyfive/empty/suspended/resumed/next-shower",
+      "verdict": "BOUNDED_PASS",
+      "detail": "All five whole samples retain painted scenery and readable instruments. The empty suspended and resumed sky remains painted; later three arrived stars are visible. The no-award shower replaces the forecast while preserving score5.",
+      "limit": "These are hosted actual-view samples. No claim about continuous painting between samples, native surface transfer, exact motion onset, full guide controls or independent native input."
+    }
+  ],
+  "geometryFacts": {
+    "scope": "Read from paired finalizedTXT; not recomputed from node positions or screenshots.",
+    "shortProfileHost": "iPhone17e iOS27.0/24A434 Simulator,Phoneidiom3x. Local667x375/852x393 proposals retain top47,bottom34,left/right0 in this tranche; scene coordinate390x844. These are not actual landscape rotations.",
+    "score": {
+      "defaultActualAndRequiredHeight": 44,
+      "AX5ActualAndRequiredHeight": 130.66666666666666,
+      "widthAX5": 244.33333333333331,
+      "comparisonBoundary": "Whole native score contract measured in matching attached traits; old925 failed score measurements remain historical."
+    },
+    "revealedShort": {
+      "667default": {
+        "ceilingHeight": 44,
+        "fullyVisibleOccupiedCells": 13,
+        "viewport": [
+          288,
+          143,
+          379,
+          232
+        ]
+      },
+      "667AX5": {
+        "ceilingHeight": 88.66666666666667,
+        "fullyVisibleOccupiedCells": 7,
+        "viewport": [
+          288,
+          143,
+          379,
+          232
+        ]
+      },
+      "852default": {
+        "ceilingHeight": 44,
+        "fullyVisibleOccupiedCells": 13,
+        "viewport": [
+          308,
+          143,
+          544,
+          250
+        ]
+      },
+      "852AX5": {
+        "ceilingHeight": 88.66666666666667,
+        "fullyVisibleOccupiedCells": 7,
+        "viewport": [
+          308,
+          143,
+          544,
+          250
+        ]
+      }
+    },
+    "registration": "Default award equals the80ptreturn region;AX5noexplicitaward retains below-arena apron. Complete ceiling/header strict geometry and common localcanvas==scene/physicalprojection gates pass in the selected hosted suite.",
+    "AX5FactEndpoints": {
+      "667": {
+        "viewportHeight": 137.33333333333334,
+        "contentHeight": 688,
+        "bottomOffset": 584.6666666666666,
+        "requestedAndActualPhysicalPixel": 1754
+      },
+      "852": {
+        "viewportHeight": 155.33333333333334,
+        "contentHeight": 561,
+        "bottomOffset": 439.6666666666667,
+        "requestedAndActualPhysicalPixel": 1319
+      },
+      "qualification": "Programmatic physical-grid endpoint agreement only. It does not prove complete intermediate text visibility or native gesture travel."
+    },
+    "sceneTransfer": "Isolated SKView transfer method passed withfirstReadiness[true,false,true,false],secondReadiness[true,false]; no Store, clock or game menu in that method."
+  },
+  "decision": "The named hosted visual slice passes with the recorded partial-content and static-specimen limits. Actual native orientation, complete guide/fact reachability and behavior remain separate required gates; no overall Goal9 adoption.",
+  "limits": [
+    "No native visual/interaction verdict in this report.",
+    "No actual VoiceOver, physical-device, minimumOS, human comfort or continuous-motion claim.",
+    "No complete offscreen guide/footer content claim.",
+    "No acceptance of later source variants from identical-looking pixels."
+  ]
+}

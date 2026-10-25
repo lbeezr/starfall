@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "HISTORICAL_INITIAL_CANDIDATE_SOURCE_FROZEN; implementation not accepted",
+  "recordedUTC": "2026-10-25T09:32:37.997113+00:00",
+  "testedCommit": "925e706c361c6a76e6584f6ec523a2e1e5447497",
+  "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f",
+  "runtimeInputFingerprint": "dev.16067e7f5c",
+  "committedRuntimeInputCount": 568,
+  "committedTestInputCount": 167,
+  "workingTreeRuntimeDifferencesAtSnapshot": [],
+  "workingTreeTestDifferencesAtSnapshot": [],
+  "excludedDocumentationDifferencesAtSnapshot": [],
+  "changedRuntimeOwners": [
+    "App/FallingSkyView.swift",
+    "App/SkyReadingPlayfield.swift",
+    "Starfall.xcodeproj/project.pbxproj"
+  ],
+  "changedTestOwners": [
+    "AppTests/SkyReadingPlayfieldTests.swift",
+    "UITests/FullBoardLanternInteractionTests.swift",
+    "UITests/ObservatoryInteractionTests.swift",
+    "UITests/SkyFlowInteractionTests.swift"
+  ],
+  "inventory": {
+    "hostedMethods": 821,
+    "developmentPhoneUIMethods": 262,
+    "actualVoiceOverDeferredMethods": 6
+  },
+  "rawInputManifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-first-925e706c.json",
+    "sha256": "06e0521bdd8035a08cc050a7f4023fe854d3aba94bc5028c0b7b3dcaddb4d8de",
+    "bytes": 188080
+  },
+  "commands": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-first-925e706c.json",
+    "sha256": "7f0411416997d0afa8fec1ac397b7321d5be0e13ba6753ca421ed332a7e65968",
+    "bytes": 10389
+  },
+  "sourceSpecification": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/goal09-candidate-first-source-spec.json",
+    "sha256": "052b7514f42069893ac2a2d908046f7166a1c820c208481f550f93337c2f1f23",
+    "bytes": 661
+  },
+  "canonicalBuildIdentityHelper": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/scripts/build_identity.py",
+    "sha256": "2f1f3cbeed1197935013045d717f34379d19b43430cdf413daa832c541a34d1b",
+    "bytes": 1063
+  },
+  "sourceCounter": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/scripts/native_test_plan.py",
+    "sha256": "880692e979080196e4f0cd4097ea08932a3aeea3fef6bc01b66241d9414e02ff",
+    "bytes": 7480
+  },
+  "prepareHelper": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/prepare-goal09-source.py",
+    "sha256": "f525c33a9232f160bec94f8d10e946c6c032af19480f45f7834792c1e565d07f",
+    "bytes": 8292
+  },
+  "snapshotTiming": {
+    "perFileDumpPreparedUTC": "2026-10-25T09:25:51.674135+00:00",
+    "runnerStartedUTC": "2026-10-25T09:25:52.339247+00:00",
+    "DebugStartedUTC": "2026-10-25T09:25:52.970461+00:00",
+    "dumpPredatesRunnerAndDebug": true
+  },
+  "collectionChecks": {
+    "historicalCommittedTreePathBlobAndSizeRecordsMatched": 735,
+    "runtimeRecords": 568,
+    "testRecords": 167,
+    "rawSnapshotSHAAndPrivateHelperBindings": "Re-read and match frozen commands",
+    "contentSHAQualification": "The frozen prebuild source helper computed each SHA256, canonical runtime and Gitblob equality at925e. This collector revalidates recorded path/blob/size against committed925e objects. It does not recompute925e identity from later52f working-tree files."
+  },
+  "capturedDebugProductProof": {
+    "configuration": "Debug",
+    "runtime": "dev.16067e7f5c",
+    "info": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/Info.plist",
+      "sha256": "4775ebffdf1b835e3f16e4d02384b10f4db419393c7e6ae0811c7577d0fd6263",
+      "bytes": 1402
+    },
+    "catalogue": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/Integration/Build/Products/Debug-iphonesimulator/Starfall.app/observatory-dialogue.json",
+      "sha256": "fa94fe80b271a7981c69a34cbf15b12a12f007ebdf0b0687bc8733dfdd18c01a",
+      "bytes": 96334
+    }
+  },
+  "productQualification": "This Info/catalogue identity was captured at925e Debug completion. Shared Integration products may already belong to a later candidate; current product files are not re-read or used as historical925e proof.",
+  "mechanicalBoundary": "Debug passed; hosted6 ran2pass/4failed/0skip with15 assertion failures. No925e native execution, Release orCore acceptance. See verification-09-initial-candidate.json.",
+  "futureSourceBoundary": "52f3e266/dev.4ebb3db952 is a separate frozen sizing/measurement correction candidate in progress, not a retrospective change to925e source or acceptance."
+}

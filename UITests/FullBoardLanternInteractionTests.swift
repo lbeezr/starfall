@@ -221,6 +221,7 @@ final class FullBoardLanternInteractionTests: XCTestCase {
 
     @MainActor func testLargestQuietFullBoardChoiceSwapRotationAndRestore() throws {
         executionTimeAllowance = 240
+        addTeardownBlock { @MainActor in XCUIDevice.shared.orientation = .portrait }
         XCUIDevice.shared.orientation = .portrait
         let app = launch(largest: true, quiet: true)
         defer { app.terminate(); XCUIDevice.shared.orientation = .portrait }
@@ -228,7 +229,7 @@ final class FullBoardLanternInteractionTests: XCTestCase {
         exchange(8, 9, score: 15_000, count: 1, in: app)
         var count = 1, score = 15_000
         capture(app, "full-board-largest-portrait-refill")
-        if UIDevice.current.userInterfaceIdiom == .pad {
+        do {
             XCUIDevice.shared.orientation = .landscapeLeft
             XCTAssertTrue(XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
                 app.frame.width > app.frame.height

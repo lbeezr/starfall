@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "reviewer": "hud_read_ahead independent whole-native reviewer; no App implementation",
+  "status": "HOLD_FULL_BOARD_SETTINGS_REACHABILITY; HISTORICAL040_NOT_ADOPTED",
+  "recordedUTC": "2026-10-25T10:27:56.392698+00:00",
+  "source": {
+    "head": "040e2861b42d8ae1c085bf6fe522549d850621cf",
+    "runtime": "dev.7767997926",
+    "snapshot": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-qualifiedremaining-040e2861.json",
+      "sha256": "7e1fb387549aae4214babaef067b096193745743f43eb081b9d158674e47fa54",
+      "bytes": 188208
+    },
+    "baseMain": "6a2acb179fccddf3f2c1dd7b197cc44fd968b60f"
+  },
+  "commands": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/commands-09-candidate-qualifiedremaining-040e2861.json",
+    "sha256": "572091113d8f1e48b6c2062613f88a93753cdf4e1254f9d4c2612599911c3e5b",
+    "bytes": 23044
+  },
+  "mechanicsSeparate": {
+    "selector": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+    "summary": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-qualifiedremaining-040e2861-full-board-largest-phone-summary.json",
+      "sha256": "7c7e9677ea85d727b02fbbaf7b6bb43c4011f8c06b8607e5c4e32ef17a916120",
+      "bytes": 1199
+    },
+    "counts": {
+      "totalTestCount": 1,
+      "passedTests": 0,
+      "failedTests": 1,
+      "skippedTests": 0
+    },
+    "runtimeWarnings": [],
+    "stageElapsedSeconds": 97.297,
+    "methodAllowanceSeconds": 240,
+    "supervisorSeconds": 300,
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+      "deviceName": "Starfall HUD Stack dcf3 Phone",
+      "modelName": "iPhone 17e",
+      "osBuildNumber": "24A434",
+      "osVersion": "27.0",
+      "platform": "iOS Simulator"
+    }
+  },
+  "reference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182
+  },
+  "manifest": {
+    "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-qualifiedremaining-040e2861-full-board-largest-phone-attachments/manifest.json",
+    "sha256": "b7b7423df0e1b242637d294e30218a26204e0fb23a84f6a382e7ed5c8b1e4a4e",
+    "bytes": 30165
+  },
+  "originalPNGCount": 4,
+  "directlyViewedWholeOriginalPNGCount": 4,
+  "frames": [
+    {
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-qualifiedremaining-040e2861-full-board-largest-phone-attachments/C43ED2F3-9038-4AE7-9EC7-824EAE54EE93.png",
+        "sha256": "ee05da43ee711b661bce1eac701da78cb1eb6cf285ac99465d4bee747109d7bb",
+        "bytes": 3155184
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "C43ED2F3-9038-4AE7-9EC7-824EAE54EE93.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "full-board-largest-choice_0_7AEB45AD-03E8-4478-88E0-40C9C0B927A7.png",
+        "timestamp": 1792923607.184
+      },
+      "directWholeOriginalView": true,
+      "finding": "ActualphoneAX5Entry mode-choice scroll position: fullFullBoard selection andBegin legible, previouscopy intentionally above viewport. This is not wholeEntry-page visibility.",
+      "verdict": "PASS_VISIBLE_STATE_ONLY"
+    },
+    {
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-qualifiedremaining-040e2861-full-board-largest-phone-attachments/9A33D031-51A8-43AF-8334-3D19003003B4.png",
+        "sha256": "05f5251358e170c444b998339379180b70378bf9afc11337dda157230e037674",
+        "bytes": 3336413
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "9A33D031-51A8-43AF-8334-3D19003003B4.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "full-board-largest-portrait-refill_0_8806C2EA-1053-4CD2-922E-BA3226A0209F.png",
+        "timestamp": 1792923620.645
+      },
+      "directWholeOriginalView": true,
+      "finding": "Portrait15,000/150,000 refill: native full-scaled score, FullBoard context and both causal square figures remain readable; all7x7refilled stars are visible in this still. No forecast/Next cue is introduced.",
+      "verdict": "PASS_VISIBLE_STATE_ONLY"
+    },
+    {
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-qualifiedremaining-040e2861-full-board-largest-phone-attachments/3EC75184-864A-4F6B-B312-602E590EDA3C.png",
+        "sha256": "cc93a0ce4a4d55f1b5802be05b37de5438f0911a269a1c829757cb811d42e638",
+        "bytes": 3631445
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 8,
+        "displayPixels": [
+          2532,
+          1170
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "3EC75184-864A-4F6B-B312-602E590EDA3C.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "full-board-largest-tablet-landscape-refill_0_D8292179-3C1D-4F2E-88BB-01DA850C51FD.png",
+        "timestamp": 1792923631.771
+      },
+      "directWholeOriginalView": true,
+      "finding": "ActualPHONE landscape34,000/150,000 refill despitelegacyfilename tablet-landscape. Current stars and returned figures remain separated from fullscore and leftmode text. Lowerboard continues below viewport; do not call all49cells simultaneouslyvisible.",
+      "verdict": "PASS_VISIBLE_STATE_ONLY"
+    },
+    {
+      "raw": {
+        "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-qualifiedremaining-040e2861-full-board-largest-phone-attachments/A40E1299-D5DB-4BB4-98B2-97DA55E56C4B.png",
+        "sha256": "18ba568c200f351455a8cdf0aafd7011eb5f9e391226335fc41d52c15d45ea08",
+        "bytes": 2067936
+      },
+      "metadata": {
+        "storedPixels": [
+          1170,
+          2532
+        ],
+        "EXIF274": 1,
+        "displayPixels": [
+          1170,
+          2532
+        ]
+      },
+      "attachment": {
+        "configurationName": "Test Scheme Action",
+        "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+        "deviceName": "Starfall HUD Stack dcf3 Phone",
+        "exportedFileName": "A40E1299-D5DB-4BB4-98B2-97DA55E56C4B.png",
+        "isAssociatedWithFailure": false,
+        "suggestedHumanReadableName": "sky-control-reveal-failure_1_30FD9D51-DDC9-4D28-A4A1-0E255655756C.png",
+        "timestamp": 1792923660.835
+      },
+      "directWholeOriginalView": true,
+      "finding": "FailureSkyMenu viewport: fixedtitle andReturntosky readable; scrolledMastery body occupies contentviewport andSettings&help remains below it. Prior/followingbodypartialtext is deliberate scrolling. HOLD because required Settings navigation was not reached within unchanged8-pan contract.",
+      "verdict": "HOLD_NAVIGATION_REACHABILITY"
+    }
+  ],
+  "failureDiagnostic": {
+    "file": {
+      "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-qualifiedremaining-040e2861-full-board-largest-phone-attachments/6B91511D-005B-4360-B6AF-CD2C13558B40.txt",
+      "sha256": "c314470b5fbbed43e9c72a2ccde1b5ba91153062b86e7685d1579e1139d8b40a",
+      "bytes": 10022
+    },
+    "firstObservation": "Attempt 1: bounds=(40.0, 4018.0, 310.0, 133.33333333333303); viewport=(8.0, 159.33333333333331, 374.0, 419.6666666666667); scroll=Optional((8.0, 159.33333333333331, 374.0, 419.6666666666667))",
+    "lastObservation": "After final pan: bounds=(40.0, 1060.6666666666663, 310.0, 133.33333333333348); viewport=(8.0, 159.33333333333331, 374.0, 419.6666666666667)",
+    "interpretation": "Settings&help y4018,h133.333 starts far below native reader159.333..579. Eight real requested379.8pt pans move it to y1060.667, still below reader. The primary failure is bounded navigation reachability; not a test-timeout truncation or proof of an SDK scroll defect."
+  },
+  "scopeVerdict": "The actual visible mode/score/refill/figure/board text in these4stills is legible and coherent with officialroles. The same completed phonejourney remainsHOLD because Settings&help is offscreen beyond unchanged8-pan allowance. Only actualphone metadata applies; legacytabletlandscape label is not tablet evidence. No completedrestore or actualtabletreview exists at040.",
+  "responsibleBoundary": "Frozen040 FallingSkyMenu places long optionalMastery before quiet navigation. The coordinator selected a shared section-order correction retaining native fullfont facts/actions. That subsequentcandidate must be independently requalified; this report neither implements nor accepts it.",
+  "limits": [
+    "No overall040/Goal9acceptance; earlierAXStory boundedPASS remains unchanged as history.",
+    "No claim every49cell is simultaneouslyvisible in landscape; actualcells/score/rotation states are mechanical proof separate from still judgment.",
+    "No actualVoiceOver, physical/minimum-iOS, continuousmotion, platformfocus or whole-page visibility claim.",
+    "No tabletresult or active5c result/bundle inspected. No frozen record rewritten."
+  ]
+}

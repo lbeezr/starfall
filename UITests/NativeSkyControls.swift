@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 
 extension XCUIApplication {
     /// Play the same production-rule witness validated by the hosted lifecycle tests.
@@ -299,17 +300,76 @@ extension XCUIApplication {
             XCTFail("The guide must be open before reading its final line", file: file, line: line)
             return
         }
+        let spokenMessage = message.label
         revealSkyControls(actions, file: file, line: line)
         XCTAssertTrue(message.exists, "Revealing actions must retain the open guide", file: file, line: line)
+        if frame.width > frame.height, scrollViews["sky.header.details"].exists {
+            XCTContext.runActivity(named: "Short landscape guide ownership") { activity in
+                let facts = XCTAttachment(string: "application=\(frame); message=\(message.frame); actions=\(actions.map(\.frame)); scrollOwners=\(scrollViews.debugDescription)\n\(debugDescription)")
+                facts.name = "short-landscape-guide-owners"; facts.lifetime = .keepAlways; activity.add(facts)
+                let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+                image.name = "short-landscape-guide-after-action-reveal"; image.lifetime = .keepAlways; activity.add(image)
+            }
+        }
         let inner = scrollViews.containing(.staticText, identifier: "experiment.message")
             .allElementsBoundByIndex.first { !$0.buttons["experiment.cell.0.0"].exists }
+        var clippedLandscapeReader: XCUIElement?
         if let inner {
-            for _ in 0..<4 where message.frame.maxY > inner.frame.maxY + 1 { inner.swipeUp() }
+            for _ in 0..<4 where message.frame.maxY > inner.frame.maxY + 1 {
+                if frame.width > frame.height, scrollViews["sky.header.details"].exists {
+                    // The long AX text can make XCTest's swipe macro reject a
+                    // visibly positive reader. Pan inside its measured window.
+                    let visible = inner.frame.intersection(frame)
+                    XCTAssertFalse(visible.isEmpty, file: file, line: line)
+                    let origin = coordinate(withNormalizedOffset: .zero)
+                    let start = origin.withOffset(CGVector(dx: visible.midX - frame.minX,
+                                                          dy: visible.minY + visible.height * 0.9 - frame.minY))
+                    let end = origin.withOffset(CGVector(dx: visible.midX - frame.minX,
+                                                        dy: visible.minY + visible.height * 0.1 - frame.minY))
+                    start.press(forDuration: 0.05, thenDragTo: end, withVelocity: .fast, thenHoldForDuration: 0)
+                } else {
+                    inner.swipeUp()
+                }
+            }
             XCTAssertLessThanOrEqual(message.frame.maxY, inner.frame.maxY + 1, file: file, line: line)
+            if frame.width > frame.height, scrollViews["sky.header.details"].exists,
+               !inner.frame.contains(CGPoint(x: message.frame.midX, y: message.frame.midY)) {
+                clippedLandscapeReader = inner
+            }
+            if frame.width > frame.height, scrollViews["sky.header.details"].exists {
+                XCTContext.runActivity(named: "Short landscape guide final line") { activity in
+                    let facts = XCTAttachment(string: "application=\(frame); reader=\(inner.frame); message=\(message.frame); actions=\(actions.map(\.frame))\n\(debugDescription)")
+                    facts.name = "short-landscape-guide-final-line-owners"; facts.lifetime = .keepAlways; activity.add(facts)
+                    let image = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+                    image.name = "short-landscape-guide-final-line"; image.lifetime = .keepAlways; activity.add(image)
+                }
+            }
         }
         XCTAssertTrue(message.exists, file: file, line: line)
         XCTAssertFalse(message.frame.isEmpty, file: file, line: line)
-        XCTAssertTrue(message.isHittable, "The guide's final line must remain visible", file: file, line: line)
+        if let inner = clippedLandscapeReader {
+            // This new profile can expose the full final line while the long,
+            // read-only Text's center is offscreen. Verify the actual reader,
+            // native end position and a complete full-font final-line band.
+            XCTAssertTrue(frame.contains(inner.frame), file: file, line: line)
+            XCTAssertEqual(message.label, spokenMessage, file: file, line: line)
+            XCTAssertFalse(inner.frame.isEmpty, file: file, line: line)
+            XCTAssertTrue(inner.isHittable, file: file, line: line)
+            let bars = inner.otherElements.matching(NSPredicate(format: "label BEGINSWITH %@", "Vertical scroll bar"))
+                .allElementsBoundByIndex
+            XCTAssertFalse(bars.isEmpty, file: file, line: line)
+            XCTAssertTrue(bars.allSatisfy { ($0.value as? String) == "100%" }, file: file, line: line)
+            let category: UIContentSizeCategory = launchArguments.contains("UICTContentSizeCategoryAccessibilityXXXL")
+                ? .accessibilityExtraExtraExtraLarge : .large
+            let lineHeight = UIFont.preferredFont(forTextStyle: .subheadline,
+                compatibleWith: UITraitCollection(preferredContentSizeCategory: category)).lineHeight
+            let finalLine = CGRect(x: message.frame.minX, y: message.frame.maxY - lineHeight,
+                                   width: message.frame.width, height: lineHeight)
+            XCTAssertTrue(inner.frame.insetBy(dx: -1, dy: -1).contains(finalLine),
+                          "The complete final line must fit inside the native reader", file: file, line: line)
+        } else {
+            XCTAssertTrue(message.isHittable, "The guide's final line must remain visible", file: file, line: line)
+        }
         XCTAssertLessThanOrEqual(message.frame.maxY, actions.map(\.frame.minY).min()!, file: file, line: line)
         XCTAssertTrue(actions.allSatisfy(\.isHittable), file: file, line: line)
     }

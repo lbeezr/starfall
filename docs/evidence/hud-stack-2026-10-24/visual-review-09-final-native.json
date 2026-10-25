@@ -1,0 +1,826 @@
+{
+  "schemaVersion": 1,
+  "goal": 9,
+  "status": "BOUNDED_PASS",
+  "reviewer": "hud_audit, attributed aggregation of six frozen independent native leaves and separate menu leaf",
+  "recordedUTC": "2026-10-25T11:28:10.393181+00:00",
+  "scope": "Current5c whole native still review aggregation only; each original is attributed to its actual independent leaf reviewer. Hosted and sampled motion remain separate.",
+  "source": {
+    "commit": "5c05ecef1b8ce3ca2fb81148597981968508aa5b",
+    "runtime": "dev.06a3229203",
+    "runtimeInputs": 568,
+    "testInputs": 167,
+    "snapshots": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-5c05ecef.json",
+        "sha256": "2c06a46d82290275d03625288c21593193629ac78b40a6c0a601690b1f55531a",
+        "bytes": 188241
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/runtime-inputs-09-candidate-navigation-remaining-5c05ecef.json",
+        "sha256": "6612d37cc04c50eebc8946082f33b3602b22f12ef68dc1351265b565089cd61a",
+        "bytes": 188280
+      }
+    ],
+    "sourceProof": "Complete568runtime+167test input arrays match initial2c06/resumed6612; both snapshots report empty runtime/test differences."
+  },
+  "reference": {
+    "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/design/interface/observatory-game-ui-concept-2026-10-19.png",
+    "sha256": "8594e09b6124a9f78f81f56a19bdf1257ea6bceab9236e463425a822dceb6fd6",
+    "bytes": 2479182,
+    "scope": "Approved Play composition/material reference; no native geometry claim"
+  },
+  "mainNativeMechanics": {
+    "passedExecutions": 7,
+    "uniqueMethods": 6,
+    "failed": 0,
+    "skipped": 0,
+    "runtimeWarnings": [],
+    "methods": [
+      {
+        "selector": "SkyFlowInteractionTests/testLandscapeStoryPressureAndCommittedRecovery",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-summary.json",
+          "sha256": "afcf926975ca54f9cba1270997edff59a4262d50ac33c0f378eb50b92b48661c",
+          "bytes": 741
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-receipt.json",
+          "sha256": "82d1cb12cb83db221334ea409c15b82bd5777eaa15403077989e1c0e8a9c64df",
+          "bytes": 200
+        },
+        "stageElapsedSeconds": 151.789,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "selector": "SkyFlowInteractionTests/testLargestQuietLandscapeStoryPressureAndCommittedRecovery",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-summary.json",
+          "sha256": "11275d7271ab016e5a014a59032ecbd80fea4c56444f25ba3206aaf66c305e72",
+          "bytes": 741
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-receipt.json",
+          "sha256": "56248be6ea85a5625525c3401bf565f12c742bd0231f4aac866625716dbff323",
+          "bytes": 197
+        },
+        "stageElapsedSeconds": 170.478,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "selector": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-summary.json",
+          "sha256": "51c464abc09f264d557a7d2d515c2f8a4ca7da433b4bdbf05fc40654b2b2396e",
+          "bytes": 741
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-receipt.json",
+          "sha256": "163e7a1f1c2839a82599b888708c2bf2a1226ebe659f92e4c2bc3a5add21c4dc",
+          "bytes": 208
+        },
+        "stageElapsedSeconds": 119.648,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "selector": "ObservatoryInteractionTests/testSupportedOrientationsPreserveNativeTargets",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-summary.json",
+          "sha256": "ead34ce60801cac10b40a4aa0480a48897945abf84fd8eab459e829d6beceb81",
+          "bytes": 741
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-receipt.json",
+          "sha256": "912fd997695cc1e14440e6a16b6a4432b99787b122064f5c2b64d1b234f83db0",
+          "bytes": 223
+        },
+        "stageElapsedSeconds": 50.392,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "selector": "FullBoardLanternInteractionTests/testLargestQuietFullBoardChoiceSwapRotationAndRestore",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-summary.json",
+          "sha256": "e51071335cb6059ff8efd95b73e37a239a5dd0480d7a29f0f959bfec4ab468b9",
+          "bytes": 752
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-receipt.json",
+          "sha256": "1f51d7db7968caa693c9bab6b148a68d15126f3e45e6439db5c48cd6cb1187cc",
+          "bytes": 218
+        },
+        "stageElapsedSeconds": 97.957,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "selector": "LastClearRecapInteractionTests/testNormalOpenSkyLastClearTracePersistsThroughNoAwardLoss",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-summary.json",
+          "sha256": "95c2ed2fca1683112dbf68e375781e02f839bec30adf88a7058b141399612c0a",
+          "bytes": 741
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-receipt.json",
+          "sha256": "0c69e991ac9947d0941ba0e1848cbe7f03b06f10dd2d2de0a50f2ac27b5902ec",
+          "bytes": 219
+        },
+        "stageElapsedSeconds": 366.545,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": []
+      },
+      {
+        "selector": "HeadroomFeedbackInteractionTests/testNormalKiteHeadroomChoicesRecoverAndFinishWithExactReplay",
+        "summary": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-summary.json",
+          "sha256": "7dd2729792592b4a6d165b0387d08c43e8f47dad5eafc63197e5c66fde049076",
+          "bytes": 740
+        },
+        "receipt": {
+          "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-receipt.json",
+          "sha256": "02689ea167a975cc878b30ce8e97a8f567e764ba42137d0884c5078811226637",
+          "bytes": 213
+        },
+        "stageElapsedSeconds": 199.135,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "runtimeWarnings": []
+      }
+    ],
+    "boundary": "Mechanical pass is separate from all still judgments. No source-only or pixel-only interaction acceptance."
+  },
+  "currentMainNativeStills": {
+    "wholeOriginalCount": 81,
+    "leaves": [
+      {
+        "record": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-normal-landscape.json",
+          "sha256": "0086e3e854da687d064d55a9456dde5a8ea74a649279383a05828582cb18442e",
+          "bytes": 17563
+        },
+        "reviewer": "hud_audit",
+        "status": "BOUNDED_PASS",
+        "scope": "All16 finalized current5c normal Story whole native screenshots: initial portrait plus15 landscape frames; no video or other method personally reviewed in this record",
+        "wholeOriginalCount": 16,
+        "rawImageIdentityReferences": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/B33D2DAE-2C8A-4848-85F9-614B89F37B9F.png",
+            "sha256": "bccecdd0b9613d3cc81ad69a94558414f8e5a25f36fde54e25310e1e5a0ce848",
+            "bytes": 3431671
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/C7D04FB8-624D-4D26-98BC-C7176154794D.png",
+            "sha256": "d6a442e99d8049381a52da3732caed882a4f69dddda6cc79ef7c605decae604a",
+            "bytes": 3835153
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/E3AD9A26-09C3-4C98-853B-C448773F02FE.png",
+            "sha256": "3e4d78f08f50e40e1937a10ffa41009c8c84efd8afe985b800fa876f637c8c05",
+            "bytes": 3771027
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/89B638C8-5873-4ACC-97CA-F0CC656E006E.png",
+            "sha256": "da1d0c8260b6e87d2b99e21de1c4df1a59cfb3d107427d33f9f102c587e0f166",
+            "bytes": 3772096
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/0AA5BB6B-6A10-4330-A575-D852195B72D6.png",
+            "sha256": "813657d7b85e0c61069bc44530d2d2f4ca004b1f32e63f38231b4f339dda8628",
+            "bytes": 3772161
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/BA3EBBC8-2293-41AE-8D0B-F68A67DA2936.png",
+            "sha256": "fc67a6a2dfe46d3f44072814cb343db4f38d9823393a3812cd07e59681ec0ea6",
+            "bytes": 3772198
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/D466F796-7A11-4C9D-A8F8-A184B63CF8D7.png",
+            "sha256": "7cb7c88c20bbd1bb8a5c9d77edd15c3849e5caa719b60c4603256dc09667c06b",
+            "bytes": 3770248
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/11E15CA2-6E03-41B9-9B6C-F54AB3E526C1.png",
+            "sha256": "315b290d3cf49ee4802314a3643037d2ed14d1b7b43876eb5b40533e0ce966a9",
+            "bytes": 3772203
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/BB96299A-26BC-41C4-8867-546A1CD2CCEC.png",
+            "sha256": "ab5e1a1aec930d5fd33f7375349089814ea172bf061e88fe04d0a7070a7fdb61",
+            "bytes": 3879822
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/B4A09B3A-088D-4FD1-BA6B-6046B9893DF3.png",
+            "sha256": "68e7727a754300f815409e3ab25a0eab176305cf11a639c11f11f4af4210eedb",
+            "bytes": 3881441
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/0A0C1DB8-E36D-4BBF-B196-BEF1F799BB6D.png",
+            "sha256": "f50b57c5360de0f4527e2a860f62fca53bd803b2b538d2057027b1f068997d23",
+            "bytes": 3921110
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/CBBB9074-4CC0-4706-B8E1-D2F5217F847A.png",
+            "sha256": "9e1c4baae2fd49dc8c04487bac23b14f6d8ecf8b7b72e8b3492670a2e0530265",
+            "bytes": 3712607
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/3D41D21A-18F5-4D1B-883C-2BE23937612E.png",
+            "sha256": "9f692513e3188d4cb4a5c589ccfb523a834de436eb697e43c5b5573b70c967e9",
+            "bytes": 3713052
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/3137E0B8-F27F-441F-8B2F-909C0BF03B31.png",
+            "sha256": "48ee90bf2fc30f006c7203bffe98f956943fb3b2c0b6fe9530936493e811e53f",
+            "bytes": 3713138
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/C1FDA236-2D63-42A9-9567-995D2DCD52B2.png",
+            "sha256": "ad9ba4034e4dcd864be8d95424581365c39cdb143428b2bc7ddddbd20017cd4f",
+            "bytes": 3711037
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-normal-attachments/649E8D7E-3F56-468A-AA13-30F6A8826FB8.png",
+            "sha256": "f0842e074585e295e147fd6edc649da562fad8818eccc982d65f3fa9994f3b7b",
+            "bytes": 3713333
+          }
+        ],
+        "limits": [
+          "This is one normal-motion iPhone17e Simulator/iOS27 case at3x; not AX5, tablet, physical device, minimumOS or actual VoiceOver proof.",
+          "All original whole PNGs were inspected directly. Repeated screenshots show separate test attachment moments; they are not a continuous recording and cannot establish animation onset, pacing or unseen frames.",
+          "Below-fold guide content/actions are not fully visible in these screenshots. The method supplies native target/outcome assertions, but this review does not claim complete guide reading from these stills.",
+          "The forecast-target attachment names refer to native viewport/44pt-target measurement, not a captured selected-state or actual tap on every forecast.",
+          "Current5c menu-order correction is not visibly represented here. FullBoard navigation and Observatory orientation require separate current-source records.",
+          "No controller, build, export, AV decode, App/test or HEAD change was performed by this reviewer."
+        ],
+        "attribution": "Original pixels were directly inspected by the named leaf reviewer. Aggregate author does not claim personal inspection of other reviewers\u2019 frames."
+      },
+      {
+        "record": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-navigation-ax5.json",
+          "sha256": "b558a54e7e85b653ce92237bfefd69493cc32e4d8661ae6e0c49107209a5ea9c",
+          "bytes": 20445
+        },
+        "reviewer": "hud_audit",
+        "status": "BOUNDED_PASS",
+        "scope": "All16 whole current5c AX5 quiet Story native PNGs, plus2 finalized reader ownership attachments; one original portrait and15actual landscape samples. Separate current evidence, not relabeled040 pixels.",
+        "wholeOriginalCount": 16,
+        "rawImageIdentityReferences": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/79678371-FE66-4D04-9C1B-A0C406DF2334.png",
+            "sha256": "da1b6be798d6b714e1e05a871f9a0a9550dd2e4e78397ba848a527c40210ac4f",
+            "bytes": 3101527
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/0E0ABAF1-1748-425E-A79D-DDBC4925D11D.png",
+            "sha256": "2c8f5259f5890a11121db35a835a4b12ecb0931f9b854c0b3770c06c50d6d91b",
+            "bytes": 3432884
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/A53F9F76-10B5-4D8F-BF9D-B2C5DFAF1C57.png",
+            "sha256": "650cffb74872d73fdddee55a6242bb1c5005452ff2fb9b4410ffb6f25626de3e",
+            "bytes": 3291805
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/DDF2D56B-7261-4D50-8079-C8C1CAC9D0D2.png",
+            "sha256": "4d2c68b8fe94d9db3c6112a5fbea47f8e356b2ad461ebd5af31ebd4af79e8fdb",
+            "bytes": 3388345
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/5999266A-0B2F-42D3-B041-0EEDDC890D2E.png",
+            "sha256": "4d2c68b8fe94d9db3c6112a5fbea47f8e356b2ad461ebd5af31ebd4af79e8fdb",
+            "bytes": 3388345
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/65FF9ECE-1CE4-4812-BB66-6AFDCA2F6D65.png",
+            "sha256": "8faf1a87a253c6a20ded6ebc10c5087f6db31208b8d92ccfce49e7bdbc72787c",
+            "bytes": 3208297
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/FAA0130E-4B7F-41C1-B32A-A613C1AAE600.png",
+            "sha256": "5b54306921d5510dc26062a334b2fecc665e60baa9298e0c8f555b5820ae1380",
+            "bytes": 3208134
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/ECFA60BC-7E91-4F7B-AB88-E02C64FD1114.png",
+            "sha256": "0f1bbb6a14206e41f6c233e9a7137683d9d01368b40dd181026f39095a81c103",
+            "bytes": 3223937
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/260F8EBA-32BB-4F84-9271-0951754ED455.png",
+            "sha256": "4fd0f1e642554df92fe9e5273916cbfc39ee4c33650a883256bb2711434789a1",
+            "bytes": 3520226
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/D358281F-0ED8-49B4-8F25-4EC8E7676851.png",
+            "sha256": "09cba4b93696918cfcb48aeb2ecbc2aeca2a7561fd258e3940835c1e01f0e8f6",
+            "bytes": 3097366
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/44750EFD-0A14-4642-8BF5-4F8F4DB30E98.png",
+            "sha256": "b5ce02009a46024d1851c773daebae456558130cc07799285a1b62293ab157ce",
+            "bytes": 3098902
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/24D14D79-7A82-498F-B8E6-7B6E4AC5585A.png",
+            "sha256": "7bf61401b28aefd29a7ab6c272ea0efbb7d4b07b6e53fd3b69c5eceeb1e393e6",
+            "bytes": 3312803
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/AB593984-3C8B-4887-9B12-D656B606B1B3.png",
+            "sha256": "7bf61401b28aefd29a7ab6c272ea0efbb7d4b07b6e53fd3b69c5eceeb1e393e6",
+            "bytes": 3312803
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/12D2D931-46AE-440B-A32C-D58C8EC5B7A1.png",
+            "sha256": "ea2445a0c15678b16bd59471a38de06cfcdbc51ff98dde876da15fc2b25b556c",
+            "bytes": 3203453
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/8B48DCC6-EB37-49EE-92C0-71FDD37395A7.png",
+            "sha256": "0a0162b11261389e592c090d637ba7f157215316bee55d277da199e0b18f5129",
+            "bytes": 3203352
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-landscape-ax5-attachments/A91D7954-2620-437B-84B9-5C9C2625B9D0.png",
+            "sha256": "3c697a18ff258dab3cd15070836ecae330cccda07a9018e0f10c89f5c2c064ca",
+            "bytes": 3218459
+          }
+        ],
+        "limits": [
+          "Actual iPhone17e Simulator/iOS27 at3x, one legitimate quiet maximum-text case. No physical device, minimumOS, actual VoiceOver or normal-motion claim.",
+          "Sidebar and guide intentionally scroll. The stills do not prove every intermediate word was read by a person, continuous pan smoothness, exact interaction latency or animation pacing.",
+          "Full logical message remains696.6667 pt high while reader is 93.6667 pt. Its center remains offscreen at the final position; no claim that the complete Text activation point was fixed or tested.",
+          "Forecast-target attachments measure target visibility/size; they are not screenshots of selection after tapping every chip.",
+          "Current5c optional-Mastery menu ordering is outside these images and needs its own native navigation record.",
+          "All16 originals were personally viewed whole, not carried from the 040historical review. Reviewer performed no source/test/HEAD mutation, build, controller, export or AV decode."
+        ],
+        "attribution": "Original pixels were directly inspected by the named leaf reviewer. Aggregate author does not claim personal inspection of other reviewers\u2019 frames."
+      },
+      {
+        "record": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-navigation-full-board.json",
+          "sha256": "ede69c857698d97de6c5710e899ab0f323cf1bf0bc6dfb6469b5143a04688553",
+          "bytes": 27323
+        },
+        "reviewer": "hud_read_ahead independent whole-native reviewer; no App implementation",
+        "status": "PASS_BOUNDED_PHONE_AND_TABLET_NATIVE_STILLS",
+        "scope": [
+          "GAME_UI_SYSTEM: protected instrument and local reading allocation, fullnativefonts, exactFullBoard context",
+          "SharedSkyMenuSurface/fittedreader and registeredquietnavigation before optionalMastery",
+          "HUDguide/UI_PRODUCTION complete-source-bound-native-screen acceptance"
+        ],
+        "wholeOriginalCount": 10,
+        "rawImageIdentityReferences": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/89083DA6-B517-4200-B7BD-504A0D1B5336.png",
+            "sha256": "ee05da43ee711b661bce1eac701da78cb1eb6cf285ac99465d4bee747109d7bb",
+            "bytes": 3155184
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/BB60FC00-E75A-43E9-B5FC-267EA9B7ACBF.png",
+            "sha256": "05f5251358e170c444b998339379180b70378bf9afc11337dda157230e037674",
+            "bytes": 3336413
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/2FDBBCAB-FEDC-4036-AA56-98ACE00D8CA6.png",
+            "sha256": "cc93a0ce4a4d55f1b5802be05b37de5438f0911a269a1c829757cb811d42e638",
+            "bytes": 3631445
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/FE15370B-33E5-4D07-88AB-78ABC283F37F.png",
+            "sha256": "998ae6d1f927db67cf44463b4ad642115b836ae397622a5337f017c784c0f779",
+            "bytes": 2019780
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-5c05ecef-full-board-largest-phone-attachments/4A015C18-924B-4A46-AE06-8920F8856A6D.png",
+            "sha256": "3f051251865eb9218d223a04603198acf65a9e175af6f2a7e96fbfaf5f599930",
+            "bytes": 3371678
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/E941DFF7-6369-4808-9143-22A43361915A.png",
+            "sha256": "4577f6743fb3b9834d4e459c4bb56c4b9a9d14d773b2cf86ef2c6e1cd16e21a6",
+            "bytes": 6524544
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/2D9F6A06-C9E2-47E6-92C3-03D41B045891.png",
+            "sha256": "76322348cc8f73515ba8a1d358ab722cbdd5e5a742514d1bdd61fc5385979e42",
+            "bytes": 6981568
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/0E57DCDF-7945-4A58-BC5C-CD7DC954A2BB.png",
+            "sha256": "05e8d7ae185bf68517d0db9837caf7fb49524b89964dd317b860d6e79972d610",
+            "bytes": 7468879
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/6FBF52A8-54B9-424F-82B5-48659B8DCD67.png",
+            "sha256": "81ea02373f788b4783f9b1b4b2bd974a2f2d4e1052c0df40f3bebe02159ac1c1",
+            "bytes": 4844724
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-full-board-largest-tablet-attachments/633B8BB5-BBDB-4991-8B52-04C680818F73.png",
+            "sha256": "da7a776fdeb15dd7101177ee433868689c3f39f10ddd0444684267853a370353",
+            "bytes": 6959929
+          }
+        ],
+        "limits": [
+          "Bounded current5c phone/tablet still review only; overallGoal9 adoption, remaining native/motion scopes, retained exact exports and manual menu-row raster evidence remain separate pending gates.",
+          "Phone landscape does not show all49cells simultaneously; tablet landscape does show the complete7x7 current starfield, while its AX +19,000 below-board receipt intersects the lower screen edge. No complete receipt/guide reading claim follows from that scroll slice.",
+          "Native49-cell/rotation/state equality, Settings activation within the original8-pan allowance, background/coldrestore and targetgeometry are mechanical evidence separate from still judgment. Settings destination pages are visible; the preceding menu row itself is absent from all ten retained originals.",
+          "Phone Settings page shows only its current scroll slice; tablet Settings page shows its named labels and Done. Neither image proves every possible preference/help-page state.",
+          "No actualVoiceOver, physical/minimum-iOS, standaloneTextactivation, continuousmotion, platformfocus, completecontrast, fullmatrix or wholeEntry/guide-pageclaim.",
+          "Earlier040AXPASS and failed menu history remain source-bound history; the scoped guide-end oracle is not an AppTextactivationfix and no exclusiveSDKcause is assigned.",
+          "Current remaining-phase commands manifest is active and is not hashed as final. Only stable snapshots, finalized per-stage receipt/summary/log and completed attachment manifest are bound here."
+        ],
+        "attribution": "Original pixels were directly inspected by the named leaf reviewer. Aggregate author does not claim personal inspection of other reviewers\u2019 frames."
+      },
+      {
+        "record": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-navigation-observatory.json",
+          "sha256": "5332ac0c641dbec1857bceaa615cdee042ec69b42d31f946e018829a5378283b",
+          "bytes": 10791
+        },
+        "reviewer": "hud_audit",
+        "status": "BOUNDED_PASS",
+        "scope": "All6 current-source Observatory orientation native whole PNGs: before/after one real lower-right-cell input in portrait, landscapeLeft and landscapeRight. Debug fixture regression scope.",
+        "wholeOriginalCount": 6,
+        "rawImageIdentityReferences": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/A384F58E-7AB9-4B7F-9CF1-F01691FF0FF6.png",
+            "sha256": "fbbf225166eb1512038e866513a7a575d2d4b99b7e4e10e1e77adc973499530e",
+            "bytes": 3658748
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/6245D34A-8CCF-4D41-A6AB-287C2421826A.png",
+            "sha256": "2971d7ae88acf774237347e4d84473a2371f814a8aa7e819b99a8e6f0675080a",
+            "bytes": 3599574
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/87A14A58-410C-4018-8219-FE2E22B83F8B.png",
+            "sha256": "69ea2abb156c6ed0ae08d6eb3c990baaf33fda0dc1db1683fe72e401aa98ac2b",
+            "bytes": 4284241
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/C17141C9-06CE-48E4-BFA9-C3248348B395.png",
+            "sha256": "d6ccc2e8a7e27b0acdcd42f9b1dbae59c40ebe164c6d93585942714ca8aed626",
+            "bytes": 4289722
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/38FFC904-7A40-4F2B-BCE4-4A246B5D7371.png",
+            "sha256": "ae19de1d29dd4c0012ff79a001c2d43b1274d518ab67b407cec19d910ea1e481",
+            "bytes": 4287326
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-observatory-orientations-phone-attachments/1A0FFC74-A256-4FEF-B220-495E64227935.png",
+            "sha256": "ca9b21d0c3517103a1cb44ddbe3ba036101e7ec478b8cdfccd2331f687cc7971",
+            "bytes": 4300957
+          }
+        ],
+        "limits": [
+          "This is one iPhone17e Simulator/iOS27 debug fixture case at3x, not ordinary Story, FullBoard, actual VoiceOver, physical device or minimumOS validation.",
+          "Two portrait originals 1170x2532 and four landscape originals 2532x1170 were viewed whole. No image export/resize/retouch was performed by this reviewer.",
+          "Lower guide/footer and complete ceiling are outside some landscape capture positions. No claim of full guide reading, all-action reachability from pixels or complete-ceiling visibility across every scroll offset.",
+          "No sampled video, continuous motion, frame pacing, human-recognition or contrast-ratio claim.",
+          "No App/test/HEAD changes, build, controller, AV decode or export was performed by this reviewer."
+        ],
+        "attribution": "Original pixels were directly inspected by the named leaf reviewer. Aggregate author does not claim personal inspection of other reviewers\u2019 frames."
+      },
+      {
+        "record": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-open-sky.json",
+          "sha256": "69c118729376638aeeea5d65976709d0721f44941a5e659940657e6f49f7a5a5",
+          "bytes": 26944
+        },
+        "reviewer": "Independent subagent /root/hud_goal_review",
+        "status": "PASS_BOUNDED_CURRENT_SOURCE_OPEN_SKY_REGRESSION",
+        "scope": {
+          "attachmentManifest": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/manifest.json",
+            "sha256": "ae5ee5d75cfc27d289b16496befad510a88bdf58cbc51778ba7a4dad3b0790d5",
+            "bytes": 11946
+          },
+          "wholePNGCount": 24,
+          "byteUniquePNGCount": 20,
+          "allOriginalsDirectlyViewed": true,
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "modelName": "iPhone 17e",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "fixture": "Reset-only historical horizontalFive starts paused; a real trace clears five actual stars for5raw points. This is not current random Survival or a modern Story visit. Normal system motion and CalmNO are selected by the unchanged native method.",
+          "scoreAndProgression": "Last clear remains5stars/5light=5points, refill0, room gained incolumns1\u20135 and0stars afterclear. Subsequent no-award shower and eventual loss retain that session recap. Cold restored loss omits session-only recap; OpenSky earns no restoration repair, as separately asserted by the method."
+        },
+        "wholeOriginalCount": 24,
+        "rawImageIdentityReferences": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/A540446A-1E3E-4786-AAB4-9FF5DD9DA596.png",
+            "sha256": "1f6bf1137dbab87a2f73767c96acad8d39d0f1bf6f2a99ef9e08bdeadaf4ec87",
+            "bytes": 3420070
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/BAF15FC1-B48A-47C3-ABB9-139F9D13D598.png",
+            "sha256": "adbadf5096c5584ab966bfb79db5f865b03bc6631d060768520925592f5bb3de",
+            "bytes": 2626851
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/1524E3C1-ED3D-41A2-A59A-CFFEC09C3CC7.png",
+            "sha256": "d4df1907386686604c4745b5215c9786d8ae878116089a0940c5031f852b585c",
+            "bytes": 2553557
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/2A4BECB4-E01C-4E87-86BE-460759FF5C0C.png",
+            "sha256": "71b09eea7053e0b37d332d0dabdf348f2a5167976ed98197309eb3ef12f3d31a",
+            "bytes": 2496344
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/8A0F5A2A-80D2-4891-911C-A38AD4A698DC.png",
+            "sha256": "b73c0a09f2f142862a7f553f616ebe0bd85316822edddaba553fcbe4ccb2bada",
+            "bytes": 2470771
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/6E8066B1-62FD-4F5C-AA71-E71A8B5F46A5.png",
+            "sha256": "2059db9ffa2d73d01309dee96cafdd704cd13f873bcdef6ffe7c325dbffbd171",
+            "bytes": 2427946
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/8C7E615B-526D-43A4-B8AC-22F064F0A551.png",
+            "sha256": "a2d7a4c059f9baa54d7b395eb349961e8bd19f9cf8d695e43c80ca4f6709f755",
+            "bytes": 2445998
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/011091D6-210D-46F3-AD59-FEC7806DE78E.png",
+            "sha256": "a2d7a4c059f9baa54d7b395eb349961e8bd19f9cf8d695e43c80ca4f6709f755",
+            "bytes": 2445998
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/56CD224B-A3D4-4772-9996-59D5B790C7EE.png",
+            "sha256": "b0065b3800414357dfecc7a9cfbe3f22c713cacdf816ed759344716c0b1ef9d7",
+            "bytes": 2721097
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/A7CEABA7-F5A7-4553-8369-9437347AF00C.png",
+            "sha256": "9d609154682ba08508f7b19d2013c42aeaf145a215ccef5935f4b636c1c94e62",
+            "bytes": 2646861
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/93298B94-9826-4D0F-9545-FFFE26B25534.png",
+            "sha256": "140aebce69a5d0fa4c163d4f293c5624131113411c9ced0481319b633273f178",
+            "bytes": 2588426
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/EF5000EF-6BC3-4DE9-8497-ECD49955DE4A.png",
+            "sha256": "c1a4b5805a124b2e513703934e1df71fc985c0b8ce385ed7e7a72ff455083ba6",
+            "bytes": 2563657
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/545366DB-7DBC-4FDB-9EBC-628D639FB7D7.png",
+            "sha256": "28567be50f091eda284253a014579e95100f8f7a6bc211ad800095cdb61d27dd",
+            "bytes": 2509318
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/C2BFF9BC-05AA-4D9E-8177-DBF7ED80BA8B.png",
+            "sha256": "1935c467a64599289612f4d3adb0aca8bf1542afe94c2b85164773f41fbea0d5",
+            "bytes": 2543125
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/AAA34084-0ABC-42D3-B8F0-01A707BC7ED1.png",
+            "sha256": "1935c467a64599289612f4d3adb0aca8bf1542afe94c2b85164773f41fbea0d5",
+            "bytes": 2543125
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/415CAE4C-F3F6-47F2-B001-A25C730C8116.png",
+            "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+            "bytes": 3260806
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/32BC8C89-024B-400E-A21A-03D89602EB64.png",
+            "sha256": "55fa998c040f13c2515d8f6cee3e646f620a7487380cf669bb0e2534c02e87cf",
+            "bytes": 2718129
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/AECFE155-8232-4DE6-A229-C783D33BE54E.png",
+            "sha256": "8e5614f06f54102253f2d537dac23c3fb49cbc4e83b5d9b36533f16b7254c861",
+            "bytes": 2697075
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/7EC48D24-0ACD-43EA-8AAE-9E2601C2B253.png",
+            "sha256": "bdee7521e6568a73664f39d699e1dfa4d01887a50742a808121750ad85160e5e",
+            "bytes": 2696049
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/51E8E9EE-A936-4916-8E86-448AA1AD1EA6.png",
+            "sha256": "9377426bef9e452467cb3ef57dea674b3a2dbac3bc97676207e592c319779e93",
+            "bytes": 2562437
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/887AF59C-912F-4116-BA51-0BE3559929EF.png",
+            "sha256": "b5736b6daef7fbc5ad20ca9afff7d637e3d89264a2a17d2417363c5915067fad",
+            "bytes": 2507197
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/80286E8E-0B3E-4A20-A26B-4580724BF751.png",
+            "sha256": "f00fbb08e0024767357120d1fb9b5ac0f5bef5afc5bdca19a86adcaa8e045923",
+            "bytes": 2541578
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/ED9334EA-0CF7-448A-BB60-F50C42279D37.png",
+            "sha256": "f00fbb08e0024767357120d1fb9b5ac0f5bef5afc5bdca19a86adcaa8e045923",
+            "bytes": 2541578
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-open-sky-last-clear-phone-attachments/2F49F98A-B582-40D8-96B8-EDDDEB29EFF8.png",
+            "sha256": "4718cc5e9baacae0a278e568ae194d000fad47bb4a9742369e237fb6c69a9fbc",
+            "bytes": 3260806
+          }
+        ],
+        "limits": [
+          "This named default-phone portrait regression does not establish short-landscape or AX5 behavior; those source-bound reviews are separate.",
+          "Stills do not prove continuous animation, framepacing, exact receipt age, contact latency, human comprehension or physical comfort.",
+          "No actualVoiceOver, physical-device, IncreaseContrast, ReduceTransparency or minimum-iOS17 execution is claimed.",
+          "This bounded pass is not overall Goal9 adoption; remaining native, sampled-motion and exact-export acceptance stay separate."
+        ],
+        "attribution": "Original pixels were directly inspected by the named leaf reviewer. Aggregate author does not claim personal inspection of other reviewers\u2019 frames."
+      },
+      {
+        "record": {
+          "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-kite.json",
+          "sha256": "dcdf94cdc03437988dee914b38adf4e7f2d96fbe0fcc291420b009bd14db117a",
+          "bytes": 14992
+        },
+        "reviewer": "Independent subagent /root/hud_goal_review",
+        "status": "PASS_BOUNDED_CURRENT_SOURCE_KITE_REGRESSION",
+        "scope": {
+          "attachmentManifest": {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/manifest.json",
+            "sha256": "248555fc82e331d04e8df8a6ec2f5f19b4d07c170023b81e761e787fc3d106da",
+            "bytes": 4522
+          },
+          "wholePNGCount": 9,
+          "byteUniquePNGCount": 7,
+          "allOriginalsDirectlyViewed": true,
+          "device": {
+            "architecture": "arm64",
+            "deviceId": "89BC6263-797D-4573-838E-E238A90D0D79",
+            "deviceName": "Starfall HUD Stack dcf3 Phone",
+            "modelName": "iPhone 17e",
+            "osBuildNumber": "24A434",
+            "osVersion": "27.0",
+            "platform": "iOS Simulator"
+          },
+          "encounter": "Actual current KiteHarbor revision4 headroom encounter,17000point objective, ordinary native exchanges/showers. Debug world-legacy-review grants entry access; this is not proof that a player earned all prior campaign unlocks. Unlike the separate OpenSky historicalhorizontalFive witness, Kite uses current points/accounting.",
+          "routeAccounting": "High5k branch is followed by exactReplay/reset. Winning branch starts0again, earns7k, takes one real shower, earns5k to12k, performs four non-clearing setup moves, then earns6k to18k. Do not add the preReplay5k to the winning branch. Final4stars/5light gives5000base+1000size=6000 lastclear, separate from18000round/17000objective.",
+          "motionSettings": "Unchanged native method explicitly sets/restores actualsystemReduceMotion off; CalmNO on ordinary currentKite. This does not turn stills into continuous-motion evidence."
+        },
+        "wholeOriginalCount": 9,
+        "rawImageIdentityReferences": [
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/81E99817-4B0E-45D6-96CB-856610365B3A.png",
+            "sha256": "958b33981ae7e5f3955bff1a006020e6c99c3533e60aad7048f45e873de3d992",
+            "bytes": 2984141
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/590220D0-3416-41D8-8813-033EC7641547.png",
+            "sha256": "5d8735080d2c1f93fd67d071f8275736cb4a137b052053281582ae288b7f7f2d",
+            "bytes": 3658604
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/ECF99EF4-F866-475A-A271-C99796CEFC5A.png",
+            "sha256": "99f0fb89df6ee60dfb75bed32b8b4ed936dfc530256189082b29b5a77241892a",
+            "bytes": 3605994
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/DA46E1CB-8825-456E-B2A2-0B273D705BDD.png",
+            "sha256": "ed685f24d303af93f41628b147990771298cb178c30c98dd51f9c02bbeeded90",
+            "bytes": 3606271
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/A4C87BA2-F732-49FF-9A63-FEC83F837580.png",
+            "sha256": "f487b842030e7b37578af202f4ebb052ff838fb0a551a1807c3ff03ebff49eed",
+            "bytes": 3607433
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/08352E40-5DA4-426D-B43D-5B54B820080E.png",
+            "sha256": "f487b842030e7b37578af202f4ebb052ff838fb0a551a1807c3ff03ebff49eed",
+            "bytes": 3607433
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/DAA11B9B-1BCC-447E-A647-F5DABD9C55BD.png",
+            "sha256": "ea5af0cf120ececa9603494442382a82b37c91670c6be0f40cc8f425bb36f0f0",
+            "bytes": 3588326
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/8FAE8577-2804-4C39-BF05-D24D7612DB65.png",
+            "sha256": "ea5af0cf120ececa9603494442382a82b37c91670c6be0f40cc8f425bb36f0f0",
+            "bytes": 3588326
+          },
+          {
+            "path": "/private/tmp/starfall-hud-stack-20261024/native-09-candidate-navigation-remaining-5c05ecef-kite-headroom-phone-attachments/10FDF127-69F0-420C-87B8-2BD1BB38316F.png",
+            "sha256": "e2f6a6b50d423082360a6918804e6088aeceef8b04a89343ccf0d4475dddfd8a",
+            "bytes": 3656609
+          }
+        ],
+        "limits": [
+          "These named default-phone portrait states do not establish short-landscape, AX5 or wholeGoal9 acceptance; other source-bound reviews remain separate.",
+          "Background/cold/exactReplay/world marking are separately asserted in the passing method; not every such state has a retained whole image.",
+          "Nine stills do not prove continuous animation, framepacing, exact receipt age, contact latency, human comprehension, physical comfort or accessibility interaction.",
+          "No actualVoiceOver, physical-device, minimum-iOS17, IncreaseContrast or ReduceTransparency execution is claimed.",
+          "Original failures/admission stops remain historical; this bounded current-source PASS does not erase them or accept exports before exact review."
+        ],
+        "attribution": "Original pixels were directly inspected by the named leaf reviewer. Aggregate author does not claim personal inspection of other reviewers\u2019 frames."
+      }
+    ],
+    "authorAttribution": "hud_audit personally inspected normalStory16,AX5Story16,Observatory6; FullBoard10/OpenSky24/Kite9 belong to their named independent reviewers. No personal-view overclaim."
+  },
+  "additionalMenuCaptureReview": {
+    "record": {
+      "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-menu-capture.json",
+      "sha256": "d7f126996b8e52b3f4996a4f9a148db011aa5f069d48644685d7e1cae553e6e5",
+      "bytes": 20183
+    },
+    "reviewer": "hud_read_ahead independent original whole-frame reviewer; no App implementation, controller, recording, decoder or export operations",
+    "status": "PASS_BOUNDED_WHOLE_NATIVE_MENU_ROW",
+    "scope": "Named phone/tablet FullBoard states; see frozen leaf",
+    "wholeOriginalCount": 3,
+    "rawImageIdentityReferences": [
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0088.801.png",
+        "sha256": "bf489bf536df46ec99d438e9e5012f63fb621689a46c991cfa67da341c082fc4",
+        "bytes": 1660683
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.001.png",
+        "sha256": "495821ea65dad0d29d710ace3c1c6da9f41898626533c003b56084d3bcd764ad",
+        "bytes": 1711822
+      },
+      {
+        "path": "/private/tmp/starfall-hud-stack-20261024/menu-09-5c05ecef-fresh1141-phone-frames/frame-0089.201.png",
+        "sha256": "b36ecf261dfa6bcb7ca7057325eb8534f4a75dad0fa24535221b25f753bb453b",
+        "bytes": 1711728
+      }
+    ],
+    "limits": [
+      "Only3of20 decoded wholeframes directly viewed;17 paths explicitly excluded. The selected still proves complete Settings row and pinned header/footer, not every menu/Mastery row or the whole page.",
+      "No actual VoiceOver, physical-device, minimum-iOS, continuous animation, exact latency, complete contrast or manual-human UI claim. H264 compression and media-zero bookend uncertainty remain.",
+      "The original FullBoard method pass, target geometry, five native pans and subsequent activation/restore are mechanical scopes separate from visual judgment. Capture-only duplicate adds no unique method coverage.",
+      "This file does not adopt Goal9 or grant exact-JPEG export acceptance. Frozen original phone/tablet review and historical failures remain unchanged."
+    ],
+    "attribution": "Original pixels were directly inspected by the named leaf reviewer. Aggregate author does not claim personal inspection of other reviewers\u2019 frames.",
+    "countBoundary": "Additional capture-only original-method duplication, beyond main7 and supplemental normal-chain1; no new unique test method or larger main acceptance count inferred."
+  },
+  "totalAttributedWholeStillCount": 84,
+  "relatedSeparateReviews": [
+    {
+      "record": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-hosted.json",
+        "sha256": "62498c307a059eddd21a7aa25155cd98faccf59748e6d94df6a01e6ad2f50e0b",
+        "bytes": 56648
+      },
+      "status": "BOUNDED_PASS",
+      "scope": "Independent current5c hosted whole-layout and Sunny-reader review only; all37 SkyReadingPlayfieldTests whole PNGs plus3 SkyDialogueTests Sunny PNGs",
+      "includedInNativeStillCount": false
+    },
+    {
+      "record": {
+        "path": "/Users/lbeezr/.codex/worktrees/dcf3/Starfall/docs/evidence/hud-stack-2026-10-24/visual-review-09-final-motion.json",
+        "sha256": "e3af1e3507c5c0d267567e4b9f30297ffba5b91dff85d480889c4da7939a40c2",
+        "bytes": 21235
+      },
+      "status": "BOUNDED_PASS",
+      "scope": "Independent direct inspection of all10 whole decoded native first-chain samples from the separately recorded current5c normal two-phase case; not continuous video review",
+      "includedInNativeStillCount": false
+    }
+  ],
+  "decision": {
+    "verdict": "BOUNDED_PASS",
+    "reason": "All six exact current-source native leaves and the additional actual-menu leaf explicitly pass their own bounded visual scope. The aggregate retains all source/capture identities and limitations.",
+    "overallGoalStatus": "No merge/publication or entire-device-matrix adoption from this aggregate; root owns complete acceptance and retained-export review."
+  },
+  "limits": [
+    "Leaf limitations remain authoritative and are copied with each leaf; do not broaden one state into whole-screen or full-matrix coverage.",
+    "Short landscape facts and guide deliberately scroll; not every fact is simultaneous. Complete-ceiling evidence belongs to specific revealed Story/hosted states; Observatory landscape after-input stills do not prove it.",
+    "The short-sidebar read-only Text oracle establishes actual reader/final native line/action visibility, not Text activation or actual VoiceOver. Accepted SkyDialogueBubble remains unchanged.",
+    "Historical debug OpenSky/Dusk, modern Story and FullBoard fixtures remain distinct. Kite winning route resets before7k+5k+6k=18k, rather than adding the earlier high5k branch.",
+    "81main stills, additional selected menu captures,40hosted whole images and10motion samples remain separate counts. No aggregate claim of continuous motion, refill ingress, exact latency, frame pacing, actual VoiceOver, physical device or minimumOS.",
+    "This helper performs read/hash/JSON validation only; no build, controller, export, AV decoding, App/test or HEAD mutation."
+  ]
+}
